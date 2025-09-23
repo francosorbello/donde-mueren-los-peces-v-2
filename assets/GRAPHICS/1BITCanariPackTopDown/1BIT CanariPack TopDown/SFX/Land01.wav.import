@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ewj32swowqx7"
+path="res://.godot/imported/Land01.wav-82c7fa293dee3a5595e223caa1e4cb54.sample"
+
+[deps]
+
+source_file="res://assets/GRAPHICS/1BITCanariPackTopDown/1BIT CanariPack TopDown/SFX/Land01.wav"
+dest_files=["res://.godot/imported/Land01.wav-82c7fa293dee3a5595e223caa1e4cb54.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

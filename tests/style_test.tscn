@@ -1,0 +1,102 @@
+[gd_scene load_steps=6 format=3 uid="uid://cptlum0x5w2rx"]
+
+[ext_resource type="Texture2D" uid="uid://b6a65wew381nl" path="res://assets/GRAPHICS/hexanys-1-bit-ui-panels-1.1.0/Hexany's 1-bit UI Panels/Panels/simple.png" id="1_3mols"]
+[ext_resource type="PackedScene" uid="uid://ykjxsuiiaju" path="res://tests/tilemap_test.tscn" id="1_bts6r"]
+[ext_resource type="AudioStream" uid="uid://ceskirg5tq6wp" path="res://assets/SOUNDS/music/WAV_Don’t_Look_Back.mp3" id="3_sqasb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d8wg0"]
+viewport_path = NodePath("GameViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_d8wg0"]
+font_size = 32
+
+[node name="StyleTest" type="Node"]
+
+[node name="GameViewport" type="SubViewport" parent="."]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 1080)
+size_2d_override = Vector2i(288, 270)
+size_2d_override_stretch = true
+
+[node name="Node2D" parent="GameViewport" instance=ExtResource("1_bts6r")]
+
+[node name="Game" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09411765, 0.09803922, 0.13725491, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameView" type="TextureRect" parent="Game/HBoxContainer"]
+custom_minimum_size = Vector2(960, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("ViewportTexture_d8wg0")
+stretch_mode = 2
+
+[node name="LogView" type="Control" parent="Game/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game/HBoxContainer/LogView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3mols")
+
+[node name="MarginContainer" type="MarginContainer" parent="Game/HBoxContainer/LogView/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/HBoxContainer/LogView/NinePatchRect/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Game/HBoxContainer/LogView/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "This is a test text"
+label_settings = SubResource("LabelSettings_d8wg0")
+
+[node name="Label2" type="Label" parent="Game/HBoxContainer/LogView/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "This is certainly a larger text that should take at least 2 lines  of space"
+label_settings = SubResource("LabelSettings_d8wg0")
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="Game/HBoxContainer/LogView/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "This is a test text"
+label_settings = SubResource("LabelSettings_d8wg0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sqasb")
+volume_db = -5.0
+autoplay = true

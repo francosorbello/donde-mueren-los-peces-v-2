@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://geut72aomo4n"]
+
+[ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="1_6fa7u"]
+
+[node name="DialogueLabel" type="RichTextLabel"]
+clip_contents = false
+custom_minimum_size = Vector2(500, 30)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Hola mundo"
+fit_content = true
+scroll_active = false
+script = ExtResource("1_6fa7u")
+skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
+metadata/_custom_type_script = "uid://g32um0mltv5d"

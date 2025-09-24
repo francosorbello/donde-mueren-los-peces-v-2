@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://syxr8fpjwixv"]
+
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="1_ef4rp"]
+
+[node name="ResponsesMenu" type="VBoxContainer" node_paths=PackedStringArray("response_template")]
+theme_override_constants/separation = 2
+alignment = 1
+script = ExtResource("1_ef4rp")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_font_sizes/font_size = 32
+text = "Response example"
+alignment = 2

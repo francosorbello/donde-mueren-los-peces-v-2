@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://jbfn8c4c47cf"]
+
+[ext_resource type="Script" uid="uid://pqsbiqj4p35" path="res://bubble/bubble_cb.gd" id="1_xesfp"]
+[ext_resource type="Texture2D" uid="uid://ue0ly1mrhfhv" path="res://assets/GRAPHICS/bubble.png" id="2_oj37j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oj37j"]
+radius = 6.3245554
+
+[node name="BubbleCB" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_xesfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_oj37j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oj37j")
+
+[node name="DeadTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="MoveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]

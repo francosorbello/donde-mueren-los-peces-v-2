@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1j3oykd7kenw"]
+[gd_scene load_steps=5 format=3 uid="uid://d1j3oykd7kenw"]
 
 [ext_resource type="Script" uid="uid://ds6now2otivcp" path="res://bubble/bubble_rb.gd" id="1_ex2xb"]
 [ext_resource type="Texture2D" uid="uid://ue0ly1mrhfhv" path="res://assets/GRAPHICS/bubble.png" id="1_vydus"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ex2xb"]
+bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ex2xb"]
 radius = 6.3245554
 
 [node name="BubbleRB" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 8
+physics_material_override = SubResource("PhysicsMaterial_ex2xb")
 gravity_scale = 0.0
 lock_rotation = true
+linear_damp = 5.0
 script = ExtResource("1_ex2xb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,5 +29,4 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="MoveTimer" type="Timer" parent="."]
-one_shot = true
+[connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]

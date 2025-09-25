@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://46qyrbx34yuv"]
+
+[ext_resource type="Script" uid="uid://bb56kxq4sen3e" path="res://bubble/bubble_indicator.gd" id="1_51os6"]
+[ext_resource type="Texture2D" uid="uid://i7eewbftx6ke" path="res://assets/GRAPHICS/arrow.png" id="2_wu4rf"]
+
+[node name="BubbleIndicator" type="Path2D"]
+script = ExtResource("1_51os6")
+points = 100
+
+[node name="Line2D" type="Line2D" parent="."]
+y_sort_enabled = true
+closed = true
+width = 1.0
+
+[node name="Follower" type="PathFollow2D" parent="."]
+position = Vector2(10, 0)
+rotates = false
+
+[node name="Arrow" type="Sprite2D" parent="Follower"]
+modulate = Color(0, 1, 1, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wu4rf")

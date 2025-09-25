@@ -51,3 +51,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	current_state.physics_update(delta)
+
+func _input(event):
+	current_state.state_input(event)
+
+func _unhandled_input(event):
+	current_state.state_unhandled_input(event)

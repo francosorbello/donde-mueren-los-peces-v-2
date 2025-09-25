@@ -37,3 +37,9 @@ func can_exit() -> bool:
 
 func receive_message(message : Dictionary):
 	pass
+
+func state_input(event : InputEvent):
+	pass
+
+func state_unhandled_input(event : InputEvent):
+	pass

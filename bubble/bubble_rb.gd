@@ -6,6 +6,8 @@ class_name ABubbleRB
 
 signal popped
 
+var can_be_targeted : bool = true
+
 func start(dir : Vector2):
 	apply_central_impulse(dir * start_force)
 
@@ -21,3 +23,12 @@ func _on_hitbox_on_hit(hit_data : HitData) -> void:
 
 func get_anim_player():
 	return $AnimatedSprite2D
+
+func set_as_dash_target():
+	if not can_be_targeted:
+		return
+	can_be_targeted = false
+	$StateMachine.transition_to("DashingState")
+
+func clear_as_dash_target():
+	pop()

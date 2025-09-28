@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d1j3oykd7kenw"]
+[gd_scene load_steps=21 format=3 uid="uid://d1j3oykd7kenw"]
 
 [ext_resource type="Script" uid="uid://ds6now2otivcp" path="res://bubble/bubble_rb.gd" id="1_ex2xb"]
 [ext_resource type="Texture2D" uid="uid://ue0ly1mrhfhv" path="res://assets/GRAPHICS/bubble.png" id="1_vydus"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://8dv7dce6ncjv" path="res://addons/ftr_tools/sm/state_machine.gd" id="6_b7ird"]
 [ext_resource type="Script" uid="uid://gybnoo46flje" path="res://bubble/states/bubble_idle_state.gd" id="7_5cm5t"]
 [ext_resource type="Script" uid="uid://y0lfi6ha2ha3" path="res://bubble/states/bubble_dead_state.gd" id="8_lygts"]
+[ext_resource type="Script" uid="uid://cvw3rdxqfweg1" path="res://bubble/states/bubble_dashing_state.gd" id="9_mrqde"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ex2xb"]
 bounce = 0.2
@@ -125,6 +126,9 @@ script = ExtResource("7_5cm5t")
 
 [node name="DeadState" type="Node" parent="StateMachine"]
 script = ExtResource("8_lygts")
+
+[node name="DashingState" type="Node" parent="StateMachine"]
+script = ExtResource("9_mrqde")
 
 [connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]
 [connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]

@@ -15,5 +15,7 @@ func _physics_process(delta):
         position
     
 func _on_dead_timer_timeout() -> void:
+    pop()
+    
+func pop():
     popped.emit(self)
-

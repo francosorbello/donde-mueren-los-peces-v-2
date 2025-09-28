@@ -1,13 +1,86 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1j3oykd7kenw"]
+[gd_scene load_steps=20 format=3 uid="uid://d1j3oykd7kenw"]
 
 [ext_resource type="Script" uid="uid://ds6now2otivcp" path="res://bubble/bubble_rb.gd" id="1_ex2xb"]
 [ext_resource type="Texture2D" uid="uid://ue0ly1mrhfhv" path="res://assets/GRAPHICS/bubble.png" id="1_vydus"]
+[ext_resource type="PackedScene" uid="uid://bgqnulqr2ev4k" path="res://hurt_and_hit_boxes/hitbox.tscn" id="3_k047t"]
+[ext_resource type="Texture2D" uid="uid://dn14b2si6osly" path="res://assets/GRAPHICS/Bubble/bubble.png" id="4_tj3ao"]
+[ext_resource type="Texture2D" uid="uid://c4em4bvc8vabh" path="res://assets/GRAPHICS/Bubble/bubble_sheet.png" id="5_brebn"]
+[ext_resource type="Script" uid="uid://8dv7dce6ncjv" path="res://addons/ftr_tools/sm/state_machine.gd" id="6_b7ird"]
+[ext_resource type="Script" uid="uid://gybnoo46flje" path="res://bubble/states/bubble_idle_state.gd" id="7_5cm5t"]
+[ext_resource type="Script" uid="uid://y0lfi6ha2ha3" path="res://bubble/states/bubble_dead_state.gd" id="8_lygts"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ex2xb"]
 bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ex2xb"]
 radius = 6.3245554
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k047t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7ird"]
+atlas = ExtResource("5_brebn")
+region = Rect2(312, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cm5t"]
+atlas = ExtResource("5_brebn")
+region = Rect2(336, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lygts"]
+atlas = ExtResource("5_brebn")
+region = Rect2(360, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrqde"]
+atlas = ExtResource("5_brebn")
+region = Rect2(384, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frfyk"]
+atlas = ExtResource("5_brebn")
+region = Rect2(408, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yq7t"]
+atlas = ExtResource("5_brebn")
+region = Rect2(432, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8b5q"]
+atlas = ExtResource("5_brebn")
+region = Rect2(456, 0, 24, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tj3ao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tj3ao")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7ird")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cm5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lygts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrqde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frfyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yq7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8b5q")
+}],
+"loop": false,
+"name": &"pop",
+"speed": 15.0
+}]
 
 [node name="BubbleRB" type="RigidBody2D"]
 collision_layer = 8
@@ -19,6 +92,7 @@ linear_damp = 5.0
 script = ExtResource("1_ex2xb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_vydus")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -29,4 +103,28 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="Hitbox" parent="." instance=ExtResource("3_k047t")]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_k047t")
+debug_color = Color(0, 0.6267306, 0.51142204, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_tj3ao")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_b7ird")
+initial_state = NodePath("IdleState")
+metadata/_custom_type_script = "uid://8dv7dce6ncjv"
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("7_5cm5t")
+
+[node name="DeadState" type="Node" parent="StateMachine"]
+script = ExtResource("8_lygts")
+
 [connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]
+[connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]

@@ -2,12 +2,18 @@ extends Node2D
 class_name BubbleManager
 
 @export var bubble_scene : PackedScene
+@export var max_bubbles : int = 1
 
 var bubbles : Array[Node2D]
 
 func shoot_bubble(from_pos : Vector2, dir:Vector2):
 	if dir == Vector2.ZERO:
 		return
+
+	if bubbles.size() >= max_bubbles:
+		var prev_bubble = bubbles.pop_front()
+		prev_bubble.pop()
+
 	var bubble = bubble_scene.instantiate()
 	add_child(bubble)
 	bubble.global_position = from_pos
@@ -17,10 +23,8 @@ func shoot_bubble(from_pos : Vector2, dir:Vector2):
 
 func _on_bubble_popped(bubble : Node):
 	var index = bubbles.find(bubble)
-	if index == -1:
-		return
-	bubbles.remove_at(index)
-	bubble.queue_free()
+	if index != -1:
+		bubbles.remove_at(index)
 
 func get_closest_to(pos : Vector2) -> Node2D:
 	if bubbles.is_empty():

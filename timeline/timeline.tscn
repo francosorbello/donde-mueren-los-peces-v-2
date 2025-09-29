@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://djeose8ghxo2e"]
+[gd_scene load_steps=13 format=3 uid="uid://djeose8ghxo2e"]
 
 [ext_resource type="Script" uid="uid://cbr8cvxam8w8x" path="res://timeline/timeline.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://geut72aomo4n" path="res://timeline/timeline_label.tscn" id="2_5rj7i"]
 [ext_resource type="PackedScene" uid="uid://syxr8fpjwixv" path="res://timeline/timeline_responses.tscn" id="3_bn5ui"]
+[ext_resource type="AudioStream" uid="uid://caxcnnoi3sacj" path="res://assets/SOUNDS/typewriter.ogg" id="4_5rj7i"]
+[ext_resource type="AudioStream" uid="uid://cmhfhjh4u2cix" path="res://assets/SOUNDS/type_sound_2.ogg" id="4_bn5ui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -63,6 +65,16 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mcoin"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_bn5ui")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5rj7i"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("4_5rj7i")
+
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_36de5")
@@ -88,11 +100,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Image" type="TextureRect" parent="Balloon/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(1152, 0)
-layout_mode = 2
-
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -108,7 +115,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
+[node name="Image" type="TextureRect" parent="Balloon/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 2
+
 [node name="TypeSound" type="AudioStreamPlayer" parent="."]
-volume_db = -5.0
+stream = SubResource("AudioStreamRandomizer_mcoin")
+volume_db = -10.0
+
+[node name="TypewriterSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_5rj7i")
+volume_db = -10.0
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]

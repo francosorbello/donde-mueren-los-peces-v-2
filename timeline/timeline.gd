@@ -137,6 +137,8 @@ func apply_dialogue_line() -> void:
         await tween.finished
     else:
         balloon.show()
+    
+    # $TypewriterSound.play()
 
     # Show our balloon
     will_hide_balloon = false

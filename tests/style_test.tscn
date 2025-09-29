@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://cptlum0x5w2rx"]
+[gd_scene load_steps=6 format=3 uid="uid://cptlum0x5w2rx"]
 
 [ext_resource type="Texture2D" uid="uid://b6a65wew381nl" path="res://assets/GRAPHICS/hexanys-1-bit-ui-panels-1.1.0/Hexany's 1-bit UI Panels/Panels/simple.png" id="1_3mols"]
 [ext_resource type="PackedScene" uid="uid://ykjxsuiiaju" path="res://tests/tilemap_test.tscn" id="1_bts6r"]
 [ext_resource type="AudioStream" uid="uid://ceskirg5tq6wp" path="res://assets/SOUNDS/music/WAV_Don’t_Look_Back.mp3" id="3_sqasb"]
+[ext_resource type="Resource" uid="uid://c3r8if0b8ieae" path="res://tests/test.dialogue" id="4_ld8bt"]
+
+[sub_resource type="GDScript" id="GDScript_sqasb"]
+script/source = "extends Node
+
+@export var wait_time : float = 1
+@export var can_start = true
+@export var dialogue : DialogueResource
+
+func _ready() -> void:
+	if not can_start:
+		return
+	await get_tree().create_timer(wait_time).timeout
+	DialogueManager.show_dialogue_balloon(dialogue,\"start\")
+"
 
 [node name="StyleTest" type="Node"]
 
@@ -77,3 +92,7 @@ render_target_update_mode = 4
 stream = ExtResource("3_sqasb")
 volume_db = -5.0
 autoplay = true
+
+[node name="dialogue_test" type="Node" parent="."]
+script = SubResource("GDScript_sqasb")
+dialogue = ExtResource("4_ld8bt")

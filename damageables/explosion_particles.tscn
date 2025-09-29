@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqy1rij70t7gq"]
+[gd_scene load_steps=4 format=3 uid="uid://cqy1rij70t7gq"]
 
 [ext_resource type="Texture2D" uid="uid://u0m4kidbqury" path="res://assets/GRAPHICS/particles/particle_square.png" id="1_uy1tc"]
+[ext_resource type="Script" uid="uid://bom3cgsl7tta8" path="res://damageables/explosion_particles.gd" id="2_kd7hr"]
 
 [sub_resource type="Curve" id="Curve_kd7hr"]
 _data = [Vector2(0, 0.23809524), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -22,3 +23,4 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 300.0
 initial_velocity_max = 300.0
 scale_amount_curve = SubResource("Curve_kd7hr")
+script = ExtResource("2_kd7hr")

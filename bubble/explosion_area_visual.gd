@@ -8,3 +8,4 @@ func _process(_delta):
 
 func _draw() -> void:
     draw_circle(Vector2.ZERO,radius, color,true)
+

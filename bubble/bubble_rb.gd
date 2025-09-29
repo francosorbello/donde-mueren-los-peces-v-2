@@ -32,3 +32,6 @@ func set_as_dash_target():
 
 func clear_as_dash_target():
 	pop()
+
+func explode():
+	$StateMachine.transition_to("ExplodingState")

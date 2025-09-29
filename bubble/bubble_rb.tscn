@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d1j3oykd7kenw"]
+[gd_scene load_steps=38 format=3 uid="uid://d1j3oykd7kenw"]
 
 [ext_resource type="Script" uid="uid://ds6now2otivcp" path="res://bubble/bubble_rb.gd" id="1_ex2xb"]
 [ext_resource type="Texture2D" uid="uid://ue0ly1mrhfhv" path="res://assets/GRAPHICS/bubble.png" id="1_vydus"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://gybnoo46flje" path="res://bubble/states/bubble_idle_state.gd" id="7_5cm5t"]
 [ext_resource type="Script" uid="uid://y0lfi6ha2ha3" path="res://bubble/states/bubble_dead_state.gd" id="8_lygts"]
 [ext_resource type="Script" uid="uid://cvw3rdxqfweg1" path="res://bubble/states/bubble_dashing_state.gd" id="9_mrqde"]
+[ext_resource type="Script" uid="uid://bj4ier3b2fky1" path="res://bubble/states/bubble_exploding_state.gd" id="10_5yq7t"]
+[ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="10_frfyk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ex2xb"]
 bounce = 0.2
@@ -46,6 +48,62 @@ region = Rect2(432, 0, 24, 28)
 atlas = ExtResource("5_brebn")
 region = Rect2(456, 0, 24, 28)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e1ai"]
+atlas = ExtResource("5_brebn")
+region = Rect2(0, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei8mb"]
+atlas = ExtResource("5_brebn")
+region = Rect2(24, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs150"]
+atlas = ExtResource("5_brebn")
+region = Rect2(48, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltfje"]
+atlas = ExtResource("5_brebn")
+region = Rect2(72, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwjfs"]
+atlas = ExtResource("5_brebn")
+region = Rect2(96, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ookyv"]
+atlas = ExtResource("5_brebn")
+region = Rect2(120, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53kle"]
+atlas = ExtResource("5_brebn")
+region = Rect2(144, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4xbf"]
+atlas = ExtResource("5_brebn")
+region = Rect2(168, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0bov"]
+atlas = ExtResource("5_brebn")
+region = Rect2(192, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtr8g"]
+atlas = ExtResource("5_brebn")
+region = Rect2(216, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnno4"]
+atlas = ExtResource("5_brebn")
+region = Rect2(240, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vddlf"]
+atlas = ExtResource("5_brebn")
+region = Rect2(264, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56djs"]
+atlas = ExtResource("5_brebn")
+region = Rect2(288, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yale7"]
+atlas = ExtResource("5_brebn")
+region = Rect2(312, 0, 24, 28)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_tj3ao"]
 animations = [{
 "frames": [{
@@ -81,7 +139,57 @@ animations = [{
 "loop": false,
 "name": &"pop",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2e1ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei8mb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs150")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltfje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwjfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ookyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53kle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4xbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0bov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtr8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnno4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vddlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56djs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yale7")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 20.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_frfyk"]
+radius = 17.0
 
 [node name="BubbleRB" type="RigidBody2D"]
 collision_layer = 8
@@ -105,8 +213,8 @@ one_shot = true
 autostart = true
 
 [node name="Hitbox" parent="." instance=ExtResource("3_k047t")]
-collision_layer = 16
-collision_mask = 16
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_k047t")
@@ -115,6 +223,9 @@ debug_color = Color(0, 0.6267306, 0.51142204, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_tj3ao")
+animation = &"spawn"
+frame = 13
+frame_progress = 1.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_b7ird")
@@ -129,6 +240,21 @@ script = ExtResource("8_lygts")
 
 [node name="DashingState" type="Node" parent="StateMachine"]
 script = ExtResource("9_mrqde")
+
+[node name="ExplodingState" type="Node" parent="StateMachine"]
+script = ExtResource("10_5yq7t")
+
+[node name="Timer" type="Timer" parent="StateMachine/ExplodingState"]
+one_shot = true
+
+[node name="ExplosionHurtbox" parent="." instance=ExtResource("10_frfyk")]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionHurtbox"]
+shape = SubResource("CircleShape2D_frfyk")
+disabled = true
+debug_color = Color(0.9579671, 4.813075e-07, 0.5323374, 0.41960785)
 
 [connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]
 [connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]

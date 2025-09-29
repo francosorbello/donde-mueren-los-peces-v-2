@@ -25,8 +25,9 @@ func _unhandled_input(event):
     if event.is_action_pressed("use_ability") and $StateMachine.current_state.name != "ShootingBubbleState":
         var bubble = bubble_manager.get_closest_to(global_position)
         if bubble:
-            $StateMachine.send_message_to("DashingState",{"bubble": bubble})
-            $StateMachine.transition_to("DashingState")
+            # $StateMachine.send_message_to("DashingState",{"bubble": bubble})
+            # $StateMachine.transition_to("DashingState")
+            bubble.explode()
 
 func play_anim(anim_name : String):
     if $AnimationPlayer.current_animation != anim_name:

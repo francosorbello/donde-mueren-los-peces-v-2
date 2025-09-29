@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1kriosoqfogr"]
+
+[ext_resource type="Script" uid="uid://6svi17486jot" path="res://bubble/explosion_area_visual.gd" id="1_pxonm"]
+
+[node name="ExplosionAreaVisual" type="Node2D"]
+script = ExtResource("1_pxonm")
+color = Color(0.74509805, 0.74509805, 0.74509805, 0.5137255)

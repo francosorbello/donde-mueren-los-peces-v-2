@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxojbvxga3vpt"]
+[gd_scene load_steps=7 format=3 uid="uid://bxojbvxga3vpt"]
 
 [ext_resource type="Script" uid="uid://bxj01bbwpqebd" path="res://damageables/box.gd" id="1_42cdh"]
 [ext_resource type="Texture2D" uid="uid://vlq16a2jnsoi" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/Bountiful-Bits-10x10-v-3.1/1-Bit/no-background/Full-no-bg-palette.png" id="1_p5rsc"]
 [ext_resource type="PackedScene" uid="uid://bgqnulqr2ev4k" path="res://hurt_and_hit_boxes/hitbox.tscn" id="2_ddssh"]
+[ext_resource type="PackedScene" uid="uid://cqy1rij70t7gq" path="res://damageables/explosion_particles.tscn" id="2_r1rgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5rsc"]
 size = Vector2(8, 8)
@@ -14,6 +15,7 @@ size = Vector2(10, 10)
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("1_42cdh")
+explosion_particle_scene = ExtResource("2_r1rgt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_p5rsc")

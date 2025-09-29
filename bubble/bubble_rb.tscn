@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d1j3oykd7kenw"]
+[gd_scene load_steps=39 format=3 uid="uid://d1j3oykd7kenw"]
 
 [ext_resource type="Script" uid="uid://ds6now2otivcp" path="res://bubble/bubble_rb.gd" id="1_ex2xb"]
 [ext_resource type="Texture2D" uid="uid://ue0ly1mrhfhv" path="res://assets/GRAPHICS/bubble.png" id="1_vydus"]
@@ -11,9 +11,10 @@
 [ext_resource type="Script" uid="uid://cvw3rdxqfweg1" path="res://bubble/states/bubble_dashing_state.gd" id="9_mrqde"]
 [ext_resource type="Script" uid="uid://bj4ier3b2fky1" path="res://bubble/states/bubble_exploding_state.gd" id="10_5yq7t"]
 [ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="10_frfyk"]
+[ext_resource type="PackedScene" uid="uid://c1kriosoqfogr" path="res://bubble/explosion_area_visual.tscn" id="12_t8b5q"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ex2xb"]
-bounce = 0.2
+bounce = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ex2xb"]
 radius = 6.3245554
@@ -200,6 +201,9 @@ lock_rotation = true
 linear_damp = 5.0
 script = ExtResource("1_ex2xb")
 
+[node name="ExplosionAreaVisual" parent="." instance=ExtResource("12_t8b5q")]
+visible = false
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("1_vydus")
@@ -241,8 +245,10 @@ script = ExtResource("8_lygts")
 [node name="DashingState" type="Node" parent="StateMachine"]
 script = ExtResource("9_mrqde")
 
-[node name="ExplodingState" type="Node" parent="StateMachine"]
+[node name="ExplodingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("explosion_visual", "collision_shape")]
 script = ExtResource("10_5yq7t")
+explosion_visual = NodePath("../../ExplosionAreaVisual")
+collision_shape = NodePath("../../ExplosionHurtbox/CollisionShape2D")
 
 [node name="Timer" type="Timer" parent="StateMachine/ExplodingState"]
 one_shot = true

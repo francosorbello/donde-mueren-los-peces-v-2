@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqy1rij70t7gq"]
+
+[ext_resource type="Texture2D" uid="uid://u0m4kidbqury" path="res://assets/GRAPHICS/particles/particle_square.png" id="1_uy1tc"]
+
+[sub_resource type="Curve" id="Curve_kd7hr"]
+_data = [Vector2(0, 0.23809524), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 21
+
+[node name="ExplosionParticles" type="CPUParticles2D"]
+scale = Vector2(0.5, 0.5)
+emitting = false
+texture = ExtResource("1_uy1tc")
+lifetime = 0.27
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+scale_amount_curve = SubResource("Curve_kd7hr")

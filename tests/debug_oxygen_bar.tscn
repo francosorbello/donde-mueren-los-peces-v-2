@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://crtgn3p57vbx3"]
+
+[ext_resource type="Script" uid="uid://bggoncvwpx1m8" path="res://tests/debug_oxygen_bar.gd" id="1_sm5fl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sm5fl"]
+bg_color = Color(0, 0, 0, 0.48235294)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg2bc"]
+bg_color = Color(0.81, 0.81, 0.81, 1)
+
+[node name="DebugOxygenBar" type="Control"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 60.0
+script = ExtResource("1_sm5fl")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_sm5fl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mg2bc")
+value = 80.0

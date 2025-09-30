@@ -6,31 +6,40 @@ var shoot_direction : Vector2
 var _bubble_shot : bool = false
 
 func enter():
-	_bubble_shot = false
-	player.velocity = Vector2.ZERO
-	player.play_anim("idle")
-	player.soften_sprite(true)
-	bubble_indicator.show()
+    _bubble_shot = false
+    player.velocity = Vector2.ZERO
+    player.play_anim("idle")
+    player.soften_sprite(true)
+    bubble_indicator.show()
 
 func exit():
-	player.soften_sprite(false)
-	bubble_indicator.hide()
+    player.soften_sprite(false)
+    bubble_indicator.hide()
 
 func state_unhandled_input(event : InputEvent):
-	if event.is_action_released("shoot_bubble"):
-		if player.bubble_manager:
-			player.bubble_manager.shoot_bubble(player.global_position,shoot_direction)
-			_bubble_shot = true
-			await get_tree().create_timer(.1).timeout
+    if event.is_action_pressed("attack"):
+        state_machine.transition_to("IdleState")
+        return
+    if event.is_action_released("shoot_bubble"):
+        if player.bubble_manager:
+            if (player.bubble_manager.shoot_bubble(player.global_position,shoot_direction)):
+                OxygenManager.deplete_by(10)
+            _bubble_shot = true
+            await get_tree().create_timer(.1).timeout
 
-		state_machine.transition_to("IdleState")
-		return
+        state_machine.transition_to("IdleState")
+        return
 
 func physics_update(_delta: float):
-	if _bubble_shot: return
-	
-	var selected_dir = Input.get_vector("move_left","move_right","move_up","move_down")
-	selected_dir = (player.get_global_mouse_position() - player.global_position).normalized()
-	if selected_dir != Vector2.ZERO:
-		shoot_direction = selected_dir
-		bubble_indicator.set_direction(selected_dir)
+    if _bubble_shot: return
+    
+    var selected_dir = Input.get_vector("move_left","move_right","move_up","move_down")
+
+    player.velocity = FreyaMath.lerp_exp_decay(player.velocity,selected_dir * player.speed/2, 10, _delta * player.accel)
+    player.move_and_slide()
+
+    selected_dir = (player.get_global_mouse_position() - player.global_position).normalized()
+    if selected_dir != Vector2.ZERO:
+        shoot_direction = selected_dir
+        bubble_indicator.set_direction(selected_dir)
+

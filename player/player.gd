@@ -8,9 +8,24 @@ class_name APlayer
 
 @export var soften_color : Color
 
+@export_category("Abilities")
+@export var abilities : Array[AbilityData]
+var current_ability : AbilityData
+
 var last_direction : Vector2
 
+func _ready():
+	current_ability = abilities[0]
+
 func _unhandled_input(event):
+	if event.is_action_pressed("select_ability"):
+		match event.as_text():
+			"1":
+				current_ability = abilities[0]
+			"2":
+				current_ability = abilities[1]
+		return
+
 	if event.is_action_pressed("shoot_bubble"):
 		$StateMachine.transition_to("ShootingBubbleState")
 		return
@@ -24,11 +39,8 @@ func _unhandled_input(event):
 		return
 
 	if event.is_action_pressed("use_ability") and $StateMachine.current_state.name != "ShootingBubbleState":
-		var bubble = bubble_manager.get_closest_to(global_position)
-		if bubble:
-			# $StateMachine.send_message_to("DashingState",{"bubble": bubble})
-			# $StateMachine.transition_to("DashingState")
-			bubble.explode()
+		current_ability.execute(self)
+		return
 
 func play_anim(anim_name : String):
 	if $AnimationPlayer.current_animation != anim_name:

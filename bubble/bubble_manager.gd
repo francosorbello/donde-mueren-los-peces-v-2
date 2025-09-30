@@ -6,9 +6,9 @@ class_name BubbleManager
 
 var bubbles : Array[Node2D]
 
-func shoot_bubble(from_pos : Vector2, dir:Vector2):
+func shoot_bubble(from_pos : Vector2, dir:Vector2) -> bool:
 	if dir == Vector2.ZERO:
-		return
+		return false
 
 	if bubbles.size() >= max_bubbles:
 		var prev_bubble = bubbles.pop_front()
@@ -20,6 +20,7 @@ func shoot_bubble(from_pos : Vector2, dir:Vector2):
 	bubble.start(dir)
 	bubble.popped.connect(_on_bubble_popped)
 	bubbles.append(bubble)
+	return true
 
 func _on_bubble_popped(bubble : Node):
 	var index = bubbles.find(bubble)

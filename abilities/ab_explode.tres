@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dsvqax727ovxw"]
+
+[ext_resource type="Script" uid="uid://b2waf6il66m4f" path="res://abilities/ab_explode.gd" id="1_qc5wd"]
+
+[resource]
+script = ExtResource("1_qc5wd")
+state_name = "Explode"

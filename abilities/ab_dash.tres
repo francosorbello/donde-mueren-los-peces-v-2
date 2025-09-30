@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d2i2qlatmiukp"]
+
+[ext_resource type="Script" uid="uid://cxith1t0pqf32" path="res://abilities/ab_dash.gd" id="1_vened"]
+
+[resource]
+script = ExtResource("1_vened")
+state_name = "Dash"

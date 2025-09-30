@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cptlum0x5w2rx"]
+[gd_scene load_steps=7 format=3 uid="uid://cptlum0x5w2rx"]
 
 [ext_resource type="Texture2D" uid="uid://b6a65wew381nl" path="res://assets/GRAPHICS/hexanys-1-bit-ui-panels-1.1.0/Hexany's 1-bit UI Panels/Panels/simple.png" id="1_3mols"]
 [ext_resource type="PackedScene" uid="uid://ykjxsuiiaju" path="res://tests/tilemap_test.tscn" id="1_bts6r"]
+[ext_resource type="PackedScene" uid="uid://crtgn3p57vbx3" path="res://tests/debug_oxygen_bar.tscn" id="3_5t5bq"]
 [ext_resource type="AudioStream" uid="uid://ceskirg5tq6wp" path="res://assets/SOUNDS/music/WAV_Don’t_Look_Back.mp3" id="3_sqasb"]
 [ext_resource type="Resource" uid="uid://c3r8if0b8ieae" path="res://tests/test.dialogue" id="4_ld8bt"]
 
@@ -13,6 +14,8 @@ script/source = "extends Node
 @export var dialogue : DialogueResource
 
 func _ready() -> void:
+	await get_tree().process_frame
+	OxygenManager.start_depletion()
 	if not can_start:
 		return
 	await get_tree().create_timer(wait_time).timeout
@@ -71,7 +74,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game/HBoxContainer/LogView"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,6 +92,9 @@ grow_vertical = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
+[node name="DebugOxygenBar" parent="Game" instance=ExtResource("3_5t5bq")]
+layout_mode = 0
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_sqasb")
 volume_db = -5.0
@@ -97,4 +102,5 @@ autoplay = true
 
 [node name="dialogue_test" type="Node" parent="."]
 script = SubResource("GDScript_sqasb")
+can_start = false
 dialogue = ExtResource("4_ld8bt")

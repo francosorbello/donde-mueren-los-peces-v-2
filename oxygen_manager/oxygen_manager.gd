@@ -5,8 +5,8 @@ extends Node
 @export var depletion_amount : float = 1 
 
 var current_oxygen : float
-signal oxygen_changed(depletion_amount : float)
-signal oxygen_depleted()
+signal oxygen_depleted(depletion_amount : float)
+signal oxygen_run_out()
 signal oxygen_restored(restore_amount : float)
 
 func _ready():
@@ -22,22 +22,25 @@ func start_depletion():
 func stop_depletion():
     $DepletionTimer.stop()
 
-
 func _on_depletion_timer_timeout() -> void:
+    deplete_by(depletion_rate_secs)
     pass # Replace with function body.
 
 func deplete_by(amount : float):
     var new_amount = current_oxygen - amount
     if new_amount <= 0:
         current_oxygen = 0
-        oxygen_depleted.emit()
+        oxygen_run_out.emit()
         return
 
     current_oxygen = new_amount 
-    oxygen_changed.emit(amount)
+    oxygen_depleted.emit(amount)
 
 func restore_by(amount : float):
     var new_amount = max(current_oxygen + amount, initial_oxygen)
 
     current_oxygen = new_amount
     oxygen_restored.emit(amount)
+
+func get_max_oxygen() -> float:
+    return initial_oxygen

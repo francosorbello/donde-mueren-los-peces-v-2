@@ -19,10 +19,11 @@ config/icon="res://icon.svg"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GlobalEventSystem="*res://addons/ftr_tools/global_event_system/global_event_system.gd"
+OxygenManager="*res://oxygen_manager/oxygen_manager.tscn"
 
 [dialogue_manager]
 
-runtime/balloon_path="uid://djeose8ghxo2e"
+runtime/balloon_path="res://balloon/balloon.tscn"
 
 [display]
 

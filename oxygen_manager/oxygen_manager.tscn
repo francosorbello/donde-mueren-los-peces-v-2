@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bss12ykn7bnfr"]
+
+[ext_resource type="Script" uid="uid://dmtdly1cgk717" path="res://oxygen_manager/oxygen_manager.gd" id="1_6djrf"]
+
+[node name="OxygenManager" type="Node"]
+script = ExtResource("1_6djrf")
+
+[node name="DepletionTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DepletionTimer" to="." method="_on_depletion_timer_timeout"]

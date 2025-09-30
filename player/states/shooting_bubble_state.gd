@@ -30,6 +30,7 @@ func physics_update(_delta: float):
 	if _bubble_shot: return
 	
 	var selected_dir = Input.get_vector("move_left","move_right","move_up","move_down")
+	selected_dir = (player.get_global_mouse_position() - player.global_position).normalized()
 	if selected_dir != Vector2.ZERO:
 		shoot_direction = selected_dir
 		bubble_indicator.set_direction(selected_dir)

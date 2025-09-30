@@ -2,7 +2,7 @@ extends RigidBody2D
 class_name ABubbleRB
 
 @export var start_force : float = 200
-@export var hit_force : float = 400
+@export var hit_force : float = 300
 
 signal popped
 

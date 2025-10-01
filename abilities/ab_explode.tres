@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_qc5wd")
-state_name = "Explode"
+ability_name = "Explode"

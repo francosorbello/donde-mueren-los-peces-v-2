@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cptlum0x5w2rx"]
+[gd_scene load_steps=9 format=3 uid="uid://cptlum0x5w2rx"]
 
 [ext_resource type="Texture2D" uid="uid://b6a65wew381nl" path="res://assets/GRAPHICS/hexanys-1-bit-ui-panels-1.1.0/Hexany's 1-bit UI Panels/Panels/simple.png" id="1_3mols"]
 [ext_resource type="PackedScene" uid="uid://ykjxsuiiaju" path="res://tests/tilemap_test.tscn" id="1_bts6r"]
@@ -20,6 +20,34 @@ func _ready() -> void:
 		return
 	await get_tree().create_timer(wait_time).timeout
 	DialogueManager.show_dialogue_balloon(dialogue,\"start\")
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_5t5bq"]
+font_size = 32
+
+[sub_resource type="GDScript" id="GDScript_5t5bq"]
+script/source = "extends Label
+
+@export var player : APlayer
+
+func _ready() -> void:
+	await get_tree().process_frame
+	if not player:
+		player = get_tree().get_first_node_in_group(\"player\")
+
+func _process(_delta: float) -> void:
+	if not player:
+		return
+	
+	if not player.current_ability:
+		return
+		
+	var ab_name = player.current_ability.ability_name
+	if ab_name != text:
+		set_ability(ab_name)
+		
+func set_ability(ab_name : String):
+	text = ab_name
 "
 
 [node name="StyleTest" type="Node"]
@@ -104,3 +132,12 @@ autoplay = true
 script = SubResource("GDScript_sqasb")
 can_start = false
 dialogue = ExtResource("4_ld8bt")
+
+[node name="DebugAbility" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 80.0
+offset_right = 52.0
+offset_bottom = 103.0
+text = "Ability name"
+label_settings = SubResource("LabelSettings_5t5bq")
+script = SubResource("GDScript_5t5bq")

@@ -1,7 +1,7 @@
 extends Resource
 class_name AbilityData
 
-@export var state_name : String
+@export var ability_name : String
 @export var cost : int = 10:
     set(value):
         if value < 0:

@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_vened")
-state_name = "Dash"
+ability_name = "Dash"

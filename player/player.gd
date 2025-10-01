@@ -19,12 +19,12 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("charged_shot"):
-		var direction = Input.get_vector("move_left","move_right","move_up","move_down")
-		direction = (get_global_mouse_position()-global_position).normalized()
-		$BubblePathVisual.show_path(global_position,direction)
+		$BubblePathCalculator.start_calc(self)
+		$BubblePathVisual.show_path($BubblePathCalculator)
 
 	if event.is_action_released("charged_shot"):
 		$BubblePathVisual.hide_path()
+		$BubblePathCalculator.stop_calc()
 		var direction = Input.get_vector("move_left","move_right","move_up","move_down")
 		direction = (get_global_mouse_position()-global_position).normalized()
 

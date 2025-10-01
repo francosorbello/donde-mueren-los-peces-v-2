@@ -5,27 +5,16 @@ extends Node2D
 
 var enabled : bool = false
 
-var _start_pos : Vector2
-var _start_direction : Vector2
-
-var _current_pos :Vector2
-var _remaining_distance : float 
-var _direction : Vector2
-
 var points : Array[Vector2]
 var _test_point : Vector2
 var _test_font = ThemeDB.fallback_font
 
-func show_path(start_pos : Vector2, direction : Vector2, _max_bounces : int = 1):
+var _path_calculator
+
+func show_path(path_calculator : Node):
 	if enabled: return
 
-	_start_pos = start_pos
-	_start_direction = direction
-
-	_current_pos = start_pos
-	_direction = direction
-	_remaining_distance = bubble_data.travel_distance
-
+	_path_calculator = path_calculator 
 	enabled = true
 
 func hide_path():
@@ -35,41 +24,12 @@ func hide_path():
 	$Line2D.points = []
 	queue_redraw()
 
-func _reset():
-	_current_pos = global_position
-	_remaining_distance = bubble_data.travel_distance
-	points.clear()
-
 func _physics_process(_delta):
 	if not enabled or not visible: return
 
-	# points.clear()
-	_reset()
-	points.append(Vector2.ZERO)
-	_direction = (get_global_mouse_position() - _start_pos).normalized()
-	_test_point = Vector2.ZERO
-	# breakpoint
-	var space_state = get_world_2d().direct_space_state
-	for _i in range(0,3):
-		# print("query %d from %s to %s with dir %s and remaining dist %.02f"%[_i,_current_pos, _current_pos + (_direction * _remaining_distance),_direction,_remaining_distance])
-		
-		var next_pos = _current_pos + _direction * _remaining_distance
-		
-		var query = PhysicsRayQueryParameters2D.create(_current_pos, next_pos,collision_mask)
-		var result = space_state.intersect_ray(query)
-		if result:
-			_remaining_distance = _remaining_distance - (result.position.distance_to(_current_pos))
-			_current_pos = result.position - global_position
-			_direction = result.normal
-			points.append(_current_pos)
-		else:
-			_test_point = (_direction * _remaining_distance) - global_position
-			if _i > 0:
-				points.append(_current_pos + _direction * _remaining_distance)
-			else:
-				points.append(_direction * _remaining_distance)
-			break
+	await _path_calculator.calc_finished
 
+	points = _path_calculator.get_points_for(global_position)
 	$Line2D.points = points
 	queue_redraw()
 

@@ -27,9 +27,9 @@ func _physics_process(delta):
     _prev_pos = global_position
     
     if  _accomulated_distance_traveled > travel_data.travel_distance:
-        dir = Vector2.ZERO
-
-    velocity = dir * travel_data.speed
+        velocity = FreyaMath.lerp_exp_decay(velocity,Vector2.ZERO,10,delta)
+    else:
+        velocity = dir * travel_data.speed
     # move_and_slide()
 
     var collision = move_and_collide(velocity * delta)

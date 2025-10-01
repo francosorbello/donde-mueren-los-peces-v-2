@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=25 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://46qyrbx34yuv" path="res://bubble/bubble_indicator.tscn" id="8_rgyib"]
 [ext_resource type="PackedScene" uid="uid://c052bv6ldbshe" path="res://player/slash_attack.tscn" id="9_hg6s5"]
 [ext_resource type="PackedScene" uid="uid://dhmuji2uvq4qo" path="res://bubble/bubble_cb/bubble_path_visual.tscn" id="14_kb6p2"]
+[ext_resource type="PackedScene" uid="uid://4vd3ih8dg5fn" path="res://bubble/bubble_cb/bubble_path_calculator.tscn" id="15_wodsf"]
+[ext_resource type="Resource" uid="uid://y53grvp4d003" path="res://bubble/bubble_cb/bubble_cb_data.tres" id="16_32hag"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oul6g"]
 radius = 6.0
@@ -125,7 +127,6 @@ texture = ExtResource("1_oul6g")
 offset = Vector2(0, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_oul6g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -168,3 +169,6 @@ b = 5.0
 [node name="SlashAttack" parent="." instance=ExtResource("9_hg6s5")]
 
 [node name="BubblePathVisual" parent="." instance=ExtResource("14_kb6p2")]
+
+[node name="BubblePathCalculator" parent="." instance=ExtResource("15_wodsf")]
+bubble_data = ExtResource("16_32hag")

@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_mq2x2")
 speed = 150.0
-travel_distance = 50.0
+travel_distance = 300.0
 metadata/_custom_type_script = "uid://bshs4w76l53jp"

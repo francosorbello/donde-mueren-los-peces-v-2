@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://4vd3ih8dg5fn"]
+
+[ext_resource type="Script" uid="uid://cab0e773f26a6" path="res://bubble/bubble_cb/bubble_path_calculator.gd" id="1_2pq0u"]
+
+[node name="BubblePathCalculator" type="Node2D"]
+script = ExtResource("1_2pq0u")
+collision_mask = 1
+
+[node name="TimeSliceTimer" type="Timer" parent="."]
+one_shot = true

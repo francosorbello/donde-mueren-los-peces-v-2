@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://ykjxsuiiaju"]
+[gd_scene load_steps=10 format=4 uid="uid://ykjxsuiiaju"]
 
 [ext_resource type="TileSet" uid="uid://1h607v1lcoyp" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/bountiful_bits_tileset.tres" id="1_lbya7"]
 [ext_resource type="PackedScene" uid="uid://4ybnmc4j2y3v" path="res://player/player.tscn" id="3_fsw6f"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dpkceqajk0jtn" path="res://assets/GRAPHICS/PALETTES/grotesquely-cute-1x.png" id="5_s737f"]
 [ext_resource type="PackedScene" uid="uid://bn2a01n1dy2da" path="res://bubble/bubble_manager.tscn" id="6_s737f"]
 [ext_resource type="PackedScene" uid="uid://bxojbvxga3vpt" path="res://damageables/box.tscn" id="7_uky12"]
+[ext_resource type="PackedScene" uid="uid://4vd3ih8dg5fn" path="res://bubble/bubble_cb/bubble_path_calculator.tscn" id="8_1d7pt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_110xg"]
 shader = ExtResource("3_g2b56")
@@ -45,3 +46,6 @@ position = Vector2(55, 65)
 
 [node name="Box2" parent="." instance=ExtResource("7_uky12")]
 position = Vector2(55, 76)
+
+[node name="BubblePathCalculator" parent="." instance=ExtResource("8_1d7pt")]
+time_between_calc = 0.05

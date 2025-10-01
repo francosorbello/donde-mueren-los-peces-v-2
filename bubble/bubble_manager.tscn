@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bn2a01n1dy2da"]
 
 [ext_resource type="Script" uid="uid://i0kwnmhevjnv" path="res://bubble/bubble_manager.gd" id="1_37326"]
-[ext_resource type="PackedScene" uid="uid://d1j3oykd7kenw" path="res://bubble/bubble_rb.tscn" id="2_vxyts"]
+[ext_resource type="PackedScene" uid="uid://jbfn8c4c47cf" path="res://bubble/bubble_cb/bubble_cb.tscn" id="2_vxyts"]
 
 [node name="BubbleManager" type="Node2D"]
 script = ExtResource("1_37326")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=23 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cpqtb5ob20158" path="res://player/states/dashing_state.gd" id="8_8t03j"]
 [ext_resource type="PackedScene" uid="uid://46qyrbx34yuv" path="res://bubble/bubble_indicator.tscn" id="8_rgyib"]
 [ext_resource type="PackedScene" uid="uid://c052bv6ldbshe" path="res://player/slash_attack.tscn" id="9_hg6s5"]
+[ext_resource type="PackedScene" uid="uid://dhmuji2uvq4qo" path="res://bubble/bubble_cb/bubble_path_visual.tscn" id="14_kb6p2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oul6g"]
 radius = 6.0
@@ -165,3 +166,5 @@ a = 10.0
 b = 5.0
 
 [node name="SlashAttack" parent="." instance=ExtResource("9_hg6s5")]
+
+[node name="BubblePathVisual" parent="." instance=ExtResource("14_kb6p2")]

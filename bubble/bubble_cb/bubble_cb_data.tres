@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BubbleCBData" load_steps=2 format=3 uid="uid://y53grvp4d003"]
+
+[ext_resource type="Script" uid="uid://bshs4w76l53jp" path="res://bubble/bubble_cb/bubble_cb_data.gd" id="1_mq2x2"]
+
+[resource]
+script = ExtResource("1_mq2x2")
+speed = 150.0
+travel_distance = 50.0
+metadata/_custom_type_script = "uid://bshs4w76l53jp"

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://jbfn8c4c47cf"]
+
+[ext_resource type="Script" uid="uid://pqsbiqj4p35" path="res://bubble/bubble_cb/bubble_cb.gd" id="1_xesfp"]
+[ext_resource type="Texture2D" uid="uid://ue0ly1mrhfhv" path="res://assets/GRAPHICS/bubble.png" id="2_oj37j"]
+[ext_resource type="Resource" uid="uid://y53grvp4d003" path="res://bubble/bubble_cb/bubble_cb_data.tres" id="2_xsl3w"]
+[ext_resource type="PackedScene" uid="uid://bgqnulqr2ev4k" path="res://hurt_and_hit_boxes/hitbox.tscn" id="3_2dl32"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oj37j"]
+radius = 6.3245554
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6k6po"]
+
+[node name="BubbleCB" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_xesfp")
+travel_data = ExtResource("2_xsl3w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_oj37j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oj37j")
+
+[node name="DeadTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="MoveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Hitbox" parent="." instance=ExtResource("3_2dl32")]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_6k6po")
+
+[connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]
+[connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhmuji2uvq4qo"]
+
+[ext_resource type="Script" uid="uid://dx1e6n76fy2b7" path="res://bubble/bubble_cb/bubble_path_visual.gd" id="1_sg1mx"]
+[ext_resource type="Resource" uid="uid://y53grvp4d003" path="res://bubble/bubble_cb/bubble_cb_data.tres" id="2_17rmw"]
+
+[node name="BubblePathVisual" type="Node2D"]
+script = ExtResource("1_sg1mx")
+bubble_data = ExtResource("2_17rmw")
+collision_mask = 1
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 1.0

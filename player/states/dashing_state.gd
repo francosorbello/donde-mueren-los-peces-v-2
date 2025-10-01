@@ -4,7 +4,7 @@ extends PlayerState
 @export var accel : float = 100
 @export var stop_treshold : float = 10
 @export_group("Dash speed curve")
-@export var min_speed_increment : float = 2
+@export var min_speed_increment : float = 1
 @export var max_speed_increment : float = 5
 @export var speed_curve : Curve
 

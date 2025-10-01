@@ -23,7 +23,7 @@ func stop_depletion():
     $DepletionTimer.stop()
 
 func _on_depletion_timer_timeout() -> void:
-    deplete_by(depletion_rate_secs)
+    deplete_by(depletion_amount)
     pass # Replace with function body.
 
 func deplete_by(amount : float):

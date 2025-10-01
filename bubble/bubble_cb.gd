@@ -27,10 +27,7 @@ func _physics_process(delta):
     if  _accomulated_distance_traveled > travel_distance:
         dir = Vector2.ZERO
 
-    if _accomulated_distance_traveled > travel_distance:
-        velocity = lerp(velocity,dir * speed, delta * accel)
-    else:
-        velocity = dir * speed
+    velocity = dir * speed
     # move_and_slide()
 
     var collision = move_and_collide(velocity * delta)

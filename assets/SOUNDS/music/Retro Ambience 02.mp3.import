@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cepgk4i3tauqe"
+path="res://.godot/imported/Retro Ambience 02.mp3-a116de60a08bf0a9545b69e2e4b112fc.mp3str"
+
+[deps]
+
+source_file="res://assets/SOUNDS/music/Retro Ambience 02.mp3"
+dest_files=["res://.godot/imported/Retro Ambience 02.mp3-a116de60a08bf0a9545b69e2e4b112fc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

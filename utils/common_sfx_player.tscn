@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://j8wuljjmpkfr"]
+
+[ext_resource type="Script" uid="uid://dg8c82j2rqc36" path="res://utils/common_sfx_player.gd" id="1_wvfw0"]
+[ext_resource type="AudioStream" uid="uid://oijtsak3mbjy" path="res://assets/SOUNDS/hit.mp3" id="2_cbyap"]
+[ext_resource type="AudioStream" uid="uid://cb8rkyh42ljde" path="res://assets/SOUNDS/explosion5.mp3" id="3_iarg5"]
+
+[node name="CommonSFXPlayer" type="Node"]
+script = ExtResource("1_wvfw0")
+sounds = Dictionary[String, AudioStream]({
+"explosion": ExtResource("3_iarg5"),
+"hit": ExtResource("2_cbyap")
+})
+
+[node name="Template" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0

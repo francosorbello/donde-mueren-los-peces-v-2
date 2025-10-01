@@ -18,6 +18,7 @@ func pop():
 	$StateMachine.transition_to("DeadState")
 
 func _on_hitbox_on_hit(hit_data : HitData) -> void:
+	CommonSfxPlayer.play_sound("hit")
 	apply_central_impulse(-hit_data.collision_normal * hit_force)
 	pass # Replace with function body.
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxyjtlr6p8to8"]
+
+[ext_resource type="Script" uid="uid://g66fiwnxgc3h" path="res://utils/floating_sprite.gd" id="1_4cqpv"]
+
+[node name="FloatingSprite" type="Sprite2D"]
+script = ExtResource("1_4cqpv")

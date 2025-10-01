@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://di4o2o4cymntg"]
+
+[ext_resource type="PackedScene" uid="uid://dxyjtlr6p8to8" path="res://utils/floating_sprite.tscn" id="1_33li6"]
+[ext_resource type="Texture2D" uid="uid://bmgm37bn8bqna" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/Bountiful-Bits-10x10-v-3.1/1-Bit/no-background/Natural-no-bg.png" id="2_eekw6"]
+[ext_resource type="PackedScene" uid="uid://dgks666k0klxv" path="res://interactables/interactable_component/better_interactable_component.tscn" id="3_eekw6"]
+[ext_resource type="PackedScene" uid="uid://b4jjcolqqt2xe" path="res://interactables/outline_component/outline_component.tscn" id="4_qnptf"]
+
+[node name="TestInteractable" type="Node2D"]
+
+[node name="FloatingSprite" parent="." instance=ExtResource("1_33li6")]
+texture = ExtResource("2_eekw6")
+region_enabled = true
+region_rect = Rect2(170, 170, 10, 10)
+
+[node name="BetterInteractableComponent" parent="." instance=ExtResource("3_eekw6")]
+
+[node name="OutlineComponent" parent="BetterInteractableComponent" node_paths=PackedStringArray("sprite") instance=ExtResource("4_qnptf")]
+sprite = NodePath("../../FloatingSprite")

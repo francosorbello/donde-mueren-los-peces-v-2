@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgks666k0klxv"]
+
+[ext_resource type="Script" uid="uid://bjbmqwhwpsuki" path="res://interactables/interactable_component/better_interactable_component.gd" id="1_ia7kw"]
+
+[node name="BetterInteractableComponent" type="Node2D" groups=["interactable"]]
+script = ExtResource("1_ia7kw")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4jjcolqqt2xe"]
+
+[ext_resource type="Script" uid="uid://dala0ysue57k0" path="res://interactables/outline_component/outline_component.gd" id="1_iij2s"]
+[ext_resource type="Shader" uid="uid://d10m6757u4c6r" path="res://interactables/outline_component/outline.gdshader" id="2_ijwg0"]
+
+[node name="OutlineComponent" type="Node"]
+script = ExtResource("1_iij2s")
+outline_shader = ExtResource("2_ijwg0")

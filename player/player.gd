@@ -29,6 +29,9 @@ func _unhandled_input(event):
 	if event.is_action_pressed("shoot_bubble"):
 		$StateMachine.transition_to("ShootingBubbleState")
 		return
+
+	if event.is_action_pressed("interact"):
+		$BetterInteractableManager.use_interactable()
 	
 	if event.is_action_pressed("attack"):
 		var direction = Input.get_vector("move_left","move_right","move_up","move_down")

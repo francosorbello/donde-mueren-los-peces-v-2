@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://di4o2o4cymntg"]
+[gd_scene load_steps=6 format=3 uid="uid://di4o2o4cymntg"]
 
 [ext_resource type="PackedScene" uid="uid://dxyjtlr6p8to8" path="res://utils/floating_sprite.tscn" id="1_33li6"]
+[ext_resource type="Script" uid="uid://dri7ngq6fpgfg" path="res://tests/test_interactable.gd" id="1_b1pd0"]
 [ext_resource type="Texture2D" uid="uid://bmgm37bn8bqna" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/Bountiful-Bits-10x10-v-3.1/1-Bit/no-background/Natural-no-bg.png" id="2_eekw6"]
 [ext_resource type="PackedScene" uid="uid://dgks666k0klxv" path="res://interactables/interactable_component/better_interactable_component.tscn" id="3_eekw6"]
 [ext_resource type="PackedScene" uid="uid://b4jjcolqqt2xe" path="res://interactables/outline_component/outline_component.tscn" id="4_qnptf"]
 
 [node name="TestInteractable" type="Node2D"]
+script = ExtResource("1_b1pd0")
 
 [node name="FloatingSprite" parent="." instance=ExtResource("1_33li6")]
 texture = ExtResource("2_eekw6")
@@ -16,3 +18,5 @@ region_rect = Rect2(170, 170, 10, 10)
 
 [node name="OutlineComponent" parent="BetterInteractableComponent" node_paths=PackedStringArray("sprite") instance=ExtResource("4_qnptf")]
 sprite = NodePath("../../FloatingSprite")
+
+[connection signal="on_interact" from="BetterInteractableComponent" to="." method="_on_better_interactable_component_on_interact"]

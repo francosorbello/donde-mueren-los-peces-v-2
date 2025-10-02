@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://2d2lc8oqhw1l"]
+
+[ext_resource type="Script" uid="uid://d13vigjrxn0w8" path="res://main_screen_manager/main_screen_manager.gd" id="1_0plp8"]
+[ext_resource type="PackedScene" uid="uid://bonpimefflpqa" path="res://game/game.tscn" id="2_ctqhg"]
+[ext_resource type="PackedScene" uid="uid://8soh03d6ho0s" path="res://main_menu/main_menu.tscn" id="2_n3omj"]
+
+[node name="MainscreenManager" type="Node"]
+script = ExtResource("1_0plp8")
+main_menu_scene = ExtResource("2_n3omj")
+game_scene = ExtResource("2_ctqhg")

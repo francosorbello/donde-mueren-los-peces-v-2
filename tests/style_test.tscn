@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cptlum0x5w2rx"]
+[gd_scene load_steps=12 format=3 uid="uid://cptlum0x5w2rx"]
 
 [ext_resource type="Texture2D" uid="uid://b6a65wew381nl" path="res://assets/GRAPHICS/hexanys-1-bit-ui-panels-1.1.0/Hexany's 1-bit UI Panels/Panels/simple.png" id="1_3mols"]
 [ext_resource type="PackedScene" uid="uid://ykjxsuiiaju" path="res://tests/tilemap_test.tscn" id="1_bts6r"]
+[ext_resource type="PackedScene" uid="uid://4ybnmc4j2y3v" path="res://player/player.tscn" id="2_tcqia"]
 [ext_resource type="PackedScene" uid="uid://crtgn3p57vbx3" path="res://tests/debug_oxygen_bar.tscn" id="3_5t5bq"]
+[ext_resource type="PackedScene" uid="uid://bn2a01n1dy2da" path="res://bubble/bubble_manager.tscn" id="3_5tfqu"]
 [ext_resource type="AudioStream" uid="uid://ceskirg5tq6wp" path="res://assets/SOUNDS/music/WAV_Don’t_Look_Back.mp3" id="3_sqasb"]
 [ext_resource type="Resource" uid="uid://c3r8if0b8ieae" path="res://tests/test.dialogue" id="4_ld8bt"]
+[ext_resource type="Script" uid="uid://dehd40fhedgng" path="res://camera/room_camera.gd" id="4_wp5w2"]
 
 [sub_resource type="GDScript" id="GDScript_sqasb"]
 script/source = "extends Node
@@ -95,6 +98,17 @@ size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="TilemapTest" parent="Game/HBoxContainer/SubViewportContainer/GameViewport" instance=ExtResource("1_bts6r")]
+
+[node name="Player" parent="Game/HBoxContainer/SubViewportContainer/GameViewport" node_paths=PackedStringArray("bubble_manager") instance=ExtResource("2_tcqia")]
+position = Vector2(121, 128)
+bubble_manager = NodePath("../BubbleManager")
+
+[node name="BubbleManager" parent="Game/HBoxContainer/SubViewportContainer/GameViewport" instance=ExtResource("3_5tfqu")]
+
+[node name="Camera2D" type="Camera2D" parent="Game/HBoxContainer/SubViewportContainer/GameViewport" node_paths=PackedStringArray("target_to_follow")]
+script = ExtResource("4_wp5w2")
+target_to_follow = NodePath("../Player")
+follow_smoothing = 0.7
 
 [node name="LogView" type="Control" parent="Game/HBoxContainer"]
 visible = false

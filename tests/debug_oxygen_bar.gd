@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+    start()
     OxygenManager.oxygen_depleted.connect(_on_oxygen_changed)
     OxygenManager.oxygen_restored.connect(_on_oxygen_changed)
 

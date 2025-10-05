@@ -4,11 +4,38 @@ extends Path2D
 @export_tool_button("Create", "Callable") var create_death_zone_action = create_death_zone
 @export var width : float = 10
 
+var polygon_shape : Polygon2D
+var collision_polygon : CollisionPolygon2D
+var collision_area : Area2D
+
 func _ready() -> void:
 	# create_death_zone()
 	pass
 
+func spawn_required_children():
+	for child in get_children():
+		child.queue_free()
+
+	collision_area = Area2D.new()
+	collision_area.name = "Area2D"
+	
+	collision_polygon = CollisionPolygon2D.new()
+	collision_polygon.name = "CollisionPolygon2D"
+	collision_area.add_child(collision_polygon)
+
+	add_child(collision_area)
+	collision_area.owner = get_tree().edited_scene_root
+	collision_polygon.owner = collision_area.owner
+	
+	polygon_shape = Polygon2D.new()
+	polygon_shape.name = "Polygon2D"
+	add_child(polygon_shape)
+	polygon_shape.owner = get_tree().edited_scene_root
+	
+
 func create_death_zone():
+	spawn_required_children()
+		
 	if curve.get_baked_points().is_empty():
 		clear_death_zone()
 		return
@@ -28,11 +55,11 @@ func create_death_zone():
 	polygon.append(p3)
 	polygon.append(p4)
 	
-	$Area2D/Polygon2D.polygon = polygon
-	$Area2D/CollisionPolygon2D.polygon = polygon
+	polygon_shape.polygon = polygon
+	collision_polygon.polygon = polygon
 	# $Line2D.points = polygon
 
 func clear_death_zone():
-	$Area2D/Polygon2D.polygon = []
-	$Area2D/CollisionPolygon2D.polygon = []
+	polygon_shape.polygon = []
+	collision_polygon.polygon = []
 	# $Line2D.points = []

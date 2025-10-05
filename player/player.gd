@@ -59,3 +59,6 @@ func soften_sprite(do_soften : bool):
 		col = soften_color
 
 	tween.tween_property($Sprite2D,"modulate",col,0.2)
+
+func get_bubble_sprite() -> Sprite2D:
+	return $BubbleSprite

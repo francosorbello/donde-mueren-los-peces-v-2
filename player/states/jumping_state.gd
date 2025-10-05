@@ -4,20 +4,41 @@ extends PlayerState
 @export_range(1,25) var decay : float = 5
 
 func enter():
+    player.play_anim("idle")
     $JumpDurationTimer.start()
-    player.play_anim("bubble_up")
+    play_show_bubble_anim()
 
 func exit():
     $JumpDurationTimer.stop()
-    player.play_anim("bubble_down")
+    play_hide_bubble_anim()
+
+func play_bubble_anim(to_value : float) -> Tween:
+    var sprite := player.get_bubble_sprite()
+    var tween := create_tween()
+    
+    tween.tween_property(sprite,"scale",Vector2(to_value,to_value),0.3)
+    
+    return tween
+
+func play_show_bubble_anim():
+    player.get_bubble_sprite().visible = true
+    player.get_bubble_sprite().scale = Vector2.ZERO
+    play_bubble_anim(0.8)
+
+func play_hide_bubble_anim():
+    var tween := play_bubble_anim(0)
+    tween.finished.connect(func():
+        player.get_bubble_sprite().visible = false
+    )
 
 func state_unhandled_input(event : InputEvent):
     if event.is_action_pressed("dash"):
         state_machine.transition_to("QuickDashingState")
         return
 
-    # if event.is_action_released("jump"):
-    #     state_machine.transition_to("MovingState")
+    if event.is_action_pressed("jump"):
+        state_machine.transition_to("MovingState")
+        get_viewport().set_input_as_handled()
 
 func physics_update(delta: float):
     var direction = Input.get_vector("move_left","move_right","move_up","move_down")

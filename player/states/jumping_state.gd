@@ -3,7 +3,14 @@ extends PlayerState
 @export var move_speed : float = 40
 @export_range(1,25) var decay : float = 5
 
+@export_group("Jump speed curve")
+@export var sample_duration : float = 3
+@export var speed_curve : Curve
+
+var _accoumulated_sample_time : float = 0
+
 func enter():
+    _accoumulated_sample_time = 0
     player.play_anim("idle")
     $JumpDurationTimer.start()
     play_show_bubble_anim()
@@ -41,10 +48,11 @@ func state_unhandled_input(event : InputEvent):
         get_viewport().set_input_as_handled()
 
 func physics_update(delta: float):
+    _accoumulated_sample_time += delta
+    
     var direction = Input.get_vector("move_left","move_right","move_up","move_down")
-
-    # player.velocity = lerp(player.velocity,direction * player.speed, delta * player.accel)
-    player.velocity = FreyaMath.lerp_exp_decay(player.velocity,direction * move_speed, decay, delta)
+    
+    player.velocity = FreyaMath.lerp_exp_decay(player.velocity,direction * move_speed * get_speed_modifier(), decay, delta)
     player.move_and_slide()
 
     if direction != Vector2.ZERO:
@@ -53,3 +61,11 @@ func physics_update(delta: float):
 func _on_jump_duration_timer_timeout() -> void:
     state_machine.transition_to("MovingState")
     pass # Replace with function body.
+
+func get_speed_modifier() -> float:
+    var sample_point = clampf(_accoumulated_sample_time/sample_duration,speed_curve.min_domain,speed_curve.max_domain)
+    return speed_curve.sample(sample_point)
+    # if _accoumulated_sample_time > sample_duration:
+    #     return speed_curve.sample(1)
+    # else:
+    #     return speed_curve.sample(_accoumulated_sample_time/sample_duration)

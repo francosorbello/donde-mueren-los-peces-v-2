@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=30 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -13,7 +13,11 @@
 [ext_resource type="Script" uid="uid://cpqtb5ob20158" path="res://player/states/dashing_state.gd" id="8_8t03j"]
 [ext_resource type="PackedScene" uid="uid://46qyrbx34yuv" path="res://bubble/bubble_indicator.tscn" id="8_rgyib"]
 [ext_resource type="PackedScene" uid="uid://c052bv6ldbshe" path="res://player/slash_attack.tscn" id="9_hg6s5"]
+[ext_resource type="Script" uid="uid://cdl66dyxa8q0e" path="res://player/states/jumping_state.gd" id="12_32hag"]
+[ext_resource type="AudioStream" uid="uid://bvlcode311dss" path="res://assets/SOUNDS/dash.ogg" id="12_e7oew"]
+[ext_resource type="Script" uid="uid://csx632fp1ai83" path="res://player/states/quick_dashing_state.gd" id="13_tqiix"]
 [ext_resource type="PackedScene" uid="uid://nk1aatfajmy" path="res://interactables/better_interactable_manager.tscn" id="14_kb6p2"]
+[ext_resource type="Texture2D" uid="uid://dn14b2si6osly" path="res://assets/GRAPHICS/Bubble/bubble.png" id="15_wodsf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oul6g"]
 radius = 6.0
@@ -32,6 +36,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BubbleSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BubbleSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
 }
 
 [sub_resource type="Animation" id="Animation_yw30f"]
@@ -88,9 +116,67 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_32hag"]
+resource_name = "bubble_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BubbleSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BubbleSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_tqiix"]
+resource_name = "bubble_down"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BubbleSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BubbleSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjkh3"]
 _data = {
 &"RESET": SubResource("Animation_g1dw6"),
+&"bubble_down": SubResource("Animation_tqiix"),
+&"bubble_up": SubResource("Animation_32hag"),
 &"idle": SubResource("Animation_yw30f"),
 &"move": SubResource("Animation_rkbax")
 }
@@ -103,6 +189,11 @@ stream_0/stream = ExtResource("3_g1dw6")
 [sub_resource type="Curve" id="Curve_yllr7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.98986477, 0), -2.256791, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e7oew"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("12_e7oew")
 
 [sub_resource type="Curve2D" id="Curve2D_rgyib"]
 _data = {
@@ -157,6 +248,16 @@ script = ExtResource("8_8t03j")
 dash_speed_increment = 5.0
 speed_curve = SubResource("Curve_yllr7")
 
+[node name="JumpingState" type="Node" parent="StateMachine"]
+script = ExtResource("12_32hag")
+decay = 8.0
+
+[node name="QuickDashingState" type="Node" parent="StateMachine"]
+script = ExtResource("13_tqiix")
+
+[node name="DashSound" type="AudioStreamPlayer" parent="StateMachine/QuickDashingState"]
+stream = SubResource("AudioStreamRandomizer_e7oew")
+
 [node name="BubbleIndicator" parent="." instance=ExtResource("8_rgyib")]
 visible = false
 y_sort_enabled = true
@@ -168,3 +269,8 @@ b = 5.0
 [node name="SlashAttack" parent="." instance=ExtResource("9_hg6s5")]
 
 [node name="BetterInteractableManager" parent="." instance=ExtResource("14_kb6p2")]
+
+[node name="BubbleSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("15_wodsf")

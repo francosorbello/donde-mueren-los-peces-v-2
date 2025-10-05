@@ -37,7 +37,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ftr_tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ftr_tools/plugin.cfg", "res://addons/licenses/plugin.cfg")
 
 [input]
 

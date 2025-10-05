@@ -252,6 +252,10 @@ speed_curve = SubResource("Curve_yllr7")
 script = ExtResource("12_32hag")
 decay = 8.0
 
+[node name="JumpDurationTimer" type="Timer" parent="StateMachine/JumpingState"]
+wait_time = 10.0
+one_shot = true
+
 [node name="QuickDashingState" type="Node" parent="StateMachine"]
 script = ExtResource("13_tqiix")
 
@@ -274,3 +278,5 @@ b = 5.0
 visible = false
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("15_wodsf")
+
+[connection signal="timeout" from="StateMachine/JumpingState/JumpDurationTimer" to="StateMachine/JumpingState" method="_on_jump_duration_timer_timeout"]

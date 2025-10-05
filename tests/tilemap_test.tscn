@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://ykjxsuiiaju"]
+[gd_scene load_steps=13 format=4 uid="uid://ykjxsuiiaju"]
 
 [ext_resource type="TileSet" uid="uid://1h607v1lcoyp" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/bountiful_bits_tileset.tres" id="1_lbya7"]
 [ext_resource type="PackedScene" uid="uid://4ybnmc4j2y3v" path="res://player/player.tscn" id="3_fsw6f"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bxojbvxga3vpt" path="res://damageables/box.tscn" id="7_uky12"]
 [ext_resource type="PackedScene" uid="uid://di4o2o4cymntg" path="res://tests/test_interactable.tscn" id="8_1d7pt"]
 [ext_resource type="Script" uid="uid://dehd40fhedgng" path="res://camera/room_camera.gd" id="9_1ansd"]
+[ext_resource type="PackedScene" uid="uid://cj0n05i73dafs" path="res://death_zone/death_zone.tscn" id="10_bv2lu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_110xg"]
 shader = ExtResource("3_g2b56")
@@ -17,6 +18,12 @@ shader_parameter/input_palette_texture = ExtResource("4_110xg")
 shader_parameter/output_palette_texture = ExtResource("5_s737f")
 shader_parameter/input_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/output_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_bv2lu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 50, 210, 0, 0, 0, 0, 190, 210)
+}
+point_count = 2
 
 [node name="TilemapTest" type="Node2D"]
 
@@ -55,3 +62,8 @@ bubble_manager = NodePath("../BubbleManager")
 script = ExtResource("9_1ansd")
 target_to_follow = NodePath("../Player")
 follow_smoothing = 0.7
+
+[node name="DeathZone" parent="." instance=ExtResource("10_bv2lu")]
+position = Vector2(20, -40)
+curve = SubResource("Curve2D_bv2lu")
+width = 30.0

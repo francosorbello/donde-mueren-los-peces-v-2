@@ -9,13 +9,17 @@ class_name APlayer
 @export var soften_color : Color
 
 @export_category("Abilities")
+@export_flags_2d_physics var jump_collision_mask : int
 @export var abilities : Array[AbilityData]
 var current_ability : AbilityData
 
 var last_direction : Vector2
 
+var _initial_collision_mask : int
+
 func _ready():
 	current_ability = abilities[0]
+	_initial_collision_mask = collision_mask
 
 func _unhandled_input(event):
 	if event.is_action_pressed("select_ability"):
@@ -62,3 +66,13 @@ func soften_sprite(do_soften : bool):
 
 func get_bubble_sprite() -> Sprite2D:
 	return $BubbleSprite
+
+func toggle_collision(to_value : bool):
+	$CollisionShape2D.disabled = !to_value
+
+func start_jump():
+	collision_mask = jump_collision_mask
+	pass
+
+func stop_collision():
+	collision_mask = _initial_collision_mask

@@ -14,10 +14,12 @@ func enter():
     player.play_anim("idle")
     $JumpDurationTimer.start()
     play_show_bubble_anim()
+    _play_sound($StartJumpSound)
 
 func exit():
     $JumpDurationTimer.stop()
     play_hide_bubble_anim()
+    _play_sound($StopJumpSound)
 
 func play_bubble_anim(to_value : float) -> Tween:
     var sprite := player.get_bubble_sprite()
@@ -37,6 +39,10 @@ func play_hide_bubble_anim():
     tween.finished.connect(func():
         player.get_bubble_sprite().visible = false
     )
+
+func _play_sound(audio_player : AudioStreamPlayer):
+    audio_player.pitch_scale = randf_range(0.8,1.2)
+    audio_player.play()
 
 func state_unhandled_input(event : InputEvent):
     if event.is_action_pressed("dash"):

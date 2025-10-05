@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj0n05i73dafs"]
+
+[ext_resource type="Script" uid="uid://dyf4ihhqpbmwb" path="res://death_zone/death_zone.gd" id="1_ncwg4"]
+
+[node name="DeathZone" type="Path2D"]
+script = ExtResource("1_ncwg4")
+width = null
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]

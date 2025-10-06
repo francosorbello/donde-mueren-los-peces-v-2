@@ -223,7 +223,7 @@ sample_duration = 0.5
 speed_curve = SubResource("Curve_e7oew")
 
 [node name="JumpDurationTimer" type="Timer" parent="StateMachine/JumpingState"]
-wait_time = 10.0
+wait_time = 3.0
 one_shot = true
 
 [node name="StartJumpSound" type="AudioStreamPlayer" parent="StateMachine/JumpingState"]
@@ -252,6 +252,7 @@ b = 5.0
 
 [node name="BubbleSprite" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("15_wodsf")
 

@@ -33,20 +33,20 @@ func _unhandled_input(event):
 				current_ability = abilities[1]
 		return
 
-	if event.is_action_pressed("shoot_bubble"):
-		$StateMachine.transition_to("ShootingBubbleState")
-		return
+	# if event.is_action_pressed("shoot_bubble"):
+	# 	$StateMachine.transition_to("ShootingBubbleState")
+	# 	return
 
 	if event.is_action_pressed("interact"):
 		$BetterInteractableManager.use_interactable()
 	
-	if event.is_action_pressed("attack"):
-		var direction = Input.get_vector("move_left","move_right","move_up","move_down")
-		direction = (get_global_mouse_position()-global_position).normalized()
-		if direction == Vector2.ZERO:
-			direction = last_direction
-		$SlashAttack.do_attack(direction)
-		return
+	# if event.is_action_pressed("attack"):
+	# 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
+	# 	direction = (get_global_mouse_position()-global_position).normalized()
+	# 	if direction == Vector2.ZERO:
+	# 		direction = last_direction
+	# 	$SlashAttack.do_attack(direction)
+	# 	return
 
 	if event.is_action_pressed("use_ability") and $StateMachine.current_state.name != "ShootingBubbleState":
 		current_ability.execute(self)

@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b2mwy6dh571su"]
+
+[ext_resource type="Shader" uid="uid://m1yh1hg0pqnt" path="res://tests/death_zone.gdshader" id="1_7vqv2"]
+[ext_resource type="Texture2D" uid="uid://d2g72dadrhb3" path="res://assets/GRAPHICS/other_patterns/tile1.1.png" id="2_7vmr1"]
+
+[resource]
+shader = ExtResource("1_7vqv2")
+shader_parameter/tile_tex = ExtResource("2_7vmr1")
+shader_parameter/color_to_replace = Color(1, 1, 1, 1)
+shader_parameter/color_replacement = Color(1, 0, 0, 1)
+shader_parameter/motion = Vector2(1, 1)
+shader_parameter/scale = 10.0
+shader_parameter/offset = Vector2(0, 0)

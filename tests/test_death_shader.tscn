@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx4h7854qja44"]
+
+[ext_resource type="Material" uid="uid://b2mwy6dh571su" path="res://tests/death_zone_material.tres" id="1_xstmq"]
+
+[node name="TestDeathShader" type="Polygon2D"]
+material = ExtResource("1_xstmq")
+polygon = PackedVector2Array(50, 225, 190, 225, 190, 195, 50, 195)

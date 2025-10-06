@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj0n05i73dafs"]
+[gd_scene load_steps=3 format=3 uid="uid://cj0n05i73dafs"]
 
 [ext_resource type="Script" uid="uid://dyf4ihhqpbmwb" path="res://death_zone/death_zone.gd" id="1_ncwg4"]
+[ext_resource type="Material" uid="uid://b2mwy6dh571su" path="res://tests/death_zone_material.tres" id="2_1n35f"]
 
 [node name="DeathZone" type="Path2D"]
 script = ExtResource("1_ncwg4")
 collision_layer = 32
+polygon_material = ExtResource("2_1n35f")

@@ -257,6 +257,8 @@ scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("15_wodsf")
 
 [node name="DeathZoneHurtbox" parent="." instance=ExtResource("21_x7c3f")]
+collision_layer = 32
+collision_mask = 32
 coyote_time = 0.25
 
 [node name="SmallCollisionShape" type="CollisionShape2D" parent="DeathZoneHurtbox"]

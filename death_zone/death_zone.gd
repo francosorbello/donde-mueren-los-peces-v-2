@@ -1,8 +1,10 @@
 @tool
 extends Path2D
+class_name DeathZone
 
 @export_tool_button("Create", "Callable") var create_death_zone_action = create_death_zone
 @export var width : float = 10
+@export_flags_2d_physics var collision_layer
 
 var polygon_shape : Polygon2D
 var collision_polygon : CollisionPolygon2D
@@ -18,6 +20,8 @@ func spawn_required_children():
 
 	collision_area = Area2D.new()
 	collision_area.name = "Area2D"
+	collision_area.collision_layer = collision_layer
+	collision_area.collision_mask = collision_layer
 	
 	collision_polygon = CollisionPolygon2D.new()
 	collision_polygon.name = "CollisionPolygon2D"

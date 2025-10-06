@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk7iuu4nm3sej"]
+
+[ext_resource type="Script" uid="uid://cm6u1aps4ttom" path="res://player/dead_anim_player.gd" id="1_l4n0r"]
+
+[node name="DeadAnimPlayer" type="Node"]
+script = ExtResource("1_l4n0r")
+
+[node name="Timer" type="Timer" parent="."]

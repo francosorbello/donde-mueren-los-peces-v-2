@@ -3,21 +3,32 @@ extends PlayerState
 @export var move_speed : float = 40
 @export_range(1,25) var decay : float = 5
 
+@export_group("Dependencies")
+@export var death_zone_hurtbox : Area2D
+
 @export_group("Jump speed curve")
 @export var sample_duration : float = 3
 @export var speed_curve : Curve
 
 var _accoumulated_sample_time : float = 0
+var _keep_hurtbox_disabled : bool = false
 
 func enter():
+    death_zone_hurtbox.toggle_active(false)
+
     _accoumulated_sample_time = 0
-    player.play_anim("idle")
+    _keep_hurtbox_disabled = false
     $JumpDurationTimer.start()
+    
+    player.play_anim("idle")
     play_show_bubble_anim()
     _play_sound($StartJumpSound)
 
 func exit():
+    death_zone_hurtbox.toggle_active(not _keep_hurtbox_disabled)
+
     $JumpDurationTimer.stop()
+
     play_hide_bubble_anim()
     _play_sound($StopJumpSound)
 
@@ -47,6 +58,7 @@ func _play_sound(audio_player : AudioStreamPlayer):
 func state_unhandled_input(event : InputEvent):
     if event.is_action_pressed("dash"):
         state_machine.transition_to("QuickDashingState")
+        _keep_hurtbox_disabled = true
         return
 
     if event.is_action_pressed("jump"):

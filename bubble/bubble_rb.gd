@@ -4,6 +4,7 @@ class_name ABubbleRB
 @export var start_force : float = 200
 @export var hit_force : float = 300
 
+@warning_ignore("unused_signal")
 signal popped
 
 var can_be_targeted : bool = true

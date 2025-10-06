@@ -17,9 +17,12 @@ var last_direction : Vector2
 
 var _initial_collision_mask : int
 
+var _start_pos
+
 func _ready():
 	current_ability = abilities[0]
 	_initial_collision_mask = collision_mask
+	_start_pos = global_position
 
 func _unhandled_input(event):
 	if event.is_action_pressed("select_ability"):
@@ -67,12 +70,14 @@ func soften_sprite(do_soften : bool):
 func get_bubble_sprite() -> Sprite2D:
 	return $BubbleSprite
 
-func toggle_collision(to_value : bool):
-	$CollisionShape2D.disabled = !to_value
-
 func start_jump():
 	collision_mask = jump_collision_mask
 	pass
 
 func stop_collision():
 	collision_mask = _initial_collision_mask
+
+func _on_death_zone_hurtbox_entered_death_zone() -> void:
+	$DeadAnimPlayer.play_anim($Sprite2D)
+	global_position = _start_pos
+	pass # Replace with function body.

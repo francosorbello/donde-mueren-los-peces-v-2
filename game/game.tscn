@@ -1,9 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=8 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="PackedScene" uid="uid://ykjxsuiiaju" path="res://tests/tilemap_test.tscn" id="1_dakft"]
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="PackedScene" uid="uid://dhhtspm33j6vk" path="res://tests/tilemap_test_2.tscn" id="3_4fuuu"]
+[ext_resource type="Shader" uid="uid://b2me4ti8lr66k" path="res://crt_shader/crt_shader.gdshader" id="4_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://crtgn3p57vbx3" path="res://tests/debug_oxygen_bar.tscn" id="6_3vho3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxrkv"]
+shader = ExtResource("4_dxrkv")
+shader_parameter/scanline_color = Color(0, 0, 0, 1)
+shader_parameter/flicker_color = Color(0, 0, 0, 1)
+shader_parameter/scanlines_count = 10.0
+shader_parameter/scanlines_intensity = 0.05
+shader_parameter/flicker_speed = 0.0
+shader_parameter/flicker_intensity = 0.025
+shader_parameter/color_offset = 1.5
+shader_parameter/blur = 0.15
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4fuuu"]
+viewport_path = NodePath("CenterContainer/SubViewportContainer/GameViewport")
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -57,6 +72,11 @@ size = Vector2i(1152, 1080)
 size_2d_override = Vector2i(288, 270)
 size_2d_override_stretch = true
 render_target_update_mode = 4
+
+[node name="CRTShader" type="TextureRect" parent="CenterContainer"]
+material = SubResource("ShaderMaterial_dxrkv")
+layout_mode = 2
+texture = SubResource("ViewportTexture_4fuuu")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 1

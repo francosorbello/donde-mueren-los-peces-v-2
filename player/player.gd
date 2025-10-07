@@ -85,7 +85,7 @@ func _on_death_zone_hurtbox_entered_death_zone() -> void:
 func use_explosion_ability():
 	$ExplosionAbility.do_explosion()
 
-func attach_to_air_current(path_to_follow : PathFollow2D):
+func attach_to_air_current(path_to_follow : AirCurrentFollower):
 	print("attach to air current")
 	$StateMachine.send_message_to("OnAirCurrentState",{"path_to_follow": path_to_follow})
 	$StateMachine.transition_to("OnAirCurrentState")

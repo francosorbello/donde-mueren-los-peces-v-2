@@ -25,9 +25,12 @@ func receive_message(message : Dictionary):
 func physics_update(delta: float):
 	if not path_to_follow: 
 		return
-	var dir_x = Input.get_axis("move_left","move_right")
+	
+	var direction = Input.get_vector("move_left","move_right","move_down","move_up")
+	path_to_follow.offset_by(direction)
+	# var dir_x = Input.get_axis("move_left","move_right")
 
-	path_to_follow.v_offset += dir_x
+	# path_to_follow.v_offset += dir_x
 	
 	player.global_position = FreyaMath.lerp_exp_decay(player.global_position,path_to_follow.global_position,5,delta)
 

@@ -7,9 +7,13 @@ signal finished_path
 
 var moving : bool = false
 
+var _prev_pos : Vector2
+var current_direction : Vector2
+
 func reset():
     progress_ratio = 0
     h_offset = 0
+    v_offset = 0
 
 func start():
     reset()
@@ -21,6 +25,11 @@ func start_from(pos : Vector2):
     progress += distance
     moving = true
 
+func offset_by(offset : Vector2):
+    var dir = Vector2(-current_direction.y,current_direction.x)
+    h_offset += dir.x * offset.x
+    v_offset += dir.y * offset.y
+
 func stop():
     moving = false
     reset()
@@ -30,6 +39,9 @@ func _physics_process(delta):
         return
     
     progress += delta * speed
+    current_direction = (_prev_pos-global_position).normalized()
+    _prev_pos = global_position
+
     if progress_ratio > 0.97:
         finished_path.emit()
         stop()

@@ -38,7 +38,7 @@ func spawn_required_children():
 	path_to_follow = AirCurrentFollower.new()
 	add_child(path_to_follow)
 	
-	# path_to_follow.rotates = false
+	path_to_follow.rotates = false
 	path_to_follow.name = "AirCurrentFollower"
 	path_to_follow.owner = get_tree().edited_scene_root 
 

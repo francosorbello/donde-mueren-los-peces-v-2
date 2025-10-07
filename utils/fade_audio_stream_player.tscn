@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://du2i8to2ou5gs"]
+
+[ext_resource type="Script" uid="uid://cyo1fgc78slx7" path="res://utils/fade_audio_stream_player.gd" id="1_xxl3h"]
+
+[node name="FadeAudioStreamPlayer" type="AudioStreamPlayer"]
+script = ExtResource("1_xxl3h")

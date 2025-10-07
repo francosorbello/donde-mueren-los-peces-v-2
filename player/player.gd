@@ -81,3 +81,6 @@ func _on_death_zone_hurtbox_entered_death_zone() -> void:
 	$DeadAnimPlayer.play_anim($Sprite2D)
 	global_position = _start_pos
 	pass # Replace with function body.
+
+func use_explosion_ability():
+	$ExplosionAbility.do_explosion()

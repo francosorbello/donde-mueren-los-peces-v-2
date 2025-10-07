@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=38 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://cjq2op1qwxb62" path="res://player/states/shooting_bubble_state.gd" id="7_boad6"]
 [ext_resource type="Script" uid="uid://cpqtb5ob20158" path="res://player/states/dashing_state.gd" id="8_8t03j"]
 [ext_resource type="PackedScene" uid="uid://46qyrbx34yuv" path="res://bubble/bubble_indicator.tscn" id="8_rgyib"]
-[ext_resource type="PackedScene" uid="uid://c052bv6ldbshe" path="res://player/slash_attack.tscn" id="9_hg6s5"]
 [ext_resource type="Script" uid="uid://cdl66dyxa8q0e" path="res://player/states/jumping_state.gd" id="12_32hag"]
 [ext_resource type="AudioStream" uid="uid://bvlcode311dss" path="res://assets/SOUNDS/dash.ogg" id="12_e7oew"]
 [ext_resource type="AudioStream" uid="uid://clphpvymjfvrs" path="res://assets/SOUNDS/104948__glaneur-de-sons__bubble-9.mp3" id="13_c35mf"]
@@ -22,14 +21,14 @@
 [ext_resource type="Texture2D" uid="uid://dn14b2si6osly" path="res://assets/GRAPHICS/Bubble/bubble.png" id="15_wodsf"]
 [ext_resource type="PackedScene" uid="uid://bvsjo2ynos7kp" path="res://death_zone/death_zone_hurtbox.tscn" id="21_x7c3f"]
 [ext_resource type="PackedScene" uid="uid://bk7iuu4nm3sej" path="res://player/dead_anim_player.tscn" id="22_bjvpn"]
+[ext_resource type="Script" uid="uid://js1b4vcldlwv" path="res://abilities/explosion_ability.gd" id="22_s7qer"]
+[ext_resource type="PackedScene" uid="uid://c1kriosoqfogr" path="res://bubble/explosion_area_visual.tscn" id="24_g4c7l"]
+[ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="24_knn7v"]
+[ext_resource type="AudioStream" uid="uid://cb8rkyh42ljde" path="res://assets/SOUNDS/explosion5.mp3" id="25_knn7v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_65viv"]
 radius = 4.0
 height = 12.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oul6g"]
-radius = 6.0
-height = 18.0
 
 [sub_resource type="Animation" id="Animation_g1dw6"]
 length = 0.001
@@ -161,6 +160,9 @@ point_count = 100
 radius = 4.0
 height = 12.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4c7l"]
+radius = 12.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 motion_mode = 1
@@ -180,11 +182,6 @@ offset = Vector2(0, -6)
 position = Vector2(0, 4)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_65viv")
-
-[node name="BigCollisionShape" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CapsuleShape2D_oul6g")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -232,8 +229,9 @@ stream = ExtResource("13_c35mf")
 [node name="StopJumpSound" type="AudioStreamPlayer" parent="StateMachine/JumpingState"]
 stream = ExtResource("14_65viv")
 
-[node name="QuickDashingState" type="Node" parent="StateMachine"]
+[node name="QuickDashingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("death_zone_hurtbox")]
 script = ExtResource("13_tqiix")
+death_zone_hurtbox = NodePath("../../DeathZoneHurtbox")
 
 [node name="DashSound" type="AudioStreamPlayer" parent="StateMachine/QuickDashingState"]
 stream = SubResource("AudioStreamRandomizer_e7oew")
@@ -246,8 +244,6 @@ curve = SubResource("Curve2D_rgyib")
 a = 10.0
 b = 5.0
 
-[node name="SlashAttack" parent="." instance=ExtResource("9_hg6s5")]
-
 [node name="BetterInteractableManager" parent="." instance=ExtResource("14_kb6p2")]
 
 [node name="BubbleSprite" type="Sprite2D" parent="."]
@@ -259,7 +255,7 @@ texture = ExtResource("15_wodsf")
 [node name="DeathZoneHurtbox" parent="." instance=ExtResource("21_x7c3f")]
 collision_layer = 32
 collision_mask = 32
-coyote_time = 0.25
+coyote_time = 0.15
 
 [node name="SmallCollisionShape" type="CollisionShape2D" parent="DeathZoneHurtbox"]
 position = Vector2(0, 4)
@@ -268,6 +264,27 @@ shape = SubResource("CapsuleShape2D_x7c3f")
 debug_color = Color(0.9131588, 9.318114e-05, 0.722496, 0.41960785)
 
 [node name="DeadAnimPlayer" parent="." instance=ExtResource("22_bjvpn")]
+
+[node name="ExplosionAbility" type="Node2D" parent="."]
+script = ExtResource("22_s7qer")
+
+[node name="ExplosionAreaVisual" parent="ExplosionAbility" instance=ExtResource("24_g4c7l")]
+
+[node name="Hurtbox" parent="ExplosionAbility" instance=ExtResource("24_knn7v")]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionAbility/Hurtbox"]
+shape = SubResource("CircleShape2D_g4c7l")
+
+[node name="VisualTimer" type="Timer" parent="ExplosionAbility"]
+one_shot = true
+
+[node name="AbilityTimer" type="Timer" parent="ExplosionAbility"]
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="ExplosionAbility"]
+stream = ExtResource("25_knn7v")
+volume_db = -10.0
 
 [connection signal="timeout" from="StateMachine/JumpingState/JumpDurationTimer" to="StateMachine/JumpingState" method="_on_jump_duration_timer_timeout"]
 [connection signal="entered_death_zone" from="DeathZoneHurtbox" to="." method="_on_death_zone_hurtbox_entered_death_zone"]

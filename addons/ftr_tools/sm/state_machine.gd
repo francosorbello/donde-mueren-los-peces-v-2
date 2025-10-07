@@ -32,6 +32,7 @@ func transition_to(target_state_name: String):
 		return
 		
 	if not has_node(target_state_name):
+		print("No state named %s"%target_state_name)
 		return
 
 	var prev_state_name = current_state.name

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=39 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://b8q2ul5salv6o" path="res://assets/SOUNDS/337132__cdonahueucsd__bubble_small.mp3" id="14_65viv"]
 [ext_resource type="PackedScene" uid="uid://nk1aatfajmy" path="res://interactables/better_interactable_manager.tscn" id="14_kb6p2"]
 [ext_resource type="Texture2D" uid="uid://dn14b2si6osly" path="res://assets/GRAPHICS/Bubble/bubble.png" id="15_wodsf"]
+[ext_resource type="Script" uid="uid://cqprkqpkvmaxw" path="res://player/states/on_air_current_state.gd" id="17_7pqkx"]
 [ext_resource type="PackedScene" uid="uid://bvsjo2ynos7kp" path="res://death_zone/death_zone_hurtbox.tscn" id="21_x7c3f"]
 [ext_resource type="PackedScene" uid="uid://bk7iuu4nm3sej" path="res://player/dead_anim_player.tscn" id="22_bjvpn"]
 [ext_resource type="Script" uid="uid://js1b4vcldlwv" path="res://abilities/explosion_ability.gd" id="22_s7qer"]
@@ -235,6 +236,9 @@ death_zone_hurtbox = NodePath("../../DeathZoneHurtbox")
 
 [node name="DashSound" type="AudioStreamPlayer" parent="StateMachine/QuickDashingState"]
 stream = SubResource("AudioStreamRandomizer_e7oew")
+
+[node name="OnAirCurrentState" type="Node" parent="StateMachine"]
+script = ExtResource("17_7pqkx")
 
 [node name="BubbleIndicator" parent="." instance=ExtResource("8_rgyib")]
 visible = false

@@ -1,121 +1,44 @@
 @tool
-extends Path2D
-class_name AirCurrent
-## Creates a polygon and a collision area based on a curve
-## WARNING: use high bake intervals (between 20 and 100), otherwise errors might show up
+extends PolygonCurve2D
 
-@export_tool_button("Create", "Callable") var create_air_current_action = create_air_current
-# @export_tool_button("Debug draw") var debug_draw_action = debug_draw
-# @export_tool_button("Debug Clear") var debug_clear_action = debug_clear
-@export var width : float = 10
-@export_range(20,100) var curve_bake_interval : int = 50:
-    set(value):
-        curve_bake_interval = value
-        if curve:
-            curve.bake_interval = curve_bake_interval
+var path_to_follow : PathFollow2D
 
-var polygon_shape : Polygon2D
-var collision_polygon : CollisionPolygon2D
-var collision_area : Area2D
+func _ready() -> void:
+	super()
 
-var polygon_points : PackedVector2Array
-var debug_polygon_points : PackedVector2Array
-
-var last_point_test : Vector2
-
-func _set(property: StringName, value: Variant) -> bool:
-    if property == "curve" and value:
-        value.bake_interval = curve_bake_interval
-
-    return false
-
-func create_air_current():
-    spawn_required_children()
-
-    if not curve or curve.get_baked_points().is_empty():
-        clear_air_current()
-        print("early return")
-        return
-
-    var points := curve.get_baked_points()
-    
-    var p1_points : PackedVector2Array
-    var p2_points : PackedVector2Array
-
-    for i in range(0,points.size() - 1):
-        var point := points[i]
-        var next_point := points[i+1]
-        var direction = (next_point - point).normalized()
-        var rot_angle = direction.angle()
-
-        var new_points_transform = Transform2D(rot_angle,point)
-        var p1 = new_points_transform * Vector2(0,width/2)
-        var p2 = new_points_transform * Vector2(0,-width/2)
-
-        p1_points.append(p1)
-        p2_points.append(p2)
-    
-    # sample an extra point a little bit before the end of the curve
-    var last_point = points[points.size()-1]
-    var last_point_offset = curve.sample(curve.point_count-2,0.9)
-    last_point_test = last_point_offset
-    queue_redraw()
-
-    var last_point_transform = Transform2D((last_point-last_point_offset).angle(),last_point_offset)
-    p1_points.append(last_point_transform * Vector2(0,width/2))
-    p2_points.append(last_point_transform * Vector2(0,-width/2))
-
-    p1_points.reverse()
-    polygon_points = p2_points + p1_points
-    
-    polygon_shape.polygon = polygon_points
-    collision_polygon.polygon = polygon_points
-
-         
-
-func rotate_point(point : Vector2, angle : float) -> Vector2:
-    var new_point : Vector2
-    var cos_a = cos(angle)
-    var sin_a = sin(angle)
-
-    new_point.x = point.x * cos_a - point.y * sin_a
-    new_point.y = point.x * sin_a + point.y * cos_a
-
-    return new_point
-    
-func debug_clear():
-    debug_polygon_points.clear()
-    polygon_points.clear()
-    queue_redraw()
-
-func debug_draw():
-    # polygon_points.clear()
-    queue_redraw()    
+	if Engine.is_editor_hint(): return
+	if collision_area:
+		collision_area.area_entered.connect(_on_area_entered)
+		collision_area.body_entered.connect(_on_body_entered)
+		collision_area.body_exited.connect(_on_body_exited)
+		
+	for child in get_children():
+		if child is PathFollow2D:
+			path_to_follow = child
 
 func spawn_required_children():
-    for child in get_children():
-        child.queue_free()
+	super()
+	path_to_follow = PathFollow2D.new()
+	add_child(path_to_follow)
+	path_to_follow.name = "PathFollow2D"
+	path_to_follow.owner = get_tree().edited_scene_root 
 
-    collision_area = Area2D.new()
-    collision_area.name = "Area2D"
-    
-    collision_polygon = CollisionPolygon2D.new()
-    collision_polygon.name = "CollisionPolygon2D"
-    collision_area.add_child(collision_polygon)
+func _on_body_entered(body : Node2D):
+	print(body)
+	if not path_to_follow:
+		push_error("No path follower on air current %s"%name)
 
-    add_child(collision_area)
-    collision_area.owner = get_tree().edited_scene_root
-    collision_polygon.owner = collision_area.owner
-    
-    polygon_shape = Polygon2D.new()
-    polygon_shape.name = "Polygon2D"
-    add_child(polygon_shape)
-    polygon_shape.owner = get_tree().edited_scene_root
+	if body is APlayer:
+		body.attach_to_air_current(path_to_follow)
 
+func _on_body_exited(body : Node2D):
+	print("deatch")
+	if body is APlayer:
+		body.detach_from_air_current()
 
-func clear_air_current():
-    polygon_shape.polygon = []
-    collision_polygon.polygon = []
+func _on_area_entered(area : Area2D):
+	if not path_to_follow:
+		push_error("No path follower on air current %s"%name)
 
-func _draw() -> void:
-    draw_circle(last_point_test,3,Color.GREEN)
+	if area.get_parent() and area.get_parent() is APlayer:
+		area.get_parent().attach_to_air_current(path_to_follow)

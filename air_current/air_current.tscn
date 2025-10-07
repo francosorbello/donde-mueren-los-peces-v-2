@@ -1,7 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dekojyxc08hm8"]
+[gd_scene load_steps=2 format=3 uid="uid://cp0sirp6ywnyg"]
 
-[ext_resource type="Script" uid="uid://chlbf4ydlrjvo" path="res://air_current/air_current.gd" id="1_ho15y"]
+[ext_resource type="Script" uid="uid://b4usmestpyuho" path="res://air_current/air_current.gd" id="1_ho15y"]
 
 [node name="AirCurrent" type="Path2D"]
 script = ExtResource("1_ho15y")
 width = 50.0
+metadata/_custom_type_script = "uid://chlbf4ydlrjvo"

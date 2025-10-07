@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://ykjxsuiiaju"]
+[gd_scene load_steps=16 format=4 uid="uid://ykjxsuiiaju"]
 
 [ext_resource type="TileSet" uid="uid://1h607v1lcoyp" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/bountiful_bits_tileset.tres" id="1_lbya7"]
 [ext_resource type="PackedScene" uid="uid://4ybnmc4j2y3v" path="res://player/player.tscn" id="3_fsw6f"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dehd40fhedgng" path="res://camera/room_camera.gd" id="9_1ansd"]
 [ext_resource type="PackedScene" uid="uid://cj0n05i73dafs" path="res://death_zone/death_zone.tscn" id="10_bv2lu"]
 [ext_resource type="Material" uid="uid://b2mwy6dh571su" path="res://tests/death_zone_material.tres" id="11_oi85d"]
+[ext_resource type="PackedScene" uid="uid://cp0sirp6ywnyg" path="res://air_current/air_current.tscn" id="12_tu2xh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_110xg"]
 shader = ExtResource("3_g2b56")
@@ -23,6 +24,13 @@ shader_parameter/output_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0,
 [sub_resource type="Curve2D" id="Curve2D_bv2lu"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 50, 210, 0, 0, 0, 0, 190, 210)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_tu2xh"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 220, 30, 0, 0, 0, 0, 220, 130)
 }
 point_count = 2
 
@@ -79,3 +87,20 @@ polygon = PackedVector2Array(50, 225, 190, 225, 190, 195, 50, 195)
 [node name="Polygon2D" type="Polygon2D" parent="DeathZone"]
 material = ExtResource("11_oi85d")
 polygon = PackedVector2Array(50, 225, 190, 225, 190, 195, 50, 195)
+
+[node name="AirCurrent" parent="." instance=ExtResource("12_tu2xh")]
+curve = SubResource("Curve2D_tu2xh")
+
+[node name="Area2D" type="Area2D" parent="AirCurrent"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AirCurrent/Area2D"]
+polygon = PackedVector2Array(245, 30.000002, 245, 80, 244.99998, 127.19986, 194.99998, 127.200134, 195, 80, 195, 29.999998)
+
+[node name="Polygon2D" type="Polygon2D" parent="AirCurrent"]
+color = Color(1, 1, 1, 0.4627451)
+polygon = PackedVector2Array(245, 30.000002, 245, 80, 244.99998, 127.19986, 194.99998, 127.200134, 195, 80, 195, 29.999998)
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AirCurrent"]
+position = Vector2(220, 30)
+rotation = 1.5707964
+rotates = false

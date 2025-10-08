@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ccv23w3x8awof"]
+[gd_scene load_steps=16 format=4 uid="uid://ccv23w3x8awof"]
 
 [ext_resource type="Shader" uid="uid://bbse323pr0vvv" path="res://addons/eye_dropper/eye_dropper.gdshader" id="1_05qxl"]
 [ext_resource type="Texture2D" uid="uid://e46iwncnyrl0" path="res://assets/GRAPHICS/PALETTES/bastille-8-1x.png" id="2_o0ok4"]
@@ -9,6 +9,8 @@
 [ext_resource type="Material" uid="uid://cpxp85woyyt4p" path="res://death_zone/water_1_material.tres" id="7_wgs0e"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="8_tig7g"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="9_tig7g"]
+[ext_resource type="PackedScene" uid="uid://cp0sirp6ywnyg" path="res://air_current/air_current.tscn" id="10_drtee"]
+[ext_resource type="Script" uid="uid://i5cfvrtyqmxm" path="res://air_current/air_current_follower.gd" id="11_8tme2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wgs0e"]
 shader = ExtResource("1_05qxl")
@@ -21,6 +23,20 @@ shader_parameter/output_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0,
 [sub_resource type="Curve2D" id="Curve2D_wgs0e"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -200, 100, 0, 0, 0, 0, 370, 100)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_c1h52"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 160, 20, 0, 0, 0, 0, 160, 180)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_drtee"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 170, -50, 0, 0, 0, 0, 340, -50)
 }
 point_count = 2
 
@@ -65,3 +81,39 @@ end_cap_mode = 2
 
 [node name="PlatformSmall" parent="." instance=ExtResource("9_tig7g")]
 position = Vector2(0, 90)
+
+[node name="AirCurrent" parent="." instance=ExtResource("10_drtee")]
+curve = SubResource("Curve2D_c1h52")
+
+[node name="Area2D" type="Area2D" parent="AirCurrent"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AirCurrent/Area2D"]
+polygon = PackedVector2Array(185, 20.000002, 185, 45, 185, 70.625, 185, 100, 185, 129.375, 185, 155, 185, 175.51999, 135, 175.51999, 135, 155, 135, 129.375, 135, 100, 135, 70.625, 135, 45, 135, 19.999998)
+
+[node name="Polygon2D" type="Polygon2D" parent="AirCurrent"]
+color = Color(1, 1, 1, 0.3)
+polygon = PackedVector2Array(185, 20.000002, 185, 45, 185, 70.625, 185, 100, 185, 129.375, 185, 155, 185, 175.51999, 135, 175.51999, 135, 155, 135, 129.375, 135, 100, 135, 70.625, 135, 45, 135, 19.999998)
+
+[node name="AirCurrentFollower" type="PathFollow2D" parent="AirCurrent"]
+position = Vector2(160, 20)
+rotation = 1.5707964
+rotates = false
+script = ExtResource("11_8tme2")
+
+[node name="AirCurrent2" parent="." instance=ExtResource("10_drtee")]
+curve = SubResource("Curve2D_drtee")
+width = 30.0
+
+[node name="Area2D" type="Area2D" parent="AirCurrent2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AirCurrent2/Area2D"]
+polygon = PackedVector2Array(170, -65, 196.5625, -65, 223.78906, -65, 255, -65, 286.21094, -65, 313.4375, -65, 335.24, -65, 335.24, -35, 313.4375, -35, 286.21094, -35, 255, -35, 223.78906, -35, 196.5625, -35, 170, -35)
+
+[node name="Polygon2D" type="Polygon2D" parent="AirCurrent2"]
+color = Color(1, 1, 1, 0.3)
+polygon = PackedVector2Array(170, -65, 196.5625, -65, 223.78906, -65, 255, -65, 286.21094, -65, 313.4375, -65, 335.24, -65, 335.24, -35, 313.4375, -35, 286.21094, -35, 255, -35, 223.78906, -35, 196.5625, -35, 170, -35)
+
+[node name="AirCurrentFollower" type="PathFollow2D" parent="AirCurrent2"]
+position = Vector2(170, -50)
+rotates = false
+script = ExtResource("11_8tme2")

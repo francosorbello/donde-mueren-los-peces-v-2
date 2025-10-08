@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwqrwjmgf0c42"]
+
+[ext_resource type="Script" uid="uid://k72e3qh8itun" path="res://platform_area.gd" id="1_vtc4b"]
+
+[node name="PlatformArea" type="Area2D"]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_vtc4b")

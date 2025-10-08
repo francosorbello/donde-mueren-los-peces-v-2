@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://nnpgkaoylgj"]
+
+[ext_resource type="PackedScene" uid="uid://bwqrwjmgf0c42" path="res://platform/platform_area.tscn" id="1_3q0bu"]
+[ext_resource type="Texture2D" uid="uid://jnrswxxgerpx" path="res://assets/GRAPHICS/platform_small.png" id="2_hlrff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlrff"]
+size = Vector2(28, 28)
+
+[node name="PlatformSmall" type="Node2D"]
+
+[node name="PlatformArea" parent="." instance=ExtResource("1_3q0bu")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformArea"]
+shape = SubResource("RectangleShape2D_hlrff")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.6542321, 0.6542321, 0.654232, 1)
+texture = ExtResource("2_hlrff")

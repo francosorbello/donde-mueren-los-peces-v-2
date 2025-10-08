@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://ccv23w3x8awof"]
+[gd_scene load_steps=12 format=4 uid="uid://ccv23w3x8awof"]
 
 [ext_resource type="Shader" uid="uid://bbse323pr0vvv" path="res://addons/eye_dropper/eye_dropper.gdshader" id="1_05qxl"]
 [ext_resource type="Texture2D" uid="uid://e46iwncnyrl0" path="res://assets/GRAPHICS/PALETTES/bastille-8-1x.png" id="2_o0ok4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cj0n05i73dafs" path="res://death_zone/death_zone.tscn" id="6_kubw5"]
 [ext_resource type="Material" uid="uid://cpxp85woyyt4p" path="res://death_zone/water_1_material.tres" id="7_wgs0e"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="8_tig7g"]
+[ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="9_tig7g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wgs0e"]
 shader = ExtResource("1_05qxl")
@@ -61,3 +62,6 @@ width = 1.0
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="PlatformSmall" parent="." instance=ExtResource("9_tig7g")]
+position = Vector2(0, 100)

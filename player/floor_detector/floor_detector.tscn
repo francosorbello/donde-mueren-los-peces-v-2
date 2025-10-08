@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjka4rd2o0w7v"]
+
+[ext_resource type="Script" uid="uid://byqfn4n3a58mx" path="res://player/floor_detector/floor_detector.gd" id="1_egj82"]
+
+[node name="FloorDetector" type="Area2D"]
+script = ExtResource("1_egj82")

@@ -10,6 +10,8 @@ var can_fall : bool = true:
 		can_fall = value
 		if not can_fall:
 			stop_coyote_time()
+		else:
+			_on_floor_detector_floor_status_changed($FloorDetector.current_status)
 
 func _on_floor_detector_floor_status_changed(new_status: FloorDetector.DetectionStatus) -> void:
 

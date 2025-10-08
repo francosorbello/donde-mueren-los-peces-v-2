@@ -17,6 +17,9 @@ var current_status : DetectionStatus = DetectionStatus.ON_FLOOR:
             # print("Floor detector says player is %s"%DetectionStatus.find_key(value))
 
 func _physics_process(_delta):
+    update_status()
+
+func update_status():
     var new_status : DetectionStatus = DetectionStatus.ON_FLOOR
     
     var areas = get_overlapping_areas()

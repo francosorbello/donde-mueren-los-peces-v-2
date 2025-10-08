@@ -79,11 +79,6 @@ func start_jump():
 func stop_collision():
 	collision_mask = _initial_collision_mask
 
-func _on_death_zone_hurtbox_entered_death_zone() -> void:
-	$DeadAnimPlayer.play_anim($Sprite2D)
-	global_position = _start_pos
-	pass # Replace with function body.
-
 func use_explosion_ability():
 	$ExplosionAbility.do_explosion()
 
@@ -101,3 +96,8 @@ func add_extra_velocity(vel : Vector2, time : float):
 	get_tree().create_timer(time).timeout.connect(func():
 		extra_velocity = Vector2.ZERO
 	)
+
+func _on_floor_detection_component_player_fell() -> void:
+	$DeadAnimPlayer.play_anim($Sprite2D)
+	global_position = _start_pos
+	pass # Replace with function body.

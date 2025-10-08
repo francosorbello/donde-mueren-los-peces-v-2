@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=40 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -20,13 +20,13 @@
 [ext_resource type="PackedScene" uid="uid://nk1aatfajmy" path="res://interactables/better_interactable_manager.tscn" id="14_kb6p2"]
 [ext_resource type="Texture2D" uid="uid://dn14b2si6osly" path="res://assets/GRAPHICS/Bubble/bubble.png" id="15_wodsf"]
 [ext_resource type="Script" uid="uid://cqprkqpkvmaxw" path="res://player/states/on_air_current_state.gd" id="17_7pqkx"]
-[ext_resource type="PackedScene" uid="uid://bvsjo2ynos7kp" path="res://death_zone/death_zone_hurtbox.tscn" id="21_x7c3f"]
 [ext_resource type="PackedScene" uid="uid://bk7iuu4nm3sej" path="res://player/dead_anim_player.tscn" id="22_bjvpn"]
 [ext_resource type="Script" uid="uid://js1b4vcldlwv" path="res://abilities/explosion_ability.gd" id="22_s7qer"]
 [ext_resource type="PackedScene" uid="uid://c1kriosoqfogr" path="res://bubble/explosion_area_visual.tscn" id="24_g4c7l"]
 [ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="24_knn7v"]
 [ext_resource type="AudioStream" uid="uid://cb8rkyh42ljde" path="res://assets/SOUNDS/explosion5.mp3" id="25_knn7v"]
-[ext_resource type="PackedScene" uid="uid://bjka4rd2o0w7v" path="res://player/floor_detector/floor_detector.tscn" id="27_uw77l"]
+[ext_resource type="Script" uid="uid://dn48vjrdhx4i" path="res://player/floor_detection/floor_detection_component.gd" id="26_uw77l"]
+[ext_resource type="PackedScene" uid="uid://bjka4rd2o0w7v" path="res://player/floor_detection/floor_detector.tscn" id="27_uw77l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_65viv"]
 radius = 4.0
@@ -158,10 +158,6 @@ _data = {
 }
 point_count = 100
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x7c3f"]
-radius = 4.0
-height = 12.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4c7l"]
 radius = 12.0
 
@@ -217,10 +213,10 @@ script = ExtResource("8_8t03j")
 dash_speed_increment = 5.0
 speed_curve = SubResource("Curve_yllr7")
 
-[node name="JumpingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("death_zone_hurtbox")]
+[node name="JumpingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component")]
 script = ExtResource("12_32hag")
 move_speed = 35.0
-death_zone_hurtbox = NodePath("../../DeathZoneHurtbox")
+floor_detection_component = NodePath("../../FloorDetectionComponent")
 sample_duration = 0.5
 speed_curve = SubResource("Curve_e7oew")
 
@@ -234,15 +230,16 @@ stream = ExtResource("13_c35mf")
 [node name="StopJumpSound" type="AudioStreamPlayer" parent="StateMachine/JumpingState"]
 stream = ExtResource("14_65viv")
 
-[node name="QuickDashingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("death_zone_hurtbox")]
+[node name="QuickDashingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component")]
 script = ExtResource("13_tqiix")
-death_zone_hurtbox = NodePath("../../DeathZoneHurtbox")
+floor_detection_component = NodePath("../../FloorDetectionComponent")
 
 [node name="DashSound" type="AudioStreamPlayer" parent="StateMachine/QuickDashingState"]
 stream = SubResource("AudioStreamRandomizer_e7oew")
 
-[node name="OnAirCurrentState" type="Node" parent="StateMachine"]
+[node name="OnAirCurrentState" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_detection_component")]
 script = ExtResource("17_7pqkx")
+fall_detection_component = NodePath("../../FloorDetectionComponent")
 
 [node name="BubbleIndicator" parent="." instance=ExtResource("8_rgyib")]
 visible = false
@@ -259,19 +256,6 @@ visible = false
 z_index = 1
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("15_wodsf")
-
-[node name="DeathZoneHurtbox" parent="." instance=ExtResource("21_x7c3f")]
-collision_layer = 32
-collision_mask = 32
-coyote_time = 0.15
-disabled = true
-
-[node name="SmallCollisionShape" type="CollisionShape2D" parent="DeathZoneHurtbox"]
-position = Vector2(0, 4)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_x7c3f")
-disabled = true
-debug_color = Color(0.9131588, 9.318114e-05, 0.722496, 0.41960785)
 
 [node name="DeadAnimPlayer" parent="." instance=ExtResource("22_bjvpn")]
 
@@ -296,14 +280,21 @@ one_shot = true
 stream = ExtResource("25_knn7v")
 volume_db = -10.0
 
-[node name="FloorDetector" parent="." instance=ExtResource("27_uw77l")]
+[node name="FloorDetectionComponent" type="Node2D" parent="."]
+script = ExtResource("26_uw77l")
+
+[node name="FloorDetector" parent="FloorDetectionComponent" instance=ExtResource("27_uw77l")]
 collision_layer = 0
 collision_mask = 96
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetectionComponent/FloorDetector"]
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_uw77l")
 debug_color = Color(7.70092e-07, 0.6247227, 0.52935916, 0.41960785)
 
+[node name="CoyoteTimeTimer" type="Timer" parent="FloorDetectionComponent"]
+
 [connection signal="timeout" from="StateMachine/JumpingState/JumpDurationTimer" to="StateMachine/JumpingState" method="_on_jump_duration_timer_timeout"]
-[connection signal="entered_death_zone" from="DeathZoneHurtbox" to="." method="_on_death_zone_hurtbox_entered_death_zone"]
+[connection signal="player_fell" from="FloorDetectionComponent" to="." method="_on_floor_detection_component_player_fell"]
+[connection signal="floor_status_changed" from="FloorDetectionComponent/FloorDetector" to="FloorDetectionComponent" method="_on_floor_detector_floor_status_changed"]
+[connection signal="timeout" from="FloorDetectionComponent/CoyoteTimeTimer" to="FloorDetectionComponent" method="_on_coyote_time_timer_timeout"]

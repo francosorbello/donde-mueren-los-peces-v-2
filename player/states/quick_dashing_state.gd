@@ -4,7 +4,7 @@ extends PlayerState
 @export var distance_to_travel : float = 40
 
 @export_category("Dependencies")
-@export var death_zone_hurtbox : Area2D
+@export var floor_detection_component : Node2D
 
 var _distance_traveled : float
 
@@ -15,7 +15,7 @@ func enter():
     $DashSound.play()
 
 func exit():
-    death_zone_hurtbox.toggle_active(true)
+    floor_detection_component.can_fall = true
 
 func physics_update(delta: float):
     _distance_traveled = (_initial_pos - player.global_position).length()

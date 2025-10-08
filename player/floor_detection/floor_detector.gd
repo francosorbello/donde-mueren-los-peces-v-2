@@ -1,4 +1,5 @@
 extends Area2D
+class_name FloorDetector
 
 enum DetectionStatus {
     ON_FLOOR,
@@ -13,7 +14,7 @@ var current_status : DetectionStatus = DetectionStatus.ON_FLOOR:
         if value != current_status:
             current_status = value
             floor_status_changed.emit(value)
-            print("Floor detector says player is %s"%DetectionStatus.find_key(value))
+            # print("Floor detector says player is %s"%DetectionStatus.find_key(value))
 
 func _physics_process(_delta):
     var new_status : DetectionStatus = DetectionStatus.ON_FLOOR

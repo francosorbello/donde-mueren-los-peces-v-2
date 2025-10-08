@@ -1,9 +1,15 @@
 extends PlayerState
 
-var path_to_follow : AirCurrentFollower
 @export var speed : float = 20
 @export var horizontal_speed : float = 20
+
+@export_category("Dependencies")
+@export var fall_detection_component : Node2D
+
+var path_to_follow : AirCurrentFollower
+
 func enter():
+	fall_detection_component.can_fall = false
 	player.play_anim("idle")
 	player.velocity = Vector2.ZERO
 	if path_to_follow:
@@ -11,6 +17,7 @@ func enter():
 		path_to_follow.finished_path.connect(_on_finished_path)
 
 func exit():
+	fall_detection_component.can_fall = true
 	var vel = -path_to_follow.current_direction * path_to_follow.get_speed()
 	player.add_extra_velocity(vel,.3)
 	if path_to_follow:

@@ -3,10 +3,10 @@ extends PlayerState
 @export var move_speed : float = 40
 @export_range(1,25) var decay : float = 5
 
-@export_group("Dependencies")
-@export var death_zone_hurtbox : Area2D
+@export_category("Dependencies")
+@export var floor_detection_component : Node2D
 
-@export_group("Jump speed curve")
+@export_category("Jump speed curve")
 @export var sample_duration : float = 3
 @export var speed_curve : Curve
 
@@ -14,7 +14,7 @@ var _accoumulated_sample_time : float = 0
 var _keep_hurtbox_disabled : bool = false
 
 func enter():
-    death_zone_hurtbox.toggle_active(false)
+    floor_detection_component.can_fall = false
 
     _accoumulated_sample_time = 0
     _keep_hurtbox_disabled = false
@@ -25,7 +25,7 @@ func enter():
     _play_sound($StartJumpSound)
 
 func exit():
-    death_zone_hurtbox.toggle_active(not _keep_hurtbox_disabled)
+    floor_detection_component.can_fall = not _keep_hurtbox_disabled
 
     $JumpDurationTimer.stop()
 

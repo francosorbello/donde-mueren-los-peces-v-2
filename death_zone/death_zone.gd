@@ -34,7 +34,8 @@ func spawn_required_children():
 	
 	polygon_shape = Polygon2D.new()
 	polygon_shape.name = "Polygon2D"
-	polygon_shape.material = polygon_material#.duplicate()
+	if polygon_material:
+		polygon_shape.material = polygon_material#.duplicate()
 	add_child(polygon_shape)
 	polygon_shape.owner = get_tree().edited_scene_root
 	

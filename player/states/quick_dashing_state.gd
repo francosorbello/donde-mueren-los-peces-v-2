@@ -26,3 +26,6 @@ func physics_update(delta: float):
     # player.velocity = lerp(player.velocity,direction * player.speed, delta * player.accel)
     player.velocity = FreyaMath.lerp_exp_decay(player.velocity,player.last_direction * move_speed, 10, delta*player.accel)
     player.move_and_slide()
+    
+    if player.get_slide_collision_count() > 0:
+        state_machine.transition_to("MovingState")

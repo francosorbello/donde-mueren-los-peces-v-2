@@ -19,6 +19,8 @@ var _initial_collision_mask : int
 
 var _start_pos
 
+var extra_velocity : Vector2
+
 func _ready():
 	current_ability = abilities[0]
 	_initial_collision_mask = collision_mask
@@ -93,3 +95,9 @@ func attach_to_air_current(path_to_follow : AirCurrentFollower):
 func detach_from_air_current():
 	if $StateMachine.current_state.name == "OnAirCurrentState":
 		$StateMachine.transition_to("MovingState")
+
+func add_extra_velocity(vel : Vector2, time : float):
+	extra_velocity = vel
+	get_tree().create_timer(time).timeout.connect(func():
+		extra_velocity = Vector2.ZERO
+	)

@@ -29,4 +29,5 @@ func toggle_active(to_value : bool):
                 _col_shape = child
                 break
     
-    _col_shape.disabled = !to_value
+    _col_shape.set_deferred("disabled", not to_value)
+    # _col_shape.disabled = !to_value

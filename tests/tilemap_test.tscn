@@ -29,11 +29,11 @@ _data = {
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_d7oxp"]
-bake_interval = 20.0
+bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 160, 20, 0, 0, 0, 0, 240, 20, 0, 0, 0, 0, 240, 80)
+"points": PackedVector2Array(0, 0, 0, 0, 240, 30, 0, 0, 0, 0, 240, 130)
 }
-point_count = 3
+point_count = 2
 
 [node name="TilemapTest" type="Node2D"]
 
@@ -90,22 +90,19 @@ material = ExtResource("11_oi85d")
 polygon = PackedVector2Array(50, 225, 190, 225, 190, 195, 50, 195)
 
 [node name="AirCurrent" parent="." instance=ExtResource("12_tu2xh")]
-position = Vector2(0, 20)
 curve = SubResource("Curve2D_d7oxp")
-disabled_time = PackedVector2Array(224.99998, 78.32013, 225, 70.625, 225, 61.015625, 225, 50, 225, 38.984375, 225, 29.375, 225, 20, 227.5, 35, 214.6875, 35, 200, 35, 185.3125, 35, 172.5, 35, 160, 35)
-width = 30.0
-curve_bake_interval = 20
 
 [node name="Area2D" type="Area2D" parent="AirCurrent"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AirCurrent/Area2D"]
-polygon = PackedVector2Array(160, 5, 172.5, 5, 185.3125, 5, 200, 5, 214.6875, 5, 227.5, 5, 255, 20, 255, 29.375, 255, 38.984375, 255, 50, 255, 61.015625, 255, 70.625, 254.99998, 78.319855, 224.99998, 78.32013, 225, 70.625, 225, 61.015625, 225, 50, 225, 38.984375, 214.6875, 35, 200, 35, 185.3125, 35, 172.5, 35, 160, 35)
+polygon = PackedVector2Array(265, 30.000002, 265, 80, 265, 127.19986, 214.99998, 127.200134, 215, 80, 215, 29.999998)
 
 [node name="Polygon2D" type="Polygon2D" parent="AirCurrent"]
 color = Color(1, 1, 1, 0.3)
-polygon = PackedVector2Array(160, 5, 172.5, 5, 185.3125, 5, 200, 5, 214.6875, 5, 227.5, 5, 255, 20, 255, 29.375, 255, 38.984375, 255, 50, 255, 61.015625, 255, 70.625, 254.99998, 78.319855, 224.99998, 78.32013, 225, 70.625, 225, 61.015625, 225, 50, 225, 38.984375, 214.6875, 35, 200, 35, 185.3125, 35, 172.5, 35, 160, 35)
+polygon = PackedVector2Array(265, 30.000002, 265, 80, 265, 127.19986, 214.99998, 127.200134, 215, 80, 215, 29.999998)
 
 [node name="AirCurrentFollower" type="PathFollow2D" parent="AirCurrent"]
-position = Vector2(160, 20)
+position = Vector2(240, 30)
+rotation = 1.5707964
 rotates = false
 script = ExtResource("13_d7oxp")

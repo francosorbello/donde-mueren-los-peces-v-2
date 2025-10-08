@@ -11,6 +11,8 @@ func enter():
 		path_to_follow.finished_path.connect(_on_finished_path)
 
 func exit():
+	var vel = -path_to_follow.current_direction * path_to_follow.get_speed()
+	player.add_extra_velocity(vel,.3)
 	if path_to_follow:
 		path_to_follow.finished_path.disconnect(_on_finished_path)
 	path_to_follow = null
@@ -33,6 +35,8 @@ func physics_update(delta: float):
 	# path_to_follow.v_offset += dir_x
 	
 	player.global_position = FreyaMath.lerp_exp_decay(player.global_position,path_to_follow.global_position,5,delta)
+	# player.velocity = FreyaMath.lerp_exp_decay(player.velocity,-path_to_follow.current_direction * path_to_follow.get_speed(), 10, delta)
+	# player.move_and_slide()
 
 func _on_finished_path():
-	state_machine.transition_to("MovingState")
+	state_machine.transition_to("JumpingState")

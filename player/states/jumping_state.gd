@@ -78,6 +78,8 @@ func physics_update(delta: float):
     
     var direction = Input.get_vector("move_left","move_right","move_up","move_down")
     
+    if player.extra_velocity:
+        player.velocity = player.extra_velocity
     player.velocity = FreyaMath.lerp_exp_decay(player.velocity,direction * move_speed * get_speed_modifier(), decay, delta)
     player.move_and_slide()
 

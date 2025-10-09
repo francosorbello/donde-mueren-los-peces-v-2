@@ -13,8 +13,6 @@ var current_direction : Vector2
 var _prev_pos : Vector2
 var _accoumulated_sample_time : float
 
-var _test_pos : Vector2
-
 func reset():
 	progress_ratio = 0
 	h_offset = 0
@@ -27,9 +25,9 @@ func start():
 
 func start_from(pos : Vector2):
 	reset()
-    
-    # fairly cursed method to get closest point in curve to player,
-    # so we can move the pathfollow object tot said position
+	
+	# fairly cursed method to get closest point in curve to player,
+	# so we can move the pathfollow object tot said position
 	if get_parent() is PolygonCurve2D:
 		var curve = get_parent().curve as Curve2D
 		var offset = curve.get_closest_offset(get_parent().to_local(pos))
@@ -47,7 +45,6 @@ func offset_by(offset : Vector2):
 	v_offset += dir.y * offset.y
 
 func stop():
-	print("Stoping")
 	moving = false
 	reset()
 
@@ -55,7 +52,6 @@ func _physics_process(delta):
 	if not moving:
 		return
 	if progress_ratio > 0.99:
-		print("progress finished?")
 		finished_path.emit()
 		stop()
 		return

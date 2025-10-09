@@ -36,7 +36,7 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_drtee"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 170, -50, 0, 0, 0, 0, 340, -50)
+"points": PackedVector2Array(0, 0, 0, 0, 210, -50, 0, 0, 0, 0, 340, -50)
 }
 point_count = 2
 
@@ -56,7 +56,6 @@ position_smoothing_enabled = true
 position = Vector2(0, 9)
 curve = SubResource("Curve2D_wgs0e")
 width = 120.0
-polygon_material = null
 
 [node name="Area2D" type="Area2D" parent="DeathZone"]
 collision_layer = 32
@@ -69,15 +68,6 @@ polygon = PackedVector2Array(-200, 160, 370, 160, 370, 40, -200, 40)
 material = ExtResource("7_wgs0e")
 texture = ExtResource("8_tig7g")
 polygon = PackedVector2Array(-200, 160, 370, 160, 370, 40, -200, 40)
-
-[node name="Line2D" type="Line2D" parent="DeathZone"]
-visible = false
-points = PackedVector2Array(-200, 160, 370, 160, 370, 40, -200, 40)
-closed = true
-width = 1.0
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
 
 [node name="PlatformSmall" parent="." instance=ExtResource("9_tig7g")]
 position = Vector2(0, 90)
@@ -102,18 +92,17 @@ script = ExtResource("11_8tme2")
 
 [node name="AirCurrent2" parent="." instance=ExtResource("10_drtee")]
 curve = SubResource("Curve2D_drtee")
-width = 30.0
 
 [node name="Area2D" type="Area2D" parent="AirCurrent2"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AirCurrent2/Area2D"]
-polygon = PackedVector2Array(170, -65, 196.5625, -65, 223.78906, -65, 255, -65, 286.21094, -65, 313.4375, -65, 335.24, -65, 335.24, -35, 313.4375, -35, 286.21094, -35, 255, -35, 223.78906, -35, 196.5625, -35, 170, -35)
+polygon = PackedVector2Array(210, -75, 230.3125, -75, 275, -75, 319.6875, -75, 336.36, -75, 336.36, -25, 319.6875, -25, 275, -25, 230.3125, -25, 210, -25)
 
 [node name="Polygon2D" type="Polygon2D" parent="AirCurrent2"]
 color = Color(1, 1, 1, 0.3)
-polygon = PackedVector2Array(170, -65, 196.5625, -65, 223.78906, -65, 255, -65, 286.21094, -65, 313.4375, -65, 335.24, -65, 335.24, -35, 313.4375, -35, 286.21094, -35, 255, -35, 223.78906, -35, 196.5625, -35, 170, -35)
+polygon = PackedVector2Array(210, -75, 230.3125, -75, 275, -75, 319.6875, -75, 336.36, -75, 336.36, -25, 319.6875, -25, 275, -25, 230.3125, -25, 210, -25)
 
 [node name="AirCurrentFollower" type="PathFollow2D" parent="AirCurrent2"]
-position = Vector2(170, -50)
+position = Vector2(210, -50)
 rotates = false
 script = ExtResource("11_8tme2")

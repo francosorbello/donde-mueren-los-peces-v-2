@@ -5,7 +5,10 @@ class_name DeathZone
 @export_tool_button("Create", "Callable") var create_death_zone_action = create_death_zone
 @export var width : float = 10
 @export_flags_2d_physics var collision_layer
+
+@export_category("Polygon resources")
 @export var polygon_material : ShaderMaterial
+@export var polygon_texture : Texture2D
 
 var polygon_shape : Polygon2D
 var collision_polygon : CollisionPolygon2D
@@ -36,6 +39,9 @@ func spawn_required_children():
 	polygon_shape.name = "Polygon2D"
 	if polygon_material:
 		polygon_shape.material = polygon_material#.duplicate()
+	if polygon_texture:
+		polygon_shape.texture = polygon_texture
+		
 	add_child(polygon_shape)
 	polygon_shape.owner = get_tree().edited_scene_root
 	

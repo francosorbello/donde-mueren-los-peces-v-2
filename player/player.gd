@@ -83,13 +83,12 @@ func use_explosion_ability():
 	$ExplosionAbility.do_explosion()
 
 func attach_to_air_current(path_to_follow : AirCurrentFollower):
-	print("attach to air current")
 	$StateMachine.send_message_to("OnAirCurrentState",{"path_to_follow": path_to_follow})
 	$StateMachine.transition_to("OnAirCurrentState")
 
 func detach_from_air_current():
 	if $StateMachine.current_state.name == "OnAirCurrentState":
-		$StateMachine.transition_to("MovingState")
+		$StateMachine.transition_to("JumpingState")
 
 func add_extra_velocity(vel : Vector2, time : float):
 	extra_velocity = vel

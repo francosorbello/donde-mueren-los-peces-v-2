@@ -68,7 +68,6 @@ func create():
 		var next_point := points[i+1]
 		var direction = (next_point - point).normalized()
 		var rot_angle = direction.angle()
-		print((next_point-point).length())
 
 		var new_points_transform = Transform2D(rot_angle,point)
 		var p1 = new_points_transform * Vector2(0,width/2)

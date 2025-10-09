@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://dljpngpmr4wvs"]
+
+[ext_resource type="Script" uid="uid://bo4uvq33rplbr" path="res://tests/test_saves/test_saves.gd" id="1_mbd4a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mbd4a"]
+font_size = 30
+
+[node name="TestSaves" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mbd4a")
+
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -15.5
+offset_right = 49.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Create /Load save"
+
+[node name="IncrementButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = 51.0
+offset_right = 130.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Increment value"
+
+[node name="ValueLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = 134.0
+offset_right = 107.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Current value: "
+label_settings = SubResource("LabelSettings_mbd4a")
+
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="IncrementButton" to="." method="_on_increment_button_pressed"]

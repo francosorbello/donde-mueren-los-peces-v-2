@@ -23,6 +23,7 @@ GlobalEventSystem="*res://addons/ftr_tools/global_event_system/global_event_syst
 OxygenManager="*res://oxygen_manager/oxygen_manager.tscn"
 CommonSfxPlayer="*res://utils/common_sfx_player.tscn"
 GlobalSignal="*res://addons/ftr_tools/global_signal_system/global_signal_system.gd"
+VaultSaveManager="*res://addons/vault/src/save_manager.gd"
 
 [dialogue_manager]
 
@@ -37,7 +38,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ftr_tools/plugin.cfg", "res://addons/licenses/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ftr_tools/plugin.cfg", "res://addons/licenses/plugin.cfg", "res://addons/vault/plugin.cfg")
 
 [input]
 

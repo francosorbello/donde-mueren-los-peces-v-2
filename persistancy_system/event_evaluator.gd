@@ -7,27 +7,28 @@ signal evaluator_failed
 var conditionals : Array[PersistentEventConditional] = []
 
 func _ready():
-    GlobalSignal.event_set.connect(_on_event_set)
+	GlobalSignal.event_set.connect(_on_event_set)
+	evaluate()
 
-func _on_event_set(_ev):
-    evaluate()
+func _on_event_set(_ev, cached_events):
+	evaluate(cached_events)
 
 func get_conditionals() -> Array[PersistentEventConditional]:
-    var result = []
-    for child in get_children():
-        if child is PersistentEventConditional:
-            result.append(child)
+	var result : Array[PersistentEventConditional] = []
+	for child in get_children():
+		if child is PersistentEventConditional:
+			result.append(child)
 
-    return result
+	return result
 
 
-func evaluate():
-    if conditionals.is_empty():
-        conditionals = get_conditionals()
-    
-    for cond in conditionals:
-        if not cond.evaluate():
-            evaluator_failed.emit()
-            return
+func evaluate(cached_events : Dictionary[String, float] = {}):
+	if conditionals.is_empty():
+		conditionals = get_conditionals()
+	
+	for cond in conditionals:
+		if not cond.evaluate(cached_events):
+			evaluator_failed.emit()
+			return
 
-    evaluator_succeded.emit()
+	evaluator_succeded.emit()

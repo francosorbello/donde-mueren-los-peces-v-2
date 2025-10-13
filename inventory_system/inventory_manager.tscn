@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://djic11w1vg7yn"]
+
+[ext_resource type="Script" uid="uid://3auog86alumo" path="res://inventory_system/inventory_manager.gd" id="1_12jlf"]
+[ext_resource type="Script" uid="uid://6ndubswifm41" path="res://inventory_system/inventory.gd" id="1_kyvrd"]
+
+[node name="InventoryManager" type="Node" groups=["inventory_manager"]]
+script = ExtResource("1_12jlf")
+
+[node name="PersistentInventory" type="Node" parent="."]
+script = ExtResource("1_kyvrd")
+metadata/_custom_type_script = "uid://6ndubswifm41"
+
+[node name="TemporalInventory" type="Node" parent="."]
+script = ExtResource("1_kyvrd")
+metadata/_custom_type_script = "uid://6ndubswifm41"

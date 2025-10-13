@@ -31,7 +31,6 @@ func disable_target():
 		target.process_mode = Node.PROCESS_MODE_DISABLED
 
 func enable_target():
-	target.show()
 	if target:
 		if target.has_method("show"):
 			target.show()

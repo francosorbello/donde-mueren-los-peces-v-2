@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://co8iffqiw0lsv"]
+
+[ext_resource type="Script" uid="uid://mslw4tytbqad" path="res://persistancy_system/persistancy_system.gd" id="1_yy3rw"]
+
+[node name="PersistancySystem" type="Node"]
+script = ExtResource("1_yy3rw")

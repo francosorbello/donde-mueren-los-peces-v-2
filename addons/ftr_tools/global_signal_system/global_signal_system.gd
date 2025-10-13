@@ -6,4 +6,4 @@ extends Node
 ##  you can call GlobalSignal.signal_name.emit() to emit it
 
 signal level_change_requested(level_name : String)
-
+signal event_set(ev : PersistentEvent)

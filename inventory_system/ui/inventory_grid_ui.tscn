@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5nd2lr8rntum"]
+
+[ext_resource type="Script" uid="uid://c72k03kevrd16" path="res://inventory_system/ui/inventory_grid_ui.gd" id="1_g001v"]
+[ext_resource type="PackedScene" uid="uid://b1xknqt0pxif3" path="res://inventory_system/ui/inventory_grid_element.tscn" id="2_8nd17"]
+
+[node name="InventoryGridUI" type="GridContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 5
+script = ExtResource("1_g001v")
+grid_element_scene = ExtResource("2_8nd17")

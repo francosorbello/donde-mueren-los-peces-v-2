@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1xknqt0pxif3"]
+
+[ext_resource type="Script" uid="uid://bdqv6h500lsds" path="res://inventory_system/ui/inventory_grid_element.gd" id="1_wosux"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wosux"]
+
+[node name="InventoryGridElement" type="Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+focus_mode = 2
+focus_behavior_recursive = 2
+script = ExtResource("1_wosux")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_wosux")

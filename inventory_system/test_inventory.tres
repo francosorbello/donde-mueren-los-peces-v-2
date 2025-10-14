@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryRes" load_steps=5 format=3 uid="uid://dxd33ds0omile"]
+
+[ext_resource type="Script" uid="uid://egbha40d4mds" path="res://inventory_system/item.gd" id="1_t8im4"]
+[ext_resource type="Script" uid="uid://byjoi2vfm4tt8" path="res://inventory_system/inventory_res.gd" id="2_7dgxd"]
+[ext_resource type="Resource" uid="uid://dey4ggrhbbbmc" path="res://inventory_system/test_key.tres" id="2_m4b8c"]
+[ext_resource type="Resource" uid="uid://b6ue7g6i75lu" path="res://inventory_system/test_trinket.tres" id="3_m4b8c"]
+
+[resource]
+script = ExtResource("2_7dgxd")
+items = Array[ExtResource("1_t8im4")]([ExtResource("2_m4b8c"), ExtResource("3_m4b8c"), ExtResource("2_m4b8c")])
+metadata/_custom_type_script = "uid://byjoi2vfm4tt8"

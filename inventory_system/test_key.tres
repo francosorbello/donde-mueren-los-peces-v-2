@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="AnItem" load_steps=2 format=3 uid="uid://dey4ggrhbbbmc"]
+[gd_resource type="Resource" script_class="AnItem" load_steps=3 format=3 uid="uid://dey4ggrhbbbmc"]
 
+[ext_resource type="Texture2D" uid="uid://d4eujshmexxd3" path="res://assets/GRAPHICS/items/key1_16x16.png" id="1_3t681"]
 [ext_resource type="Script" uid="uid://egbha40d4mds" path="res://inventory_system/item.gd" id="1_c4tm2"]
 
 [resource]
 script = ExtResource("1_c4tm2")
 item_name = "Test Key"
 descrption = "A key created for testing porpouses"
+icon = ExtResource("1_3t681")
+world_icon = ExtResource("1_3t681")
 metadata/_custom_type_script = "uid://egbha40d4mds"

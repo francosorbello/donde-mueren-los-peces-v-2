@@ -7,6 +7,7 @@
 script = ExtResource("1_c4tm2")
 item_name = "Test Key"
 descrption = "A key created for testing porpouses"
+is_persistent = true
 icon = ExtResource("1_3t681")
 world_icon = ExtResource("1_3t681")
 metadata/_custom_type_script = "uid://egbha40d4mds"

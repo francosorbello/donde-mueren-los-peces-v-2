@@ -2,6 +2,7 @@ extends IndieBlueprintSavedGame
 class_name ASavedGame
 
 @export var persistent_events : Dictionary[String,float]
+@export var persistent_inventory : Array[AnItem]
 
 func persistent_event_exists(ev_name : String) -> bool:
     return persistent_events.has(ev_name)

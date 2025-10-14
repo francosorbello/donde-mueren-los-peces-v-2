@@ -9,6 +9,7 @@ func _ready() -> void:
 	if debug_fill:
 		persistent_inventory.items = persistent_items
 		temporary_inventory.items = temp_items
+	load_persistent_inventory()
 
 @onready var persistent_inventory : AnInventory = $PersistentInventory
 @onready var temporary_inventory : AnInventory = $TemporalInventory
@@ -16,7 +17,7 @@ func _ready() -> void:
 func load_persistent_inventory():
 	var current_save = IndieBlueprintSaveManager.current_saved_game as ASavedGame
 	if current_save:
-		pass
+		persistent_inventory.items = current_save.persistent_inventory
 
 func clear_temporary_inventory():
 	temporary_inventory.clear()
@@ -24,5 +25,9 @@ func clear_temporary_inventory():
 func add_item(item : AnItem):
 	if item.is_persistent:
 		persistent_inventory.add_to_inventory(item)
+		var current_save = IndieBlueprintSaveManager.current_saved_game as ASavedGame
+		if current_save:
+			current_save.persistent_inventory = persistent_inventory.items
+			current_save.write_savegame()
 	else:
 		temporary_inventory.add_to_inventory(item)

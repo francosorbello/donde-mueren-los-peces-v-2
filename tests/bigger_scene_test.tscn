@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://ccv23w3x8awof"]
+[gd_scene load_steps=26 format=4 uid="uid://ccv23w3x8awof"]
 
 [ext_resource type="Shader" uid="uid://bbse323pr0vvv" path="res://addons/eye_dropper/eye_dropper.gdshader" id="1_05qxl"]
 [ext_resource type="Texture2D" uid="uid://e46iwncnyrl0" path="res://assets/GRAPHICS/PALETTES/bastille-8-1x.png" id="2_o0ok4"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b4jjcolqqt2xe" path="res://interactables/outline_component/outline_component.tscn" id="17_3xutp"]
 [ext_resource type="Script" uid="uid://ckw8qr1c5qte8" path="res://persistancy_system/event_setter.gd" id="18_1rj40"]
 [ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="19_k3723"]
+[ext_resource type="Resource" uid="uid://dey4ggrhbbbmc" path="res://inventory_system/test_key.tres" id="20_mmugk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wgs0e"]
 shader = ExtResource("1_05qxl")
@@ -170,4 +171,6 @@ override_color_when_disabled = true
 override_color_value = Color(1, 1, 1, 0.56078434)
 
 [node name="PickableItem" parent="." instance=ExtResource("19_k3723")]
-position = Vector2(120, -50)
+position = Vector2(110, -40)
+item = ExtResource("20_mmugk")
+event_name = "item_test_key_picked_up"

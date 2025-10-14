@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=10 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="PackedScene" uid="uid://ccv23w3x8awof" path="res://tests/bigger_scene_test.tscn" id="2_dxrkv"]
@@ -21,19 +21,6 @@ shader_parameter/blur = 0.15
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4fuuu"]
 viewport_path = NodePath("CenterContainer/SubViewportContainer/GameViewport")
-
-[sub_resource type="GDScript" id="GDScript_u5opy"]
-script/source = "extends Node
-
-func _ready() -> void:
-	Console.add_command(\"clear_save\",clear_save)
-	
-func clear_save():
-	var current_save = IndieBlueprintSaveManager.current_saved_game as ASavedGame
-	if current_save:
-		current_save.clear_save()
-		Console.print_line(\"Save cleared\")
-"
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -110,6 +97,3 @@ layout_mode = 0
 [node name="InventoryUI" parent="UI" node_paths=PackedStringArray("inventory_manager") instance=ExtResource("6_u5opy")]
 layout_mode = 1
 inventory_manager = NodePath("../../InventoryManager")
-
-[node name="GameConsoleCommands" type="Node" parent="."]
-script = SubResource("GDScript_u5opy")

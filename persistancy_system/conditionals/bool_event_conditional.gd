@@ -1,4 +1,5 @@
 extends PersistentEventConditional
+class_name BoolPersistentEventConditional
 
 func evaluate(cached_events : Dictionary = {}) -> bool:
 	var ev: = get_event(cached_events)

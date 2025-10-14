@@ -7,3 +7,4 @@ class_name AnItem
 @export var is_persistent : bool = false
 @export var icon : Texture2D
 @export var world_icon : Texture2D
+

@@ -48,6 +48,8 @@ func refresh_interactable():
 	var new_interactable_distance :float = 100000000
 
 	for interactable in scene_interactables:
+		if not is_instance_valid(interactable):
+			continue
 		var dist = interactable.global_position.distance_to(global_position)
 		if dist < radius and dist < new_interactable_distance:
 			new_interactable = interactable
@@ -77,3 +79,4 @@ func _on_refresh_timer_timeout() -> void:
 		current_interactable = null
 	refresh_interactable()
 	pass # Replace with function body.
+

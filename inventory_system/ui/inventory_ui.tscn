@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ttyngsx7731n"]
+[gd_scene load_steps=5 format=3 uid="uid://ttyngsx7731n"]
 
 [ext_resource type="Script" uid="uid://uiusu0cnvkud" path="res://inventory_system/ui/inventory_ui.gd" id="1_erfyy"]
-[ext_resource type="Resource" uid="uid://dxd33ds0omile" path="res://inventory_system/test_inventory.tres" id="2_msmyj"]
 [ext_resource type="PackedScene" uid="uid://b5nd2lr8rntum" path="res://inventory_system/ui/inventory_grid_ui.tscn" id="3_msmyj"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kakua"]
@@ -18,7 +17,15 @@ grow_vertical = 2
 script = ExtResource("1_erfyy")
 persistent_grid = NodePath("PanelContainer/MarginContainer/HBoxContainer/ItemsContainer/PersistentItemContainer/InventoryGridUI")
 temp_grid = NodePath("PanelContainer/MarginContainer/HBoxContainer/ItemsContainer/TempItemContainer/InventoryGridUI")
-debug_inventory = ExtResource("2_msmyj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22670749, 0.22670749, 0.22670746, 0.5882353)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

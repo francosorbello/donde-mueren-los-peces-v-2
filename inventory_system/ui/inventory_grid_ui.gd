@@ -44,6 +44,7 @@ func _on_elem_focused(element : Control):
 	inventory_item_selected.emit(element.item)
 
 func _on_element_added(item : AnItem):
+	print("%s added to inventory %s?"%[item.item_name,self])
 	var grid_entry = grid_element_scene.instantiate() as Control
 	grid_entry.name = "Grid Element %d"%grid_elements.size()
 	grid_entry.item = item
@@ -65,5 +66,7 @@ func _on_element_removed(item : AnItem):
 			return
 
 func focus_grid():
+	print("can i focus? ",grid_elements.size())
 	if not grid_elements.is_empty():
+		print("focus element ",grid_elements[0].name)
 		grid_elements[0].grab_focus()

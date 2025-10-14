@@ -15,7 +15,7 @@ func _ready() -> void:
     sprite.material = material
     disable_outline()
 
-func enable_outline(color : Color = Color.WHITE):
+func enable_outline(color : Color = Color.BLACK):
     material.set_shader_parameter("width",1.0)
     material.set_shader_parameter("color",color)
     if override_color_when_disabled:

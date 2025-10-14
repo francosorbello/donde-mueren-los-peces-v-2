@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=10 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="PackedScene" uid="uid://ccv23w3x8awof" path="res://tests/bigger_scene_test.tscn" id="2_dxrkv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://b2me4ti8lr66k" path="res://crt_shader/crt_shader.gdshader" id="4_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://crtgn3p57vbx3" path="res://tests/debug_oxygen_bar.tscn" id="6_3vho3"]
 [ext_resource type="PackedScene" uid="uid://djic11w1vg7yn" path="res://inventory_system/inventory_manager.tscn" id="6_dakft"]
+[ext_resource type="PackedScene" uid="uid://ttyngsx7731n" path="res://inventory_system/ui/inventory_ui.tscn" id="6_u5opy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxrkv"]
 shader = ExtResource("4_dxrkv")
@@ -33,6 +34,8 @@ levels = Dictionary[String, PackedScene]({
 "level1": ExtResource("2_dxrkv"),
 "level2": ExtResource("3_4fuuu")
 })
+
+[node name="InventoryManager" parent="." instance=ExtResource("6_dakft")]
 
 [node name="BGColor" type="ColorRect" parent="."]
 layout_mode = 1
@@ -91,4 +94,6 @@ mouse_filter = 2
 [node name="DebugOxygenBar" parent="UI" instance=ExtResource("6_3vho3")]
 layout_mode = 0
 
-[node name="InventoryManager" parent="." instance=ExtResource("6_dakft")]
+[node name="InventoryUI" parent="UI" node_paths=PackedStringArray("inventory_manager") instance=ExtResource("6_u5opy")]
+layout_mode = 1
+inventory_manager = NodePath("../../InventoryManager")

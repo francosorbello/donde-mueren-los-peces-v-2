@@ -10,6 +10,7 @@
 [node name="PickableItem" type="Node2D"]
 script = ExtResource("1_dp5qr")
 item = ExtResource("2_k1mc5")
+event_name = null
 
 [node name="FloatingSprite" parent="." instance=ExtResource("2_mw6br")]
 texture = ExtResource("4_fv37u")

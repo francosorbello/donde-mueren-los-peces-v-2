@@ -30,3 +30,8 @@ func add_persistent_event(ev_name: String, ev_value : float = 0.0) -> bool:
     persistent_events[ev_name] = ev_value
     write_savegame()
     return true
+
+func clear_save():
+    persistent_events.clear()
+    persistent_inventory.clear()
+    write_savegame()

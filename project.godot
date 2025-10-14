@@ -24,6 +24,7 @@ OxygenManager="*res://oxygen_manager/oxygen_manager.tscn"
 CommonSfxPlayer="*res://utils/common_sfx_player.tscn"
 GlobalSignal="*res://addons/ftr_tools/global_signal_system/global_signal_system.gd"
 IndieBlueprintSaveManager="*res://addons/ninetailsrabbit.indie_blueprint_save/src/save_manager.gd"
+Console="*res://addons/console/console.gd"
 
 [dialogue_manager]
 
@@ -38,7 +39,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ftr_tools/plugin.cfg", "res://addons/licenses/plugin.cfg", "res://addons/ninetailsrabbit.indie_blueprint_save/plugin.cfg")
+enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/ftr_tools/plugin.cfg", "res://addons/licenses/plugin.cfg", "res://addons/ninetailsrabbit.indie_blueprint_save/plugin.cfg")
 
 [input]
 

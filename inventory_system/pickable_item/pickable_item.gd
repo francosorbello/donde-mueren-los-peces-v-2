@@ -16,6 +16,12 @@ var icon : Texture2D:
 			else:
 				icon = null
 
+@export var event_name : String
+
+func _ready() -> void:
+	if item:
+		pass
+
 func _on_better_interactable_component_on_interact() -> void:
 	var inventory_manager = get_tree().get_first_node_in_group("inventory_manager")
 	if inventory_manager and item:

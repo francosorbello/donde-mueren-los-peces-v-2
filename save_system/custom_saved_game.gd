@@ -3,6 +3,7 @@ class_name ASavedGame
 
 @export var persistent_events : Dictionary[String,float]
 @export var persistent_inventory : Array[AnItem]
+@export var visited_levels : Array[String]
 
 func persistent_event_exists(ev_name : String) -> bool:
 	return persistent_events.has(ev_name)
@@ -31,7 +32,12 @@ func add_persistent_event(ev_name: String, ev_value : float = 0.0) -> bool:
 	write_savegame()
 	return true
 
+func add_visited_level(id : String):
+	if not visited_levels.has(id):
+		visited_levels.append(id)
+
 func clear_save():
 	persistent_events.clear()
 	persistent_inventory.clear()
 	write_savegame()
+

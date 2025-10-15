@@ -7,3 +7,4 @@ extends Node
 
 signal level_change_requested(level_name : String)
 signal event_set(ev : PersistentEvent, cached_events : Dictionary[String,float])
+signal level_entered(level_id : String)

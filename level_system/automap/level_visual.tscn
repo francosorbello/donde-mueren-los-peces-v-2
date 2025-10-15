@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://plpfb11fcas1"]
+
+[ext_resource type="Script" uid="uid://mnjd4epqq5ua" path="res://level_system/automap/level_visual.gd" id="1_jdrmp"]
+
+[node name="LevelVisual" type="GraphElement"]
+draggable = false
+selectable = false
+script = ExtResource("1_jdrmp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2

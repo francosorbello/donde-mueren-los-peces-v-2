@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce5m7b223yfg6"]
+
+[ext_resource type="Script" uid="uid://bdsdruassfxby" path="res://level_system/automap/automap.gd" id="1_kskib"]
+[ext_resource type="PackedScene" uid="uid://plpfb11fcas1" path="res://level_system/automap/level_visual.tscn" id="2_el0ph"]
+[ext_resource type="Texture2D" uid="uid://0tgj5rbu07vx" path="res://tests/test_rooms/Bigger_scene_test.png" id="3_nm55m"]
+[ext_resource type="Texture2D" uid="uid://dagb6l3cxtk23" path="res://tests/test_rooms/small_scene_test.png" id="4_eao3t"]
+
+[node name="Automap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kskib")
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+show_grid = false
+snapping_enabled = false
+minimap_enabled = false
+show_menu = false
+show_zoom_buttons = false
+show_grid_buttons = false
+show_minimap_button = false
+show_arrange_button = false
+
+[node name="BiggerTestSceneVisual" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+layout_mode = 0
+offset_left = 860.0
+offset_top = 440.0
+offset_right = 996.0
+offset_bottom = 528.0
+position_offset = Vector2(860, 440)
+level_id = "94855750-2b6c-43c5-8d48-fe974084d9ee"
+visual = ExtResource("3_nm55m")
+
+[node name="SmallSceneTestVisual" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 384.0
+offset_right = 900.0
+offset_bottom = 440.0
+position_offset = Vector2(852, 384)
+visual = ExtResource("4_eao3t")

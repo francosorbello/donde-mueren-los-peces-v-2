@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4er0ro4vssmy"]
+
+[ext_resource type="Script" uid="uid://yqlpy5l175xx" path="res://level_system/level_transition_area.gd" id="1_ui41w"]
+
+[node name="LevelTransitionArea" type="Area2D"]
+script = ExtResource("1_ui41w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -22,6 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+scroll_offset = Vector2(100, 0)
 show_grid = false
 snapping_enabled = false
 minimap_enabled = false
@@ -33,19 +34,19 @@ show_arrange_button = false
 
 [node name="BiggerTestSceneVisual" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
-offset_left = 860.0
+offset_left = 760.0
 offset_top = 440.0
-offset_right = 996.0
-offset_bottom = 528.0
+offset_right = 896.0
+offset_bottom = 528.00024
 position_offset = Vector2(860, 440)
 level_id = "94855750-2b6c-43c5-8d48-fe974084d9ee"
 visual = ExtResource("3_nm55m")
 
 [node name="SmallSceneTestVisual" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
-offset_left = 852.0
+offset_left = 752.0
 offset_top = 384.0
-offset_right = 900.0
+offset_right = 800.0
 offset_bottom = 440.0
 position_offset = Vector2(852, 384)
 visual = ExtResource("4_eao3t")

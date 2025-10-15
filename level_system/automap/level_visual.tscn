@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://plpfb11fcas1"]
+[gd_scene load_steps=3 format=3 uid="uid://plpfb11fcas1"]
 
 [ext_resource type="Script" uid="uid://mnjd4epqq5ua" path="res://level_system/automap/level_visual.gd" id="1_jdrmp"]
+[ext_resource type="Texture2D" uid="uid://dagb6l3cxtk23" path="res://tests/test_rooms/small_scene_test.png" id="2_7funx"]
 
 [node name="LevelVisual" type="GraphElement"]
 draggable = false
 selectable = false
 script = ExtResource("1_jdrmp")
+visual = ExtResource("2_7funx")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
+
+[connection signal="node_deselected" from="." to="." method="_on_node_deselected"]
+[connection signal="node_selected" from="." to="." method="_on_node_selected"]

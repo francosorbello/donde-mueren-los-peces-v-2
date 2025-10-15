@@ -26,6 +26,9 @@ func _ready():
 	_initial_collision_mask = collision_mask
 	_start_pos = global_position
 
+	GlobalSignal.game_ui_opened.connect(_on_ui_opened)
+	GlobalSignal.game_ui_closed.connect(_on_ui_closed)
+
 func _unhandled_input(event):
 	if event.is_action_pressed("select_ability"):
 		match event.as_text():
@@ -100,3 +103,9 @@ func _on_floor_detection_component_player_fell() -> void:
 	$DeadAnimPlayer.play_anim($Sprite2D)
 	global_position = _start_pos
 	pass # Replace with function body.
+
+func _on_ui_opened():
+	$StateMachine.transition_to("EmptyState")
+
+func _on_ui_closed():
+	$StateMachine.transition_to("IdleState")

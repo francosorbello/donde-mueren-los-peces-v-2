@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=41 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://nk1aatfajmy" path="res://interactables/better_interactable_manager.tscn" id="14_kb6p2"]
 [ext_resource type="Texture2D" uid="uid://dn14b2si6osly" path="res://assets/GRAPHICS/Bubble/bubble.png" id="15_wodsf"]
 [ext_resource type="Script" uid="uid://cqprkqpkvmaxw" path="res://player/states/on_air_current_state.gd" id="17_7pqkx"]
+[ext_resource type="Script" uid="uid://dinmes2qht02b" path="res://player/empty_state.gd" id="18_rptt4"]
 [ext_resource type="PackedScene" uid="uid://bk7iuu4nm3sej" path="res://player/dead_anim_player.tscn" id="22_bjvpn"]
 [ext_resource type="Script" uid="uid://js1b4vcldlwv" path="res://abilities/explosion_ability.gd" id="22_s7qer"]
 [ext_resource type="PackedScene" uid="uid://c1kriosoqfogr" path="res://bubble/explosion_area_visual.tscn" id="24_g4c7l"]
@@ -240,6 +241,9 @@ stream = SubResource("AudioStreamRandomizer_e7oew")
 [node name="OnAirCurrentState" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_detection_component")]
 script = ExtResource("17_7pqkx")
 fall_detection_component = NodePath("../../FloorDetectionComponent")
+
+[node name="EmptyState" type="Node" parent="StateMachine"]
+script = ExtResource("18_rptt4")
 
 [node name="BubbleIndicator" parent="." instance=ExtResource("8_rgyib")]
 visible = false

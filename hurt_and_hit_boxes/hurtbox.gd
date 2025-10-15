@@ -15,7 +15,8 @@ func enable():
 	_collision_shape.disabled = false
 
 func disable():
-	_collision_shape.disabled = true
+	_collision_shape.set_deferred("disabled",true)
+	# _collision_shape.disabled = true
 
 func _on_area_shape_entered(_area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area is not Hitbox:

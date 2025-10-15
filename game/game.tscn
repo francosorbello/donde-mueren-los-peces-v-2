@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=10 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
-[ext_resource type="PackedScene" uid="uid://ccv23w3x8awof" path="res://tests/bigger_scene_test.tscn" id="2_dxrkv"]
-[ext_resource type="PackedScene" uid="uid://dhhtspm33j6vk" path="res://tests/tilemap_test_2.tscn" id="3_4fuuu"]
+[ext_resource type="Resource" uid="uid://cvkc2kpwsnr3s" path="res://level_system/level_data_res.tres" id="2_u5opy"]
 [ext_resource type="Shader" uid="uid://b2me4ti8lr66k" path="res://crt_shader/crt_shader.gdshader" id="4_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://crtgn3p57vbx3" path="res://tests/debug_oxygen_bar.tscn" id="6_3vho3"]
 [ext_resource type="PackedScene" uid="uid://djic11w1vg7yn" path="res://inventory_system/inventory_manager.tscn" id="6_dakft"]
@@ -31,10 +30,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u5opy")
-levels = Dictionary[String, PackedScene]({
-"level1": ExtResource("2_dxrkv"),
-"level2": ExtResource("3_4fuuu")
-})
+level_data = ExtResource("2_u5opy")
+initial_level_name = "test_map_intro"
 
 [node name="InventoryManager" parent="." instance=ExtResource("6_dakft")]
 

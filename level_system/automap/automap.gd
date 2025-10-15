@@ -18,7 +18,6 @@ func _ready() -> void:
 	
 	_screen_center.x = ProjectSettings.get_setting("display/window/size/viewport_width")
 	_screen_center.y = ProjectSettings.get_setting("display/window/size/viewport_height")
-	print(_screen_center)
 	_screen_center = _screen_center/2
 
 func _unhandled_input(event):
@@ -40,13 +39,16 @@ func toggle_visible():
 
 func show_map():
 	var visible_levels = get_visible_levels()
+	print(visible_levels)
 	for visual in visuals:
 		if not visual.visible:
 			visual.show_visual(visible_levels)
 
 		if visual.level_id == _current_level:
-			center_on_visual(visual)
-			visual.selected = true
+			# center_on_visual(visual)
+			visual.toggle_current(true)
+		else:
+			visual.toggle_current(false)
 	show()
 	GlobalSignal.game_ui_opened.emit()
 
@@ -58,12 +60,10 @@ func get_visible_levels() -> Array[String]:
 	return []
 
 func _on_level_entered(id : String):
-	print("Current level is: ", id)
 	_current_level = id
 
 func center_on_visual(visual : GraphElement):
 	_test_visual = visual
 	var offset_required = _screen_center - position - visual.get_center_point()
-	print(visual.get_center_point(),offset_required,_screen_center)
 	$GraphEdit.scroll_offset = offset_required
 	queue_redraw()

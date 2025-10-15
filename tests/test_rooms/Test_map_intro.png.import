@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e46iwncnyrl0"
-path="res://.godot/imported/bastille-8-1x.png-9f074121a45cb424c82440e8c10f5a62.ctex"
+uid="uid://b7fe8ecfnfup"
+path="res://.godot/imported/Test_map_intro.png-2fd8e2d1a9cee26c205472f8e741ceb4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GRAPHICS/PALETTES/bastille-8-1x.png"
-dest_files=["res://.godot/imported/bastille-8-1x.png-9f074121a45cb424c82440e8c10f5a62.ctex"]
+source_file="res://tests/test_rooms/Test_map_intro.png"
+dest_files=["res://.godot/imported/Test_map_intro.png-2fd8e2d1a9cee26c205472f8e741ceb4.ctex"]
 
 [params]
 

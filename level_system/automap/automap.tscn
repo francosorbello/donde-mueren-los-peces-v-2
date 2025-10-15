@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce5m7b223yfg6"]
+[gd_scene load_steps=7 format=3 uid="uid://ce5m7b223yfg6"]
 
 [ext_resource type="Script" uid="uid://bdsdruassfxby" path="res://level_system/automap/automap.gd" id="1_kskib"]
 [ext_resource type="PackedScene" uid="uid://plpfb11fcas1" path="res://level_system/automap/level_visual.tscn" id="2_el0ph"]
-[ext_resource type="Texture2D" uid="uid://0tgj5rbu07vx" path="res://tests/test_rooms/Bigger_scene_test.png" id="3_nm55m"]
-[ext_resource type="Texture2D" uid="uid://dagb6l3cxtk23" path="res://tests/test_rooms/small_scene_test.png" id="4_eao3t"]
+[ext_resource type="Texture2D" uid="uid://b7fe8ecfnfup" path="res://tests/test_rooms/Test_map_intro.png" id="3_kskib"]
+[ext_resource type="Texture2D" uid="uid://crb4pwt1peoiy" path="res://tests/test_rooms/Test_map_left.png" id="4_eao3t"]
+[ext_resource type="Texture2D" uid="uid://2mebogwwbdmh" path="res://tests/test_rooms/Test_map_down.png" id="5_nm55m"]
+[ext_resource type="Texture2D" uid="uid://u4ojpwkdtdgd" path="res://tests/test_rooms/Test_map_right.png" id="6_q606s"]
 
 [node name="Automap" type="Control"]
 layout_mode = 3
@@ -22,7 +24,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-scroll_offset = Vector2(100, 0)
 show_grid = false
 snapping_enabled = false
 minimap_enabled = false
@@ -32,21 +33,41 @@ show_grid_buttons = false
 show_minimap_button = false
 show_arrange_button = false
 
-[node name="BiggerTestSceneVisual" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+[node name="LevelVisual" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
-offset_left = 760.0
-offset_top = 440.0
-offset_right = 896.0
-offset_bottom = 528.00024
-position_offset = Vector2(860, 440)
-level_id = "94855750-2b6c-43c5-8d48-fe974084d9ee"
-visual = ExtResource("3_nm55m")
+offset_left = 890.0
+offset_right = 946.0
+offset_bottom = 80.0
+position_offset = Vector2(890, 0)
+level_id = "b5d0630c-8d9d-40a1-bffe-30d2035817bb"
+visual = ExtResource("3_kskib")
 
-[node name="SmallSceneTestVisual" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+[node name="LevelVisual2" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
-offset_left = 752.0
-offset_top = 384.0
-offset_right = 800.0
-offset_bottom = 440.0
-position_offset = Vector2(852, 384)
+offset_left = 794.0
+offset_right = 890.0
+offset_bottom = 40.0
+position_offset = Vector2(794, 0)
+level_id = "8d4a9654-287d-4337-92c9-173b62adcd4b"
 visual = ExtResource("4_eao3t")
+
+[node name="LevelVisual3" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+layout_mode = 0
+offset_left = 874.0
+offset_top = 80.0
+offset_right = 954.0
+offset_bottom = 184.0
+position_offset = Vector2(874, 80)
+level_id = "86387d2e-ae78-49df-a2df-0888ea5d2740"
+visual = ExtResource("5_nm55m")
+
+[node name="LevelVisual4" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+layout_mode = 0
+offset_left = 954.0
+offset_top = 80.0
+offset_right = 1018.0
+offset_bottom = 136.0
+position_offset = Vector2(954, 80)
+selectable = true
+level_id = "a9195026-1a69-4873-90f4-901b55fe04cf"
+visual = ExtResource("6_q606s")

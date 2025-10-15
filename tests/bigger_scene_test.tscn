@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=4 uid="uid://ccv23w3x8awof"]
 
 [ext_resource type="Shader" uid="uid://bbse323pr0vvv" path="res://addons/eye_dropper/eye_dropper.gdshader" id="1_05qxl"]
-[ext_resource type="Texture2D" uid="uid://e46iwncnyrl0" path="res://assets/GRAPHICS/PALETTES/bastille-8-1x.png" id="2_o0ok4"]
+[ext_resource type="Texture2D" uid="uid://e46iwncnyrl0" path="res://assets/GRAPHICS/PALETTES/input_palette.png" id="2_o0ok4"]
 [ext_resource type="Texture2D" uid="uid://dpkceqajk0jtn" path="res://assets/GRAPHICS/PALETTES/grotesquely-cute-1x.png" id="3_kubw5"]
 [ext_resource type="TileSet" uid="uid://1h607v1lcoyp" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/bountiful_bits_tileset.tres" id="4_s0suj"]
 [ext_resource type="PackedScene" uid="uid://4ybnmc4j2y3v" path="res://player/player.tscn" id="5_o0ok4"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=4 uid="uid://c8clxf4rfie23"]
+
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="1_obqxp"]
+[ext_resource type="Material" uid="uid://i185qcwfbs7x" path="res://assets/GRAPHICS/PALETTES/tilemap_material.tres" id="2_ttbji"]
+[ext_resource type="TileSet" uid="uid://1h607v1lcoyp" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/bountiful_bits_tileset.tres" id="3_bn3jf"]
+[ext_resource type="PackedScene" uid="uid://4ybnmc4j2y3v" path="res://player/player.tscn" id="4_bn3jf"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="5_rma7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rma7e"]
+size = Vector2(10, 20)
+
+[node name="TestMapRight" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+material = ExtResource("2_ttbji")
+tile_map_data = PackedByteArray("AAAAAAAAAwAHAAMAAAABAAAAAwAHAAMAAAACAAAAAwAHAAMAAAADAAAAAwAHAAMAAAAEAAAAAwAHAAMAAAAFAAAAAwAHAAMAAAAAAAEAAwAHAAMAAAAAAAIAAwAHAAMAAAAAAAMAAwAHAAMAAAAAAAQAAwAHAAMAAAAAAAcAAwAHAAMAAAAAAAgAAwAHAAMAAAABAAgAAwAHAAMAAAACAAgAAwAHAAMAAAADAAgAAwAHAAMAAAAEAAgAAwAHAAMAAAAFAAgAAwAHAAMAAAAGAAgAAwAHAAMAAAAHAAgAAwAHAAMAAAAIAAgAAwAHAAMAAAAJAAgAAwAHAAMAAAAKAAgAAwAHAAMAAAALAAgAAwAHAAMAAAALAAYAAwAHAAMAAAALAAUAAwAHAAMAAAALAAQAAwAHAAMAAAALAAMAAwAHAAMAAAALAAIAAwAHAAMAAAALAAEAAwAHAAMAAAALAAAAAwAHAAMAAAAGAAAAAwAHAAMAAAAHAAAAAwAHAAMAAAAIAAAAAwAHAAMAAAAJAAAAAwAHAAMAAAAKAAAAAwAHAAMAAAALAAcAAwAHAAMAAAA=")
+tile_set = ExtResource("3_bn3jf")
+
+[node name="LevelInfo" type="Node" parent="."]
+script = ExtResource("1_obqxp")
+level_name = "test_map_right"
+id = "a9195026-1a69-4873-90f4-901b55fe04cf"
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="Player" parent="." instance=ExtResource("4_bn3jf")]
+position = Vector2(60, 40)
+
+[node name="LevelTransitionArea" parent="." instance=ExtResource("5_rma7e")]
+position = Vector2(0, 60)
+next_level_id = "test_map_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_rma7e")

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LevelDataResource" load_steps=6 format=3 uid="uid://cvkc2kpwsnr3s"]
+
+[ext_resource type="PackedScene" uid="uid://wrxtr56f7j3l" path="res://tests/test_rooms/scenes/test_map_intro.tscn" id="1_f8nwo"]
+[ext_resource type="Script" uid="uid://drppps17c0dgp" path="res://level_system/level_data.gd" id="1_sihxi"]
+[ext_resource type="PackedScene" uid="uid://dqic8hdho0hlx" path="res://tests/test_rooms/scenes/test_map_left.tscn" id="2_eyqog"]
+[ext_resource type="PackedScene" uid="uid://c8clxf4rfie23" path="res://tests/test_rooms/scenes/test_map_right.tscn" id="3_8niqr"]
+[ext_resource type="PackedScene" uid="uid://dayj64dy0a5x7" path="res://tests/test_rooms/scenes/test_map_down.tscn" id="4_6n800"]
+
+[resource]
+script = ExtResource("1_sihxi")
+levels = Dictionary[String, PackedScene]({
+"test_map_down": ExtResource("4_6n800"),
+"test_map_intro": ExtResource("1_f8nwo"),
+"test_map_left": ExtResource("2_eyqog"),
+"test_map_right": ExtResource("3_8niqr")
+})
+metadata/_custom_type_script = "uid://drppps17c0dgp"

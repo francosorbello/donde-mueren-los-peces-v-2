@@ -35,6 +35,7 @@ func add_persistent_event(ev_name: String, ev_value : float = 0.0) -> bool:
 func add_visited_level(id : String):
 	if not visited_levels.has(id):
 		visited_levels.append(id)
+		write_savegame()
 
 func clear_save():
 	persistent_events.clear()

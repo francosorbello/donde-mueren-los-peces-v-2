@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://1h607v1lcoyp" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/bountiful_bits_tileset.tres" id="1_lbya7"]
 [ext_resource type="PackedScene" uid="uid://4ybnmc4j2y3v" path="res://player/player.tscn" id="3_fsw6f"]
 [ext_resource type="Shader" uid="uid://bbse323pr0vvv" path="res://addons/eye_dropper/eye_dropper.gdshader" id="3_g2b56"]
-[ext_resource type="Texture2D" uid="uid://e46iwncnyrl0" path="res://assets/GRAPHICS/PALETTES/bastille-8-1x.png" id="4_110xg"]
+[ext_resource type="Texture2D" uid="uid://e46iwncnyrl0" path="res://assets/GRAPHICS/PALETTES/input_palette.png" id="4_110xg"]
 [ext_resource type="Texture2D" uid="uid://dpkceqajk0jtn" path="res://assets/GRAPHICS/PALETTES/grotesquely-cute-1x.png" id="5_s737f"]
 [ext_resource type="PackedScene" uid="uid://bn2a01n1dy2da" path="res://bubble/bubble_manager.tscn" id="6_s737f"]
 [ext_resource type="PackedScene" uid="uid://bxojbvxga3vpt" path="res://damageables/box.tscn" id="7_uky12"]

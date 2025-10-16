@@ -8,7 +8,6 @@ func _ready() -> void:
     pass
 
 func spawn_player(direction : Vector2):
-    print("spawning player on direction ",direction)
     var player = player_scene.instantiate() as APlayer
     var spawn_marker = level_info.get_spawn_marker(direction)
     if not spawn_marker:

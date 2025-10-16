@@ -39,7 +39,6 @@ func toggle_visible():
 
 func show_map():
 	var visible_levels = get_visible_levels()
-	print(visible_levels)
 	for visual in visuals:
 		if not visual.visible:
 			visual.show_visual(visible_levels)

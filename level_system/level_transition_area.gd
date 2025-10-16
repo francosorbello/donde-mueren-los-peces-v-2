@@ -15,7 +15,6 @@ func do_transition():
         push_error("NO NEXT LEVEL ID")
         return
     
-    print(_transition_direction_to_vector(direction),TransitionDirection.find_key(direction))
     GlobalSignal.level_change_requested.emit(next_level_id, _transition_direction_to_vector(direction))
 
 func _on_body_entered(body: Node2D) -> void:

@@ -6,6 +6,8 @@ signal level_loaded
 @export var initial_level_name : String
 var current_level : Node
 
+var last_transition_direction : Vector2
+
 func _ready():
 	GlobalSignal.level_change_requested.connect(_on_request_level_change)
 	
@@ -16,8 +18,9 @@ func _ready():
 	Console.add_command("dump_save",dump_save)
 	Console.font_size = 30
 
-func _on_request_level_change(lvl_name : String):
+func _on_request_level_change(lvl_name : String, direction = Vector2.ZERO):
 	if level_data.levels.has(lvl_name):
+		last_transition_direction = direction
 		load_level_scene(level_data.levels[lvl_name])
 
 func _clear_previous_level():
@@ -33,7 +36,9 @@ func load_level_scene(level_scene : PackedScene):
 	%GameViewport.add_child.call_deferred(level_instance)
 	
 	current_level = level_instance
-	
+	var player_spawner = current_level.find_child("PlayerSpawner")
+	if player_spawner:
+		player_spawner.call_deferred("spawn_player",last_transition_direction)
 	level_loaded.emit()
 
 	

@@ -46,6 +46,7 @@ func show_map():
 
 		if visual.level_id == _current_level:
 			# center_on_visual(visual)
+			center_on_node($GraphEdit,visual)
 			visual.toggle_current(true)
 		else:
 			visual.toggle_current(false)
@@ -67,3 +68,13 @@ func center_on_visual(visual : GraphElement):
 	var offset_required = _screen_center - position - visual.get_center_point()
 	$GraphEdit.scroll_offset = offset_required
 	queue_redraw()
+
+func center_on_node(graph_edit: GraphEdit, node: GraphElement) -> void:
+	var node_pos = node.position_offset
+	var node_size = node.size
+	var graph_size = graph_edit.size
+
+	var node_center = node_pos + node_size / 2.0
+	
+	var target_scroll = node_center - graph_size / 2.0 
+	graph_edit.scroll_offset = target_scroll / graph_edit.zoom

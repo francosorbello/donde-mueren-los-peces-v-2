@@ -24,14 +24,12 @@ func _on_node_selected() -> void:
     if Engine.is_editor_hint():
         return
 
-    print("Selected node ",name)
     $TextureRect.modulate = Color.WHITE
 
 func _on_node_deselected() -> void:
     if Engine.is_editor_hint():
         return
 
-    print("Deselected node ",name)
     $TextureRect.modulate = Color(1,1,1,0.6)
     pass # Replace with function body.
 

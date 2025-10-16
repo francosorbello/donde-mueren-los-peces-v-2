@@ -11,7 +11,7 @@ size = Vector2(10, 20)
 
 [node name="TestMapLeft" type="Node2D"]
 
-[node name="LevelInfo" type="Node" parent="."]
+[node name="LevelInfo" type="Node" parent="." groups=["level_info"]]
 script = ExtResource("1_bm1f0")
 level_name = "test_map_left"
 id = "8d4a9654-287d-4337-92c9-173b62adcd4b"
@@ -25,6 +25,7 @@ tile_set = ExtResource("2_1xiul")
 [node name="LevelTransitionArea" parent="." instance=ExtResource("5_kf3fu")]
 position = Vector2(170, 70)
 next_level_id = "test_map_intro"
+direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
 position = Vector2(5, 0)

@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://wrxtr56f7j3l"]
+[gd_scene load_steps=11 format=4 uid="uid://wrxtr56f7j3l"]
 
-[ext_resource type="Material" uid="uid://i185qcwfbs7x" path="res://assets/GRAPHICS/PALETTES/tilemap_material.tres" id="1_gt5mx"]
-[ext_resource type="TileSet" uid="uid://1h607v1lcoyp" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/bountiful_bits_tileset.tres" id="1_og1u3"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="2_g5q3a"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_l13sj"]
 [ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_0vpul"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="4_oo2t5"]
+[ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="6_g5q3a"]
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="6_l13sj"]
+[ext_resource type="Resource" uid="uid://wdxb4vdl6vwa" path="res://abilities/ability_items/abi_jump.tres" id="7_0v5by"]
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="8_0v5by"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo2t5"]
 size = Vector2(10, 20)
@@ -30,13 +33,11 @@ position = Vector2(30, 50)
 [node name="UpMarker" type="Marker2D" parent="Level info stuff"]
 position = Vector2(70, 110)
 
-[node name="DefaultMarker" type="Marker2D" parent="Level info stuff"]
+[node name="PlayerSpawnPoint" parent="Level info stuff" instance=ExtResource("2_g5q3a")]
 position = Vector2(70, 40)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-material = ExtResource("1_gt5mx")
-tile_map_data = PackedByteArray("AAAAAAAAAwAHAAMAAAABAAAAAwAHAAMAAAACAAAAAwAHAAMAAAADAAAAAwAHAAMAAAAEAAAAAwAHAAMAAAAFAAAAAwAHAAMAAAAGAAAAAwAHAAMAAAAHAAAAAwAHAAMAAAAIAAAAAwAHAAMAAAAJAAAAAwAHAAMAAAAKAAAAAwAHAAMAAAALAAAAAwAHAAMAAAAMAAAAAwAHAAMAAAAMAAEAAwAHAAMAAAAMAAIAAwAHAAMAAAAMAAMAAwAHAAMAAAAMAAQAAwAHAAMAAAAMAAUAAwAHAAMAAAAMAAYAAwAHAAMAAAAMAAcAAwAHAAMAAAAMAAgAAwAHAAMAAAAMAAkAAwAHAAMAAAAMAAoAAwAHAAMAAAAMAAsAAwAHAAMAAAAMAAwAAwAHAAMAAAAMAA0AAwAHAAMAAAALAA0AAwAHAAMAAAAKAA0AAwAHAAMAAAAJAA0AAwAHAAMAAAAIAA0AAwAHAAMAAAAFAA0AAwAHAAMAAAAEAA0AAwAHAAMAAAADAA0AAwAHAAMAAAACAA0AAwAHAAMAAAABAA0AAwAHAAMAAAAAAA0AAwAHAAMAAAAAAAsAAwAHAAMAAAAAAAoAAwAHAAMAAAAAAAkAAwAHAAMAAAAAAAgAAwAHAAMAAAAAAAcAAwAHAAMAAAAAAAYAAwAHAAMAAAAAAAwAAwAHAAMAAAAAAAEAAwAHAAMAAAAAAAIAAwAHAAMAAAAAAAMAAwAHAAMAAAA=")
-tile_set = ExtResource("1_og1u3")
+[node name="TileMapLayer" parent="." instance=ExtResource("2_l13sj")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAHAAMAAAAAAAEAAwAHAAMAAAAAAAIAAwAHAAMAAAAAAAMAAwAHAAMAAAAAAAYAAwAHAAMAAAAAAAcAAwAHAAMAAAAAAAgAAwAHAAMAAAAAAAkAAwAHAAMAAAAAAAoAAwAHAAMAAAAAAAsAAwAHAAMAAAAAAAwAAwAHAAMAAAAAAA0AAwAHAAMAAAABAA0AAwAHAAMAAAACAA0AAwAHAAMAAAADAA0AAwAHAAMAAAAEAA0AAwAHAAMAAAAFAA0AAwAHAAMAAAAIAA0AAwAHAAMAAAAJAA0AAwAHAAMAAAAKAA0AAwAHAAMAAAALAA0AAwAHAAMAAAAMAA0AAwAHAAMAAAANAA0AAwAHAAMAAAAOAA0AAwAHAAMAAAAOAAwAAwAHAAMAAAAOAAsAAwAHAAMAAAAOAAoAAwAHAAMAAAAOAAkAAwAHAAMAAAAPAAgAAwAHAAMAAAAPAAcAAwAHAAMAAAAPAAYAAwAHAAMAAAAPAAUAAwAHAAMAAAAPAAQAAwAHAAMAAAAQAAQAAwAHAAMAAAAQAAMAAwAHAAMAAAAQAAIAAwAHAAMAAAAQAAEAAwAHAAMAAAAQAAAAAwAHAAMAAAAPAAAAAwAHAAMAAAABAAAAAwAHAAMAAAACAAAAAwAHAAMAAAADAAAAAwAHAAMAAAAEAAAAAwAHAAMAAAAFAAAAAwAHAAMAAAAGAAAAAwAHAAMAAAAHAAAAAwAHAAMAAAAIAAAAAwAHAAMAAAAJAAAAAwAHAAMAAAAKAAAAAwAHAAMAAAALAAAAAwAHAAMAAAAMAAAAAwAHAAMAAAANAAAAAwAHAAMAAAAOAAAAAwAHAAMAAAA=")
 
 [node name="LevelTransitionArea" parent="." instance=ExtResource("4_oo2t5")]
 position = Vector2(0, 50)
@@ -58,4 +59,11 @@ shape = SubResource("RectangleShape2D_csnoe")
 
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("6_l13sj")]
 level_info = NodePath("../Level info stuff/LevelInfo")
-default_spawn_pos = NodePath("../Level info stuff/DefaultMarker")
+default_spawn_pos = NodePath("../Level info stuff/PlayerSpawnPoint")
+
+[node name="JumpItem" parent="." instance=ExtResource("6_g5q3a")]
+position = Vector2(70, 90)
+item = ExtResource("7_0v5by")
+event_name = "ability_jump_picked_up"
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("8_0v5by")]

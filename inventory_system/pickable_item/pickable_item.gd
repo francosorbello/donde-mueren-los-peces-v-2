@@ -31,16 +31,32 @@ func _ready() -> void:
 		icon = item.world_icon
 
 func _on_better_interactable_component_on_interact() -> void:
+	if not item:
+		return
+
+	if item.type == AnItem.ItemType.Ability:
+		var saved_game = IndieBlueprintSaveManager.current_saved_game as ASavedGame
+		if saved_game:
+			saved_game.add_ability(item)
+			PersistencySystem.set_event(event_name,1.0)
+		return
+
 	var inventory_manager = get_tree().get_first_node_in_group("inventory_manager")
-	if inventory_manager and item:
+	if inventory_manager:
 		inventory_manager.add_item(item)
 		PersistencySystem.set_event(event_name,1.0)
 	
 	# queue_free()
 
 func create_event():
-	if item:
-		event_name = "item_%s_picked_up"%_get_event_name()
+	if not item:
+		return
+	
+	var prefix = "item"
+	if item.type == AnItem.ItemType.Ability:
+		prefix = "ability"
+	
+	event_name = "%s_%s_picked_up"%[prefix,_get_event_name()]
 
 ## Generates event name based on item name
 func _get_event_name() -> String:

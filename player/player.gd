@@ -10,8 +10,7 @@ class_name APlayer
 
 @export_category("Abilities")
 @export_flags_2d_physics var jump_collision_mask : int
-@export var abilities : Array[AbilityData]
-var current_ability : AbilityData
+@export var abilities : Array[AnItem]
 
 var last_direction : Vector2
 
@@ -22,22 +21,16 @@ var _start_pos
 var extra_velocity : Vector2
 
 func _ready():
-	current_ability = abilities[0]
 	_initial_collision_mask = collision_mask
 	_start_pos = global_position
 
 	GlobalSignal.game_ui_opened.connect(_on_ui_opened)
 	GlobalSignal.game_ui_closed.connect(_on_ui_closed)
+	var saved_game = SaveUtils.get_save()
+	if saved_game:
+		abilities = saved_game.unlocked_abilities
 
 func _unhandled_input(event):
-	if event.is_action_pressed("select_ability"):
-		match event.as_text():
-			"1":
-				current_ability = abilities[0]
-			"2":
-				current_ability = abilities[1]
-		return
-
 	# if event.is_action_pressed("shoot_bubble"):
 	# 	$StateMachine.transition_to("ShootingBubbleState")
 	# 	return
@@ -57,7 +50,7 @@ func _unhandled_input(event):
 	# 	current_ability.execute(self)
 	# 	return
 
-	if event.is_action_pressed("jump") and $StateMachine.current_state.name != "JumpingState":
+	if event.is_action_pressed("jump") and has_ability_named("jump") and $StateMachine.current_state.name != "JumpingState":
 		$StateMachine.transition_to("JumpingState")
 
 func play_anim(anim_name : String):
@@ -98,6 +91,15 @@ func add_extra_velocity(vel : Vector2, time : float):
 	get_tree().create_timer(time).timeout.connect(func():
 		extra_velocity = Vector2.ZERO
 	)
+
+func has_ability_named(ab_name : String) -> bool:
+	var lowercase_name = ab_name.to_lower()
+
+	for ability in abilities:
+		if ability.item_name.to_lower() == lowercase_name:
+			return true
+
+	return false
 
 func _on_floor_detection_component_player_fell() -> void:
 	$DeadAnimPlayer.play_anim($Sprite2D)

@@ -2,7 +2,7 @@ extends Node
 
 @export var player_scene : PackedScene
 @export var level_info : LevelInfo
-@export var default_spawn_pos : Marker2D
+@export var default_spawn_pos : PlayerSpawnPoint
 
 func _ready() -> void:
     pass

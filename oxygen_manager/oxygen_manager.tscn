@@ -5,6 +5,7 @@
 [node name="OxygenManager" type="Node"]
 script = ExtResource("1_6djrf")
 depletion_rate_secs = 5.0
+deplete_over_fixed_time = true
 
 [node name="DepletionTimer" type="Timer" parent="."]
 

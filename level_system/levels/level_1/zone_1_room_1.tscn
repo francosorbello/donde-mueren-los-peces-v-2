@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=4 uid="uid://dqq8dy0xuh3ec"]
+
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="1_mn115"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="3_dkwmj"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_mddm8"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="4_dkwmj"]
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="5_xqrtf"]
+
+[node name="Zone_1_Room_1" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("5_xqrtf")]
+offset_right = 288.0
+offset_bottom = 270.0
+
+[node name="TileMapLayer" parent="." instance=ExtResource("1_mn115")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAHAAMAAAAAAAEAAwAHAAMAAAAAAAIAAwAHAAMAAAAAAAMAAwAHAAMAAAAAAAQAAwAHAAMAAAAAAAUAAwAHAAMAAAAAAAYAAwAHAAMAAAAAAAcAAwAHAAMAAAAAAAgAAwAHAAMAAAAAAAkAAwAHAAMAAAAAAAwAAwAHAAMAAAAAAA0AAwAHAAMAAAAAAA4AAwAHAAMAAAAAAA8AAwAHAAMAAAAAABoAAwAHAAMAAAAAABkAAwAHAAMAAAAAABAAAwAHAAMAAAAAABEAAwAHAAMAAAAAABIAAwAHAAMAAAAAABMAAwAHAAMAAAAAABQAAwAHAAMAAAAAABUAAwAHAAMAAAAAABYAAwAHAAMAAAAAABgAAwAHAAMAAAAAABcAAwAHAAMAAAABABoAAwAHAAMAAAACABoAAwAHAAMAAAADABoAAwAHAAMAAAAEABoAAwAHAAMAAAAFABoAAwAHAAMAAAAGABoAAwAHAAMAAAAHABoAAwAHAAMAAAAIABoAAwAHAAMAAAAJABoAAwAHAAMAAAAKABoAAwAHAAMAAAALABoAAwAHAAMAAAAQABoAAwAHAAMAAAARABoAAwAHAAMAAAASABoAAwAHAAMAAAATABoAAwAHAAMAAAAUABoAAwAHAAMAAAAVABoAAwAHAAMAAAAWABoAAwAHAAMAAAAXABoAAwAHAAMAAAAYABoAAwAHAAMAAAAZABoAAwAHAAMAAAAaABoAAwAHAAMAAAAbABoAAwAHAAMAAAAcABoAAwAHAAMAAAAcABkAAwAHAAMAAAAcABgAAwAHAAMAAAAcABcAAwAHAAMAAAAcABYAAwAHAAMAAAAcABUAAwAHAAMAAAAcABQAAwAHAAMAAAAcABMAAwAHAAMAAAAcABIAAwAHAAMAAAAcABEAAwAHAAMAAAAcABAAAwAHAAMAAAAcAA8AAwAHAAMAAAAcAA4AAwAHAAMAAAAcAA0AAwAHAAMAAAAcAAwAAwAHAAMAAAAcAAkAAwAHAAMAAAAcAAgAAwAHAAMAAAAcAAcAAwAHAAMAAAAcAAYAAwAHAAMAAAAcAAUAAwAHAAMAAAAcAAQAAwAHAAMAAAAcAAMAAwAHAAMAAAAcAAIAAwAHAAMAAAAcAAEAAwAHAAMAAAAcAAAAAwAHAAMAAAABAAAAAwAHAAMAAAACAAAAAwAHAAMAAAADAAAAAwAHAAMAAAAEAAAAAwAHAAMAAAAFAAAAAwAHAAMAAAAGAAAAAwAHAAMAAAAHAAAAAwAHAAMAAAAIAAAAAwAHAAMAAAAJAAAAAwAHAAMAAAAKAAAAAwAHAAMAAAALAAAAAwAHAAMAAAAMAAAAAwAHAAMAAAANAAAAAwAHAAMAAAAOAAAAAwAHAAMAAAAPAAAAAwAHAAMAAAAQAAAAAwAHAAMAAAARAAAAAwAHAAMAAAASAAAAAwAHAAMAAAATAAAAAwAHAAMAAAAUAAAAAwAHAAMAAAAVAAAAAwAHAAMAAAAWAAAAAwAHAAMAAAAXAAAAAwAHAAMAAAAYAAAAAwAHAAMAAAAZAAAAAwAHAAMAAAAaAAAAAwAHAAMAAAAbAAAAAwAHAAMAAAA=")
+
+[node name="Level info stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="Level info stuff" node_paths=PackedStringArray("down_position", "left_position", "right_position") groups=["level_info"]]
+script = ExtResource("3_mddm8")
+level_name = "zone_1_room_1"
+id = "6703520f-4295-48f0-aa1b-d4bec633d36e"
+down_position = NodePath("../DownMarker")
+left_position = NodePath("../LeftMarker")
+right_position = NodePath("../RightMarker")
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="RightMarker" type="Marker2D" parent="Level info stuff"]
+position = Vector2(270, 110)
+
+[node name="LeftMarker" type="Marker2D" parent="Level info stuff"]
+position = Vector2(20, 110)
+
+[node name="DownMarker" type="Marker2D" parent="Level info stuff"]
+position = Vector2(140, 260)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("3_dkwmj")]
+position = Vector2(140, 60)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("4_dkwmj")]
+level_info = NodePath("../Level info stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")

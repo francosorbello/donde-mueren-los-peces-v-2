@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b57h7d56a30uw"]
+
+[ext_resource type="Material" uid="uid://i185qcwfbs7x" path="res://assets/GRAPHICS/PALETTES/tilemap_material.tres" id="1_2qnit"]
+[ext_resource type="TileSet" uid="uid://1h607v1lcoyp" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/bountiful_bits_tileset.tres" id="2_js3fj"]
+
+[node name="TileMapLayer" type="TileMapLayer"]
+material = ExtResource("1_2qnit")
+tile_set = ExtResource("2_js3fj")

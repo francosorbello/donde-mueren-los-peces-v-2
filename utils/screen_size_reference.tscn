@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://h3poltp7l0r"]
+
+[node name="ScreenSizeReference" type="ReferenceRect"]
+custom_minimum_size = Vector2(288, 270)
+offset_right = 40.0
+offset_bottom = 40.0
+border_width = 2.0

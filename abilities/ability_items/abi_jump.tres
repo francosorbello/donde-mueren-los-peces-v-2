@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AnItem" load_steps=3 format=3 uid="uid://wdxb4vdl6vwa"]
+
+[ext_resource type="Texture2D" uid="uid://bwuxg2ihlhbct" path="res://assets/GRAPHICS/items/helmet1_16x16.png" id="1_1hs4v"]
+[ext_resource type="Script" uid="uid://egbha40d4mds" path="res://inventory_system/item.gd" id="1_srygi"]
+
+[resource]
+script = ExtResource("1_srygi")
+item_name = "Jump"
+descrption = "Allows the player to jump"
+type = 1
+icon = ExtResource("1_1hs4v")
+world_icon = ExtResource("1_1hs4v")
+metadata/_custom_type_script = "uid://egbha40d4mds"

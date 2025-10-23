@@ -1,11 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=38 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
-[ext_resource type="Script" uid="uid://dalx4cixpm2ow" path="res://abilities/ability_data.gd" id="2_yllr7"]
 [ext_resource type="AudioStream" uid="uid://dgadymra1s2ay" path="res://assets/SOUNDS/pretty_footsetp.mp3" id="3_g1dw6"]
-[ext_resource type="Resource" uid="uid://d2i2qlatmiukp" path="res://abilities/ab_dash.tres" id="3_kb6p2"]
-[ext_resource type="Resource" uid="uid://dsvqax727ovxw" path="res://abilities/ab_explode.tres" id="4_wodsf"]
 [ext_resource type="Script" uid="uid://8dv7dce6ncjv" path="res://addons/ftr_tools/sm/state_machine.gd" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://bijnqy4wt580s" path="res://player/states/idle_state.gd" id="5_qjkh3"]
 [ext_resource type="Script" uid="uid://c55rmvk4p4wdj" path="res://player/states/moving_state.gd" id="6_g6k8r"]
@@ -172,7 +169,6 @@ script = ExtResource("1_rkbax")
 speed = 60.0
 accel = 10.0
 soften_color = Color(0.5251013, 0.5251013, 0.5251013, 0.6117647)
-abilities = Array[ExtResource("2_yllr7")]([ExtResource("3_kb6p2"), ExtResource("4_wodsf")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1

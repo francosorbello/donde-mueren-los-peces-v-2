@@ -58,7 +58,7 @@ func _play_sound(audio_player : AudioStreamPlayer):
     audio_player.play()
 
 func state_unhandled_input(event : InputEvent):
-    if event.is_action_pressed("dash"):
+    if event.is_action_pressed("dash") and player.has_ability_named("dash"):
         _keep_hurtbox_disabled = true
         state_machine.transition_to("QuickDashingState")
         return
@@ -68,7 +68,7 @@ func state_unhandled_input(event : InputEvent):
         get_viewport().set_input_as_handled()
         return
     
-    if event.is_action_pressed("use_ability"):
+    if event.is_action_pressed("use_ability") and player.has_ability_named("explosion"):
         player.use_explosion_ability()
         state_machine.transition_to("MovingState")
         return

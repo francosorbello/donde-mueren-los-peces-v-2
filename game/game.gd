@@ -11,17 +11,22 @@ var last_transition_direction : Vector2
 func _ready():
 	GlobalSignal.level_change_requested.connect(_on_request_level_change)
 	
-	if initial_level_name and level_data.levels.has(initial_level_name):
-		load_level_scene(level_data.levels[initial_level_name])
+	if initial_level_name:
+		# load_level_scene(level_data.levels[initial_level_name])
+		_on_request_level_change(initial_level_name,Vector2.ZERO)
 
 	Console.add_command("clear_save",clear_save)
 	Console.add_command("dump_save",dump_save)
 	Console.font_size = 30
+	OxygenManager.start_depletion()
 
 func _on_request_level_change(lvl_name : String, direction = Vector2.ZERO):
 	if level_data.levels.has(lvl_name):
+		print("Loading level %s with direction %s"%[lvl_name,direction])
 		last_transition_direction = direction
 		load_level_scene(level_data.levels[lvl_name])
+	else:
+		push_error("Level %s is not on level data"%lvl_name)
 
 func _clear_previous_level():
 	if not current_level:

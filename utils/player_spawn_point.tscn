@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://18wtqp4mlws"]
+
+[ext_resource type="Script" uid="uid://hvcy7ocnpa1e" path="res://utils/player_spawn_point.gd" id="1_7dk1e"]
+[ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_eed38"]
+[ext_resource type="Script" uid="uid://dkkrm1ylaq1y7" path="res://utils/player_reference.gd" id="2_75q1x"]
+
+[node name="PlayerSpawnPoint" type="Marker2D"]
+script = ExtResource("1_7dk1e")
+
+[node name="PlayerReference" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.37254903)
+texture = ExtResource("1_eed38")
+script = ExtResource("2_75q1x")

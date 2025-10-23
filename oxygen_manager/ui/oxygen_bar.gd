@@ -6,9 +6,12 @@ func _ready():
     OxygenManager.oxygen_restored.connect(_on_oxygen_changed)
 
 func _on_oxygen_changed(_value):
-    print("oxygen changed to %f"%_value)
+    # print("Oxygen changed by %f"%_value)
     var tween := create_tween()
-    tween.tween_property($ProgressBar,"value",OxygenManager.current_oxygen,0.1)
+    var tween_duration = 0.1
+    if _value >= 1:
+        tween_duration = _value - 1
+    tween.tween_property($ProgressBar,"value",OxygenManager.current_oxygen,tween_duration)
     # $ProgressBar.value = OxygenManager.current_oxygen
 
 func start():

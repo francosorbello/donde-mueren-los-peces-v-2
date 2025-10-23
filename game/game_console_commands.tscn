@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq36b0nga2k5y"]
+
+[ext_resource type="Script" uid="uid://epyd8qsgmex4" path="res://game/game_console_commands.gd" id="1_w62tg"]
+
+[node name="GameConsoleCommands" type="Node"]
+script = ExtResource("1_w62tg")
+abilities_directory = "res://abilities/ability_items"

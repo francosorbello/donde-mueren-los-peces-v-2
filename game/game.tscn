@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=16 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://cvkc2kpwsnr3s" path="res://level_system/level_data_res.tres" id="2_u5opy"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://ceskirg5tq6wp" path="res://assets/SOUNDS/music/WAV_Don’t_Look_Back.mp3" id="9_qf6n1"]
 [ext_resource type="AudioStream" uid="uid://dt73qjnoy4jew" path="res://assets/SOUNDS/music/WAV_This_Could_Be_Anywhere_in_the_World.mp3" id="10_vsp63"]
 [ext_resource type="AudioStream" uid="uid://delhiq2cjt60q" path="res://assets/SOUNDS/music/WAV_Who_Are_You.mp3" id="11_b686c"]
+[ext_resource type="PackedScene" uid="uid://bq36b0nga2k5y" path="res://game/game_console_commands.tscn" id="12_qf6n1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxrkv"]
 shader = ExtResource("4_dxrkv")
@@ -43,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u5opy")
 level_data = ExtResource("2_u5opy")
-initial_level_name = "zone_1_room_1"
+initial_level_name = "zone_1_room_2"
 
 [node name="InventoryManager" parent="." instance=ExtResource("6_dakft")]
 
@@ -125,3 +126,5 @@ grow_horizontal = 0
 stream = SubResource("AudioStreamPlaylist_hb504")
 volume_db = -10.0
 autoplay = true
+
+[node name="GameConsoleCommands" parent="." instance=ExtResource("12_qf6n1")]

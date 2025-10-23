@@ -15,9 +15,6 @@ func _ready():
 		# load_level_scene(level_data.levels[initial_level_name])
 		_on_request_level_change(initial_level_name,Vector2.ZERO)
 
-	Console.add_command("clear_save",clear_save)
-	Console.add_command("dump_save",dump_save)
-	Console.font_size = 30
 	OxygenManager.start_depletion()
 
 func _on_request_level_change(lvl_name : String, direction = Vector2.ZERO):
@@ -45,23 +42,4 @@ func load_level_scene(level_scene : PackedScene):
 	if player_spawner:
 		player_spawner.call_deferred("spawn_player",last_transition_direction)
 	level_loaded.emit()
-
 	
-func clear_save():
-	var current_save = IndieBlueprintSaveManager.current_saved_game as ASavedGame
-	if current_save:
-		current_save.clear_save()
-		Console.print_line("Save cleared")
-
-func dump_save():
-	var current_save = IndieBlueprintSaveManager.current_saved_game as ASavedGame
-	if current_save:
-		var save_copy = current_save.duplicate()
-	# var save_name = "save_%d"%randi_range(1,1000)
-		var save_name = save_copy.filename
-		var save_path = "res://tests/save_dumps/%s.res"%save_name
-		var result = ResourceSaver.save(save_copy,save_path)
-		if result == OK:
-			Console.print_line("Dumped save %s to path %s"%[save_name,save_path])
-		else:
-			Console.print_error("Could not dump save")

@@ -13,6 +13,8 @@ extends PlayerState
 var _accoumulated_sample_time : float = 0
 var _keep_hurtbox_disabled : bool = false
 
+var _bubble_tween : Tween
+
 func enter():
     floor_detection_component.can_fall = false
 
@@ -21,8 +23,11 @@ func enter():
     $JumpDurationTimer.start()
     
     player.play_anim("idle")
+
     play_show_bubble_anim()
     _play_sound($StartJumpSound)
+
+
 
 func exit():
     floor_detection_component.can_fall = not _keep_hurtbox_disabled
@@ -36,22 +41,34 @@ func exit():
 
 func play_bubble_anim(to_value : float) -> Tween:
     var sprite := player.get_bubble_sprite()
-    var tween := create_tween()
+    _stop_buble_tween()
+    _bubble_tween = create_tween()
     
-    tween.tween_property(sprite,"scale",Vector2(to_value,to_value),0.3)
+    _bubble_tween.tween_property(sprite,"scale",Vector2(to_value,to_value),0.3)
+    if to_value != 0:
+        _bubble_tween.tween_property(sprite,"modulate",Color.RED,$JumpDurationTimer.wait_time)
     
-    return tween
+    return _bubble_tween
 
 func play_show_bubble_anim():
-    player.get_bubble_sprite().visible = true
+    player.get_bubble_sprite().modulate = Color.WHITE
     player.get_bubble_sprite().scale = Vector2.ZERO
+    player.get_bubble_sprite().visible = true
+
     play_bubble_anim(0.8)
 
 func play_hide_bubble_anim():
-    var tween := play_bubble_anim(0)
-    tween.finished.connect(func():
+    play_bubble_anim(0)
+
+    _bubble_tween.finished.connect(func():
         player.get_bubble_sprite().visible = false
+        player.get_bubble_sprite().modulate = Color.WHITE
     )
+
+func _stop_buble_tween():
+    if _bubble_tween:
+        if _bubble_tween.is_running():
+            _bubble_tween.kill()
 
 func _play_sound(audio_player : AudioStreamPlayer):
     audio_player.pitch_scale = randf_range(0.8,1.2)

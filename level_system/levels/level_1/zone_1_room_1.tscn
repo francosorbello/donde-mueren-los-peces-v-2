@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=4 uid="uid://dqq8dy0xuh3ec"]
+[gd_scene load_steps=10 format=4 uid="uid://dqq8dy0xuh3ec"]
 
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="1_mn115"]
 [ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="3_dkwmj"]
 [ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_mddm8"]
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="4_dkwmj"]
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="5_xqrtf"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="6_qjl8j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hs3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjl8j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mehd2"]
+size = Vector2(40, 20)
 
 [node name="Zone_1_Room_1" type="Node2D"]
 
@@ -41,3 +49,25 @@ position = Vector2(140, 60)
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("4_dkwmj")]
 level_info = NodePath("../Level info stuff/LevelInfo")
 default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LeftTransition" parent="." instance=ExtResource("6_qjl8j")]
+position = Vector2(0, 110)
+next_level_id = "zone_1_room_2"
+direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftTransition"]
+shape = SubResource("RectangleShape2D_3hs3x")
+
+[node name="RightTransition" parent="." instance=ExtResource("6_qjl8j")]
+position = Vector2(288, 110)
+next_level_id = "zone_1_room_7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightTransition"]
+shape = SubResource("RectangleShape2D_qjl8j")
+
+[node name="DownTransition" parent="." instance=ExtResource("6_qjl8j")]
+process_mode = 4
+position = Vector2(140, 270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownTransition"]
+shape = SubResource("RectangleShape2D_mehd2")

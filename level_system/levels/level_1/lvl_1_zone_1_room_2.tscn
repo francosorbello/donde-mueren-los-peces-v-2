@@ -86,14 +86,14 @@ position = Vector2(140, 70)
 curve = SubResource("Curve2D_rtut3")
 width = 25.0
 
-[node name="@Area2D@142324" type="Area2D" parent="DeathZone"]
+[node name="Area2D" type="Area2D" parent="DeathZone"]
 collision_layer = 32
 collision_mask = 32
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeathZone/@Area2D@142324"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeathZone/Area2D"]
 polygon = PackedVector2Array(-20, 12.5, 20, 12.5, 20, -12.5, -20, -12.5)
 
-[node name="@Polygon2D@142325" type="Polygon2D" parent="DeathZone"]
+[node name="Polygon2D" type="Polygon2D" parent="DeathZone"]
 material = ExtResource("8_828oe")
 texture = ExtResource("9_sessd")
 polygon = PackedVector2Array(-20, 12.5, 20, 12.5, 20, -12.5, -20, -12.5)

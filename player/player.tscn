@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=39 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://c1kriosoqfogr" path="res://bubble/explosion_area_visual.tscn" id="24_g4c7l"]
 [ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="24_knn7v"]
 [ext_resource type="AudioStream" uid="uid://cb8rkyh42ljde" path="res://assets/SOUNDS/explosion5.mp3" id="25_knn7v"]
+[ext_resource type="Script" uid="uid://dsqa6qt0p6jf" path="res://player/spawn_point_manager.gd" id="26_7pqkx"]
 [ext_resource type="Script" uid="uid://dn48vjrdhx4i" path="res://player/floor_detection/floor_detection_component.gd" id="26_uw77l"]
 [ext_resource type="PackedScene" uid="uid://bjka4rd2o0w7v" path="res://player/floor_detection/floor_detector.tscn" id="27_uw77l"]
 
@@ -295,6 +296,13 @@ shape = SubResource("RectangleShape2D_uw77l")
 debug_color = Color(7.70092e-07, 0.6247227, 0.52935916, 0.41960785)
 
 [node name="CoyoteTimeTimer" type="Timer" parent="FloorDetectionComponent"]
+
+[node name="SafePointManager" type="Node" parent="." node_paths=PackedStringArray("floor_detector", "state_machine")]
+script = ExtResource("26_7pqkx")
+floor_detector = NodePath("../FloorDetectionComponent/FloorDetector")
+state_machine = NodePath("../StateMachine")
+
+[node name="RefreshPositionTimer" type="Timer" parent="SafePointManager"]
 
 [connection signal="timeout" from="StateMachine/JumpingState/JumpDurationTimer" to="StateMachine/JumpingState" method="_on_jump_duration_timer_timeout"]
 [connection signal="player_fell" from="FloorDetectionComponent" to="." method="_on_floor_detection_component_player_fell"]

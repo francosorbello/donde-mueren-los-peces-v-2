@@ -21,7 +21,6 @@ func _process(_delta: float) -> void:
         var new_dir = get_parent().direction
         if new_dir != direction:
             direction = new_dir
-            print(_transition_direction_to_vector(direction))
             queue_redraw()
 
 func _draw() -> void:

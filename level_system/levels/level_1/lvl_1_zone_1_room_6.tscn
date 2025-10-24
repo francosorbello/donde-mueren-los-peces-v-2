@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=4 uid="uid://cwi2kij2wbrj0"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_ick8t"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_sjo5r"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_erpnq"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_wrved"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_dvnga"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_idhyg"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="7_5nq24"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nq24"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikht1"]
+
+[node name="lvl_1_zone_1_room_6" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_ick8t")]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_sjo5r")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAHAAMAAAABAAAAAwAHAAMAAAACAAAAAwAHAAMAAAADAAAAAwAHAAMAAAAEAAAAAwAHAAMAAAAFAAAAAwAHAAMAAAAGAAAAAwAHAAMAAAAHAAAAAwAHAAMAAAAIAAAAAwAHAAMAAAAJAAAAAwAHAAMAAAAKAAAAAwAHAAMAAAAAAAEAAwAHAAMAAAAAAAIAAwAHAAMAAAAAAAMAAwAHAAMAAAAAAAQAAwAHAAMAAAAAAAcAAwAHAAMAAAAAAAgAAwAHAAMAAAAAAAkAAwAHAAMAAAAAAAoAAwAHAAMAAAAAAAsAAwAHAAMAAAAAAAwAAwAHAAMAAAAAAA0AAwAHAAMAAAAAAA4AAwAHAAMAAAABAA4AAwAHAAMAAAACAA4AAwAHAAMAAAADAA4AAwAHAAMAAAAEAA4AAwAHAAMAAAAFAA4AAwAHAAMAAAAGAA4AAwAHAAMAAAAHAA4AAwAHAAMAAAAIAA4AAwAHAAMAAAAJAA4AAwAHAAMAAAAMAA4AAwAHAAMAAAANAA4AAwAHAAMAAAAOAA4AAwAHAAMAAAAPAA4AAwAHAAMAAAAQAA4AAwAHAAMAAAARAA4AAwAHAAMAAAASAA4AAwAHAAMAAAATAA4AAwAHAAMAAAAUAA4AAwAHAAMAAAAVAA4AAwAHAAMAAAAWAA4AAwAHAAMAAAAXAA4AAwAHAAMAAAAYAA4AAwAHAAMAAAAZAA4AAwAHAAMAAAAaAA4AAwAHAAMAAAAbAA4AAwAHAAMAAAAcAA4AAwAHAAMAAAALAAAAAwAHAAMAAAAMAAAAAwAHAAMAAAANAAAAAwAHAAMAAAAOAAAAAwAHAAMAAAAPAAAAAwAHAAMAAAAQAAAAAwAHAAMAAAARAAAAAwAHAAMAAAASAAAAAwAHAAMAAAATAAAAAwAHAAMAAAAUAAAAAwAHAAMAAAAVAAAAAwAHAAMAAAAWAAAAAwAHAAMAAAAXAAAAAwAHAAMAAAAYAAAAAwAHAAMAAAAZAAAAAwAHAAMAAAAaAAAAAwAHAAMAAAAbAAAAAwAHAAMAAAAcAAAAAwAHAAMAAAAcAAEAAwAHAAMAAAAcAAIAAwAHAAMAAAAcAAMAAwAHAAMAAAAcAAQAAwAHAAMAAAAcAAUAAwAHAAMAAAAcAAYAAwAHAAMAAAAcAAcAAwAHAAMAAAAcAAgAAwAHAAMAAAAcAAkAAwAHAAMAAAAcAAoAAwAHAAMAAAAcAAsAAwAHAAMAAAAcAAwAAwAHAAMAAAAcAA0AAwAHAAMAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up", "coming_from_right") groups=["level_info"]]
+script = ExtResource("3_erpnq")
+level_name = "lvl_1_zone_1_room_6"
+id = "14e0ec9b-765c-4541-b8a0-d88f812d4552"
+coming_from_up = NodePath("../ComingFromUp")
+coming_from_right = NodePath("../ComingFromRight")
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(23, 60)
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(110, 127)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_wrved")]
+position = Vector2(121, 62)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_dvnga")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_idhyg")]
+level_name = "lvl_1_zone_1_room_6"
+
+[node name="LeftTransition" parent="." instance=ExtResource("7_5nq24")]
+position = Vector2(0, 60)
+next_level_id = "lvl_1_zone_1_room_5"
+direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftTransition"]
+shape = SubResource("RectangleShape2D_5nq24")
+
+[node name="DownTransition" parent="." instance=ExtResource("7_5nq24")]
+position = Vector2(110, 150)
+next_level_id = "lvl_1_zone_1_room_7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownTransition"]
+shape = SubResource("RectangleShape2D_ikht1")

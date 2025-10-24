@@ -60,7 +60,7 @@ shape = SubResource("RectangleShape2D_3hs3x")
 
 [node name="RightTransition" parent="." instance=ExtResource("6_dxvve")]
 position = Vector2(288, 110)
-next_level_id = "zone_1_room_7"
+next_level_id = "lvl_1_zone_1_room_7"
 direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightTransition"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=4 uid="uid://cop4vrbsg2u8k"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_stnek"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_2ic5d"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_ve58w"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_bajed"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_veo4q"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_lduj8"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="7_35sqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35sqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkdkw"]
+
+[node name="lvl_1_zone_1_room_7" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_stnek")]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_2ic5d")]
+tile_map_data = PackedByteArray("AAABAAAAAwAHAAMAAAACAAAAAwAHAAMAAAADAAAAAwAHAAMAAAAEAAAAAwAHAAMAAAAAAAAAAwAHAAMAAAAAAAEAAwAHAAMAAAAAAAIAAwAHAAMAAAAAAAMAAwAHAAMAAAAAAAQAAwAHAAMAAAAAAAUAAwAHAAMAAAAAAAYAAwAHAAMAAAAAAAcAAwAHAAMAAAAAAAgAAwAHAAMAAAAAAAkAAwAHAAMAAAAAAAoAAwAHAAMAAAAAAAsAAwAHAAMAAAAAAAwAAwAHAAMAAAAAAA0AAwAHAAMAAAAAAA4AAwAHAAMAAAAAAA8AAwAHAAMAAAAAABIAAwAHAAMAAAAAABMAAwAHAAMAAAAHAAAAAwAHAAMAAAAIAAAAAwAHAAMAAAAJAAAAAwAHAAMAAAAKAAAAAwAHAAMAAAALAAAAAwAHAAMAAAAMAAAAAwAHAAMAAAANAAAAAwAHAAMAAAAOAAAAAwAHAAMAAAAPAAAAAwAHAAMAAAAQAAAAAwAHAAMAAAARAAAAAwAHAAMAAAASAAAAAwAHAAMAAAATAAAAAwAHAAMAAAAUAAAAAwAHAAMAAAAVAAAAAwAHAAMAAAAWAAAAAwAHAAMAAAAXAAAAAwAHAAMAAAAYAAAAAwAHAAMAAAAZAAAAAwAHAAMAAAAaAAAAAwAHAAMAAAAbAAAAAwAHAAMAAAAcAAAAAwAHAAMAAAAcAAEAAwAHAAMAAAAcAAIAAwAHAAMAAAAcAAMAAwAHAAMAAAAcAAQAAwAHAAMAAAAcAAUAAwAHAAMAAAAcAAYAAwAHAAMAAAAcAAcAAwAHAAMAAAAcAAgAAwAHAAMAAAAcAAkAAwAHAAMAAAAcAAoAAwAHAAMAAAAcAAsAAwAHAAMAAAAcAAwAAwAHAAMAAAAcAA0AAwAHAAMAAAAcAA4AAwAHAAMAAAAcAA8AAwAHAAMAAAAcABAAAwAHAAMAAAAcABEAAwAHAAMAAAAcABIAAwAHAAMAAAAcABMAAwAHAAMAAAAcABQAAwAHAAMAAAAcABUAAwAHAAMAAAAcABYAAwAHAAMAAAAAABcAAwAHAAMAAAABABcAAwAHAAMAAAACABcAAwAHAAMAAAADABcAAwAHAAMAAAAEABcAAwAHAAMAAAAFABcAAwAHAAMAAAAGABcAAwAHAAMAAAAHABcAAwAHAAMAAAAIABcAAwAHAAMAAAAJABcAAwAHAAMAAAAKABcAAwAHAAMAAAALABcAAwAHAAMAAAAMABcAAwAHAAMAAAANABcAAwAHAAMAAAAOABcAAwAHAAMAAAAPABcAAwAHAAMAAAAQABcAAwAHAAMAAAARABcAAwAHAAMAAAASABcAAwAHAAMAAAATABcAAwAHAAMAAAAUABcAAwAHAAMAAAAVABcAAwAHAAMAAAAWABcAAwAHAAMAAAAXABcAAwAHAAMAAAAYABcAAwAHAAMAAAAZABcAAwAHAAMAAAAaABcAAwAHAAMAAAAbABcAAwAHAAMAAAAcABcAAwAHAAMAAAAAABQAAwAHAAMAAAAAABUAAwAHAAMAAAAAABYAAwAHAAMAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_ve58w")
+level_name = "lvl_1_zone_1_room_7"
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_bajed")]
+position = Vector2(142, 114)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_veo4q")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_lduj8")]
+level_name = "lvl_1_zone_1_room_7"
+
+[node name="LeftTransition" parent="." instance=ExtResource("7_35sqr")]
+position = Vector2(0, 170)
+next_level_id = "lvl_1_zone_1_room_1"
+direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftTransition"]
+shape = SubResource("RectangleShape2D_35sqr")
+
+[node name="UpTransition" parent="." instance=ExtResource("7_35sqr")]
+position = Vector2(60, 0)
+next_level_id = "lvl_1_zone_1_room_6"
+direction = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpTransition"]
+shape = SubResource("RectangleShape2D_rkdkw")

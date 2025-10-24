@@ -7,7 +7,7 @@ var abilities : Array[AnItem]
 func _ready() -> void:
     Console.add_command("clear_save",clear_save)
     Console.add_command("dump_save",dump_save)
-    Console.add_command("unlock_all_abilities",unlock_all_abilities)
+    Console.add_command("unlock_all_abilities",unlock_all_abilities,["is_permanent"],1)
     Console.font_size = 30
 
 func clear_save():
@@ -29,18 +29,22 @@ func dump_save():
         else:
             Console.print_error("Could not dump save")
 
-func unlock_all_abilities():
+func unlock_all_abilities(is_permanent : String):
     if abilities.is_empty():
         _load_all_abilities()
     var player = get_tree().get_first_node_in_group("player")
-    print(player != null)
     if player:
         player.abilities = abilities
+    
+    if is_permanent == "true":
+        var save_game = SaveUtils.get_save()
+        if save_game:
+            save_game.unlocked_abilities = abilities 
+
 
 func _load_all_abilities():
     for ability_file_name in DirAccess.get_files_at(abilities_directory):
         var ability = ResourceLoader.load(abilities_directory+"/"+ability_file_name) as AnItem
-        print(ability_file_name, ability)
         if ability:
             abilities.append(ability)
     pass

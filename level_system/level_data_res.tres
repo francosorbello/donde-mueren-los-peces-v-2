@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelDataResource" load_steps=7 format=3 uid="uid://cvkc2kpwsnr3s"]
+[gd_resource type="Resource" script_class="LevelDataResource" load_steps=9 format=3 uid="uid://cvkc2kpwsnr3s"]
 
 [ext_resource type="PackedScene" uid="uid://dqq8dy0xuh3ec" path="res://level_system/levels/level_1/lvl_1_zone_1_room_1.tscn" id="1_f8nwo"]
 [ext_resource type="Script" uid="uid://drppps17c0dgp" path="res://level_system/level_data.gd" id="1_sihxi"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://rtns5g7xme08" path="res://level_system/levels/level_1/lvl_1_zone_1_room_3.tscn" id="3_8niqr"]
 [ext_resource type="PackedScene" uid="uid://7x5o6r22nly0" path="res://level_system/levels/level_1/lvl_1_zone_1_room_5.tscn" id="4_6n800"]
 [ext_resource type="PackedScene" uid="uid://clgpysfbfin04" path="res://level_system/levels/level_1/lvl_1_zone_1_room_4.tscn" id="5_md5r6"]
+[ext_resource type="PackedScene" uid="uid://cwi2kij2wbrj0" path="res://level_system/levels/level_1/lvl_1_zone_1_room_6.tscn" id="6_qn08u"]
+[ext_resource type="PackedScene" uid="uid://cop4vrbsg2u8k" path="res://level_system/levels/level_1/lvl_1_zone_1_room_7.tscn" id="7_74gfs"]
 
 [resource]
 script = ExtResource("1_sihxi")
@@ -14,6 +16,8 @@ levels = Dictionary[String, PackedScene]({
 "lvl_1_zone_1_room_2": ExtResource("2_eyqog"),
 "lvl_1_zone_1_room_3": ExtResource("3_8niqr"),
 "lvl_1_zone_1_room_4": ExtResource("5_md5r6"),
-"lvl_1_zone_1_room_5": ExtResource("4_6n800")
+"lvl_1_zone_1_room_5": ExtResource("4_6n800"),
+"lvl_1_zone_1_room_6": ExtResource("6_qn08u"),
+"lvl_1_zone_1_room_7": ExtResource("7_74gfs")
 })
 metadata/_custom_type_script = "uid://drppps17c0dgp"

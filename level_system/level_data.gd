@@ -11,7 +11,6 @@ class_name LevelDataResource
 func _import():
     if scene_to_import:
         var file_name = path_to_name(scene_to_import.resource_path)
-        print(file_name)
         levels.set(file_name,scene_to_import)
         ResourceSaver.save(self,self.resource_path)
         scene_to_import = null

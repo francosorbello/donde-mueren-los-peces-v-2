@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_c6qa7"]
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="4_02h0t"]
 [ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="5_sgbov"]
-[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_name_setter/level_name_setter.tscn" id="6_uf0mh"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_uf0mh"]
 
 [node name="base_scene" type="Node2D"]
 

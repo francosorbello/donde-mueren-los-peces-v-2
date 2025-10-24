@@ -3,7 +3,7 @@ extends Control
 signal level_loaded
 
 var level_data : LevelDataResource
-@export var initial_level_name : String
+@export var initial_level_name : StringResource
 var current_level : Node
 
 var last_transition_direction : Vector2
@@ -12,9 +12,9 @@ func _ready():
 	level_data = GlobalData.level_data
 	GlobalSignal.level_change_requested.connect(_on_request_level_change)
 	
-	if initial_level_name:
+	if initial_level_name and (not initial_level_name.value.is_empty()):
 		# load_level_scene(level_data.levels[initial_level_name])
-		_on_request_level_change(initial_level_name,Vector2.ZERO)
+		_on_request_level_change(initial_level_name.value,Vector2.ZERO)
 
 	OxygenManager.start_depletion()
 

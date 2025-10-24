@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
-[ext_resource type="Resource" uid="uid://cvkc2kpwsnr3s" path="res://level_system/level_data_res.tres" id="2_u5opy"]
+[ext_resource type="Resource" uid="uid://ov7dh4x4dwtb" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
 [ext_resource type="Shader" uid="uid://b2me4ti8lr66k" path="res://crt_shader/crt_shader.gdshader" id="4_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://djic11w1vg7yn" path="res://inventory_system/inventory_manager.tscn" id="6_dakft"]
 [ext_resource type="PackedScene" uid="uid://ttyngsx7731n" path="res://inventory_system/ui/inventory_ui.tscn" id="6_u5opy"]
@@ -43,8 +43,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u5opy")
-level_data = ExtResource("2_u5opy")
-initial_level_name = "lvl_1_zone_1_room_2"
+initial_level_name = ExtResource("2_qf6n1")
 
 [node name="InventoryManager" parent="." instance=ExtResource("6_dakft")]
 

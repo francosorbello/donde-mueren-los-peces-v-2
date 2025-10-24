@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cre371do6d6jx"]
+
+[ext_resource type="Script" uid="uid://b8mm18n3unf52" path="res://utils/level_name_setter/level_name_setter.gd" id="1_nyfbt"]
+
+[node name="LevelNameSetter" type="Node"]
+script = ExtResource("1_nyfbt")
+level_name = null

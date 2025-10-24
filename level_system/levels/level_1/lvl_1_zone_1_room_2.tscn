@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bl0nxe2nj80qp"]
+[gd_scene load_steps=14 format=4 uid="uid://bl0nxe2nj80qp"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_oepbu"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_7geni"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_x82v2"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="5_we30h"]
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="6_8lcok"]
+[ext_resource type="PackedScene" uid="uid://cj0n05i73dafs" path="res://death_zone/death_zone.tscn" id="7_lje7w"]
+[ext_resource type="Material" uid="uid://cpxp85woyyt4p" path="res://death_zone/water_1_material.tres" id="8_828oe"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_sessd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_we30h"]
 
@@ -13,6 +16,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmcta"]
 size = Vector2(40, 20)
+
+[sub_resource type="Curve2D" id="Curve2D_rtut3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -20, 0, 0, 0, 0, 0, 20, 0)
+}
+point_count = 2
 
 [node name="Lvl_1_Zone_1_Room_2" type="Node2D"]
 
@@ -71,3 +80,21 @@ shape = SubResource("RectangleShape2D_xmcta")
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("6_8lcok")]
 level_info = NodePath("../Level info stuff/LevelInfo")
 default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="DeathZone" parent="." instance=ExtResource("7_lje7w")]
+position = Vector2(140, 70)
+curve = SubResource("Curve2D_rtut3")
+width = 25.0
+
+[node name="@Area2D@142324" type="Area2D" parent="DeathZone"]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeathZone/@Area2D@142324"]
+polygon = PackedVector2Array(-20, 12.5, 20, 12.5, 20, -12.5, -20, -12.5)
+
+[node name="@Polygon2D@142325" type="Polygon2D" parent="DeathZone"]
+material = ExtResource("8_828oe")
+texture = ExtResource("9_sessd")
+polygon = PackedVector2Array(-20, 12.5, 20, 12.5, 20, -12.5, -20, -12.5)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)

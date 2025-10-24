@@ -16,8 +16,8 @@ seamless = true
 
 [resource]
 shader = ExtResource("1_ay6je")
-shader_parameter/border_top_treshold = 0.1499999966472
-shader_parameter/border_bottom_treshold = 0.8
+shader_parameter/border_top_treshold = 0.05999999865888
+shader_parameter/border_bottom_treshold = 0.90999997965968
 shader_parameter/border_color = Color(1, 1, 1, 1)
 shader_parameter/waterNoise = SubResource("NoiseTexture2D_c1h52")
 shader_parameter/waterDistortionNoise = SubResource("NoiseTexture2D_drtee")

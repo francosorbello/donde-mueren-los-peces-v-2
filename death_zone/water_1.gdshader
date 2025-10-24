@@ -32,7 +32,7 @@ uniform float backGroundDirY : hint_range(-0.1, 0.1) = 0.01;
 
 void fragment() {
 	vec4 color = vec4(waterColor.rgb , 1);
-	
+
 	vec2 noiseUV = UV * tiling + offSetSpeed * TIME;
 	float noiseValue = texture(waterDistortionNoise, noiseUV).r;
 
@@ -45,7 +45,7 @@ void fragment() {
 	vec4 noiseColor = texture(waterNoise, waterUV);
 	float intensity = smoothstep(WDFreq, WDSize, noiseColor.r);
 	color.rgb += intensity * vec3(WDBrightness);
-	
+
 	vec2 backGroundUV = SCREEN_UV;
 	backGroundUV.x += noiseValue * backGroundDirX;
 	backGroundUV.y += noiseValue * backGroundDirY;
@@ -53,14 +53,15 @@ void fragment() {
 
 	color = mix(texture(SCREEN_TEXTURE, backGroundUV),color, 0.2);
 	vec4 original_color = texture(SCREEN_TEXTURE, backGroundUV);
-	
+
 	COLOR = mix(color, waterColor, colorCorection);
-	
+
 	float top_tresh = min(UV.y/border_top_treshold,1.0);
 	COLOR = mix(border_color,COLOR,top_tresh);
-	
+
 	float bottom_tresh = max(UV.y,border_bottom_treshold);
 	float bottom_mix_value = (bottom_tresh - border_bottom_treshold) / (1.0 - border_bottom_treshold);
 	COLOR = mix(COLOR,border_color,bottom_mix_value);
+	//COLOR = vec4(UV,0,1);
 }
 

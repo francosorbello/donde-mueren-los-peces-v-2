@@ -283,6 +283,7 @@ volume_db = -10.0
 
 [node name="FloorDetectionComponent" type="Node2D" parent="."]
 script = ExtResource("26_uw77l")
+coyote_time = 0.1
 
 [node name="FloorDetector" parent="FloorDetectionComponent" instance=ExtResource("27_uw77l")]
 collision_layer = 0

@@ -70,7 +70,18 @@ func create_death_zone():
 	
 	polygon_shape.polygon = polygon
 	collision_polygon.polygon = polygon
+	set_polygon_shape_uvs()
 	# $Line2D.points = polygon
+
+func set_polygon_shape_uvs():
+	var tex_size = polygon_shape.texture.get_size()
+	var p0 = Vector2(0,tex_size.y)
+	var p1 = tex_size
+	var p2 = Vector2(tex_size.y,0)
+	var p3 = Vector2.ZERO
+
+	polygon_shape.uv = [p0,p1,p2,p3]
+
 
 func clear_death_zone():
 	polygon_shape.polygon = []

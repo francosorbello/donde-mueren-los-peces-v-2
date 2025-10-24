@@ -104,7 +104,6 @@ func has_ability_named(ab_name : String) -> bool:
 func _on_floor_detection_component_player_fell() -> void:
 	$DeadAnimPlayer.play_anim($Sprite2D)
 	global_position = _start_pos
-	pass # Replace with function body.
 
 func _on_ui_opened():
 	$StateMachine.transition_to("EmptyState")

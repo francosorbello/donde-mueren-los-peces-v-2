@@ -21,3 +21,10 @@ func create_test_game():
     new_game.write_savegame("test")
     IndieBlueprintSaveManager.make_current(new_game)
     print("Created test savegame")
+
+
+func _on_reset_save_button_pressed() -> void:
+    var save_game = IndieBlueprintSaveManager.load_savegame("test") as ASavedGame
+    if save_game:
+        save_game.clear_save()
+        print("Reset save done")

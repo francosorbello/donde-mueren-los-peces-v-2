@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbo7vxmur78m2"]
+
+[ext_resource type="Texture2D" uid="uid://jnrswxxgerpx" path="res://assets/GRAPHICS/platform_small.png" id="1_s1iyk"]
+[ext_resource type="Script" uid="uid://ydwauuneibwv" path="res://platform/bridge_to_jump_ability.gd" id="1_wxsbc"]
+[ext_resource type="PackedScene" uid="uid://bwqrwjmgf0c42" path="res://platform/platform_area.tscn" id="2_3txao"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="4_07ggp"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="5_3n8yd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3txao"]
+size = Vector2(120, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3n8yd"]
+size = Vector2(25, 58)
+
+[node name="BridgeToJumpAbility" type="Node2D"]
+script = ExtResource("1_wxsbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s1iyk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(30, 0)
+texture = ExtResource("1_s1iyk")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(60, 0)
+texture = ExtResource("1_s1iyk")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(90, 0)
+texture = ExtResource("1_s1iyk")
+
+[node name="PlatformArea" parent="." instance=ExtResource("2_3txao")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformArea"]
+position = Vector2(45, 0)
+shape = SubResource("RectangleShape2D_3txao")
+
+[node name="PersistentEventEvaluator" type="Node" parent="."]
+script = ExtResource("4_07ggp")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="PersistentEventEvaluator"]
+script = ExtResource("5_3n8yd")
+event_name = "bride_to_jump_crossed"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[node name="DestroyWhenExitedArea" type="Area2D" parent="."]
+position = Vector2(-15, 0)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyWhenExitedArea"]
+position = Vector2(12.5, 1)
+shape = SubResource("RectangleShape2D_3n8yd")
+debug_color = Color(0.97, 0, 0.01616642, 0.41960785)
+
+[connection signal="evaluator_succeded" from="PersistentEventEvaluator" to="." method="_on_persistent_event_evaluator_evaluator_succeded"]
+[connection signal="body_exited" from="DestroyWhenExitedArea" to="." method="_on_platform_area_body_exited"]

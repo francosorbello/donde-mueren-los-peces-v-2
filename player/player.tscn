@@ -218,7 +218,7 @@ sample_duration = 0.5
 speed_curve = SubResource("Curve_e7oew")
 
 [node name="JumpDurationTimer" type="Timer" parent="StateMachine/JumpingState"]
-wait_time = 3.0
+wait_time = 1.5
 one_shot = true
 
 [node name="StartJumpSound" type="AudioStreamPlayer" parent="StateMachine/JumpingState"]
@@ -229,6 +229,7 @@ stream = ExtResource("14_65viv")
 
 [node name="QuickDashingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component")]
 script = ExtResource("13_tqiix")
+distance_to_travel = 50.0
 floor_detection_component = NodePath("../../FloorDetectionComponent")
 
 [node name="DashSound" type="AudioStreamPlayer" parent="StateMachine/QuickDashingState"]

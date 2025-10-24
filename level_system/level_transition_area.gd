@@ -10,10 +10,6 @@ enum TransitionDirection{
 @export var next_level_id : String
 @export var direction : TransitionDirection
 
-func _ready() -> void:
-    if next_level_id.is_empty():
-        push_error(self.name,": next_level_id is empty. Level transition wont work.")
-
 func do_transition():
     if next_level_id.is_empty():
         push_error("NO NEXT LEVEL ID")
@@ -24,6 +20,7 @@ func do_transition():
 func _on_body_entered(body: Node2D) -> void:
     if body is APlayer:
         do_transition()
+
 
 func _transition_direction_to_vector(dir : TransitionDirection) -> Vector2:
     match dir:

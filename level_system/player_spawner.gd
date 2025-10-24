@@ -3,6 +3,8 @@ extends Node
 @export var player_scene : PackedScene
 @export var level_info : LevelInfo
 @export var default_spawn_pos : PlayerSpawnPoint
+@export_category("Camera")
+@export var attach_camera : bool = false
 
 func _ready() -> void:
     pass
@@ -15,4 +17,7 @@ func spawn_player(direction : Vector2):
 
     player.global_position = spawn_marker.global_position
     get_parent().add_child(player)
+    if attach_camera:
+        var camera = Camera2D.new()
+        player.add_child(camera)
 

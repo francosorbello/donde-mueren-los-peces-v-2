@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwo4lrgmnj0ef"]
+
+[ext_resource type="Script" uid="uid://b2v644wmtrv17" path="res://utils/global_data/global_data.gd" id="1_ww46t"]
+[ext_resource type="Resource" uid="uid://cvkc2kpwsnr3s" path="res://level_system/level_data_res.tres" id="2_33g7t"]
+
+[node name="GlobalData" type="Node"]
+script = ExtResource("1_ww46t")
+level_data = ExtResource("2_33g7t")

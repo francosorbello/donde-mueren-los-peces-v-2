@@ -7,10 +7,10 @@ class_name LevelInfo
 @export_tool_button("Generate ID") var generate_id_action = generate_id
 
 @export_category("Spawn positions")
-@export var up_position : Marker2D
-@export var down_position: Marker2D
-@export var left_position: Marker2D
-@export var right_position: Marker2D
+@export var coming_from_up : Marker2D
+@export var coming_from_down: Marker2D
+@export var coming_from_left: Marker2D
+@export var coming_from_right: Marker2D
 
 func _ready():
     if Engine.is_editor_hint():
@@ -31,12 +31,12 @@ func save_to_file():
 func get_spawn_marker(for_direction : Vector2) -> Marker2D:
     match for_direction:
         Vector2.LEFT:
-            return left_position
+            return coming_from_left
         Vector2.RIGHT:
-            return right_position
+            return coming_from_right
         Vector2.UP:
-            return up_position
+            return coming_from_up
         Vector2.DOWN:
-            return down_position
+            return coming_from_down
 
     return null

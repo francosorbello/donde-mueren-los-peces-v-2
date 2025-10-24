@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcq4s6mgwnwpg"]
+
+[ext_resource type="Script" uid="uid://d0lf3lp5b8jyw" path="res://utils/level_name_validator.gd" id="1_jcv1q"]
+
+[node name="LevelNameValidator" type="Node"]
+script = ExtResource("1_jcv1q")

@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4er0ro4vssmy"]
+[gd_scene load_steps=4 format=3 uid="uid://b4er0ro4vssmy"]
 
 [ext_resource type="Script" uid="uid://yqlpy5l175xx" path="res://level_system/level_transition_area.gd" id="1_ui41w"]
+[ext_resource type="PackedScene" uid="uid://bkvcuwwir26rq" path="res://level_system/transition_direction_visual.tscn" id="2_4cwri"]
+[ext_resource type="PackedScene" uid="uid://bcq4s6mgwnwpg" path="res://utils/level_name_validator.tscn" id="3_00lfw"]
 
 [node name="LevelTransitionArea" type="Area2D"]
 script = ExtResource("1_ui41w")
+direction = 1
+
+[node name="TransitionDirectionVisual" parent="." instance=ExtResource("2_4cwri")]
+
+[node name="LevelNameValidator" parent="." instance=ExtResource("3_00lfw")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

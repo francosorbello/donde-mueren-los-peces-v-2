@@ -44,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u5opy")
 level_data = ExtResource("2_u5opy")
-initial_level_name = "zone_1_room_2"
+initial_level_name = "lvl_1_zone_1_room_2"
 
 [node name="InventoryManager" parent="." instance=ExtResource("6_dakft")]
 

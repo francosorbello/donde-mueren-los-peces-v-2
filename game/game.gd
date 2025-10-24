@@ -2,13 +2,14 @@ extends Control
 
 signal level_loaded
 
-@export var level_data : LevelDataResource
+var level_data : LevelDataResource
 @export var initial_level_name : String
 var current_level : Node
 
 var last_transition_direction : Vector2
 
 func _ready():
+	level_data = GlobalData.level_data
 	GlobalSignal.level_change_requested.connect(_on_request_level_change)
 	
 	if initial_level_name:

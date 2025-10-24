@@ -29,19 +29,19 @@ tile_map_data = PackedByteArray("AAAAAAAAAwAHAAMAAAAAAAEAAwAHAAMAAAAAAAIAAwAHAAM
 script = ExtResource("3_o1hxy")
 level_name = "lvl_1_zone_1_room_1"
 id = "6703520f-4295-48f0-aa1b-d4bec633d36e"
-coming_from_up = NodePath("../DownMarker")
-coming_from_left = NodePath("../RightMarker")
-coming_from_right = NodePath("../LeftMarker")
+coming_from_up = NodePath("../ComingFromUp")
+coming_from_left = NodePath("../ComingFromLeft")
+coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
-[node name="RightMarker" type="Marker2D" parent="Level info stuff"]
+[node name="ComingFromLeft" type="Marker2D" parent="Level info stuff"]
 position = Vector2(270, 110)
 
-[node name="LeftMarker" type="Marker2D" parent="Level info stuff"]
+[node name="ComingFromRight" type="Marker2D" parent="Level info stuff"]
 position = Vector2(20, 110)
 
-[node name="DownMarker" type="Marker2D" parent="Level info stuff"]
-position = Vector2(140, 260)
+[node name="ComingFromUp" type="Marker2D" parent="Level info stuff"]
+position = Vector2(140, 240)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_afraa")]
 position = Vector2(140, 60)
@@ -51,7 +51,7 @@ level_info = NodePath("../Level info stuff/LevelInfo")
 default_spawn_pos = NodePath("../PlayerSpawnPoint")
 
 [node name="LeftTransition" parent="." instance=ExtResource("6_dxvve")]
-position = Vector2(0, 110)
+position = Vector2(-5, 110)
 next_level_id = "lvl_1_zone_1_room_2"
 direction = 2
 
@@ -59,7 +59,7 @@ direction = 2
 shape = SubResource("RectangleShape2D_3hs3x")
 
 [node name="RightTransition" parent="." instance=ExtResource("6_dxvve")]
-position = Vector2(288, 110)
+position = Vector2(294, 110)
 next_level_id = "lvl_1_zone_1_room_7"
 direction = 3
 
@@ -68,7 +68,7 @@ shape = SubResource("RectangleShape2D_qjl8j")
 
 [node name="DownTransition" parent="." instance=ExtResource("6_dxvve")]
 process_mode = 4
-position = Vector2(140, 270)
+position = Vector2(140, 274)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DownTransition"]
 shape = SubResource("RectangleShape2D_mehd2")

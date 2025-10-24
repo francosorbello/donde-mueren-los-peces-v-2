@@ -11,9 +11,9 @@ func _ready() -> void:
 		var level_name = get_parent().next_level_id as String
 		var msg = ""
 		if level_name.is_empty():
-			msg = "(%s) next_level_id is empty. Transitions wont work"%get_parent()
+			msg = "(%s on %s) next_level_id is empty. Transitions wont work"%[get_parent().name,owner.get_parent().name]
 		elif not lvl_data.levels.has(level_name):
-			msg = "(%s) Level \"%s\" doesnt exist"%[get_parent(),level_name]
+			msg = "(%s on %s) Level \"%s\" doesnt exist"%[get_parent().name,owner.get_parent().name,level_name]
 
 		if not msg.is_empty():
 			print_error_message(msg)

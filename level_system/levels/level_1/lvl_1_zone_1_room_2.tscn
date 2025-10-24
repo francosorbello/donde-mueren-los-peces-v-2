@@ -33,7 +33,7 @@ coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingFromLeft" type="Marker2D" parent="Level info stuff"]
-position = Vector2(267, 118)
+position = Vector2(263, 120)
 
 [node name="ComingFromRight" type="Marker2D" parent="Level info stuff"]
 position = Vector2(23, 120)
@@ -45,7 +45,7 @@ position = Vector2(140, 26)
 position = Vector2(140, 118)
 
 [node name="LeftTransitionArea" parent="." instance=ExtResource("5_we30h")]
-position = Vector2(0, 120)
+position = Vector2(-5, 120)
 next_level_id = "lvl_1_zone_1_room_3"
 direction = 2
 
@@ -53,7 +53,7 @@ direction = 2
 shape = SubResource("RectangleShape2D_we30h")
 
 [node name="RightTransitionArea" parent="." instance=ExtResource("5_we30h")]
-position = Vector2(290, 120)
+position = Vector2(292, 120)
 next_level_id = "lvl_1_zone_1_room_1"
 direction = 3
 
@@ -61,7 +61,7 @@ direction = 3
 shape = SubResource("RectangleShape2D_8lcok")
 
 [node name="UpTransitionArea" parent="." instance=ExtResource("5_we30h")]
-position = Vector2(140, 0)
+position = Vector2(140, -4)
 next_level_id = "lvl_1_zone_1_room_4"
 direction = 0
 

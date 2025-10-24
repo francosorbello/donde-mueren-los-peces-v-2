@@ -46,7 +46,7 @@ default_spawn_pos = NodePath("../PlayerSpawnPoint")
 level_name = "lvl_1_zone_1_room_6"
 
 [node name="LeftTransition" parent="." instance=ExtResource("7_5nq24")]
-position = Vector2(0, 60)
+position = Vector2(-5, 60)
 next_level_id = "lvl_1_zone_1_room_5"
 direction = 2
 
@@ -54,7 +54,7 @@ direction = 2
 shape = SubResource("RectangleShape2D_5nq24")
 
 [node name="DownTransition" parent="." instance=ExtResource("7_5nq24")]
-position = Vector2(110, 150)
+position = Vector2(110, 154)
 next_level_id = "lvl_1_zone_1_room_7"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DownTransition"]

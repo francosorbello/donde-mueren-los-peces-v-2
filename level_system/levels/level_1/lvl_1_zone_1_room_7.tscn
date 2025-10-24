@@ -21,12 +21,17 @@ tile_map_data = PackedByteArray("AAABAAAAAwAHAAMAAAACAAAAAwAHAAMAAAADAAAAAwAHAAM
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down") groups=["level_info"]]
 script = ExtResource("3_ve58w")
 level_name = "lvl_1_zone_1_room_7"
+coming_from_down = NodePath("../ComingFromDown")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
-[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+[node name="ComingFromDown" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(60, 20)
+
+[node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(30, 170)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_bajed")]
 position = Vector2(142, 114)
@@ -39,7 +44,7 @@ default_spawn_pos = NodePath("../PlayerSpawnPoint")
 level_name = "lvl_1_zone_1_room_7"
 
 [node name="LeftTransition" parent="." instance=ExtResource("7_35sqr")]
-position = Vector2(0, 170)
+position = Vector2(-5, 169)
 next_level_id = "lvl_1_zone_1_room_1"
 direction = 2
 
@@ -47,7 +52,7 @@ direction = 2
 shape = SubResource("RectangleShape2D_35sqr")
 
 [node name="UpTransition" parent="." instance=ExtResource("7_35sqr")]
-position = Vector2(60, 0)
+position = Vector2(60, -5)
 next_level_id = "lvl_1_zone_1_room_6"
 direction = 0
 

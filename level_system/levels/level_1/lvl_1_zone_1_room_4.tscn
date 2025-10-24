@@ -35,13 +35,13 @@ coming_from_right = NodePath("../FromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="FromLeft" type="Marker2D" parent="Level info stuff"]
-position = Vector2(265, 112)
+position = Vector2(263, 110)
 
 [node name="FromUp" type="Marker2D" parent="Level info stuff"]
-position = Vector2(190, 247)
+position = Vector2(190, 246)
 
 [node name="FromRight" type="Marker2D" parent="Level info stuff"]
-position = Vector2(190, 247)
+position = Vector2(25, 110)
 
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("4_4jp23")]
 level_info = NodePath("../Level info stuff/LevelInfo")
@@ -52,14 +52,14 @@ attach_camera = true
 position = Vector2(138, 120)
 
 [node name="DownTransitionArea" parent="." instance=ExtResource("6_lpdfj")]
-position = Vector2(190, 270)
+position = Vector2(190, 275)
 next_level_id = "lvl_1_zone_1_room_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DownTransitionArea"]
 shape = SubResource("RectangleShape2D_lpdfj")
 
 [node name="RightTransitionArea" parent="." instance=ExtResource("6_lpdfj")]
-position = Vector2(290, 110)
+position = Vector2(294, 110)
 next_level_id = "lvl_1_zone_1_room_5"
 direction = 3
 
@@ -67,7 +67,7 @@ direction = 3
 shape = SubResource("RectangleShape2D_655qv")
 
 [node name="LeftTransitionArea" parent="." instance=ExtResource("6_lpdfj")]
-position = Vector2(0, 110)
+position = Vector2(-4, 110)
 direction = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftTransitionArea"]

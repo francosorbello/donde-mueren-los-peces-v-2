@@ -31,6 +31,9 @@ func _draw() -> void:
     draw_line(Vector2.ZERO,dir * length,Color.YELLOW,3)
     draw_arrow(self,dir * length,dir * length * 4, Color.YELLOW,3,true,head_size,head_ang)
 
+    draw_line(Vector2.ZERO,dir * -length/2,Color.GREEN,1.3)
+    draw_arrow(self,dir * -length/2,dir * length/2 * -4,Color.GREEN,1.3,true,head_size/2,head_ang)
+
 func _transition_direction_to_vector(dir : int) -> Vector2:
     match dir:
         0:

@@ -30,7 +30,7 @@ coming_from_right = NodePath("../ComingFromRIght")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingFromRIght" type="Marker2D" parent="LevelInfo Stuff"]
-position = Vector2(18, 130)
+position = Vector2(22, 130)
 
 [node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(266, 130)
@@ -46,7 +46,7 @@ default_spawn_pos = NodePath("../PlayerSpawnPoint")
 level_name = "lvl_1_zone_1_room_5"
 
 [node name="LeftTransition" parent="." instance=ExtResource("7_kpab4")]
-position = Vector2(-1, 130)
+position = Vector2(-7, 130)
 next_level_id = "lvl_1_zone_1_room_4"
 direction = 2
 
@@ -54,7 +54,7 @@ direction = 2
 shape = SubResource("RectangleShape2D_kpab4")
 
 [node name="RightTransition" parent="." instance=ExtResource("7_kpab4")]
-position = Vector2(290, 130)
+position = Vector2(294, 130)
 next_level_id = "lvl_1_zone_1_room_6"
 direction = 3
 

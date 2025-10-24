@@ -44,7 +44,7 @@ coming_from_left = NodePath("../FromLeft")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="FromLeft" type="Marker2D" parent="Level info stuff"]
-position = Vector2(560, 100)
+position = Vector2(556, 100)
 
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("4_eldvl")]
 level_info = NodePath("../Level info stuff/LevelInfo")
@@ -55,7 +55,7 @@ attach_camera = true
 position = Vector2(360, 110)
 
 [node name="LevelTransitionArea" parent="." instance=ExtResource("6_gs4y5")]
-position = Vector2(580, 100)
+position = Vector2(584, 100)
 next_level_id = "lvl_1_zone_1_room_2"
 direction = 3
 

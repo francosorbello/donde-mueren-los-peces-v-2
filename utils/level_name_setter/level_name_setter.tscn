@@ -3,5 +3,5 @@
 [ext_resource type="Script" uid="uid://b8mm18n3unf52" path="res://utils/level_name_setter/level_name_setter.gd" id="1_nyfbt"]
 
 [node name="LevelNameSetter" type="Node"]
+process_mode = 4
 script = ExtResource("1_nyfbt")
-level_name = null

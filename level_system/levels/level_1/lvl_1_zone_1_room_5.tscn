@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://7x5o6r22nly0"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_4gcyw"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_3l225"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_dbkys"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_m6053"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_rlttq"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_name_setter/level_name_setter.tscn" id="6_u1mro"]
+
+[node name="lvl_1_zone_1_room_5" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_4gcyw")]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_3l225")]
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_dbkys")
+level_name = "lvl_1_zone_1_room_5"
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_m6053")]
+position = Vector2(142, 114)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_rlttq")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_u1mro")]
+level_name = "lvl_1_zone_1_room_5"

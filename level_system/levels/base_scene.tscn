@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjqjtpudlu8on"]
+[gd_scene load_steps=7 format=3 uid="uid://bjqjtpudlu8on"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_qs77q"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_qhbn6"]
 [ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_c6qa7"]
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="4_02h0t"]
 [ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="5_sgbov"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_name_setter/level_name_setter.tscn" id="6_uf0mh"]
 
-[node name="BaseScene" type="Node2D"]
+[node name="base_scene" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_qs77q")]
 
@@ -26,3 +27,6 @@ position = Vector2(142, 114)
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("4_02h0t")]
 level_info = NodePath("../LevelInfo Stuff/LevelInfo")
 default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_uf0mh")]
+level_name = "base_scene"

@@ -13,6 +13,7 @@ func _ready() -> void:
 		print("Parent is not a player")
 		return
 	
+	last_safe_position = player.global_position
 	state_machine.switched_states.connect(_on_switched_states)
 	floor_detector.floor_status_changed.connect(_on_floor_status_change)
 	$RefreshPositionTimer.timeout.connect(_on_refresh_position_timer_timeout)

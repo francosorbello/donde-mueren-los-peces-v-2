@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=17 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ov7dh4x4dwtb" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ttyngsx7731n" path="res://inventory_system/ui/inventory_ui.tscn" id="6_u5opy"]
 [ext_resource type="PackedScene" uid="uid://b0dihdq7wavq6" path="res://oxygen_manager/ui/oxygen_bar.tscn" id="7_3vho3"]
 [ext_resource type="AudioStream" uid="uid://cepgk4i3tauqe" path="res://assets/SOUNDS/music/Retro Ambience 02.mp3" id="8_3vho3"]
+[ext_resource type="PackedScene" uid="uid://2tvde1g7baq6" path="res://tests/debug_timer.tscn" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://ce5m7b223yfg6" path="res://level_system/automap/automap.tscn" id="8_y36n6"]
 [ext_resource type="AudioStream" uid="uid://ceskirg5tq6wp" path="res://assets/SOUNDS/music/WAV_Don’t_Look_Back.mp3" id="9_qf6n1"]
 [ext_resource type="AudioStream" uid="uid://dt73qjnoy4jew" path="res://assets/SOUNDS/music/WAV_This_Could_Be_Anywhere_in_the_World.mp3" id="10_vsp63"]
@@ -120,6 +121,9 @@ offset_top = 185.0
 offset_right = -324.0
 offset_bottom = 885.0
 grow_horizontal = 0
+
+[node name="DebugTimer" parent="UI" instance=ExtResource("8_vsp63")]
+layout_mode = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPlaylist_hb504")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://clgpysfbfin04"]
+[gd_scene load_steps=14 format=4 uid="uid://clgpysfbfin04"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_bm1e5"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_lpdfj"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="4_4jp23"]
 [ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="5_aunyr"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="6_lpdfj"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="7_655qv"]
+[ext_resource type="Material" uid="uid://cpxp85woyyt4p" path="res://death_zone/water_1_material.tres" id="8_aunyr"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_s6rnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpdfj"]
 
@@ -14,6 +17,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jp23"]
 size = Vector2(20, 40)
 
+[sub_resource type="Curve2D" id="Curve2D_a8oxr"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 50, 110, 0, 0, 0, 0, 145, 110)
+}
+point_count = 2
+
 [node name="lvl_1_zone_1_room_4" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_bm1e5")]
@@ -21,7 +31,7 @@ offset_right = 288.0
 offset_bottom = 270.0
 
 [node name="TileMapLayer" parent="." instance=ExtResource("2_lpdfj")]
-tile_map_data = PackedByteArray("AAAcAAAAAwAHAAMAAAAcAAEAAwAHAAMAAAAcAAIAAwAHAAMAAAAcAAMAAwAHAAMAAAAcAAQAAwAHAAMAAAAcAAUAAwAHAAMAAAAcAAYAAwAHAAMAAAAcAAcAAwAHAAMAAAAcAAgAAwAHAAMAAAAcAAkAAwAHAAMAAAAcAA0AAwAHAAMAAAAcAA4AAwAHAAMAAAAcAA8AAwAHAAMAAAAcABAAAwAHAAMAAAAcABEAAwAHAAMAAAAcABIAAwAHAAMAAAAcABMAAwAHAAMAAAAcABQAAwAHAAMAAAAcABUAAwAHAAMAAAAcABYAAwAHAAMAAAAcABcAAwAHAAMAAAAcABgAAwAHAAMAAAAcABkAAwAHAAMAAAAcABoAAwAHAAMAAAAbABoAAwAHAAMAAAAaABoAAwAHAAMAAAAZABoAAwAHAAMAAAAYABoAAwAHAAMAAAAXABoAAwAHAAMAAAAWABoAAwAHAAMAAAAVABoAAwAHAAMAAAAUABoAAwAHAAMAAAARABoAAwAHAAMAAAAQABoAAwAHAAMAAAAPABoAAwAHAAMAAAAOABoAAwAHAAMAAAANABoAAwAHAAMAAAAMABoAAwAHAAMAAAALABoAAwAHAAMAAAAKABoAAwAHAAMAAAAAAAgAAwAHAAMAAAAAAA0AAwAHAAMAAAAKAAAAAwAHAAMAAAALAAAAAwAHAAMAAAAMAAAAAwAHAAMAAAANAAAAAwAHAAMAAAAOAAAAAwAHAAMAAAAPAAAAAwAHAAMAAAAQAAAAAwAHAAMAAAARAAAAAwAHAAMAAAASAAAAAwAHAAMAAAATAAAAAwAHAAMAAAAUAAAAAwAHAAMAAAAVAAAAAwAHAAMAAAAWAAAAAwAHAAMAAAAXAAAAAwAHAAMAAAAYAAAAAwAHAAMAAAAZAAAAAwAHAAMAAAAaAAAAAwAHAAMAAAAbAAAAAwAHAAMAAAABAA0AAwAHAAMAAAACAA0AAwAHAAMAAAADAA0AAwAHAAMAAAAEAA0AAwAHAAMAAAAFAA0AAwAHAAMAAAAGAA0AAwAHAAMAAAAHAA0AAwAHAAMAAAAIAA0AAwAHAAMAAAAJAA0AAwAHAAMAAAAKAA0AAwAHAAMAAAABAAgAAwAHAAMAAAACAAgAAwAHAAMAAAADAAgAAwAHAAMAAAAEAAgAAwAHAAMAAAAFAAgAAwAHAAMAAAAGAAgAAwAHAAMAAAAHAAgAAwAHAAMAAAAIAAgAAwAHAAMAAAAJAAgAAwAHAAMAAAAKAAgAAwAHAAMAAAAKABkAAwAHAAMAAAAKABgAAwAHAAMAAAAKABcAAwAHAAMAAAAKABYAAwAHAAMAAAAKAA8AAwAHAAMAAAAKAA4AAwAHAAMAAAAKABAAAwAHAAMAAAAKABEAAwAHAAMAAAAKABIAAwAHAAMAAAAKABMAAwAHAAMAAAAKABQAAwAHAAMAAAAKABUAAwAHAAMAAAAKAAcAAwAHAAMAAAAKAAYAAwAHAAMAAAAKAAUAAwAHAAMAAAAKAAQAAwAHAAMAAAAKAAMAAwAHAAMAAAAKAAIAAwAHAAMAAAAKAAEAAwAHAAMAAAAcAAwAAwAHAAMAAAA=")
+tile_map_data = PackedByteArray("AAAcAAAAAwAHAAMAAAAcAAEAAwAHAAMAAAAcAAIAAwAHAAMAAAAcAAMAAwAHAAMAAAAcAAQAAwAHAAMAAAAcAAUAAwAHAAMAAAAcAAYAAwAHAAMAAAAcAAcAAwAHAAMAAAAcAAgAAwAHAAMAAAAcAAkAAwAHAAMAAAAcAA0AAwAHAAMAAAAcAA4AAwAHAAMAAAAcAA8AAwAHAAMAAAAcABAAAwAHAAMAAAAcABEAAwAHAAMAAAAcABIAAwAHAAMAAAAcABMAAwAHAAMAAAAcABQAAwAHAAMAAAAcABUAAwAHAAMAAAAcABYAAwAHAAMAAAAcABcAAwAHAAMAAAAcABgAAwAHAAMAAAAcABkAAwAHAAMAAAAcABoAAwAHAAMAAAAbABoAAwAHAAMAAAAaABoAAwAHAAMAAAAXABoAAwAHAAMAAAAWABoAAwAHAAMAAAAVABoAAwAHAAMAAAAUABoAAwAHAAMAAAAAAAgAAwAHAAMAAAAAAA0AAwAHAAMAAAASAAAAAwAHAAMAAAATAAAAAwAHAAMAAAAUAAAAAwAHAAMAAAAVAAAAAwAHAAMAAAAWAAAAAwAHAAMAAAAXAAAAAwAHAAMAAAAYAAAAAwAHAAMAAAAZAAAAAwAHAAMAAAAaAAAAAwAHAAMAAAAbAAAAAwAHAAMAAAABAA0AAwAHAAMAAAACAA0AAwAHAAMAAAADAA0AAwAHAAMAAAAEAA0AAwAHAAMAAAAFAA0AAwAHAAMAAAAGAA0AAwAHAAMAAAAHAA0AAwAHAAMAAAAIAA0AAwAHAAMAAAAJAA0AAwAHAAMAAAAKAA0AAwAHAAMAAAABAAgAAwAHAAMAAAACAAgAAwAHAAMAAAADAAgAAwAHAAMAAAAEAAgAAwAHAAMAAAAFAAgAAwAHAAMAAAAGAAgAAwAHAAMAAAAHAAgAAwAHAAMAAAAIAAgAAwAHAAMAAAAJAAgAAwAHAAMAAAAKAAgAAwAHAAMAAAAcAAwAAwAHAAMAAAASABoAAwAHAAMAAAATABoAAwAHAAMAAAASAA0AAwAHAAMAAAASAA4AAwAHAAMAAAASAA8AAwAHAAMAAAASABAAAwAHAAMAAAASABEAAwAHAAMAAAASABIAAwAHAAMAAAASABMAAwAHAAMAAAASABQAAwAHAAMAAAASABUAAwAHAAMAAAASABYAAwAHAAMAAAASABcAAwAHAAMAAAASABgAAwAHAAMAAAASABkAAwAHAAMAAAALAA0AAwAHAAMAAAAMAA0AAwAHAAMAAAANAA0AAwAHAAMAAAAOAA0AAwAHAAMAAAAPAA0AAwAHAAMAAAAQAA0AAwAHAAMAAAARAA0AAwAHAAMAAAALAAgAAwAHAAMAAAAMAAgAAwAHAAMAAAANAAgAAwAHAAMAAAAOAAgAAwAHAAMAAAAPAAgAAwAHAAMAAAAQAAgAAwAHAAMAAAARAAgAAwAHAAMAAAASAAgAAwAHAAMAAAASAAEAAwAHAAMAAAASAAIAAwAHAAMAAAASAAMAAwAHAAMAAAASAAQAAwAHAAMAAAASAAUAAwAHAAMAAAASAAYAAwAHAAMAAAASAAcAAwAHAAMAAAA=")
 
 [node name="Level info stuff" type="Node2D" parent="."]
 
@@ -38,7 +48,7 @@ metadata/_custom_type_script = "uid://crtby7posuy18"
 position = Vector2(263, 110)
 
 [node name="FromUp" type="Marker2D" parent="Level info stuff"]
-position = Vector2(190, 246)
+position = Vector2(250, 246)
 
 [node name="FromRight" type="Marker2D" parent="Level info stuff"]
 position = Vector2(25, 110)
@@ -46,13 +56,12 @@ position = Vector2(25, 110)
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("4_4jp23")]
 level_info = NodePath("../Level info stuff/LevelInfo")
 default_spawn_pos = NodePath("../PlayerSpawnPoint")
-attach_camera = true
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_aunyr")]
-position = Vector2(138, 120)
+position = Vector2(230, 196)
 
 [node name="DownTransitionArea" parent="." instance=ExtResource("6_lpdfj")]
-position = Vector2(190, 275)
+position = Vector2(250, 275)
 next_level_id = "lvl_1_zone_1_room_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DownTransitionArea"]
@@ -67,8 +76,27 @@ direction = 3
 shape = SubResource("RectangleShape2D_655qv")
 
 [node name="LeftTransitionArea" parent="." instance=ExtResource("6_lpdfj")]
+process_mode = 4
 position = Vector2(-4, 110)
 direction = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftTransitionArea"]
 shape = SubResource("RectangleShape2D_4jp23")
+
+[node name="BetterDeathZone" parent="." instance=ExtResource("7_655qv")]
+position = Vector2(25, 0)
+curve = SubResource("Curve2D_a8oxr")
+width = 40.0
+
+[node name="Area2D" type="Area2D" parent="BetterDeathZone"]
+collision_layer = 32
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BetterDeathZone/Area2D"]
+polygon = PackedVector2Array(50, 90, 97.5, 90, 142.34006, 89.99999, 142.33994, 130, 97.5, 130, 50, 130)
+
+[node name="Polygon2D" type="Polygon2D" parent="BetterDeathZone"]
+material = ExtResource("8_aunyr")
+color = Color(1, 1, 1, 0.3)
+texture = ExtResource("9_s6rnt")
+polygon = PackedVector2Array(50, 90, 97.5, 90, 142.34006, 89.99999, 142.33994, 130, 97.5, 130, 50, 130)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)

@@ -9,14 +9,16 @@ class_name BetterDeathZone
 func spawn_required_children():
     super()
 
-    collision_area.collision_layer = collision_layer
+    if collision_area:
+        collision_area.collision_layer = collision_layer
 
-    if polygon_texture:
-        polygon_shape.texture = polygon_texture
-        set_polygon_shape_uvs()
+    if polygon_shape: 
+        if polygon_texture:
+            polygon_shape.texture = polygon_texture
+            set_polygon_shape_uvs()
 
-    if polygon_material:
-        polygon_shape.material = polygon_material
+        if polygon_material:
+            polygon_shape.material = polygon_material
 
 func set_polygon_shape_uvs():
     var tex_size = polygon_shape.texture.get_size()

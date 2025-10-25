@@ -5,33 +5,39 @@ class_name ToggleAction
 @export var target : Node
 
 func _ready():
-	if evaluator:
-		evaluator.evaluator_succeded.connect(_on_evaluator_succeded)
+    if not evaluator:
+        for child in get_children():
+            if child is PersistentEventEvaluator:
+                evaluator = child
+                break
+
+    if evaluator:
+        evaluator.evaluator_succeded.connect(_on_evaluator_succeded)
 
 func _on_evaluator_succeded():
-	toggle_target()
+    toggle_target()
 
 func toggle_target():
-	if target is CanvasItem:
-		if target.visible:
-			disable_target()
-		else:
-			enable_target()
-		return
+    if target is CanvasItem:
+        if target.visible:
+            disable_target()
+        else:
+            enable_target()
+        return
 
-	if target.process_mode == Node.PROCESS_MODE_DISABLED:
-		enable_target()
-	else:
-		disable_target()
+    if target.process_mode == Node.PROCESS_MODE_DISABLED:
+        enable_target()
+    else:
+        disable_target()
 
 func disable_target():
-	if target:
-		if target.has_method("hide"):
-			target.hide()
-		target.process_mode = Node.PROCESS_MODE_DISABLED
+    if target:
+        if target.has_method("hide"):
+            target.hide()
+        target.process_mode = Node.PROCESS_MODE_DISABLED
 
 func enable_target():
-	if target:
-		if target.has_method("show"):
-			target.show()
-		target.process_mode = Node.PROCESS_MODE_INHERIT
+    if target:
+        if target.has_method("show"):
+            target.show()
+        target.process_mode = Node.PROCESS_MODE_INHERIT

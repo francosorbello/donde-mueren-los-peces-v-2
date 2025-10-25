@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://b46xdrprqgho7"]
+
+[ext_resource type="Script" uid="uid://djtpghhnt1w4" path="res://interactables/levers/lever.gd" id="1_ggsn6"]
+[ext_resource type="Texture2D" uid="uid://6jb7ffrqe7n0" path="res://assets/GRAPHICS/interactables/lever_1.png" id="1_n147r"]
+[ext_resource type="PackedScene" uid="uid://dgks666k0klxv" path="res://interactables/interactable_component/better_interactable_component.tscn" id="2_ggsn6"]
+[ext_resource type="PackedScene" uid="uid://b4jjcolqqt2xe" path="res://interactables/outline_component/outline_component.tscn" id="3_w6m1q"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="5_u2b2x"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="6_cevnm"]
+
+[node name="Lever" type="Node2D"]
+script = ExtResource("1_ggsn6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n147r")
+
+[node name="BetterInteractableComponent" parent="." instance=ExtResource("2_ggsn6")]
+
+[node name="OutlineComponent" parent="BetterInteractableComponent" node_paths=PackedStringArray("sprite") instance=ExtResource("3_w6m1q")]
+sprite = NodePath("../../Sprite2D")
+
+[node name="PersistentEventEvaluator" type="Node" parent="."]
+script = ExtResource("5_u2b2x")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="PersistentEventEvaluator"]
+script = ExtResource("6_cevnm")
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[connection signal="on_interact" from="BetterInteractableComponent" to="." method="_on_better_interactable_component_on_interact"]
+[connection signal="evaluator_succeded" from="PersistentEventEvaluator" to="." method="_on_persistent_event_evaluator_evaluator_succeded"]

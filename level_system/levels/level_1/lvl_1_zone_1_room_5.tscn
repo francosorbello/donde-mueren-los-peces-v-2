@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://7x5o6r22nly0"]
+[gd_scene load_steps=15 format=4 uid="uid://7x5o6r22nly0"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_4gcyw"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_3l225"]
@@ -7,10 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_rlttq"]
 [ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_u1mro"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="7_kpab4"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="9_2k5qo"]
+[ext_resource type="Material" uid="uid://cpxp85woyyt4p" path="res://death_zone/water_1_material.tres" id="10_fi66j"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="11_3slgg"]
+[ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="14_uxipo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpab4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fhdv"]
+
+[sub_resource type="Curve2D" id="Curve2D_2k5qo"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 140, 70, 0, 0, 0, 0, 140, 190)
+}
+point_count = 2
 
 [node name="lvl_1_zone_1_room_5" type="Node2D"]
 
@@ -36,7 +47,7 @@ position = Vector2(22, 130)
 position = Vector2(266, 130)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_m6053")]
-position = Vector2(143, 130)
+position = Vector2(72, 130)
 
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_rlttq")]
 level_info = NodePath("../LevelInfo Stuff/LevelInfo")
@@ -60,3 +71,26 @@ direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightTransition"]
 shape = SubResource("RectangleShape2D_1fhdv")
+
+[node name="Obstacle_1" type="Node2D" parent="."]
+
+[node name="PlatformSmall" parent="Obstacle_1" instance=ExtResource("14_uxipo")]
+visible = false
+position = Vector2(150, 130)
+
+[node name="BetterDeathZone" parent="." instance=ExtResource("9_2k5qo")]
+curve = SubResource("Curve2D_2k5qo")
+width = 80.0
+
+[node name="@Area2D@30313" type="Area2D" parent="BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@30312" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@30313"]
+polygon = PackedVector2Array(180, 70, 180, 88.75, 180, 130, 180, 171.25, 180, 186.63998, 100, 186.63998, 100, 171.25, 100, 130, 100, 88.75, 100, 70)
+
+[node name="@Polygon2D@30314" type="Polygon2D" parent="BetterDeathZone"]
+material = ExtResource("10_fi66j")
+color = Color(1, 1, 1, 0.3)
+texture = ExtResource("11_3slgg")
+polygon = PackedVector2Array(180, 70, 180, 88.75, 180, 130, 180, 171.25, 180, 186.63998, 100, 186.63998, 100, 171.25, 100, 130, 100, 88.75, 100, 70)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)

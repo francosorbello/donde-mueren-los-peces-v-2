@@ -4,6 +4,7 @@ class_name PersistentEventEvaluator
 signal evaluator_succeded
 signal evaluator_failed
 
+@export var debug : bool = false
 var conditionals : Array[PersistentEventConditional] = []
 
 func _ready():
@@ -14,6 +15,9 @@ func _on_event_set(_ev, cached_events):
 	evaluate(cached_events)
 
 func get_conditionals() -> Array[PersistentEventConditional]:
+	if not conditionals.is_empty():
+		return conditionals
+
 	var result : Array[PersistentEventConditional] = []
 	for child in get_children():
 		if child is PersistentEventConditional:
@@ -23,12 +27,24 @@ func get_conditionals() -> Array[PersistentEventConditional]:
 
 
 func evaluate(cached_events : Dictionary[String, float] = {}):
+	conditionals = get_conditionals()
+	if debug:
+		print("-------")
+		print("Evaluating %s with conditionals:"%get_parent().name,conditionals)
+
 	if conditionals.is_empty():
-		conditionals = get_conditionals()
-	
+		if debug:
+			print("No conditionals. Failing")
+		evaluator_failed.emit()
+		return
+
 	for cond in conditionals:
 		if not cond.evaluate(cached_events):
-			evaluator_failed.emit()
+			if debug:
+				print("Conditional failed: ",cond.to_string())
+				evaluator_failed.emit()
 			return
 
+	if debug:
+		print("All conditionals are true. Success!")	
 	evaluator_succeded.emit()

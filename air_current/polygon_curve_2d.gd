@@ -34,9 +34,16 @@ func _ready() -> void:
 	## TODO: i lose the reference to the nodes when i play the game
 	## there should be a better fix for this
 	if not Engine.is_editor_hint():
-		polygon_shape = get_node("Polygon2D")
-		collision_area = get_node("Area2D")
-		collision_polygon = collision_area.get_node("CollisionPolygon2D")
+		for child in get_children():
+			if child is Polygon2D:
+				polygon_shape = child
+				continue
+			if child is Area2D:
+				collision_area = child
+				for area_child in collision_area.get_children():
+					if area_child is CollisionPolygon2D:
+						collision_polygon = area_child
+				continue
 
 func _set(property: StringName, value: Variant) -> bool:
 	if property == "curve":
@@ -51,6 +58,9 @@ func create_from(value : Curve2D):
 	create()
 
 func create():
+	if not is_node_ready():
+		return
+		
 	if not curve or curve.get_baked_points().is_empty():
 		clear()
 		print("early return")
@@ -104,22 +114,25 @@ func debug_draw():
 	queue_redraw()    
 
 func spawn_required_children():
+	if not self.is_node_ready():
+		return
+
 	for child in get_children():
 		child.queue_free()
 
 	collision_area = Area2D.new()
-	collision_area.name = "Area2D"
+	# collision_area.name = "Area2D"
 	
 	collision_polygon = CollisionPolygon2D.new()
-	collision_polygon.name = "CollisionPolygon2D"
+	# collision_polygon.name = "CollisionPolygon2D"
 	collision_area.add_child(collision_polygon)
 
 	add_child(collision_area)
 	collision_area.owner = get_tree().edited_scene_root
-	collision_polygon.owner = collision_area.owner
+	collision_polygon.owner = get_tree().edited_scene_root
 	
 	polygon_shape = Polygon2D.new()
-	polygon_shape.name = "Polygon2D"
+	# polygon_shape.name = "Polygon2D"
 	polygon_shape.color.a = 0.3
 	add_child(polygon_shape)
 	polygon_shape.owner = get_tree().edited_scene_root

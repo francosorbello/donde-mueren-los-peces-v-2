@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ce5m7b223yfg6"]
+[gd_scene load_steps=10 format=3 uid="uid://ce5m7b223yfg6"]
 
 [ext_resource type="Script" uid="uid://bdsdruassfxby" path="res://level_system/automap/automap.gd" id="1_kskib"]
 [ext_resource type="PackedScene" uid="uid://plpfb11fcas1" path="res://level_system/automap/level_visual.tscn" id="2_el0ph"]
-[ext_resource type="Texture2D" uid="uid://b7fe8ecfnfup" path="res://tests/test_rooms/Test_map_intro.png" id="3_kskib"]
-[ext_resource type="Texture2D" uid="uid://crb4pwt1peoiy" path="res://tests/test_rooms/Test_map_left.png" id="4_eao3t"]
-[ext_resource type="Texture2D" uid="uid://2mebogwwbdmh" path="res://tests/test_rooms/Test_map_down.png" id="5_nm55m"]
-[ext_resource type="Texture2D" uid="uid://u4ojpwkdtdgd" path="res://tests/test_rooms/Test_map_right.png" id="6_q606s"]
+[ext_resource type="Texture2D" uid="uid://chssaoxqckc4f" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_1.png" id="3_kskib"]
+[ext_resource type="Texture2D" uid="uid://b8mhgrjnccce6" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_2.png" id="4_eao3t"]
+[ext_resource type="Texture2D" uid="uid://ulhx7xhyhy1n" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_3.png" id="5_nm55m"]
+[ext_resource type="Texture2D" uid="uid://dnai8fc1qitbb" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_4.png" id="6_q606s"]
+[ext_resource type="Texture2D" uid="uid://bnpfqpt0xpmrs" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_5.png" id="7_4rlc3"]
+[ext_resource type="Texture2D" uid="uid://h0xmhspnw2oj" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_6.png" id="8_np7o4"]
+[ext_resource type="Texture2D" uid="uid://bgfx6iyqy38v1" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_7.png" id="9_wjsbx"]
 
 [node name="Automap" type="Control"]
 layout_mode = 3
@@ -35,38 +38,69 @@ show_arrange_button = false
 
 [node name="LevelVisual" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
-offset_left = 740.0
-offset_right = 796.0
-offset_bottom = 80.0
-position_offset = Vector2(740, 0)
-level_id = "b5d0630c-8d9d-40a1-bffe-30d2035817bb"
+offset_left = 839.0
+offset_top = 408.0
+offset_right = 1223.0
+offset_bottom = 792.0
+position_offset = Vector2(839, 408)
+level_id = "lvl_1_zone_1_room_1"
 visual = ExtResource("3_kskib")
 
 [node name="LevelVisual2" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
-offset_left = 644.0
-offset_right = 740.0
-offset_bottom = 40.0
-position_offset = Vector2(644, 0)
-level_id = "8d4a9654-287d-4337-92c9-173b62adcd4b"
+offset_left = 489.0
+offset_top = 440.0
+offset_right = 841.0
+offset_bottom = 632.0
+position_offset = Vector2(489, 440)
+level_id = "lvl_1_zone_1_room_2"
 visual = ExtResource("4_eao3t")
 
 [node name="LevelVisual3" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
-offset_left = 724.0
-offset_top = 80.0
-offset_right = 804.0
-offset_bottom = 184.00006
-position_offset = Vector2(724, 80)
-level_id = "86387d2e-ae78-49df-a2df-0888ea5d2740"
+offset_left = 79.0
+offset_top = 441.0
+offset_right = 495.0
+offset_bottom = 825.0
+position_offset = Vector2(79, 441)
+level_id = "lvl_1_zone_1_room_3"
 visual = ExtResource("5_nm55m")
 
 [node name="LevelVisual4" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
-offset_left = 804.0
-offset_top = 80.0
-offset_right = 868.0011
-offset_bottom = 136.00006
-position_offset = Vector2(804, 80)
-level_id = "a9195026-1a69-4873-90f4-901b55fe04cf"
+offset_left = 393.0
+offset_top = 120.0
+offset_right = 745.0
+offset_bottom = 440.0
+position_offset = Vector2(393, 120)
+level_id = "lvl_1_zone_1_room_4"
 visual = ExtResource("6_q606s")
+
+[node name="LevelVisual5" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+layout_mode = 0
+offset_left = 745.0
+offset_top = 184.0
+offset_right = 1161.0
+offset_bottom = 344.0
+position_offset = Vector2(745, 184)
+level_id = "lvl_1_zone_1_room_5"
+visual = ExtResource("7_4rlc3")
+
+[node name="LevelVisual6" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+layout_mode = 0
+offset_left = 1159.0
+offset_top = 184.0
+offset_right = 1415.0
+offset_bottom = 408.0
+position_offset = Vector2(1159, 184)
+level_id = "lvl_1_zone_1_room_6"
+visual = ExtResource("8_np7o4")
+
+[node name="LevelVisual7" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+layout_mode = 0
+offset_left = 1223.0
+offset_top = 408.0
+offset_right = 1479.0
+offset_bottom = 664.0
+position_offset = Vector2(1223, 408)
+visual = ExtResource("9_wjsbx")

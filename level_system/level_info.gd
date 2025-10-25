@@ -18,7 +18,7 @@ func _ready():
         return
 
     save_to_file()
-    GlobalSignal.level_entered.emit(id)
+    GlobalSignal.level_entered.emit(level_name)
 
 func generate_id():
     id = UUIDGenerator.generate_uuid()
@@ -26,7 +26,7 @@ func generate_id():
 func save_to_file():
     var save_file = IndieBlueprintSaveManager.current_saved_game as ASavedGame
     if save_file:
-        save_file.add_visited_level(id)
+        save_file.add_visited_level(level_name)
 
 func get_spawn_marker(for_direction : Vector2) -> Marker2D:
     match for_direction:

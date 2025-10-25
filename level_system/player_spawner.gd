@@ -5,6 +5,7 @@ extends Node
 @export var default_spawn_pos : PlayerSpawnPoint
 @export_category("Camera")
 @export var attach_camera : bool = false
+@export var camera_to_attach : Camera2D
 
 func _ready() -> void:
     pass
@@ -18,6 +19,10 @@ func spawn_player(direction : Vector2):
     player.global_position = spawn_marker.global_position
     get_parent().add_child(player)
     if attach_camera:
-        var camera = Camera2D.new()
-        player.add_child(camera)
+        if not camera_to_attach:
+            var camera = Camera2D.new()
+            player.add_child(camera)
+        else:
+            camera_to_attach.get_parent().remove_child(camera_to_attach)
+            player.add_child(camera_to_attach)
 

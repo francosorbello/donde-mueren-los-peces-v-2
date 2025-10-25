@@ -16,17 +16,21 @@ size = Vector2(25, 58)
 script = ExtResource("1_wxsbc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 0.7137255)
 texture = ExtResource("1_s1iyk")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 0.7137255)
 position = Vector2(30, 0)
 texture = ExtResource("1_s1iyk")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 0.7137255)
 position = Vector2(60, 0)
 texture = ExtResource("1_s1iyk")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 0.7137255)
 position = Vector2(90, 0)
 texture = ExtResource("1_s1iyk")
 

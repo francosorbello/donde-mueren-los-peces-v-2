@@ -11,6 +11,7 @@ signal floor_status_changed(new_status : DetectionStatus)
 
 var current_status : DetectionStatus = DetectionStatus.ON_FLOOR:
     set(value):
+        # print(DetectionStatus.find_key(value))
         if value != current_status:
             current_status = value
             floor_status_changed.emit(value)
@@ -27,7 +28,7 @@ func update_status():
         if area is PlatformArea:
             new_status = DetectionStatus.ON_PLATFORM
             break
-        elif area.get_parent() and area.get_parent() is DeathZone:
+        elif area.get_parent() and (area.get_parent() is DeathZone or area.get_parent() is BetterDeathZone):
             new_status = DetectionStatus.FALLING
 
     current_status = new_status

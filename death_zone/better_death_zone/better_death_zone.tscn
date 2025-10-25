@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://btcibk8x0evky"]
+
+[ext_resource type="Script" uid="uid://88e4a7pdjqou" path="res://death_zone/better_death_zone/better_death_zone.gd" id="1_80c00"]
+[ext_resource type="Material" uid="uid://cpxp85woyyt4p" path="res://death_zone/water_1_material.tres" id="2_yc5fo"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="3_5cjqk"]
+
+[node name="BetterDeathZone" type="Path2D"]
+script = ExtResource("1_80c00")
+collision_layer = 32
+polygon_material = ExtResource("2_yc5fo")
+polygon_texture = ExtResource("3_5cjqk")

@@ -8,18 +8,19 @@
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="6_gs4y5"]
 [ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="7_owjk8"]
 [ext_resource type="Resource" uid="uid://wdxb4vdl6vwa" path="res://abilities/ability_items/abi_jump.tres" id="8_7mrnv"]
-[ext_resource type="PackedScene" uid="uid://cj0n05i73dafs" path="res://death_zone/death_zone.tscn" id="9_7mrnv"]
 [ext_resource type="Material" uid="uid://cpxp85woyyt4p" path="res://death_zone/water_1_material.tres" id="10_osk8i"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="11_xsse8"]
 [ext_resource type="PackedScene" uid="uid://cbo7vxmur78m2" path="res://platform/bridge_to_jump_ability.tscn" id="12_xsse8"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="13_rwgtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gs4y5"]
 
-[sub_resource type="Curve2D" id="Curve2D_rwgtn"]
+[sub_resource type="Curve2D" id="Curve2D_we3vr"]
+bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -40, 0, 0, 0, 0, 0, 50, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 80, 40, 0, 0, 0, 0, 190, 40, 0, 0, 0, 0, 190, 80, 0, 0, 0, 0, 270, 80)
 }
-point_count = 2
+point_count = 4
 
 [node name="lvl_1_zone_1_room_3" type="Node2D"]
 
@@ -44,7 +45,7 @@ offset_right = 578.0
 offset_bottom = 270.0
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_ec1rd")]
-tile_map_data = PackedByteArray("AAAXAAAAAwAHAAMAAAAYAAAAAwAHAAMAAAAZAAAAAwAHAAMAAAAaAAAAAwAHAAMAAAAbAAAAAwAHAAMAAAAcAAAAAwAHAAMAAAAZABoAAwAHAAMAAAAaABoAAwAHAAMAAAAbABoAAwAHAAMAAAAcABoAAwAHAAMAAAAYABoAAwAHAAMAAAAXABoAAwAHAAMAAAAPABoAAwAHAAMAAAAQAAAAAwAHAAMAAAAQABoAAwAHAAMAAAARAAAAAwAHAAMAAAARABoAAwAHAAMAAAASAAAAAwAHAAMAAAASABoAAwAHAAMAAAATAAAAAwAHAAMAAAATABoAAwAHAAMAAAAUAAAAAwAHAAMAAAAUABoAAwAHAAMAAAAVAAAAAwAHAAMAAAAVABoAAwAHAAMAAAAWAAAAAwAHAAMAAAAWABoAAwAHAAMAAAAPAAAAAwAHAAMAAAAcAAcAAwAHAAMAAAAcAAgAAwAHAAMAAAAcAAsAAwAHAAMAAAAcAAwAAwAHAAMAAAAcAA0AAwAHAAMAAAAcAA4AAwAHAAMAAAAcAA8AAwAHAAMAAAAcABAAAwAHAAMAAAAcABEAAwAHAAMAAAAcABIAAwAHAAMAAAAcABMAAwAHAAMAAAAcABQAAwAHAAMAAAAcABUAAwAHAAMAAAAcABYAAwAHAAMAAAAcABcAAwAHAAMAAAAcABgAAwAHAAMAAAAcABkAAwAHAAMAAAAAABoAAwAHAAMAAAABABoAAwAHAAMAAAACABoAAwAHAAMAAAADABoAAwAHAAMAAAAEABoAAwAHAAMAAAAFABoAAwAHAAMAAAAGABoAAwAHAAMAAAAHABoAAwAHAAMAAAAIABoAAwAHAAMAAAAJABoAAwAHAAMAAAAKABoAAwAHAAMAAAALABoAAwAHAAMAAAAMABoAAwAHAAMAAAANABoAAwAHAAMAAAAOABoAAwAHAAMAAAAAAAAAAwAHAAMAAAAAAAEAAwAHAAMAAAAAAAIAAwAHAAMAAAAAAAMAAwAHAAMAAAAAAAQAAwAHAAMAAAAAAAUAAwAHAAMAAAAAAAYAAwAHAAMAAAAAAAcAAwAHAAMAAAAAAAgAAwAHAAMAAAAAAAkAAwAHAAMAAAAAAAoAAwAHAAMAAAAAAAsAAwAHAAMAAAAAAAwAAwAHAAMAAAAAAA0AAwAHAAMAAAAAAA4AAwAHAAMAAAAAAA8AAwAHAAMAAAAAABAAAwAHAAMAAAAAABEAAwAHAAMAAAAAABIAAwAHAAMAAAAAABMAAwAHAAMAAAAAABQAAwAHAAMAAAAAABUAAwAHAAMAAAAAABYAAwAHAAMAAAAAABcAAwAHAAMAAAAAABgAAwAHAAMAAAAAABkAAwAHAAMAAAABAAAAAwAHAAMAAAACAAAAAwAHAAMAAAADAAAAAwAHAAMAAAAEAAAAAwAHAAMAAAAFAAAAAwAHAAMAAAAGAAAAAwAHAAMAAAAHAAAAAwAHAAMAAAAIAAAAAwAHAAMAAAAJAAAAAwAHAAMAAAAKAAAAAwAHAAMAAAALAAAAAwAHAAMAAAAMAAAAAwAHAAMAAAANAAAAAwAHAAMAAAAOAAAAAwAHAAMAAAAcAAEAAwAHAAMAAAAcAAIAAwAHAAMAAAAcAAMAAwAHAAMAAAAcAAQAAwAHAAMAAAAcAAUAAwAHAAMAAAAcAAYAAwAHAAMAAAA=")
+tile_map_data = PackedByteArray("AAAXAAAAAwAHAAMAAAAYAAAAAwAHAAMAAAAZAAAAAwAHAAMAAAAaAAAAAwAHAAMAAAAbAAAAAwAHAAMAAAAcAAAAAwAHAAMAAAAZABoAAwAHAAMAAAAaABoAAwAHAAMAAAAbABoAAwAHAAMAAAAcABoAAwAHAAMAAAAYABoAAwAHAAMAAAAXABoAAwAHAAMAAAAPABoAAwAHAAMAAAAQAAAAAwAHAAMAAAAQABoAAwAHAAMAAAARAAAAAwAHAAMAAAARABoAAwAHAAMAAAASAAAAAwAHAAMAAAASABoAAwAHAAMAAAATAAAAAwAHAAMAAAATABoAAwAHAAMAAAAUAAAAAwAHAAMAAAAUABoAAwAHAAMAAAAVAAAAAwAHAAMAAAAVABoAAwAHAAMAAAAWAAAAAwAHAAMAAAAWABoAAwAHAAMAAAAPAAAAAwAHAAMAAAAcAAcAAwAHAAMAAAAcAAgAAwAHAAMAAAAcAAsAAwAHAAMAAAAcAAwAAwAHAAMAAAAcAA0AAwAHAAMAAAAcAA4AAwAHAAMAAAAcAA8AAwAHAAMAAAAcABAAAwAHAAMAAAAcABEAAwAHAAMAAAAcABIAAwAHAAMAAAAcABMAAwAHAAMAAAAcABQAAwAHAAMAAAAcABUAAwAHAAMAAAAcABYAAwAHAAMAAAAcABcAAwAHAAMAAAAcABgAAwAHAAMAAAAcABkAAwAHAAMAAAAAABoAAwAHAAMAAAABABoAAwAHAAMAAAACABoAAwAHAAMAAAADABoAAwAHAAMAAAAEABoAAwAHAAMAAAAFABoAAwAHAAMAAAAGABoAAwAHAAMAAAAHABoAAwAHAAMAAAAIABoAAwAHAAMAAAAJABoAAwAHAAMAAAAKABoAAwAHAAMAAAALABoAAwAHAAMAAAAMABoAAwAHAAMAAAANABoAAwAHAAMAAAAOABoAAwAHAAMAAAAAAAAAAwAHAAMAAAAAAAEAAwAHAAMAAAAAAAIAAwAHAAMAAAAAAAMAAwAHAAMAAAAAAAQAAwAHAAMAAAAAAAUAAwAHAAMAAAAAAAYAAwAHAAMAAAAAAAcAAwAHAAMAAAAAAAgAAwAHAAMAAAAAAAkAAwAHAAMAAAAAAAoAAwAHAAMAAAAAAAsAAwAHAAMAAAAAAAwAAwAHAAMAAAAAAA0AAwAHAAMAAAAAAA4AAwAHAAMAAAAAAA8AAwAHAAMAAAAAABAAAwAHAAMAAAAAABEAAwAHAAMAAAAAABIAAwAHAAMAAAAAABMAAwAHAAMAAAAAABQAAwAHAAMAAAAAABUAAwAHAAMAAAAAABYAAwAHAAMAAAAAABcAAwAHAAMAAAAAABgAAwAHAAMAAAAAABkAAwAHAAMAAAABAAAAAwAHAAMAAAACAAAAAwAHAAMAAAADAAAAAwAHAAMAAAAEAAAAAwAHAAMAAAAFAAAAAwAHAAMAAAAGAAAAAwAHAAMAAAAHAAAAAwAHAAMAAAAIAAAAAwAHAAMAAAAJAAAAAwAHAAMAAAAKAAAAAwAHAAMAAAALAAAAAwAHAAMAAAAMAAAAAwAHAAMAAAANAAAAAwAHAAMAAAAOAAAAAwAHAAMAAAAcAAEAAwAHAAMAAAAcAAIAAwAHAAMAAAAcAAUAAwAHAAMAAAAcAAYAAwAHAAMAAAAcAAkAAwAHAAMAAAAcAAoAAwAHAAMAAAA=")
 
 [node name="Level info stuff" type="Node2D" parent="."]
 
@@ -56,17 +57,25 @@ coming_from_left = NodePath("../FromLeft")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="FromLeft" type="Marker2D" parent="Level info stuff"]
-position = Vector2(264, 100)
+position = Vector2(264, 40)
 
-[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("4_eldvl")]
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos", "camera_to_attach") instance=ExtResource("4_eldvl")]
 level_info = NodePath("../Level info stuff/LevelInfo")
 default_spawn_pos = NodePath("../PlayerSpawnPoint")
+attach_camera = true
+camera_to_attach = NodePath("Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="PlayerSpawner"]
+limit_left = 0
+limit_top = 0
+limit_right = 288
+limit_smoothed = true
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_m76n2")]
 position = Vector2(227, 37)
 
 [node name="LevelTransitionArea" parent="." instance=ExtResource("6_gs4y5")]
-position = Vector2(294, 100)
+position = Vector2(294, 40)
 next_level_id = "lvl_1_zone_1_room_2"
 direction = 3
 
@@ -81,23 +90,23 @@ event_name = "ability_jump_picked_up"
 [node name="FakeBridgeStuff" type="Node2D" parent="."]
 position = Vector2(10, 0)
 
-[node name="DeathZone" parent="FakeBridgeStuff" instance=ExtResource("9_7mrnv")]
-position = Vector2(130, 40)
-curve = SubResource("Curve2D_rwgtn")
-width = 40.0
-
-[node name="Area2D" type="Area2D" parent="FakeBridgeStuff/DeathZone"]
-collision_layer = 32
-collision_mask = 32
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FakeBridgeStuff/DeathZone/Area2D"]
-polygon = PackedVector2Array(-40, 20, 50, 20, 50, -20, -40, -20)
-
-[node name="Polygon2D" type="Polygon2D" parent="FakeBridgeStuff/DeathZone"]
-material = ExtResource("10_osk8i")
-texture = ExtResource("11_xsse8")
-polygon = PackedVector2Array(-40, 20, 50, 20, 50, -20, -40, -20)
-uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
-
 [node name="BridgeToJumpAbility" parent="FakeBridgeStuff" instance=ExtResource("12_xsse8")]
 position = Vector2(90, 40)
+
+[node name="BetterDeathZone" parent="FakeBridgeStuff" instance=ExtResource("13_rwgtn")]
+curve = SubResource("Curve2D_we3vr")
+width = 50.0
+
+[node name="Area2D" type="Area2D" parent="FakeBridgeStuff/BetterDeathZone"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FakeBridgeStuff/BetterDeathZone/Area2D"]
+polygon = PackedVector2Array(80, 10, 130, 10, 190, 10, 190, 30, 190, 60, 230, 60, 270, 60, 270, 100, 230, 100, 190, 100, 170, 100, 140, 100, 100, 100, 80, 100)
+
+[node name="Polygon2D" type="Polygon2D" parent="FakeBridgeStuff/BetterDeathZone"]
+material = ExtResource("10_osk8i")
+color = Color(1, 1, 1, 0.3)
+texture = ExtResource("11_xsse8")
+polygon = PackedVector2Array(80, 10, 130, 10, 190, 10, 190, 30, 190, 60, 230, 60, 270, 60, 270, 100, 230, 100, 190, 100, 170, 100, 140, 100, 100, 100, 80, 100)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)

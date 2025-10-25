@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://7x5o6r22nly0"]
+[gd_scene load_steps=19 format=4 uid="uid://7x5o6r22nly0"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_4gcyw"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_3l225"]
@@ -10,7 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="9_2k5qo"]
 [ext_resource type="Material" uid="uid://cpxp85woyyt4p" path="res://death_zone/water_1_material.tres" id="10_fi66j"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="11_3slgg"]
+[ext_resource type="PackedScene" uid="uid://b46xdrprqgho7" path="res://interactables/levers/lever.tscn" id="12_fi66j"]
+[ext_resource type="Script" uid="uid://cj5j4ybo5t3eq" path="res://persistancy_system/actions/toggle_action.gd" id="13_3slgg"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="14_qnjgr"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="14_uxipo"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="14_ymt3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpab4"]
 
@@ -74,23 +78,43 @@ shape = SubResource("RectangleShape2D_1fhdv")
 
 [node name="Obstacle_1" type="Node2D" parent="."]
 
+[node name="BetterDeathZone" parent="Obstacle_1" instance=ExtResource("9_2k5qo")]
+position = Vector2(10, 0)
+curve = SubResource("Curve2D_2k5qo")
+width = 100.0
+
+[node name="@Area2D@45647" type="Area2D" parent="Obstacle_1/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@45646" type="CollisionPolygon2D" parent="Obstacle_1/BetterDeathZone/@Area2D@45647"]
+polygon = PackedVector2Array(190, 70, 190, 88.75, 190, 130, 190, 171.25, 190, 186.63998, 90, 186.63998, 90, 171.25, 90, 130, 90, 88.75, 90, 70)
+
+[node name="@Polygon2D@45648" type="Polygon2D" parent="Obstacle_1/BetterDeathZone"]
+material = ExtResource("10_fi66j")
+color = Color(1, 1, 1, 0.3)
+texture = ExtResource("11_3slgg")
+polygon = PackedVector2Array(190, 70, 190, 88.75, 190, 130, 190, 171.25, 190, 186.63998, 90, 186.63998, 90, 171.25, 90, 130, 90, 88.75, 90, 70)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
 [node name="PlatformSmall" parent="Obstacle_1" instance=ExtResource("14_uxipo")]
 visible = false
 position = Vector2(150, 130)
 
-[node name="BetterDeathZone" parent="." instance=ExtResource("9_2k5qo")]
-curve = SubResource("Curve2D_2k5qo")
-width = 80.0
+[node name="Lever" parent="Obstacle_1" instance=ExtResource("12_fi66j")]
+position = Vector2(90, 90)
+activated_event = "lever_1_used_on_lvl_1_zone_1_room_5"
 
-[node name="@Area2D@30313" type="Area2D" parent="BetterDeathZone"]
-collision_layer = 32
+[node name="ToggleAction" type="Node" parent="Obstacle_1" node_paths=PackedStringArray("target")]
+script = ExtResource("13_3slgg")
+target = NodePath("../PlatformSmall")
+metadata/_custom_type_script = "uid://cj5j4ybo5t3eq"
 
-[node name="@CollisionPolygon2D@30312" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@30313"]
-polygon = PackedVector2Array(180, 70, 180, 88.75, 180, 130, 180, 171.25, 180, 186.63998, 100, 186.63998, 100, 171.25, 100, 130, 100, 88.75, 100, 70)
+[node name="PersistentEventEvaluator" type="Node" parent="Obstacle_1/ToggleAction"]
+script = ExtResource("14_ymt3l")
+autostart = false
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 
-[node name="@Polygon2D@30314" type="Polygon2D" parent="BetterDeathZone"]
-material = ExtResource("10_fi66j")
-color = Color(1, 1, 1, 0.3)
-texture = ExtResource("11_3slgg")
-polygon = PackedVector2Array(180, 70, 180, 88.75, 180, 130, 180, 171.25, 180, 186.63998, 100, 186.63998, 100, 171.25, 100, 130, 100, 88.75, 100, 70)
-uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+[node name="BoolPersistentEventConditional" type="Node" parent="Obstacle_1/ToggleAction/PersistentEventEvaluator"]
+script = ExtResource("14_qnjgr")
+event_name = "lever_1_used_on_lvl_1_zone_1_room_5"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"

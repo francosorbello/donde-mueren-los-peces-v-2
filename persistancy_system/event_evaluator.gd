@@ -4,12 +4,14 @@ class_name PersistentEventEvaluator
 signal evaluator_succeded
 signal evaluator_failed
 
+@export var autostart : bool = true
 @export var debug : bool = false
 var conditionals : Array[PersistentEventConditional] = []
 
 func _ready():
 	GlobalSignal.event_set.connect(_on_event_set)
-	evaluate()
+	if autostart:
+		evaluate()
 
 func _on_event_set(_ev, cached_events):
 	evaluate(cached_events)

@@ -19,6 +19,7 @@ sprite = NodePath("../../FloatingSprite")
 
 [node name="PersistentEventEvaluator" type="Node" parent="."]
 script = ExtResource("5_k1mc5")
+autostart = false
 metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 
 [node name="BoolPersistentEventConditional" type="Node" parent="PersistentEventEvaluator"]

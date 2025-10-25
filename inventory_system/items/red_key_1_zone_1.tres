@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AnItem" load_steps=3 format=3 uid="uid://dao5jyvq1pdl4"]
+
+[ext_resource type="Texture2D" uid="uid://d4eujshmexxd3" path="res://assets/GRAPHICS/items/key1_16x16.png" id="1_gyrgm"]
+[ext_resource type="Script" uid="uid://egbha40d4mds" path="res://inventory_system/item.gd" id="1_knmtm"]
+
+[resource]
+script = ExtResource("1_knmtm")
+item_name = "Red Key 1"
+icon = ExtResource("1_gyrgm")
+world_icon = ExtResource("1_gyrgm")
+metadata/_custom_type_script = "uid://egbha40d4mds"

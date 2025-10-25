@@ -9,12 +9,15 @@ signal evaluator_failed
 var conditionals : Array[PersistentEventConditional] = []
 
 func _ready():
+	conditionals = get_conditionals()
 	GlobalSignal.event_set.connect(_on_event_set)
 	if autostart:
 		evaluate()
+	
 
 func _on_event_set(_ev, cached_events):
-	evaluate(cached_events)
+	if has_valid_conditional(_ev):
+		evaluate(cached_events)
 
 func get_conditionals() -> Array[PersistentEventConditional]:
 	if not conditionals.is_empty():
@@ -27,9 +30,14 @@ func get_conditionals() -> Array[PersistentEventConditional]:
 
 	return result
 
+func has_valid_conditional(for_event : PersistentEvent):
+	for cond in conditionals:
+		if cond.event_name == for_event.name:
+			return true
+	return false
 
 func evaluate(cached_events : Dictionary[String, float] = {}):
-	conditionals = get_conditionals()
+	# conditionals = get_conditionals()
 	if debug:
 		print("-------")
 		print("Evaluating %s with conditionals:"%get_parent().name,conditionals)

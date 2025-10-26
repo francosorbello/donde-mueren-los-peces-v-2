@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://rtns5g7xme08"]
+[gd_scene load_steps=21 format=4 uid="uid://rtns5g7xme08"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_7x6ou"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="1_ec1rd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://cpxp85woyyt4p" path="res://death_zone/water_1_material.tres" id="10_osk8i"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="11_xsse8"]
 [ext_resource type="PackedScene" uid="uid://cbo7vxmur78m2" path="res://platform/bridge_to_jump_ability.tscn" id="12_xsse8"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="13_5pkst"]
 [ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="13_rwgtn"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="13_we3vr"]
 
@@ -131,8 +132,7 @@ collision_layer = 32
 polygon = PackedVector2Array(195, 10.000003, 195, 40.625004, 195, 72.015625, 195, 108, 195, 143.98438, 195, 175.375, 195, 200.512, 85, 200.512, 85, 175.375, 85, 143.98438, 85, 108, 85, 72.015625, 85, 40.624996, 85, 9.999997)
 
 [node name="Polygon2D" type="Polygon2D" parent="FakeBridgeStuff/BetterDeathZone2"]
-material = ExtResource("10_osk8i")
-color = Color(1, 1, 1, 0.3)
+material = ExtResource("13_5pkst")
 texture = ExtResource("11_xsse8")
 polygon = PackedVector2Array(195, 10.000003, 195, 40.625004, 195, 72.015625, 195, 108, 195, 143.98438, 195, 175.375, 195, 200.512, 85, 200.512, 85, 175.375, 85, 143.98438, 85, 108, 85, 72.015625, 85, 40.624996, 85, 9.999997)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
@@ -154,8 +154,7 @@ collision_layer = 32
 polygon = PackedVector2Array(90, 60, 90, 98.88, 10, 98.88, 10, 60)
 
 [node name="Polygon2D" type="Polygon2D" parent="Obstacle 1/BetterDeathZone"]
-material = ExtResource("10_osk8i")
-color = Color(1, 1, 1, 0.3)
+material = ExtResource("13_5pkst")
 texture = ExtResource("11_xsse8")
 polygon = PackedVector2Array(90, 60, 90, 98.88, 10, 98.88, 10, 60)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)

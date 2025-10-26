@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://sf72adfyfpca"]
+
+[ext_resource type="Shader" uid="uid://d1owo2r0dj7ev" path="res://death_zone/water_2.gdshader" id="1_cpxew"]
+
+[resource]
+shader = ExtResource("1_cpxew")
+shader_parameter/WATER_COL = Color(0, 0, 0, 0.6039216)
+shader_parameter/WATER2_COL = Color(1, 0, 0.05000019, 1)
+shader_parameter/FOAM_COL = Color(0.87451, 0.988235, 1, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(5, 5)
+shader_parameter/offset = Vector2(0, 0)

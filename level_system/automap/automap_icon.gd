@@ -55,7 +55,6 @@ func show_visual(visited_levels : Array[String]):
         show()
 
 func _on_persistent_event_evaluator_evaluator_succeded() -> void:
-    print("Icon %s cant be visible"%name)
     can_be_visible = false
     hide()
     pass # Replace with function body.

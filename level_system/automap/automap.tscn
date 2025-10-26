@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ce5m7b223yfg6"]
+[gd_scene load_steps=10 format=3 uid="uid://ce5m7b223yfg6"]
 
 [ext_resource type="Script" uid="uid://bdsdruassfxby" path="res://level_system/automap/automap.gd" id="1_kskib"]
 [ext_resource type="PackedScene" uid="uid://plpfb11fcas1" path="res://level_system/automap/level_visual.tscn" id="2_el0ph"]
@@ -9,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bnpfqpt0xpmrs" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_5.png" id="7_4rlc3"]
 [ext_resource type="Texture2D" uid="uid://h0xmhspnw2oj" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_6.png" id="8_np7o4"]
 [ext_resource type="Texture2D" uid="uid://bgfx6iyqy38v1" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_7.png" id="9_wjsbx"]
-[ext_resource type="PackedScene" uid="uid://gf4aassa57a5" path="res://level_system/automap/automap_icon.tscn" id="10_if1rc"]
-[ext_resource type="Texture2D" uid="uid://bwuxg2ihlhbct" path="res://assets/GRAPHICS/items/helmet1_16x16.png" id="11_f6e1x"]
 
 [node name="Automap" type="Control"]
 layout_mode = 3
@@ -114,14 +112,3 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="IconFor (lvl_1_zone_1_room_3) (ability_jump_picked_up)" parent="GraphEdit" instance=ExtResource("10_if1rc")]
-layout_mode = 0
-offset_left = 120.0
-offset_top = 480.0
-offset_right = 168.0
-offset_bottom = 528.0
-position_offset = Vector2(120, 480)
-level_id = "lvl_1_zone_1_room_3"
-related_event = "ability_jump_picked_up"
-icon = ExtResource("11_f6e1x")

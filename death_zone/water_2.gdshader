@@ -1,10 +1,10 @@
 shader_type canvas_item;
 
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, repeat_enable, filter_nearest;
 
 uniform vec4 WATER_COL : source_color =  vec4(0.176471, 0.635294, 0.85098, 1.0);
 uniform vec4 WATER2_COL : source_color =  vec4(0.0588235, 0.529412, 0.776471, 1.0);
 uniform vec4 FOAM_COL : source_color = vec4(0.87451, 0.988235, 1, 1.0);
-
 uniform float distortion_speed = 2.0;
 uniform vec2 tile = vec2(5.0, 5.0);
 uniform vec2 offset = vec2(0, 0);
@@ -104,7 +104,7 @@ float waterlayer(vec2 uv)
 	return max(ret, 0.0);
 }
 
-vec3 water(vec2 uv, vec3 cdir, float iTime)
+vec4 water(vec2 uv, vec3 cdir, float iTime,vec4 bg_color)
 {
     uv *= vec2(0.25);
 	
@@ -128,9 +128,9 @@ vec3 water(vec2 uv, vec3 cdir, float iTime)
     	cos(d1) * 0.15 + cos(d2) * 0.05
     );
     
-    vec3 ret = mix(WATER_COL.rgb, WATER2_COL.rgb, waterlayer(uv + dist.xy));
-    ret = mix(ret, FOAM_COL.rgb, waterlayer(vec2(1.0) - uv - dist.yx));
+    vec4 ret = mix(WATER_COL, WATER2_COL, waterlayer(uv + dist.xy));
     return ret;
+    //ret = mix(ret, FOAM_COL.rgb, waterlayer(vec2(1.0) - uv - dist.yx));
 }
 
 varying vec2 globalposition;
@@ -140,5 +140,6 @@ void vertex(){
 
 void fragment() {
 	vec2 uv = globalposition / 32.0;
-	COLOR.rgb = vec3(water(uv * tile + offset, vec3(0,1,0), TIME * distortion_speed));
+	vec4 bg_color = texture(SCREEN_TEXTURE, SCREEN_UV);
+	COLOR = water(uv * tile + offset, vec3(0,1,0), TIME * distortion_speed,bg_color);
 }

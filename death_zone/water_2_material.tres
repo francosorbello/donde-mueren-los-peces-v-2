@@ -4,7 +4,7 @@
 
 [resource]
 shader = ExtResource("1_cpxew")
-shader_parameter/WATER_COL = Color(0, 0, 0, 0.6039216)
+shader_parameter/WATER_COL = Color(0, 0, 0, 0.32941177)
 shader_parameter/WATER2_COL = Color(1, 0, 0.05000019, 1)
 shader_parameter/FOAM_COL = Color(0.87451, 0.988235, 1, 1)
 shader_parameter/distortion_speed = 2.0

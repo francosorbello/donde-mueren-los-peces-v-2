@@ -142,4 +142,5 @@ void fragment() {
 	vec2 uv = globalposition / 32.0;
 	vec4 bg_color = texture(SCREEN_TEXTURE, SCREEN_UV);
 	COLOR = water(uv * tile + offset, vec3(0,1,0), TIME * distortion_speed,bg_color);
+	//COLOR = vec4(COLOR.a);
 }

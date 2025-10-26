@@ -19,6 +19,12 @@ class_name PolygonCurve2D
 		if curve:
 			curve.bake_interval = curve_bake_interval
 
+@export_range(0.5,0.99) var end_sample_point : float = 0.9:
+	set(value):
+		end_sample_point = value
+		if Engine.is_editor_hint():
+			create()
+
 var polygon_shape : Polygon2D
 var collision_polygon : CollisionPolygon2D
 var collision_area : Area2D
@@ -59,6 +65,7 @@ func create_from(value : Curve2D):
 
 func create():
 	if not is_node_ready():
+		print("Not ready")
 		return
 		
 	if not curve or curve.get_baked_points().is_empty():
@@ -88,7 +95,7 @@ func create():
 	
 	# sample an extra point a little bit before the end of the curve
 	var last_point = points[points.size()-1]
-	var last_point_offset = curve.sample(curve.point_count-2,0.9)
+	var last_point_offset = curve.sample(curve.point_count-2,end_sample_point)
 
 	var last_point_transform = Transform2D((last_point-last_point_offset).angle(),last_point_offset)
 	p1_points.append(last_point_transform * Vector2(0,width/2))
@@ -133,7 +140,6 @@ func spawn_required_children():
 	
 	polygon_shape = Polygon2D.new()
 	# polygon_shape.name = "Polygon2D"
-	polygon_shape.color.a = 0.3
 	add_child(polygon_shape)
 	polygon_shape.owner = get_tree().edited_scene_root
 

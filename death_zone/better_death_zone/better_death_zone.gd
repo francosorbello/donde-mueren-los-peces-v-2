@@ -2,7 +2,7 @@
 extends PolygonCurve2D
 class_name BetterDeathZone
 
-@export_flags_2d_physics var collision_layer
+@export_flags_2d_physics var collision_layer : int
 @export var polygon_material : ShaderMaterial
 @export var polygon_texture : Texture2D
 

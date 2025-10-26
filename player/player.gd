@@ -12,6 +12,8 @@ class_name APlayer
 @export_flags_2d_physics var jump_collision_mask : int
 @export var abilities : Array[AnItem]
 
+signal player_fell
+
 var last_direction : Vector2
 
 var _initial_collision_mask : int
@@ -104,6 +106,7 @@ func has_ability_named(ab_name : String) -> bool:
 func _on_floor_detection_component_player_fell() -> void:
 	$DeadAnimPlayer.play_anim($Sprite2D)
 	global_position = $SafePointManager.last_safe_position
+	player_fell.emit()
 
 func _on_ui_opened():
 	$StateMachine.transition_to("EmptyState")

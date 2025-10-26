@@ -26,7 +26,7 @@ func _on_switched_states(_from : String, to : String):
 		$RefreshPositionTimer.stop()
 
 func _on_refresh_position_timer_timeout():
-	if floor_detector.current_status != FloorDetector.DetectionStatus.FALLING:
+	if floor_detector.current_status == FloorDetector.DetectionStatus.ON_FLOOR:
 		last_safe_position = player.global_position
 		# print("Last safe position: ",last_safe_position)
 

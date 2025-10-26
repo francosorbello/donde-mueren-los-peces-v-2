@@ -8,7 +8,14 @@ func _ready() -> void:
     Console.add_command("clear_save",clear_save)
     Console.add_command("dump_save",dump_save)
     Console.add_command("unlock_all_abilities",unlock_all_abilities,["is_permanent"],1)
+    Console.add_command("restart_level",restart_level)
+    
     Console.font_size = 30
+
+func restart_level():
+    var level_node = get_parent().current_level as Node
+    if level_node:
+        GlobalSignal.level_change_requested.emit(SaveUtils.scene_path_to_name(level_node.scene_file_path),get_parent().last_transition_direction)
 
 func clear_save():
     var current_save = IndieBlueprintSaveManager.current_saved_game as ASavedGame

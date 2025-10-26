@@ -17,10 +17,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gs4y5"]
 
-[sub_resource type="Curve2D" id="Curve2D_6yaak"]
+[sub_resource type="Curve2D" id="Curve2D_c418v"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 140, 10, 0, 0, 0, 0, 140, 206)
+"points": PackedVector2Array(0, 0, 0, 0, 140, 10, 0, 0, 0, 0, 140, 210)
 }
 point_count = 2
 
@@ -34,14 +34,14 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_rwgtn"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 50, 60, 0, 0, 0, 0, 50, 130)
+"points": PackedVector2Array(0, 0, 0, 0, 50, 60, 0, 0, 0, 0, 50, 136)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_5pkst"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 90, 230, 0, 0, 0, 0, 210, 230)
+"points": PackedVector2Array(0, 0, 0, 0, 90, 230, 0, 0, 0, 0, 220, 230)
 }
 point_count = 2
 
@@ -113,47 +113,49 @@ direction = 3
 shape = SubResource("RectangleShape2D_gs4y5")
 
 [node name="JumpAbilityPickup" parent="." instance=ExtResource("7_owjk8")]
-position = Vector2(43, 37)
+position = Vector2(50, 30)
 item = ExtResource("8_7mrnv")
 event_name = "ability_jump_picked_up"
 
 [node name="FakeBridgeStuff" type="Node2D" parent="."]
 position = Vector2(10, 0)
 
-[node name="BetterDeathZone2" parent="FakeBridgeStuff" instance=ExtResource("13_rwgtn")]
-position = Vector2(-2, 0)
-curve = SubResource("Curve2D_6yaak")
+[node name="BetterDeathZone" parent="FakeBridgeStuff" instance=ExtResource("13_rwgtn")]
+curve = SubResource("Curve2D_c418v")
+polygon_material = ExtResource("13_5pkst")
 width = 110.0
+end_sample_point = 0.867
 
-[node name="Area2D" type="Area2D" parent="FakeBridgeStuff/BetterDeathZone2"]
+[node name="@Area2D@101153" type="Area2D" parent="FakeBridgeStuff/BetterDeathZone"]
 collision_layer = 32
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FakeBridgeStuff/BetterDeathZone2/Area2D"]
-polygon = PackedVector2Array(195, 10.000003, 195, 40.625004, 195, 72.015625, 195, 108, 195, 143.98438, 195, 175.375, 195, 200.512, 85, 200.512, 85, 175.375, 85, 143.98438, 85, 108, 85, 72.015625, 85, 40.624996, 85, 9.999997)
+[node name="@CollisionPolygon2D@101152" type="CollisionPolygon2D" parent="FakeBridgeStuff/BetterDeathZone/@Area2D@101153"]
+polygon = PackedVector2Array(195, 10.000003, 195, 41.250004, 195, 73.28125, 195, 110, 195, 146.71875, 195, 178.75, 195, 200.32767, 85, 200.32767, 85, 178.75, 85, 146.71875, 85, 110, 85, 73.28125, 85, 41.249996, 85, 9.999997)
 
-[node name="Polygon2D" type="Polygon2D" parent="FakeBridgeStuff/BetterDeathZone2"]
+[node name="@Polygon2D@101154" type="Polygon2D" parent="FakeBridgeStuff/BetterDeathZone"]
 material = ExtResource("13_5pkst")
 texture = ExtResource("11_xsse8")
-polygon = PackedVector2Array(195, 10.000003, 195, 40.625004, 195, 72.015625, 195, 108, 195, 143.98438, 195, 175.375, 195, 200.512, 85, 200.512, 85, 175.375, 85, 143.98438, 85, 108, 85, 72.015625, 85, 40.624996, 85, 9.999997)
+polygon = PackedVector2Array(195, 10.000003, 195, 41.250004, 195, 73.28125, 195, 110, 195, 146.71875, 195, 178.75, 195, 200.32767, 85, 200.32767, 85, 178.75, 85, 146.71875, 85, 110, 85, 73.28125, 85, 41.249996, 85, 9.999997)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
 [node name="BridgeToJumpAbility" parent="FakeBridgeStuff" instance=ExtResource("12_xsse8")]
-position = Vector2(90, 40)
+position = Vector2(95, 40)
 
 [node name="Obstacle 1" type="Node2D" parent="."]
 
 [node name="BetterDeathZone" parent="Obstacle 1" instance=ExtResource("13_rwgtn")]
 position = Vector2(0, 1)
 curve = SubResource("Curve2D_xsse8")
+polygon_material = ExtResource("13_5pkst")
 width = 80.0
 
-[node name="Area2D" type="Area2D" parent="Obstacle 1/BetterDeathZone"]
+[node name="@Area2D@102114" type="Area2D" parent="Obstacle 1/BetterDeathZone"]
 collision_layer = 32
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle 1/BetterDeathZone/Area2D"]
+[node name="@CollisionPolygon2D@102113" type="CollisionPolygon2D" parent="Obstacle 1/BetterDeathZone/@Area2D@102114"]
 polygon = PackedVector2Array(90, 60, 90, 98.88, 10, 98.88, 10, 60)
 
-[node name="Polygon2D" type="Polygon2D" parent="Obstacle 1/BetterDeathZone"]
+[node name="@Polygon2D@102115" type="Polygon2D" parent="Obstacle 1/BetterDeathZone"]
 material = ExtResource("13_5pkst")
 texture = ExtResource("11_xsse8")
 polygon = PackedVector2Array(90, 60, 90, 98.88, 10, 98.88, 10, 60)
@@ -164,19 +166,20 @@ uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 [node name="BetterDeathZone2" parent="Obstacle 2" instance=ExtResource("13_rwgtn")]
 position = Vector2(0, 80)
 curve = SubResource("Curve2D_rwgtn")
+polygon_material = ExtResource("13_5pkst")
 width = 80.0
+end_sample_point = 0.71
 
-[node name="Area2D" type="Area2D" parent="Obstacle 2/BetterDeathZone2"]
+[node name="@Area2D@97652" type="Area2D" parent="Obstacle 2/BetterDeathZone2"]
 collision_layer = 32
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle 2/BetterDeathZone2/Area2D"]
-polygon = PackedVector2Array(90, 60, 90, 95, 90, 128.04, 10, 128.04, 10, 95, 10, 60)
+[node name="@CollisionPolygon2D@97651" type="CollisionPolygon2D" parent="Obstacle 2/BetterDeathZone2/@Area2D@97652"]
+polygon = PackedVector2Array(90, 60, 90, 98, 90, 120.53232, 10, 120.53232, 10, 98, 10, 60)
 
-[node name="Polygon2D" type="Polygon2D" parent="Obstacle 2/BetterDeathZone2"]
-material = ExtResource("10_osk8i")
-color = Color(1, 1, 1, 0.3)
+[node name="@Polygon2D@97653" type="Polygon2D" parent="Obstacle 2/BetterDeathZone2"]
+material = ExtResource("13_5pkst")
 texture = ExtResource("11_xsse8")
-polygon = PackedVector2Array(90, 60, 90, 95, 90, 128.04, 10, 128.04, 10, 95, 10, 60)
+polygon = PackedVector2Array(90, 60, 90, 98, 90, 120.53232, 10, 120.53232, 10, 98, 10, 60)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
 [node name="PlatformSmall" parent="Obstacle 2" instance=ExtResource("13_we3vr")]
@@ -186,19 +189,20 @@ position = Vector2(50, 173)
 
 [node name="BetterDeathZone" parent="Obstacle 3" instance=ExtResource("13_rwgtn")]
 curve = SubResource("Curve2D_5pkst")
+polygon_material = ExtResource("13_5pkst")
 width = 60.0
 
-[node name="Area2D" type="Area2D" parent="Obstacle 3/BetterDeathZone"]
+[node name="@Area2D@86039" type="Area2D" parent="Obstacle 3/BetterDeathZone"]
 collision_layer = 32
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle 3/BetterDeathZone/Area2D"]
-polygon = PackedVector2Array(90, 200, 108.75, 200, 150, 200, 191.25, 200, 206.64, 200, 206.64, 260, 191.25, 260, 150, 260, 108.75, 260, 90, 260)
+[node name="@CollisionPolygon2D@86038" type="CollisionPolygon2D" parent="Obstacle 3/BetterDeathZone/@Area2D@86039"]
+polygon = PackedVector2Array(90, 200, 110.3125, 200, 155, 200, 199.6875, 200, 216.35999, 200, 216.35999, 260, 199.6875, 260, 155, 260, 110.3125, 260, 90, 260)
 
-[node name="Polygon2D" type="Polygon2D" parent="Obstacle 3/BetterDeathZone"]
-material = ExtResource("10_osk8i")
+[node name="@Polygon2D@86040" type="Polygon2D" parent="Obstacle 3/BetterDeathZone"]
+material = ExtResource("13_5pkst")
 color = Color(1, 1, 1, 0.3)
 texture = ExtResource("11_xsse8")
-polygon = PackedVector2Array(90, 200, 108.75, 200, 150, 200, 191.25, 200, 206.64, 200, 206.64, 260, 191.25, 260, 150, 260, 108.75, 260, 90, 260)
+polygon = PackedVector2Array(90, 200, 110.3125, 200, 155, 200, 199.6875, 200, 216.35999, 200, 216.35999, 260, 199.6875, 260, 155, 260, 110.3125, 260, 90, 260)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
 [node name="PlatformSmall" parent="Obstacle 3" instance=ExtResource("13_we3vr")]

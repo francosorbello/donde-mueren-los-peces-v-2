@@ -40,13 +40,13 @@ texture = ExtResource("1_s1iyk")
 position = Vector2(45, 0)
 shape = SubResource("RectangleShape2D_3txao")
 
-[node name="PersistentEventEvaluator" type="Node" parent="."]
+[node name="BridgeCrossedEvaluator" type="Node" parent="."]
 script = ExtResource("4_07ggp")
 metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 
-[node name="BoolPersistentEventConditional" type="Node" parent="PersistentEventEvaluator"]
+[node name="BoolPersistentEventConditional" type="Node" parent="BridgeCrossedEvaluator"]
 script = ExtResource("5_3n8yd")
-event_name = "bride_to_jump_crossed"
+event_name = "bridge_to_jump_crossed"
 metadata/_custom_type_script = "uid://davfd8xpi1i3t"
 
 [node name="DestroyWhenExitedArea" type="Area2D" parent="."]
@@ -58,5 +58,15 @@ position = Vector2(12.5, 1)
 shape = SubResource("RectangleShape2D_3n8yd")
 debug_color = Color(0.97, 0, 0.01616642, 0.41960785)
 
-[connection signal="evaluator_succeded" from="PersistentEventEvaluator" to="." method="_on_persistent_event_evaluator_evaluator_succeded"]
+[node name="JumpAbilityPickedUpEvaluator" type="Node" parent="."]
+script = ExtResource("4_07ggp")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="JumpAbilityPickedUpEvaluator"]
+script = ExtResource("5_3n8yd")
+event_name = "ability_jump_picked_up"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[connection signal="evaluator_succeded" from="BridgeCrossedEvaluator" to="." method="_on_bridge_crossed_evaluator_succeded"]
 [connection signal="body_exited" from="DestroyWhenExitedArea" to="." method="_on_platform_area_body_exited"]
+[connection signal="evaluator_succeded" from="JumpAbilityPickedUpEvaluator" to="." method="_on_jump_ability_picked_up_evaluator_evaluator_succeded"]

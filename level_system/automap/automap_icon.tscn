@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://gf4aassa57a5"]
+
+[ext_resource type="Script" uid="uid://cmaqsjdhwrf0v" path="res://level_system/automap/automap_icon.gd" id="1_ajcmu"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="2_xweeu"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="3_ddmkj"]
+
+[node name="AutomapIcon" type="GraphElement"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+draggable = false
+selectable = false
+script = ExtResource("1_ajcmu")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="PersistentEventEvaluator" type="Node" parent="."]
+script = ExtResource("2_xweeu")
+autostart = false
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="PersistentEventEvaluator"]
+script = ExtResource("3_ddmkj")
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[connection signal="evaluator_succeded" from="PersistentEventEvaluator" to="." method="_on_persistent_event_evaluator_evaluator_succeded"]

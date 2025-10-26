@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ce5m7b223yfg6"]
+[gd_scene load_steps=12 format=3 uid="uid://ce5m7b223yfg6"]
 
 [ext_resource type="Script" uid="uid://bdsdruassfxby" path="res://level_system/automap/automap.gd" id="1_kskib"]
 [ext_resource type="PackedScene" uid="uid://plpfb11fcas1" path="res://level_system/automap/level_visual.tscn" id="2_el0ph"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bnpfqpt0xpmrs" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_5.png" id="7_4rlc3"]
 [ext_resource type="Texture2D" uid="uid://h0xmhspnw2oj" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_6.png" id="8_np7o4"]
 [ext_resource type="Texture2D" uid="uid://bgfx6iyqy38v1" path="res://level_system/levels/level_1/automap_imgs/Lvl_1_Zone_1_Room_7.png" id="9_wjsbx"]
+[ext_resource type="PackedScene" uid="uid://gf4aassa57a5" path="res://level_system/automap/automap_icon.tscn" id="10_if1rc"]
+[ext_resource type="Texture2D" uid="uid://bwuxg2ihlhbct" path="res://assets/GRAPHICS/items/helmet1_16x16.png" id="11_f6e1x"]
 
 [node name="Automap" type="Control"]
 layout_mode = 3
@@ -36,71 +38,90 @@ show_grid_buttons = false
 show_minimap_button = false
 show_arrange_button = false
 
-[node name="LevelVisual" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+[node name="VisualFor (lvl_1_zone_1_room_1)" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
 offset_left = 839.0
 offset_top = 408.0
-offset_right = 1223.0
-offset_bottom = 792.0
+offset_right = 1223.0015
+offset_bottom = 792.00085
 position_offset = Vector2(839, 408)
 level_id = "lvl_1_zone_1_room_1"
 visual = ExtResource("3_kskib")
 
-[node name="LevelVisual2" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+[node name="VisualFor (lvl_1_zone_1_room_2)" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
 offset_left = 489.0
 offset_top = 440.0
-offset_right = 841.0
-offset_bottom = 632.0
+offset_right = 841.0006
+offset_bottom = 632.00085
 position_offset = Vector2(489, 440)
 level_id = "lvl_1_zone_1_room_2"
 visual = ExtResource("4_eao3t")
 
-[node name="LevelVisual3" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+[node name="VisualFor (lvl_1_zone_1_room_3)" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
 offset_left = 79.0
 offset_top = 441.0
 offset_right = 495.0
-offset_bottom = 825.0
+offset_bottom = 825.00085
 position_offset = Vector2(79, 441)
 level_id = "lvl_1_zone_1_room_3"
 visual = ExtResource("5_nm55m")
 
-[node name="LevelVisual4" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+[node name="VisualFor (lvl_1_zone_1_room_4)" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
 offset_left = 393.0
 offset_top = 120.0
-offset_right = 745.0
+offset_right = 745.0006
 offset_bottom = 440.0
 position_offset = Vector2(393, 120)
 level_id = "lvl_1_zone_1_room_4"
 visual = ExtResource("6_q606s")
 
-[node name="LevelVisual5" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+[node name="VisualFor (lvl_1_zone_1_room_5)" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
 offset_left = 745.0
 offset_top = 184.0
-offset_right = 1161.0
-offset_bottom = 344.0
+offset_right = 1161.0015
+offset_bottom = 344.00012
 position_offset = Vector2(745, 184)
 level_id = "lvl_1_zone_1_room_5"
 visual = ExtResource("7_4rlc3")
 
-[node name="LevelVisual6" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+[node name="VisualFor (lvl_1_zone_1_room_6)" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
 offset_left = 1159.0
 offset_top = 184.0
 offset_right = 1415.0
-offset_bottom = 408.0
+offset_bottom = 408.00012
 position_offset = Vector2(1159, 184)
 level_id = "lvl_1_zone_1_room_6"
 visual = ExtResource("8_np7o4")
 
-[node name="LevelVisual7" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+[node name="VisualFor (lvl_1_zone_1_room_7)" parent="GraphEdit" instance=ExtResource("2_el0ph")]
 layout_mode = 0
 offset_left = 1223.0
 offset_top = 408.0
 offset_right = 1479.0
-offset_bottom = 664.0
+offset_bottom = 664.00085
 position_offset = Vector2(1223, 408)
+level_id = "lvl_1_zone_1_room_7"
 visual = ExtResource("9_wjsbx")
+
+[node name="===ICONS===" type="Control" parent="GraphEdit"]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IconFor (lvl_1_zone_1_room_3) (ability_jump_picked_up)" parent="GraphEdit" instance=ExtResource("10_if1rc")]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 480.0
+offset_right = 168.0
+offset_bottom = 528.0
+position_offset = Vector2(120, 480)
+level_id = "lvl_1_zone_1_room_3"
+related_event = "ability_jump_picked_up"
+icon = ExtResource("11_f6e1x")

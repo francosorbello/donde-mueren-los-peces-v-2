@@ -43,12 +43,13 @@ func show_map():
 		if not visual.visible:
 			visual.show_visual(visible_levels)
 
-		if visual.level_id == _current_level:
-			# center_on_visual(visual)
-			center_on_node($GraphEdit,visual)
-			visual.toggle_current(true)
-		else:
-			visual.toggle_current(false)
+		if visual.has_method("toggle_current"):            
+			if visual.level_id == _current_level:
+				# center_on_visual(visual)
+				center_on_node($GraphEdit,visual)
+				visual.toggle_current(true)
+			else:
+				visual.toggle_current(false)
 	show()
 	GlobalSignal.game_ui_opened.emit()
 

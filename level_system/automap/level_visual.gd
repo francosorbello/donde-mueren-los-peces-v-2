@@ -1,7 +1,11 @@
 @tool
 extends GraphElement
 
-@export var level_id : String
+@export var level_id : String:
+    set(value):
+        level_id = value
+        if Engine.is_editor_hint() and is_node_ready():
+            name = "VisualFor (%s)"%level_id
 @export var visual : Texture2D:
     set(value):
         visual = value

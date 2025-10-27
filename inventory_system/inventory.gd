@@ -23,5 +23,12 @@ func get_by_name(item_name : String) -> AnItem:
 
 	return null
 
+func has_item(item : AnItem) -> bool:
+	for it in items:
+		if it.item_id == item.item_id:
+			return true
+
+	return false
+
 func clear():
 	items.clear()

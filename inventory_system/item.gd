@@ -1,3 +1,4 @@
+@tool
 extends Resource
 class_name AnItem
 
@@ -13,4 +14,10 @@ enum ItemType {
 @export var is_persistent : bool = false
 @export var icon : Texture2D
 @export var world_icon : Texture2D
+@export_category("ID")
+@export var item_id : String
+@export_tool_button("Generate ID") var gen_id_action = _generate_id
 
+func _generate_id():
+    item_id = UUIDGenerator.generate_uuid()
+    ResourceSaver.save(self)

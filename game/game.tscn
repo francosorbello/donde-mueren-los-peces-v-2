@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=18 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ov7dh4x4dwtb" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dt73qjnoy4jew" path="res://assets/SOUNDS/music/WAV_This_Could_Be_Anywhere_in_the_World.mp3" id="10_vsp63"]
 [ext_resource type="AudioStream" uid="uid://delhiq2cjt60q" path="res://assets/SOUNDS/music/WAV_Who_Are_You.mp3" id="11_b686c"]
 [ext_resource type="PackedScene" uid="uid://bq36b0nga2k5y" path="res://game/game_console_commands.tscn" id="12_qf6n1"]
+[ext_resource type="Script" uid="uid://c8h0kq00glgpg" path="res://game/game_blackboard.gd" id="14_b686c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxrkv"]
 shader = ExtResource("4_dxrkv")
@@ -131,3 +132,6 @@ volume_db = -10.0
 autoplay = true
 
 [node name="GameConsoleCommands" parent="." instance=ExtResource("12_qf6n1")]
+
+[node name="GameBlackboard" type="Node" parent="." groups=["blackboard"]]
+script = ExtResource("14_b686c")

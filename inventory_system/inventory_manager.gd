@@ -30,4 +30,5 @@ func add_item(item : AnItem):
 			current_save.persistent_inventory = persistent_inventory.items
 			current_save.write_savegame()
 	else:
+		print("adding %s to temp inventory"%item.item_name)
 		temporary_inventory.add_to_inventory(item)

@@ -44,7 +44,12 @@ func _on_better_interactable_component_on_interact() -> void:
 	var inventory_manager = get_tree().get_first_node_in_group("inventory_manager")
 	if inventory_manager:
 		inventory_manager.add_item(item)
-		PersistencySystem.set_event(event_name,1.0)
+		if item.is_persistent:
+			PersistencySystem.set_event(event_name,1.0)
+		else:
+			var blackboard : GameBlackboard = get_tree().get_first_node_in_group("blackboard")
+			if blackboard:
+				blackboard.add_temp_event(event_name,1.0)
 	
 	# queue_free()
 

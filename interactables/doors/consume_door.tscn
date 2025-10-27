@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bua1jy71pnhwl"]
+
+[ext_resource type="Script" uid="uid://hc3xawd15bty" path="res://interactables/doors/consume_door.gd" id="1_ifrlj"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="2_bbcs1"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="3_0u77i"]
+
+[node name="ConsumeDoor" type="Node2D"]
+script = ExtResource("1_ifrlj")
+
+[node name="PersistentEventEvaluator" type="Node" parent="."]
+script = ExtResource("2_bbcs1")
+autostart = false
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="PersistentEventEvaluator"]
+script = ExtResource("3_0u77i")
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[connection signal="evaluator_succeded" from="PersistentEventEvaluator" to="." method="_on_persistent_event_evaluator_evaluator_succeded"]

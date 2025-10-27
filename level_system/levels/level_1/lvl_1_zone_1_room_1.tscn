@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dqq8dy0xuh3ec"]
+[gd_scene load_steps=18 format=4 uid="uid://dqq8dy0xuh3ec"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_1hwop"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_teaej"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_afraa"]
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_ip04i"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="6_dxvve"]
+[ext_resource type="PackedScene" uid="uid://bua1jy71pnhwl" path="res://interactables/doors/consume_door.tscn" id="7_teaej"]
+[ext_resource type="Script" uid="uid://egbha40d4mds" path="res://inventory_system/item.gd" id="8_afraa"]
+[ext_resource type="Resource" uid="uid://dao5jyvq1pdl4" path="res://inventory_system/items/red_key_1_zone_1.tres" id="9_ip04i"]
+[ext_resource type="Texture2D" uid="uid://pphsvjgft3k0" path="res://assets/GRAPHICS/doors/door_1_10x10.png" id="10_ip04i"]
+[ext_resource type="PackedScene" uid="uid://bha73rkue7cv" path="res://inventory_system/consume_item_area.tscn" id="11_p4qt2"]
+[ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="13_f2lvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hs3x"]
 
@@ -13,6 +19,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mehd2"]
 size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ip04i"]
+size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc6yr"]
+size = Vector2(60, 40)
 
 [node name="Lvl_1_Zone_1_Room_1" type="Node2D"]
 
@@ -72,3 +84,36 @@ position = Vector2(140, 274)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DownTransition"]
 shape = SubResource("RectangleShape2D_mehd2")
+
+[node name="ConsumeDoor" parent="." instance=ExtResource("7_teaej")]
+position = Vector2(140, 260)
+related_event = "red_key_1_consumed"
+related_items = Array[ExtResource("8_afraa")]([ExtResource("9_ip04i")])
+
+[node name="Sprite2D" type="Sprite2D" parent="ConsumeDoor"]
+position = Vector2(10, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("10_ip04i")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ConsumeDoor"]
+position = Vector2(-10, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("10_ip04i")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ConsumeDoor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConsumeDoor/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ip04i")
+debug_color = Color(0.67908555, 0.47800052, 0.44847918, 0.41960785)
+
+[node name="ConsumeItemArea" parent="ConsumeDoor" instance=ExtResource("11_p4qt2")]
+related_item = ExtResource("9_ip04i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConsumeDoor/ConsumeItemArea"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_cc6yr")
+
+[node name="PickableItem" parent="." instance=ExtResource("13_f2lvs")]
+position = Vector2(50, 40)
+item = ExtResource("9_ip04i")
+event_name = "item_red_key_1_picked_up"

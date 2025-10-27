@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bha73rkue7cv"]
+
+[ext_resource type="Script" uid="uid://b3j2ytnhqumtt" path="res://inventory_system/consume_item_area.gd" id="1_b7ek4"]
+
+[node name="ConsumeItemArea" type="Area2D"]
+monitorable = false
+script = ExtResource("1_b7ek4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

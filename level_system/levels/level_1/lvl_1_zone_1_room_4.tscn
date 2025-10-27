@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="5_aunyr"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="6_lpdfj"]
 [ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="7_655qv"]
-[ext_resource type="Material" uid="uid://cpxp85woyyt4p" path="res://death_zone/water_1_material.tres" id="8_aunyr"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="8_s6rnt"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_s6rnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpdfj"]
@@ -20,7 +20,7 @@ size = Vector2(20, 40)
 [sub_resource type="Curve2D" id="Curve2D_a8oxr"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 50, 110, 0, 0, 0, 0, 145, 110)
+"points": PackedVector2Array(0, 0, 0, 0, 145, 110, 0, 0, 0, 0, 25, 110)
 }
 point_count = 2
 
@@ -86,17 +86,18 @@ shape = SubResource("RectangleShape2D_4jp23")
 [node name="BetterDeathZone" parent="." instance=ExtResource("7_655qv")]
 position = Vector2(25, 0)
 curve = SubResource("Curve2D_a8oxr")
+polygon_material = ExtResource("8_s6rnt")
 width = 40.0
+end_sample_point = 0.8220000000000001
 
-[node name="Area2D" type="Area2D" parent="BetterDeathZone"]
+[node name="@Area2D@114926" type="Area2D" parent="BetterDeathZone"]
 collision_layer = 32
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BetterDeathZone/Area2D"]
-polygon = PackedVector2Array(50, 90, 97.5, 90, 142.34006, 89.99999, 142.33994, 130, 97.5, 130, 50, 130)
+[node name="@CollisionPolygon2D@114925" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@114926"]
+polygon = PackedVector2Array(145, 130, 126.25, 130, 85, 130, 43.75, 130, 35.052696, 130, 35.052696, 90, 43.75, 90, 85, 90, 126.25, 90, 145, 90)
 
-[node name="Polygon2D" type="Polygon2D" parent="BetterDeathZone"]
-material = ExtResource("8_aunyr")
-color = Color(1, 1, 1, 0.3)
+[node name="@Polygon2D@114927" type="Polygon2D" parent="BetterDeathZone"]
+material = ExtResource("8_s6rnt")
 texture = ExtResource("9_s6rnt")
-polygon = PackedVector2Array(50, 90, 97.5, 90, 142.34006, 89.99999, 142.33994, 130, 97.5, 130, 50, 130)
+polygon = PackedVector2Array(145, 130, 126.25, 130, 85, 130, 43.75, 130, 35.052696, 130, 35.052696, 90, 43.75, 90, 85, 90, 126.25, 90, 145, 90)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)

@@ -48,6 +48,7 @@ func _on_better_interactable_component_on_interact() -> void:
 			PersistencySystem.set_event(event_name,1.0)
 		else:
 			var blackboard : GameBlackboard = get_tree().get_first_node_in_group("blackboard")
+			print(blackboard)
 			if blackboard:
 				blackboard.add_temp_event(event_name,1.0)
 	

@@ -9,6 +9,7 @@ func _ready() -> void:
     Console.add_command("dump_save",dump_save)
     Console.add_command("unlock_all_abilities",unlock_all_abilities,["is_permanent"],1)
     Console.add_command("restart_level",restart_level)
+    Console.add_command("dump_blackboard",dump_blackboard)
     
     Console.font_size = 30
 

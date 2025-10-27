@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dxyjtlr6p8to8" path="res://utils/floating_sprite.tscn" id="2_mw6br"]
 [ext_resource type="PackedScene" uid="uid://dgks666k0klxv" path="res://interactables/interactable_component/better_interactable_component.tscn" id="5_35rdu"]
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="5_k1mc5"]
-[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="6_k1mc5"]
+[ext_resource type="Script" uid="uid://ckg85bk86oato" path="res://persistancy_system/conditionals/bool_temp_event_conditional.gd" id="6_k1mc5"]
 
 [node name="PickableItem" type="Node2D"]
 script = ExtResource("1_dp5qr")
@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 
 [node name="BoolPersistentEventConditional" type="Node" parent="PersistentEventEvaluator"]
 script = ExtResource("6_k1mc5")
-metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+metadata/_custom_type_script = "uid://ckg85bk86oato"
 
 [connection signal="on_interact" from="BetterInteractableComponent" to="." method="_on_better_interactable_component_on_interact"]
 [connection signal="evaluator_succeded" from="PersistentEventEvaluator" to="." method="_on_persistent_event_evaluator_evaluator_succeded"]

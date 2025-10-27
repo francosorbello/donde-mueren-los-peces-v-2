@@ -11,21 +11,21 @@ signal on_leave
 var outline_component : OutlineComponent
 
 func _ready() -> void:
-    for child in get_children():
-        if child is OutlineComponent:
-            outline_component = child
+	for child in get_children():
+		if child is OutlineComponent:
+			outline_component = child
 
 func interact():
-    if is_interactable:
-        on_interact.emit()
+	if is_interactable:
+		on_interact.emit()
 
 func hover_interactable():
-    on_hover.emit()
-    if outline_component:
-        var color = Color.BLUE if is_interactable else Color.RED
-        outline_component.enable_outline(color)
+	on_hover.emit()
+	if outline_component:
+		var color = Color.BLUE if is_interactable else Color.RED
+		outline_component.enable_outline(color)
 
 func leave_interactable():
-    on_leave.emit()
-    if outline_component:
-        outline_component.disable_outline()
+	on_leave.emit()
+	if outline_component:
+		outline_component.disable_outline()

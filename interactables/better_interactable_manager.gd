@@ -79,4 +79,3 @@ func _on_refresh_timer_timeout() -> void:
 		current_interactable = null
 	refresh_interactable()
 	pass # Replace with function body.
-

@@ -12,6 +12,11 @@ func _ready() -> void:
     
     Console.font_size = 30
 
+func dump_blackboard():
+    var blackboard : GameBlackboard = get_tree().get_first_node_in_group("blackboard")
+    if blackboard:
+        print(blackboard.temp_events)
+
 func restart_level():
     var level_node = get_parent().current_level as Node
     if level_node:

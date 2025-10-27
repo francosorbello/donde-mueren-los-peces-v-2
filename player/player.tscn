@@ -304,6 +304,9 @@ state_machine = NodePath("../StateMachine")
 
 [node name="RefreshPositionTimer" type="Timer" parent="SafePointManager"]
 
+[node name="FollowTarget" type="Marker2D" parent="."]
+position = Vector2(17, -11)
+
 [connection signal="timeout" from="StateMachine/JumpingState/JumpDurationTimer" to="StateMachine/JumpingState" method="_on_jump_duration_timer_timeout"]
 [connection signal="player_fell" from="FloorDetectionComponent" to="." method="_on_floor_detection_component_player_fell"]
 [connection signal="floor_status_changed" from="FloorDetectionComponent/FloorDetector" to="FloorDetectionComponent" method="_on_floor_detector_floor_status_changed"]

@@ -22,6 +22,8 @@ var _start_pos
 
 var extra_velocity : Vector2
 
+@onready var follow_target : Node2D = $FollowTarget
+
 func _ready():
 	_initial_collision_mask = collision_mask
 	_start_pos = global_position
@@ -31,6 +33,11 @@ func _ready():
 	var saved_game = SaveUtils.get_save()
 	if saved_game:
 		abilities = saved_game.unlocked_abilities
+
+# func _physics_process(_delta):
+# 	if last_direction.x != 0:
+# 		follow_target.position.x = abs(follow_target.position.x) * sign(last_direction.x)
+
 
 func _unhandled_input(event):
 	# if event.is_action_pressed("shoot_bubble"):

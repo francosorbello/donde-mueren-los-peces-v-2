@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://der5qoc3c1u8r"]
+
+[ext_resource type="Script" uid="uid://cws2v5km4ud02" path="res://inventory_system/carryable_item/target_follow_component.gd" id="1_uxsah"]
+
+[node name="TargetFollowComponent" type="Node2D"]
+script = ExtResource("1_uxsah")

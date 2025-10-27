@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dqq8dy0xuh3ec"]
+[gd_scene load_steps=13 format=4 uid="uid://dqq8dy0xuh3ec"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_1hwop"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_teaej"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_afraa"]
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_ip04i"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="6_dxvve"]
+[ext_resource type="PackedScene" uid="uid://dr1fyf6y1ba5q" path="res://tests/test_follower.tscn" id="7_teaej"]
+[ext_resource type="Texture2D" uid="uid://d4eujshmexxd3" path="res://assets/GRAPHICS/items/key1_16x16.png" id="8_afraa"]
+[ext_resource type="Texture2D" uid="uid://bwuxg2ihlhbct" path="res://assets/GRAPHICS/items/helmet1_16x16.png" id="9_ip04i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hs3x"]
 
@@ -72,3 +75,17 @@ position = Vector2(140, 274)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DownTransition"]
 shape = SubResource("RectangleShape2D_mehd2")
+
+[node name="TestFollower" parent="." instance=ExtResource("7_teaej")]
+position = Vector2(92, 85)
+
+[node name="Sprite2D" type="Sprite2D" parent="TestFollower"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_afraa")
+
+[node name="TestFollower2" parent="." instance=ExtResource("7_teaej")]
+position = Vector2(132, 130)
+
+[node name="Sprite2D" type="Sprite2D" parent="TestFollower2"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_ip04i")

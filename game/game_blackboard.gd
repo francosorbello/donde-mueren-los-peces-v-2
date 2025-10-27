@@ -23,4 +23,3 @@ func get_temp_event(event_name : String) -> PersistentEvent:
 
 func clear():
     temp_events.clear()
-

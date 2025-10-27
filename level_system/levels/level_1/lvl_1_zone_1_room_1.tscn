@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dqq8dy0xuh3ec"]
+[gd_scene load_steps=23 format=4 uid="uid://dqq8dy0xuh3ec"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_1hwop"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_teaej"]
@@ -11,7 +11,12 @@
 [ext_resource type="Resource" uid="uid://dao5jyvq1pdl4" path="res://inventory_system/items/red_key_1_zone_1.tres" id="9_ip04i"]
 [ext_resource type="Texture2D" uid="uid://pphsvjgft3k0" path="res://assets/GRAPHICS/doors/door_1_10x10.png" id="10_ip04i"]
 [ext_resource type="PackedScene" uid="uid://bha73rkue7cv" path="res://inventory_system/consume_item_area.tscn" id="11_p4qt2"]
-[ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="13_f2lvs"]
+[ext_resource type="PackedScene" uid="uid://bn023x5cr303i" path="res://interactables/items/pickable_temp_item.tscn" id="12_p4qt2"]
+[ext_resource type="PackedScene" uid="uid://ch8jlsvs6ikxy" path="res://interactables/items/interactable_item.tscn" id="13_f2lvs"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="14_cc6yr"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="15_fuq4w"]
+[ext_resource type="Script" uid="uid://ckg85bk86oato" path="res://persistancy_system/conditionals/bool_temp_event_conditional.gd" id="16_b8h6h"]
+[ext_resource type="Script" uid="uid://ckw8qr1c5qte8" path="res://persistancy_system/event_setter.gd" id="17_b8h6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hs3x"]
 
@@ -87,7 +92,7 @@ shape = SubResource("RectangleShape2D_mehd2")
 
 [node name="ConsumeDoor" parent="." instance=ExtResource("7_teaej")]
 position = Vector2(140, 260)
-related_event = "red_key_1_consumed"
+related_event = "item_red_key_1_consumed"
 related_items = Array[ExtResource("8_afraa")]([ExtResource("9_ip04i")])
 
 [node name="Sprite2D" type="Sprite2D" parent="ConsumeDoor"]
@@ -113,7 +118,32 @@ related_item = ExtResource("9_ip04i")
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_cc6yr")
 
-[node name="PickableItem" parent="." instance=ExtResource("13_f2lvs")]
-position = Vector2(50, 40)
+[node name="PickableTempItem" parent="." instance=ExtResource("12_p4qt2")]
+position = Vector2(50, 50)
+
+[node name="InteractableItem" parent="PickableTempItem" instance=ExtResource("13_f2lvs")]
 item = ExtResource("9_ip04i")
 event_name = "item_red_key_1_picked_up"
+
+[node name="PersistentEventEvaluator" type="Node" parent="PickableTempItem"]
+script = ExtResource("14_cc6yr")
+type = 1
+autostart = false
+debug = true
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="PickedUpConditional" type="Node" parent="PickableTempItem/PersistentEventEvaluator"]
+script = ExtResource("16_b8h6h")
+event_name = "item_red_key_1_picked_up"
+metadata/_custom_type_script = "uid://ckg85bk86oato"
+
+[node name="ItemUsedConditional" type="Node" parent="PickableTempItem/PersistentEventEvaluator"]
+script = ExtResource("15_fuq4w")
+event_name = "item_red_key_1_used"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[node name="PersistentEventSetter" type="Node" parent="PickableTempItem"]
+script = ExtResource("17_b8h6h")
+event_name = "item_red_key_1_picked_up"
+is_persistent = false
+metadata/_custom_type_script = "uid://ckw8qr1c5qte8"

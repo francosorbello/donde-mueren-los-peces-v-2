@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn023x5cr303i"]
+
+[ext_resource type="Script" uid="uid://baylppgl1fhkj" path="res://interactables/items/pickable_temp_item.gd" id="1_texd7"]
+
+[node name="PickableTempItem" type="Node2D"]
+script = ExtResource("1_texd7")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://gy7aky5ltmee"]
+[gd_scene load_steps=4 format=3 uid="uid://gy7aky5ltmee"]
 
 [ext_resource type="Script" uid="uid://dgnpj6qwrljrn" path="res://level_system/player_spawner.gd" id="1_0pd6p"]
 [ext_resource type="PackedScene" uid="uid://4ybnmc4j2y3v" path="res://player/player.tscn" id="2_i1pgc"]
+[ext_resource type="PackedScene" uid="uid://1mth47e0loh4" path="res://inventory_system/carryable_item/item_follower.tscn" id="3_0hgex"]
 
 [node name="PlayerSpawner" type="Node"]
 script = ExtResource("1_0pd6p")
 player_scene = ExtResource("2_i1pgc")
+item_follower_scene = ExtResource("3_0hgex")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=40 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://cb8rkyh42ljde" path="res://assets/SOUNDS/explosion5.mp3" id="25_knn7v"]
 [ext_resource type="Script" uid="uid://dsqa6qt0p6jf" path="res://player/spawn_point_manager.gd" id="26_7pqkx"]
 [ext_resource type="Script" uid="uid://dn48vjrdhx4i" path="res://player/floor_detection/floor_detection_component.gd" id="26_uw77l"]
+[ext_resource type="PackedScene" uid="uid://cmg6s3pb44xmv" path="res://inventory_system/carryable_item/item_follower_manager.tscn" id="27_rptt4"]
 [ext_resource type="PackedScene" uid="uid://bjka4rd2o0w7v" path="res://player/floor_detection/floor_detector.tscn" id="27_uw77l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_65viv"]
@@ -306,6 +307,9 @@ state_machine = NodePath("../StateMachine")
 
 [node name="FollowTarget" type="Marker2D" parent="."]
 position = Vector2(17, -11)
+
+[node name="ItemFollowerManager" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("27_rptt4")]
+follow_target = NodePath("../FollowTarget")
 
 [connection signal="timeout" from="StateMachine/JumpingState/JumpDurationTimer" to="StateMachine/JumpingState" method="_on_jump_duration_timer_timeout"]
 [connection signal="player_fell" from="FloorDetectionComponent" to="." method="_on_floor_detection_component_player_fell"]

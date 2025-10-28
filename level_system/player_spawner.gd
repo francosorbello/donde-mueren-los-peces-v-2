@@ -7,8 +7,7 @@ extends Node
 @export var attach_camera : bool = false
 @export var camera_to_attach : Camera2D
 
-func _ready() -> void:
-    pass
+signal player_spawned(player : APlayer)
 
 func spawn_player(direction : Vector2):
     var player = player_scene.instantiate() as APlayer
@@ -25,4 +24,9 @@ func spawn_player(direction : Vector2):
         else:
             camera_to_attach.get_parent().remove_child(camera_to_attach)
             player.add_child(camera_to_attach)
+
+    player_spawned.emit(player)
+
+
+
 

@@ -6,7 +6,7 @@ extends Node2D
 @export var use_random_offset : bool = true
 @export var max_offset : Vector2 = Vector2(10,10)
 
-var target : Node2D
+@export var target : Node2D
 
 var _parent : Node2D
 var _offset : Vector2

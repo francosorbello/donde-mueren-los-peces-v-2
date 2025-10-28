@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmg6s3pb44xmv"]
+
+[ext_resource type="Script" uid="uid://b3mj7bclivltm" path="res://inventory_system/carryable_item/item_follower_manager.gd" id="1_f7y37"]
+[ext_resource type="PackedScene" uid="uid://1mth47e0loh4" path="res://inventory_system/carryable_item/item_follower.tscn" id="2_ewp3i"]
+
+[node name="ItemFollowerManager" type="Node"]
+script = ExtResource("1_f7y37")
+item_follower_scene = ExtResource("2_ewp3i")

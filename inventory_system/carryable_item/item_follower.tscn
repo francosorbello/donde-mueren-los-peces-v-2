@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://1mth47e0loh4"]
+
+[ext_resource type="Script" uid="uid://6trpod1pik1s" path="res://inventory_system/carryable_item/item_follower.gd" id="1_nfinw"]
+[ext_resource type="PackedScene" uid="uid://der5qoc3c1u8r" path="res://inventory_system/carryable_item/target_follow_component.tscn" id="1_ushgg"]
+
+[node name="ItemFollower" type="Node2D"]
+script = ExtResource("1_nfinw")
+
+[node name="TargetFollowComponent" parent="." instance=ExtResource("1_ushgg")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)

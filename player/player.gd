@@ -59,8 +59,11 @@ func _unhandled_input(event):
 	# 	current_ability.execute(self)
 	# 	return
 
-	if event.is_action_pressed("jump") and has_ability_named("jump") and $StateMachine.current_state.name != "JumpingState":
-		$StateMachine.transition_to("JumpingState")
+	# if (event.is_action_pressed("jump") and 
+	# 	has_ability_named("jump") and 
+	# 	$StateMachine.current_state.name != "JumpingState"
+	# 	):
+	# 	$StateMachine.transition_to("JumpingState")
 
 func play_anim(anim_name : String):
 	if $AnimationPlayer.current_animation != anim_name:

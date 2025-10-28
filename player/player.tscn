@@ -210,6 +210,7 @@ bubble_indicator = NodePath("../../BubbleIndicator")
 [node name="DashingState" type="Node" parent="StateMachine"]
 script = ExtResource("8_8t03j")
 dash_speed_increment = 5.0
+stop_treshold = 20.0
 speed_curve = SubResource("Curve_yllr7")
 
 [node name="JumpingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component")]
@@ -232,6 +233,7 @@ stream = ExtResource("14_65viv")
 [node name="QuickDashingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component")]
 script = ExtResource("13_tqiix")
 distance_to_travel = 60.0
+allow_jump_treshold = 20
 floor_detection_component = NodePath("../../FloorDetectionComponent")
 
 [node name="DashSound" type="AudioStreamPlayer" parent="StateMachine/QuickDashingState"]

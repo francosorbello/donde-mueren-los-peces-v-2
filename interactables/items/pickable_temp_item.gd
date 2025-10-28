@@ -3,8 +3,6 @@ extends Node2D
 
 var evaluator : PersistentEventEvaluator 
 
-var event_setter : PersistentEventSetter
-
 @export var event_setters : Array[EventSetterResource]:
     set(value):
         event_setters = value

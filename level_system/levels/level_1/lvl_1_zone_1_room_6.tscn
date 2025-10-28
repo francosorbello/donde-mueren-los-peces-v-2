@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cwi2kij2wbrj0"]
+[gd_scene load_steps=25 format=4 uid="uid://cwi2kij2wbrj0"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_ick8t"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_sjo5r"]
@@ -14,9 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="10_4s0jp"]
 [ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="10_rugi2"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="11_4s0jp"]
-[ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="12_lcdfr"]
 [ext_resource type="Resource" uid="uid://dao5jyvq1pdl4" path="res://inventory_system/items/red_key_1_zone_1.tres" id="13_83x30"]
 [ext_resource type="PackedScene" uid="uid://b46xdrprqgho7" path="res://interactables/levers/lever.tscn" id="15_mye3o"]
+[ext_resource type="PackedScene" uid="uid://bn023x5cr303i" path="res://interactables/items/pickable_temp_item.tscn" id="16_q7q2m"]
+[ext_resource type="Script" uid="uid://c026ks8l0tslt" path="res://persistancy_system/event_setter_res.gd" id="17_b35yn"]
+[ext_resource type="PackedScene" uid="uid://ch8jlsvs6ikxy" path="res://interactables/items/interactable_item.tscn" id="18_svyee"]
+[ext_resource type="Script" uid="uid://ckg85bk86oato" path="res://persistancy_system/conditionals/bool_temp_event_conditional.gd" id="20_jb7m0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nq24"]
 
@@ -28,6 +31,12 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 90, 80, 0, 0, 0, 0, 90, 220)
 }
 point_count = 2
+
+[sub_resource type="Resource" id="Resource_o1wb4"]
+script = ExtResource("17_b35yn")
+event_name = "item_red_key_1_picked_up"
+is_persistent = false
+metadata/_custom_type_script = "uid://c026ks8l0tslt"
 
 [node name="lvl_1_zone_1_room_6" type="Node2D"]
 
@@ -116,11 +125,31 @@ visible = false
 [node name="PlatformSmall" parent="Obstacle 1/Platforms" instance=ExtResource("11_4s0jp")]
 position = Vector2(90, 146)
 
-[node name="PickableItem" parent="Obstacle 1" instance=ExtResource("12_lcdfr")]
-position = Vector2(90, 146)
-item = ExtResource("13_83x30")
-event_name = "item_red_key_1_picked_up"
-
 [node name="Lever" parent="Obstacle 1" instance=ExtResource("15_mye3o")]
 position = Vector2(63, 70)
 activated_event = "lever_1_used_on_lvl_1_zone_1_room_6"
+
+[node name="PickableTempItem" parent="." instance=ExtResource("16_q7q2m")]
+position = Vector2(50, 50)
+event_setters = Array[ExtResource("17_b35yn")]([SubResource("Resource_o1wb4")])
+
+[node name="InteractableItem" parent="PickableTempItem" instance=ExtResource("18_svyee")]
+position = Vector2(40, 96)
+item = ExtResource("13_83x30")
+event_name = "item_red_key_1_picked_up"
+
+[node name="PersistentEventEvaluator" type="Node" parent="PickableTempItem"]
+script = ExtResource("9_yom1v")
+type = 1
+autostart = false
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="PickedUpConditional" type="Node" parent="PickableTempItem/PersistentEventEvaluator"]
+script = ExtResource("20_jb7m0")
+event_name = "item_red_key_1_picked_up"
+metadata/_custom_type_script = "uid://ckg85bk86oato"
+
+[node name="ItemUsedConditional" type="Node" parent="PickableTempItem/PersistentEventEvaluator"]
+script = ExtResource("10_rugi2")
+event_name = "item_red_key_1_consumed"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"

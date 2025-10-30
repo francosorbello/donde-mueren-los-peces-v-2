@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://rtns5g7xme08"]
+[gd_scene load_steps=20 format=4 uid="uid://rtns5g7xme08"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_7x6ou"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="1_ec1rd"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="6_gs4y5"]
 [ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="7_owjk8"]
 [ext_resource type="Resource" uid="uid://wdxb4vdl6vwa" path="res://abilities/ability_items/abi_jump.tres" id="8_7mrnv"]
-[ext_resource type="Material" uid="uid://cpxp85woyyt4p" path="res://death_zone/water_1_material.tres" id="10_osk8i"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="11_xsse8"]
 [ext_resource type="PackedScene" uid="uid://cbo7vxmur78m2" path="res://platform/bridge_to_jump_ability.tscn" id="12_xsse8"]
 [ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="13_5pkst"]
@@ -24,17 +23,17 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_xsse8"]
+[sub_resource type="Curve2D" id="Curve2D_6yaak"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 50, 60, 0, 0, 0, 0, 50, 100)
+"points": PackedVector2Array(0, 0, 0, 0, 10, 79, 0, 0, 0, 0, 100, 79)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_rwgtn"]
+[sub_resource type="Curve2D" id="Curve2D_hx1ml"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 50, 60, 0, 0, 0, 0, 50, 136)
+"points": PackedVector2Array(0, 0, 0, 0, 10, 90, 0, 0, 0, 0, 100, 90)
 }
 point_count = 2
 
@@ -45,10 +44,10 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_we3vr"]
+[sub_resource type="Curve2D" id="Curve2D_rwgtn"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 50, 60, 0, 0, 0, 0, 50, 100)
+"points": PackedVector2Array(0, 0, 0, 0, 90, 80, 0, 0, 0, 0, 10, 80)
 }
 point_count = 2
 
@@ -75,7 +74,7 @@ offset_right = 578.0
 offset_bottom = 270.0
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_ec1rd")]
-tile_map_data = PackedByteArray("AAAXAAAAAwAHAAMAAAAYAAAAAwAHAAMAAAAZAAAAAwAHAAMAAAAaAAAAAwAHAAMAAAAbAAAAAwAHAAMAAAAcAAAAAwAHAAMAAAAZABoAAwAHAAMAAAAaABoAAwAHAAMAAAAbABoAAwAHAAMAAAAcABoAAwAHAAMAAAAYABoAAwAHAAMAAAAXABoAAwAHAAMAAAAPABoAAwAHAAMAAAAQAAAAAwAHAAMAAAAQABoAAwAHAAMAAAARAAAAAwAHAAMAAAARABoAAwAHAAMAAAASAAAAAwAHAAMAAAASABoAAwAHAAMAAAATAAAAAwAHAAMAAAATABoAAwAHAAMAAAAUAAAAAwAHAAMAAAAUABoAAwAHAAMAAAAVAAAAAwAHAAMAAAAVABoAAwAHAAMAAAAWAAAAAwAHAAMAAAAWABoAAwAHAAMAAAAPAAAAAwAHAAMAAAAcAAcAAwAHAAMAAAAcAAgAAwAHAAMAAAAcAAsAAwAHAAMAAAAcAAwAAwAHAAMAAAAcAA0AAwAHAAMAAAAcAA4AAwAHAAMAAAAcAA8AAwAHAAMAAAAcABAAAwAHAAMAAAAcABEAAwAHAAMAAAAcABIAAwAHAAMAAAAcABMAAwAHAAMAAAAcABQAAwAHAAMAAAAcABUAAwAHAAMAAAAcABYAAwAHAAMAAAAcABcAAwAHAAMAAAAcABgAAwAHAAMAAAAcABkAAwAHAAMAAAAAABoAAwAHAAMAAAABABoAAwAHAAMAAAACABoAAwAHAAMAAAADABoAAwAHAAMAAAAEABoAAwAHAAMAAAAFABoAAwAHAAMAAAAGABoAAwAHAAMAAAAHABoAAwAHAAMAAAAIABoAAwAHAAMAAAAJABoAAwAHAAMAAAAKABoAAwAHAAMAAAALABoAAwAHAAMAAAAMABoAAwAHAAMAAAANABoAAwAHAAMAAAAOABoAAwAHAAMAAAAAAAAAAwAHAAMAAAAAAAEAAwAHAAMAAAAAAAIAAwAHAAMAAAAAAAMAAwAHAAMAAAAAAAQAAwAHAAMAAAAAAAUAAwAHAAMAAAAAAAYAAwAHAAMAAAAAAAcAAwAHAAMAAAAAAAgAAwAHAAMAAAAAAAkAAwAHAAMAAAAAAAoAAwAHAAMAAAAAAAsAAwAHAAMAAAAAAAwAAwAHAAMAAAAAAA0AAwAHAAMAAAAAAA4AAwAHAAMAAAAAAA8AAwAHAAMAAAAAABAAAwAHAAMAAAAAABEAAwAHAAMAAAAAABIAAwAHAAMAAAAAABMAAwAHAAMAAAAAABQAAwAHAAMAAAAAABUAAwAHAAMAAAAAABYAAwAHAAMAAAAAABcAAwAHAAMAAAAAABgAAwAHAAMAAAAAABkAAwAHAAMAAAABAAAAAwAHAAMAAAACAAAAAwAHAAMAAAADAAAAAwAHAAMAAAAEAAAAAwAHAAMAAAAFAAAAAwAHAAMAAAAGAAAAAwAHAAMAAAAHAAAAAwAHAAMAAAAIAAAAAwAHAAMAAAAJAAAAAwAHAAMAAAAKAAAAAwAHAAMAAAALAAAAAwAHAAMAAAAMAAAAAwAHAAMAAAANAAAAAwAHAAMAAAAOAAAAAwAHAAMAAAAcAAEAAwAHAAMAAAAcAAIAAwAHAAMAAAAcAAUAAwAHAAMAAAAcAAYAAwAHAAMAAAAcAAkAAwAHAAMAAAAcAAoAAwAHAAMAAAA=")
+tile_map_data = PackedByteArray("AAAXAAAAAwAHAAMAAAAYAAAAAwAHAAMAAAAZAAAAAwAHAAMAAAAaAAAAAwAHAAMAAAAbAAAAAwAHAAMAAAAcAAAAAwAHAAMAAAAZABoAAwAHAAMAAAAaABoAAwAHAAMAAAAbABoAAwAHAAMAAAAcABoAAwAHAAMAAAAXABoAAwAHAAMAAAAPABoAAwAHAAMAAAAQAAAAAwAHAAMAAAAQABoAAwAHAAMAAAARAAAAAwAHAAMAAAARABoAAwAHAAMAAAASAAAAAwAHAAMAAAASABoAAwAHAAMAAAATAAAAAwAHAAMAAAATABoAAwAHAAMAAAAUAAAAAwAHAAMAAAAUABoAAwAHAAMAAAAVAAAAAwAHAAMAAAAVABoAAwAHAAMAAAAWAAAAAwAHAAMAAAAWABoAAwAHAAMAAAAPAAAAAwAHAAMAAAAcAAcAAwAHAAMAAAAcAAgAAwAHAAMAAAAcAAsAAwAHAAMAAAAcAAwAAwAHAAMAAAAcAA0AAwAHAAMAAAAcAA4AAwAHAAMAAAAcAA8AAwAHAAMAAAAcABAAAwAHAAMAAAAcABEAAwAHAAMAAAAcABIAAwAHAAMAAAAcABMAAwAHAAMAAAAcABQAAwAHAAMAAAAcABUAAwAHAAMAAAAcABYAAwAHAAMAAAAcABcAAwAHAAMAAAAcABgAAwAHAAMAAAAcABkAAwAHAAMAAAAAABoAAwAHAAMAAAABABoAAwAHAAMAAAACABoAAwAHAAMAAAADABoAAwAHAAMAAAAEABoAAwAHAAMAAAAFABoAAwAHAAMAAAAGABoAAwAHAAMAAAAHABoAAwAHAAMAAAAIABoAAwAHAAMAAAAJABoAAwAHAAMAAAAKABoAAwAHAAMAAAALABoAAwAHAAMAAAAMABoAAwAHAAMAAAANABoAAwAHAAMAAAAOABoAAwAHAAMAAAAAAAAAAwAHAAMAAAAAAAEAAwAHAAMAAAAAAAIAAwAHAAMAAAAAAAMAAwAHAAMAAAAAAAQAAwAHAAMAAAAAAAUAAwAHAAMAAAAAAAYAAwAHAAMAAAAAAAcAAwAHAAMAAAAAAAgAAwAHAAMAAAAAAAkAAwAHAAMAAAAAAAoAAwAHAAMAAAAAAAsAAwAHAAMAAAAAAAwAAwAHAAMAAAAAAA0AAwAHAAMAAAAAAA4AAwAHAAMAAAAAAA8AAwAHAAMAAAAAABAAAwAHAAMAAAAAABEAAwAHAAMAAAAAABIAAwAHAAMAAAAAABMAAwAHAAMAAAAAABQAAwAHAAMAAAAAABUAAwAHAAMAAAAAABYAAwAHAAMAAAAAABcAAwAHAAMAAAAAABgAAwAHAAMAAAAAABkAAwAHAAMAAAABAAAAAwAHAAMAAAACAAAAAwAHAAMAAAADAAAAAwAHAAMAAAAEAAAAAwAHAAMAAAAFAAAAAwAHAAMAAAAGAAAAAwAHAAMAAAAHAAAAAwAHAAMAAAAIAAAAAwAHAAMAAAAJAAAAAwAHAAMAAAAKAAAAAwAHAAMAAAALAAAAAwAHAAMAAAAMAAAAAwAHAAMAAAANAAAAAwAHAAMAAAAOAAAAAwAHAAMAAAAcAAEAAwAHAAMAAAAcAAIAAwAHAAMAAAAcAAUAAwAHAAMAAAAcAAYAAwAHAAMAAAAcAAkAAwAHAAMAAAAcAAoAAwAHAAMAAAADAAIAAwAZAAkAAAAGAAEAAwAeAAEAAAAFAAQAAwAZAAkAAAAYABoAAwAHAAMAAAAEAAIAAwAZAAkAAAAFAAIAAwAZAAkAAAAGAAIAAwAZAAkAAAAGAAMAAwAZAAkAAAAFAAMAAwAZAAkAAAAEAAMAAwAZAAkAAAADAAMAAwAaAAsAAAAEAAQAAwAZAAkAAAAGAAQAAwAaAAoAAAADAAQAAwAZAAkAAAADAAEAAwAeAAEAAAAEAAEAAwAeAAEAAAAFAAEAAwAeAAEAAAAEAAoAAwAZAAoAAAAEAAsAAwAZAAoAAAAEAAwAAwAZAAkAAAAEAA0AAwAZAAkAAAAFAAoAAwAZAAkAAAAFAAsAAwAZAAoAAAAFAAwAAwAZAAkAAAAFAA0AAwAZAAoAAAAEAAUAAwAZAAkAAAAFAAUAAwAZAAkAAAAEABQAAwAZAAoAAAAEABUAAwAZAAkAAAAEABYAAwAZAAkAAAAEABcAAwAZAAkAAAAEABgAAwAZAAoAAAAFABQAAwAZAAoAAAAFABUAAwAZAAkAAAAFABYAAwAZAAoAAAAFABcAAwAZAAkAAAAFABgAAwAZAAoAAAAGABcAAwAZAAoAAAAGABgAAwAZAAkAAAAHABcAAwAZAAoAAAAHABgAAwAZAAoAAAAIABcAAwAZAAoAAAAIABgAAwAZAAkAAAAVABcAAwAZAAoAAAAVABgAAwAZAAoAAAAWABcAAwAZAAkAAAAWABgAAwAZAAoAAAAXABcAAwAZAAkAAAAXABgAAwAZAAoAAAAYABcAAwAZAAoAAAAYABgAAwAZAAoAAAAZABcAAwAZAAkAAAAZABgAAwAZAAkAAAAYAAoAAwAZAAkAAAAYAAsAAwAZAAoAAAAYAAwAAwAZAAoAAAAYAA0AAwAZAAoAAAAYAA4AAwAZAAkAAAAYAA8AAwAZAAkAAAAYABAAAwAZAAoAAAAYABEAAwAZAAoAAAAYABIAAwAZAAkAAAAYABMAAwAZAAkAAAAYABQAAwAZAAoAAAAYABUAAwAZAAkAAAAYABYAAwAZAAkAAAAZAAoAAwAZAAoAAAAZAAsAAwAZAAoAAAAZAAwAAwAZAAoAAAAZAA0AAwAZAAkAAAAZAA4AAwAZAAoAAAAZAA8AAwAZAAoAAAAZABAAAwAZAAoAAAAZABEAAwAZAAkAAAAZABIAAwAZAAoAAAAZABMAAwAZAAoAAAAZABQAAwAZAAoAAAAZABUAAwAZAAoAAAAZABYAAwAZAAkAAAAYAAMAAwAZAAkAAAAYAAQAAwAZAAoAAAAYAAUAAwAZAAoAAAAZAAMAAwAZAAkAAAAZAAQAAwAZAAoAAAAZAAUAAwAZAAkAAAAaAAMAAwAZAAkAAAAaAAQAAwAZAAkAAAAbAAMAAwAZAAoAAAAbAAQAAwAZAAkAAAABAAwAAwAbAAQAAAABAA0AAwAZAAQAAAAHAAsAAwAZAAQAAAAIAA0AAwAcAAQAAAACABgAAwAeAAQAAAACABkAAwAbAAQAAAACABQAAwAZAAQAAAAIABUAAwAZAAQAAAAVABAAAwAeAAQAAAAWAA0AAwAaAAQAAAAbAAsAAwAZAAQAAAAaABAAAwAcAAQAAAAaABYAAwAbAAQAAAAZAAEAAwAbAAQAAAAaAAEAAwAcAAQAAAAWAAUAAwAZAAMAAAAVAAEAAwAbAAMAAAA=")
 
 [node name="Level info stuff" type="Node2D" parent="."]
 
@@ -124,18 +123,18 @@ position = Vector2(10, 0)
 curve = SubResource("Curve2D_c418v")
 polygon_material = ExtResource("13_5pkst")
 width = 110.0
-end_sample_point = 0.867
+end_sample_point = 0.865
 
-[node name="@Area2D@101153" type="Area2D" parent="FakeBridgeStuff/BetterDeathZone"]
+[node name="@Area2D@56388" type="Area2D" parent="FakeBridgeStuff/BetterDeathZone"]
 collision_layer = 32
 
-[node name="@CollisionPolygon2D@101152" type="CollisionPolygon2D" parent="FakeBridgeStuff/BetterDeathZone/@Area2D@101153"]
-polygon = PackedVector2Array(195, 10.000003, 195, 41.250004, 195, 73.28125, 195, 110, 195, 146.71875, 195, 178.75, 195, 200.32767, 85, 200.32767, 85, 178.75, 85, 146.71875, 85, 110, 85, 73.28125, 85, 41.249996, 85, 9.999997)
+[node name="@CollisionPolygon2D@56387" type="CollisionPolygon2D" parent="FakeBridgeStuff/BetterDeathZone/@Area2D@56388"]
+polygon = PackedVector2Array(195, 10.000003, 195, 41.250004, 195, 73.28125, 195, 110, 195, 146.71875, 195, 178.75, 195, 200.04915, 85, 200.04915, 85, 178.75, 85, 146.71875, 85, 110, 85, 73.28125, 85, 41.249996, 85, 9.999997)
 
-[node name="@Polygon2D@101154" type="Polygon2D" parent="FakeBridgeStuff/BetterDeathZone"]
+[node name="@Polygon2D@56389" type="Polygon2D" parent="FakeBridgeStuff/BetterDeathZone"]
 material = ExtResource("13_5pkst")
 texture = ExtResource("11_xsse8")
-polygon = PackedVector2Array(195, 10.000003, 195, 41.250004, 195, 73.28125, 195, 110, 195, 146.71875, 195, 178.75, 195, 200.32767, 85, 200.32767, 85, 178.75, 85, 146.71875, 85, 110, 85, 73.28125, 85, 41.249996, 85, 9.999997)
+polygon = PackedVector2Array(195, 10.000003, 195, 41.250004, 195, 73.28125, 195, 110, 195, 146.71875, 195, 178.75, 195, 200.04915, 85, 200.04915, 85, 178.75, 85, 146.71875, 85, 110, 85, 73.28125, 85, 41.249996, 85, 9.999997)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
 [node name="BridgeToJumpAbility" parent="FakeBridgeStuff" instance=ExtResource("12_xsse8")]
@@ -145,41 +144,42 @@ position = Vector2(95, 40)
 
 [node name="BetterDeathZone" parent="Obstacle 1" instance=ExtResource("13_rwgtn")]
 position = Vector2(0, 1)
-curve = SubResource("Curve2D_xsse8")
+curve = SubResource("Curve2D_6yaak")
 polygon_material = ExtResource("13_5pkst")
-width = 80.0
+width = 40.0
+end_sample_point = 0.86
 
-[node name="@Area2D@102114" type="Area2D" parent="Obstacle 1/BetterDeathZone"]
+[node name="@Area2D@55430" type="Area2D" parent="Obstacle 1/BetterDeathZone"]
 collision_layer = 32
 
-[node name="@CollisionPolygon2D@102113" type="CollisionPolygon2D" parent="Obstacle 1/BetterDeathZone/@Area2D@102114"]
-polygon = PackedVector2Array(90, 60, 90, 98.88, 10, 98.88, 10, 60)
+[node name="@CollisionPolygon2D@55429" type="CollisionPolygon2D" parent="Obstacle 1/BetterDeathZone/@Area2D@55430"]
+polygon = PackedVector2Array(10, 59, 55, 59, 95.20192, 59, 95.20192, 99, 55, 99, 10, 99)
 
-[node name="@Polygon2D@102115" type="Polygon2D" parent="Obstacle 1/BetterDeathZone"]
+[node name="@Polygon2D@55431" type="Polygon2D" parent="Obstacle 1/BetterDeathZone"]
 material = ExtResource("13_5pkst")
 texture = ExtResource("11_xsse8")
-polygon = PackedVector2Array(90, 60, 90, 98.88, 10, 98.88, 10, 60)
+polygon = PackedVector2Array(10, 59, 55, 59, 95.20192, 59, 95.20192, 99, 55, 99, 10, 99)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
 [node name="Obstacle 2" type="Node2D" parent="."]
 
 [node name="BetterDeathZone2" parent="Obstacle 2" instance=ExtResource("13_rwgtn")]
 position = Vector2(0, 80)
-curve = SubResource("Curve2D_rwgtn")
+curve = SubResource("Curve2D_hx1ml")
 polygon_material = ExtResource("13_5pkst")
-width = 80.0
-end_sample_point = 0.71
+width = 60.0
+end_sample_point = 0.86
 
-[node name="@Area2D@97652" type="Area2D" parent="Obstacle 2/BetterDeathZone2"]
+[node name="@Area2D@54176" type="Area2D" parent="Obstacle 2/BetterDeathZone2"]
 collision_layer = 32
 
-[node name="@CollisionPolygon2D@97651" type="CollisionPolygon2D" parent="Obstacle 2/BetterDeathZone2/@Area2D@97652"]
-polygon = PackedVector2Array(90, 60, 90, 98, 90, 120.53232, 10, 120.53232, 10, 98, 10, 60)
+[node name="@CollisionPolygon2D@54175" type="CollisionPolygon2D" parent="Obstacle 2/BetterDeathZone2/@Area2D@54176"]
+polygon = PackedVector2Array(10, 60, 55, 60, 95.20192, 60, 95.20192, 120, 55, 120, 10, 120)
 
-[node name="@Polygon2D@97653" type="Polygon2D" parent="Obstacle 2/BetterDeathZone2"]
+[node name="@Polygon2D@54177" type="Polygon2D" parent="Obstacle 2/BetterDeathZone2"]
 material = ExtResource("13_5pkst")
 texture = ExtResource("11_xsse8")
-polygon = PackedVector2Array(90, 60, 90, 98, 90, 120.53232, 10, 120.53232, 10, 98, 10, 60)
+polygon = PackedVector2Array(10, 60, 55, 60, 95.20192, 60, 95.20192, 120, 55, 120, 10, 120)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
 [node name="PlatformSmall" parent="Obstacle 2" instance=ExtResource("13_we3vr")]
@@ -216,18 +216,18 @@ position = Vector2(0, 1)
 
 [node name="BetterDeathZone" parent="Obstacle 4" instance=ExtResource("13_rwgtn")]
 position = Vector2(190, -1)
-curve = SubResource("Curve2D_we3vr")
-width = 80.0
+curve = SubResource("Curve2D_rwgtn")
+polygon_material = ExtResource("13_5pkst")
+width = 40.0
 
-[node name="Area2D" type="Area2D" parent="Obstacle 4/BetterDeathZone"]
+[node name="@Area2D@60911" type="Area2D" parent="Obstacle 4/BetterDeathZone"]
 collision_layer = 32
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle 4/BetterDeathZone/Area2D"]
-polygon = PackedVector2Array(90, 60, 90, 98.88, 10, 98.88, 10, 60)
+[node name="@CollisionPolygon2D@60910" type="CollisionPolygon2D" parent="Obstacle 4/BetterDeathZone/@Area2D@60911"]
+polygon = PackedVector2Array(90, 100, 50, 100, 12.239999, 100, 12.240003, 60, 50, 60, 90, 60)
 
-[node name="Polygon2D" type="Polygon2D" parent="Obstacle 4/BetterDeathZone"]
-material = ExtResource("10_osk8i")
-color = Color(1, 1, 1, 0.3)
+[node name="@Polygon2D@60912" type="Polygon2D" parent="Obstacle 4/BetterDeathZone"]
+material = ExtResource("13_5pkst")
 texture = ExtResource("11_xsse8")
-polygon = PackedVector2Array(90, 60, 90, 98.88, 10, 98.88, 10, 60)
+polygon = PackedVector2Array(90, 100, 50, 100, 12.239999, 100, 12.240003, 60, 50, 60, 90, 60)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)

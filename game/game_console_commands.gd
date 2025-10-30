@@ -58,6 +58,8 @@ func unlock_all_abilities(is_permanent : String):
 
 func _load_all_abilities():
     for ability_file_name in DirAccess.get_files_at(abilities_directory):
+        if ".tres.remap" in ability_file_name:
+            ability_file_name = ability_file_name.trim_suffix(".remap")
         var ability = ResourceLoader.load(abilities_directory+"/"+ability_file_name) as AnItem
         if ability:
             abilities.append(ability)

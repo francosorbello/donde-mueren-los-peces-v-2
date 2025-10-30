@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=42 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Shader" uid="uid://d10m6757u4c6r" path="res://interactables/outline_component/outline.gdshader" id="2_rptt4"]
 [ext_resource type="AudioStream" uid="uid://dgadymra1s2ay" path="res://assets/SOUNDS/pretty_footsetp.mp3" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://8dv7dce6ncjv" path="res://addons/ftr_tools/sm/state_machine.gd" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://bijnqy4wt580s" path="res://player/states/idle_state.gd" id="5_qjkh3"]
@@ -27,6 +28,15 @@
 [ext_resource type="Script" uid="uid://dn48vjrdhx4i" path="res://player/floor_detection/floor_detection_component.gd" id="26_uw77l"]
 [ext_resource type="PackedScene" uid="uid://cmg6s3pb44xmv" path="res://inventory_system/carryable_item/item_follower_manager.tscn" id="27_rptt4"]
 [ext_resource type="PackedScene" uid="uid://bjka4rd2o0w7v" path="res://player/floor_detection/floor_detector.tscn" id="27_uw77l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7pn3"]
+shader = ExtResource("2_rptt4")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_65viv"]
 radius = 4.0
@@ -174,6 +184,7 @@ soften_color = Color(0.5251013, 0.5251013, 0.5251013, 0.6117647)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
+material = SubResource("ShaderMaterial_r7pn3")
 position = Vector2(0, 6)
 texture = ExtResource("1_oul6g")
 offset = Vector2(0, -6)

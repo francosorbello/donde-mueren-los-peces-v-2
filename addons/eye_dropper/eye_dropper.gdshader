@@ -49,6 +49,8 @@ uniform vec4 input_palette_array[max_palette_array_size]: source_color;
  */
 uniform vec4 output_palette_array[max_palette_array_size]: source_color;
 
+uniform float transparency : hint_range(0.0, 1.0, 0.1) = 1;
+
 /**
  * The [code]compare_floats[/code] function receives two [code]float[/code]
  * numbers [param a] and [param b] and returns an [code]int[/code] indicating
@@ -266,5 +268,6 @@ void fragment() {
 	swap_colors_from_palette_textures(input_color, output_color);
 	swap_colors_from_palette_arrays(input_color, output_color);
 	
+	output_color.a *= transparency;
 	COLOR = output_color;
 }

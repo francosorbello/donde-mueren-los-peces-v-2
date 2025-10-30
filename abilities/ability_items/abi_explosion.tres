@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AnItem" load_steps=2 format=3 uid="uid://dlj7oxkxjevcx"]
+
+[ext_resource type="Script" uid="uid://egbha40d4mds" path="res://inventory_system/item.gd" id="1_n4itl"]
+
+[resource]
+script = ExtResource("1_n4itl")
+item_name = "Explosion"
+type = 1
+metadata/_custom_type_script = "uid://egbha40d4mds"

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://di4o2o4cymntg" path="res://tests/test_interactable.tscn" id="8_1d7pt"]
 [ext_resource type="Script" uid="uid://dehd40fhedgng" path="res://camera/room_camera.gd" id="9_1ansd"]
 [ext_resource type="PackedScene" uid="uid://cj0n05i73dafs" path="res://death_zone/death_zone.tscn" id="10_bv2lu"]
-[ext_resource type="Material" uid="uid://b2mwy6dh571su" path="res://tests/death_zone_material.tres" id="11_oi85d"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="11_d7oxp"]
 [ext_resource type="PackedScene" uid="uid://cp0sirp6ywnyg" path="res://air_current/air_current.tscn" id="12_tu2xh"]
 [ext_resource type="Script" uid="uid://i5cfvrtyqmxm" path="res://air_current/air_current_follower.gd" id="13_d7oxp"]
 
@@ -86,7 +86,7 @@ collision_mask = 32
 polygon = PackedVector2Array(50, 225, 190, 225, 190, 195, 50, 195)
 
 [node name="Polygon2D" type="Polygon2D" parent="DeathZone"]
-material = ExtResource("11_oi85d")
+material = ExtResource("11_d7oxp")
 polygon = PackedVector2Array(50, 225, 190, 225, 190, 195, 50, 195)
 
 [node name="AirCurrent" parent="." instance=ExtResource("12_tu2xh")]

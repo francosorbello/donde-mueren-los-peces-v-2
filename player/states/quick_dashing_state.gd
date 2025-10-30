@@ -17,6 +17,8 @@ var _initial_pos : Vector2
 var _transitioning_to_jump : bool = false
 
 func enter():
+    # prints(player.last_direction, player.last_direction.length(),player.last_direction.normalized())
+    player.last_direction = player.last_direction.normalized()
     _initial_pos = player.global_position
     _transitioning_to_jump = false
     $DashSound.play()
@@ -26,10 +28,8 @@ func exit():
 
 func state_unhandled_input(event : InputEvent):
     if event.is_action_pressed("jump"):
-        prints("jump pressed",_distance_traveled,_distance_traveled > (distance_to_travel-allow_jump_treshold))
         if allow_jump and _distance_traveled > (distance_to_travel-allow_jump_treshold):
             state_machine.transition_to("JumpingState")
-            print("transition to jump state")
             _transitioning_to_jump = true
 
 
@@ -41,7 +41,6 @@ func physics_update(delta: float):
     
     if _distance_traveled > distance_to_travel:
         state_machine.transition_to("MovingState")
-        print("transition to moving state")
         return
 
     # player.velocity = lerp(player.velocity,direction * player.speed, delta * player.accel)

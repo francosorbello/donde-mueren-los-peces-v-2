@@ -49,10 +49,11 @@ func unlock_all_abilities(is_permanent : String):
     if player:
         player.abilities = abilities
     
-    if is_permanent == "true":
-        var save_game = SaveUtils.get_save()
-        if save_game:
-            save_game.unlocked_abilities = abilities 
+    var save_game = SaveUtils.get_save()
+    if save_game:
+        save_game.unlocked_abilities = abilities 
+        if is_permanent == "true":
+            save_game.write_savegame()
 
 
 func _load_all_abilities():

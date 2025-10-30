@@ -233,7 +233,7 @@ stream = ExtResource("14_65viv")
 [node name="QuickDashingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component")]
 script = ExtResource("13_tqiix")
 distance_to_travel = 60.0
-allow_jump_treshold = 20
+allow_jump_treshold = 30
 floor_detection_component = NodePath("../../FloorDetectionComponent")
 
 [node name="DashSound" type="AudioStreamPlayer" parent="StateMachine/QuickDashingState"]

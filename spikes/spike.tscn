@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://qh12h70kbjei"]
+
+[ext_resource type="Texture2D" uid="uid://dpm1x4cush384" path="res://assets/GRAPHICS/spike1.png" id="1_p2adf"]
+[ext_resource type="Script" uid="uid://bj4o447fbd3db" path="res://spikes/rotating_sprite.gd" id="2_5nene"]
+[ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="3_cvjps"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvjps"]
+radius = 4.1231055
+
+[node name="Spike" type="Node2D"]
+
+[node name="RotatingSprite" type="Sprite2D" parent="."]
+rotation = 3.555882
+texture = ExtResource("1_p2adf")
+script = ExtResource("2_5nene")
+rotation_speed = 2.0
+chopped = true
+chopped_duration = 0.08
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_cvjps")]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_cvjps")

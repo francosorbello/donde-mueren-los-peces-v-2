@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=44 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://dn48vjrdhx4i" path="res://player/floor_detection/floor_detection_component.gd" id="26_uw77l"]
 [ext_resource type="PackedScene" uid="uid://cmg6s3pb44xmv" path="res://inventory_system/carryable_item/item_follower_manager.tscn" id="27_rptt4"]
 [ext_resource type="PackedScene" uid="uid://bjka4rd2o0w7v" path="res://player/floor_detection/floor_detector.tscn" id="27_uw77l"]
+[ext_resource type="PackedScene" uid="uid://bgqnulqr2ev4k" path="res://hurt_and_hit_boxes/hitbox.tscn" id="29_r7pn3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r7pn3"]
 shader = ExtResource("2_rptt4")
@@ -173,6 +174,10 @@ radius = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw77l"]
 size = Vector2(12, 5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r7pn3"]
+radius = 5.0
+height = 16.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
@@ -325,7 +330,16 @@ position = Vector2(17, -11)
 [node name="ItemFollowerManager" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("27_rptt4")]
 follow_target = NodePath("../FollowTarget")
 
+[node name="Hitbox" parent="." instance=ExtResource("29_r7pn3")]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_r7pn3")
+debug_color = Color(0.98051983, 0, 0.3829566, 0.41960785)
+
 [connection signal="timeout" from="StateMachine/JumpingState/JumpDurationTimer" to="StateMachine/JumpingState" method="_on_jump_duration_timer_timeout"]
 [connection signal="player_fell" from="FloorDetectionComponent" to="." method="_on_floor_detection_component_player_fell"]
 [connection signal="floor_status_changed" from="FloorDetectionComponent/FloorDetector" to="FloorDetectionComponent" method="_on_floor_detector_floor_status_changed"]
 [connection signal="timeout" from="FloorDetectionComponent/CoyoteTimeTimer" to="FloorDetectionComponent" method="_on_coyote_time_timer_timeout"]
+[connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]

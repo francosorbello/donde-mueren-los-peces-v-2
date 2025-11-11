@@ -123,3 +123,8 @@ func _on_ui_opened():
 
 func _on_ui_closed():
 	$StateMachine.transition_to("IdleState")
+
+
+func _on_hitbox_on_hit(_hit_data: HitData) -> void:
+	_on_floor_detection_component_player_fell()
+	pass # Replace with function body.

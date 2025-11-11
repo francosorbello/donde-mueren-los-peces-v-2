@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dqq8dy0xuh3ec"]
+[gd_scene load_steps=18 format=4 uid="uid://dqq8dy0xuh3ec"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_1hwop"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_teaej"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://dao5jyvq1pdl4" path="res://inventory_system/items/red_key_1_zone_1.tres" id="9_ip04i"]
 [ext_resource type="Texture2D" uid="uid://pphsvjgft3k0" path="res://assets/GRAPHICS/doors/door_1_10x10.png" id="10_ip04i"]
 [ext_resource type="PackedScene" uid="uid://bha73rkue7cv" path="res://inventory_system/consume_item_area.tscn" id="11_p4qt2"]
+[ext_resource type="PackedScene" uid="uid://qh12h70kbjei" path="res://spikes/spike.tscn" id="12_p4qt2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hs3x"]
 
@@ -111,3 +112,6 @@ related_item = ExtResource("9_ip04i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConsumeDoor/ConsumeItemArea"]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_cc6yr")
+
+[node name="Spike" parent="." instance=ExtResource("12_p4qt2")]
+position = Vector2(130, 140)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dhhtspm33j6vk"]
+[gd_scene load_steps=15 format=4 uid="uid://dhhtspm33j6vk"]
 
 [ext_resource type="TileSet" uid="uid://1h607v1lcoyp" path="res://assets/GRAPHICS/Bountiful-Bits-v-3.1/bountiful_bits_tileset.tres" id="1_o3wiq"]
 [ext_resource type="Shader" uid="uid://bbse323pr0vvv" path="res://addons/eye_dropper/eye_dropper.gdshader" id="2_s4wnt"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://4ybnmc4j2y3v" path="res://player/player.tscn" id="7_7h1yb"]
 [ext_resource type="PackedScene" uid="uid://bn2a01n1dy2da" path="res://bubble/bubble_manager.tscn" id="8_hrlb6"]
 [ext_resource type="Script" uid="uid://dehd40fhedgng" path="res://camera/room_camera.gd" id="9_umrc4"]
+[ext_resource type="Texture2D" uid="uid://jnrswxxgerpx" path="res://assets/GRAPHICS/platform_small.png" id="10_s4wnt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_110xg"]
 shader = ExtResource("2_s4wnt")
@@ -17,6 +18,25 @@ shader_parameter/input_palette_texture = ExtResource("3_kjbog")
 shader_parameter/output_palette_texture = ExtResource("4_o3wiq")
 shader_parameter/input_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/output_palette_array = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/transparency = 1.0
+
+[sub_resource type="Curve2D" id="Curve2D_kjbog"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 193, 31, 0, 0, 0, 0, 195, 109, 0, 0, 0, 0, 256, 115, 0, 0, 0, 0, 252, 33, 0, 0, 0, 0, 193, 31)
+}
+point_count = 5
+
+[sub_resource type="GDScript" id="GDScript_s4wnt"]
+script/source = "extends PathFollow2D
+
+@export var speed : float = 300
+
+func _process(delta: float) -> void:
+	progress += delta * speed
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8t5b"]
+size = Vector2(32.80973, 31.16925)
 
 [node name="TilemapTest" type="Node2D"]
 
@@ -55,3 +75,22 @@ bubble_manager = NodePath("../BubbleManager")
 script = ExtResource("9_umrc4")
 target_to_follow = NodePath("../Player")
 follow_smoothing = 0.7
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_kjbog")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(193, 31)
+rotates = false
+script = SubResource("GDScript_s4wnt")
+speed = 100.0
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Path2D/PathFollow2D"]
+sync_to_physics = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("10_s4wnt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/AnimatableBody2D"]
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_e8t5b")

@@ -33,14 +33,34 @@ func _clear_previous_level():
 	current_level.queue_free()
 
 func load_level_scene(level_scene : PackedScene):
+	var transition := _start_fade_in()
 	_clear_previous_level()
+
+	await transition.finished
 
 	var level_instance = level_scene.instantiate()
 	%GameViewport.add_child.call_deferred(level_instance)
-	
 	current_level = level_instance
+
 	var player_spawner = current_level.find_child("PlayerSpawner")
 	if player_spawner:
 		player_spawner.call_deferred("spawn_player",last_transition_direction)
+	transition = _start_fade_out()	
+	await transition.finished
 	level_loaded.emit()
 	
+func _start_fade_in() -> Tween:
+	var tween := create_tween()
+
+	tween.set_ease(Tween.EASE_IN)
+	tween.tween_method(_set_transition_shader_progress,0.0,1.0,0.5)
+	return tween
+
+func _start_fade_out():
+	var tween := create_tween()
+	tween.tween_method(_set_transition_shader_progress,1.0,0.0,0.5)
+
+	return tween
+
+func _set_transition_shader_progress(value : float):
+	$UI/TransitionColor.modulate = Color(1,1,1,value)

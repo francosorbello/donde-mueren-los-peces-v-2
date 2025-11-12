@@ -2,7 +2,6 @@ extends Area2D
 class_name PlatformArea
 
 func toggle_active(is_active : bool,use_deferred : bool = false):
-    print("toggle platform to: ",is_active)
     monitoring = is_active
     monitorable = is_active
     for child in get_children():

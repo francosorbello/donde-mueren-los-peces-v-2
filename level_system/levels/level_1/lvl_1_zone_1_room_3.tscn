@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://rtns5g7xme08"]
+[gd_scene load_steps=19 format=4 uid="uid://rtns5g7xme08"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_7x6ou"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="1_ec1rd"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="7_owjk8"]
 [ext_resource type="Resource" uid="uid://wdxb4vdl6vwa" path="res://abilities/ability_items/abi_jump.tres" id="8_7mrnv"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="11_xsse8"]
-[ext_resource type="PackedScene" uid="uid://cbo7vxmur78m2" path="res://platform/bridge_to_jump_ability.tscn" id="12_xsse8"]
 [ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="13_5pkst"]
 [ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="13_rwgtn"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="13_we3vr"]
@@ -137,8 +136,24 @@ texture = ExtResource("11_xsse8")
 polygon = PackedVector2Array(195, 10.000003, 195, 41.250004, 195, 73.28125, 195, 110, 195, 146.71875, 195, 178.75, 195, 200.04915, 85, 200.04915, 85, 178.75, 85, 146.71875, 85, 110, 85, 73.28125, 85, 41.249996, 85, 9.999997)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="BridgeToJumpAbility" parent="FakeBridgeStuff" instance=ExtResource("12_xsse8")]
-position = Vector2(95, 40)
+[node name="Bridge" type="Node2D" parent="FakeBridgeStuff"]
+position = Vector2(-5, 5)
+
+[node name="PlatformSmall" parent="FakeBridgeStuff/Bridge" instance=ExtResource("13_we3vr")]
+position = Vector2(190, 30)
+breakable = true
+
+[node name="PlatformSmall2" parent="FakeBridgeStuff/Bridge" instance=ExtResource("13_we3vr")]
+position = Vector2(160, 30)
+breakable = true
+
+[node name="PlatformSmall3" parent="FakeBridgeStuff/Bridge" instance=ExtResource("13_we3vr")]
+position = Vector2(130, 30)
+breakable = true
+
+[node name="PlatformSmall4" parent="FakeBridgeStuff/Bridge" instance=ExtResource("13_we3vr")]
+position = Vector2(100, 30)
+breakable = true
 
 [node name="Obstacle 1" type="Node2D" parent="."]
 
@@ -183,7 +198,7 @@ polygon = PackedVector2Array(10, 60, 55, 60, 95.20192, 60, 95.20192, 120, 55, 12
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
 [node name="PlatformSmall" parent="Obstacle 2" instance=ExtResource("13_we3vr")]
-position = Vector2(50, 173)
+position = Vector2(50, 170)
 
 [node name="Obstacle 3" type="Node2D" parent="."]
 

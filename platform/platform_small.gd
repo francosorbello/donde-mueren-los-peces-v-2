@@ -22,7 +22,7 @@ func _on_platform_area_body_entered(body: Node2D) -> void:
 func _start_breaking():
     _breaking = true
     $BetweenStatesTimer.start(time_between_broken_states)
-    $BreakableSprite2D/SpriteShaker.start_shake(5,5)
+    $BreakableSprite2D/SpriteShaker.start_shake(5,time_between_broken_states * (_max_states+1))
 
 func _on_between_states_timer_timeout() -> void:
     if _current_state >= _max_states:

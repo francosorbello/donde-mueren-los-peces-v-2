@@ -14,6 +14,7 @@ var _ignore_fade_in: bool = false
 func _ready():
 	_transition_ui = $UI/TransitionColor
 	_set_transition_shader_progress(1)
+	_set_spotlight_transition_progress(0)
 	_ignore_fade_in = true
 
 	level_data = GlobalData.level_data
@@ -64,8 +65,6 @@ func _fade_to_player(final_value: float) -> Tween:
 	var player = get_tree().get_first_node_in_group("player") as APlayer
 	if player:
 		spotlight_pos = _get_screen_position_for(player,%GameViewport) / Vector2(1920,1080)
-		prints(_get_screen_position_for(player,%GameViewport))
-		# spotlight_pos = player.get_global_transform_with_canvas().get_origin() / Vector2(288, 270)
 		
 		
 	var mat: ShaderMaterial = $UI/SpotlightTransition.material

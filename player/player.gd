@@ -113,10 +113,13 @@ func has_ability_named(ab_name : String) -> bool:
 
 	return false
 
-func _on_floor_detection_component_player_fell() -> void:
+func die():
 	$DeadAnimPlayer.play_anim($Sprite2D)
 	global_position = $SafePointManager.last_safe_position
 	player_fell.emit()
+
+func _on_floor_detection_component_player_fell() -> void:
+	die()
 
 func _on_ui_opened():
 	$StateMachine.transition_to("EmptyState")
@@ -124,7 +127,8 @@ func _on_ui_opened():
 func _on_ui_closed():
 	$StateMachine.transition_to("IdleState")
 
-
 func _on_hitbox_on_hit(_hit_data: HitData) -> void:
-	_on_floor_detection_component_player_fell()
-	pass # Replace with function body.
+	if _hit_data.extra_data.has("obstacle_type"):
+		if _hit_data.extra_data["obstacle_type"] == "spike":
+			die()
+	die()

@@ -10,7 +10,7 @@ radius = 4.1231055
 [node name="Spike" type="Node2D"]
 
 [node name="RotatingSprite" type="Sprite2D" parent="."]
-rotation = 3.555882
+rotation = 0.16559689
 texture = ExtResource("1_p2adf")
 script = ExtResource("2_5nene")
 rotation_speed = 2.0
@@ -20,6 +20,9 @@ chopped_duration = 0.08
 [node name="Hurtbox" parent="." instance=ExtResource("3_cvjps")]
 collision_layer = 0
 collision_mask = 128
+extra_data = Dictionary[String, Variant]({
+"obstacle_type": "spike"
+})
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_cvjps")

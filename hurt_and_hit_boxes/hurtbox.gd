@@ -1,6 +1,7 @@
 extends Area2D
 class_name Hurtbox
 
+@export var extra_data : Dictionary[String, Variant]
 
 var _collision_shape : CollisionShape2D:
 	get():
@@ -38,5 +39,5 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is not Hitbox:
 		return
 
-	var data = HitData.create((global_position- area.global_position).normalized())
-	area.receive_hit(data) 
+	var data = HitData.create((global_position- area.global_position).normalized(),extra_data)
+	area.receive_hit(data)

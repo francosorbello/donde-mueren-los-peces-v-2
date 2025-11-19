@@ -1,21 +1,111 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4ayfkh0lp4rn"]
+[gd_scene load_steps=11 format=3 uid="uid://b4ayfkh0lp4rn"]
 
 [ext_resource type="Script" uid="uid://dacgpes34y2xd" path="res://laser/laser.gd" id="1_1urul"]
 [ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="1_208yb"]
+[ext_resource type="PackedScene" uid="uid://b4gu0712mn4rn" path="res://laser/electric_line_2d.tscn" id="2_t17o5"]
+[ext_resource type="Script" uid="uid://8dv7dce6ncjv" path="res://addons/ftr_tools/sm/state_machine.gd" id="3_u5u84"]
+[ext_resource type="Script" uid="uid://c1ct4bi3ohhcu" path="res://laser/laser_disabled_state.gd" id="4_krd7m"]
+[ext_resource type="Script" uid="uid://bd81fxwqw2s6a" path="res://laser/laser_charging_state.gd" id="5_rqpkc"]
+[ext_resource type="Script" uid="uid://coscyu6tpeehn" path="res://laser/laser_active_state.gd" id="6_dbcog"]
+
+[sub_resource type="Curve" id="Curve_dbcog"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 2.1962335), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.1962335, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_t17o5"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Environment" id="Environment_dbcog"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.32
 
 [node name="Laser" type="Node2D"]
 script = ExtResource("1_1urul")
-end_point = -150.0
 
-[node name="LaserLine" type="Line2D" parent="."]
-default_color = Color(1, 0, 0, 1)
+[node name="LaserLine" parent="." instance=ExtResource("2_t17o5")]
+default_color = Color(13.811125, 0, 0, 1)
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="StartParticles" type="CPUParticles2D" parent="Particles"]
+position = Vector2(-4, 0)
+emitting = false
+amount = 93
+local_coords = true
+direction = Vector2(0, 0)
+spread = 50.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_dbcog")
+
+[node name="EndParticles" type="CPUParticles2D" parent="Particles"]
+emitting = false
+amount = 48
+local_coords = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_dbcog")
+
+[node name="BoxParticles" type="CPUParticles2D" parent="Particles"]
+position = Vector2(25, 0)
+emitting = false
+amount = 73
+emission_shape = 3
+emission_rect_extents = Vector2(25, 5)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_t17o5")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="IndicatorLine" type="Line2D" parent="."]
-default_color = Color(1, 0, 0, 0.3764706)
+default_color = Color(1, 1, 1, 0.4745098)
 
 [node name="Hurtbox" parent="." instance=ExtResource("1_208yb")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4.82, 4.82)
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_u5u84")
+initial_state = NodePath("DisabledState")
+metadata/_custom_type_script = "uid://8dv7dce6ncjv"
+
+[node name="DisabledState" type="Node" parent="StateMachine"]
+script = ExtResource("4_krd7m")
+metadata/_custom_type_script = "uid://75lytsymjqc2"
+
+[node name="InactiveTimer" type="Timer" parent="StateMachine/DisabledState"]
+one_shot = true
+
+[node name="ChargingState" type="Node" parent="StateMachine"]
+script = ExtResource("5_rqpkc")
+metadata/_custom_type_script = "uid://75lytsymjqc2"
+
+[node name="ChargingTimer" type="Timer" parent="StateMachine/ChargingState"]
+one_shot = true
+
+[node name="ActiveState" type="Node" parent="StateMachine"]
+script = ExtResource("6_dbcog")
+metadata/_custom_type_script = "uid://75lytsymjqc2"
+
+[node name="ActiveTimer" type="Timer" parent="StateMachine/ActiveState"]
+one_shot = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dbcog")
+
+[connection signal="timeout" from="StateMachine/DisabledState/InactiveTimer" to="StateMachine/DisabledState" method="_on_inactive_timer_timeout"]
+[connection signal="timeout" from="StateMachine/ChargingState/ChargingTimer" to="StateMachine/ChargingState" method="_on_charging_timer_timeout"]
+[connection signal="timeout" from="StateMachine/ActiveState/ActiveTimer" to="StateMachine/ActiveState" method="_on_active_timer_timeout"]

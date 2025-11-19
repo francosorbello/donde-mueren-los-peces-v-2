@@ -58,8 +58,11 @@ func setup():
 	rect_shape.size = size
 
 	$Hurtbox/CollisionShape2D.shape = rect_shape
-	$Hurtbox/CollisionShape2D.position = _get_end_point()/2
+	$Hurtbox/CollisionShape2D.position = _get_end_point() / 2
 	$Hurtbox.disable()
+
+	$PlatformArea/CollisionShape2D.shape = rect_shape.duplicate()
+	$PlatformArea/CollisionShape2D.position = _get_end_point() / 2
 
 	$Particles/EndParticles.position = _get_end_point()
 	$Particles/BoxParticles.position = _get_end_point() / 2

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4ayfkh0lp4rn"]
+
+[ext_resource type="Script" uid="uid://dacgpes34y2xd" path="res://laser/laser.gd" id="1_1urul"]
+[ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="1_208yb"]
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_1urul")
+end_point = -150.0
+
+[node name="LaserLine" type="Line2D" parent="."]
+default_color = Color(1, 0, 0, 1)
+
+[node name="IndicatorLine" type="Line2D" parent="."]
+default_color = Color(1, 0, 0, 0.3764706)
+
+[node name="Hurtbox" parent="." instance=ExtResource("1_208yb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4.82, 4.82)

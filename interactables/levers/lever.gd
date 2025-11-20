@@ -21,6 +21,7 @@ func flip_sprite():
 func set_activated():
     $Sprite2D.flip_h = true
     $BetterInteractableComponent.set_deferred("is_interactable",false)
+    $LeverSound.play()
 
 func _on_persistent_event_evaluator_evaluator_succeded() -> void:
     set_activated()

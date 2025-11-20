@@ -98,6 +98,12 @@ func detach_from_air_current():
 	if $StateMachine.current_state.name == "OnAirCurrentState":
 		$StateMachine.transition_to("JumpingState")
 
+func attach_to_railway():
+	$StateMachine.transition_to("OnRailwayState")
+
+func detach_from_railway():
+	$StateMachine.transition_to("JumpingState")
+
 func add_extra_velocity(vel : Vector2, time : float):
 	extra_velocity = vel
 	get_tree().create_timer(time).timeout.connect(func():

@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://blukarxueuvdx"]
+
+[ext_resource type="Script" uid="uid://0y655hc432u6" path="res://railways/railway.gd" id="1_jgmf4"]
+[ext_resource type="PackedScene" uid="uid://dgks666k0klxv" path="res://interactables/interactable_component/better_interactable_component.tscn" id="2_4q5x5"]
+[ext_resource type="PackedScene" uid="uid://b4jjcolqqt2xe" path="res://interactables/outline_component/outline_component.tscn" id="3_otojb"]
+[ext_resource type="Texture2D" uid="uid://c76roq0fbmbii" path="res://assets/GRAPHICS/circle.png" id="4_otojb"]
+[ext_resource type="Script" uid="uid://c6e6q5f5mdn6p" path="res://railways/railway_follower.gd" id="5_ecafo"]
+
+[node name="Railway" type="Path2D"]
+script = ExtResource("1_jgmf4")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 1.0
+
+[node name="StartPoint" type="Node2D" parent="."]
+
+[node name="StartInteractable" parent="StartPoint" instance=ExtResource("2_4q5x5")]
+
+[node name="OutlineComponent" parent="StartPoint/StartInteractable" node_paths=PackedStringArray("sprite") instance=ExtResource("3_otojb")]
+sprite = NodePath("../../StartPointVisual")
+
+[node name="StartPointVisual" type="Sprite2D" parent="StartPoint"]
+texture = ExtResource("4_otojb")
+
+[node name="EndPoint" type="Node2D" parent="."]
+
+[node name="EndInteractable" parent="EndPoint" instance=ExtResource("2_4q5x5")]
+
+[node name="OutlineComponent" parent="EndPoint/EndInteractable" node_paths=PackedStringArray("sprite") instance=ExtResource("3_otojb")]
+sprite = NodePath("../../EndPointVisual")
+
+[node name="EndPointVisual" type="Sprite2D" parent="EndPoint"]
+texture = ExtResource("4_otojb")
+
+[node name="RailwayFollower" type="PathFollow2D" parent="."]
+rotates = false
+loop = false
+script = ExtResource("5_ecafo")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="RailwayFollower"]
+
+[connection signal="on_interact" from="StartPoint/StartInteractable" to="." method="_on_start_interactable_on_interact"]
+[connection signal="on_interact" from="EndPoint/EndInteractable" to="." method="_on_end_interactable_on_interact"]

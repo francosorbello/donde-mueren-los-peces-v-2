@@ -18,6 +18,11 @@ enum LaserDirection {
 		if Engine.is_editor_hint():
 			queue_redraw()
 
+@export_category("Extremes")
+@export var visible_extremes : bool = false
+@export var extreme_radius : float = 10
+@export var extreme_color : Color = Color.RED
+
 @export_category("Time related")
 @export var inactive_duration : float = 3
 @export var charging_duration : float = 2
@@ -119,6 +124,11 @@ func hide_beam_anim():
 func _draw() -> void:
 	if Engine.is_editor_hint():
 		draw_line(Vector2.ZERO,_get_end_point(),Color(1,.4,1,0.4), width)
+		return
+
+	if visible_extremes:
+		draw_circle(Vector2.ZERO,extreme_radius,extreme_color)
+		draw_circle(_get_end_point(),extreme_radius,extreme_color)
 
 func _get_end_point() -> Vector2:
 	if direction == LaserDirection.HORIZONTAL:

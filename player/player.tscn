@@ -1,9 +1,9 @@
-[gd_scene load_steps=44 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=45 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Shader" uid="uid://d10m6757u4c6r" path="res://interactables/outline_component/outline.gdshader" id="2_rptt4"]
-[ext_resource type="AudioStream" uid="uid://dgadymra1s2ay" path="res://assets/SOUNDS/pretty_footsetp.mp3" id="3_g1dw6"]
+[ext_resource type="AudioStream" uid="uid://dgadymra1s2ay" path="res://assets/SOUNDS/player/pretty_footsetp.mp3" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://8dv7dce6ncjv" path="res://addons/ftr_tools/sm/state_machine.gd" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://bijnqy4wt580s" path="res://player/states/idle_state.gd" id="5_qjkh3"]
 [ext_resource type="Script" uid="uid://c55rmvk4p4wdj" path="res://player/states/moving_state.gd" id="6_g6k8r"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cpqtb5ob20158" path="res://player/states/dashing_state.gd" id="8_8t03j"]
 [ext_resource type="PackedScene" uid="uid://46qyrbx34yuv" path="res://bubble/bubble_indicator.tscn" id="8_rgyib"]
 [ext_resource type="Script" uid="uid://cdl66dyxa8q0e" path="res://player/states/jumping_state.gd" id="12_32hag"]
-[ext_resource type="AudioStream" uid="uid://bvlcode311dss" path="res://assets/SOUNDS/dash.ogg" id="12_e7oew"]
+[ext_resource type="AudioStream" uid="uid://bvlcode311dss" path="res://assets/SOUNDS/player/dash.ogg" id="12_e7oew"]
 [ext_resource type="AudioStream" uid="uid://clphpvymjfvrs" path="res://assets/SOUNDS/104948__glaneur-de-sons__bubble-9.mp3" id="13_c35mf"]
 [ext_resource type="Script" uid="uid://csx632fp1ai83" path="res://player/states/quick_dashing_state.gd" id="13_tqiix"]
 [ext_resource type="AudioStream" uid="uid://b8q2ul5salv6o" path="res://assets/SOUNDS/337132__cdonahueucsd__bubble_small.mp3" id="14_65viv"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cmg6s3pb44xmv" path="res://inventory_system/carryable_item/item_follower_manager.tscn" id="27_rptt4"]
 [ext_resource type="PackedScene" uid="uid://bjka4rd2o0w7v" path="res://player/floor_detection/floor_detector.tscn" id="27_uw77l"]
 [ext_resource type="PackedScene" uid="uid://bgqnulqr2ev4k" path="res://hurt_and_hit_boxes/hitbox.tscn" id="29_r7pn3"]
+[ext_resource type="AudioStream" uid="uid://hwmgb6tnug3k" path="res://assets/SOUNDS/player/creature_misc_05.ogg" id="30_b8hi5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r7pn3"]
 shader = ExtResource("2_rptt4")
@@ -207,6 +208,7 @@ libraries = {
 [node name="StepSounds" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_yw30f")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_yw30f")
@@ -337,6 +339,11 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CapsuleShape2D_r7pn3")
 debug_color = Color(0.98051983, 0, 0.3829566, 0.41960785)
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_b8hi5")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="timeout" from="StateMachine/JumpingState/JumpDurationTimer" to="StateMachine/JumpingState" method="_on_jump_duration_timer_timeout"]
 [connection signal="player_fell" from="FloorDetectionComponent" to="." method="_on_floor_detection_component_player_fell"]

@@ -7,6 +7,7 @@ extends Line2D
 @export_category("Animation")
 @export var offset : float = 5
 @export var anim_time : float = 0.1
+@export var ignore_extreme_points : bool = false
 
 @export_category("Debug")
 @export_tool_button("Create") var create_action = create
@@ -58,8 +59,14 @@ func _process(delta):
         return
 
     var dir = Vector2(line_dir.y,-line_dir.x)
+    var from = 0
+    var to = points.size()
+    
+    if ignore_extreme_points:
+        from = 1
+        to -= 1
 
-    for i in range(0, points.size()):
+    for i in range(from, to):
         set_point_position(i,original_points[i]+dir * randf_range(-offset,offset))
     
     _acc_time = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4ayfkh0lp4rn"]
+[gd_scene load_steps=14 format=3 uid="uid://b4ayfkh0lp4rn"]
 
 [ext_resource type="Script" uid="uid://dacgpes34y2xd" path="res://laser/laser.gd" id="1_1urul"]
 [ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="1_208yb"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://c1ct4bi3ohhcu" path="res://laser/laser_disabled_state.gd" id="4_krd7m"]
 [ext_resource type="Script" uid="uid://bd81fxwqw2s6a" path="res://laser/laser_charging_state.gd" id="5_rqpkc"]
 [ext_resource type="Script" uid="uid://coscyu6tpeehn" path="res://laser/laser_active_state.gd" id="6_dbcog"]
+[ext_resource type="AudioStream" uid="uid://8mgbyfend88w" path="res://assets/SOUNDS/laser/electric_loop_3.ogg" id="7_1x7wp"]
+[ext_resource type="AudioStream" uid="uid://b40c12hwtesmf" path="res://assets/SOUNDS/laser/electric_loop_1.ogg" id="8_mi7f7"]
 [ext_resource type="PackedScene" uid="uid://bwqrwjmgf0c42" path="res://platform/platform_area.tscn" id="8_n6oit"]
 
 [sub_resource type="Curve" id="Curve_dbcog"]
@@ -26,9 +28,13 @@ glow_intensity = 0.32
 
 [node name="Laser" type="Node2D"]
 script = ExtResource("1_1urul")
+visible_extremes = true
+extreme_radius = 5.0
+extreme_color = Color(13.811125, 0, 0, 1)
 
 [node name="LaserLine" parent="." instance=ExtResource("2_t17o5")]
 default_color = Color(13.811125, 0, 0, 1)
+ignore_extreme_points = true
 
 [node name="Particles" type="Node2D" parent="."]
 
@@ -99,12 +105,20 @@ metadata/_custom_type_script = "uid://75lytsymjqc2"
 [node name="ChargingTimer" type="Timer" parent="StateMachine/ChargingState"]
 one_shot = true
 
+[node name="ChargingSound" type="AudioStreamPlayer2D" parent="StateMachine/ChargingState"]
+stream = ExtResource("7_1x7wp")
+bus = &"SFX"
+
 [node name="ActiveState" type="Node" parent="StateMachine"]
 script = ExtResource("6_dbcog")
 metadata/_custom_type_script = "uid://75lytsymjqc2"
 
 [node name="ActiveTimer" type="Timer" parent="StateMachine/ActiveState"]
 one_shot = true
+
+[node name="ElectricitySound" type="AudioStreamPlayer2D" parent="StateMachine/ActiveState"]
+stream = ExtResource("8_mi7f7")
+bus = &"SFX"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dbcog")
@@ -113,6 +127,14 @@ environment = SubResource("Environment_dbcog")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformArea"]
 debug_color = Color(9.62615e-08, 0.6409527, 0.34681922, 0.41960785)
+
+[node name="Remote Transforms" type="Node2D" parent="."]
+
+[node name="ChargingSoundTransform" type="RemoteTransform2D" parent="Remote Transforms"]
+remote_path = NodePath("../../StateMachine/ChargingState/ChargingSound")
+
+[node name="ElectricitySoundTransform" type="RemoteTransform2D" parent="Remote Transforms"]
+remote_path = NodePath("../../StateMachine/ActiveState/ElectricitySound")
 
 [connection signal="timeout" from="StateMachine/DisabledState/InactiveTimer" to="StateMachine/DisabledState" method="_on_inactive_timer_timeout"]
 [connection signal="timeout" from="StateMachine/ChargingState/ChargingTimer" to="StateMachine/ChargingState" method="_on_charging_timer_timeout"]

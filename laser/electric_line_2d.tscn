@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4gu0712mn4rn"]
+[gd_scene load_steps=3 format=3 uid="uid://b4gu0712mn4rn"]
 
 [ext_resource type="Script" uid="uid://dxhh844rrv4ml" path="res://laser/electric_line_2d.gd" id="1_8eh4m"]
 
+[sub_resource type="Curve" id="Curve_8eh4m"]
+_data = [Vector2(0, 0.47031432), 0.0, 0.0, 0, 0, Vector2(0.055882365, 1), 0.0, 0.0, 0, 0, Vector2(0.9588236, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.4778813), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="ElectricLine2D" type="Line2D"]
+width_curve = SubResource("Curve_8eh4m")
 script = ExtResource("1_8eh4m")
 offset = 3.16
 anim_time = 0.05

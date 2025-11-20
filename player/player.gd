@@ -117,6 +117,7 @@ func die():
 	$DeadAnimPlayer.play_anim($Sprite2D)
 	global_position = $SafePointManager.last_safe_position
 	player_fell.emit()
+	$HitSound.play()
 
 func _on_floor_detection_component_player_fell() -> void:
 	die()

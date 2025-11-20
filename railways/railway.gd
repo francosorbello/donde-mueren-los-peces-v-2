@@ -2,6 +2,8 @@ extends Path2D
 
 @export var speed : float = 200
 
+var direction : Vector2
+
 func _ready():
 	setup()
 
@@ -17,6 +19,7 @@ func setup():
 
 	$StartPoint.position = curve_points.front()
 	$EndPoint.position = curve_points.back()
+	direction = (curve_points.back() - curve_points.front()).normalized()
 
 
 func _on_start_interactable_on_interact() -> void:

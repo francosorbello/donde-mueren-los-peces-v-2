@@ -10,5 +10,3 @@ func enter():
 
 func exit():
 	fall_detection_component.can_fall = true
-	var vel = Vector2.ZERO
-	player.add_extra_velocity(vel,.3)

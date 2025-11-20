@@ -23,7 +23,8 @@ func stop():
     if player:
         moving = false
         $RemoteTransform2D.remote_path = ""
-        player.detach_from_railway()
+        var mod = 1 if from_start else -1
+        player.detach_from_railway(get_parent().direction * mod)
 
 func _process(delta):
     if not moving:

@@ -101,8 +101,9 @@ func detach_from_air_current():
 func attach_to_railway():
 	$StateMachine.transition_to("OnRailwayState")
 
-func detach_from_railway():
+func detach_from_railway(dir : Vector2):
 	$StateMachine.transition_to("JumpingState")
+	add_extra_velocity(dir*50,.3)
 
 func add_extra_velocity(vel : Vector2, time : float):
 	extra_velocity = vel

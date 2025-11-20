@@ -20,10 +20,19 @@ func setup():
 	$StartPoint.position = curve_points.front()
 	$EndPoint.position = curve_points.back()
 	direction = (curve_points.back() - curve_points.front()).normalized()
+	$RailwaySound.position = curve_points.back()/2
+	
+	$RailwayFollower.started.connect(func():
+		$RailwaySound.play()
+	)
 
+	$RailwayFollower.stopped.connect(func():
+		$RailwaySound.stop()
+	)
 
 func _on_start_interactable_on_interact() -> void:
 	$RailwayFollower.start(speed, true)
+	$RailwaySound.play()
 
 
 func _on_end_interactable_on_interact() -> void:

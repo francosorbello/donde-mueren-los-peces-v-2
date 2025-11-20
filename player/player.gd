@@ -3,6 +3,7 @@ class_name APlayer
 
 @export var speed : float = 100
 @export var accel : float = 2
+@export var exit_railway_speed : float = 70
 
 @export var bubble_manager : BubbleManager
 
@@ -103,7 +104,7 @@ func attach_to_railway():
 
 func detach_from_railway(dir : Vector2):
 	$StateMachine.transition_to("JumpingState")
-	add_extra_velocity(dir*50,.3)
+	add_extra_velocity(dir*exit_railway_speed,.3)
 
 func add_extra_velocity(vel : Vector2, time : float):
 	extra_velocity = vel

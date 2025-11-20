@@ -6,6 +6,9 @@ var moving : bool = false
 var speed : float
 var from_start : bool
 
+signal stopped
+signal started
+
 func start(at_speed : float,from_start_point : bool = true):
     player = get_player()
     if player:
@@ -18,6 +21,7 @@ func start(at_speed : float,from_start_point : bool = true):
             progress_ratio = 1
         player.attach_to_railway()
         $RemoteTransform2D.remote_path = player.get_path()
+        started.emit()
 
 func stop():
     if player:
@@ -25,6 +29,7 @@ func stop():
         $RemoteTransform2D.remote_path = ""
         var mod = 1 if from_start else -1
         player.detach_from_railway(get_parent().direction * mod)
+        stopped.emit()
 
 func _process(delta):
     if not moving:

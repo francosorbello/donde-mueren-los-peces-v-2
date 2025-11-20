@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4ayfkh0lp4rn"]
+[gd_scene load_steps=15 format=3 uid="uid://b4ayfkh0lp4rn"]
 
 [ext_resource type="Script" uid="uid://dacgpes34y2xd" path="res://laser/laser.gd" id="1_1urul"]
 [ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="1_208yb"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://8mgbyfend88w" path="res://assets/SOUNDS/laser/electric_loop_3.ogg" id="7_1x7wp"]
 [ext_resource type="AudioStream" uid="uid://b40c12hwtesmf" path="res://assets/SOUNDS/laser/electric_loop_1.ogg" id="8_mi7f7"]
 [ext_resource type="PackedScene" uid="uid://bwqrwjmgf0c42" path="res://platform/platform_area.tscn" id="8_n6oit"]
+[ext_resource type="Texture2D" uid="uid://bl3cqtq6racqj" path="res://assets/GRAPHICS/laser_endpoint.png" id="11_3d53e"]
 
 [sub_resource type="Curve" id="Curve_dbcog"]
 _limits = [0.0, 5.0, 0.0, 1.0]
@@ -28,8 +29,7 @@ glow_intensity = 0.32
 
 [node name="Laser" type="Node2D"]
 script = ExtResource("1_1urul")
-visible_extremes = true
-extreme_radius = 5.0
+extreme_radius = 2.0
 extreme_color = Color(13.811125, 0, 0, 1)
 
 [node name="LaserLine" parent="." instance=ExtResource("2_t17o5")]
@@ -135,6 +135,13 @@ remote_path = NodePath("../../StateMachine/ChargingState/ChargingSound")
 
 [node name="ElectricitySoundTransform" type="RemoteTransform2D" parent="Remote Transforms"]
 remote_path = NodePath("../../StateMachine/ActiveState/ElectricitySound")
+
+[node name="StartPointVisual" type="Sprite2D" parent="."]
+texture = ExtResource("11_3d53e")
+
+[node name="EndPointVisual" type="Sprite2D" parent="."]
+texture = ExtResource("11_3d53e")
+flip_h = true
 
 [connection signal="timeout" from="StateMachine/DisabledState/InactiveTimer" to="StateMachine/DisabledState" method="_on_inactive_timer_timeout"]
 [connection signal="timeout" from="StateMachine/ChargingState/ChargingTimer" to="StateMachine/ChargingState" method="_on_charging_timer_timeout"]

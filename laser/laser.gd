@@ -73,6 +73,16 @@ func setup():
 	$Particles/BoxParticles.position = _get_end_point() / 2
 	$Particles/BoxParticles.emission_rect_extents = size / 2
 
+	var visual_rot = 0
+	if direction == LaserDirection.VERTICAL:
+		visual_rot = PI/2
+
+	$StartPointVisual.rotation = visual_rot
+
+	$EndPointVisual.rotation = visual_rot
+	$EndPointVisual.show()
+	$EndPointVisual.position = _get_end_point()
+
 func deactivate_laser():
 	$LaserLine.hide()
 	$LaserLine.stop_anim()
@@ -124,6 +134,7 @@ func hide_beam_anim():
 func _draw() -> void:
 	if Engine.is_editor_hint():
 		draw_line(Vector2.ZERO,_get_end_point(),Color(1,.4,1,0.4), width)
+		$EndPointVisual.position = _get_end_point()
 		return
 
 	if visible_extremes:

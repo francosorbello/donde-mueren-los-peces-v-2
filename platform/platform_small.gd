@@ -9,8 +9,11 @@ var _max_states : int
 var _current_state : int = 0
 var _breaking : bool = false
 
+var _original_rustle_volume : float
+
 func _ready() -> void:
     _max_states = $BreakableSprite2D.hframes
+    _original_rustle_volume = $RustleSound.volume_db
 
 func _on_platform_area_body_entered(body: Node2D) -> void:
     if not breakable:
@@ -23,6 +26,19 @@ func _start_breaking():
     _breaking = true
     $BetweenStatesTimer.start(time_between_broken_states)
     $BreakableSprite2D/SpriteShaker.start_shake(5,time_between_broken_states * (_max_states+1))
+    _play_breaking_sound()
+    $PlayerDetector/CollisionShape2D2.set_deferred("disabled",true)
+
+func _play_breaking_sound():
+    $RustleSound.volume_db = -20
+    var tween := create_tween()
+    $RustleSound.play()
+
+    tween.tween_property($RustleSound,"volume_db",_original_rustle_volume,time_between_broken_states* (_max_states+1))
+    tween.finished.connect(func():
+        $RustleSound.stop()
+        $RustleEnd.play()
+    )
 
 func _on_between_states_timer_timeout() -> void:
     if _current_state >= _max_states:
@@ -45,6 +61,7 @@ func _restart():
     $BreakableSprite2D.frame = 0
     $PlatformArea.toggle_active(true)
     _anim_platform_to(1.0)
+    $PlayerDetector/CollisionShape2D2.set_deferred("disabled",false)
 
 func _anim_platform_to(max_value : float):
     var tween := create_tween()

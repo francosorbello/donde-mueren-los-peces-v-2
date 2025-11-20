@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://nnpgkaoylgj"]
+[gd_scene load_steps=11 format=3 uid="uid://nnpgkaoylgj"]
 
 [ext_resource type="PackedScene" uid="uid://bwqrwjmgf0c42" path="res://platform/platform_area.tscn" id="1_3q0bu"]
 [ext_resource type="Script" uid="uid://d33mw6pqgq7bd" path="res://platform/platform_small.gd" id="1_5puph"]
 [ext_resource type="Texture2D" uid="uid://bib3kjjin2u60" path="res://assets/GRAPHICS/platform_small_spritesheet.png" id="4_3hsfd"]
 [ext_resource type="Script" uid="uid://di57ndmfi88w5" path="res://platform/sprite_shaker.gd" id="4_31rty"]
+[ext_resource type="AudioStream" uid="uid://cq17y3u7y2lne" path="res://assets/SOUNDS/rustles/rustle_loop_2.ogg" id="5_31rty"]
+[ext_resource type="AudioStream" uid="uid://cvpr3bplyb82a" path="res://assets/SOUNDS/rustles/rustle_end_2.ogg" id="6_gumpu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlrff"]
 size = Vector2(28, 28)
@@ -16,8 +18,8 @@ point_count = 2
 size = Vector2(28, 28)
 
 [sub_resource type="Curve" id="Curve_3hsfd"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, -2.0, 0, 1, Vector2(1, 0), -2.0, 0.0, 1, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, -2.3832817, 0, 0, Vector2(1, 0), -0.28523073, 0.0, 0, 0]
+point_count = 2
 
 [node name="PlatformSmall" type="Node2D"]
 script = ExtResource("1_5puph")
@@ -52,17 +54,30 @@ shape = SubResource("RectangleShape2D_5puph")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 50
-lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
-direction = Vector2(0, 0)
+emission_shape = 3
+emission_rect_extents = Vector2(15, 15)
+direction = Vector2(-1, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 30.0
-initial_velocity_max = 45.0
-scale_amount_min = 4.0
-scale_amount_max = 4.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angular_velocity_min = 119.47
+angular_velocity_max = 119.47
+linear_accel_min = 1.0
+linear_accel_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_3hsfd")
+
+[node name="RustleSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_31rty")
+bus = &"SFX"
+
+[node name="RustleEnd" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_gumpu")
+bus = &"SFX"
 
 [connection signal="timeout" from="BetweenStatesTimer" to="." method="_on_between_states_timer_timeout"]
 [connection signal="timeout" from="DisabledTimer" to="." method="_disabled_timer_timeout"]

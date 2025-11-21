@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://da01bxc51tnxl"]
+
+[ext_resource type="Texture2D" uid="uid://ctnc5mtuu6rng" path="res://assets/GRAPHICS/bubble_recharger/bubble_recharger.png" id="1_tnld2"]
+[ext_resource type="Script" uid="uid://bqrhm1d2jg83c" path="res://bubble_recharger/bubble_recharger.gd" id="1_xdcsg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnld2"]
+radius = 6.0827627
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdcsg"]
+atlas = ExtResource("1_tnld2")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxyk5"]
+atlas = ExtResource("1_tnld2")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0101b"]
+atlas = ExtResource("1_tnld2")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2bo84"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdcsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxyk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0101b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BubbleRecharger" type="Node2D"]
+script = ExtResource("1_xdcsg")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tnld2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2bo84")
+frame_progress = 0.77632314
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

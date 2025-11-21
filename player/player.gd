@@ -81,8 +81,8 @@ func soften_sprite(do_soften : bool):
 func get_bubble_sprite() -> Sprite2D:
 	return $BubbleSprite
 
-func start_jump():
-	collision_mask = jump_collision_mask
+func do_jump():
+	$StateMachine.transition_to("JumpingState")
 	pass
 
 func stop_collision():

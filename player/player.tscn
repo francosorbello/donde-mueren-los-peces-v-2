@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=47 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -181,6 +181,11 @@ size = Vector2(12, 5)
 radius = 5.0
 height = 16.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2uvqg"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("30_b8hi5")
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 motion_mode = 1
@@ -347,7 +352,7 @@ shape = SubResource("CapsuleShape2D_r7pn3")
 debug_color = Color(0.98051983, 0, 0.3829566, 0.41960785)
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("30_b8hi5")
+stream = SubResource("AudioStreamRandomizer_2uvqg")
 volume_db = -10.0
 bus = &"SFX"
 

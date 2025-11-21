@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://7x5o6r22nly0"]
+[gd_scene load_steps=20 format=4 uid="uid://7x5o6r22nly0"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_4gcyw"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_3l225"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="14_qnjgr"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="14_uxipo"]
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="14_ymt3l"]
-[ext_resource type="PackedScene" uid="uid://blukarxueuvdx" path="res://railways/railway.tscn" id="16_ymt3l"]
+[ext_resource type="PackedScene" uid="uid://da01bxc51tnxl" path="res://bubble_recharger/bubble_recharger.tscn" id="16_ymt3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpab4"]
 
@@ -25,12 +25,6 @@
 bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 140, 70, 0, 0, 0, 0, 140, 190)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_6mmd2"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 70, 160, 0, 0, 0, 0, 230, 160)
 }
 point_count = 2
 
@@ -126,5 +120,5 @@ script = ExtResource("14_qnjgr")
 event_name = "lever_1_used_on_lvl_1_zone_1_room_5"
 metadata/_custom_type_script = "uid://davfd8xpi1i3t"
 
-[node name="Railway" parent="." instance=ExtResource("16_ymt3l")]
-curve = SubResource("Curve2D_6mmd2")
+[node name="BubbleRecharger" parent="." instance=ExtResource("16_ymt3l")]
+position = Vector2(150, 130)

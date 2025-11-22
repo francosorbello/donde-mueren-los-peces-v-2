@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://4n884h45dtej"]
+
+[ext_resource type="Script" uid="uid://10f10htn06q0" path="res://persistancy_system/room_connections/room_connector.gd" id="1_3stbw"]
+
+[node name="RoomConnector" type="Node"]
+script = ExtResource("1_3stbw")

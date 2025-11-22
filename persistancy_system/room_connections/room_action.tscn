@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://j5h4oea0282g"]
+
+[ext_resource type="Script" uid="uid://dxbs0dem7gmpj" path="res://persistancy_system/room_connections/room_action.gd" id="1_hhy7w"]
+
+[node name="RoomAction" type="Node"]
+script = ExtResource("1_hhy7w")

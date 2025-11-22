@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://7x5o6r22nly0"]
+[gd_scene load_steps=21 format=4 uid="uid://7x5o6r22nly0"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_4gcyw"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_3l225"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="14_qnjgr"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="14_uxipo"]
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="14_ymt3l"]
-[ext_resource type="PackedScene" uid="uid://4n884h45dtej" path="res://persistancy_system/room_connections/room_connector.tscn" id="16_ymt3l"]
 [ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="17_6mmd2"]
 [ext_resource type="Script" uid="uid://cx2kg0gw7lped" path="res://persistancy_system/room_connections/room_actions/room_action_toggle.gd" id="18_5dsnr"]
 
@@ -125,12 +124,12 @@ metadata/_custom_type_script = "uid://davfd8xpi1i3t"
 [node name="Obstacle_2" type="Node2D" parent="."]
 
 [node name="PlatformSmall" parent="Obstacle_2" instance=ExtResource("14_uxipo")]
-position = Vector2(150, 130)
-
-[node name="RoomConnector" parent="Obstacle_2" instance=ExtResource("16_ymt3l")]
+position = Vector2(150, 145)
 
 [node name="RoomLever" parent="Obstacle_2" instance=ExtResource("17_6mmd2")]
 position = Vector2(90, 170)
+timed = true
 
-[node name="RoomActionToggle" type="Node" parent="Obstacle_2/RoomLever"]
+[node name="RoomActionToggle" type="Node" parent="Obstacle_2/RoomLever" node_paths=PackedStringArray("target")]
 script = ExtResource("18_5dsnr")
+target = NodePath("../../PlatformSmall")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckaagxg0nqd5a"]
+
+[ext_resource type="Script" uid="uid://bulaxrum34015" path="res://utils/progress_bar_2d/progress_bar_2d.gd" id="1_8vs75"]
+
+[node name="ProgressBar2D" type="Node2D"]
+z_index = 5
+script = ExtResource("1_8vs75")
+width = 2.5
+color_overrides = Dictionary[float, Color]({
+0.7: Color(1, 1, 0, 1),
+0.9: Color(1, 0, 0, 1)
+})

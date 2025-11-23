@@ -7,9 +7,7 @@ class_name ToggleAction
 func _ready():
     if not evaluator:
         for child in get_children():
-            print(child)
             if child is PersistentEventEvaluator:
-                print("Found evaluator ", child)
                 evaluator = child
                 break
 

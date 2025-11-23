@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgf48te2xbnua"]
+
+[ext_resource type="Texture2D" uid="uid://pphsvjgft3k0" path="res://assets/GRAPHICS/doors/door_1_10x10.png" id="1_1kth5"]
+[ext_resource type="Script" uid="uid://de6wjl35s3uig" path="res://doors/simple_door.gd" id="1_gvevm"]
+[ext_resource type="Shader" uid="uid://d4hd6vmdaq3ny" path="res://doors/dissolve_pixelated.gdshader" id="2_fjml2"]
+[ext_resource type="AudioStream" uid="uid://dcm7m7c1puio" path="res://assets/SOUNDS/door/y2k_door.ogg" id="4_uh0tu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uh0tu"]
+shader = ExtResource("2_fjml2")
+shader_parameter/progress = 0.0
+shader_parameter/block_size = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kth5"]
+size = Vector2(20, 10)
+
+[node name="SimpleDoor" type="Node2D"]
+script = ExtResource("1_gvevm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uh0tu")
+texture = ExtResource("1_1kth5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_1kth5")
+
+[node name="UnlockSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_uh0tu")
+bus = &"SFX"

@@ -1,8 +1,12 @@
 extends RoomAction
 
 @export var target : Node2D
+@export var toggle_function_name : StringName
 
 func use():
+    if toggle_function_name != "" and target.has_method(toggle_function_name):
+        target.call(toggle_function_name)
+        return
     toggle_target()
 
 func toggle_target():

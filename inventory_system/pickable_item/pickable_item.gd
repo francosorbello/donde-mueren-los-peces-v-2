@@ -75,4 +75,5 @@ func _get_event_name() -> String:
 	return ""
 
 func _on_persistent_event_evaluator_evaluator_succeded() -> void:
+	CommonSfxPlayer.play_sound("pickup")
 	queue_free()

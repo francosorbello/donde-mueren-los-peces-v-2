@@ -11,6 +11,8 @@ var action : RoomAction:
         action = value
         update_configuration_warnings()
 
+var has_actions : bool = false
+
 func _get_configuration_warnings() -> PackedStringArray:
     for child in get_children():
         if child is RoomAction:
@@ -26,11 +28,12 @@ func _ready() -> void:
 
     for child in get_children():
         if child is RoomAction:
-            action = child
+            has_actions = true
+            break
 
 func _on_better_interactable_component_on_interact() -> void:
-    if action:
-        action.use()
+    if has_actions:
+        use_actions()
         toggle_activated()
         if timed:
             $Timer.start(timed_duration)
@@ -56,6 +59,11 @@ func toggle_activated():
     $LeverSound.play()
 
 func _on_timer_timeout() -> void:
-    if action:
-        action.use()
+    if has_actions:
+        use_actions()
     toggle_activated()
+
+func use_actions():
+    for child in get_children():
+        if child is RoomAction:
+            child.use()

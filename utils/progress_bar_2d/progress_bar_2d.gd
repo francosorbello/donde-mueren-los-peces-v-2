@@ -49,9 +49,6 @@ func stop():
     progress_percent = 0
     _acc_time = 0
 
-func _test():
-    start(5)
-
 func _draw() -> void:
     var progress = progress_percent
     if running:

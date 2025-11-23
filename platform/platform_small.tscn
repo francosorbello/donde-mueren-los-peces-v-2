@@ -30,6 +30,7 @@ script = ExtResource("1_5puph")
 shape = SubResource("RectangleShape2D_hlrff")
 
 [node name="BreakableSprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.5689727, 0.56897277, 0.5689727, 1)
 texture = ExtResource("4_3hsfd")
 hframes = 3
 region_enabled = true

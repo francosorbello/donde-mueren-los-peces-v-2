@@ -1,0 +1,28 @@
+[{
+"name": "Level stuff",
+"scenes": [{
+&"scene": "res://bubble_recharger/bubble_recharger.tscn"
+}, {
+&"scene": "res://damageables/box.tscn"
+}, {
+&"scene": "res://death_zone/better_death_zone/better_death_zone.tscn"
+}, {
+&"scene": "res://doors/simple_door.tscn"
+}, {
+&"scene": "res://interactables/items/interactable_item.tscn"
+}, {
+&"scene": "res://interactables/items/pickable_temp_item.tscn"
+}, {
+&"scene": "res://interactables/levers/lever.tscn"
+}, {
+&"scene": "res://interactables/levers/room_lever.tscn"
+}, {
+&"scene": "res://laser/laser.tscn"
+}, {
+&"scene": "res://platform/platform_small.tscn"
+}, {
+&"scene": "res://railways/railway.tscn"
+}, {
+&"scene": "res://spikes/spike.tscn"
+}]
+}]

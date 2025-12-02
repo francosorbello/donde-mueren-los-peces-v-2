@@ -2,8 +2,14 @@
 extends Node
 class_name LevelInfo
 
+enum GameAreaType {
+    AREA_INTRO,
+    AREA_FOREST,
+}
+
 @export var level_name : String
 @export var id : String
+@export var area_type : GameAreaType
 @export_tool_button("Generate ID") var generate_id_action = generate_id
 
 @export_category("Spawn positions")
@@ -18,7 +24,7 @@ func _ready():
         return
 
     save_to_file()
-    GlobalSignal.level_entered.emit(level_name)
+    GlobalSignal.level_entered.emit({"level_name":level_name,"area_type":area_type})
 
 func generate_id():
     id = UUIDGenerator.generate_uuid()

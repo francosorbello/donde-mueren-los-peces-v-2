@@ -7,7 +7,7 @@ extends Node
 
 signal level_change_requested(level_name : String, direction : Vector2)
 signal event_set(ev : PersistentEvent, cached_events : Dictionary[String,float])
-signal level_entered(level_id : String)
+signal level_entered(data : Dictionary)
 signal game_ui_opened()
 signal game_ui_closed()
 signal temp_event_set(ev : PersistentEvent)

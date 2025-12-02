@@ -84,6 +84,7 @@ tile_map_data = PackedByteArray("AAAXAAAAAwAHAAMAAAAYAAAAAwAHAAMAAAAZAAAAAwAHAAM
 script = ExtResource("3_8jycm")
 level_name = "lvl_1_zone_1_room_3"
 id = "1e21791b-2520-478a-9ec6-eee0424ba370"
+area_type = 1
 coming_from_left = NodePath("../FromLeft")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 

@@ -60,8 +60,8 @@ func get_visible_levels() -> Array[String]:
 	
 	return []
 
-func _on_level_entered(id : String):
-	_current_level = id
+func _on_level_entered(data : Dictionary):
+	_current_level = data["level_name"]
 
 func center_on_visual(visual : GraphElement):
 	_test_visual = visual

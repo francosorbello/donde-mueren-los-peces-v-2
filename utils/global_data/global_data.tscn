@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://b2v644wmtrv17" path="res://utils/global_data/global_data.gd" id="1_ww46t"]
 [ext_resource type="Resource" uid="uid://cvkc2kpwsnr3s" path="res://level_system/level_data_res.tres" id="2_33g7t"]
 [ext_resource type="Texture2D" uid="uid://dpkceqajk0jtn" path="res://assets/GRAPHICS/PALETTES/grotesquely-cute-1x.png" id="3_v2bjp"]
-[ext_resource type="Texture2D" uid="uid://bq1ug135vwj2e" path="res://assets/GRAPHICS/PALETTES/grotesquely-cute-1x - reversed.png" id="4_vy31p"]
+[ext_resource type="Texture2D" uid="uid://c5y4w6vr0dfas" path="res://assets/GRAPHICS/PALETTES/eight-hues-of-toxic-ooze-1x.png" id="4_v2bjp"]
 
 [node name="GlobalData" type="Node"]
 script = ExtResource("1_ww46t")
 level_data = ExtResource("2_33g7t")
 area_bg_colors = Dictionary[int, Color]({
 0: Color(0.09411765, 0.09803922, 0.13725491, 1),
-1: Color(0.6154729, 0.45712495, 0.6639452, 1)
+1: Color(0, 0, 0, 1)
 })
 area_palettes = Dictionary[int, Texture2D]({
 0: ExtResource("3_v2bjp"),
-1: ExtResource("4_vy31p")
+1: ExtResource("4_v2bjp")
 })

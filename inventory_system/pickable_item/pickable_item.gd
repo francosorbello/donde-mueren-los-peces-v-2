@@ -39,17 +39,20 @@ func _on_better_interactable_component_on_interact() -> void:
 		if saved_game:
 			saved_game.add_ability(item)
 			PersistencySystem.set_event(event_name,1.0)
+			CommonSfxPlayer.play_sound("pickup")
 		return
 
 	var inventory_manager = get_tree().get_first_node_in_group("inventory_manager")
 	if inventory_manager:
 		inventory_manager.add_item(item)
 		if item.is_persistent:
+			CommonSfxPlayer.play_sound("pickup")
 			PersistencySystem.set_event(event_name,1.0)
 		else:
 			var blackboard : GameBlackboard = get_tree().get_first_node_in_group("blackboard")
 			print(blackboard)
 			if blackboard:
+				CommonSfxPlayer.play_sound("pickup")
 				blackboard.add_temp_event(event_name,1.0)
 	
 	# queue_free()
@@ -75,5 +78,4 @@ func _get_event_name() -> String:
 	return ""
 
 func _on_persistent_event_evaluator_evaluator_succeded() -> void:
-	CommonSfxPlayer.play_sound("pickup")
 	queue_free()

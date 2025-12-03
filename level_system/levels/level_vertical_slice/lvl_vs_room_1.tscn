@@ -1,0 +1,84 @@
+[gd_scene load_steps=15 format=4 uid="uid://cypegym2hqkjy"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_8d4ik"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_0kark"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_jcjwp"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_m44rg"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_hgj8k"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_lv7ed"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="7_nmw1m"]
+[ext_resource type="Script" uid="uid://cj5j4ybo5t3eq" path="res://persistancy_system/actions/toggle_action.gd" id="8_bw8gh"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="9_ug8yu"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="10_0pth8"]
+[ext_resource type="PackedScene" uid="uid://v7vcp08dge6v" path="res://doors/key_door.tscn" id="11_ug8yu"]
+[ext_resource type="Resource" uid="uid://dgum4egqh2437" path="res://level_system/levels/level_vertical_slice/items/key_lvl_vs_room_1.tres" id="12_0pth8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmw1m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xf26"]
+
+[node name="lvl_vs_room_1" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_8d4ik")]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_0kark")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABMAAwAFAAUAAAAAABQAAwAFAAUAAAAAABUAAwAFAAUAAAAAABYAAwAFAAUAAAAAABcAAwAFAAUAAAAAABgAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAANABoAAwAFAAUAAAAOABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAcAAwAFAAUAAAAcAAYAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAcAAIAAwAFAAUAAAAcAAEAAwAFAAUAAAAcAAAAAwAFAAUAAAABAAAAAwAFAAUAAAACAAAAAwAFAAUAAAADAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAAFAAAAAwAFAAUAAAAGAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAIAAAAAwAFAAUAAAAJAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAAaAAAAAwAFAAUAAAAbAAAAAwAFAAUAAAAZAAAAAwAFAAUAAAAYAAAAAwAFAAUAAAAXAAAAAwAFAAUAAAAWAAAAAwAFAAUAAAAVAAAAAwAFAAUAAAAUAAAAAwAFAAUAAAATAAAAAwAFAAUAAAASAAAAAwAFAAUAAAARAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAALAAAAAwAFAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down", "coming_from_right") groups=["level_info"]]
+script = ExtResource("3_jcjwp")
+level_name = "lvl_vs_room_1"
+id = "8d96a2d1-29dd-4a9b-ad52-11c4e1d17c89"
+area_type = 1
+coming_from_down = NodePath("../ComingDownards")
+coming_from_right = NodePath("../ComingFromRight")
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingDownards" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(140, 20)
+
+[node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(30, 110)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_m44rg")]
+position = Vector2(142, 114)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_hgj8k")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_lv7ed")]
+level_name = "lvl_vs_room_1"
+
+[node name="UpTransition" parent="." instance=ExtResource("7_nmw1m")]
+position = Vector2(140, 0)
+direction = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpTransition"]
+shape = SubResource("RectangleShape2D_nmw1m")
+
+[node name="LeftTransition" parent="." instance=ExtResource("7_nmw1m")]
+position = Vector2(0, 110)
+direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftTransition"]
+shape = SubResource("RectangleShape2D_8xf26")
+
+[node name="ToggleAction" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("8_bw8gh")
+target = NodePath("../LeftTransition")
+metadata/_custom_type_script = "uid://cj5j4ybo5t3eq"
+
+[node name="PersistentEventEvaluator" type="Node" parent="ToggleAction"]
+script = ExtResource("9_ug8yu")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="ToggleAction/PersistentEventEvaluator"]
+script = ExtResource("10_0pth8")
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[node name="KeyDoor" parent="." instance=ExtResource("11_ug8yu")]
+position = Vector2(5, 110)
+related_key = ExtResource("12_0pth8")
+door_type = 1

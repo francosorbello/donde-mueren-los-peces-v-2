@@ -1,5 +1,6 @@
 @tool
 extends Node2D
+class_name SimpleDoor
 
 enum DoorType {
 	HORIZONTAL,

@@ -12,6 +12,8 @@ func _ready() -> void:
 	load_persistent_inventory()
 
 @onready var persistent_inventory : AnInventory = $PersistentInventory
+
+## @deprecated Use persistent inventory instead
 @onready var temporary_inventory : AnInventory = $TemporalInventory
 
 func load_persistent_inventory():

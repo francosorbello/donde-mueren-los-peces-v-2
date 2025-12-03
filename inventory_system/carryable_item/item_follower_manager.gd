@@ -12,23 +12,26 @@ func _ready() -> void:
 
     inventory_manager = get_tree().get_first_node_in_group("inventory_manager")
     if inventory_manager:
-        var temp_inv = inventory_manager.temporary_inventory as AnInventory
+        var temp_inv = inventory_manager.persistent_inventory as AnInventory
         temp_inv.item_added.connect(_on_item_added)
         temp_inv.item_removed.connect(_on_item_removed)
         spawn_temp_items()
 
 
 func _on_item_added(an_item : AnItem):
-    spawn_temp_item(an_item)
+    if an_item.is_physical:
+        spawn_temp_item(an_item)
 
 func _on_item_removed(an_item : AnItem):
-    destroy_temp_item(an_item)
+    if an_item.is_physical:
+        destroy_temp_item(an_item)
 
 func spawn_temp_items():
     if inventory_manager:
-        var temp_inv : AnInventory = inventory_manager.temporary_inventory
+        var temp_inv : AnInventory = inventory_manager.persistent_inventory
         for item in temp_inv.items:
-            spawn_temp_item(item)
+            if item.is_physical:
+                spawn_temp_item(item)
 
 func spawn_temp_item(item : AnItem):
     var follow_target_instance = item_follower_scene.instantiate() as Node2D

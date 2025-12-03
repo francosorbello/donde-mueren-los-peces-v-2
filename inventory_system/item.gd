@@ -11,7 +11,8 @@ enum ItemType {
 @export_multiline var descrption : String
 @export var type : ItemType = ItemType.Inventory
 @export var quantity : int = 1
-@export var is_persistent : bool = false
+@export var is_persistent : bool = true ## @deprecated all items are persistent
+@export var is_physical : bool = false ## when physical, items will have a world representation
 @export var icon : Texture2D
 @export var world_icon : Texture2D
 @export_category("ID")

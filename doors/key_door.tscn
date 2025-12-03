@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://v7vcp08dge6v"]
+[gd_scene load_steps=10 format=3 uid="uid://v7vcp08dge6v"]
 
 [ext_resource type="Script" uid="uid://dl6x4ipv21c22" path="res://doors/key_door.gd" id="1_uk04c"]
 [ext_resource type="Shader" uid="uid://d4hd6vmdaq3ny" path="res://doors/dissolve_pixelated.gdshader" id="2_h3b4h"]
 [ext_resource type="Texture2D" uid="uid://um3fxtvopbba" path="res://assets/GRAPHICS/doors/door_5_10x10.png" id="3_s3qvi"]
 [ext_resource type="AudioStream" uid="uid://dcm7m7c1puio" path="res://assets/SOUNDS/door/y2k_door.ogg" id="4_sbah6"]
-[ext_resource type="PackedScene" uid="uid://bha73rkue7cv" path="res://inventory_system/consume_item_area.tscn" id="5_s3qvi"]
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="6_5a1ly"]
 [ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="7_ch25n"]
 
@@ -16,7 +15,8 @@ shader_parameter/block_size = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch25n"]
 size = Vector2(20, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3qvi"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_sbah6"]
+radius = 16.0
 
 [node name="KeyDoor" type="Node2D"]
 script = ExtResource("1_uk04c")
@@ -34,12 +34,6 @@ shape = SubResource("RectangleShape2D_ch25n")
 stream = ExtResource("4_sbah6")
 bus = &"SFX"
 
-[node name="ConsumeItemArea" parent="." instance=ExtResource("5_s3qvi")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConsumeItemArea"]
-shape = SubResource("RectangleShape2D_s3qvi")
-debug_color = Color(7.460266e-07, 0.6479261, 0.20596442, 0.41960785)
-
 [node name="PersistentEventEvaluator" type="Node" parent="."]
 script = ExtResource("6_5a1ly")
 autostart = false
@@ -49,5 +43,11 @@ metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 script = ExtResource("7_ch25n")
 metadata/_custom_type_script = "uid://davfd8xpi1i3t"
 
-[connection signal="item_consumed" from="ConsumeItemArea" to="." method="_on_consume_item_area_item_consumed"]
+[node name="DetectPlayerArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayerArea"]
+shape = SubResource("CircleShape2D_sbah6")
+
 [connection signal="evaluator_succeded" from="PersistentEventEvaluator" to="." method="_on_persistent_event_evaluator_evaluator_succeded"]
+[connection signal="body_entered" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_entered"]

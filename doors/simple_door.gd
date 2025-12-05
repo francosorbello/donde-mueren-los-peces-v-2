@@ -13,6 +13,8 @@ enum DoorType {
 		if self.is_node_ready():
 			call_deferred("set_door_collision")
 
+@export var start_closed : bool = true
+
 var _dissolve_material : ShaderMaterial
 
 var disabled = false
@@ -23,6 +25,11 @@ func _ready():
 	
 	if not Engine.is_editor_hint():
 		_duplicate_dissolve_material()
+	
+	if not Engine.is_editor_hint() and not start_closed:
+		disabled = true
+		$StaticBody2D/CollisionShape2D.disabled = true
+		set_dissolve_to(1)
 
 func set_door_collision():
 	var rot = 0

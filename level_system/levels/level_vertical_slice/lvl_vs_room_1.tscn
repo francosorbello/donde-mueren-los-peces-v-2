@@ -85,3 +85,4 @@ metadata/_custom_type_script = "uid://davfd8xpi1i3t"
 position = Vector2(5, 110)
 door_opened_event = "vs_room_1_door_opened"
 door_type = 1
+start_closed = null

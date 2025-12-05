@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=4 uid="uid://bkruqb0x0bl6e"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_oxulv"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_53nsh"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_trood"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_oodhj"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_rngqm"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_d00i8"]
+[ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="7_qjw5l"]
+[ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="8_at4sj"]
+[ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="9_jqf20"]
+
+[node name="lvl_vs_room_6" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_oxulv")]
+offset_right = 288.0
+offset_bottom = 270.0
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_53nsh")]
+tile_map_data = PackedByteArray("AAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABUAAwAFAAUAAAAAABYAAwAFAAUAAAAAABcAAwAFAAUAAAAAABgAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAANABoAAwAFAAUAAAAOABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAQAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAbAAMAAwAFAAUAAAAaAAMAAwAFAAUAAAAZAAMAAwAFAAUAAAAYAAMAAwAFAAUAAAAXAAMAAwAFAAUAAAAWAAMAAwAFAAUAAAAVAAMAAwAFAAUAAAAUAAMAAwAFAAUAAAATAAMAAwAFAAUAAAASAAMAAwAFAAUAAAARAAMAAwAFAAUAAAARAAIAAwAFAAUAAAARAAEAAwAFAAUAAAARAAAAAwAFAAUAAAAKAAEAAwAFAAUAAAAKAAIAAwAFAAUAAAAKAAMAAwAFAAUAAAAJAAMAAwAFAAUAAAAIAAMAAwAFAAUAAAAHAAMAAwAFAAUAAAAGAAMAAwAFAAUAAAAFAAMAAwAFAAUAAAAEAAMAAwAFAAUAAAADAAMAAwAFAAUAAAACAAMAAwAFAAUAAAABAAMAAwAFAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_trood")
+level_name = "lvl_vs_room_6"
+id = "5186fe74-5a00-4dec-bf94-76a60c69fcb7"
+area_type = 1
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_oodhj")]
+position = Vector2(260, 70)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_rngqm")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_d00i8")]
+level_name = "lvl_vs_room_6"
+
+[node name="RoomLever" parent="." instance=ExtResource("7_qjw5l")]
+position = Vector2(240, 180)
+
+[node name="SimpleDoor" parent="." instance=ExtResource("8_at4sj")]
+position = Vector2(160, 180)
+door_type = 1
+
+[node name="PlatformSmall" parent="." instance=ExtResource("9_jqf20")]
+position = Vector2(100, 180)
+
+[node name="Obstacle1" type="Node2D" parent="."]

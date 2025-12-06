@@ -11,7 +11,11 @@ var _breaking : bool = false
 
 var _original_rustle_volume : float
 
+var disabled : bool = false
+
 func _ready() -> void:
+    print(visible)
+    disabled = not visible
     _max_states = $BreakableSprite2D.hframes
     _original_rustle_volume = $RustleSound.volume_db
 
@@ -70,3 +74,11 @@ func _anim_platform_to(max_value : float):
 
 func _disabled_timer_timeout():
     _restart()
+
+func do_toggle():
+    disabled = not disabled
+
+    visible = not disabled
+    $PlayerDetector/CollisionShape2D2.set_deferred("disabled",disabled)
+    $PlatformArea.toggle_active(not disabled)
+

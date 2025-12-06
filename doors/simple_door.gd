@@ -13,7 +13,9 @@ enum DoorType {
 		if self.is_node_ready():
 			call_deferred("set_door_collision")
 
-@export var start_closed : bool = true
+@export var start_closed : bool = true:
+	set(value):
+		start_closed = value
 
 var _dissolve_material : ShaderMaterial
 
@@ -22,7 +24,10 @@ var disabled = false
 func _ready():
 	if self.is_node_ready():
 		set_door_collision()
-	
+
+	if Engine.is_editor_hint():
+		$Label.visible = not start_closed
+
 	if not Engine.is_editor_hint():
 		_duplicate_dissolve_material()
 	

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelDataResource" load_steps=14 format=3 uid="uid://cvkc2kpwsnr3s"]
+[gd_resource type="Resource" script_class="LevelDataResource" load_steps=15 format=3 uid="uid://cvkc2kpwsnr3s"]
 
 [ext_resource type="PackedScene" uid="uid://dqq8dy0xuh3ec" path="res://level_system/levels/level_1/lvl_1_zone_1_room_1.tscn" id="1_f8nwo"]
 [ext_resource type="Script" uid="uid://drppps17c0dgp" path="res://level_system/level_data.gd" id="1_sihxi"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ckj3box3dksk6" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_3.tscn" id="10_khvr3"]
 [ext_resource type="PackedScene" uid="uid://bsyv45bg70re1" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_4.tscn" id="11_j2n3o"]
 [ext_resource type="PackedScene" uid="uid://gxq3vnkofntq" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_5.tscn" id="12_2y4st"]
+[ext_resource type="PackedScene" uid="uid://bkruqb0x0bl6e" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_6.tscn" id="13_8un0i"]
 
 [resource]
 script = ExtResource("1_sihxi")
@@ -28,6 +29,7 @@ levels = Dictionary[String, PackedScene]({
 "lvl_vs_room_2": ExtResource("8_qi6iu"),
 "lvl_vs_room_3": ExtResource("10_khvr3"),
 "lvl_vs_room_4": ExtResource("11_j2n3o"),
-"lvl_vs_room_5": ExtResource("12_2y4st")
+"lvl_vs_room_5": ExtResource("12_2y4st"),
+"lvl_vs_room_6": ExtResource("13_8un0i")
 })
 metadata/_custom_type_script = "uid://drppps17c0dgp"

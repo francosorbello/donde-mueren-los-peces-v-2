@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bkruqb0x0bl6e"]
+[gd_scene load_steps=16 format=4 uid="uid://bkruqb0x0bl6e"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_oxulv"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_53nsh"]
@@ -9,15 +9,30 @@
 [ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="7_qjw5l"]
 [ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="8_at4sj"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="9_jqf20"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="10_dhhpi"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="11_s4j4l"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="12_mj0l5"]
+[ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="13_s4j4l"]
+
+[sub_resource type="Curve2D" id="Curve2D_s4j4l"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10, 140, 0, 0, 0, 0, 280, 140)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_mj0l5"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10, 30, 0, 0, 0, 0, 90, 30)
+}
+point_count = 2
 
 [node name="lvl_vs_room_6" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_oxulv")]
 offset_right = 288.0
 offset_bottom = 270.0
-
-[node name="TileMapLayer" parent="." instance=ExtResource("2_53nsh")]
-tile_map_data = PackedByteArray("AAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABUAAwAFAAUAAAAAABYAAwAFAAUAAAAAABcAAwAFAAUAAAAAABgAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAANABoAAwAFAAUAAAAOABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAQAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAbAAMAAwAFAAUAAAAaAAMAAwAFAAUAAAAZAAMAAwAFAAUAAAAYAAMAAwAFAAUAAAAXAAMAAwAFAAUAAAAWAAMAAwAFAAUAAAAVAAMAAwAFAAUAAAAUAAMAAwAFAAUAAAATAAMAAwAFAAUAAAASAAMAAwAFAAUAAAARAAMAAwAFAAUAAAARAAIAAwAFAAUAAAARAAEAAwAFAAUAAAARAAAAAwAFAAUAAAAKAAEAAwAFAAUAAAAKAAIAAwAFAAUAAAAKAAMAAwAFAAUAAAAJAAMAAwAFAAUAAAAIAAMAAwAFAAUAAAAHAAMAAwAFAAUAAAAGAAMAAwAFAAUAAAAFAAMAAwAFAAUAAAAEAAMAAwAFAAUAAAADAAMAAwAFAAUAAAACAAMAAwAFAAUAAAABAAMAAwAFAAUAAAA=")
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
@@ -40,14 +55,112 @@ default_spawn_pos = NodePath("../PlayerSpawnPoint")
 [node name="LevelNameSetter" parent="." instance=ExtResource("6_d00i8")]
 level_name = "lvl_vs_room_6"
 
-[node name="RoomLever" parent="." instance=ExtResource("7_qjw5l")]
-position = Vector2(240, 180)
+[node name="BetterDeathZone" parent="." instance=ExtResource("10_dhhpi")]
+position = Vector2(0, 20)
+curve = SubResource("Curve2D_s4j4l")
+width = 100.0
+end_sample_point = 0.99
 
-[node name="SimpleDoor" parent="." instance=ExtResource("8_at4sj")]
-position = Vector2(160, 180)
-door_type = 1
+[node name="@Area2D@125290" type="Area2D" parent="BetterDeathZone"]
+collision_layer = 32
 
-[node name="PlatformSmall" parent="." instance=ExtResource("9_jqf20")]
-position = Vector2(100, 180)
+[node name="@CollisionPolygon2D@125289" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@125290"]
+polygon = PackedVector2Array(10, 90, 52.1875, 90, 95.42969, 90, 145, 90, 194.57031, 90, 237.8125, 90, 279.91006, 90.000015, 279.92905, 190.00002, 237.8125, 190, 194.57031, 190, 145, 190, 95.42969, 190, 52.1875, 190, 10, 190)
+
+[node name="@Polygon2D@125291" type="Polygon2D" parent="BetterDeathZone"]
+material = ExtResource("11_s4j4l")
+texture = ExtResource("12_mj0l5")
+polygon = PackedVector2Array(10, 90, 52.1875, 90, 95.42969, 90, 145, 90, 194.57031, 90, 237.8125, 90, 279.91006, 90.000015, 279.92905, 190.00002, 237.8125, 190, 194.57031, 190, 145, 190, 95.42969, 190, 52.1875, 190, 10, 190)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_53nsh")]
+tile_map_data = PackedByteArray("AAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABUAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAANABoAAwAFAAUAAAAOABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAMAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAbAAMAAwAFAAUAAAAaAAMAAwAFAAUAAAAZAAMAAwAFAAUAAAAYAAMAAwAFAAUAAAAXAAMAAwAFAAUAAAAWAAMAAwAFAAUAAAAVAAMAAwAFAAUAAAAUAAMAAwAFAAUAAAATAAMAAwAFAAUAAAASAAMAAwAFAAUAAAAJABQAAwAFAAUAAAAJABMAAwAFAAUAAAAJABIAAwAFAAUAAAAJABEAAwAFAAUAAAAJABAAAwAFAAUAAAAJAA8AAwAFAAUAAAAJAA4AAwAFAAUAAAAJAA0AAwAFAAUAAAAJAAwAAwAFAAUAAAAJAAsAAwAFAAUAAAASAAsAAwAFAAUAAAASAAwAAwAFAAUAAAASAA0AAwAFAAUAAAASAA4AAwAFAAUAAAASAA8AAwAFAAUAAAASABAAAwAFAAUAAAASABEAAwAFAAUAAAASABIAAwAFAAUAAAASABMAAwAFAAUAAAASABQAAwAFAAUAAAASAAoAAwAFAAUAAAAJAAoAAwAFAAUAAAAJABUAAwAFAAUAAAAJABYAAwAFAAUAAAAJABkAAwAFAAUAAAAAABMAAwAFAAUAAAAAABQAAwAFAAUAAAAMAAoAAwAFAAUAAAALAAoAAwAFAAUAAAAKAAoAAwAFAAUAAAAQAAoAAwAFAAUAAAARAAoAAwAFAAUAAAAPAAoAAwAFAAUAAAADABUAAwAFAAUAAAACABUAAwAFAAUAAAABABUAAwAFAAUAAAAGABUAAwAFAAUAAAAHABUAAwAFAAUAAAAIABUAAwAFAAUAAAASAAQAAwAFAAUAAAASAAUAAwAFAAUAAAASAAgAAwAFAAUAAAASAAkAAwAFAAUAAAASAAYAAwAFAAUAAAASAAcAAwAFAAUAAAAJAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAARAAAAAwAFAAUAAAASAAAAAwAFAAUAAAASAAEAAwAFAAUAAAASAAIAAwAFAAUAAAAAABYAAwAFAAUAAAAIAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAGAAAAAwAFAAUAAAAFAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAADAAAAAwAFAAUAAAACAAAAAwAFAAUAAAABAAAAAwAFAAUAAAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAJAAEAAwAFAAUAAAAJAAIAAwAFAAUAAAAJAAMAAwAFAAUAAAAJAAQAAwAFAAUAAAAJAAUAAwAFAAUAAAAJAAYAAwAFAAUAAAAJABcAAwAFAAUAAAAJABgAAwAFAAUAAAA=")
 
 [node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="PlatformSmall" parent="Obstacle1" instance=ExtResource("9_jqf20")]
+visible = false
+position = Vector2(240, 160)
+
+[node name="RoomLever" parent="Obstacle1" instance=ExtResource("7_qjw5l")]
+position = Vector2(212, 98)
+timed = true
+
+[node name="TogglePlatform" type="Node" parent="Obstacle1/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("13_s4j4l")
+targets = {
+NodePath("../../PlatformSmall"): &"do_toggle"
+}
+
+[node name="Obstacle2" type="Node2D" parent="."]
+
+[node name="RoomLever" parent="Obstacle2" instance=ExtResource("7_qjw5l")]
+position = Vector2(170, 222)
+timed = true
+
+[node name="TogglePlatformAndDoor" type="Node" parent="Obstacle2/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("13_s4j4l")
+targets = {
+NodePath("../../SimpleDoor"): &"do_toggle",
+NodePath("../../PlatformSmall"): &"do_toggle"
+}
+
+[node name="SimpleDoor" parent="Obstacle2" instance=ExtResource("8_at4sj")]
+position = Vector2(140, 105)
+start_closed = false
+
+[node name="PlatformSmall" parent="Obstacle2" instance=ExtResource("9_jqf20")]
+visible = false
+position = Vector2(140, 160)
+
+[node name="Obstacle3" type="Node2D" parent="."]
+
+[node name="RoomLever" parent="Obstacle3" instance=ExtResource("7_qjw5l")]
+position = Vector2(70, 98)
+timed = true
+
+[node name="TogglePlatformAndDoors" type="Node" parent="Obstacle3/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("13_s4j4l")
+targets = {
+NodePath("../../PlatformSmall"): &"do_toggle",
+NodePath("../../PlatformSmall2"): &"do_toggle"
+}
+
+[node name="SimpleDoor2" parent="Obstacle3" instance=ExtResource("8_at4sj")]
+position = Vector2(50, 215)
+
+[node name="PlatformSmall" parent="Obstacle3" instance=ExtResource("9_jqf20")]
+visible = false
+position = Vector2(50, 160)
+
+[node name="BetterDeathZone" parent="Obstacle3" instance=ExtResource("10_dhhpi")]
+position = Vector2(0, 10)
+curve = SubResource("Curve2D_mj0l5")
+width = 60.0
+end_sample_point = 0.99
+
+[node name="@Area2D@163827" type="Area2D" parent="Obstacle3/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@163826" type="CollisionPolygon2D" parent="Obstacle3/BetterDeathZone/@Area2D@163827"]
+polygon = PackedVector2Array(10, 0, 50, 0, 89.97376, 1.9073486e-06, 89.97857, 60, 50, 60, 10, 60)
+
+[node name="@Polygon2D@163828" type="Polygon2D" parent="Obstacle3/BetterDeathZone"]
+material = ExtResource("11_s4j4l")
+texture = ExtResource("12_mj0l5")
+polygon = PackedVector2Array(10, 0, 50, 0, 89.97376, 1.9073486e-06, 89.97857, 60, 50, 60, 10, 60)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="PlatformSmall2" parent="Obstacle3" instance=ExtResource("9_jqf20")]
+visible = false
+position = Vector2(50, 40)
+
+[node name="RoomLever2" parent="Obstacle3" instance=ExtResource("7_qjw5l")]
+position = Vector2(50, 36)
+timed = true
+
+[node name="ToggleDoor" type="Node" parent="Obstacle3/RoomLever2" node_paths=PackedStringArray("targets")]
+script = ExtResource("13_s4j4l")
+targets = {
+NodePath("../../SimpleDoor2"): &"do_toggle"
+}

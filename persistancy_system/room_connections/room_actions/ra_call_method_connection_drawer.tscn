@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0pwgw66kd6fx"]
+
+[ext_resource type="Script" uid="uid://bc48mke448svx" path="res://persistancy_system/room_connections/room_actions/ra_call_method_connection_drawer.gd" id="1_u8p8b"]
+
+[node name="RaCallMethodConnectionDrawer" type="Node2D"]
+script = ExtResource("1_u8p8b")

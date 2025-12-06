@@ -1,4 +1,5 @@
 extends RoomAction
+class_name RoomActionCallMethod
 
 ## Set a target and the method to call for each of them
 @export var targets : Dictionary[Node,StringName]

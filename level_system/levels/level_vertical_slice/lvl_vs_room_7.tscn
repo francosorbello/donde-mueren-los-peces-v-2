@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://d2lpvjok12204"]
+[gd_scene load_steps=12 format=4 uid="uid://d2lpvjok12204"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_t60ch"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_rq4x1"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="7_fbigj"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="8_vpmg6"]
 [ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="9_du83b"]
+[ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="10_du83b"]
+[ext_resource type="PackedScene" uid="uid://b0pwgw66kd6fx" path="res://persistancy_system/room_connections/room_actions/ra_call_method_connection_drawer.tscn" id="11_sn4qn"]
 
 [node name="base_scene" type="Node2D"]
 
@@ -52,3 +54,12 @@ position = Vector2(140, 225)
 
 [node name="RoomLever" parent="Obstacle1" instance=ExtResource("9_du83b")]
 position = Vector2(200, 199)
+
+[node name="ToggleDoors" type="Node" parent="Obstacle1/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("10_du83b")
+targets = {
+NodePath("../../SimpleDoor2"): &"do_toggle"
+}
+
+[node name="RaCallMethodConnectionDrawer" parent="Obstacle1/RoomLever" node_paths=PackedStringArray("call_method_node") instance=ExtResource("11_sn4qn")]
+call_method_node = NodePath("../ToggleDoors")

@@ -24,11 +24,15 @@ func refresh():
 
         queue_redraw()
 
+func _ready():
+    if Engine.is_editor_hint():
+        refresh()
 
 func _draw() -> void:
-    if _targets.is_empty() or not Engine.is_editor_hint():
+    if not Engine.is_editor_hint():
         return
     
     for t in _targets:
         prints(t.global_position,t.position)
         draw_line(Vector2.ZERO,t.global_position-global_position,Color(1,1,1,0.6),1)
+

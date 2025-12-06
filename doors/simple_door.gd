@@ -16,6 +16,8 @@ enum DoorType {
 @export var start_closed : bool = true:
 	set(value):
 		start_closed = value
+		if Engine.is_editor_hint() and is_node_ready():
+			$Label.visible = not start_closed
 
 var _dissolve_material : ShaderMaterial
 

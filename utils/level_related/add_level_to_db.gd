@@ -10,7 +10,7 @@ func _run() -> void:
     var level_scene = ResourceLoader.load(get_scene().scene_file_path) as PackedScene
     var level_name = SaveUtils.scene_path_to_name(get_scene().scene_file_path)
     
-    print("Setting %s to packed scene %s"%[level_name,level_scene])
+    print("Setting %s to packed scene %s"%[level_name,level_scene.resource_path])
     db_instance.levels.set(level_name,level_scene)
 
     ResourceSaver.save(db_instance)

@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=4 uid="uid://bhj7iquekl53l"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_8p4er"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_aacog"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_mkmb8"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_vmse3"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_aexga"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_r3m7f"]
+[ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="7_naub1"]
+[ext_resource type="PackedScene" uid="uid://qh12h70kbjei" path="res://spikes/spike.tscn" id="8_ri6mg"]
+[ext_resource type="PackedScene" uid="uid://bt0njsx6l0eym" path="res://utils/level_related/path_follower.tscn" id="8_synas"]
+[ext_resource type="PackedScene" uid="uid://bwqrwjmgf0c42" path="res://platform/platform_area.tscn" id="10_synas"]
+
+[sub_resource type="Curve2D" id="Curve2D_naub1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 50, 140, 0, 0, 0, 0, 50, 100)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjjtj"]
+size = Vector2(31, 40)
+
+[node name="base_scene" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_8p4er")]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_aacog")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABMAAwAFAAUAAAAAABQAAwAFAAUAAAAAABUAAwAFAAUAAAAAABYAAwAFAAUAAAAAABcAAwAFAAUAAAAAABgAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAANABoAAwAFAAUAAAAOABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAcAAwAFAAUAAAAcAAYAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAcAAIAAwAFAAUAAAAcAAEAAwAFAAUAAAAcAAAAAwAFAAUAAAAbAAAAAwAFAAUAAAAaAAAAAwAFAAUAAAAZAAAAAwAFAAUAAAAYAAAAAwAFAAUAAAAXAAAAAwAFAAUAAAAWAAAAAwAFAAUAAAAVAAAAAwAFAAUAAAAUAAAAAwAFAAUAAAATAAAAAwAFAAUAAAASAAAAAwAFAAUAAAARAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAAJAAAAAwAFAAUAAAAIAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAGAAAAAwAFAAUAAAAFAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAADAAAAAwAFAAUAAAACAAAAAwAFAAUAAAABAAAAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAoAAwAFAAUAAAABAAoAAwAFAAUAAAABAAkAAwAFAAUAAAACAAkAAwAFAAUAAAADAAkAAwAFAAUAAAAEAAkAAwAFAAUAAAAFAAkAAwAFAAUAAAAGAAkAAwAFAAUAAAABAA0AAwAFAAUAAAABAA4AAwAFAAUAAAACAA4AAwAFAAUAAAADAA4AAwAFAAUAAAAEAA4AAwAFAAUAAAAFAA4AAwAFAAUAAAAGAA4AAwAFAAUAAAAHAA4AAwAFAAUAAAAHAAkAAwAFAAUAAAANAAAAAwAFAAUAAAAOAAAAAwAFAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_mkmb8")
+area_type = 1
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_vmse3")]
+position = Vector2(30, 120)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_aexga")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_r3m7f")]
+level_name = "base_scene"
+
+[node name="RoomLever" parent="." instance=ExtResource("7_naub1")]
+position = Vector2(130, 150)
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Obstacle1"]
+curve = SubResource("Curve2D_naub1")
+
+[node name="PathFollower" parent="Obstacle1/Path2D" instance=ExtResource("8_synas")]
+position = Vector2(50, 140)
+rotates = false
+loop = false
+speed = 35.0
+bounce_on_end = true
+
+[node name="Spike" parent="Obstacle1/Path2D/PathFollower" instance=ExtResource("8_ri6mg")]
+rotation = 1.5707964
+
+[node name="PathFollower2" parent="Obstacle1/Path2D" instance=ExtResource("8_synas")]
+position = Vector2(65, 140)
+h_offset = 15.0
+rotates = false
+loop = false
+speed = 35.0
+bounce_on_end = true
+
+[node name="Spike" parent="Obstacle1/Path2D/PathFollower2" instance=ExtResource("8_ri6mg")]
+rotation = 1.5707964
+
+[node name="PlatformArea" parent="Obstacle1" instance=ExtResource("10_synas")]
+position = Vector2(60, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle1/PlatformArea"]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_pjjtj")

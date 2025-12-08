@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt0njsx6l0eym"]
+
+[ext_resource type="Script" uid="uid://o6r4j0in20u0" path="res://utils/level_related/path_follower.gd" id="1_0aab2"]
+
+[node name="PathFollower" type="PathFollow2D"]
+rotation = -1.5707964
+script = ExtResource("1_0aab2")

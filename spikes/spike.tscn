@@ -10,11 +10,10 @@ radius = 4.1231055
 [node name="Spike" type="Node2D"]
 
 [node name="RotatingSprite" type="Sprite2D" parent="."]
-rotation = 0.83813643
+rotation = 2.9761868
 texture = ExtResource("1_p2adf")
 script = ExtResource("2_5nene")
 rotation_speed = 2.0
-chopped = true
 chopped_duration = 0.08
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_cvjps")]

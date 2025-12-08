@@ -4,7 +4,8 @@ class_name FloorDetector
 enum DetectionStatus {
     ON_FLOOR,
     ON_PLATFORM,
-    FALLING
+    FALLING,
+    ON_UNSAFE_FLOOR,
 }
 
 signal floor_status_changed(new_status : DetectionStatus)
@@ -27,6 +28,9 @@ func update_status():
     for area in areas:
         if area is PlatformArea:
             new_status = DetectionStatus.ON_PLATFORM
+            break
+        elif area is UnsafeFloorArea:
+            new_status = DetectionStatus.ON_UNSAFE_FLOOR
             break
         elif area.get_parent() and (area.get_parent() is DeathZone or area.get_parent() is BetterDeathZone):
             new_status = DetectionStatus.FALLING

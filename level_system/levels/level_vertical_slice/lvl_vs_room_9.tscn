@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="7_naub1"]
 [ext_resource type="PackedScene" uid="uid://qh12h70kbjei" path="res://spikes/spike.tscn" id="8_ri6mg"]
 [ext_resource type="PackedScene" uid="uid://bt0njsx6l0eym" path="res://utils/level_related/path_follower.tscn" id="8_synas"]
-[ext_resource type="PackedScene" uid="uid://bwqrwjmgf0c42" path="res://platform/platform_area.tscn" id="10_synas"]
+[ext_resource type="PackedScene" uid="uid://ckww7pvs661o4" path="res://player/floor_detection/unsafe_floor_area.tscn" id="10_synas"]
 
 [sub_resource type="Curve2D" id="Curve2D_naub1"]
 _data = {
@@ -75,9 +75,9 @@ bounce_on_end = true
 [node name="Spike" parent="Obstacle1/Path2D/PathFollower2" instance=ExtResource("8_ri6mg")]
 rotation = 1.5707964
 
-[node name="PlatformArea" parent="Obstacle1" instance=ExtResource("10_synas")]
+[node name="UnsafeFloorArea" parent="Obstacle1" instance=ExtResource("10_synas")]
 position = Vector2(60, 120)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle1/PlatformArea"]
-position = Vector2(-1.5, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle1/UnsafeFloorArea"]
+position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_pjjtj")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckww7pvs661o4"]
+
+[ext_resource type="Script" uid="uid://cohfu2nvspywa" path="res://player/floor_detection/unsafe_floor_area.gd" id="1_twqy4"]
+
+[node name="UnsafeFloorArea" type="Area2D"]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_twqy4")

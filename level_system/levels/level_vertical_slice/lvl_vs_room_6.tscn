@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bkruqb0x0bl6e"]
+[gd_scene load_steps=21 format=4 uid="uid://bkruqb0x0bl6e"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_oxulv"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_53nsh"]
@@ -13,6 +13,7 @@
 [ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="11_s4j4l"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="12_mj0l5"]
 [ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="13_s4j4l"]
+[ext_resource type="PackedScene" uid="uid://b0pwgw66kd6fx" path="res://persistancy_system/room_connections/room_actions/ra_call_method_connection_drawer.tscn" id="14_8tcsp"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="14_mj0l5"]
 
 [sub_resource type="Curve2D" id="Curve2D_s4j4l"]
@@ -33,6 +34,8 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tcsp"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5677q"]
+
 [node name="lvl_vs_room_6" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_oxulv")]
@@ -41,13 +44,14 @@ offset_bottom = 270.0
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down", "coming_from_left") groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down", "coming_from_left", "coming_from_right") groups=["level_info"]]
 script = ExtResource("3_trood")
 level_name = "lvl_vs_room_6"
 id = "5186fe74-5a00-4dec-bf94-76a60c69fcb7"
 area_type = 1
 coming_from_down = NodePath("../ComingDownards")
-coming_from_left = NodePath("../ComingDownards")
+coming_from_left = NodePath("../ComingFromLeft")
+coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingDownards" type="Marker2D" parent="LevelInfo Stuff"]
@@ -55,6 +59,9 @@ position = Vector2(270, 70)
 
 [node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(270, 70)
+
+[node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(20, 240)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_oodhj")]
 position = Vector2(260, 70)
@@ -137,6 +144,9 @@ NodePath("../../PlatformSmall"): &"do_toggle",
 NodePath("../../PlatformSmall2"): &"do_toggle"
 }
 
+[node name="RaCallMethodConnectionDrawer" parent="Obstacle3/RoomLever" node_paths=PackedStringArray("call_method_node") instance=ExtResource("14_8tcsp")]
+call_method_node = NodePath("../TogglePlatformAndDoors")
+
 [node name="SimpleDoor2" parent="Obstacle3" instance=ExtResource("8_at4sj")]
 position = Vector2(50, 215)
 
@@ -176,22 +186,34 @@ targets = {
 NodePath("../../SimpleDoor2"): &"do_toggle"
 }
 
+[node name="RaCallMethodConnectionDrawer" parent="Obstacle3/RoomLever2" node_paths=PackedStringArray("call_method_node") instance=ExtResource("14_8tcsp")]
+call_method_node = NodePath("../ToggleDoor")
+
 [node name="SimpleDoor" parent="." instance=ExtResource("8_at4sj")]
 position = Vector2(285, 70)
 door_type = 1
 
-[node name="LevelTransitionArea" parent="." instance=ExtResource("14_mj0l5")]
+[node name="TransitionUpwards" parent="." instance=ExtResource("14_mj0l5")]
 position = Vector2(140, 0)
 next_level_id = "lvl_vs_room_8"
 direction = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionUpwards"]
 shape = SubResource("RectangleShape2D_mj0l5")
 
-[node name="LevelTransitionArea2" parent="." instance=ExtResource("14_mj0l5")]
+[node name="TransitionLeft1" parent="." instance=ExtResource("14_mj0l5")]
 position = Vector2(0, 90)
 next_level_id = "lvl_vs_room_7"
 direction = 2
+override_position = Vector2(268, 90)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft1"]
 shape = SubResource("RectangleShape2D_8tcsp")
+
+[node name="TransitionLeft2" parent="." instance=ExtResource("14_mj0l5")]
+position = Vector2(0, 240)
+next_level_id = "lvl_vs_room_7"
+direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft2"]
+shape = SubResource("RectangleShape2D_5677q")

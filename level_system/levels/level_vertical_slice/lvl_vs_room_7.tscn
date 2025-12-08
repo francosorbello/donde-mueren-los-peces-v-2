@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://d2lpvjok12204"]
+[gd_scene load_steps=21 format=4 uid="uid://d2lpvjok12204"]
 
 [ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="1_cc8bv"]
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_t60ch"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b0pwgw66kd6fx" path="res://persistancy_system/room_connections/room_actions/ra_call_method_connection_drawer.tscn" id="11_sn4qn"]
 [ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="15_3naqm"]
 [ext_resource type="Resource" uid="uid://c7eqp4noy151" path="res://level_system/levels/level_vertical_slice/items/key_lvl_vs_room_7.tres" id="16_1wq5p"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="17_6jv4r"]
 
 [sub_resource type="Curve2D" id="Curve2D_6jv4r"]
 bake_interval = 50.0
@@ -23,6 +24,10 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 70, 90, 0, 0, 0, 0, 210, 90)
 }
 point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jv4r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x11wa"]
 
 [node name="lvl_vs_room_7" type="Node2D"]
 
@@ -50,14 +55,16 @@ tile_map_data = PackedByteArray("AAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAoAAwAFAAU
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_left") groups=["level_info"]]
 script = ExtResource("3_1b1s0")
 level_name = "lvl_vs_room_7"
 id = "e6484e54-ebe7-41a1-8ff2-4565d570e56d"
 area_type = 1
+coming_from_left = NodePath("../ComingFromLeft")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
-[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+[node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(268, 240)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_42ugo")]
 position = Vector2(245, 240)
@@ -135,3 +142,20 @@ call_method_node = NodePath("../OpeenDoor")
 position = Vector2(30, 90)
 item = ExtResource("16_1wq5p")
 event_name = "item_vs_room_7_key_picked_up"
+
+[node name="TransitionRight1" parent="." instance=ExtResource("17_6jv4r")]
+position = Vector2(290, 90)
+next_level_id = "lvl_vs_room_6"
+direction = 3
+override_position = Vector2(20, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight1"]
+shape = SubResource("RectangleShape2D_6jv4r")
+
+[node name="LevelTransitionArea" parent="." instance=ExtResource("17_6jv4r")]
+position = Vector2(290, 240)
+next_level_id = "lvl_vs_room_6"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
+shape = SubResource("RectangleShape2D_x11wa")

@@ -27,6 +27,22 @@ func spawn_player(direction : Vector2):
 
     player_spawned.emit(player)
 
+func spawn_player_on_pos(spawn_position : Vector2):
+    var player = player_scene.instantiate() as APlayer
+
+    player.global_position = spawn_position
+    get_parent().add_child(player)
+    if attach_camera:
+        if not camera_to_attach:
+            var camera = Camera2D.new()
+            player.add_child(camera)
+        else:
+            camera_to_attach.get_parent().remove_child(camera_to_attach)
+            player.add_child(camera_to_attach)
+
+    player_spawned.emit(player)
+
+
 
 
 

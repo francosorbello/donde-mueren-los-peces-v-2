@@ -22,15 +22,15 @@ func _ready():
 	
 	if initial_level_name and (not initial_level_name.value.is_empty()):
 		# load_level_scene(level_data.levels[initial_level_name])
-		_on_request_level_change(initial_level_name.value, Vector2.ZERO)
+		_on_request_level_change(initial_level_name.value, {"direction": Vector2.ZERO})
 
 	OxygenManager.start_depletion()
 
-func _on_request_level_change(lvl_name: String, direction = Vector2.ZERO):
+func _on_request_level_change(lvl_name: String, extra_data : Dictionary):
 	if level_data.levels.has(lvl_name):
-		print("Loading level %s with direction %s" % [lvl_name, direction])
-		last_transition_direction = direction
-		load_level_scene(level_data.levels[lvl_name])
+		print("Loading level %s with direction %s" % [lvl_name, extra_data.direction])
+		last_transition_direction = extra_data.direction
+		load_level_scene(level_data.levels[lvl_name], extra_data)
 	else:
 		push_error("Level %s is not on level data"%lvl_name)
 
@@ -40,7 +40,7 @@ func _clear_previous_level():
 	# %GameViewport.remove_child.call_deferred(current_level)
 	current_level.queue_free()
 
-func load_level_scene(level_scene: PackedScene):
+func load_level_scene(level_scene: PackedScene, extra_data : Dictionary = {}):
 	var transition := _fade_to_player(0.0)
 	await transition.finished
 	_clear_previous_level()
@@ -51,7 +51,10 @@ func load_level_scene(level_scene: PackedScene):
 
 	var player_spawner = current_level.find_child("PlayerSpawner")
 	if player_spawner:
-		player_spawner.call_deferred("spawn_player", last_transition_direction)
+		if extra_data.has("override_position") and extra_data["override_position"] != Vector2.ZERO:
+			player_spawner.call_deferred("spawn_player_on_pos", extra_data["override_position"])
+		else:
+			player_spawner.call_deferred("spawn_player", extra_data["direction"])
 	transition = _fade_to_player(2.0)
 	await transition.finished
 	level_loaded.emit()

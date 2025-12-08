@@ -32,7 +32,6 @@ shape = SubResource("RectangleShape2D_ch25n")
 
 [node name="UnlockSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_sbah6")
-volume_db = -10.0
 bus = &"SFX"
 
 [node name="PersistentEventEvaluator" type="Node" parent="."]

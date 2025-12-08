@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://gxq3vnkofntq"]
+[gd_scene load_steps=22 format=4 uid="uid://gxq3vnkofntq"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_66r5f"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_o77x6"]
@@ -45,6 +45,8 @@ _data = {
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80kag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1057h"]
 
 [node name="lvl_vs_room_5" type="Node2D"]
 
@@ -243,6 +245,10 @@ next_level_id = "lvl_vs_room_3"
 shape = SubResource("RectangleShape2D_80kag")
 
 [node name="TransitionLeft" parent="." instance=ExtResource("15_80kag")]
+visible = false
 position = Vector2(0, 120)
 next_level_id = "lvl_vs_room_6"
 direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft"]
+shape = SubResource("RectangleShape2D_1057h")

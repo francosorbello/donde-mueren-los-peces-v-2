@@ -55,7 +55,7 @@ coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingDownards" type="Marker2D" parent="LevelInfo Stuff"]
-position = Vector2(270, 70)
+position = Vector2(140, 20)
 
 [node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(270, 70)
@@ -113,7 +113,7 @@ NodePath("../../PlatformSmall"): &"do_toggle"
 [node name="Obstacle2" type="Node2D" parent="."]
 
 [node name="RoomLever" parent="Obstacle2" instance=ExtResource("7_qjw5l")]
-position = Vector2(170, 222)
+position = Vector2(185, 219)
 timed = true
 
 [node name="TogglePlatformAndDoor" type="Node" parent="Obstacle2/RoomLever" node_paths=PackedStringArray("targets")]

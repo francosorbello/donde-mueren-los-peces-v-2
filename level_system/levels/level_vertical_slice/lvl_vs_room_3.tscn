@@ -77,6 +77,7 @@ shape = SubResource("RectangleShape2D_8lcok")
 
 [node name="UpTransitionArea" parent="." instance=ExtResource("5_1b0a8")]
 position = Vector2(140, -4)
+next_level_id = "lvl_vs_room_5"
 direction = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpTransitionArea"]

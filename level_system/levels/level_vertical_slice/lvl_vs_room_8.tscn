@@ -46,7 +46,7 @@ door_opened_event = "lvl_vs_room_8_door_opened"
 
 [node name="LevelTransitionArea" parent="." instance=ExtResource("8_pbljs")]
 position = Vector2(140, 270)
-next_level_id = "lvl_vs_room_7"
+next_level_id = "lvl_vs_room_6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
 shape = SubResource("RectangleShape2D_pbljs")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://gxq3vnkofntq"]
+[gd_scene load_steps=21 format=4 uid="uid://gxq3vnkofntq"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_66r5f"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_o77x6"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="12_atx3j"]
 [ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="13_atx3j"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="14_1xnqv"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="15_80kag"]
 
 [sub_resource type="Curve2D" id="Curve2D_1xnqv"]
 bake_interval = 50.0
@@ -43,6 +44,8 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80kag"]
+
 [node name="lvl_vs_room_5" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_66r5f")]
@@ -60,6 +63,10 @@ area_type = 1
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(140, 252)
+
+[node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(20, 120)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_y1mvt")]
 position = Vector2(140, 235)
@@ -131,11 +138,15 @@ position = Vector2(40, 30)
 timed = true
 timed_duration = 8.0
 
-[node name="ToggleDoors" type="Node" parent="Obstacle3/RoomLever3" node_paths=PackedStringArray("targets")]
+[node name="ToggleDoor" type="Node" parent="Obstacle3/RoomLever3" node_paths=PackedStringArray("targets")]
 script = ExtResource("13_atx3j")
 targets = {
 NodePath("../../SimpleDoor"): &"do_toggle"
 }
+
+[node name="ToggleTransitionArea" type="Node" parent="Obstacle3/RoomLever3" node_paths=PackedStringArray("target")]
+script = ExtResource("8_1hrm0")
+target = NodePath("../../../TransitionLeft")
 
 [node name="BetterDeathZone" parent="Obstacle3" instance=ExtResource("10_kl6qd")]
 position = Vector2(250, 130)
@@ -223,3 +234,15 @@ position = Vector2(140, 75)
 
 [node name="PlatformSmall4" parent="Obstacle3" instance=ExtResource("14_1xnqv")]
 position = Vector2(140, 120)
+
+[node name="TransitionDownards" parent="." instance=ExtResource("15_80kag")]
+position = Vector2(140, 270)
+next_level_id = "lvl_vs_room_3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownards"]
+shape = SubResource("RectangleShape2D_80kag")
+
+[node name="TransitionLeft" parent="." instance=ExtResource("15_80kag")]
+position = Vector2(0, 120)
+next_level_id = "lvl_vs_room_6"
+direction = 2

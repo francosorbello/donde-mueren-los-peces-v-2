@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dehfmhrjub2up"]
+[gd_scene load_steps=11 format=4 uid="uid://dehfmhrjub2up"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lpqvx"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_jxc2h"]
@@ -11,6 +11,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbljs"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdp28"]
+
 [node name="lvl_vs_room_8" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_lpqvx")]
@@ -20,15 +22,19 @@ tile_map_data = PackedByteArray("AAAMABoAAwAFAAUAAAAcAAoAAwAFAAUAAAAMABkAAwAFAAU
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up") groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up", "coming_from_left") groups=["level_info"]]
 script = ExtResource("3_ubgu2")
 level_name = "lvl_vs_room_8"
 area_type = 1
 coming_from_up = NodePath("../ComingUpwards")
+coming_from_left = NodePath("../ComingFromLeft")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingUpwards" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(140, 245)
+
+[node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(270, 120)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_qr7of")]
 position = Vector2(140, 240)
@@ -44,9 +50,18 @@ level_name = "lvl_vs_room_8"
 position = Vector2(140, 185)
 door_opened_event = "lvl_vs_room_8_door_opened"
 
-[node name="LevelTransitionArea" parent="." instance=ExtResource("8_pbljs")]
+[node name="TransitionDownwards" parent="." instance=ExtResource("8_pbljs")]
 position = Vector2(140, 270)
 next_level_id = "lvl_vs_room_6"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownwards"]
 shape = SubResource("RectangleShape2D_pbljs")
+
+[node name="TransitionRight" parent="." instance=ExtResource("8_pbljs")]
+position = Vector2(288, 120)
+next_level_id = "lvl_vs_room_9"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_mdp28")

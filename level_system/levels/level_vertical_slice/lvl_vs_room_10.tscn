@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=4 uid="uid://72bck06owai1"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_xqj5d"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_ve313"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_pi5a5"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_buwyf"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_rmnt6"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_xy8ss"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="8_ydoxa"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="9_xj78h"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="10_3ca1o"]
+
+[sub_resource type="Curve2D" id="Curve2D_ui18r"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 140, 10, 0, 0, 0, 0, 140, 260)
+}
+point_count = 2
+
+[node name="lvl_vs_room_10" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [0.0]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_xqj5d")]
+offset_right = 288.0
+offset_bottom = 270.0
+metadata/_edit_lock_ = true
+
+[node name="BetterDeathZone" parent="." instance=ExtResource("8_ydoxa")]
+position = Vector2(5, 0)
+curve = SubResource("Curve2D_ui18r")
+width = 190.0
+end_sample_point = 0.966
+
+[node name="@Area2D@75906" type="Area2D" parent="BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@75905" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@75906"]
+polygon = PackedVector2Array(235, 10.000004, 235, 49.062504, 235, 89.10157, 235, 135, 235, 180.89844, 235, 220.9375, 235, 259.15265, 45, 259.15265, 45, 220.9375, 45, 180.89844, 45, 135, 45, 89.101555, 45, 49.062496, 45, 9.999996)
+
+[node name="@Polygon2D@75907" type="Polygon2D" parent="BetterDeathZone"]
+material = ExtResource("9_xj78h")
+texture = ExtResource("10_3ca1o")
+polygon = PackedVector2Array(235, 10.000004, 235, 49.062504, 235, 89.10157, 235, 135, 235, 180.89844, 235, 220.9375, 235, 259.15265, 45, 259.15265, 45, 220.9375, 45, 180.89844, 45, 135, 45, 89.101555, 45, 49.062496, 45, 9.999996)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_ve313")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAANABoAAwAFAAUAAAAOABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAcAAwAFAAUAAAAcAAYAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAcAAIAAwAFAAUAAAAcAAEAAwAFAAUAAAAcAAAAAwAFAAUAAAAbAAAAAwAFAAUAAAAaAAAAAwAFAAUAAAAZAAAAAwAFAAUAAAAYAAAAAwAFAAUAAAAXAAAAAwAFAAUAAAAWAAAAAwAFAAUAAAAVAAAAAwAFAAUAAAAUAAAAAwAFAAUAAAATAAAAAwAFAAUAAAASAAAAAwAFAAUAAAARAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAOAAAAAwAFAAUAAAANAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAAJAAAAAwAFAAUAAAAIAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAGAAAAAwAFAAUAAAAFAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAADAAAAAwAFAAUAAAACAAAAAwAFAAUAAAABAAAAAwAFAAUAAAABAA4AAwAFAAUAAAACAA4AAwAFAAUAAAADAA4AAwAFAAUAAAAEAA4AAwAFAAUAAAAEABoAAwAFAAUAAAAEABkAAwAFAAUAAAAEABgAAwAFAAUAAAAEABcAAwAFAAUAAAAEABYAAwAFAAUAAAAEABUAAwAFAAUAAAAEABQAAwAFAAUAAAAEABMAAwAFAAUAAAAEABIAAwAFAAUAAAAEABEAAwAFAAUAAAAEABAAAwAFAAUAAAAEAA8AAwAFAAUAAAAOAAEAAwAFAAUAAAAOAAIAAwAFAAUAAAAOAAMAAwAFAAUAAAAOAAQAAwAFAAUAAAAOAAUAAwAFAAUAAAAOAAYAAwAFAAUAAAAOAAcAAwAFAAUAAAAOAAgAAwAFAAUAAAAOAAkAAwAFAAUAAAAOAAoAAwAFAAUAAAAOAAsAAwAFAAUAAAAOAAwAAwAFAAUAAAAOAA0AAwAFAAUAAAAOAA4AAwAFAAUAAAAOAA8AAwAFAAUAAAAOABAAAwAFAAUAAAAOABEAAwAFAAUAAAAOABIAAwAFAAUAAAAOABMAAwAFAAUAAAAOABQAAwAFAAUAAAAOABUAAwAFAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_pi5a5")
+level_name = "lvl_vs_room_10"
+area_type = 1
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_buwyf")]
+position = Vector2(30, 110)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_rmnt6")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_xy8ss")]
+level_name = "lvl_vs_room_10"
+
+[node name="MiddlePoint" type="Node2D" parent="."]

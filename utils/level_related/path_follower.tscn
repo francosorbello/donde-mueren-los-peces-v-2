@@ -4,4 +4,6 @@
 
 [node name="PathFollower" type="PathFollow2D"]
 rotation = -1.5707964
+rotates = false
+loop = false
 script = ExtResource("1_0aab2")

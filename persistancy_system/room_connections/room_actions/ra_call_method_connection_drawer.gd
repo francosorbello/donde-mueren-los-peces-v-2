@@ -6,6 +6,11 @@ extends Node2D
         call_method_node = value
         if Engine.is_editor_hint() and is_node_ready():
             refresh()
+@export var color : Color = Color(1,1,1,0.6):
+    set(value):
+        color = value
+        if Engine.is_editor_hint() and is_node_ready():
+            refresh()
 
 @export_tool_button("Refresh") var refresh_action = refresh
 
@@ -34,5 +39,5 @@ func _draw() -> void:
     
     for t in _targets:
         prints(t.global_position,t.position)
-        draw_line(Vector2.ZERO,t.global_position-global_position,Color(1,1,1,0.6),1)
+        draw_line(Vector2.ZERO,t.global_position-global_position,color,1)
 

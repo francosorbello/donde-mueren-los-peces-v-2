@@ -26,7 +26,7 @@ func _ready():
 func _physics_process(delta):
     if running or run_in_editor:
         progress += delta * speed * speed_mod
-        if bounce_on_end and (progress_ratio == 1 or progress_ratio == 0):
+        if bounce_on_end and (progress_ratio >= 1 or progress_ratio == 0):
             speed_mod *= -1
 
 func do_toggle():

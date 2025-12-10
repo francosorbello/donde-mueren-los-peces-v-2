@@ -21,8 +21,11 @@ func enter():
 		push_error("No bubble available for dash")
 		state_machine.transition_to("MovingState")
 		return
+	
+	player.set_collision_mask_value(9,false)
 
 func exit():
+	player.set_collision_mask_value(9,true)
 	bubble.clear_as_dash_target()
 	bubble = null
 

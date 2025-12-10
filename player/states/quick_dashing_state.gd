@@ -22,8 +22,10 @@ func enter():
     _initial_pos = player.global_position
     _transitioning_to_jump = false
     $DashSound.play()
+    player.set_collision_mask_value(9,false)
 
 func exit():
+    player.set_collision_mask_value(9,true)
     floor_detection_component.can_fall = not _transitioning_to_jump
 
 func state_unhandled_input(event : InputEvent):

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b36qb48o4erby"]
+
+[ext_resource type="Script" uid="uid://dxftkymrqei36" path="res://dash_wall/dash_wall.gd" id="1_nvdpj"]
+[ext_resource type="Material" uid="uid://n0wfecgx0b3l" path="res://dash_wall/dash_wall_mat.tres" id="2_a6ayg"]
+
+[node name="DashWall" type="Path2D"]
+script = ExtResource("1_nvdpj")
+collision_layer = 256
+polygon_material = ExtResource("2_a6ayg")
+outline_width = 0.4
+metadata/_custom_type_script = "uid://chlbf4ydlrjvo"

@@ -1,21 +1,20 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://3kclyu68ui6r"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://3kclyu68ui6r"]
 
-[ext_resource type="Shader" uid="uid://bvp0tldxf7fs7" path="res://game/particle_bg/ice_particles.gdshader" id="1_4r8v5"]
-[ext_resource type="Texture2D" uid="uid://dkxjxpksq33lx" path="res://assets/GRAPHICS/glowing_circle.png" id="2_w34ex"]
+[ext_resource type="Shader" uid="uid://cq1hrjvyfx1tl" path="res://death_zone/water_1.gdshader" id="1_eapv3"]
 
 [resource]
-shader = ExtResource("1_4r8v5")
-shader_parameter/dimensions = Vector2(1152, 648)
-shader_parameter/rows = 20.0
-shader_parameter/columns = 5.0
-shader_parameter/vertical_scroll = 0.5999999642368001
-shader_parameter/horizontal_scroll = 0.1
-shader_parameter/size_min = 0.3
-shader_parameter/size_max = 0.7
-shader_parameter/wave_min = 0.1
-shader_parameter/wave_max = 1.0
-shader_parameter/wave_speed = 0.5
-shader_parameter/wave_rotation = 0.20000001788144006
-shader_parameter/far_color = Color(0, 0, 0, 1)
-shader_parameter/near_color = Color(1, 1, 1, 1)
-shader_parameter/particle_texture = ExtResource("2_w34ex")
+shader = ExtResource("1_eapv3")
+shader_parameter/border_top_treshold = 0.2
+shader_parameter/border_bottom_treshold = 0.8
+shader_parameter/border_color = Color(0, 0, 0, 0)
+shader_parameter/waterColor = Color(0.117, 0.27, 0.58, 1)
+shader_parameter/colorCorection = 0.35
+shader_parameter/distortionForce = 0.01
+shader_parameter/WDBrightness = 1.5
+shader_parameter/WDFreq = 0.6
+shader_parameter/WDSize = 0.9
+shader_parameter/WDSpeed = 4.0
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/offSetSpeed = Vector2(0.1, 0.1)
+shader_parameter/backGroundDirX = 0.01
+shader_parameter/backGroundDirY = 0.01

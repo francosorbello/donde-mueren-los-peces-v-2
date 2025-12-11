@@ -1,7 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://n0wfecgx0b3l"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://n0wfecgx0b3l"]
 
 [ext_resource type="Shader" uid="uid://cr7fvfusxpaiw" path="res://dash_wall/dash_wall.gdshader" id="1_rk6bn"]
+[ext_resource type="Texture2D" uid="uid://dpfjt8cry3mi3" path="res://assets/GRAPHICS/other_patterns/tile1.png" id="2_7p8jk"]
 
 [resource]
 shader = ExtResource("1_rk6bn")
-shader_parameter/bg_color = Color(1, 1, 1, 0.6)
+shader_parameter/bg_color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("2_7p8jk")

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b36qb48o4erby"]
+[gd_scene load_steps=4 format=3 uid="uid://b36qb48o4erby"]
 
 [ext_resource type="Script" uid="uid://dxftkymrqei36" path="res://dash_wall/dash_wall.gd" id="1_nvdpj"]
 [ext_resource type="Material" uid="uid://n0wfecgx0b3l" path="res://dash_wall/dash_wall_mat.tres" id="2_a6ayg"]
+[ext_resource type="Texture2D" uid="uid://dpfjt8cry3mi3" path="res://assets/GRAPHICS/other_patterns/tile1.png" id="3_ixf1b"]
 
 [node name="DashWall" type="Path2D"]
 script = ExtResource("1_nvdpj")
 collision_layer = 256
 polygon_material = ExtResource("2_a6ayg")
+polygon_texture = ExtResource("3_ixf1b")
 outline_width = 0.4
 metadata/_custom_type_script = "uid://chlbf4ydlrjvo"

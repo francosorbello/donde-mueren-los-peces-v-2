@@ -47,6 +47,7 @@ func create():
     super()
     _set_static_col_polygon()
     _set_outline()
+    # set_polygon_shape_uvs()
 
 func _create_from_path():
     super()
@@ -68,7 +69,22 @@ func set_polygon_shape_uvs():
     var p2 = Vector2(tex_size.y,0)
     var p3 = Vector2.ZERO
 
-    polygon_shape.uv = PackedVector2Array([
+    var final_shape = [] 
+
+    var missing_points = polygon_points.size() - 4
+    if missing_points > 0:
+        final_shape.append(p0)
+        for i in range(1,missing_points+1):
+            var t = float(i) / float(missing_points + 1)
+            var interpolated_point = p0.lerp(p1, t)
+            final_shape.append(interpolated_point)
+        final_shape.append(p1)
+        final_shape.append(p2)
+        final_shape.append(p3)
+    else:
+        final_shape  = PackedVector2Array([
         p0,p1,p2,p3
     ])
+
+    polygon_shape.uv = final_shape
     prints(polygon_shape.name, polygon_shape.uv)

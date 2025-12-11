@@ -88,3 +88,11 @@ metadata/_custom_type_script = "uid://davfd8xpi1i3t"
 position = Vector2(5, 110)
 door_opened_event = "vs_room_1_door_opened"
 door_type = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_top = 20.0
+offset_right = 142.0
+offset_bottom = 75.0
+bbcode_enabled = true
+text = "[center][img]res://assets/GRAPHICS/inputs/wasd.png[/img] or [img]res://assets/GRAPHICS/inputs/left_joystick.png[/img] to [MOVE][/center]"
+fit_content = true

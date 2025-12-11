@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bsyv45bg70re1"]
+[gd_scene load_steps=25 format=4 uid="uid://bsyv45bg70re1"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_gqe2t"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_esnho"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="14_4xpj5"]
 [ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="15_dybpk"]
 [ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="16_ld13f"]
+[ext_resource type="Script" uid="uid://bxamrpt2gcrrt" path="res://level_system/levels/level_vertical_slice/utils/jump_tutorial.gd" id="17_81f3g"]
+[ext_resource type="Resource" uid="uid://ti84mqdveb6i" path="res://level_system/levels/level_vertical_slice/dialogues/jump_ability_tutorial.dialogue" id="18_h2h2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gs4y5"]
 
@@ -265,3 +267,8 @@ uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
 [node name="LevelNameSetter" parent="." instance=ExtResource("16_ld13f")]
 level_name = "lvl_vs_room_4"
+
+[node name="JumpTutorial" type="Node" parent="." node_paths=PackedStringArray("pickable_item")]
+script = ExtResource("17_81f3g")
+dialogue = ExtResource("18_h2h2h")
+pickable_item = NodePath("../JumpAbilityPickup")

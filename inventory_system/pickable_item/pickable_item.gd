@@ -20,6 +20,8 @@ var icon : Texture2D:
 @export var event_name : String
 @export_tool_button("Generate event name") var create_event_action = create_event ## Generates event name based on item name
 
+signal picked_up(item : AnItem)
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
@@ -40,6 +42,7 @@ func _on_better_interactable_component_on_interact() -> void:
 			saved_game.add_ability(item)
 			PersistencySystem.set_event(event_name,1.0)
 			CommonSfxPlayer.play_sound("pickup")
+			picked_up.emit(item)
 		return
 
 	var inventory_manager = get_tree().get_first_node_in_group("inventory_manager")
@@ -54,8 +57,7 @@ func _on_better_interactable_component_on_interact() -> void:
 			if blackboard:
 				CommonSfxPlayer.play_sound("pickup")
 				blackboard.add_temp_event(event_name,1.0)
-	
-	# queue_free()
+		picked_up.emit(item)
 
 func create_event():
 	if not item:

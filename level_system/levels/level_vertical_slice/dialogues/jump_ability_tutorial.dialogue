@@ -1,0 +1,4 @@
+~ start
+SPACE or [img=50x50]res://assets/GRAPHICS/inputs/tile_0380.png[/img] to [JUMP]
+SPACE or [img=50x50]res://assets/GRAPHICS/inputs/tile_0380.png[/img] while jumping to [CANCEL JUMP]
+=> END

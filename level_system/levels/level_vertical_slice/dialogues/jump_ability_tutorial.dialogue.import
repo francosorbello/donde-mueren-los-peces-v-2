@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ti84mqdveb6i"
+path="res://.godot/imported/jump_ability_tutorial.dialogue-1d568dae41778f92a9657696b8800826.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_vertical_slice/dialogues/jump_ability_tutorial.dialogue"
+dest_files=["res://.godot/imported/jump_ability_tutorial.dialogue-1d568dae41778f92a9657696b8800826.tres"]
+
+[params]
+
+defaults=true

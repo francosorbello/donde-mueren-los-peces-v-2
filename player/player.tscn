@@ -214,7 +214,6 @@ libraries = {
 
 [node name="StepSounds" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_yw30f")
-volume_db = -10.0
 bus = &"SFX"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

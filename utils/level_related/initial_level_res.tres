@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StringResource" load_steps=2 format=3 uid="uid://baffx30arkr3m"]
+[gd_resource type="Resource" script_class="StringResource" load_steps=2 format=3 uid="uid://b7n2tnec7c8sx"]
 
 [ext_resource type="Script" uid="uid://djda8uv7qbvfi" path="res://utils/level_related/string_resource.gd" id="1_wrvjp"]
 

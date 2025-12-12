@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
-[ext_resource type="Resource" uid="uid://baffx30arkr3m" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
+[ext_resource type="Resource" uid="uid://b7n2tnec7c8sx" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
 [ext_resource type="Shader" uid="uid://b2me4ti8lr66k" path="res://crt_shader/crt_shader.gdshader" id="4_dxrkv"]
 [ext_resource type="Script" uid="uid://cqhcun638wmpc" path="res://game/bg_color_manager.gd" id="4_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://djic11w1vg7yn" path="res://inventory_system/inventory_manager.tscn" id="6_dakft"]

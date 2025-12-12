@@ -94,5 +94,5 @@ offset_top = 20.0
 offset_right = 142.0
 offset_bottom = 75.0
 bbcode_enabled = true
-text = "[center][img]res://assets/GRAPHICS/inputs/wasd.png[/img] or [img]res://assets/GRAPHICS/inputs/left_joystick.png[/img] to [MOVE][/center]"
+text = "[center][img]res://assets/GRAPHICS/inputs/arrows.png[/img] or [img]res://assets/GRAPHICS/inputs/left_joystick.png[/img] to [MOVE][/center]"
 fit_content = true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://8soh03d6ho0s"]
+[gd_scene load_steps=3 format=3 uid="uid://8soh03d6ho0s"]
 
 [ext_resource type="Script" uid="uid://b7wuveham1tla" path="res://main_menu/main_menu.gd" id="1_oa53l"]
+[ext_resource type="Resource" path="res://utils/level_related/initial_level_res.tres" id="2_d3a7t"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +11,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oa53l")
+kiosk_mode = true
+initial_level = ExtResource("2_d3a7t")
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 1

@@ -1,12 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=19 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
-[ext_resource type="Resource" uid="uid://ov7dh4x4dwtb" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
+[ext_resource type="Resource" uid="uid://baffx30arkr3m" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
 [ext_resource type="Shader" uid="uid://b2me4ti8lr66k" path="res://crt_shader/crt_shader.gdshader" id="4_dxrkv"]
 [ext_resource type="Script" uid="uid://cqhcun638wmpc" path="res://game/bg_color_manager.gd" id="4_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://djic11w1vg7yn" path="res://inventory_system/inventory_manager.tscn" id="6_dakft"]
 [ext_resource type="PackedScene" uid="uid://ttyngsx7731n" path="res://inventory_system/ui/inventory_ui.tscn" id="6_u5opy"]
-[ext_resource type="AudioStream" uid="uid://cepgk4i3tauqe" path="res://assets/SOUNDS/music/Retro Ambience 02.mp3" id="8_3vho3"]
 [ext_resource type="PackedScene" uid="uid://2tvde1g7baq6" path="res://tests/debug_timer.tscn" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://ce5m7b223yfg6" path="res://level_system/automap/automap.tscn" id="8_y36n6"]
 [ext_resource type="Shader" uid="uid://dk2ecib4gfdal" path="res://utils/transition_shader/spotlight_transition.gdshader" id="9_hb504"]
@@ -40,11 +39,10 @@ shader_parameter/screen_height = 1080.0
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_hb504"]
 shuffle = true
-stream_count = 4
-stream_0 = ExtResource("8_3vho3")
-stream_1 = ExtResource("9_qf6n1")
-stream_2 = ExtResource("10_vsp63")
-stream_3 = ExtResource("11_b686c")
+stream_count = 3
+stream_0 = ExtResource("9_qf6n1")
+stream_1 = ExtResource("10_vsp63")
+stream_2 = ExtResource("11_b686c")
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -149,7 +147,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPlaylist_hb504")
-volume_db = -10.0
+volume_db = -5.0
 autoplay = true
 
 [node name="GameConsoleCommands" parent="." instance=ExtResource("12_qf6n1")]

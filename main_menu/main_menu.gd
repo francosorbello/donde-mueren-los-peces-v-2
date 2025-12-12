@@ -3,6 +3,13 @@ extends Control
 @export var kiosk_mode : bool = false
 @export var initial_level : StringResource
 
+func _ready():
+    if OS.is_debug_build():
+        $DebugBuildLabel.show()
+        kiosk_mode = true
+
+    $StartButton.grab_focus()
+
 func _on_start_button_pressed() -> void:
     if kiosk_mode:
         do_kiosk_mode()
@@ -32,6 +39,8 @@ func create_test_game():
 func do_kiosk_mode():
     if IndieBlueprintSaveManager.save_filename_exists("test"):
         _on_reset_save_button_pressed()
+        var save_game = IndieBlueprintSaveManager.load_savegame("test") as ASavedGame
+        IndieBlueprintSaveManager.make_current(save_game)
     else:
         create_test_game()
     initial_level.value = "lvl_vs_room_1"

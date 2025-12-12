@@ -4,7 +4,7 @@ extends Control
 @export var initial_level : StringResource
 
 func _ready():
-    if OS.is_debug_build():
+    if OS.is_debug_build() and not OS.has_feature("editor"):
         $DebugBuildLabel.show()
         kiosk_mode = true
 

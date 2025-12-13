@@ -27,8 +27,8 @@ func start(time : float):
         push_error("Trying to start a progress bar 2D with a time of %f (must be higher than 0)")
         return
 
-    if running:
-        return
+    # if running:
+    #     return
 
     progress_percent = 0
     duration = time

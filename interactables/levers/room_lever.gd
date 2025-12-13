@@ -32,6 +32,12 @@ func _ready() -> void:
             break
 
 func _on_better_interactable_component_on_interact() -> void:
+    prints(activated,timed)
+    if timed and activated:
+        $Timer.start(timed_duration)
+        $ProgressBar2D.start(timed_duration)
+        return
+
     if has_actions:
         use_actions()
         toggle_activated()
@@ -54,8 +60,8 @@ func toggle_activated():
     activated = not activated
 
     $Sprite2D.flip_h = activated
-    if timed:
-        $BetterInteractableComponent.set_deferred("is_interactable",not activated)
+    # if timed:
+    #     $BetterInteractableComponent.set_deferred("is_interactable",not activated)
     $LeverSound.play()
 
 func _on_timer_timeout() -> void:

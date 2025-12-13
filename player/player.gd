@@ -35,6 +35,14 @@ func _ready():
 	if saved_game:
 		abilities = saved_game.unlocked_abilities
 
+	DialogueManager.dialogue_started.connect(func(_dialogue): 
+		$StateMachine.transition_to("EmptyState")
+	)
+
+	DialogueManager.dialogue_ended.connect(func(_dialogue):
+		$StateMachine.transition_to("IdleState")
+	)
+
 # func _physics_process(_delta):
 # 	if last_direction.x != 0:
 # 		follow_target.position.x = abs(follow_target.position.x) * sign(last_direction.x)

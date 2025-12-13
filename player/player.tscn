@@ -1,9 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=49 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Shader" uid="uid://d10m6757u4c6r" path="res://interactables/outline_component/outline.gdshader" id="2_rptt4"]
 [ext_resource type="AudioStream" uid="uid://dgadymra1s2ay" path="res://assets/SOUNDS/player/pretty_footsetp.mp3" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://buue6n5g78pmd" path="res://player/player_sprite.gd" id="4_1s1yo"]
 [ext_resource type="Script" uid="uid://8dv7dce6ncjv" path="res://addons/ftr_tools/sm/state_machine.gd" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://bijnqy4wt580s" path="res://player/states/idle_state.gd" id="5_qjkh3"]
 [ext_resource type="Script" uid="uid://c55rmvk4p4wdj" path="res://player/states/moving_state.gd" id="6_g6k8r"]
@@ -186,6 +187,11 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("30_b8hi5")
 
+[sub_resource type="Curve" id="Curve_1s1yo"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
+point_count = 2
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 collision_mask = 257
@@ -201,6 +207,7 @@ material = SubResource("ShaderMaterial_r7pn3")
 position = Vector2(0, 6)
 texture = ExtResource("1_oul6g")
 offset = Vector2(0, -6)
+script = ExtResource("4_1s1yo")
 
 [node name="SmallCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -237,10 +244,12 @@ dash_speed_increment = 5.0
 stop_treshold = 20.0
 speed_curve = SubResource("Curve_yllr7")
 
-[node name="JumpingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component")]
+[node name="JumpingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component", "player_sprite", "jump_particles")]
 script = ExtResource("12_32hag")
 move_speed = 35.0
 floor_detection_component = NodePath("../../FloorDetectionComponent")
+player_sprite = NodePath("../../Sprite2D")
+jump_particles = NodePath("../../BoxParticles")
 sample_duration = 0.5
 speed_curve = SubResource("Curve_2uvqg")
 
@@ -289,6 +298,7 @@ b = 5.0
 [node name="BubbleSprite" type="Sprite2D" parent="."]
 visible = false
 z_index = 1
+position = Vector2(0, -1)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("15_wodsf")
 
@@ -358,6 +368,25 @@ bus = &"SFX"
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="BoxParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 6)
+emitting = false
+amount = 18
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 6.66
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_1s1yo")
+color = Color(4.416, 4.416, 4.416, 1)
 
 [connection signal="timeout" from="StateMachine/JumpingState/JumpDurationTimer" to="StateMachine/JumpingState" method="_on_jump_duration_timer_timeout"]
 [connection signal="player_fell" from="FloorDetectionComponent" to="." method="_on_floor_detection_component_player_fell"]

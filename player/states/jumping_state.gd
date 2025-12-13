@@ -5,6 +5,8 @@ extends PlayerState
 
 @export_category("Dependencies")
 @export var floor_detection_component : Node2D
+@export var player_sprite : Sprite2D
+@export var jump_particles : CPUParticles2D
 
 @export_category("Jump speed curve")
 @export var sample_duration : float = 3
@@ -16,101 +18,104 @@ var _keep_hurtbox_disabled : bool = false
 var _bubble_tween : Tween
 
 func enter():
-    floor_detection_component.can_fall = false
+	floor_detection_component.can_fall = false
 
-    _accoumulated_sample_time = 0
-    _keep_hurtbox_disabled = false
-    $JumpDurationTimer.start()
-    
-    player.play_anim("idle")
+	_accoumulated_sample_time = 0
+	_keep_hurtbox_disabled = false
+	$JumpDurationTimer.start()
+	
+	player.play_anim("idle")
 
-    play_show_bubble_anim()
-    _play_sound($StartJumpSound)
+	jump_particles.emitting = true
+	player_sprite.start_jump_anim($JumpDurationTimer.wait_time)
+	play_show_bubble_anim()
+	_play_sound($StartJumpSound)
 
 
 
 func exit():
-    floor_detection_component.can_fall = not _keep_hurtbox_disabled
+	floor_detection_component.can_fall = not _keep_hurtbox_disabled
 
-    $JumpDurationTimer.stop()
+	$JumpDurationTimer.stop()
 
-    play_hide_bubble_anim()
-    _play_sound($StopJumpSound)
+	player_sprite.stop_jump_anim()
+	play_hide_bubble_anim()
+	_play_sound($StopJumpSound)
 
-    
+	
 
 func play_bubble_anim(to_value : float) -> Tween:
-    var sprite := player.get_bubble_sprite()
-    _stop_buble_tween()
-    _bubble_tween = create_tween()
-    
-    _bubble_tween.tween_property(sprite,"scale",Vector2(to_value,to_value),0.3)
-    if to_value != 0:
-        _bubble_tween.tween_property(sprite,"modulate",Color.RED,$JumpDurationTimer.wait_time)
-    
-    return _bubble_tween
+	var sprite := player.get_bubble_sprite()
+	_stop_buble_tween()
+	_bubble_tween = create_tween()
+	
+	_bubble_tween.tween_property(sprite,"scale",Vector2(to_value,to_value),0.3)
+	if to_value != 0:
+		_bubble_tween.tween_property(sprite,"modulate",Color.RED,$JumpDurationTimer.wait_time)
+	
+	return _bubble_tween
 
 func play_show_bubble_anim():
-    player.get_bubble_sprite().modulate = Color.WHITE
-    player.get_bubble_sprite().scale = Vector2.ZERO
-    player.get_bubble_sprite().visible = true
+	player.get_bubble_sprite().modulate = Color.WHITE
+	player.get_bubble_sprite().scale = Vector2.ZERO
+	player.get_bubble_sprite().visible = true
 
-    play_bubble_anim(0.8)
+	play_bubble_anim(1.0)
 
 func play_hide_bubble_anim():
-    play_bubble_anim(0)
+	play_bubble_anim(0)
 
-    _bubble_tween.finished.connect(func():
-        player.get_bubble_sprite().visible = false
-        player.get_bubble_sprite().modulate = Color.WHITE
-    )
+	_bubble_tween.finished.connect(func():
+		player.get_bubble_sprite().visible = false
+		player.get_bubble_sprite().modulate = Color.WHITE
+	)
 
 func _stop_buble_tween():
-    if _bubble_tween:
-        if _bubble_tween.is_running():
-            _bubble_tween.kill()
+	if _bubble_tween:
+		if _bubble_tween.is_running():
+			_bubble_tween.kill()
 
 func _play_sound(audio_player : AudioStreamPlayer):
-    audio_player.pitch_scale = randf_range(0.8,1.2)
-    audio_player.play()
+	audio_player.pitch_scale = randf_range(0.8,1.2)
+	audio_player.play()
 
 func state_unhandled_input(event : InputEvent):
-    if event.is_action_pressed("dash") and player.has_ability_named("dash"):
-        _keep_hurtbox_disabled = true
-        state_machine.transition_to("QuickDashingState")
-        return
+	if event.is_action_pressed("dash") and player.has_ability_named("dash"):
+		_keep_hurtbox_disabled = true
+		state_machine.transition_to("QuickDashingState")
+		return
 
-    if event.is_action_pressed("jump"):
-        state_machine.transition_to("MovingState")
-        get_viewport().set_input_as_handled()
-        return
-    
-    if event.is_action_pressed("use_ability") and player.has_ability_named("explosion"):
-        player.use_explosion_ability()
-        state_machine.transition_to("MovingState")
-        return
+	if event.is_action_pressed("jump"):
+		state_machine.transition_to("MovingState")
+		get_viewport().set_input_as_handled()
+		return
+	
+	if event.is_action_pressed("use_ability") and player.has_ability_named("explosion"):
+		player.use_explosion_ability()
+		state_machine.transition_to("MovingState")
+		return
 
 func physics_update(delta: float):
-    _accoumulated_sample_time += delta
-    
-    var direction = Input.get_vector("move_left","move_right","move_up","move_down")
-    
-    if player.extra_velocity:
-        player.velocity = player.extra_velocity
-    player.velocity = FreyaMath.lerp_exp_decay(player.velocity,direction * move_speed * get_speed_modifier(), decay, delta)
-    player.move_and_slide()
+	_accoumulated_sample_time += delta
+	
+	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
+	
+	if player.extra_velocity:
+		player.velocity = player.extra_velocity
+	player.velocity = FreyaMath.lerp_exp_decay(player.velocity,direction * move_speed * get_speed_modifier(), decay, delta)
+	player.move_and_slide()
 
-    if direction != Vector2.ZERO:
-        player.last_direction = direction
+	if direction != Vector2.ZERO:
+		player.last_direction = direction
 
 func _on_jump_duration_timer_timeout() -> void:
-    state_machine.transition_to("MovingState")
-    pass # Replace with function body.
+	state_machine.transition_to("MovingState")
+	pass # Replace with function body.
 
 func get_speed_modifier() -> float:
-    var sample_point = clampf(_accoumulated_sample_time/sample_duration,speed_curve.min_domain,speed_curve.max_domain)
-    return speed_curve.sample(sample_point)
-    # if _accoumulated_sample_time > sample_duration:
-    #     return speed_curve.sample(1)
-    # else:
-    #     return speed_curve.sample(_accoumulated_sample_time/sample_duration)
+	var sample_point = clampf(_accoumulated_sample_time/sample_duration,speed_curve.min_domain,speed_curve.max_domain)
+	return speed_curve.sample(sample_point)
+	# if _accoumulated_sample_time > sample_duration:
+	#     return speed_curve.sample(1)
+	# else:
+	#     return speed_curve.sample(_accoumulated_sample_time/sample_duration)

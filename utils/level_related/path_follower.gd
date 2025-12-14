@@ -21,7 +21,7 @@ func _ready():
         return
 
     running = start_on_ready
-    progress = 0
+    # progress = 0
     
 func _physics_process(delta):
     if running or run_in_editor:

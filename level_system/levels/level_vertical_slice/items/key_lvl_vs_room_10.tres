@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DoorKeyItem" load_steps=3 format=3 uid="uid://d2mocxp04dhqo"]
+
+[ext_resource type="Texture2D" uid="uid://d4eujshmexxd3" path="res://assets/GRAPHICS/items/key1_16x16.png" id="1_h8pkb"]
+[ext_resource type="Script" uid="uid://db5jfbug83are" path="res://inventory_system/door_key_item.gd" id="2_ltm4g"]
+
+[resource]
+script = ExtResource("2_ltm4g")
+item_name = "VS Room 10 Key"
+is_physical = true
+icon = ExtResource("1_h8pkb")
+world_icon = ExtResource("1_h8pkb")
+item_id = "7dd497df-23e1-4bff-adae-b58b2f307c5a"
+metadata/_custom_type_script = "uid://egbha40d4mds"

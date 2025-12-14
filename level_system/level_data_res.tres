@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://d2lpvjok12204" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_7.tscn" id="14_djy8m"]
 [ext_resource type="PackedScene" uid="uid://dehfmhrjub2up" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_8.tscn" id="15_1p4bs"]
 [ext_resource type="PackedScene" uid="uid://bhj7iquekl53l" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_9.tscn" id="16_c0hps"]
-[ext_resource type="PackedScene" uid="uid://dx4ujrj8pnxkt" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_10.tscn" id="17_xx2c1"]
+[ext_resource type="PackedScene" uid="uid://pp4b0ggutwll" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_10.tscn" id="17_xx2c1"]
 
 [resource]
 script = ExtResource("1_sihxi")

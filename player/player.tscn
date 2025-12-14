@@ -245,12 +245,13 @@ dash_speed_increment = 5.0
 stop_treshold = 20.0
 speed_curve = SubResource("Curve_yllr7")
 
-[node name="JumpingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component", "player_sprite", "jump_particles")]
+[node name="JumpingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component", "player_sprite", "jump_particles", "progress_bar")]
 script = ExtResource("12_32hag")
 move_speed = 35.0
 floor_detection_component = NodePath("../../FloorDetectionComponent")
 player_sprite = NodePath("../../Sprite2D")
 jump_particles = NodePath("../../BoxParticles")
+progress_bar = NodePath("../../ProgressBar2D")
 sample_duration = 0.5
 speed_curve = SubResource("Curve_2uvqg")
 
@@ -392,7 +393,7 @@ color = Color(4.416, 4.416, 4.416, 1)
 [node name="ProgressBar2D" parent="." instance=ExtResource("33_5ejfk")]
 visible = false
 z_index = 50
-position = Vector2(10, 9)
+position = Vector2(13, 9)
 bar_type = 1
 height = 20.0
 bg_color = Color(0.6313726, 0.6313726, 0.6313726, 0.67058825)

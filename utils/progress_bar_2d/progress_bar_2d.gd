@@ -1,6 +1,13 @@
 @tool
 extends Node2D
 
+enum BarType {
+    CIRCLE,
+    VERTICAL_BAR,
+}
+
+@export var bar_type : BarType = BarType.CIRCLE
+
 @export_range(0,1,0.01) var progress_percent : float = 0:
     set(value):
         progress_percent = value
@@ -15,6 +22,18 @@ extends Node2D
     set(value):
         width = value
         queue_redraw()
+
+@export_category("Vertical bar")
+@export var height : float = 10:
+    set(value):
+        height = value
+        queue_redraw()
+
+@export var bg_color : Color = Color.WHITE:
+    set(value):
+        bg_color = value
+        queue_redraw()
+
 
 @export var color_overrides : Dictionary[float,Color]
 
@@ -54,6 +73,18 @@ func _draw() -> void:
     if running:
         progress = _acc_time / duration
 
+    match bar_type:
+        BarType.CIRCLE:
+            _draw_circle(progress)
+        BarType.VERTICAL_BAR:
+            _draw_vertical_bar(progress)
+
+func _draw_vertical_bar(progress : float):
+    pass
+    draw_line(Vector2.ZERO,Vector2(0,-height),bg_color,width)
+    draw_line(Vector2.ZERO,Vector2(0,-height * progress),Color.WHITE,width)
+
+func _draw_circle(progress : float):
     var color = Color.WHITE
     for key in color_overrides.keys():
         if key < progress:

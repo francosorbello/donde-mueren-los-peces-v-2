@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=50 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://bjka4rd2o0w7v" path="res://player/floor_detection/floor_detector.tscn" id="27_uw77l"]
 [ext_resource type="PackedScene" uid="uid://bgqnulqr2ev4k" path="res://hurt_and_hit_boxes/hitbox.tscn" id="29_r7pn3"]
 [ext_resource type="AudioStream" uid="uid://hwmgb6tnug3k" path="res://assets/SOUNDS/player/creature_misc_05.ogg" id="30_b8hi5"]
+[ext_resource type="PackedScene" uid="uid://ckaagxg0nqd5a" path="res://utils/progress_bar_2d/progress_bar_2d.tscn" id="33_5ejfk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r7pn3"]
 shader = ExtResource("2_rptt4")
@@ -387,6 +388,14 @@ angular_velocity_min = 10.0
 angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_1s1yo")
 color = Color(4.416, 4.416, 4.416, 1)
+
+[node name="ProgressBar2D" parent="." instance=ExtResource("33_5ejfk")]
+visible = false
+z_index = 50
+position = Vector2(10, 9)
+bar_type = 1
+height = 20.0
+bg_color = Color(0.6313726, 0.6313726, 0.6313726, 0.67058825)
 
 [connection signal="timeout" from="StateMachine/JumpingState/JumpDurationTimer" to="StateMachine/JumpingState" method="_on_jump_duration_timer_timeout"]
 [connection signal="player_fell" from="FloorDetectionComponent" to="." method="_on_floor_detection_component_player_fell"]

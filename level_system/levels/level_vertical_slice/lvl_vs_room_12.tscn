@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=4 uid="uid://bedi2ume4lvlk"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_gnu8s"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_equxx"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_fwcji"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_yvsvy"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_ayk83"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_yu7b6"]
+[ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="7_eyljb"]
+[ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="8_tcqe7"]
+[ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="9_k2bbm"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="10_p6il5"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="11_qvf13"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="12_xppon"]
+
+[sub_resource type="Curve2D" id="Curve2D_bxvbk"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 270, 0, 0, 0, 0, 0, 160, 0, 0, 0, 0, 110, 160, 0, 0, 0, 0, 110, 270, 0, 0, 0, 0, 0, 270)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_qvf13"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 170, 270, 0, 0, 0, 0, 170, 150, 0, 0, 0, 0, 290, 150, 0, 0, 0, 0, 290, 270, 0, 0, 0, 0, 170, 270)
+}
+point_count = 5
+
+[node name="base_scene" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_gnu8s")]
+metadata/_edit_lock_ = true
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_equxx")]
+tile_map_data = PackedByteArray("AAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAALAAgAAwAFAAUAAAALAAkAAwAFAAUAAAAQAAgAAwAFAAUAAAAQAAkAAwAFAAUAAAABAAoAAwAFAAUAAAACAAoAAwAFAAUAAAADAAoAAwAFAAUAAAAEAAoAAwAFAAUAAAAFAAoAAwAFAAUAAAAGAAoAAwAFAAUAAAAHAAoAAwAFAAUAAAAIAAoAAwAFAAUAAAAJAAoAAwAFAAUAAAAKAAoAAwAFAAUAAAALAAoAAwAFAAUAAAABAA8AAwAFAAUAAAACAA8AAwAFAAUAAAADAA8AAwAFAAUAAAAEAA8AAwAFAAUAAAAFAA8AAwAFAAUAAAAGAA8AAwAFAAUAAAAHAA8AAwAFAAUAAAAIAA8AAwAFAAUAAAAJAA8AAwAFAAUAAAAKAA8AAwAFAAUAAAALAA8AAwAFAAUAAAALABAAAwAFAAUAAAALABEAAwAFAAUAAAALABIAAwAFAAUAAAALABMAAwAFAAUAAAALABQAAwAFAAUAAAALABUAAwAFAAUAAAALABYAAwAFAAUAAAALABcAAwAFAAUAAAALABgAAwAFAAUAAAALABkAAwAFAAUAAAAQAA8AAwAFAAUAAAAQABAAAwAFAAUAAAAQABEAAwAFAAUAAAAQABIAAwAFAAUAAAAQABMAAwAFAAUAAAAQABQAAwAFAAUAAAAQABUAAwAFAAUAAAAQABYAAwAFAAUAAAAQABcAAwAFAAUAAAAQABgAAwAFAAUAAAAQABkAAwAFAAUAAAAQAAoAAwAFAAUAAAAQAAsAAwAFAAUAAAAQAAwAAwAFAAUAAAAQAA0AAwAFAAUAAAAQAA4AAwAFAAUAAAAPABUAAwAFAAUAAAAMABUAAwAFAAUAAAAMAAgAAwAFAAUAAAANAAgAAwAFAAUAAAAOAAgAAwAFAAUAAAAPAAgAAwAFAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_fwcji")
+area_type = 1
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_yvsvy")]
+position = Vector2(40, 128)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_ayk83")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_yu7b6")]
+level_name = "base_scene"
+
+[node name="SimpleDoor" parent="." instance=ExtResource("7_eyljb")]
+position = Vector2(140, 215)
+
+[node name="RoomLever" parent="." instance=ExtResource("8_tcqe7")]
+position = Vector2(140, 100)
+timed = true
+timed_duration = 1.5
+
+[node name="RoomActionCallMethod" type="Node" parent="RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("9_k2bbm")
+targets = {
+NodePath("../../SimpleDoor"): &"do_toggle"
+}
+metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="BetterDeathZone" parent="." instance=ExtResource("10_p6il5")]
+curve = SubResource("Curve2D_bxvbk")
+creation_strategy = 1
+
+[node name="@Area2D@145427" type="Area2D" parent="BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@145426" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@145427"]
+polygon = PackedVector2Array(0, 270, 0, 252.8125, 0, 215, 0, 177.1875, 0, 160, 17.1875, 160, 55, 160, 92.8125, 160, 110, 160, 110, 177.1875, 110, 215, 110, 252.8125, 110, 270, 92.8125, 270, 55, 270, 17.1875, 270, 0, 270)
+
+[node name="@Polygon2D@145428" type="Polygon2D" parent="BetterDeathZone"]
+visible = false
+material = ExtResource("11_qvf13")
+texture = ExtResource("12_xppon")
+polygon = PackedVector2Array(0, 270, 0, 252.8125, 0, 215, 0, 177.1875, 0, 160, 17.1875, 160, 55, 160, 92.8125, 160, 110, 160, 110, 177.1875, 110, 215, 110, 252.8125, 110, 270, 92.8125, 270, 55, 270, 17.1875, 270, 0, 270)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="BetterDeathZone2" parent="." instance=ExtResource("10_p6il5")]
+curve = SubResource("Curve2D_qvf13")
+creation_strategy = 1
+
+[node name="@Area2D@144885" type="Area2D" parent="BetterDeathZone2"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@144884" type="CollisionPolygon2D" parent="BetterDeathZone2/@Area2D@144885"]
+polygon = PackedVector2Array(170, 270, 170, 251.25, 170, 210, 170, 168.75, 170, 150, 188.75, 150, 230, 150, 271.25, 150, 290, 150, 290, 168.75, 290, 210, 290, 251.25, 290, 270, 271.25, 270, 230, 270, 188.75, 270, 170, 270)
+
+[node name="@Polygon2D@144886" type="Polygon2D" parent="BetterDeathZone2"]
+visible = false
+material = ExtResource("11_qvf13")
+texture = ExtResource("12_xppon")
+polygon = PackedVector2Array(170, 270, 170, 251.25, 170, 210, 170, 168.75, 170, 150, 188.75, 150, 230, 150, 271.25, 150, 290, 150, 290, 168.75, 290, 210, 290, 251.25, 290, 270, 271.25, 270, 230, 270, 188.75, 270, 170, 270)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)

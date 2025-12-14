@@ -21,7 +21,8 @@ func dump_blackboard():
 func restart_level():
     var level_node = get_parent().current_level as Node
     if level_node:
-        GlobalSignal.level_change_requested.emit(SaveUtils.scene_path_to_name(level_node.scene_file_path),get_parent().last_transition_direction)
+        var extra_data  = {"direction": get_parent().last_transition_direction}
+        GlobalSignal.level_change_requested.emit(SaveUtils.scene_path_to_name(level_node.scene_file_path),extra_data)
 
 func clear_save():
     var current_save = IndieBlueprintSaveManager.current_saved_game as ASavedGame

@@ -97,4 +97,72 @@ func _on_event_set(
 
 ## Using an event evaluator
 
-TODO
+Event evaluators are nodes, and so they can be instantiated by adding them as childs of other nodes.
+
+There are 2 types of evaluators:
+
+- All true: all conditionals must be true to succeed
+- Any is true: at least 1 conditional must be true to succeed
+
+They contain 2 events:
+
+- evaluator_succeeded(): called when the evaluator succeeds (based on the types explained before)
+- evaluator_failed(): called otherwise
+
+## Using event conditionals
+
+> Note: this section is based on the setup for the [lvl_vs_room_10](../level_system/levels/level_vertical_slice/lvl_vs_room_10.tscn) level.
+
+Event conditionals are also nodes, and must be added as **childs of an event evaluator**.
+
+Condionals evaluate a particular [event](#creating-an-event) and return false or true based on their value.
+
+## Actions
+
+Actions are used to model common situations related to events. For example, a [toggle action](./actions/toggle_action.gd) changes the visibility of a node based on the result of an evaluator.
+
+## Example: Opening a door with a key
+
+Lets say we want to open a door that requires a key. There are a number of interesting events that happen in this case:
+
+- We want to know if we have picked up the necessary key or not
+- We want to know if we used the key to open the door.
+
+![](img/key_and_door.png)
+
+### Setting up the key
+
+First, we add the key. We can use the [Pickable Item](../inventory_system/pickable_item/pickable_item.gd) scene, that already has the setup for the evaluator and the conditional.
+
+![](img/pickable_item.png)
+
+Picking up an item will save a new "pick up" event. This helps us keep track of the items in the world. Pickable items are also setup to be deleted when this event is true.
+
+![](img/pickable_key.png)
+
+### Setting up the door
+
+Doors have a similar setup. We can add the [Key Door](../doors/key_door.gd) scene, which takes an event as a parameter. This event represents that the door has been opened.
+
+![](img/key_door.png)
+
+### Setting up the action
+
+Once we have the door and the key, we want to toggle the transition area depending on wether the door is open or not.
+
+We can add a [toggle action](./actions/toggle_action.gd) node, and set the transition area as the target. Then, we want to set the conditional to evaluate the "door opened" event.
+
+![](img/2025-12-15-11-16-34.png)
+
+![](img/2025-12-15-11-17-17.png)
+
+Now our setup is finished. With it we will:
+
+- Create an event when we pick up a key
+- Create an event when we open a door
+- Toggle a transition area when we open a door
+
+As a bonus, since this door separates levels, we can also add a similar door on the level we are transitioning to, and set its event to `door opened` event we created earlier. This way, that door will also be opened.
+
+![](img/2025-12-15-11-20-53.png)
+

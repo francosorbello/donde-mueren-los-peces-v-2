@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cop710boksnmw"]
+[gd_scene load_steps=15 format=4 uid="uid://cop710boksnmw"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_pr8s3"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_vbpel"]
@@ -15,6 +15,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1g5y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyr6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cw34x"]
 
 [node name="lvl_vs_room_2" type="Node2D"]
 
@@ -89,3 +91,11 @@ direction = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionUpwards"]
 shape = SubResource("RectangleShape2D_iyr6a")
+
+[node name="TransitionRight" parent="." instance=ExtResource("7_e1g5y")]
+position = Vector2(288, 120)
+next_level_id = "lvl_vs_room_11"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
+shape = SubResource("RectangleShape2D_cw34x")

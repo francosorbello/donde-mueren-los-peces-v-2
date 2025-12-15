@@ -134,6 +134,7 @@ func die():
 	global_position = $SafePointManager.last_safe_position
 	player_fell.emit()
 	$HitSound.play()
+	$StateMachine.transition_to("IdleState")
 
 func _on_floor_detection_component_player_fell() -> void:
 	die()

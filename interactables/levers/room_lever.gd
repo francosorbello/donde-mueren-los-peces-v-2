@@ -32,7 +32,6 @@ func _ready() -> void:
             break
 
 func _on_better_interactable_component_on_interact() -> void:
-    prints(activated,timed)
     if timed and activated:
         $Timer.start(timed_duration)
         $ProgressBar2D.start(timed_duration)

@@ -150,3 +150,6 @@ func _on_hitbox_on_hit(_hit_data: HitData) -> void:
 		if _hit_data.extra_data["obstacle_type"] == "spike":
 			die()
 	die()
+
+func toggle_interaction_system(to_value : bool):
+	pass

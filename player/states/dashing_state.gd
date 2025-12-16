@@ -23,11 +23,13 @@ func enter():
 		return
 	
 	player.set_collision_mask_value(9,false)
+	player.toggle_interaction_system(false)
 
 func exit():
 	player.set_collision_mask_value(9,true)
 	bubble.clear_as_dash_target()
 	bubble = null
+	player.toggle_interaction_system(true)
 
 func receive_message(message : Dictionary):
 	if message.has("bubble"):

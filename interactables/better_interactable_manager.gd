@@ -18,6 +18,8 @@ extends Node2D
 var scene_interactables : Array[BetterInteractableComponent]
 var current_interactable : BetterInteractableComponent
 
+var enabled : bool = true
+
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 
@@ -44,6 +46,9 @@ func _ready() -> void:
 
 
 func refresh_interactable():
+	if not enabled:
+		return
+	
 	var new_interactable = null
 	var new_interactable_distance :float = 100000000
 
@@ -65,6 +70,9 @@ func switch_to(interactable : BetterInteractableComponent):
 	current_interactable.hover_interactable()
 
 func use_interactable():
+	if not enabled:
+		return
+
 	if current_interactable:
 		current_interactable.interact()
 
@@ -80,8 +88,13 @@ func _on_refresh_timer_timeout() -> void:
 	refresh_interactable()
 	pass # Replace with function body.
 
-func activate():
+func enable():
+	enabled = true
 	pass
 
-func deactivate():
+func disable():
+	enabled = false
+	if current_interactable:
+		current_interactable.leave_interactable()
+		current_interactable = null
 	pass

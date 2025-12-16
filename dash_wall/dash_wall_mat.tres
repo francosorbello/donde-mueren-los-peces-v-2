@@ -1,9 +1,27 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://n0wfecgx0b3l"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://n0wfecgx0b3l"]
 
 [ext_resource type="Shader" uid="uid://cr7fvfusxpaiw" path="res://dash_wall/dash_wall.gdshader" id="1_rk6bn"]
-[ext_resource type="Texture2D" uid="uid://dpfjt8cry3mi3" path="res://assets/GRAPHICS/other_patterns/tile1.png" id="2_7p8jk"]
+
+[sub_resource type="Gradient" id="Gradient_rk6bn"]
+colors = PackedColorArray(0, 0, 0, 1, 0.14, 0.14, 0.14, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rk6bn"]
+noise_type = 0
+offset = Vector3(40.4, 0, 0)
+cellular_return_type = 4
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_amplitude = 28.9
+domain_warp_frequency = -0.635
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7p8jk"]
+noise = SubResource("FastNoiseLite_rk6bn")
+color_ramp = SubResource("Gradient_rk6bn")
+seamless = true
 
 [resource]
 shader = ExtResource("1_rk6bn")
 shader_parameter/bg_color = Color(1, 1, 1, 1)
-shader_parameter/tex = ExtResource("2_7p8jk")
+shader_parameter/tex = SubResource("NoiseTexture2D_7p8jk")
+shader_parameter/pixelation = 1.0
+shader_parameter/scroll_speed = Vector2(0.013, 0)

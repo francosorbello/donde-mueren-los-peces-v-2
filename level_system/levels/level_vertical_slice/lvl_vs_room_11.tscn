@@ -38,10 +38,11 @@ tile_map_data = PackedByteArray("AAAAAAoAAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAU
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_right") groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_left", "coming_from_right") groups=["level_info"]]
 script = ExtResource("3_xc745")
 level_name = "lvl_vs_room_11"
 area_type = 1
+coming_from_left = NodePath("../ComingFromLeft")
 coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 

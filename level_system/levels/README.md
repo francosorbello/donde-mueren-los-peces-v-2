@@ -65,7 +65,7 @@ First, select the [LevelNameSetter](#levelnamesetter) and click "Set level name 
 
 ![](img/2025-12-15-12-34-16.png)
 
-Then, open the Command Palette with **Ctrl+Shift+a** and search "Add level to database". Executing this command will add the room to [level_data_res.tscn](../../level_system/level_data_res.tres).
+Then, open the Command Palette with **Ctrl+Shift+p** and search "Add level to database". Executing this command will add the room to [level_data_res.tscn](../../level_system/level_data_res.tres).
 
 > Note: rooms are referenced in other parts of the game by their name. Make sure you dont have 2 levels with the same name.
 
@@ -106,7 +106,8 @@ We then move the marker close to the transition area.
 
 ## 6. Running the game
 
-We can see the room ingame by opening the Command Palette with **Ctrl+Shift+a** and executing "Run Current Level".
+We can see the room ingame by opening the Command Palette with **Ctrl+Shift+p** and executing "Run Current Level".
 
 > Running the scene itself is not recommended, as the scene doesnt match the game resolution, and most systems wont be available, which may lead to errors.
 
+> Notice that the player spawns on the position of [PlayerSpawnPoint](#PlayerSpawnPoint)

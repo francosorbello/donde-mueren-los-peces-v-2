@@ -9,6 +9,10 @@ uniform float distortion_speed = 2.0;
 uniform vec2 tile = vec2(5.0, 5.0);
 uniform vec2 offset = vec2(0, 0);
 
+group_uniforms Pixelation;
+uniform bool pixelate = false;
+uniform float pixelation_amount = 32.0;
+
 const float TWOPI = 6.283185307;
 const float SIXPI = 18.84955592;
 
@@ -107,8 +111,8 @@ float waterlayer(vec2 uv)
 vec4 water(vec2 uv, vec3 cdir, float iTime,vec4 bg_color)
 {
     uv *= vec2(0.25);
-	
-	
+
+
 
     // Parallax height distortion with two directional waves at
     // slightly different angles.
@@ -117,7 +121,7 @@ vec4 water(vec2 uv, vec3 cdir, float iTime,vec4 bg_color)
     uv += a * h;
     h = sin(0.841471 * uv.x - 0.540302 * uv.y + iTime);
     uv += a * h;
-    
+
     // Texture distortion
     float d1 = mod(uv.x + uv.y, TWOPI);
     float d2 = mod((uv.x + uv.y + 0.25) * 1.3, SIXPI);
@@ -127,7 +131,7 @@ vec4 water(vec2 uv, vec3 cdir, float iTime,vec4 bg_color)
     	sin(d1) * 0.15 + sin(d2) * 0.05,
     	cos(d1) * 0.15 + cos(d2) * 0.05
     );
-    
+
     vec4 ret = mix(WATER_COL, WATER2_COL, waterlayer(uv + dist.xy));
     return ret;
     //ret = mix(ret, FOAM_COL.rgb, waterlayer(vec2(1.0) - uv - dist.yx));
@@ -140,6 +144,9 @@ void vertex(){
 
 void fragment() {
 	vec2 uv = globalposition / 32.0;
+	if (pixelate){
+		uv = floor(uv/SCREEN_PIXEL_SIZE / pixelation_amount) * SCREEN_PIXEL_SIZE * pixelation_amount;
+	}
 	vec4 bg_color = texture(SCREEN_TEXTURE, SCREEN_UV);
 	COLOR = water(uv * tile + offset, vec3(0,1,0), TIME * distortion_speed,bg_color);
 	//COLOR = vec4(COLOR.a);

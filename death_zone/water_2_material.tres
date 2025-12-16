@@ -10,3 +10,5 @@ shader_parameter/FOAM_COL = Color(0.87451, 0.988235, 1, 1)
 shader_parameter/distortion_speed = 2.0
 shader_parameter/tile = Vector2(5, 5)
 shader_parameter/offset = Vector2(0, 0)
+shader_parameter/pixelate = true
+shader_parameter/pixelation_amount = 32.0

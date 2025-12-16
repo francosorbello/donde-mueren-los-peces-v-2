@@ -65,6 +65,7 @@ end_sample_point = 0.885
 collision_layer = 32
 
 [node name="@CollisionPolygon2D@132183" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@132184"]
+visible = false
 polygon = PackedVector2Array(80, 110, 98.75, 110, 140, 110, 181.25, 110, 195.604, 110, 195.604, 150, 181.25, 150, 140, 150, 98.75, 150, 80, 150)
 
 [node name="@Polygon2D@132185" type="Polygon2D" parent="BetterDeathZone"]

@@ -30,6 +30,8 @@ func spawn_required_children():
 
 func create():
     super()
+    if not polygon_shape:
+        return
     var poly_rect = get_polygon_rect(polygon_shape.polygon)
     prints(poly_rect,poly_rect.get_center())
     particles.position = poly_rect.get_center()

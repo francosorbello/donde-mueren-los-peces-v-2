@@ -117,21 +117,10 @@ texture = ExtResource("11_rry00")
 polygon = PackedVector2Array(95, 10, 112.1875, 10, 150, 10, 187.8125, 10, 205, 10, 205, 60, 242.5, 60, 280, 60, 280, 100, 242.5, 100, 205, 100, 205, 150, 205, 200, 216, 200, 216, 230, 216, 260, 196.3125, 260, 153, 260, 109.6875, 260, 90, 260, 90, 230, 90, 200, 50, 200, 10, 200, 10, 170, 10, 140, 52.5, 140, 95, 140, 95, 100, 52.5, 100, 10, 100, 10, 60, 52.5, 60, 95, 60, 95, 10)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles328" type="CPUParticles2D" parent="BetterDeathZone" instance=ExtResource("12_1k7o1")]
+[node name="DeathZoneParticles328" parent="BetterDeathZone" instance=ExtResource("12_1k7o1")]
 position = Vector2(155.5, 135)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(60.5, 125)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="FakeBridgeStuff" type="Node2D" parent="."]
 position = Vector2(10, 0)

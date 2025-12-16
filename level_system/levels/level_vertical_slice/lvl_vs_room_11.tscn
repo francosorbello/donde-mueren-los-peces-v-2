@@ -15,11 +15,11 @@
 [sub_resource type="Curve2D" id="Curve2D_gjkr4"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 80, 130, 0, 0, 0, 0, 200, 130)
+"points": PackedVector2Array(0, 0, 0, 0, 80, 130, 0, 0, 0, 0, 180, 130)
 }
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_ttqoy"]
+[sub_resource type="Curve" id="Curve_5677q"]
 _limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
 point_count = 2
@@ -62,28 +62,29 @@ default_spawn_pos = NodePath("../PlayerSpawnPoint")
 level_name = "lvl_vs_room_11"
 
 [node name="BetterDeathZone" parent="." instance=ExtResource("7_gjkr4")]
+position = Vector2(10, 0)
 curve = SubResource("Curve2D_gjkr4")
 width = 40.0
-end_sample_point = 0.885
+end_sample_point = 0.99
 
-[node name="@Area2D@291484" type="Area2D" parent="BetterDeathZone"]
+[node name="@Area2D@310888" type="Area2D" parent="BetterDeathZone"]
 collision_layer = 32
 
-[node name="@CollisionPolygon2D@291483" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@291484"]
-polygon = PackedVector2Array(80, 110, 98.75, 110, 140, 110, 181.25, 110, 195.604, 110, 195.604, 150, 181.25, 150, 140, 150, 98.75, 150, 80, 150)
+[node name="@CollisionPolygon2D@310887" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@310888"]
+polygon = PackedVector2Array(80, 110, 130, 110, 179.97021, 110, 179.97021, 150, 130, 150, 80, 150)
 
-[node name="@Polygon2D@291485" type="Polygon2D" parent="BetterDeathZone"]
+[node name="@Polygon2D@310889" type="Polygon2D" parent="BetterDeathZone"]
 material = ExtResource("8_he7na")
 texture = ExtResource("9_ogdsj")
-polygon = PackedVector2Array(80, 110, 98.75, 110, 140, 110, 181.25, 110, 195.604, 110, 195.604, 150, 181.25, 150, 140, 150, 98.75, 150, 80, 150)
+polygon = PackedVector2Array(80, 110, 130, 110, 179.97021, 110, 179.97021, 150, 130, 150, 80, 150)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles764" type="CPUParticles2D" parent="BetterDeathZone" instance=ExtResource("10_ogdsj")]
-position = Vector2(137.802, 130)
+[node name="DeathZoneParticles620" type="CPUParticles2D" parent="BetterDeathZone" instance=ExtResource("10_ogdsj")]
+position = Vector2(129.9851, 130)
 amount = 20
 lifetime = 5.0
 emission_shape = 3
-emission_rect_extents = Vector2(67.802, 30)
+emission_rect_extents = Vector2(59.985107, 30)
 direction = Vector2(-1, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
@@ -91,7 +92,7 @@ initial_velocity_min = 2.0
 initial_velocity_max = 2.0
 angular_velocity_min = 10.0
 angular_velocity_max = 10.0
-scale_amount_curve = SubResource("Curve_ttqoy")
+scale_amount_curve = SubResource("Curve_5677q")
 color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="TransitionLeft" parent="." instance=ExtResource("10_he7na")]

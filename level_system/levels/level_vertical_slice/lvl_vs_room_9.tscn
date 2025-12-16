@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bhj7iquekl53l"]
+[gd_scene load_steps=28 format=4 uid="uid://bhj7iquekl53l"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_8p4er"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_aacog"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="11_pjjtj"]
 [ext_resource type="PackedScene" uid="uid://b0pwgw66kd6fx" path="res://persistancy_system/room_connections/room_actions/ra_call_method_connection_drawer.tscn" id="12_owmdl"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="12_wevan"]
+[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="13_sj3h6"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="16_hh5pt"]
 
 [sub_resource type="Curve2D" id="Curve2D_naub1"]
@@ -31,6 +32,11 @@ bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 150, 60, 0, 0, 0, 0, 150, 180)
 }
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5677q"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_owmdl"]
@@ -135,17 +141,33 @@ curve = SubResource("Curve2D_gqwql")
 width = 60.0
 end_sample_point = 0.99
 
-[node name="@Area2D@249338" type="Area2D" parent="Obstacle2/BetterDeathZone"]
+[node name="@Area2D@305533" type="Area2D" parent="Obstacle2/BetterDeathZone"]
 collision_layer = 32
 
-[node name="@CollisionPolygon2D@249337" type="CollisionPolygon2D" parent="Obstacle2/BetterDeathZone/@Area2D@249338"]
+[node name="@CollisionPolygon2D@305532" type="CollisionPolygon2D" parent="Obstacle2/BetterDeathZone/@Area2D@305533"]
 polygon = PackedVector2Array(180, 60, 180, 78.75, 180, 120, 180, 161.25, 180, 179.96425, 120, 179.96425, 120, 161.25, 120, 120, 120, 78.75, 120, 60)
 
-[node name="@Polygon2D@249339" type="Polygon2D" parent="Obstacle2/BetterDeathZone"]
+[node name="@Polygon2D@305534" type="Polygon2D" parent="Obstacle2/BetterDeathZone"]
 material = ExtResource("11_apqe1")
 texture = ExtResource("12_wevan")
 polygon = PackedVector2Array(180, 60, 180, 78.75, 180, 120, 180, 161.25, 180, 179.96425, 120, 179.96425, 120, 161.25, 120, 120, 120, 78.75, 120, 60)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles597" type="CPUParticles2D" parent="Obstacle2/BetterDeathZone" instance=ExtResource("13_sj3h6")]
+position = Vector2(150, 119.982124)
+amount = 20
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(40, 69.982124)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_5677q")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="Obstacle2_1" type="Node2D" parent="Obstacle2"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://ckj3box3dksk6"]
+[gd_scene load_steps=17 format=4 uid="uid://ckj3box3dksk6"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_7lyux"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_nni0o"]
@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="8_stgye"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_5d3ri"]
 [ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="10_0eo40"]
+[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_6kfqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_we30h"]
 
@@ -23,6 +24,11 @@ bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 140, 50, 0, 0, 0, 0, 140, 90)
 }
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ttqoy"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
 point_count = 2
 
 [node name="lvl_vs_room_3" type="Node2D"]
@@ -91,17 +97,33 @@ default_spawn_pos = NodePath("../PlayerSpawnPoint")
 curve = SubResource("Curve2D_sessd")
 width = 40.0
 
-[node name="@Area2D@93885" type="Area2D" parent="BetterDeathZone"]
+[node name="@Area2D@295698" type="Area2D" parent="BetterDeathZone"]
 collision_layer = 32
 
-[node name="@CollisionPolygon2D@93884" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@93885"]
+[node name="@CollisionPolygon2D@295697" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@295698"]
 polygon = PackedVector2Array(160, 50, 160, 88.88, 120, 88.88, 120, 50)
 
-[node name="@Polygon2D@93886" type="Polygon2D" parent="BetterDeathZone"]
+[node name="@Polygon2D@295699" type="Polygon2D" parent="BetterDeathZone"]
 material = ExtResource("8_stgye")
 texture = ExtResource("9_5d3ri")
 polygon = PackedVector2Array(160, 50, 160, 88.88, 120, 88.88, 120, 50)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles132" type="CPUParticles2D" parent="BetterDeathZone" instance=ExtResource("10_6kfqk")]
+position = Vector2(140, 69.44)
+amount = 20
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(30, 29.439999)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_ttqoy")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="LevelNameSetter" parent="." instance=ExtResource("10_0eo40")]
 level_name = "lvl_vs_room_3"

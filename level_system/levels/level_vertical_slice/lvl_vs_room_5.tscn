@@ -53,15 +53,17 @@ tile_map_data = PackedByteArray("AAANABcAAwAZAAoAAAANABgAAwAZAAoAAAANABkAAwAZAAk
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up", "coming_from_right") groups=["level_info"]]
 script = ExtResource("3_d5auk")
 level_name = "lvl_vs_room_5"
 id = "9cd7c1bf-a98d-4272-b4c4-0569de3aa1fd"
 area_type = 1
+coming_from_up = NodePath("../ComingFromUp")
+coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
-position = Vector2(140, 252)
+position = Vector2(140, 247)
 
 [node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(20, 120)
@@ -167,27 +169,6 @@ metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
 
 [node name="SimpleDoor2" parent="Obstacle3" instance=ExtResource("9_6pbw0")]
 position = Vector2(250, 45)
-
-[node name="Obstacle4" type="Node2D" parent="."]
-
-[node name="RoomLever3" parent="Obstacle4" instance=ExtResource("7_feiu4")]
-position = Vector2(20, 100)
-timed = true
-timed_duration = 8.0
-
-[node name="ToggleDoor" type="Node" parent="Obstacle4/RoomLever3" node_paths=PackedStringArray("targets")]
-script = ExtResource("13_atx3j")
-targets = {
-NodePath("../../SimpleDoor"): &"do_toggle"
-}
-
-[node name="ToggleTransitionArea" type="Node" parent="Obstacle4/RoomLever3" node_paths=PackedStringArray("target")]
-script = ExtResource("8_1hrm0")
-target = NodePath("../../../TransitionLeft")
-
-[node name="SimpleDoor" parent="Obstacle4" instance=ExtResource("9_6pbw0")]
-position = Vector2(5, 120)
-door_type = 1
 
 [node name="TransitionDownards" parent="." instance=ExtResource("15_80kag")]
 position = Vector2(140, 270)

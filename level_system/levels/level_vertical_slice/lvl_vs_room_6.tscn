@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bkruqb0x0bl6e"]
+[gd_scene load_steps=22 format=4 uid="uid://bkruqb0x0bl6e"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_oxulv"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_53nsh"]
@@ -36,6 +36,8 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5677q"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_un8k8"]
+
 [node name="lvl_vs_room_6" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_oxulv")]
@@ -58,7 +60,7 @@ metadata/_custom_type_script = "uid://crtby7posuy18"
 position = Vector2(140, 20)
 
 [node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
-position = Vector2(270, 70)
+position = Vector2(268, 70)
 
 [node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(20, 240)
@@ -178,10 +180,6 @@ NodePath("../../SimpleDoor2"): &"do_toggle"
 [node name="RaCallMethodConnectionDrawer" parent="Obstacle3/RoomLever3" node_paths=PackedStringArray("call_method_node") instance=ExtResource("14_8tcsp")]
 call_method_node = NodePath("../ToggleDoor")
 
-[node name="SimpleDoor" parent="." instance=ExtResource("8_at4sj")]
-position = Vector2(285, 70)
-door_type = 1
-
 [node name="TransitionUpwards" parent="." instance=ExtResource("14_mj0l5")]
 position = Vector2(140, 0)
 next_level_id = "lvl_vs_room_8"
@@ -206,3 +204,11 @@ direction = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft2"]
 shape = SubResource("RectangleShape2D_5677q")
+
+[node name="LevelTransitionArea" parent="." instance=ExtResource("14_mj0l5")]
+next_level_id = "lvl_vs_room_5"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
+position = Vector2(290, 70)
+shape = SubResource("RectangleShape2D_un8k8")

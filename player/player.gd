@@ -150,7 +150,7 @@ func _on_hitbox_on_hit(_hit_data: HitData) -> void:
 		var obstacle_type = _hit_data.extra_data["obstacle_type"]
 		match obstacle_type:
 			"dash_laser":
-				if $StateMachine.current_state.name == "QuickDashingState":
+				if is_dashing():
 					return
 	die()
 
@@ -159,3 +159,6 @@ func toggle_interaction_system(to_value : bool):
 		$BetterInteractableManager.enable()
 	else:
 		$BetterInteractableManager.disable()
+
+func is_dashing() -> bool:
+	return $StateMachine.current_state.name == "QuickDashingState"

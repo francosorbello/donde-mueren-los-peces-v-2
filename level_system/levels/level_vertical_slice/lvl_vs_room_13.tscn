@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bxl3bdn6gbtj7"]
+[gd_scene load_steps=9 format=4 uid="uid://bxl3bdn6gbtj7"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_eqpkf"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_aadv5"]
@@ -7,16 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_odfdi"]
 [ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_bwjwc"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="7_bp2uh"]
-[ext_resource type="PackedScene" uid="uid://bvyk8wnkh1xb0" path="res://laser/dash_laser.tscn" id="8_1qtxy"]
-[ext_resource type="PackedScene" uid="uid://blukarxueuvdx" path="res://railways/railway.tscn" id="9_wj0c6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qtxy"]
-
-[sub_resource type="Curve2D" id="Curve2D_fp4ap"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 90, 0, 0, 0, 0, 60, 90, 0, 0, 0, 0, 60, 150)
-}
-point_count = 4
 
 [node name="lvl_vs_room_13" type="Node2D"]
 
@@ -55,18 +47,3 @@ direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
 shape = SubResource("RectangleShape2D_1qtxy")
-
-[node name="DashLaser" parent="." instance=ExtResource("8_1qtxy")]
-position = Vector2(200, 80)
-end_point = 40.0
-width = 10.0
-
-[node name="DashLaser2" parent="." instance=ExtResource("8_1qtxy")]
-position = Vector2(210, 110)
-direction = 1
-end_point = 40.0
-width = 10.0
-
-[node name="Railway" parent="." instance=ExtResource("9_wj0c6")]
-position = Vector2(50, 50)
-curve = SubResource("Curve2D_fp4ap")

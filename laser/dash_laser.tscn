@@ -44,3 +44,9 @@ initial_velocity_max = 1.0
 angular_velocity_min = 10.0
 angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_uuowf")
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]

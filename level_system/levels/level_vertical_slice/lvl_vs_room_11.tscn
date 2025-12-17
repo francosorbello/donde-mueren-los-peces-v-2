@@ -80,21 +80,10 @@ texture = ExtResource("9_ogdsj")
 polygon = PackedVector2Array(80, 110, 130, 110, 179.97021, 110, 179.97021, 150, 130, 150, 80, 150)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles620" type="CPUParticles2D" parent="BetterDeathZone" instance=ExtResource("10_ogdsj")]
+[node name="DeathZoneParticles620" parent="BetterDeathZone" instance=ExtResource("10_ogdsj")]
 position = Vector2(129.9851, 130)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(59.985107, 30)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_5677q")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="TransitionLeft" parent="." instance=ExtResource("10_he7na")]
 position = Vector2(0, 130)

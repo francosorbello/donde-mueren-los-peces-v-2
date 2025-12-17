@@ -56,6 +56,10 @@ func setup():
 		size = Vector2(width, abs(end_point))
 	
 	hurtbox_shape.size = size
+	if direction == LaserDirection.HORIZONTAL:
+		hurtbox_shape.size.y -= 5
+	else:
+		hurtbox_shape.size.x -= 5
 	$Hurtbox/CollisionShape2D.shape = hurtbox_shape
 	$Hurtbox/CollisionShape2D.position = _get_end_point() / 2 + (_get_start_point() / 2)
 

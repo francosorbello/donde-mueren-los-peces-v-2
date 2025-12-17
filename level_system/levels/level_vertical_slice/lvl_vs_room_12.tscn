@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bedi2ume4lvlk"]
+[gd_scene load_steps=18 format=4 uid="uid://bedi2ume4lvlk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_gnu8s"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_equxx"]
@@ -30,6 +30,8 @@ point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xppon"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxvbk"]
+
 [node name="lvl_vs_room_12" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_gnu8s")]
@@ -40,15 +42,19 @@ tile_map_data = PackedByteArray("AAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAA4AAwAFAAU
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_right") groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up", "coming_from_right") groups=["level_info"]]
 script = ExtResource("3_fwcji")
 level_name = "lvl_vs_room_12"
 area_type = 1
+coming_from_up = NodePath("../ComingUpwards")
 coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(20, 130)
+
+[node name="ComingUpwards" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(140, 240)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_yvsvy")]
 position = Vector2(40, 128)
@@ -116,3 +122,10 @@ direction = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft"]
 shape = SubResource("RectangleShape2D_xppon")
+
+[node name="TransitionDown" parent="." instance=ExtResource("13_xppon")]
+position = Vector2(140, 270)
+next_level_id = "lvl_vs_room_13"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDown"]
+shape = SubResource("RectangleShape2D_bxvbk")

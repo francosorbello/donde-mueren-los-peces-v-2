@@ -11,12 +11,14 @@ point_count = 2
 
 [node name="DashLaser" type="Node2D"]
 script = ExtResource("1_856ou")
+end_point = 40.0
+width = 10.0
+override_color = null
 
 [node name="Line2D" type="Line2D" parent="."]
-z_index = -1
+show_behind_parent = true
 texture_repeat = 2
-points = PackedVector2Array(0, 5, 0, 5)
-width = 1.0
+points = PackedVector2Array(0, 5, 40, 5)
 default_color = Color(1, 1, 0.089999974, 1)
 texture = ExtResource("2_b3k17")
 texture_mode = 1

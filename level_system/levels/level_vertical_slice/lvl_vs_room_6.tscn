@@ -178,21 +178,10 @@ texture = ExtResource("12_mj0l5")
 polygon = PackedVector2Array(10, 0, 50, 0, 89.97376, 1.9073486e-06, 89.97857, 60, 50, 60, 10, 60)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles96" type="CPUParticles2D" parent="Obstacle3/BetterDeathZone" instance=ExtResource("9_5677q")]
+[node name="DeathZoneParticles96" parent="Obstacle3/BetterDeathZone" instance=ExtResource("9_5677q")]
 position = Vector2(49.989285, 30)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(49.989285, 40)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_5677q")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="PlatformSmall2" parent="Obstacle3" instance=ExtResource("9_jqf20")]
 visible = false
@@ -201,7 +190,7 @@ position = Vector2(50, 40)
 [node name="RoomLever3" parent="Obstacle3" instance=ExtResource("7_qjw5l")]
 position = Vector2(80, 100)
 timed = true
-timed_duration = 2.4
+timed_duration = 4.0
 
 [node name="ToggleDoor" type="Node" parent="Obstacle3/RoomLever3" node_paths=PackedStringArray("targets")]
 script = ExtResource("13_s4j4l")

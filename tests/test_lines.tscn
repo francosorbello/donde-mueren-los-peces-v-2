@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf5lbbdb5j3y4"]
+
+[ext_resource type="Texture2D" uid="uid://kr1gusdnrofl" path="res://assets/GRAPHICS/other_patterns/dotted_line_2.png" id="1_28q85"]
+
+[node name="Node2D" type="Node2D"]
+texture_repeat = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(20, 40, 20.000008, 91.51023, 20, 150)
+texture = ExtResource("1_28q85")
+texture_mode = 2

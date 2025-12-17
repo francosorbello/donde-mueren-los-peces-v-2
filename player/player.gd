@@ -147,8 +147,11 @@ func _on_ui_closed():
 
 func _on_hitbox_on_hit(_hit_data: HitData) -> void:
 	if _hit_data.extra_data.has("obstacle_type"):
-		if _hit_data.extra_data["obstacle_type"] == "spike":
-			die()
+		var obstacle_type = _hit_data.extra_data["obstacle_type"]
+		match obstacle_type:
+			"dash_laser":
+				if $StateMachine.current_state.name == "QuickDashingState":
+					return
 	die()
 
 func toggle_interaction_system(to_value : bool):

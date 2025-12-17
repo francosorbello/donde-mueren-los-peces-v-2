@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvyk8wnkh1xb0"]
+
+[ext_resource type="Script" uid="uid://dllp6w3587dov" path="res://laser/dash_laser.gd" id="1_856ou"]
+[ext_resource type="Texture2D" uid="uid://kr1gusdnrofl" path="res://assets/GRAPHICS/other_patterns/dotted_line_2.png" id="2_b3k17"]
+[ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="2_uuowf"]
+
+[sub_resource type="Curve" id="Curve_uuowf"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1.0818386), 0.0, -1.0818386, 0, 1, Vector2(0.99999994, 0), -1.0818386, 0.0, 1, 0]
+point_count = 2
+
+[node name="DashLaser" type="Node2D"]
+script = ExtResource("1_856ou")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = -1
+texture_repeat = 2
+points = PackedVector2Array(0, 5, 0, 5)
+width = 1.0
+default_color = Color(1, 1, 0.089999974, 1)
+texture = ExtResource("2_b3k17")
+texture_mode = 1
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_uuowf")]
+collision_layer = 128
+collision_mask = 128
+extra_data = Dictionary[String, Variant]({
+"obstacle_type": "dash_laser"
+})
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+
+[node name="BoxParticles" type="CPUParticles2D" parent="."]
+position = Vector2(25, 0)
+emitting = false
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(25, 5)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_uuowf")

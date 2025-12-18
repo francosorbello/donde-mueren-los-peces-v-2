@@ -148,14 +148,17 @@ func _on_player_detection_area_body_exited(body: Node2D) -> void:
 	if body is APlayer:
 		_player = null
 		if not _player_died:
-			$AudioStreamPlayer2D.stream = used_sound
-			$AudioStreamPlayer2D.play()
 
 			use_actions.call_deferred()
-
+			play_used_sound()
 			if timed:
 				_start_timer()
 	pass # Replace with function body.
+
+func play_used_sound():
+	$AudioStreamPlayer2D.stream = used_sound
+	if not timed or $Timer.is_stopped():
+		$AudioStreamPlayer2D.play()
 
 func _start_timer():
 	if $Timer.time_left > 0:
@@ -178,6 +181,7 @@ func _handle_player_death():
 func _on_timer_timeout() -> void:
 	_actions_disabled = false
 	$Line2D.default_color = override_color
+
 	$AudioStreamPlayer2D.stream = available_sound
 	$AudioStreamPlayer2D.play()
 	use_actions()

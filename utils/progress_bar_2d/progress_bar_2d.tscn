@@ -6,8 +6,6 @@
 z_index = 5
 script = ExtResource("1_8vs75")
 width = 2.5
-height = null
-bg_color = null
 color_overrides = Dictionary[float, Color]({
 0.7: Color(1, 1, 0, 1),
 0.9: Color(1, 0, 0, 1)

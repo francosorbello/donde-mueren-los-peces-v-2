@@ -43,8 +43,6 @@ level_name = "base_scene"
 [node name="DashLaser" parent="Obstacle1" instance=ExtResource("10_rlx34")]
 position = Vector2(140, 38)
 direction = 1
-one_way_collision = null
-override_color = Color(0, 1, 0, 1)
 
 [node name="RoomActionCallMethod" type="Node" parent="Obstacle1/DashLaser" node_paths=PackedStringArray("targets")]
 script = ExtResource("9_rlx34")
@@ -78,8 +76,6 @@ metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
 [node name="DashLaser" parent="Obstacle2" instance=ExtResource("10_rlx34")]
 position = Vector2(140, 40)
 direction = 1
-one_way_collision = null
-override_color = Color(0, 1, 0, 1)
 
 [node name="RoomActionCallMethod" type="Node" parent="Obstacle2/DashLaser" node_paths=PackedStringArray("targets")]
 script = ExtResource("9_rlx34")
@@ -98,8 +94,6 @@ door_type = 1
 [node name="DashLaser" parent="." instance=ExtResource("10_rlx34")]
 position = Vector2(120, 140)
 direction = 1
-one_way_collision = null
-override_color = Color(0, 1, 0, 1)
 
 [node name="RoomActionCallMethod" type="Node" parent="DashLaser" node_paths=PackedStringArray("targets")]
 script = ExtResource("9_rlx34")
@@ -111,5 +105,3 @@ metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
 [node name="DashLaser2" parent="." instance=ExtResource("10_rlx34")]
 position = Vector2(185, 140)
 direction = 1
-one_way_collision = null
-override_color = Color(0, 1, 0, 1)

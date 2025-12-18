@@ -52,3 +52,4 @@ scale_amount_curve = SubResource("Curve_uuowf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]

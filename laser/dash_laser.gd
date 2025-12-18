@@ -26,6 +26,7 @@ enum LaserDirection {
 @export var override_color : Color = Color.GREEN
 
 var _room_actions : Array[RoomAction]
+var _player : APlayer
 
 func _ready():
 	if Engine.is_editor_hint():
@@ -72,7 +73,9 @@ func setup():
 	$BoxParticles.emission_rect_extents = size / 2
 	$BoxParticles.emitting = true
 
-
+func use_actions():
+	for child in _room_actions:
+		child.use()
 	
 func _get_start_point() -> Vector2:
 	if direction == LaserDirection.HORIZONTAL:
@@ -101,8 +104,16 @@ func _draw() -> void:
 
 func _on_player_detection_area_body_entered(body: Node2D) -> void:
 	if body is APlayer and body.is_dashing():
+		_player = body
 		use_actions.call_deferred()
 		
-func use_actions():
-	for child in _room_actions:
-		child.use()
+
+func _on_player_detection_area_body_exited(body: Node2D) -> void:
+	if body is APlayer:
+		_player = null
+	pass # Replace with function body.
+
+func _process(_delta):
+	if _player and not _player.is_dashing():
+		_player.die()
+		

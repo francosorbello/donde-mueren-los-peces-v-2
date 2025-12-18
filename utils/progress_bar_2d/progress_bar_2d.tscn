@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckaagxg0nqd5a"]
+[gd_scene load_steps=3 format=3 uid="uid://ckaagxg0nqd5a"]
 
 [ext_resource type="Script" uid="uid://bulaxrum34015" path="res://utils/progress_bar_2d/progress_bar_2d.gd" id="1_8vs75"]
+[ext_resource type="PackedScene" uid="uid://cr0ef03sddv3m" path="res://utils/progress_bar_2d/tick_tock_audio_2d.tscn" id="2_gegrf"]
 
 [node name="ProgressBar2D" type="Node2D"]
 z_index = 5
 script = ExtResource("1_8vs75")
+use_sound = null
 width = 2.5
 color_overrides = Dictionary[float, Color]({
 0.7: Color(1, 1, 0, 1),
 0.9: Color(1, 0, 0, 1)
 })
+
+[node name="TickTockAudio2D" parent="." instance=ExtResource("2_gegrf")]

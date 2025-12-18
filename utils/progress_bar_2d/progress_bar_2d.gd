@@ -7,6 +7,7 @@ enum BarType {
 }
 
 @export var bar_type : BarType = BarType.CIRCLE
+@export var use_sound : bool = true
 
 @export_range(0,1,0.01) var progress_percent : float = 0:
     set(value):
@@ -53,6 +54,8 @@ func start(time : float):
     duration = time
     _acc_time = 0
     running = true
+    if use_sound:
+        $TickTockAudio2D.start(time)
 
 func _process(delta):
     if not running:

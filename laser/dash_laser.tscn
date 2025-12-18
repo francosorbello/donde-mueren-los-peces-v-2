@@ -60,10 +60,9 @@ scale_amount_curve = SubResource("Curve_uuowf")
 one_shot = true
 
 [node name="ProgressBar2D" parent="." instance=ExtResource("4_7ddah")]
+use_sound = true
 radius = 5.0
 width = 3.0
-height = 10.0
-bg_color = Color(1, 1, 1, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"

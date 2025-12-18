@@ -138,6 +138,9 @@ func die():
 	await get_tree().create_timer(0.25).timeout
 	$StateMachine.transition_to("IdleState")
 
+func get_last_safe_position() -> Vector2:
+	return $SafePointManager.last_safe_position
+
 func _on_floor_detection_component_player_fell() -> void:
 	die()
 

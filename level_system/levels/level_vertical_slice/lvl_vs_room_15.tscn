@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=4 uid="uid://uw5jyfvd3h65"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_1houp"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_w0e2d"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_1ykt0"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_p1r72"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_rlx34"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_vmkkj"]
+[ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="7_w0e2d"]
+[ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="8_p1r72"]
+[ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="9_rlx34"]
+[ext_resource type="PackedScene" uid="uid://bvyk8wnkh1xb0" path="res://laser/dash_laser.tscn" id="10_rlx34"]
+
+[node name="base_scene" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_1houp")]
+metadata/_edit_lock_ = true
+
+[node name="Layout" parent="." instance=ExtResource("2_w0e2d")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABMAAwAFAAUAAAAAABQAAwAFAAUAAAAAABUAAwAFAAUAAAAAABYAAwAFAAUAAAAAABcAAwAFAAUAAAAAABgAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAANABoAAwAFAAUAAAAOABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAcAAwAFAAUAAAAcAAYAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAcAAIAAwAFAAUAAAAcAAEAAwAFAAUAAAAcAAAAAwAFAAUAAAAbAAAAAwAFAAUAAAAaAAAAAwAFAAUAAAAZAAAAAwAFAAUAAAAYAAAAAwAFAAUAAAAXAAAAAwAFAAUAAAAWAAAAAwAFAAUAAAAIAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAADAAAAAwAFAAUAAAACAAAAAwAFAAUAAAABAAAAAwAFAAUAAAAJAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAANAAAAAwAFAAUAAAAOAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAARAAAAAwAFAAUAAAASAAAAAwAFAAUAAAATAAAAAwAFAAUAAAAUAAAAAwAFAAUAAAAVAAAAAwAFAAUAAAAHAAEAAwAFAAUAAAAHAAIAAwAFAAUAAAAHAAMAAwAFAAUAAAAIAAMAAwAFAAUAAAAJAAMAAwAFAAUAAAAKAAMAAwAFAAUAAAALAAMAAwAFAAUAAAAMAAMAAwAFAAUAAAANAAMAAwAFAAUAAAAOAAMAAwAFAAUAAAAPAAMAAwAFAAUAAAAQAAMAAwAFAAUAAAAUAAMAAwAFAAUAAAAVAAMAAwAFAAUAAAAWAAMAAwAFAAUAAAAAAAcAAwAFAAUAAAABAAgAAwAFAAUAAAACAAgAAwAFAAUAAAADAAgAAwAFAAUAAAAEAAgAAwAFAAUAAAAFAAgAAwAFAAUAAAAGAAgAAwAFAAUAAAAHAAgAAwAFAAUAAAAIAAgAAwAFAAUAAAAJAAgAAwAFAAUAAAAKAAgAAwAFAAUAAAALAAgAAwAFAAUAAAAMAAgAAwAFAAUAAAANAAgAAwAFAAUAAAAOAAgAAwAFAAUAAAAPAAgAAwAFAAUAAAAQAAgAAwAFAAUAAAARAAgAAwAFAAUAAAASAAgAAwAFAAUAAAATAAgAAwAFAAUAAAAUAAgAAwAFAAUAAAAVAAgAAwAFAAUAAAAWAAgAAwAFAAUAAAAWAAcAAwAFAAUAAAAWAAQAAwAFAAUAAAAWAA0AAwAFAAUAAAAVAA0AAwAFAAUAAAAUAA0AAwAFAAUAAAATAA0AAwAFAAUAAAASAA0AAwAFAAUAAAARAA0AAwAFAAUAAAAQAA0AAwAFAAUAAAAPAA0AAwAFAAUAAAAOAA0AAwAFAAUAAAANAA0AAwAFAAUAAAAMAA0AAwAFAAUAAAALAA0AAwAFAAUAAAAKAA0AAwAFAAUAAAAXAA0AAwAFAAUAAAAYAA0AAwAFAAUAAAAZAA0AAwAFAAUAAAAaAA0AAwAFAAUAAAAbAA0AAwAFAAUAAAAKAAkAAwAFAAUAAAAKAAwAAwAFAAUAAAAIAA0AAwARAAEAAAAHAA0AAwARAAEAAAAJAA0AAwASAAEAAAAGAA0AAwAQAAEAAAAGABIAAwAFAAUAAAAHABIAAwAFAAUAAAAIABIAAwAFAAUAAAAJABIAAwAFAAUAAAAKABIAAwAFAAUAAAALABIAAwAFAAUAAAAMABIAAwAFAAUAAAANABIAAwAFAAUAAAAOABIAAwAFAAUAAAAPABIAAwAFAAUAAAAQABIAAwAFAAUAAAARABIAAwAFAAUAAAASABIAAwAFAAUAAAATABIAAwAFAAUAAAAUABIAAwAFAAUAAAAVABIAAwAFAAUAAAAWABIAAwAFAAUAAAAFABIAAwAFAAUAAAAEABIAAwAFAAUAAAADABIAAwAFAAUAAAACABIAAwAFAAUAAAABABIAAwAFAAUAAAAcABEAAwAFAAUAAAAWAA4AAwAFAAUAAAAWABEAAwAFAAUAAAATAAMAAwAFAAUAAAAQAAIAAwAFAAUAAAAQAAEAAwAFAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_1ykt0")
+area_type = 1
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_p1r72")]
+position = Vector2(20, 30)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_rlx34")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_vmkkj")]
+level_name = "base_scene"
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="DashLaser" parent="Obstacle1" instance=ExtResource("10_rlx34")]
+position = Vector2(140, 38)
+direction = 1
+one_way_collision = null
+override_color = Color(0, 1, 0, 1)
+
+[node name="RoomActionCallMethod" type="Node" parent="Obstacle1/DashLaser" node_paths=PackedStringArray("targets")]
+script = ExtResource("9_rlx34")
+targets = {
+NodePath("../../SimpleDoor"): &"do_toggle"
+}
+metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="SimpleDoor" parent="Obstacle1" instance=ExtResource("7_w0e2d")]
+position = Vector2(225, 60)
+door_type = 1
+start_closed = false
+
+[node name="Obstacle2" type="Node2D" parent="."]
+position = Vector2(0, 50)
+
+[node name="SimpleDoor" parent="Obstacle2" instance=ExtResource("7_w0e2d")]
+position = Vector2(105, 60)
+door_type = 1
+
+[node name="RoomLever" parent="Obstacle2" instance=ExtResource("8_p1r72")]
+position = Vector2(210, 70)
+
+[node name="RoomActionCallMethod" type="Node" parent="Obstacle2/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("9_rlx34")
+targets = {
+NodePath("../../SimpleDoor"): &"do_toggle"
+}
+metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="DashLaser" parent="Obstacle2" instance=ExtResource("10_rlx34")]
+position = Vector2(140, 40)
+direction = 1
+one_way_collision = null
+override_color = Color(0, 1, 0, 1)
+
+[node name="RoomActionCallMethod" type="Node" parent="Obstacle2/DashLaser" node_paths=PackedStringArray("targets")]
+script = ExtResource("9_rlx34")
+targets = {
+NodePath("../../RoomLever"): &"toggle_activated",
+NodePath("../../SimpleDoor"): &"do_toggle"
+}
+metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="Obstacle3" type="Node2D" parent="."]
+
+[node name="SimpleDoor" parent="Obstacle3" instance=ExtResource("7_w0e2d")]
+position = Vector2(225, 160)
+door_type = 1
+
+[node name="DashLaser" parent="." instance=ExtResource("10_rlx34")]
+position = Vector2(120, 140)
+direction = 1
+one_way_collision = null
+override_color = Color(0, 1, 0, 1)
+
+[node name="RoomActionCallMethod" type="Node" parent="DashLaser" node_paths=PackedStringArray("targets")]
+script = ExtResource("9_rlx34")
+targets = {
+NodePath("../../Obstacle3/SimpleDoor"): &"do_toggle"
+}
+metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="DashLaser2" parent="." instance=ExtResource("10_rlx34")]
+position = Vector2(185, 140)
+direction = 1
+one_way_collision = null
+override_color = Color(0, 1, 0, 1)

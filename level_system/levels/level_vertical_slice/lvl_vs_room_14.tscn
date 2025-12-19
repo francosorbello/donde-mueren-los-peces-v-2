@@ -91,12 +91,10 @@ metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
 [node name="DashLaser" parent="Obstacle1" instance=ExtResource("10_iixn3")]
 position = Vector2(210, 160)
 end_point = 60.0
-override_color = Color(0, 1, 0, 1)
 
 [node name="DashLaser2" parent="Obstacle1" instance=ExtResource("10_iixn3")]
 position = Vector2(210, 80)
 end_point = 60.0
-override_color = Color(0, 1, 0, 1)
 
 [node name="Obstacle2" type="Node2D" parent="."]
 
@@ -118,21 +116,10 @@ texture = ExtResource("13_h1uwr")
 polygon = PackedVector2Array(195, 70, 195, 95, 195, 120.625, 195, 150, 195, 179.375, 195, 205, 195, 229.95232, 145, 229.95232, 145, 205, 145, 179.375, 145, 150, 145, 120.625, 145, 95, 145, 70)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles647" type="CPUParticles2D" parent="Obstacle2/BetterDeathZone" instance=ExtResource("14_mmf1e")]
+[node name="DeathZoneParticles647" parent="Obstacle2/BetterDeathZone" instance=ExtResource("14_mmf1e")]
 position = Vector2(170, 149.97617)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(35, 89.97616)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="PlatformSmall" parent="Obstacle2" instance=ExtResource("15_ilhsy")]
 position = Vector2(175, 100)
@@ -143,7 +130,6 @@ position = Vector2(175, 190)
 [node name="DashLaser" parent="Obstacle2" instance=ExtResource("10_iixn3")]
 position = Vector2(150, 140)
 end_point = 50.0
-override_color = Color(0, 1, 0, 1)
 
 [node name="Obstacle3" type="Node2D" parent="."]
 
@@ -165,21 +151,10 @@ texture = ExtResource("13_h1uwr")
 polygon = PackedVector2Array(135, 60, 135, 85, 135, 110.625, 135, 140, 135, 169.375, 135, 195, 135, 219.95233, 85, 219.95233, 85, 195, 85, 169.375, 85, 140, 85, 110.625, 85, 85, 85, 60)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles979" type="CPUParticles2D" parent="Obstacle3/BetterDeathZone" instance=ExtResource("14_mmf1e")]
+[node name="DeathZoneParticles979" parent="Obstacle3/BetterDeathZone" instance=ExtResource("14_mmf1e")]
 position = Vector2(110, 139.97617)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(35, 89.976166)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="PlatformSmall" parent="Obstacle3" instance=ExtResource("15_ilhsy")]
 position = Vector2(115, 190)
@@ -198,7 +173,6 @@ bounce_on_end = true
 [node name="DashLaser" parent="Obstacle3/Path2D/PathFollower" instance=ExtResource("10_iixn3")]
 direction = 1
 end_point = 50.0
-override_color = Color(0, 1, 0, 1)
 
 [node name="Obstacle4" type="Node2D" parent="."]
 position = Vector2(-60, 0)
@@ -245,7 +219,6 @@ bounce_on_end = true
 [node name="DashLaser" parent="Obstacle4/Path2D/PathFollower" instance=ExtResource("10_iixn3")]
 direction = 1
 end_point = 50.0
-override_color = Color(0, 1, 0, 1)
 
 [node name="RoomLever" parent="Obstacle4" instance=ExtResource("8_xv4ut")]
 position = Vector2(80, 40)

@@ -28,9 +28,9 @@ enum LaserDirection {
 @export var override_color : Color = Color.GREEN
 
 @export_category("Timed")
-@export var timed : bool = false
 @export var timed_duration : float = 5.0
 @export var timed_color_override : Color = Color.GRAY
+var timed : bool = false
 
 @export_category("Sound")
 @export var used_sound : AudioStream
@@ -160,7 +160,7 @@ func _on_player_detection_area_body_exited(body: Node2D) -> void:
 
 func play_used_sound():
 	$AudioStreamPlayer2D.stream = used_sound
-	if not timed or $Timer.is_stopped():
+	if timed and $Timer.is_stopped():
 		$AudioStreamPlayer2D.play()
 
 func _start_timer():

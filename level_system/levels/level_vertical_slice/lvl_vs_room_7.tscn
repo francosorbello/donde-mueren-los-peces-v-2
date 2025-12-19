@@ -53,21 +53,10 @@ texture = ExtResource("3_1wq5p")
 polygon = PackedVector2Array(110, 50, 140, 50, 170, 50, 170, 70, 210, 70, 210, 110, 170, 110, 170, 130, 140, 130, 110, 130, 110, 110, 70, 110, 70, 70, 110, 70, 110, 50)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles248" type="CPUParticles2D" parent="BetterDeathZone2" instance=ExtResource("4_x11wa")]
+[node name="DeathZoneParticles248" parent="BetterDeathZone2" instance=ExtResource("4_x11wa")]
 position = Vector2(140, 90)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(70.365, 42.265)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_5677q")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_t60ch")]
 
@@ -83,7 +72,6 @@ tile_map_data = PackedByteArray("AAAVAAgAAwAZAAkAAAAVAAkAAwAZAAkAAAAWAAgAAwAZAAo
 script = ExtResource("3_1b1s0")
 level_name = "lvl_vs_room_7"
 id = "e6484e54-ebe7-41a1-8ff2-4565d570e56d"
-area_type = 1
 coming_from_left = NodePath("../ComingFromLeft")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 

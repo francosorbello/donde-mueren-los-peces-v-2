@@ -61,7 +61,6 @@ offset_bottom = 270.0
 script = ExtResource("3_trood")
 level_name = "lvl_vs_room_6"
 id = "5186fe74-5a00-4dec-bf94-76a60c69fcb7"
-area_type = 1
 coming_from_down = NodePath("../ComingDownards")
 coming_from_left = NodePath("../ComingFromLeft")
 coming_from_right = NodePath("../ComingFromRight")

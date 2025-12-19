@@ -82,7 +82,6 @@ tile_map_data = PackedByteArray("AAABAAsAAwAZAAkAAAABAAwAAwAZAAkAAAACAAsAAwAZAAk
 [node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_left", "coming_from_right") groups=["level_info"]]
 script = ExtResource("3_mkmb8")
 level_name = "lvl_vs_room_9"
-area_type = 1
 coming_from_left = NodePath("../ComingFromLeft")
 coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
@@ -153,21 +152,10 @@ texture = ExtResource("12_wevan")
 polygon = PackedVector2Array(180, 60, 180, 78.75, 180, 120, 180, 161.25, 180, 179.96425, 120, 179.96425, 120, 161.25, 120, 120, 120, 78.75, 120, 60)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles597" type="CPUParticles2D" parent="Obstacle2/BetterDeathZone" instance=ExtResource("13_sj3h6")]
+[node name="DeathZoneParticles597" parent="Obstacle2/BetterDeathZone" instance=ExtResource("13_sj3h6")]
 position = Vector2(150, 119.982124)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(40, 69.982124)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_5677q")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="Obstacle2_1" type="Node2D" parent="Obstacle2"]
 

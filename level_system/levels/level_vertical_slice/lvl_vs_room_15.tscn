@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="9_rlx34"]
 [ext_resource type="PackedScene" uid="uid://bvyk8wnkh1xb0" path="res://laser/dash_laser.tscn" id="10_rlx34"]
 
-[node name="base_scene" type="Node2D"]
+[node name="lvl_vs_room_15" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_1houp")]
 metadata/_edit_lock_ = true
@@ -23,6 +23,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAU
 
 [node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
 script = ExtResource("3_1ykt0")
+level_name = "lvl_vs_room_15"
 area_type = 1
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
@@ -36,7 +37,7 @@ level_info = NodePath("../LevelInfo Stuff/LevelInfo")
 default_spawn_pos = NodePath("../PlayerSpawnPoint")
 
 [node name="LevelNameSetter" parent="." instance=ExtResource("6_vmkkj")]
-level_name = "base_scene"
+level_name = "lvl_vs_room_15"
 
 [node name="Obstacle1" type="Node2D" parent="."]
 

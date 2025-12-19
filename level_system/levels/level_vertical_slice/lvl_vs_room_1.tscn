@@ -32,7 +32,6 @@ tile_map_data = PackedByteArray("AAANAAIAAwAZAAoAAAANAAMAAwAZAAoAAAANAAQAAwAZAAk
 script = ExtResource("3_jcjwp")
 level_name = "lvl_vs_room_1"
 id = "8d96a2d1-29dd-4a9b-ad52-11c4e1d17c89"
-area_type = 1
 coming_from_down = NodePath("../ComingDownards")
 coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"

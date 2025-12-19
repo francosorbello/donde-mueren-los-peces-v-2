@@ -33,7 +33,6 @@ tile_map_data = PackedByteArray("AAANABUAAwAZAAoAAAANABYAAwAZAAoAAAANABcAAwAZAAk
 [node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up", "coming_from_down", "coming_from_left") groups=["level_info"]]
 script = ExtResource("3_s8t0o")
 level_name = "lvl_vs_room_2"
-area_type = 1
 coming_from_up = NodePath("../ComingFromUp")
 coming_from_down = NodePath("../ComingDOwnards")
 coming_from_left = NodePath("../ComingFromLeft")

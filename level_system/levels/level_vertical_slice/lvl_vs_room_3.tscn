@@ -47,7 +47,6 @@ tile_map_data = PackedByteArray("AAABAAsAAwAZAAkAAAACAAsAAwAZAAkAAAADAAsAAwAZAAk
 script = ExtResource("3_igg8d")
 level_name = "lvl_vs_room_3"
 id = "38eb672a-12b7-4f64-87e8-b0c7a304af20"
-area_type = 1
 coming_from_down = NodePath("../ComingFromDown")
 coming_from_left = NodePath("../ComingFromLeft")
 coming_from_right = NodePath("../ComingFromRight")
@@ -109,21 +108,10 @@ texture = ExtResource("9_5d3ri")
 polygon = PackedVector2Array(160, 50, 160, 88.88, 120, 88.88, 120, 50)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles132" type="CPUParticles2D" parent="BetterDeathZone" instance=ExtResource("10_6kfqk")]
+[node name="DeathZoneParticles132" parent="BetterDeathZone" instance=ExtResource("10_6kfqk")]
 position = Vector2(140, 69.44)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(30, 29.439999)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="LevelNameSetter" parent="." instance=ExtResource("10_0eo40")]
 level_name = "lvl_vs_room_3"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://uw5jyfvd3h65"]
+[gd_scene load_steps=14 format=4 uid="uid://uw5jyfvd3h65"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_1houp"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_w0e2d"]
@@ -14,6 +14,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmkkj"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3orhr"]
+
 [node name="lvl_vs_room_15" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_1houp")]
@@ -24,15 +26,19 @@ tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAU
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down") groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down", "coming_from_right") groups=["level_info"]]
 script = ExtResource("3_1ykt0")
 level_name = "lvl_vs_room_15"
 area_type = 1
 coming_from_down = NodePath("../ComingDownards")
+coming_from_right = NodePath("../ComingFromRIght")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingDownards" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(60, 20)
+
+[node name="ComingFromRIght" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(20, 220)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_p1r72")]
 position = Vector2(20, 30)
@@ -121,3 +127,11 @@ direction = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
 shape = SubResource("RectangleShape2D_vmkkj")
+
+[node name="LevelTransitionArea2" parent="." instance=ExtResource("11_vmkkj")]
+position = Vector2(0, 220)
+next_level_id = "lvl_vs_room_16"
+direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea2"]
+shape = SubResource("RectangleShape2D_3orhr")

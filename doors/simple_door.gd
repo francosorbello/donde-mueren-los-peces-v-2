@@ -44,11 +44,15 @@ func set_door_collision():
 		rot = PI/2
 
 	$StaticBody2D/CollisionShape2D.set_deferred("rotation",rot)
+	$DetectInsideDoorArea/CollisionShape2D.set_deferred("rotation",rot)
+	$UnsafeFloorArea/CollisionShape2D.set_deferred("rotation",rot)
 
 func do_toggle():
 	disabled = not disabled
 	$StaticBody2D/CollisionShape2D.disabled = disabled
 	do_dissolve_anim()
+	if not disabled:
+		$DetectInsideDoorArea.start()
 
 func do_dissolve_anim():
 	var tween := create_tween()

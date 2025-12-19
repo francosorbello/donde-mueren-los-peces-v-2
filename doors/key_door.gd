@@ -14,9 +14,12 @@ func _ready():
 	assert(not door_opened_event.is_empty(), "No related event on door %s"%name)
 	if requires_special_key:
 		assert(related_key != null,"No related key on door %s"%name)
+	
+	$DetectInsideDoorArea/CollisionShape2D.disabled = true
 
 	$PersistentEventEvaluator/BoolPersistentEventConditional.event_name = door_opened_event
 	$PersistentEventEvaluator.evaluate()
+	
 
 func _on_persistent_event_evaluator_evaluator_succeded() -> void:
 	do_toggle.call_deferred()

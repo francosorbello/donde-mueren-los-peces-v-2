@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgf48te2xbnua"]
+[gd_scene load_steps=11 format=3 uid="uid://dgf48te2xbnua"]
 
 [ext_resource type="Texture2D" uid="uid://pphsvjgft3k0" path="res://assets/GRAPHICS/doors/door_1_10x10.png" id="1_1kth5"]
 [ext_resource type="Script" uid="uid://de6wjl35s3uig" path="res://doors/simple_door.gd" id="1_gvevm"]
 [ext_resource type="Shader" uid="uid://d4hd6vmdaq3ny" path="res://doors/dissolve_pixelated.gdshader" id="2_fjml2"]
 [ext_resource type="AudioStream" uid="uid://dcm7m7c1puio" path="res://assets/SOUNDS/door/y2k_door.ogg" id="4_uh0tu"]
+[ext_resource type="Script" uid="uid://dtyqop7n736t8" path="res://doors/detect_inside_door_area.gd" id="5_0w4h3"]
+[ext_resource type="PackedScene" uid="uid://ckww7pvs661o4" path="res://player/floor_detection/unsafe_floor_area.tscn" id="6_oidna"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uh0tu"]
 shader = ExtResource("2_fjml2")
@@ -14,7 +16,10 @@ shader_parameter/block_size = 1.0
 size = Vector2(20, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uh0tu"]
-size = Vector2(10, 10)
+size = Vector2(20, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouk6b"]
+size = Vector2(20, 10)
 
 [node name="SimpleDoor" type="Node2D"]
 script = ExtResource("1_gvevm")
@@ -42,7 +47,18 @@ theme_override_font_sizes/font_size = 9
 text = "OPEN"
 horizontal_alignment = 1
 
-[node name="PlayerDetectionArea" type="Area2D" parent="."]
+[node name="DetectInsideDoorArea" type="Area2D" parent="."]
+script = ExtResource("5_0w4h3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectInsideDoorArea"]
 shape = SubResource("RectangleShape2D_uh0tu")
+
+[node name="RunningTimer" type="Timer" parent="DetectInsideDoorArea"]
+one_shot = true
+
+[node name="UnsafeFloorArea" parent="." instance=ExtResource("6_oidna")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnsafeFloorArea"]
+shape = SubResource("RectangleShape2D_ouk6b")
+
+[connection signal="timeout" from="DetectInsideDoorArea/RunningTimer" to="DetectInsideDoorArea" method="_on_running_timer_timeout"]

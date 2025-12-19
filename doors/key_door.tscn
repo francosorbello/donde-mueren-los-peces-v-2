@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://v7vcp08dge6v"]
+[gd_scene load_steps=14 format=3 uid="uid://v7vcp08dge6v"]
 
 [ext_resource type="Script" uid="uid://dl6x4ipv21c22" path="res://doors/key_door.gd" id="1_uk04c"]
 [ext_resource type="Shader" uid="uid://d4hd6vmdaq3ny" path="res://doors/dissolve_pixelated.gdshader" id="2_h3b4h"]
 [ext_resource type="Texture2D" uid="uid://um3fxtvopbba" path="res://assets/GRAPHICS/doors/door_5_10x10.png" id="3_s3qvi"]
 [ext_resource type="AudioStream" uid="uid://dcm7m7c1puio" path="res://assets/SOUNDS/door/y2k_door.ogg" id="4_sbah6"]
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="6_5a1ly"]
+[ext_resource type="Script" uid="uid://dtyqop7n736t8" path="res://doors/detect_inside_door_area.gd" id="7_4l7yo"]
 [ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="7_ch25n"]
+[ext_resource type="PackedScene" uid="uid://ckww7pvs661o4" path="res://player/floor_detection/unsafe_floor_area.tscn" id="8_xpuia"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5a1ly"]
 shader = ExtResource("2_h3b4h")
@@ -17,6 +19,12 @@ size = Vector2(20, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sbah6"]
 radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l7yo"]
+size = Vector2(20, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpuia"]
+size = Vector2(20, 10)
 
 [node name="KeyDoor" type="Node2D"]
 script = ExtResource("1_uk04c")
@@ -49,5 +57,20 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayerArea"]
 shape = SubResource("CircleShape2D_sbah6")
 
+[node name="DetectInsideDoorArea" type="Area2D" parent="."]
+script = ExtResource("7_4l7yo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectInsideDoorArea"]
+shape = SubResource("RectangleShape2D_4l7yo")
+
+[node name="RunningTimer" type="Timer" parent="DetectInsideDoorArea"]
+one_shot = true
+
+[node name="UnsafeFloorArea" parent="." instance=ExtResource("8_xpuia")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnsafeFloorArea"]
+shape = SubResource("RectangleShape2D_xpuia")
+
 [connection signal="evaluator_succeded" from="PersistentEventEvaluator" to="." method="_on_persistent_event_evaluator_evaluator_succeded"]
 [connection signal="body_entered" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_entered"]
+[connection signal="timeout" from="DetectInsideDoorArea/RunningTimer" to="DetectInsideDoorArea" method="_on_running_timer_timeout"]

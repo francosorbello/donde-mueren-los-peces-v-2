@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://da01bxc51tnxl"]
+[gd_scene load_steps=9 format=3 uid="uid://da01bxc51tnxl"]
 
 [ext_resource type="Texture2D" uid="uid://ctnc5mtuu6rng" path="res://assets/GRAPHICS/bubble_recharger/bubble_recharger.png" id="1_tnld2"]
 [ext_resource type="Script" uid="uid://bqrhm1d2jg83c" path="res://bubble_recharger/bubble_recharger.gd" id="1_xdcsg"]
+[ext_resource type="AudioStream" uid="uid://dcm7m7c1puio" path="res://assets/SOUNDS/door/y2k_door.ogg" id="3_gxyk5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnld2"]
 radius = 6.0827627
@@ -47,5 +48,9 @@ shape = SubResource("CircleShape2D_tnld2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2bo84")
 frame_progress = 0.77632314
+
+[node name="UnlockSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gxyk5")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

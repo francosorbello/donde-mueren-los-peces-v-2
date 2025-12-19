@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cekx7o1n1t8gd"]
+[gd_scene load_steps=19 format=4 uid="uid://cekx7o1n1t8gd"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_d2fmi"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_ln1sj"]
@@ -28,11 +28,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 30, 210, 0, 0, 0, 0, 30, 110, 0, 0, 0, 0, 30, 10)
 }
 point_count = 3
-
-[sub_resource type="Curve" id="Curve_ttqoy"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
-point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_eyesb"]
 bake_interval = 50.0
@@ -122,21 +117,9 @@ texture = ExtResource("9_eyesb")
 polygon = PackedVector2Array(10, 210, 10, 160, 10, 110, 10, 60, 10.000002, 10.031081, 50, 10.02852, 50, 60, 50, 110, 50, 160, 50, 210)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles755" type="CPUParticles2D" parent="Obstacle2/BetterDeathZone" instance=ExtResource("10_26bbs")]
+[node name="DeathZoneParticles755" parent="Obstacle2/BetterDeathZone" instance=ExtResource("10_26bbs")]
 position = Vector2(50, 110.01426)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(10, 109.98574)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
-scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="BubbleRecharger" parent="Obstacle2" instance=ExtResource("7_o8n72")]
 position = Vector2(30, 170)
@@ -163,21 +146,9 @@ texture = ExtResource("9_eyesb")
 polygon = PackedVector2Array(60, 210, 60, 188.125, 60, 140, 60, 91.875, 60, 70, 86.5625, 70, 113.78906, 70, 145, 70, 176.21094, 70, 203.4375, 70, 230, 70, 230, 91.875, 230, 140, 230, 188.125, 230, 210, 203.4375, 210, 176.21094, 210, 145, 210, 113.78906, 210, 86.5625, 210, 60, 210)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles625" type="CPUParticles2D" parent="BetterDeathZone" instance=ExtResource("10_26bbs")]
+[node name="DeathZoneParticles625" parent="BetterDeathZone" instance=ExtResource("10_26bbs")]
 position = Vector2(145, 140)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(95, 80)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
-scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="TransitionRight" parent="." instance=ExtResource("14_26bbs")]
 position = Vector2(290, 220)

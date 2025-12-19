@@ -9,3 +9,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _draw() -> void:
 	draw_circle(Vector2.ZERO,7,Color(1,1,1,0.45))
+
+func do_toggle():
+	visible = not visible
+	

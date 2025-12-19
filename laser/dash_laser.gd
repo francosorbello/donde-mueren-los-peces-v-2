@@ -28,7 +28,7 @@ enum LaserDirection {
 @export var override_color : Color = Color.GREEN
 
 @export_category("Timed")
-@export var timed : bool = true
+@export var timed : bool = false
 @export var timed_duration : float = 5.0
 @export var timed_color_override : Color = Color.GRAY
 
@@ -48,6 +48,9 @@ func _ready():
 	for child in get_children():
 		if child is RoomAction:
 			_room_actions.append(child)
+
+	timed = not _room_actions.is_empty()
+	
 	setup()
 
 func setup():

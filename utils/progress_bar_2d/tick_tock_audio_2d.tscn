@@ -1,11 +1,22 @@
 [gd_scene load_steps=5 format=3 uid="uid://cr0ef03sddv3m"]
 
-[ext_resource type="AudioStream" uid="uid://be2xdft5qjkyk" path="res://assets/SOUNDS/tick_tock/tick_tock_vel_1.ogg" id="2_1o102"]
 [ext_resource type="Script" uid="uid://4uk12eq7edv1" path="res://utils/progress_bar_2d/tick_tock_audio_2d.gd" id="2_norqo"]
 [ext_resource type="AudioStream" uid="uid://dly670j412s5n" path="res://assets/SOUNDS/tick_tock/tick_tock_vel_2.ogg" id="3_y5sdg"]
 [ext_resource type="AudioStream" uid="uid://bqvonpqwla8hr" path="res://assets/SOUNDS/tick_tock/tick_tock_vel_3.ogg" id="4_76wjt"]
 
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_1o102"]
+stream_count = 2
+stream_0/stream = ExtResource("3_y5sdg")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("4_76wjt")
+stream_1/volume = -60.0
+
 [node name="TickTockAudio2D" type="AudioStreamPlayer2D"]
+stream = SubResource("AudioStreamSynchronized_1o102")
 bus = &"SFX"
 script = ExtResource("2_norqo")
-sounds = Array[AudioStream]([ExtResource("2_1o102"), ExtResource("3_y5sdg"), ExtResource("4_76wjt")])
+
+[node name="TresholdTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TresholdTimer" to="." method="_on_treshold_timer_timeout"]

@@ -1,6 +1,7 @@
 extends AudioStreamPlayer2D
 
-@export var sounds : Array[AudioStream]
+## when timer is too short, its best to start with the fastest sound directly. Otherwise it sounds kinda bad
+@export var start_fast_treshold : float = 3.0 
 
 var duration : float
 var running : bool = false
@@ -10,17 +11,23 @@ var _treshold : float
 var _current_index : int
 var _treshold_time : float
 
+var _sync_stream : AudioStreamSynchronized
+
+func _ready():
+    _sync_stream = stream
+
 func start(time : float):
     duration = time
     running = true
 
     _acc_time = 0
     _current_index = 0
+    if _treshold <= start_fast_treshold:
+        _play_next_sound()
+    else:
+        _treshold = duration / 2.0
+        $TresholdTimer.start(_treshold)
 
-    _treshold = duration / sounds.size()
-
-    # print("Playing %d sounds for %s seconds. Each sound lasts %f seconds"%[sounds.size(),duration,_treshold])
-    stream = sounds[0]
     play()
 
 func _process(delta: float) -> void:
@@ -29,17 +36,18 @@ func _process(delta: float) -> void:
         _treshold_time += delta
 
         if _acc_time > duration:
-            stop()
-            running = false
+            reset()
             return
-        
-        if _treshold_time > _treshold:
-            _treshold_time = 0
-            _play_next_sound()
+
+func reset():
+    stop()
+    running = false
+    _sync_stream.set_sync_stream_volume(0,0)
+    _sync_stream.set_sync_stream_volume(1,-60)
 
 func _play_next_sound():
-    _current_index += 1
-    if _current_index >= sounds.size():
-        return
-    stream = sounds[_current_index]
-    play()
+    _sync_stream.set_sync_stream_volume(0,-60)
+    _sync_stream.set_sync_stream_volume(1,0)
+
+func _on_treshold_timer_timeout() -> void:
+    _play_next_sound()

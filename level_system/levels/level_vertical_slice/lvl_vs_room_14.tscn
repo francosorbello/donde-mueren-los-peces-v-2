@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dgslo12shgr66"]
+[gd_scene load_steps=24 format=4 uid="uid://dgslo12shgr66"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_agnaw"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_f8s6c"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="14_mmf1e"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="15_ilhsy"]
 [ext_resource type="PackedScene" uid="uid://bt0njsx6l0eym" path="res://utils/level_related/path_follower.tscn" id="16_h1uwr"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="17_mmf1e"]
 
 [sub_resource type="Curve2D" id="Curve2D_vxnkp"]
 bake_interval = 50.0
@@ -42,6 +43,10 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmf1e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxnkp"]
+
 [node name="lvl_vs_room_14" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_agnaw")]
@@ -52,13 +57,19 @@ tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAU
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up", "coming_from_left") groups=["level_info"]]
 script = ExtResource("3_jqj4l")
 level_name = "lvl_vs_room_14"
 area_type = 1
+coming_from_up = NodePath("../ComingUpwards")
+coming_from_left = NodePath("../ComingFromLeft")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
-[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+[node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(260, 232)
+
+[node name="ComingUpwards" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(60, 248)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_h26rx")]
 position = Vector2(260, 240)
@@ -231,3 +242,18 @@ NodePath("../../PlatformSmall"): &"do_toggle",
 NodePath("../../PlatformSmall2"): &"do_toggle"
 }
 metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="TransitionRight" parent="." instance=ExtResource("17_mmf1e")]
+position = Vector2(290, 229)
+next_level_id = "lvl_vs_room_13"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
+shape = SubResource("RectangleShape2D_mmf1e")
+
+[node name="TransitionDownwards" parent="." instance=ExtResource("17_mmf1e")]
+position = Vector2(60, 270)
+next_level_id = "lvl_vs_room_15"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownwards"]
+shape = SubResource("RectangleShape2D_vxnkp")

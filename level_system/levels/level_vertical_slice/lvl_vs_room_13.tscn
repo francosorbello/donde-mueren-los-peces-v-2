@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bxl3bdn6gbtj7"]
+[gd_scene load_steps=19 format=4 uid="uid://bxl3bdn6gbtj7"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_eqpkf"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_aadv5"]
@@ -41,6 +41,8 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36nbd"]
+
 [node name="lvl_vs_room_13" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_eqpkf")]
@@ -51,19 +53,19 @@ tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAU
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down", "coming_from_left") groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down", "coming_from_right") groups=["level_info"]]
 script = ExtResource("3_6xfts")
 level_name = "lvl_vs_room_13"
 area_type = 1
 coming_from_down = NodePath("../ComingDowards")
-coming_from_left = NodePath("../ComingFromLeft")
+coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
-[node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
-position = Vector2(270, 140)
+[node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(30, 230)
 
 [node name="ComingDowards" type="Marker2D" parent="LevelInfo Stuff"]
-position = Vector2(140, 30)
+position = Vector2(140, 22)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_5v6rh")]
 position = Vector2(250, 30)
@@ -86,7 +88,6 @@ shape = SubResource("RectangleShape2D_bp2uh")
 [node name="DashLaser" parent="." instance=ExtResource("8_1qtxy")]
 position = Vector2(140, 60)
 direction = 1
-override_color = Color(0, 1, 0, 1)
 
 [node name="Obstacle2" type="Node2D" parent="."]
 
@@ -108,26 +109,14 @@ texture = ExtResource("11_dhwj5")
 polygon = PackedVector2Array(110, 110, 150, 110, 189.97617, 110, 189.97617, 150, 150, 150, 110, 150)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles877" type="CPUParticles2D" parent="Obstacle2/BetterDeathZone" instance=ExtResource("12_ir54n")]
+[node name="DeathZoneParticles877" parent="Obstacle2/BetterDeathZone" instance=ExtResource("12_ir54n")]
 position = Vector2(149.98808, 130)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(49.988083, 30)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="DashLaser" parent="Obstacle2" instance=ExtResource("8_1qtxy")]
 position = Vector2(140, 110)
 direction = 1
-override_color = Color(0, 1, 0, 1)
 
 [node name="Obstacle3" type="Node2D" parent="."]
 
@@ -147,25 +136,13 @@ texture = ExtResource("11_dhwj5")
 polygon = PackedVector2Array(210, 200, 210, 160, 245, 160, 280, 160, 280, 195, 280, 230, 240, 230, 240, 200, 210, 200)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles249" type="CPUParticles2D" parent="Obstacle3/BetterDeathZone" instance=ExtResource("12_ir54n")]
+[node name="DeathZoneParticles249" parent="Obstacle3/BetterDeathZone" instance=ExtResource("12_ir54n")]
 position = Vector2(245, 195)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(45, 45)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="DashLaser" parent="Obstacle3" instance=ExtResource("8_1qtxy")]
 position = Vector2(240, 200)
-override_color = Color(0, 1, 0, 1)
 
 [node name="BetterDeathZone2" parent="Obstacle3" instance=ExtResource("9_wj0c6")]
 curve = SubResource("Curve2D_dhwj5")
@@ -184,23 +161,19 @@ texture = ExtResource("11_dhwj5")
 polygon = PackedVector2Array(60, 160, 95, 160, 129.96451, 160.00002, 129.99377, 200.00002, 95, 200, 60, 200)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles889" type="CPUParticles2D" parent="Obstacle3/BetterDeathZone2" instance=ExtResource("12_ir54n")]
+[node name="DeathZoneParticles889" parent="Obstacle3/BetterDeathZone2" instance=ExtResource("12_ir54n")]
 position = Vector2(94.99689, 180)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(44.996887, 30.000008)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="DashLaser2" parent="Obstacle3" instance=ExtResource("8_1qtxy")]
 position = Vector2(90, 160)
 direction = 1
-override_color = Color(0, 1, 0, 1)
+
+[node name="TransitionLeft" parent="." instance=ExtResource("7_bp2uh")]
+position = Vector2(0, 230)
+next_level_id = "lvl_vs_room_14"
+direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft"]
+shape = SubResource("RectangleShape2D_36nbd")

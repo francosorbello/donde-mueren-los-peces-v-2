@@ -95,3 +95,12 @@ offset_bottom = 75.0
 bbcode_enabled = true
 text = "[center][img]res://assets/GRAPHICS/inputs/arrows.png[/img] o [img]res://assets/GRAPHICS/inputs/left_joystick.png[/img] para [MOVERSE][/center]"
 fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 10.0
+offset_top = 120.0
+offset_right = 152.0
+offset_bottom = 175.0
+bbcode_enabled = true
+text = "[center]M o [img]res://assets/GRAPHICS/inputs/lb.png[/img] para [ABRIR MAPA][/center]"
+fit_content = true

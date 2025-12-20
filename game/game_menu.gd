@@ -15,11 +15,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func toggle_ui():
     visible = not visible
     if music:
-        var new_volume = _original_volume if visible else (_original_volume - 30)
+        var new_volume = _original_volume
+        if visible:
+            new_volume -= 10
         anim_music_volume(new_volume)
 
 func _on_continue_btn_pressed() -> void:
-    hide()
+    toggle_ui()
 
 func _on_exit_button_pressed() -> void:
     get_tree().quit()

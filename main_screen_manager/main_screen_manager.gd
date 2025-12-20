@@ -5,10 +5,20 @@ extends Node
 @export var main_menu_scene : PackedScene
 @export var game_scene : PackedScene
 
+@export var screens : Dictionary[String,PackedScene]
+
 var current_screen : Node
 
 func _ready():
     start_main_menu()
+    GlobalSignal.on_request_main_scene_change.connect(_main_scene_change_requested)
+
+
+func _main_scene_change_requested(new_scene : String):
+    if screens.has(new_scene):
+        _start_scene.call_deferred(screens[new_scene])
+    else:
+        push_error("No screen named %s"%new_scene)
 
 func _clear():
     if current_screen:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cekx7o1n1t8gd"]
+[gd_scene load_steps=20 format=4 uid="uid://cekx7o1n1t8gd"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_d2fmi"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_ln1sj"]
@@ -38,6 +38,8 @@ point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26bbs"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obbm1"]
+
 [node name="lvl_vs_room_16" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_d2fmi")]
@@ -50,15 +52,19 @@ tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAU
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_left") groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up", "coming_from_left") groups=["level_info"]]
 script = ExtResource("3_i4b4d")
 level_name = "lvl_vs_room_16"
 area_type = 1
+coming_from_up = NodePath("../CominUpwards")
 coming_from_left = NodePath("../ComingFromLeft")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(260, 220)
+
+[node name="CominUpwards" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(110, 240)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_3qva0")]
 position = Vector2(260, 200)
@@ -157,3 +163,10 @@ direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
 shape = SubResource("RectangleShape2D_26bbs")
+
+[node name="TransitionDownwards" parent="." instance=ExtResource("14_26bbs")]
+position = Vector2(110, 270)
+next_level_id = "lvl_vs_room_17"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownwards"]
+shape = SubResource("RectangleShape2D_obbm1")

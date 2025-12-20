@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b51jlqa7kg5fw"
+path="res://.godot/imported/end_demo.dialogue-7954d48b94d4fa24c4b434db8879648d.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_vertical_slice/dialogues/end_demo.dialogue"
+dest_files=["res://.godot/imported/end_demo.dialogue-7954d48b94d4fa24c4b434db8879648d.tres"]
+
+[params]
+
+defaults=true

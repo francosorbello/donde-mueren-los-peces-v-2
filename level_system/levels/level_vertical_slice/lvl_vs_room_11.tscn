@@ -108,5 +108,5 @@ offset_right = 258.0
 offset_bottom = 96.0
 bbcode_enabled = true
 text = "[center] Mientras [FLOTAS], 
-Z or [img]res://assets/GRAPHICS/inputs/rb.png[/img] para [EMBESTIR][/center]"
+Z o [img]res://assets/GRAPHICS/inputs/rb.png[/img] para [EMBESTIR][/center]"
 fit_content = true

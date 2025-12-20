@@ -167,3 +167,6 @@ func toggle_interaction_system(to_value : bool):
 
 func is_dashing() -> bool:
 	return $StateMachine.current_state.name == "QuickDashingState"
+
+func fly():
+	$SmallCollisionShape.disabled = not $SmallCollisionShape.disabled

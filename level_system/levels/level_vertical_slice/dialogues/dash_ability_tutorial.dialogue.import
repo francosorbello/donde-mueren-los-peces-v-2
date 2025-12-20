@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://yrw6d0l3cbqa"
+path="res://.godot/imported/dash_ability_tutorial.dialogue-b8f3c584736645b84f7a43b429c4aceb.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_vertical_slice/dialogues/dash_ability_tutorial.dialogue"
+dest_files=["res://.godot/imported/dash_ability_tutorial.dialogue-b8f3c584736645b84f7a43b429c4aceb.tres"]
+
+[params]
+
+defaults=true

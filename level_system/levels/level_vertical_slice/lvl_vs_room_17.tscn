@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bi818k3kq6gdx"]
+[gd_scene load_steps=28 format=4 uid="uid://bi818k3kq6gdx"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_eskxn"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_5fn28"]
@@ -31,11 +31,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 130, 60, 0, 0, 0, 0, 150, 60, 0, 0, 0, 0, 150, 100, 0, 0, 0, 0, 210, 100, 0, 0, 0, 0, 210, 140, 0, 0, 0, 0, 160, 140, 0, 0, 0, 0, 160, 180, 0, 0, 0, 0, 120, 180, 0, 0, 0, 0, 120, 140, 0, 0, 0, 0, 70, 140, 0, 0, 0, 0, 70, 100, 0, 0, 0, 0, 130, 100, 0, 0, 0, 0, 130, 60)
 }
 point_count = 13
-
-[sub_resource type="Curve" id="Curve_ttqoy"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
-point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_glft2"]
 shader = ExtResource("11_ci7mf")
@@ -97,21 +92,9 @@ texture = ExtResource("9_ci7mf")
 polygon = PackedVector2Array(130, 60, 150, 60, 150, 100, 180, 100, 210, 100, 210, 140, 160, 140, 160, 180, 120, 180, 120, 140, 70, 140, 70, 100, 100, 100, 130, 100, 130, 60)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles240" type="CPUParticles2D" parent="BetterDeathZone" instance=ExtResource("10_glft2")]
+[node name="DeathZoneParticles240" parent="BetterDeathZone" instance=ExtResource("10_glft2")]
 position = Vector2(145, 120)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(25, 70)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
-scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="Obstacle1" type="Node2D" parent="."]
 

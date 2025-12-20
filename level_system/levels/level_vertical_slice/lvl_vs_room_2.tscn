@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cop710boksnmw"]
+[gd_scene load_steps=17 format=4 uid="uid://cop710boksnmw"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_pr8s3"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_vbpel"]
@@ -11,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://dgum4egqh2437" path="res://level_system/levels/level_vertical_slice/items/key_lvl_vs_room_1.tres" id="9_12y6b"]
 [ext_resource type="Resource" uid="uid://dy2krd2i18ha7" path="res://abilities/ability_items/abi_dash.tres" id="10_5p7eo"]
 [ext_resource type="PackedScene" uid="uid://v7vcp08dge6v" path="res://doors/key_door.tscn" id="11_iyr6a"]
+[ext_resource type="Script" uid="uid://bxamrpt2gcrrt" path="res://level_system/levels/level_vertical_slice/utils/jump_tutorial.gd" id="12_lyugu"]
+[ext_resource type="Resource" uid="uid://yrw6d0l3cbqa" path="res://level_system/levels/level_vertical_slice/dialogues/dash_ability_tutorial.dialogue" id="13_lyugu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1g5y"]
 
@@ -102,3 +104,8 @@ direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
 shape = SubResource("RectangleShape2D_cw34x")
+
+[node name="DashTutorial" type="Node" parent="." node_paths=PackedStringArray("pickable_item")]
+script = ExtResource("12_lyugu")
+dialogue = ExtResource("13_lyugu")
+pickable_item = NodePath("../DashAbility")

@@ -24,7 +24,7 @@ func _ready():
 		# load_level_scene(level_data.levels[initial_level_name])
 		_on_request_level_change(initial_level_name.value, {"direction": Vector2.ZERO})
 
-	OxygenManager.start_depletion()
+	# OxygenManager.start_depletion()
 
 func _on_request_level_change(lvl_name: String, extra_data : Dictionary):
 	if level_data.levels.has(lvl_name):

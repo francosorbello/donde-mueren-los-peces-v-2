@@ -10,8 +10,13 @@ func _ready() -> void:
     Console.add_command("unlock_all_abilities",unlock_all_abilities,["is_permanent"],1)
     Console.add_command("restart_level",restart_level)
     Console.add_command("dump_blackboard",dump_blackboard)
+    Console.add_command("fly",fly)
     
     Console.font_size = 30
+
+func fly():
+    var player = get_tree().get_first_node_in_group("player") as APlayer
+    player.fly()
 
 func dump_blackboard():
     var blackboard : GameBlackboard = get_tree().get_first_node_in_group("blackboard")

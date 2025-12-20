@@ -101,7 +101,12 @@ direction = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
 shape = SubResource("RectangleShape2D_ogdsj")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(80, 110)
-
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 38.0
+offset_top = 50.0
+offset_right = 258.0
+offset_bottom = 96.0
+bbcode_enabled = true
+text = "[center] Mientras [FLOTAS], 
+Z or [img]res://assets/GRAPHICS/inputs/rb.png[/img] para [EMBESTIR][/center]"
+fit_content = true

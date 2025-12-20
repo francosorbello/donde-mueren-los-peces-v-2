@@ -72,10 +72,10 @@ event_name = "item_vs_room_1_key_picked_up"
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 10.0
 offset_top = 200.0
-offset_right = 120.0
+offset_right = 132.0
 offset_bottom = 246.0
 bbcode_enabled = true
-text = "[center] X or [img]res://assets/GRAPHICS/inputs/tile_0378.png[/img] to [INTERACT][/center]"
+text = "[center] E or [img]res://assets/GRAPHICS/inputs/tile_0378.png[/img] para [INTERACTUAR][/center]"
 fit_content = true
 
 [node name="DashAbility" parent="." instance=ExtResource("8_pvtwy")]

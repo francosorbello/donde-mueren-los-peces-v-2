@@ -106,6 +106,7 @@ level_name = "lvl_vs_room_9"
 position = Vector2(20, 0)
 
 [node name="Path2D" type="Path2D" parent="Obstacle1"]
+position = Vector2(7, 0)
 curve = SubResource("Curve2D_naub1")
 
 [node name="PathFollower" parent="Obstacle1/Path2D" instance=ExtResource("8_synas")]

@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="StringResource" load_steps=2 format=3 uid="uid://cdl632y2ljd6g"]
+[gd_resource type="Resource" script_class="StringResource" load_steps=2 format=3 uid="uid://ccgv346u87xr0"]
 
 [ext_resource type="Script" uid="uid://djda8uv7qbvfi" path="res://utils/level_related/string_resource.gd" id="1_wrvjp"]
 
 [resource]
 script = ExtResource("1_wrvjp")
-value = "lvl_vs_room_1"
+value = "lvl_vs_room_9"
 metadata/_custom_type_script = "uid://djda8uv7qbvfi"

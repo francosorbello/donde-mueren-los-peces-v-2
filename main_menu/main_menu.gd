@@ -4,6 +4,9 @@ extends Control
 @export var initial_level : StringResource
 
 func _ready():
+	Console.add_command("force_kiosk_mode",func():
+		kiosk_mode = true
+	)
 	if OS.is_debug_build() and not OS.has_feature("editor"):
 		$DebugBuildLabel.show()
 		kiosk_mode = true

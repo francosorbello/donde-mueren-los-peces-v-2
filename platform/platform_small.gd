@@ -14,7 +14,6 @@ var _original_rustle_volume : float
 var disabled : bool = false
 
 func _ready() -> void:
-    print(visible)
     disabled = not visible
     _max_states = $BreakableSprite2D.hframes
     _original_rustle_volume = $RustleSound.volume_db

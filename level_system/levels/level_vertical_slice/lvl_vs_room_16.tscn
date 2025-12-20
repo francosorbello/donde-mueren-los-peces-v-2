@@ -61,7 +61,7 @@ coming_from_left = NodePath("../ComingFromLeft")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
-position = Vector2(260, 220)
+position = Vector2(265, 220)
 
 [node name="CominUpwards" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(110, 240)

@@ -69,13 +69,13 @@ coming_from_left = NodePath("../ComingFromLeft")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
-position = Vector2(260, 232)
+position = Vector2(261, 229)
 
 [node name="ComingUpwards" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(60, 248)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_h26rx")]
-position = Vector2(260, 240)
+position = Vector2(272, 252)
 
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_ossal")]
 level_info = NodePath("../LevelInfo Stuff/LevelInfo")

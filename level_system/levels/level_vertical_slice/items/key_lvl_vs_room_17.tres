@@ -1,7 +1,12 @@
-[gd_resource type="Resource" script_class="DoorKeyItem" load_steps=2 format=3 uid="uid://fp6xe10jkyt2"]
+[gd_resource type="Resource" script_class="DoorKeyItem" load_steps=3 format=3 uid="uid://fp6xe10jkyt2"]
 
+[ext_resource type="Texture2D" uid="uid://d4eujshmexxd3" path="res://assets/GRAPHICS/items/key1_16x16.png" id="1_7qw2e"]
 [ext_resource type="Script" uid="uid://db5jfbug83are" path="res://inventory_system/door_key_item.gd" id="1_jc4jj"]
 
 [resource]
 script = ExtResource("1_jc4jj")
+item_name = "Room 17 Key"
+is_physical = true
+icon = ExtResource("1_7qw2e")
+world_icon = ExtResource("1_7qw2e")
 metadata/_custom_type_script = "uid://db5jfbug83are"

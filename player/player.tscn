@@ -211,6 +211,7 @@ offset = Vector2(0, -6)
 script = ExtResource("4_1s1yo")
 
 [node name="SmallCollisionShape" type="CollisionShape2D" parent="."]
+z_index = 6
 position = Vector2(0, 4)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_65viv")
@@ -265,12 +266,13 @@ stream = ExtResource("13_c35mf")
 [node name="StopJumpSound" type="AudioStreamPlayer" parent="StateMachine/JumpingState"]
 stream = ExtResource("14_65viv")
 
-[node name="QuickDashingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component")]
+[node name="QuickDashingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_detection_component", "collision_shape")]
 script = ExtResource("13_tqiix")
 distance_to_travel = 60.0
 allow_jump = false
 allow_jump_treshold = 30
 floor_detection_component = NodePath("../../FloorDetectionComponent")
+collision_shape = NodePath("../../SmallCollisionShape")
 
 [node name="DashSound" type="AudioStreamPlayer" parent="StateMachine/QuickDashingState"]
 stream = SubResource("AudioStreamRandomizer_e7oew")
@@ -394,7 +396,6 @@ visible = false
 z_index = 50
 position = Vector2(13, 9)
 bar_type = 1
-use_sound = false
 height = 20.0
 bg_color = Color(0.6313726, 0.6313726, 0.6313726, 0.67058825)
 

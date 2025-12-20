@@ -14,6 +14,8 @@ shader_parameter/FOAM_COL = Color(0.87, 0.987, 1, 0)
 shader_parameter/distortion_speed = 1.0
 shader_parameter/tile = Vector2(1, 0)
 shader_parameter/offset = Vector2(0, 0)
+shader_parameter/pixelate = false
+shader_parameter/pixelation_amount = 32.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -61,38 +63,6 @@ texture = ExtResource("4_bws42")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="StartButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -93.5
-offset_top = -67.0
-offset_right = 93.5
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 60
-text = "START"
-
-[node name="ResetSaveButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -169.0
-offset_top = 53.5
-offset_right = 170.0
-offset_bottom = 144.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 60
-text = "RESET SAVE"
-
 [node name="DebugBuildLabel" type="Label" parent="."]
 visible = false
 layout_mode = 0
@@ -118,7 +88,37 @@ horizontal_alignment = 1
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_3f7m4")
+volume_db = -80.0
 autoplay = true
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="ResetSaveButton" to="." method="_on_reset_save_button_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -171.0
+offset_top = 405.0
+offset_right = 171.0
+offset_bottom = 603.0
+grow_horizontal = 2
+theme_override_constants/separation = 29
+alignment = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "COMENZAR"
+
+[node name="ResetSaveButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "RESET"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "SALIR"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResetSaveButton" to="." method="_on_reset_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

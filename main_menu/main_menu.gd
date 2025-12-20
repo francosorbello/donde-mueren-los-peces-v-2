@@ -9,6 +9,8 @@ func _ready():
         kiosk_mode = true
 
     $StartButton.grab_focus()
+    if kiosk_mode:
+        $VBoxContainer/ResetSaveButton.visible = false
 
 func _on_start_button_pressed() -> void:
     if kiosk_mode:
@@ -56,3 +58,8 @@ func _on_reset_save_button_pressed() -> void:
     if save_game:
         save_game.clear_save()
         print("Reset save done")
+
+
+func _on_exit_button_pressed() -> void:
+    get_tree().quit()
+    pass # Replace with function body.

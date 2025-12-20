@@ -35,6 +35,7 @@ func _on_better_interactable_component_on_interact() -> void:
     if timed and activated:
         $Timer.start(timed_duration)
         $ProgressBar2D.start(timed_duration)
+        $LeverSound.play()
         return
 
     if has_actions:

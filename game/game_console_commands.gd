@@ -16,7 +16,8 @@ func _ready() -> void:
 
 func fly():
     var player = get_tree().get_first_node_in_group("player") as APlayer
-    player.fly()
+    if player:
+        player.fly()
 
 func dump_blackboard():
     var blackboard : GameBlackboard = get_tree().get_first_node_in_group("blackboard")

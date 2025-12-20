@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ce5m7b223yfg6"]
+[gd_scene load_steps=24 format=3 uid="uid://ce5m7b223yfg6"]
 
 [ext_resource type="Script" uid="uid://bdsdruassfxby" path="res://level_system/automap/automap.gd" id="1_kskib"]
 [ext_resource type="PackedScene" uid="uid://plpfb11fcas1" path="res://level_system/automap/level_visual.tscn" id="2_el0ph"]
@@ -18,6 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://bqtii50udy2u5" path="res://assets/GRAPHICS/automap/vertical_slice/Lvl_vs_room_14.png" id="16_6nvkv"]
 [ext_resource type="Texture2D" uid="uid://1rt6csattsdv" path="res://assets/GRAPHICS/automap/vertical_slice/Lvl_vs_room_15.png" id="17_itw2k"]
 [ext_resource type="Texture2D" uid="uid://dxo6cbq4iju0i" path="res://assets/GRAPHICS/automap/vertical_slice/Lvl_vs_room_16.png" id="18_duats"]
+[ext_resource type="Texture2D" uid="uid://clx7oy6361xyy" path="res://assets/GRAPHICS/automap/vertical_slice/Lvl_vs_room_17.png" id="19_jhl2p"]
+[ext_resource type="PackedScene" uid="uid://gf4aassa57a5" path="res://level_system/automap/automap_icon.tscn" id="20_ky2vu"]
+[ext_resource type="Texture2D" uid="uid://bwuxg2ihlhbct" path="res://assets/GRAPHICS/items/helmet1_16x16.png" id="21_kh5wm"]
+[ext_resource type="Texture2D" uid="uid://e1knemydxblh" path="res://assets/GRAPHICS/items/boots1_16x16.png" id="22_h5haq"]
+[ext_resource type="Texture2D" uid="uid://pd3n7mkqhuek" path="res://assets/GRAPHICS/characters/kid1_16x16.png" id="23_2by5m"]
 
 [node name="Automap" type="Control"]
 layout_mode = 3
@@ -205,7 +210,49 @@ position_offset = Vector2(1010, 904)
 level_id = "lvl_vs_room_16"
 visual = ExtResource("18_duats")
 
+[node name="VisualFor (lvl_vs_room_17)" parent="GraphEdit" instance=ExtResource("2_el0ph")]
+layout_mode = 0
+offset_left = 1010.0
+offset_top = 1194.0
+offset_right = 1300.0
+offset_bottom = 1484.0
+position_offset = Vector2(1010, 1194)
+level_id = "lvl_vs_room_17"
+visual = ExtResource("19_jhl2p")
+
 [node name="===ICONS===" type="Control" parent="GraphEdit"]
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="IconFor () (ability_jump_picked_up)" parent="GraphEdit" instance=ExtResource("20_ky2vu")]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 750.0
+offset_right = 580.0
+offset_bottom = 790.0
+position_offset = Vector2(540, 750)
+related_event = "ability_jump_picked_up"
+icon = ExtResource("21_kh5wm")
+icon_scale = Vector2(2, 2)
+
+[node name="IconFor () (ability_dash_picked_up)" parent="GraphEdit" instance=ExtResource("20_ky2vu")]
+layout_mode = 0
+offset_left = 1130.0
+offset_top = 450.0
+offset_right = 1170.0
+offset_bottom = 490.0
+position_offset = Vector2(1130, 450)
+related_event = "ability_dash_picked_up"
+icon = ExtResource("22_h5haq")
+icon_scale = Vector2(2, 2)
+
+[node name="DemoTarget" parent="GraphEdit" instance=ExtResource("20_ky2vu")]
+layout_mode = 0
+offset_left = 1220.0
+offset_top = 1404.0
+offset_right = 1260.0
+offset_bottom = 1444.0
+position_offset = Vector2(1220, 1404)
+icon = ExtResource("23_2by5m")
+icon_scale = Vector2(2, 2)

@@ -1,11 +1,6 @@
 @tool
 extends GraphElement
 
-@export var level_id : String:
-    set(value):
-        level_id = value
-        _set_name()
-
 @export var related_event : String:
     set(value):
         related_event = value
@@ -50,8 +45,8 @@ func _ready() -> void:
     $PersistentEventEvaluator/BoolPersistentEventConditional.event_name = related_event
     $PersistentEventEvaluator.evaluate()
 
-func show_visual(visited_levels : Array[String]):
-    if can_be_visible and visited_levels.has(level_id) :
+func show_visual(_visited_levels : Array[String]):
+    if can_be_visible:
         show()
 
 func _on_persistent_event_evaluator_evaluator_succeded() -> void:
@@ -61,4 +56,4 @@ func _on_persistent_event_evaluator_evaluator_succeded() -> void:
 
 func _set_name():
     if Engine.is_editor_hint() and is_node_ready():
-        name = "IconFor (%s) (%s)"%[level_id,related_event]
+        name = "IconFor (%s)"%[related_event]

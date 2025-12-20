@@ -10,11 +10,18 @@ extends Node
 var current_screen : Node
 
 func _ready():
-    start_main_menu()
+    if OS.is_debug_build() and not OS.has_feature("editor"):
+        start_intro_screen()
+    else:
+        start_main_menu()
     GlobalSignal.on_request_main_scene_change.connect(_main_scene_change_requested)
 
 
 func _main_scene_change_requested(new_scene : String):
+    if new_scene == "MainMenu":
+        start_main_menu()
+        return
+    
     if screens.has(new_scene):
         _start_scene.call_deferred(screens[new_scene])
     else:
@@ -44,6 +51,9 @@ func start_game():
 
 func start_main_menu():
     _start_scene(main_menu_scene)
+
+func start_intro_screen():
+    _start_scene(screens["IntroScreen"])
 
 func _start_scene(scene : PackedScene):
     _clear()

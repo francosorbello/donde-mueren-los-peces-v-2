@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://deyb3ncj8pcxn"]
+[gd_scene load_steps=11 format=3 uid="uid://deyb3ncj8pcxn"]
 
 [ext_resource type="Script" uid="uid://bh3mkjodu4oro" path="res://balloon/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="Texture2D" uid="uid://cpwu2602d30b8" path="res://assets/GRAPHICS/hexanys-1-bit-ui-panels-1.1.0/Hexany's 1-bit UI Panels/Panels/simple_big.png" id="2_t01tp"]
+[ext_resource type="FontFile" uid="uid://l50cgledxmdt" path="res://assets/FONTS/monogram.ttf" id="3_5n8ep"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
@@ -40,19 +42,16 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkmqt"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5n8ep"]
+texture = ExtResource("2_t01tp")
+texture_margin_left = 60.0
+texture_margin_top = 60.0
+texture_margin_right = 60.0
+texture_margin_bottom = 60.0
 
 [sub_resource type="Theme" id="Theme_qq3yp"]
-default_font_size = 20
+default_font = ExtResource("3_5n8ep")
+default_font_size = 60
 Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
 Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
 Button/styles/hover = SubResource("StyleBoxFlat_e0njw")
@@ -61,7 +60,7 @@ MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 30
 MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_5n8ep")
 
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
@@ -84,7 +83,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -219.0
+offset_top = -365.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -114,7 +113,7 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 80
 text = "Dialogue..."
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]

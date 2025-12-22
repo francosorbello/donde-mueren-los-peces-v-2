@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=21 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
 [ext_resource type="Shader" uid="uid://b2me4ti8lr66k" path="res://crt_shader/crt_shader.gdshader" id="4_dxrkv"]
 [ext_resource type="Script" uid="uid://cqhcun638wmpc" path="res://game/bg_color_manager.gd" id="4_ee6o4"]
+[ext_resource type="Texture2D" uid="uid://dpfjt8cry3mi3" path="res://assets/GRAPHICS/other_patterns/tile1.png" id="5_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://djic11w1vg7yn" path="res://inventory_system/inventory_manager.tscn" id="6_dakft"]
 [ext_resource type="PackedScene" uid="uid://ttyngsx7731n" path="res://inventory_system/ui/inventory_ui.tscn" id="6_u5opy"]
 [ext_resource type="PackedScene" uid="uid://2tvde1g7baq6" path="res://tests/debug_timer.tscn" id="8_vsp63"]
@@ -68,6 +69,16 @@ mouse_filter = 2
 color = Color(0.09411765, 0.09803922, 0.13725491, 1)
 script = ExtResource("4_ee6o4")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ee6o4")
+stretch_mode = 1
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -81,6 +92,12 @@ offset_right = 576.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BGColor" type="ColorRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(1152, 1080)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.09411765, 0.09803922, 0.13725491, 1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(1152, 0)
@@ -122,6 +139,7 @@ visible = false
 layout_mode = 1
 
 [node name="DebugTimer" parent="UI" instance=ExtResource("8_vsp63")]
+visible = false
 layout_mode = 1
 
 [node name="TransitionColor" type="ColorRect" parent="UI"]

@@ -12,6 +12,7 @@ var current_screen : Node
 func _ready():
     if OS.is_debug_build() and not OS.has_feature("editor"):
         start_intro_screen()
+        DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
     else:
         start_main_menu()
     GlobalSignal.on_request_main_scene_change.connect(_main_scene_change_requested)

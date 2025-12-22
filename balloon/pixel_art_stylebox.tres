@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cxpy43jf47u8k"]
+
+[ext_resource type="Texture2D" uid="uid://cpwu2602d30b8" path="res://assets/GRAPHICS/hexanys-1-bit-ui-panels-1.1.0/Hexany's 1-bit UI Panels/Panels/simple_big.png" id="1_7ne72"]
+
+[resource]
+texture = ExtResource("1_7ne72")
+texture_margin_left = 60.0
+texture_margin_top = 60.0
+texture_margin_right = 60.0
+texture_margin_bottom = 60.0

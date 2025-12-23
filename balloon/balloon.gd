@@ -51,7 +51,6 @@ var mutation_cooldown: Timer = Timer.new()
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
-
 func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
@@ -97,6 +96,10 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+
+	if dialogue_line.character:
+		if dialogue_line.character == "Kai":
+			$Balloon/KaiPortrait.show_portrait()	
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line

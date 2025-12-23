@@ -70,6 +70,7 @@ color = Color(0.09411765, 0.09803922, 0.13725491, 1)
 script = ExtResource("4_ee6o4")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

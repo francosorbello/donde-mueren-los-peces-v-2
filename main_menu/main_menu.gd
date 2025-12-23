@@ -50,7 +50,8 @@ func do_kiosk_mode():
 	else:
 		create_test_game()
 	initial_level.value = "lvl_vs_room_1"
-	ResourceSaver.save(initial_level,initial_level.resource_path)
+	# prints(initial_level,initial_level.resource_path)
+	# ResourceSaver.save(initial_level,initial_level.resource_path)
 
 	get_parent().start_game()
 

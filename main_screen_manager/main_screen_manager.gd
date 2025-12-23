@@ -1,7 +1,7 @@
 extends Node
 class_name MainScreenManager
-## Autoload that handles main screen
-## The game is separated in a series of screens, like the menu or the game itself
+## Main scene of the executable.
+## The game is separated in a series of main screens, like the menu or the game itself
 
 @export var screens : Dictionary[String,PackedScene]
 
@@ -29,7 +29,6 @@ func transition_to(screen : String):
 	current_screen = scene_instance
 
 	$CanvasLayer/FadeRect.fade_out()
-	# _start_scene.call_deferred(screens[screen])
 
 func _clear():
 	if current_screen:

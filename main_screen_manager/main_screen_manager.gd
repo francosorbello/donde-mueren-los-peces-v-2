@@ -14,8 +14,6 @@ func _ready():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	else:
 		start_main_menu()
-	GlobalSignal.on_request_main_scene_change.connect(_main_scene_change_requested)
-
 
 func transition_to(screen : String):
 	assert(screens.has(screen),"No screen named %s"%screen)
@@ -33,22 +31,10 @@ func transition_to(screen : String):
 	$CanvasLayer/FadeRect.fade_out()
 	# _start_scene.call_deferred(screens[screen])
 
-
-func _main_scene_change_requested(new_scene : String):    
-	if screens.has(new_scene):
-		_start_scene.call_deferred(screens[new_scene])
-	else:
-		push_error("No screen named %s"%new_scene)
-
 func _clear():
 	if current_screen:
-		_clear_current()
-	# else:
-	# 	_clear_children()
-
-func _clear_current():
-	remove_child(current_screen)
-	current_screen.queue_free()
+		remove_child(current_screen)
+		current_screen.queue_free()
 
 func _clear_children():
 	var prev_children = []
@@ -60,20 +46,10 @@ func _clear_children():
 		child.queue_free()
 
 func start_game():
-	# _start_scene(screens["Game"])
 	transition_to("Game")
 
 func start_main_menu():
-	# _start_scene(screens["MainMenu"])
 	transition_to("MainMenu")
 
 func start_intro_screen():
-	_start_scene(screens["IntroScreen"])
-
-func _start_scene(scene : PackedScene):
-	_clear()
-
-	var scene_instance = scene.instantiate()
-	add_child(scene_instance)
-
-	current_screen = scene_instance
+	transition_to("IntroScreen")

@@ -12,5 +12,5 @@ func intro_anim():
     tween.tween_interval(3)    
     tween.tween_property($Container,"modulate",Color(1,1,1,0),1)
     tween.finished.connect(func():
-        GlobalSignal.on_request_main_scene_change.emit("MainMenu")
+        GlobalData.main_screen_manager.transition_to("MainMenu")
     )

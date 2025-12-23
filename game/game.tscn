@@ -95,6 +95,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BGColor" type="ColorRect" parent="CenterContainer"]
+visible = false
 custom_minimum_size = Vector2(1152, 1080)
 layout_mode = 2
 mouse_filter = 2

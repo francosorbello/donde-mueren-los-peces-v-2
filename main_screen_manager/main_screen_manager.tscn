@@ -8,9 +8,9 @@
 
 [node name="MainscreenManager" type="Node"]
 script = ExtResource("1_0plp8")
-main_menu_scene = ExtResource("2_n3omj")
-game_scene = ExtResource("2_ctqhg")
 screens = Dictionary[String, PackedScene]({
 "EndDemo": ExtResource("4_n3omj"),
-"IntroScreen": ExtResource("5_3deng")
+"Game": ExtResource("2_ctqhg"),
+"IntroScreen": ExtResource("5_3deng"),
+"MainMenu": ExtResource("2_n3omj")
 })

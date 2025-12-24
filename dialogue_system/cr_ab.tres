@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://dybkf5juntp7u"]
+
+[ext_resource type="Script" uid="uid://ch8gg4op7ugc0" path="res://dialogue_system/character_res.gd" id="1_6jb1m"]
+[ext_resource type="AudioStream" uid="uid://bv7c7bklmn2dc" path="res://assets/SOUNDS/type_sound.ogg" id="2_t7ppp"]
+
+[resource]
+script = ExtResource("1_6jb1m")
+character_name = "Ab"
+character_color = Color(0, 0.9283795, 0.9787068, 1)
+speak_sound = ExtResource("2_t7ppp")
+metadata/_custom_type_script = "uid://ch8gg4op7ugc0"

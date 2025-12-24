@@ -7,6 +7,10 @@ extends CanvasLayer
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 
+@export_category("Character profiles")
+@export var ab_profile : CharacterResource
+@export var kai_profile : CharacterResource
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -94,12 +98,15 @@ func apply_dialogue_line() -> void:
 	balloon.focus_mode = Control.FOCUS_ALL
 	balloon.grab_focus()
 
-	character_label.visible = not dialogue_line.character.is_empty()
-	character_label.text = tr(dialogue_line.character, "dialogue")
+	if dialogue_line.tags.has("narrated"):
+		dialogue_line.text = "[i]%s[/i]"%dialogue_line.text
 
-	if dialogue_line.character:
-		if dialogue_line.character == "Kai":
-			$Balloon/KaiPortrait.show_portrait()	
+	if not dialogue_line.character.is_empty():
+		character_label.visible = true
+		character_label.text = _get_character_name(dialogue_line.character)
+	else:
+		character_label.visible = false	
+	$Balloon/PortraitManager.toggle_portrait(dialogue_line.character)
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -177,3 +184,21 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+func _get_character_name(for_char : String) -> String:
+	var character_profile : CharacterResource
+	match for_char:
+		"Ab":
+			character_profile = ab_profile
+		"Kai":
+			character_profile = kai_profile
+		_:
+			push_error("No character named %s"%for_char)
+
+	if character_profile == null:
+		return ""
+	return "[color=%s]%s[/color]"%[character_profile.character_color.to_html(),for_char]
+
+func narrate() -> String:
+	print("hello world")
+	return "[i]"

@@ -1,14 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://deyb3ncj8pcxn"]
+[gd_scene load_steps=18 format=3 uid="uid://deyb3ncj8pcxn"]
 
 [ext_resource type="Script" uid="uid://bh3mkjodu4oro" path="res://balloon/balloon.gd" id="1_36de5"]
 [ext_resource type="StyleBox" uid="uid://cxpy43jf47u8k" path="res://balloon/pixel_art_stylebox.tres" id="2_5n8ep"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="FontFile" uid="uid://l50cgledxmdt" path="res://assets/FONTS/monogram.ttf" id="3_5n8ep"]
+[ext_resource type="Resource" uid="uid://cioia52ee84yi" path="res://dialogue_system/cr_kai.tres" id="3_06xpq"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="Resource" uid="uid://dybkf5juntp7u" path="res://dialogue_system/cr_ab.tres" id="3_mp4s2"]
 [ext_resource type="Texture2D" uid="uid://yauk8bfbkudk" path="res://assets/GRAPHICS/characters/portraits/moritz_kellerhoven1.png" id="4_2rviv"]
 [ext_resource type="Texture2D" uid="uid://blh5ahrrg44ek" path="res://assets/GRAPHICS/lights/point_light_discrete.png" id="5_fbxog"]
+[ext_resource type="FontFile" uid="uid://nao30i6me0sq" path="res://assets/FONTS/monogram-extended.ttf" id="5_mp4s2"]
 [ext_resource type="Script" uid="uid://bm0q7no8oox03" path="res://balloon/portrait_rect.gd" id="5_uro0l"]
 [ext_resource type="Texture2D" uid="uid://bh30xr7gifd7e" path="res://assets/GRAPHICS/characters/portraits/robert_lefevre1.png" id="6_fbxog"]
+[ext_resource type="Script" uid="uid://bbcq7yga33ogg" path="res://balloon/portrait_manager.gd" id="6_mp4s2"]
+[ext_resource type="FontFile" uid="uid://bm6urf370q4ar" path="res://assets/FONTS/monogram-extended-italic.ttf" id="11_q871c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -47,12 +51,13 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme_qq3yp"]
-default_font = ExtResource("3_5n8ep")
+default_font = ExtResource("5_mp4s2")
 default_font_size = 60
 Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
 Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
 Button/styles/hover = SubResource("StyleBoxFlat_e0njw")
 Button/styles/normal = SubResource("StyleBoxFlat_e0njw")
+Label/fonts/font = ExtResource("5_mp4s2")
 MarginContainer/constants/margin_bottom = 5
 MarginContainer/constants/margin_left = 30
 MarginContainer/constants/margin_right = 30
@@ -63,6 +68,8 @@ PanelContainer/styles/panel = ExtResource("2_5n8ep")
 layer = 100
 script = ExtResource("1_36de5")
 next_action = &"jump"
+ab_profile = ExtResource("3_mp4s2")
+kai_profile = ExtResource("3_06xpq")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -74,7 +81,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_qq3yp")
 
-[node name="AbPortrait" type="TextureRect" parent="Balloon"]
+[node name="PortraitManager" type="Control" parent="Balloon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_mp4s2")
+
+[node name="AbPortrait" type="TextureRect" parent="Balloon/PortraitManager"]
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 1
 anchors_preset = 6
@@ -93,7 +109,7 @@ script = ExtResource("5_uro0l")
 show_position = Vector2(1408, 224)
 hide_pos = Vector2(1973, 224)
 
-[node name="ColorRect" type="TextureRect" parent="Balloon/AbPortrait"]
+[node name="ColorRect" type="TextureRect" parent="Balloon/PortraitManager/AbPortrait"]
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 custom_minimum_size = Vector2(400, 400)
@@ -107,23 +123,23 @@ scale = Vector2(1.45, 1.45)
 pivot_offset = Vector2(200, 200)
 texture = ExtResource("5_fbxog")
 
-[node name="KaiPortrait" type="TextureRect" parent="Balloon"]
+[node name="KaiPortrait" type="TextureRect" parent="Balloon/PortraitManager"]
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 50.0
-offset_top = -283.0
-offset_right = 562.0
-offset_bottom = 229.0
+offset_left = 52.0
+offset_top = -318.0
+offset_right = 564.0
+offset_bottom = 194.0
 grow_vertical = 2
 texture = ExtResource("6_fbxog")
 script = ExtResource("5_uro0l")
-show_position = Vector2(50, 257)
+show_position = Vector2(52, 222)
 hide_pos = Vector2(-589, 257)
 
-[node name="ColorRect" type="ColorRect" parent="Balloon/KaiPortrait"]
+[node name="ColorRect" type="ColorRect" parent="Balloon/PortraitManager/KaiPortrait"]
 show_behind_parent = true
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 0
@@ -158,10 +174,10 @@ layout_mode = 2
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.501961)
 texture_filter = 1
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/italics_font = ExtResource("11_q871c")
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -171,7 +187,9 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/italics_font = ExtResource("11_q871c")
 theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/italics_font_size = 80
 text = "Dialogue..."
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer"]

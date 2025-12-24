@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://dybkf5juntp7u"]
 
-[ext_resource type="Script" uid="uid://ch8gg4op7ugc0" path="res://dialogue_system/character_res.gd" id="1_6jb1m"]
-[ext_resource type="AudioStream" uid="uid://bv7c7bklmn2dc" path="res://assets/SOUNDS/type_sound.ogg" id="2_t7ppp"]
+[ext_resource type="Script" uid="uid://ch8gg4op7ugc0" path="res://dialogue_system/character_res.gd" id="1_ocyx2"]
+[ext_resource type="AudioStream" uid="uid://xbjh2ce5eeo0" path="res://assets/SOUNDS/voices/ab_2.ogg" id="2_ocyx2"]
 
 [resource]
-script = ExtResource("1_6jb1m")
+script = ExtResource("1_ocyx2")
 character_name = "Ab"
 character_color = Color(0, 0.9283795, 0.9787068, 1)
-speak_sound = ExtResource("2_t7ppp")
+speak_sound = ExtResource("2_ocyx2")
 metadata/_custom_type_script = "uid://ch8gg4op7ugc0"

@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://cioia52ee84yi"]
 
-[ext_resource type="Script" uid="uid://ch8gg4op7ugc0" path="res://dialogue_system/character_res.gd" id="1_fy7t7"]
-[ext_resource type="AudioStream" uid="uid://cmhfhjh4u2cix" path="res://assets/SOUNDS/type_sound_2.ogg" id="2_kup7v"]
+[ext_resource type="Script" uid="uid://ch8gg4op7ugc0" path="res://dialogue_system/character_res.gd" id="1_osdfh"]
+[ext_resource type="AudioStream" uid="uid://c8aksfcih0gb2" path="res://assets/SOUNDS/voices/kai_2.ogg" id="2_osdfh"]
 
 [resource]
-script = ExtResource("1_fy7t7")
+script = ExtResource("1_osdfh")
 character_name = "Kai"
 character_color = Color(1, 1, 1, 1)
-speak_sound = ExtResource("2_kup7v")
+speak_sound = ExtResource("2_osdfh")
 metadata/_custom_type_script = "uid://ch8gg4op7ugc0"

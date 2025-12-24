@@ -8,8 +8,7 @@ extends CanvasLayer
 @export var skip_action: StringName = &"ui_cancel"
 
 @export_category("Character profiles")
-@export var ab_profile : CharacterResource
-@export var kai_profile : CharacterResource
+@export var character_container : CharacterContainerResource
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -107,7 +106,8 @@ func apply_dialogue_line() -> void:
 	else:
 		character_label.visible = false	
 	$Balloon/PortraitManager.toggle_portrait(dialogue_line.character)
-
+	$TypeSoundManager.set_character(dialogue_line.character)
+	
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
 
@@ -182,18 +182,10 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 
-
 #endregion
 
 func _get_character_name(for_char : String) -> String:
-	var character_profile : CharacterResource
-	match for_char:
-		"Ab":
-			character_profile = ab_profile
-		"Kai":
-			character_profile = kai_profile
-		_:
-			push_error("No character named %s"%for_char)
+	var character_profile : CharacterResource = character_container.get_character_named(for_char)
 
 	if character_profile == null:
 		return ""

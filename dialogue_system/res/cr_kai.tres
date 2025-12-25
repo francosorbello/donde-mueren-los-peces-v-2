@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_osdfh")
 character_name = "Kai"
-character_color = Color(1, 1, 1, 1)
+character_color = Color(0.9043838, 0.46574748, 0, 1)
 speak_sound = ExtResource("2_osdfh")
 metadata/_custom_type_script = "uid://ch8gg4op7ugc0"

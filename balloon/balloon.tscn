@@ -64,7 +64,7 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 5
 PanelContainer/styles/panel = ExtResource("2_5n8ep")
 
-[node name="ExampleBalloon" type="CanvasLayer"]
+[node name="DialogueBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_36de5")
 next_action = &"jump"
@@ -97,15 +97,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -530.0
+offset_left = -542.0
 offset_top = -313.0
-offset_right = -18.0
+offset_right = -30.0
 offset_bottom = 199.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("6_q871c")
 script = ExtResource("5_uro0l")
-show_position = Vector2(1408, 224)
+show_position = Vector2(1378, 227)
 hide_pos = Vector2(1973, 224)
 
 [node name="ColorRect" type="TextureRect" parent="Balloon/PortraitManager/AbPortrait"]

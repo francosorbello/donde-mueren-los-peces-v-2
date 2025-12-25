@@ -38,7 +38,7 @@ GlobalData="*res://utils/global_data/global_data.tscn"
 
 [dialogue_manager]
 
-runtime/balloon_path="res://balloon/balloon.tscn"
+runtime/balloon_path="res://balloon_tutorial/balloon_tutorial.tscn"
 
 [display]
 

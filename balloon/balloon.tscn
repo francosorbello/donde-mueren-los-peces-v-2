@@ -4,13 +4,13 @@
 [ext_resource type="StyleBox" uid="uid://cxpy43jf47u8k" path="res://balloon/pixel_art_stylebox.tres" id="2_5n8ep"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
-[ext_resource type="Texture2D" uid="uid://yauk8bfbkudk" path="res://assets/GRAPHICS/characters/portraits/moritz_kellerhoven1.png" id="4_2rviv"]
 [ext_resource type="Resource" uid="uid://b8d8lt6a1mfum" path="res://dialogue_system/res/character_container.tres" id="4_pos5u"]
-[ext_resource type="Texture2D" uid="uid://blh5ahrrg44ek" path="res://assets/GRAPHICS/lights/point_light_discrete.png" id="5_fbxog"]
 [ext_resource type="FontFile" uid="uid://nao30i6me0sq" path="res://assets/FONTS/monogram-extended.ttf" id="5_mp4s2"]
 [ext_resource type="Script" uid="uid://bm0q7no8oox03" path="res://balloon/portrait_rect.gd" id="5_uro0l"]
-[ext_resource type="Texture2D" uid="uid://bh30xr7gifd7e" path="res://assets/GRAPHICS/characters/portraits/robert_lefevre1.png" id="6_fbxog"]
 [ext_resource type="Script" uid="uid://bbcq7yga33ogg" path="res://balloon/portrait_manager.gd" id="6_mp4s2"]
+[ext_resource type="Texture2D" uid="uid://dr3aumurgj3ym" path="res://assets/GRAPHICS/characters/portraits/p2.png" id="6_q871c"]
+[ext_resource type="Texture2D" uid="uid://by6fwydyih6by" path="res://assets/GRAPHICS/circle_big.png" id="8_q871c"]
+[ext_resource type="Texture2D" uid="uid://c6r0k40arfmux" path="res://assets/GRAPHICS/characters/portraits/p1.png" id="9_q871c"]
 [ext_resource type="FontFile" uid="uid://bm6urf370q4ar" path="res://assets/FONTS/monogram-extended-italic.ttf" id="11_q871c"]
 [ext_resource type="Script" uid="uid://bm8mu2ujb8o4l" path="res://balloon/type_sound_manager.gd" id="14_my1lc"]
 
@@ -97,30 +97,30 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -512.0
-offset_top = -316.0
-offset_bottom = 196.0
+offset_left = -530.0
+offset_top = -313.0
+offset_right = -18.0
+offset_bottom = 199.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("4_2rviv")
-flip_h = true
+texture = ExtResource("6_q871c")
 script = ExtResource("5_uro0l")
 show_position = Vector2(1408, 224)
 hide_pos = Vector2(1973, 224)
 
 [node name="ColorRect" type="TextureRect" parent="Balloon/PortraitManager/AbPortrait"]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0, 0, 0, 0.3529412)
 show_behind_parent = true
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 0
-offset_left = 63.0
-offset_top = 28.999985
-offset_right = 463.0
-offset_bottom = 429.0
+offset_left = 66.0
+offset_top = 116.99999
+offset_right = 466.0
+offset_bottom = 517.0
 rotation = 0.7853982
 scale = Vector2(1.45, 1.45)
 pivot_offset = Vector2(200, 200)
-texture = ExtResource("5_fbxog")
+texture = ExtResource("8_q871c")
 
 [node name="KaiPortrait" type="TextureRect" parent="Balloon/PortraitManager"]
 custom_minimum_size = Vector2(512, 512)
@@ -133,7 +133,7 @@ offset_top = -318.0
 offset_right = 564.0
 offset_bottom = 194.0
 grow_vertical = 2
-texture = ExtResource("6_fbxog")
+texture = ExtResource("9_q871c")
 script = ExtResource("5_uro0l")
 show_position = Vector2(52, 222)
 hide_pos = Vector2(-589, 257)
@@ -142,10 +142,10 @@ hide_pos = Vector2(-589, 257)
 show_behind_parent = true
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 0
-offset_left = 54.0
-offset_top = 29.0
-offset_right = 454.0
-offset_bottom = 429.0
+offset_left = 40.00003
+offset_top = 165.0
+offset_right = 440.00003
+offset_bottom = 565.0
 rotation = 0.7853982
 pivot_offset = Vector2(200, 200)
 color = Color(0, 0, 0, 0.3647059)

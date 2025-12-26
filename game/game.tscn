@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=22 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cqhcun638wmpc" path="res://game/bg_color_manager.gd" id="4_ee6o4"]
 [ext_resource type="Texture2D" uid="uid://dpfjt8cry3mi3" path="res://assets/GRAPHICS/other_patterns/tile1.png" id="5_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://djic11w1vg7yn" path="res://inventory_system/inventory_manager.tscn" id="6_dakft"]
+[ext_resource type="Texture2D" uid="uid://rpx1csyycbuh" path="res://assets/GRAPHICS/text_bg/Portal.png" id="6_ln7ps"]
 [ext_resource type="PackedScene" uid="uid://ttyngsx7731n" path="res://inventory_system/ui/inventory_ui.tscn" id="6_u5opy"]
 [ext_resource type="PackedScene" uid="uid://2tvde1g7baq6" path="res://tests/debug_timer.tscn" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://ce5m7b223yfg6" path="res://level_system/automap/automap.tscn" id="8_y36n6"]
@@ -69,6 +70,17 @@ mouse_filter = 2
 color = Color(0.09411765, 0.09803922, 0.13725491, 1)
 script = ExtResource("4_ee6o4")
 
+[node name="TextureRect" type="TextureRect" parent="BGColor"]
+modulate = Color(1, 1, 1, 0.105882354)
+texture_repeat = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ln7ps")
+
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
@@ -95,14 +107,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BGColor" type="ColorRect" parent="CenterContainer"]
-visible = false
 custom_minimum_size = Vector2(1152, 1080)
 layout_mode = 2
 mouse_filter = 2
 color = Color(0.09411765, 0.09803922, 0.13725491, 1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(1152, 0)
+custom_minimum_size = Vector2(1136, 1064)
 layout_mode = 2
 mouse_target = true
 
@@ -113,7 +124,7 @@ handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
 physics_object_picking = true
-size = Vector2i(1152, 1080)
+size = Vector2i(1136, 1064)
 size_2d_override = Vector2i(290, 270)
 size_2d_override_stretch = true
 render_target_update_mode = 4
@@ -133,6 +144,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="InventoryUI" parent="UI" node_paths=PackedStringArray("inventory_manager") instance=ExtResource("6_u5opy")]
+visible = false
 layout_mode = 1
 inventory_manager = NodePath("../../InventoryManager")
 

@@ -1,12 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=30 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
 [ext_resource type="Shader" uid="uid://b2me4ti8lr66k" path="res://crt_shader/crt_shader.gdshader" id="4_dxrkv"]
 [ext_resource type="Script" uid="uid://cqhcun638wmpc" path="res://game/bg_color_manager.gd" id="4_ee6o4"]
-[ext_resource type="Texture2D" uid="uid://dpfjt8cry3mi3" path="res://assets/GRAPHICS/other_patterns/tile1.png" id="5_ee6o4"]
+[ext_resource type="Shader" uid="uid://cbj7u0vb760o7" path="res://game/bg_scroll_boring.gdshader" id="5_ln7ps"]
 [ext_resource type="PackedScene" uid="uid://djic11w1vg7yn" path="res://inventory_system/inventory_manager.tscn" id="6_dakft"]
-[ext_resource type="Texture2D" uid="uid://rpx1csyycbuh" path="res://assets/GRAPHICS/text_bg/Portal.png" id="6_ln7ps"]
+[ext_resource type="Texture2D" uid="uid://dh4uxf5a5uode" path="res://assets/GRAPHICS/text_bg/Circles.png" id="6_ln7ps"]
 [ext_resource type="PackedScene" uid="uid://ttyngsx7731n" path="res://inventory_system/ui/inventory_ui.tscn" id="6_u5opy"]
 [ext_resource type="PackedScene" uid="uid://2tvde1g7baq6" path="res://tests/debug_timer.tscn" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://ce5m7b223yfg6" path="res://level_system/automap/automap.tscn" id="8_y36n6"]
@@ -16,7 +16,18 @@
 [ext_resource type="AudioStream" uid="uid://dt73qjnoy4jew" path="res://assets/SOUNDS/music/WAV_This_Could_Be_Anywhere_in_the_World.mp3" id="10_vsp63"]
 [ext_resource type="AudioStream" uid="uid://delhiq2cjt60q" path="res://assets/SOUNDS/music/WAV_Who_Are_You.mp3" id="11_b686c"]
 [ext_resource type="PackedScene" uid="uid://bq36b0nga2k5y" path="res://game/game_console_commands.tscn" id="12_qf6n1"]
+[ext_resource type="Texture2D" uid="uid://dhucwh0hu3p7n" path="res://assets/GRAPHICS/inputs/xbox_button_a.png" id="13_ln7ps"]
 [ext_resource type="Script" uid="uid://c8h0kq00glgpg" path="res://game/game_blackboard.gd" id="14_b686c"]
+[ext_resource type="Texture2D" uid="uid://d1mi2lfq3kjqo" path="res://assets/GRAPHICS/inputs/xbox_button_x.png" id="14_pxxsx"]
+[ext_resource type="Texture2D" uid="uid://b1tg4rb617au1" path="res://assets/GRAPHICS/inputs/lb.png" id="15_dxwpq"]
+[ext_resource type="Texture2D" uid="uid://bchbfx4lq3rwi" path="res://assets/GRAPHICS/inputs/rb.png" id="16_mhvfb"]
+[ext_resource type="Texture2D" uid="uid://c621y4snlc4rn" path="res://assets/GRAPHICS/inputs/xbox_button_b.png" id="17_5e03w"]
+[ext_resource type="Texture2D" uid="uid://dkg8qjfksp8iy" path="res://assets/GRAPHICS/inputs/xbox_button_y.png" id="18_leid8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxxsx"]
+shader = ExtResource("5_ln7ps")
+shader_parameter/modulate_color = Color(1, 1, 1, 0.10980392)
+shader_parameter/scroll_speed = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxrkv"]
 shader = ExtResource("4_dxrkv")
@@ -31,6 +42,9 @@ shader_parameter/blur = 0.15
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4fuuu"]
 viewport_path = NodePath("CenterContainer/SubViewportContainer/GameViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_pxxsx"]
+font_size = 30
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ee6o4"]
 shader = ExtResource("9_hb504")
@@ -71,8 +85,10 @@ color = Color(0.09411765, 0.09803922, 0.13725491, 1)
 script = ExtResource("4_ee6o4")
 
 [node name="TextureRect" type="TextureRect" parent="BGColor"]
-modulate = Color(1, 1, 1, 0.105882354)
-texture_repeat = 3
+modulate = Color(1, 1, 1, 0.10980392)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pxxsx")
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,17 +96,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_ln7ps")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_ee6o4")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -142,6 +149,107 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Controls" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Flotar" type="HBoxContainer" parent="UI/Controls"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 0
+offset_left = 1610.0
+offset_top = 220.0
+offset_right = 1763.0
+offset_bottom = 284.0
+
+[node name="Label" type="Label" parent="UI/Controls/Flotar"]
+layout_mode = 2
+text = "Flotar"
+label_settings = SubResource("LabelSettings_pxxsx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/Controls/Flotar"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("13_ln7ps")
+
+[node name="Interactuar" type="HBoxContainer" parent="UI/Controls"]
+layout_mode = 0
+offset_left = 1570.0
+offset_top = 160.0
+offset_right = 1705.0
+offset_bottom = 224.0
+
+[node name="Label" type="Label" parent="UI/Controls/Interactuar"]
+layout_mode = 2
+text = "Usar"
+label_settings = SubResource("LabelSettings_pxxsx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/Controls/Interactuar"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("14_pxxsx")
+
+[node name="B" type="TextureRect" parent="UI/Controls"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 1760.0
+offset_top = 160.0
+offset_right = 1824.0
+offset_bottom = 224.0
+texture = ExtResource("17_5e03w")
+
+[node name="Y" type="TextureRect" parent="UI/Controls"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 1700.0
+offset_top = 110.0
+offset_right = 1764.0
+offset_bottom = 174.0
+texture = ExtResource("18_leid8")
+
+[node name="Triggers" type="HBoxContainer" parent="UI/Controls"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 0
+offset_left = 1580.0
+offset_top = 40.0
+offset_right = 1874.0
+offset_bottom = 104.0
+
+[node name="Label" type="Label" parent="UI/Controls/Triggers"]
+layout_mode = 2
+text = "Mapa"
+label_settings = SubResource("LabelSettings_pxxsx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/Controls/Triggers"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("15_dxwpq")
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Controls/Triggers"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("16_mhvfb")
+
+[node name="Label2" type="Label" parent="UI/Controls/Triggers"]
+visible = false
+layout_mode = 2
+text = "Dash"
+label_settings = SubResource("LabelSettings_pxxsx")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="InventoryUI" parent="UI" node_paths=PackedStringArray("inventory_manager") instance=ExtResource("6_u5opy")]
 visible = false

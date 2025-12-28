@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=4 uid="uid://ciiv08u20ct71"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_1fcx1"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_p6yev"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_l5m1v"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_rs5pc"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_vq7qe"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_ae1eg"]
+[ext_resource type="PackedScene" uid="uid://bua1jy71pnhwl" path="res://interactables/doors/consume_door.tscn" id="7_gxr1u"]
+[ext_resource type="Texture2D" uid="uid://chudi8sl82kp6" path="res://assets/GRAPHICS/doors/door_3_10x10.png" id="8_klfmd"]
+[ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="9_klfmd"]
+[ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="10_htqsk"]
+[ext_resource type="Resource" uid="uid://c3r8if0b8ieae" path="res://tests/test.dialogue" id="11_8k6h8"]
+
+[node name="lvl_vs_n_room_1" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_1fcx1")]
+metadata/_edit_lock_ = true
+
+[node name="Layout" parent="." instance=ExtResource("2_p6yev")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABMAAwAFAAUAAAAAABQAAwAFAAUAAAAAABUAAwAFAAUAAAAAABYAAwAFAAUAAAAAABcAAwAFAAUAAAAAABgAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAcAAwAFAAUAAAAcAAYAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAcAAIAAwAFAAUAAAAcAAEAAwAFAAUAAAAcAAAAAwAFAAUAAAAbAAAAAwAFAAUAAAAaAAAAAwAFAAUAAAAZAAAAAwAFAAUAAAAYAAAAAwAFAAUAAAAXAAAAAwAFAAUAAAAWAAAAAwAFAAUAAAAVAAAAAwAFAAUAAAAUAAAAAwAFAAUAAAATAAAAAwAFAAUAAAASAAAAAwAFAAUAAAARAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAOAAAAAwAFAAUAAAANAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAAJAAAAAwAFAAUAAAAIAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAGAAAAAwAFAAUAAAAFAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAADAAAAAwAFAAUAAAACAAAAAwAFAAUAAAABAAAAAwAFAAUAAAAQABoAAwAFAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_l5m1v")
+level_name = "lvl_vs_n_room_1"
+area_type = 1
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_rs5pc")]
+position = Vector2(140, 120)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_vq7qe")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_ae1eg")]
+level_name = "lvl_vs_n_room_1"
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="ConsumeDoor" parent="." instance=ExtResource("7_gxr1u")]
+position = Vector2(140, 270)
+
+[node name="Sprite2D" type="Sprite2D" parent="ConsumeDoor"]
+position = Vector2(-10, -10)
+scale = Vector2(2, 2)
+texture = ExtResource("8_klfmd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ConsumeDoor"]
+position = Vector2(10, -10)
+scale = Vector2(2, 2)
+texture = ExtResource("8_klfmd")
+
+[node name="Narrative Stuff" type="Node2D" parent="."]
+
+[node name="WorldCharacter" parent="." instance=ExtResource("9_klfmd")]
+position = Vector2(210, 190)
+texture = ExtResource("10_htqsk")
+character_name = "Ab"
+dialogue = ExtResource("11_8k6h8")

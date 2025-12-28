@@ -1,0 +1,23 @@
+@tool
+extends Sprite2D
+
+@export_enum("Kai","Ab") var character_name : String = "Kai":
+    set(value):
+        character_name = value
+        if Engine.is_editor_hint() and is_node_ready():
+            setup()
+
+@export var dialogue : DialogueResource
+@export var character_profiles : CharacterContainerResource
+
+func _ready():
+    setup()
+
+func setup():
+    var character = character_profiles.get_character_named(character_name)
+    assert(character != null, "No character named %s"%character_name)
+
+    texture = character.world_sprite
+
+func _on_better_interactable_component_on_interact() -> void:
+    GlobalData.start_dialogue(dialogue)

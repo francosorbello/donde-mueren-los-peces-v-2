@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpodts60uf67s"]
+
+[ext_resource type="PackedScene" uid="uid://dgks666k0klxv" path="res://interactables/interactable_component/better_interactable_component.tscn" id="1_54etn"]
+[ext_resource type="Texture2D" uid="uid://pd3n7mkqhuek" path="res://assets/GRAPHICS/characters/kid1_16x16.png" id="1_w8xc2"]
+[ext_resource type="PackedScene" uid="uid://b4jjcolqqt2xe" path="res://interactables/outline_component/outline_component.tscn" id="2_kwi12"]
+[ext_resource type="Script" uid="uid://ckah0tq4wdbmg" path="res://dialogue_system/world_characters/world_character.gd" id="2_xfbbk"]
+[ext_resource type="Resource" uid="uid://b8d8lt6a1mfum" path="res://dialogue_system/res/character_container.tres" id="3_w8xc2"]
+
+[node name="WorldCharacter" type="Sprite2D"]
+texture = ExtResource("1_w8xc2")
+script = ExtResource("2_xfbbk")
+character_profiles = ExtResource("3_w8xc2")
+
+[node name="BetterInteractableComponent" parent="." instance=ExtResource("1_54etn")]
+
+[node name="OutlineComponent" parent="BetterInteractableComponent" node_paths=PackedStringArray("sprite") instance=ExtResource("2_kwi12")]
+sprite = NodePath("../..")
+
+[connection signal="on_interact" from="BetterInteractableComponent" to="." method="_on_better_interactable_component_on_interact"]

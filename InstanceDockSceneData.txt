@@ -1,4 +1,11 @@
 [{
+"name": "Narrative stuff",
+"scenes": [{
+&"scene": "res://dialogue_system/world_characters/wc_kai.tscn"
+}, {
+&"scene": "res://dialogue_system/world_characters/wc_cecil.tscn"
+}]
+}, {
 "name": "Level stuff",
 "scenes": [{
 &"scene": "res://bubble_recharger/bubble_recharger.tscn"

@@ -61,8 +61,9 @@ direction = 0
 shape = SubResource("RectangleShape2D_nmw1m")
 
 [node name="LeftTransition" parent="." instance=ExtResource("7_nmw1m")]
-visible = false
 position = Vector2(0, 110)
+monitoring = false
+monitorable = false
 next_level_id = "lvl_vs_room_3"
 direction = 2
 

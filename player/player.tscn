@@ -194,7 +194,6 @@ _data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0),
 point_count = 2
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-y_sort_enabled = true
 collision_mask = 257
 motion_mode = 1
 script = ExtResource("1_rkbax")
@@ -301,7 +300,6 @@ b = 5.0
 
 [node name="BubbleSprite" type="Sprite2D" parent="."]
 visible = false
-z_index = 1
 position = Vector2(0, -1)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("15_wodsf")

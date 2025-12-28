@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://8soh03d6ho0s"]
+[gd_scene load_steps=8 format=3 uid="uid://8soh03d6ho0s"]
 
 [ext_resource type="Script" uid="uid://b7wuveham1tla" path="res://main_menu/main_menu.gd" id="1_oa53l"]
-[ext_resource type="Resource" uid="uid://cdl632y2ljd6g" path="res://utils/level_related/initial_level_res.tres" id="2_d3a7t"]
+[ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_d3a7t"]
 [ext_resource type="Shader" uid="uid://d1owo2r0dj7ev" path="res://death_zone/water_2.gdshader" id="3_3shxk"]
+[ext_resource type="Resource" uid="uid://bk2qe2adwyidj" path="res://level_system/levels/level_vertical_slice_narrativo/utils/vs_n_save.tres" id="3_6tl50"]
 [ext_resource type="Texture2D" uid="uid://dnyo3dyp522ud" path="res://assets/GRAPHICS/main_menu/death.png" id="4_bws42"]
 [ext_resource type="AudioStream" uid="uid://cepgk4i3tauqe" path="res://assets/SOUNDS/music/Retro Ambience 02.mp3" id="5_3f7m4"]
 
@@ -26,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oa53l")
 initial_level = ExtResource("2_d3a7t")
+forced_save = ExtResource("3_6tl50")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_bws42")

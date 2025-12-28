@@ -3,6 +3,9 @@ extends Control
 @export var kiosk_mode : bool = false
 @export var initial_level : StringResource
 
+@export_category("Forced save")
+@export var forced_save : ASavedGame
+
 func _ready():
 	Console.add_command("force_kiosk_mode",func():
 		kiosk_mode = true
@@ -21,6 +24,10 @@ func _on_start_button_pressed() -> void:
 		do_kiosk_mode()
 		return
 
+	if forced_save:
+		do_forced_save()
+		return
+
 	if IndieBlueprintSaveManager.save_filename_exists("test"):
 		var saved_game = IndieBlueprintSaveManager.load_savegame("test")
 		if saved_game is not ASavedGame:
@@ -35,6 +42,12 @@ func _on_start_button_pressed() -> void:
 
 	get_parent().start_game()
 	pass # Replace with function body.
+
+func do_forced_save():
+	var new_game = forced_save.duplicate()
+	new_game.write_savegame("forced_save")
+	IndieBlueprintSaveManager.make_current(new_game)
+	get_parent().start_game()
 
 func create_test_game():
 	var new_game = ASavedGame.new()

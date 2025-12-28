@@ -109,7 +109,7 @@ show_position = Vector2(1378, 227)
 hide_pos = Vector2(1973, 224)
 
 [node name="ColorRect" type="TextureRect" parent="Balloon/PortraitManager/AbPortrait"]
-modulate = Color(0, 0, 0, 0.3529412)
+modulate = Color(0, 0.93100005, 0.98, 0.42745098)
 show_behind_parent = true
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 0
@@ -148,7 +148,7 @@ offset_right = 440.00003
 offset_bottom = 565.0
 rotation = 0.7853982
 pivot_offset = Vector2(200, 200)
-color = Color(0, 0, 0, 0.3647059)
+color = Color(0.91, 0.47016665, 0, 0.5058824)
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon"]
 layout_mode = 1

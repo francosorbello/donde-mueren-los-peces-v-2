@@ -8,6 +8,8 @@ extends Sprite2D
             setup()
 
 @export var dialogue : DialogueResource
+@export var override_target : Node2D
+@export_category("Profiles")
 @export var character_profiles : CharacterContainerResource
 
 func _ready():
@@ -21,4 +23,7 @@ func setup():
     name = "WC_%s"%character_name
 
 func _on_better_interactable_component_on_interact() -> void:
-    GlobalData.start_dialogue(dialogue,"start",self)
+    var _target = self
+    if override_target:
+        _target = override_target
+    GlobalData.start_dialogue(dialogue,"start",_target)

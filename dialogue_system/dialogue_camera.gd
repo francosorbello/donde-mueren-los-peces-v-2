@@ -9,6 +9,7 @@ var _dialogue : DialogueResource
 var _fake_center_target : Node2D
 
 var _moving_tween : Tween
+var _zooming_tween : Tween
 
 func _init(target : Node2D, dialogue) -> void:
 	_target = target
@@ -28,7 +29,6 @@ func _ready():
 	)
 
 func _handle_destroy():
-	# _target_follow_component.target = _fake_center_target
 	var tween = _tween_to_pos(SCREEN_CENTER)
 	tween.tween_callback(func():
 		queue_free()
@@ -44,3 +44,13 @@ func _tween_to_pos(pos : Vector2) -> Tween:
 	_moving_tween.tween_property(self,"global_position",pos,0.5)
 
 	return _moving_tween
+
+func _tween_zoom_to(value : Vector2) -> Tween:
+	if _zooming_tween and _zooming_tween.is_running():
+		_zooming_tween.kill()
+
+	_zooming_tween = create_tween()
+	
+	_zooming_tween.tween_property(self,"zoom",value,0.5)
+	return _zooming_tween
+	

@@ -187,15 +187,14 @@ position = Vector2(250, 45)
 
 [node name="TransitionDownards" parent="." instance=ExtResource("16_c8u31")]
 position = Vector2(140, 270)
-next_level_id = "lvl_vs_room_3"
+next_level_id = "lvl_vs_n_room_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownards"]
 shape = SubResource("RectangleShape2D_80kag")
 
 [node name="TransitionLeft" parent="." instance=ExtResource("16_c8u31")]
-visible = false
 position = Vector2(0, 120)
-next_level_id = "lvl_vs_room_6"
+next_level_id = "lvl_vs_n_room_4"
 direction = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft"]

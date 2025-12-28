@@ -1,0 +1,234 @@
+[gd_scene load_steps=25 format=4 uid="uid://dcfplmonm6n68"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_py30e"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="2_ojidc"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="3_osgri"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="4_ap25m"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="5_bu4j2"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="6_meo53"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="7_lxeto"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="8_5enas"]
+[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="9_e4bmp"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="10_l2m30"]
+[ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="11_2gqi3"]
+[ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="12_aisht"]
+[ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="13_sgmby"]
+[ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="14_uawng"]
+[ext_resource type="PackedScene" uid="uid://b0pwgw66kd6fx" path="res://persistancy_system/room_connections/room_actions/ra_call_method_connection_drawer.tscn" id="15_6torl"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="16_tg42e"]
+
+[sub_resource type="Curve2D" id="Curve2D_s4j4l"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10, 140, 0, 0, 0, 0, 280, 140)
+}
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ttqoy"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_mj0l5"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10, 30, 0, 0, 0, 0, 90, 30)
+}
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5677q"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mj0l5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tcsp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5677q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_un8k8"]
+
+[node name="lvl_vs_n_room_4" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_py30e")]
+offset_right = 288.0
+offset_bottom = 270.0
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down", "coming_from_left", "coming_from_right") groups=["level_info"]]
+script = ExtResource("2_ojidc")
+level_name = "lvl_vs_n_room_4"
+id = "5186fe74-5a00-4dec-bf94-76a60c69fcb7"
+coming_from_down = NodePath("../ComingDownards")
+coming_from_left = NodePath("../ComingFromLeft")
+coming_from_right = NodePath("../ComingFromRight")
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingDownards" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(140, 20)
+
+[node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(268, 70)
+
+[node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(20, 240)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("3_osgri")]
+position = Vector2(260, 70)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("4_ap25m")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("5_bu4j2")]
+level_name = "lvl_vs_n_room_4"
+
+[node name="BetterDeathZone" parent="." instance=ExtResource("6_meo53")]
+position = Vector2(0, 20)
+curve = SubResource("Curve2D_s4j4l")
+width = 100.0
+end_sample_point = 0.99
+
+[node name="@Area2D@293380" type="Area2D" parent="BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@293379" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@293380"]
+polygon = PackedVector2Array(10, 90, 52.1875, 90, 95.42969, 90, 145, 90, 194.57031, 90, 237.8125, 90, 279.91006, 90.000015, 279.92905, 190.00002, 237.8125, 190, 194.57031, 190, 145, 190, 95.42969, 190, 52.1875, 190, 10, 190)
+
+[node name="@Polygon2D@293381" type="Polygon2D" parent="BetterDeathZone"]
+material = ExtResource("7_lxeto")
+texture = ExtResource("8_5enas")
+polygon = PackedVector2Array(10, 90, 52.1875, 90, 95.42969, 90, 145, 90, 194.57031, 90, 237.8125, 90, 279.91006, 90.000015, 279.92905, 190.00002, 237.8125, 190, 194.57031, 190, 145, 190, 95.42969, 190, 52.1875, 190, 10, 190)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles659" parent="BetterDeathZone" instance=ExtResource("9_e4bmp")]
+position = Vector2(144.96452, 140)
+emission_rect_extents = Vector2(144.96452, 60.000008)
+scale_amount_curve = SubResource("Curve_ttqoy")
+
+[node name="Layout" parent="." instance=ExtResource("10_l2m30")]
+tile_map_data = PackedByteArray("AAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABUAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAANABoAAwAFAAUAAAAOABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAMAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAbAAMAAwAFAAUAAAAaAAMAAwAFAAUAAAAZAAMAAwAFAAUAAAAYAAMAAwAFAAUAAAAXAAMAAwAFAAUAAAAWAAMAAwAFAAUAAAAVAAMAAwAFAAUAAAAUAAMAAwAFAAUAAAATAAMAAwAFAAUAAAASAAMAAwAFAAUAAAAJABQAAwAFAAUAAAAJABMAAwAFAAUAAAAJABIAAwAFAAUAAAAJABEAAwAFAAUAAAAJABAAAwAFAAUAAAAJAA8AAwAFAAUAAAAJAA4AAwAFAAUAAAAJAA0AAwAFAAUAAAAJAAwAAwAFAAUAAAAJAAsAAwAFAAUAAAASAAsAAwAFAAUAAAASAAwAAwAFAAUAAAASAA0AAwAFAAUAAAASAA4AAwAFAAUAAAASAA8AAwAFAAUAAAASABAAAwAFAAUAAAASABEAAwAFAAUAAAASABIAAwAFAAUAAAASABMAAwAFAAUAAAASABQAAwAFAAUAAAASAAoAAwAFAAUAAAAJAAoAAwAFAAUAAAAJABUAAwAFAAUAAAAJABYAAwAFAAUAAAAJABkAAwAFAAUAAAAAABMAAwAFAAUAAAAAABQAAwAFAAUAAAAMAAoAAwAFAAUAAAALAAoAAwAFAAUAAAAKAAoAAwAFAAUAAAAQAAoAAwAFAAUAAAARAAoAAwAFAAUAAAAPAAoAAwAFAAUAAAASAAQAAwAFAAUAAAASAAUAAwAFAAUAAAASAAgAAwAFAAUAAAASAAkAAwAFAAUAAAASAAYAAwAFAAUAAAASAAcAAwAFAAUAAAAJAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAARAAAAAwAFAAUAAAASAAAAAwAFAAUAAAASAAEAAwAFAAUAAAASAAIAAwAFAAUAAAAAABYAAwAFAAUAAAAIAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAGAAAAAwAFAAUAAAAFAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAADAAAAAwAFAAUAAAACAAAAAwAFAAUAAAABAAAAAwAFAAUAAAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAJAAEAAwAFAAUAAAAJAAIAAwAFAAUAAAAJAAMAAwAFAAUAAAAJAAQAAwAFAAUAAAAJAAUAAwAFAAUAAAAJAAYAAwAFAAUAAAAJABcAAwAFAAUAAAAJABgAAwAFAAUAAAAGABUAAwAFAAUAAAAHABUAAwAFAAUAAAAIABUAAwAFAAUAAAABABUAAwAFAAUAAAACABUAAwAFAAUAAAADABUAAwAFAAUAAAA=")
+
+[node name="Visuals" parent="." instance=ExtResource("10_l2m30")]
+tile_map_data = PackedByteArray("AAAWAAYAAwAZAAkAAAAWAAcAAwAZAAoAAAAXAAYAAwAZAAkAAAAXAAcAAwAZAAoAAAAYAAYAAwAZAAkAAAAYAAcAAwAZAAkAAAAZAAYAAwAZAAoAAAAZAAcAAwAZAAkAAAAaAAYAAwAZAAoAAAAaAAcAAwAZAAkAAAAbAAYAAwAZAAoAAAAbAAcAAwAZAAoAAAAWAAgAAwAZAAkAAAAWAAkAAwAZAAoAAAAWAAoAAwAZAAoAAAAXAAgAAwAZAAoAAAAXAAkAAwAZAAkAAAAXAAoAAwAZAAoAAAAWABUAAwAZAAoAAAAWABYAAwAZAAoAAAAWABcAAwAZAAkAAAAXABUAAwAZAAkAAAAXABYAAwAZAAkAAAAXABcAAwAZAAkAAAAXABgAAwAZAAkAAAAWABgAAwAZAAoAAAANABcAAwAZAAkAAAAOABcAAwAZAAoAAAAPABcAAwAZAAoAAAAQABcAAwAZAAoAAAARABcAAwAZAAoAAAASABcAAwAZAAoAAAATABcAAwAZAAoAAAAUABcAAwAZAAoAAAAVABcAAwAZAAoAAAANABgAAwAZAAkAAAAOABgAAwAZAAkAAAAPABgAAwAZAAoAAAAQABgAAwAZAAoAAAARABgAAwAZAAoAAAASABgAAwAZAAoAAAATABgAAwAZAAkAAAAUABgAAwAZAAkAAAAVABgAAwAZAAkAAAANABUAAwAZAAoAAAANABYAAwAZAAkAAAAOABUAAwAZAAoAAAAOABYAAwAZAAoAAAANAAEAAwAZAAkAAAANAAIAAwAZAAoAAAANAAMAAwAZAAoAAAANAAQAAwAZAAkAAAANAAUAAwAZAAkAAAANAAYAAwAZAAkAAAANAAcAAwAZAAkAAAANAAgAAwAZAAoAAAANAAkAAwAZAAoAAAAOAAEAAwAZAAkAAAAOAAIAAwAZAAoAAAAOAAMAAwAZAAkAAAAOAAQAAwAZAAkAAAAOAAUAAwAZAAkAAAAOAAYAAwAZAAkAAAAOAAcAAwAZAAoAAAAOAAgAAwAZAAkAAAAOAAkAAwAZAAoAAAABAAgAAwAZAAkAAAABAAkAAwAZAAoAAAACAAgAAwAZAAkAAAACAAkAAwAZAAkAAAADAAgAAwAZAAoAAAADAAkAAwAZAAkAAAAEAAgAAwAZAAkAAAAEAAkAAwAZAAoAAAAFAAgAAwAZAAoAAAAFAAkAAwAZAAkAAAAGAAgAAwAZAAoAAAAGAAkAAwAZAAoAAAAHAAgAAwAZAAkAAAAHAAkAAwAZAAkAAAAIAAgAAwAZAAoAAAAIAAkAAwAZAAkAAAAJAAgAAwAZAAoAAAAJAAkAAwAZAAkAAAAKAAgAAwAZAAoAAAAKAAkAAwAZAAkAAAALAAgAAwAZAAkAAAALAAkAAwAZAAkAAAAMAAgAAwAZAAkAAAAMAAkAAwAZAAoAAAAEAAcAAwAZAAoAAAAEAAoAAwAZAAoAAAAFAAcAAwAZAAoAAAAFAAoAAwAZAAoAAAAEABYAAwAZAAkAAAAEABcAAwAZAAoAAAAEABgAAwAZAAoAAAAFABYAAwAZAAkAAAAFABcAAwAZAAkAAAAFABgAAwAZAAoAAAABABcAAwAZAAoAAAABABgAAwAZAAkAAAACABcAAwAZAAkAAAACABgAAwAZAAoAAAADABcAAwAZAAoAAAADABgAAwAZAAkAAAAPAAIAAwAcAAMAAAAPAAgAAwAZAAMAAAARAAQAAwAcAAMAAAAKAAEAAwAZAAMAAAAKAAIAAwAcAAQAAAAKAAYAAwAaAAQAAAALAAEAAwAbAAMAAAAMAAUAAwAeAAQAAAAYABUAAwAcAAQAAAAbABUAAwAZAAQAAAAbABYAAwAcAAMAAAAYABcAAwAbAAMAAAAaABgAAwAaAAMAAAAKABYAAwAaAAMAAAAMABgAAwAbAAMAAAALABgAAwAcAAQAAAAGABcAAwAbAAQAAAAIABcAAwAdAAMAAAAUAAYAAwAeAAMAAAAaAAkAAwAaAAQAAAAbAAkAAwAZAAQAAAAWAAUAAwAZAAMAAAAXAAUAAwAZAAQAAAAaAAUAAwAcAAQAAAAAAAgAAwAZAAoAAAAAAAkAAwAZAAoAAAANAAAAAwAZAAkAAAAOAAAAAwAZAAoAAAAAABcAAwAZAAoAAAAAABgAAwAZAAkAAAA=")
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="PlatformSmall" parent="Obstacle1" instance=ExtResource("11_2gqi3")]
+visible = false
+position = Vector2(240, 160)
+
+[node name="RoomLever" parent="Obstacle1" instance=ExtResource("12_aisht")]
+position = Vector2(212, 98)
+timed = true
+
+[node name="TogglePlatform" type="Node" parent="Obstacle1/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("13_sgmby")
+targets = {
+NodePath("../../PlatformSmall"): &"do_toggle"
+}
+
+[node name="Obstacle2" type="Node2D" parent="."]
+
+[node name="RoomLever" parent="Obstacle2" instance=ExtResource("12_aisht")]
+position = Vector2(185, 219)
+timed = true
+
+[node name="TogglePlatformAndDoor" type="Node" parent="Obstacle2/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("13_sgmby")
+targets = {
+NodePath("../../SimpleDoor"): &"do_toggle",
+NodePath("../../PlatformSmall"): &"do_toggle"
+}
+
+[node name="SimpleDoor" parent="Obstacle2" instance=ExtResource("14_uawng")]
+position = Vector2(140, 105)
+start_closed = false
+
+[node name="PlatformSmall" parent="Obstacle2" instance=ExtResource("11_2gqi3")]
+visible = false
+position = Vector2(140, 160)
+
+[node name="Obstacle3" type="Node2D" parent="."]
+
+[node name="SimpleDoor2" parent="Obstacle3" instance=ExtResource("14_uawng")]
+position = Vector2(50, 215)
+
+[node name="PlatformSmall" parent="Obstacle3" instance=ExtResource("11_2gqi3")]
+position = Vector2(50, 160)
+
+[node name="BetterDeathZone" parent="Obstacle3" instance=ExtResource("6_meo53")]
+position = Vector2(0, 10)
+curve = SubResource("Curve2D_mj0l5")
+width = 60.0
+end_sample_point = 0.99
+
+[node name="@Area2D@300363" type="Area2D" parent="Obstacle3/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@300362" type="CollisionPolygon2D" parent="Obstacle3/BetterDeathZone/@Area2D@300363"]
+polygon = PackedVector2Array(10, 0, 50, 0, 89.97376, 1.9073486e-06, 89.97857, 60, 50, 60, 10, 60)
+
+[node name="@Polygon2D@300364" type="Polygon2D" parent="Obstacle3/BetterDeathZone"]
+material = ExtResource("7_lxeto")
+texture = ExtResource("8_5enas")
+polygon = PackedVector2Array(10, 0, 50, 0, 89.97376, 1.9073486e-06, 89.97857, 60, 50, 60, 10, 60)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles96" parent="Obstacle3/BetterDeathZone" instance=ExtResource("9_e4bmp")]
+position = Vector2(49.989285, 30)
+emission_rect_extents = Vector2(49.989285, 40)
+scale_amount_curve = SubResource("Curve_5677q")
+
+[node name="PlatformSmall2" parent="Obstacle3" instance=ExtResource("11_2gqi3")]
+visible = false
+position = Vector2(50, 40)
+
+[node name="RoomLever3" parent="Obstacle3" instance=ExtResource("12_aisht")]
+position = Vector2(80, 100)
+timed = true
+timed_duration = 4.0
+
+[node name="ToggleDoor" type="Node" parent="Obstacle3/RoomLever3" node_paths=PackedStringArray("targets")]
+script = ExtResource("13_sgmby")
+targets = {
+NodePath("../../SimpleDoor2"): &"do_toggle"
+}
+
+[node name="RaCallMethodConnectionDrawer" parent="Obstacle3/RoomLever3" node_paths=PackedStringArray("call_method_node") instance=ExtResource("15_6torl")]
+call_method_node = NodePath("../ToggleDoor")
+
+[node name="TransitionUpwards" parent="." instance=ExtResource("16_tg42e")]
+position = Vector2(140, 0)
+next_level_id = "lvl_vs_n_room_6"
+direction = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionUpwards"]
+shape = SubResource("RectangleShape2D_mj0l5")
+
+[node name="TransitionLeft1" parent="." instance=ExtResource("16_tg42e")]
+position = Vector2(0, 90)
+next_level_id = "lvl_vs_n_room_5"
+direction = 2
+override_position = Vector2(268, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft1"]
+shape = SubResource("RectangleShape2D_8tcsp")
+
+[node name="TransitionLeft2" parent="." instance=ExtResource("16_tg42e")]
+position = Vector2(0, 240)
+next_level_id = "lvl_vs_n_room_5"
+direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft2"]
+shape = SubResource("RectangleShape2D_5677q")
+
+[node name="TransitionRight" parent="." instance=ExtResource("16_tg42e")]
+position = Vector2(290, 70)
+next_level_id = "lvl_vs_n_room_3"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
+shape = SubResource("RectangleShape2D_un8k8")

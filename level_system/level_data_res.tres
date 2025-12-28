@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelDataResource" load_steps=27 format=3 uid="uid://cvkc2kpwsnr3s"]
+[gd_resource type="Resource" script_class="LevelDataResource" load_steps=29 format=3 uid="uid://cvkc2kpwsnr3s"]
 
 [ext_resource type="PackedScene" uid="uid://dqq8dy0xuh3ec" path="res://level_system/levels/level_1/lvl_1_zone_1_room_1.tscn" id="1_f8nwo"]
 [ext_resource type="Script" uid="uid://drppps17c0dgp" path="res://level_system/level_data.gd" id="1_sihxi"]
@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://cekx7o1n1t8gd" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_16.tscn" id="23_0e1cj"]
 [ext_resource type="PackedScene" uid="uid://bi818k3kq6gdx" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_17.tscn" id="24_n34he"]
 [ext_resource type="PackedScene" uid="uid://ciiv08u20ct71" path="res://level_system/levels/level_vertical_slice_narrativo/lvl_vs_n_room_1.tscn" id="25_b77hm"]
+[ext_resource type="PackedScene" uid="uid://byx52ytian08e" path="res://level_system/levels/level_vertical_slice_narrativo/lvl_vs_n_room_2.tscn" id="26_oiiyd"]
+[ext_resource type="PackedScene" uid="uid://c8jma1g5p8vjn" path="res://level_system/levels/level_vertical_slice_narrativo/lvl_vs_n_room_3.tscn" id="27_olu4x"]
 
 [resource]
 script = ExtResource("1_sihxi")
@@ -38,6 +40,8 @@ levels = Dictionary[String, PackedScene]({
 "lvl_1_zone_1_room_6": ExtResource("6_qn08u"),
 "lvl_1_zone_1_room_7": ExtResource("7_74gfs"),
 "lvl_vs_n_room_1": ExtResource("25_b77hm"),
+"lvl_vs_n_room_2": ExtResource("26_oiiyd"),
+"lvl_vs_n_room_3": ExtResource("27_olu4x"),
 "lvl_vs_room_1": ExtResource("9_0n4s4"),
 "lvl_vs_room_10": ExtResource("17_xx2c1"),
 "lvl_vs_room_11": ExtResource("18_5jbbv"),

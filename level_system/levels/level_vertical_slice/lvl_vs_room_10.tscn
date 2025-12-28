@@ -227,6 +227,8 @@ shape = SubResource("RectangleShape2D_aljjw")
 [node name="TransitionDownwards" parent="." instance=ExtResource("22_aljjw")]
 visible = false
 position = Vector2(140, 270)
+monitoring = false
+monitorable = false
 next_level_id = "lvl_vs_room_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownwards"]

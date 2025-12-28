@@ -19,7 +19,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAU
 
 [node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
 script = ExtResource("3_c6qa7")
-area_type = 1
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]

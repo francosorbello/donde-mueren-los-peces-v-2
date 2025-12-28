@@ -19,6 +19,11 @@ func _on_evaluator_succeded():
     toggle_target()
 
 func toggle_target():
+    if target is Area2D:
+        target.set_deferred("monitorable", not target.monitorable)
+        target.set_deferred("monitoring", not target.monitoring)
+        return
+
     if target is CanvasItem:
         if target.visible:
             disable_target()

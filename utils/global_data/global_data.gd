@@ -7,5 +7,5 @@ extends Node
 
 var main_screen_manager : MainScreenManager
 
-func start_dialogue(dialogue : DialogueResource, start_node : String = "start"):
-    DialogueManager.show_dialogue_balloon_scene(dialogue_balloon,dialogue,start_node)
+func start_dialogue(dialogue : DialogueResource, start_node : String = "start", _target : Node2D = null):
+	DialogueManager.show_dialogue_balloon_scene(dialogue_balloon,dialogue,start_node)

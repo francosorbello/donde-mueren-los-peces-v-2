@@ -18,6 +18,7 @@ func setup():
     assert(character != null, "No character named %s"%character_name)
 
     texture = character.world_sprite
+    name = "WC_%s"%character_name
 
 func _on_better_interactable_component_on_interact() -> void:
-    GlobalData.start_dialogue(dialogue)
+    GlobalData.start_dialogue(dialogue,"start",self)

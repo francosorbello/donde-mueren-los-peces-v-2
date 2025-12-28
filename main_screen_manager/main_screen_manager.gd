@@ -52,3 +52,6 @@ func start_main_menu():
 
 func start_intro_screen():
 	transition_to("IntroScreen")
+
+func get_fade_rect() -> Node2D:
+	return $CanvasLayer/FadeRect

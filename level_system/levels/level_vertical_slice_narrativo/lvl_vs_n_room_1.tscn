@@ -57,7 +57,7 @@ texture = ExtResource("8_klfmd")
 
 [node name="Narrative Stuff" type="Node2D" parent="."]
 
-[node name="WorldCharacter" parent="." instance=ExtResource("9_klfmd")]
+[node name="WC_Ab" parent="." instance=ExtResource("9_klfmd")]
 position = Vector2(210, 190)
 texture = ExtResource("10_htqsk")
 character_name = "Ab"

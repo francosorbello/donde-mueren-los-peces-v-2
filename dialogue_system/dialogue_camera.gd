@@ -1,15 +1,14 @@
 extends Camera2D
 class_name DialogueCamera
 
-const SCREEN_CENTER = Vector2(288,270)/2
+const SCREEN_CENTER = Vector2(290,270)/2
 
 var _target : Node2D
 var _dialogue : DialogueResource
 
-@onready var _target_follow_component_scene = preload("res://inventory_system/carryable_item/target_follow_component.tscn")
-
-var _target_follow_component
 var _fake_center_target : Node2D
+
+var _moving_tween : Tween
 
 func _init(target : Node2D, dialogue) -> void:
 	_target = target
@@ -21,9 +20,7 @@ func _ready():
 	_fake_center_target.global_position = SCREEN_CENTER
 
 	global_position = SCREEN_CENTER
-	_target_follow_component = _target_follow_component_scene.instantiate()
-	_target_follow_component.target = _target
-	add_child(_target_follow_component)
+	_tween_to_pos(_target.global_position)
 
 	DialogueManager.dialogue_ended.connect(func(dialogue):
 		if dialogue == _dialogue:
@@ -31,8 +28,19 @@ func _ready():
 	)
 
 func _handle_destroy():
-	var fade_rect = GlobalData.main_screen_manager.get_fade_rect()
-	var fade_in = fade_rect.fade_in()
-	await fade_in.finished
-	queue_free()
-	fade_rect.fade_out()
+	# _target_follow_component.target = _fake_center_target
+	var tween = _tween_to_pos(SCREEN_CENTER)
+	tween.tween_callback(func():
+		queue_free()
+	)
+
+func _tween_to_pos(pos : Vector2) -> Tween:
+	if _moving_tween and _moving_tween.is_running():
+		_moving_tween.kill()
+
+	_moving_tween = create_tween()
+	
+	_moving_tween.set_trans(Tween.TRANS_SINE)
+	_moving_tween.tween_property(self,"global_position",pos,0.5)
+
+	return _moving_tween

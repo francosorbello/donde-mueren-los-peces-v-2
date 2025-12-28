@@ -4,6 +4,8 @@ extends TextureRect
 @export var hide_pos : Vector2
 @export var anim_time : float = 0.5
 
+var _current_tween : Tween
+
 func _ready():
     visible = false
     position = hide_pos
@@ -20,9 +22,14 @@ func hide_portrait():
         hide()    
     )
 
+
+
 func move_to_anim(pos : Vector2) -> Tween:
-    var tween := create_tween()
+    if _current_tween and _current_tween.is_running():
+        _current_tween.kill()
+
+    _current_tween = create_tween()
     
-    tween.tween_property(self,"position",pos,anim_time)
-    return tween
+    _current_tween.tween_property(self,"position",pos,anim_time)
+    return _current_tween
     

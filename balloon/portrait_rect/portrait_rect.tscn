@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://c17v4if8aauu"]
+
+[ext_resource type="Texture2D" uid="uid://dr3aumurgj3ym" path="res://assets/GRAPHICS/characters/portraits/p2.png" id="1_ocri5"]
+[ext_resource type="Script" uid="uid://bm0q7no8oox03" path="res://balloon/portrait_rect/portrait_rect.gd" id="2_f15gx"]
+[ext_resource type="Script" uid="uid://8dv7dce6ncjv" path="res://addons/ftr_tools/sm/state_machine.gd" id="3_f15gx"]
+[ext_resource type="Script" uid="uid://67qkhfnxiypp" path="res://balloon/portrait_rect/states/portrait_rect_hidden_state.gd" id="4_w76pb"]
+[ext_resource type="Script" uid="uid://c4lnk0k84ojsk" path="res://balloon/portrait_rect/states/portrait_rect_focused_state.gd" id="5_1b4kp"]
+[ext_resource type="Script" uid="uid://dqlc3ypf85oua" path="res://balloon/portrait_rect/states/portrait_rect_blurred_state.gd" id="6_hlvsx"]
+
+[node name="PortraitRect" type="TextureRect"]
+custom_minimum_size = Vector2(512, 512)
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("1_ocri5")
+script = ExtResource("2_f15gx")
+show_position = Vector2(1378, 227)
+hide_pos = Vector2(1973, 224)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_f15gx")
+initial_state = NodePath("HiddenState")
+metadata/_custom_type_script = "uid://8dv7dce6ncjv"
+
+[node name="HiddenState" type="Node" parent="StateMachine"]
+script = ExtResource("4_w76pb")
+metadata/_custom_type_script = "uid://75lytsymjqc2"
+
+[node name="FocusedState" type="Node" parent="StateMachine"]
+script = ExtResource("5_1b4kp")
+metadata/_custom_type_script = "uid://75lytsymjqc2"
+
+[node name="BlurredState" type="Node" parent="StateMachine"]
+script = ExtResource("6_hlvsx")
+metadata/_custom_type_script = "uid://75lytsymjqc2"

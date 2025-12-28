@@ -54,6 +54,8 @@ var mutation_cooldown: Timer = Timer.new()
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
+var _first_appearance : bool = true
+
 func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
@@ -86,6 +88,7 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 	temporary_game_states = [self] + extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
+	$Balloon/PortraitManager.setup_for_characters(resource.character_names)
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
 
 
@@ -105,7 +108,6 @@ func apply_dialogue_line() -> void:
 		character_label.text = _get_character_name(dialogue_line.character)
 	else:
 		character_label.visible = false	
-	$Balloon/PortraitManager.toggle_portrait(dialogue_line.character)
 	$TypeSoundManager.set_character(dialogue_line.character)
 	
 	dialogue_label.hide()
@@ -118,6 +120,11 @@ func apply_dialogue_line() -> void:
 	balloon.show()
 	will_hide_balloon = false
 
+	if _first_appearance:
+		_first_appearance = false
+		await get_tree().create_timer(0.7).timeout
+
+	$Balloon/PortraitManager.toggle_portrait(dialogue_line.character)
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
 		dialogue_label.type_out()

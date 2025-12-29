@@ -3,6 +3,8 @@ Kai: Hello, im kai.
 Kai: Cmon dad, dont embarrass me.
 Kai: im trying to look cool here.
 Ab : [#narrated] Ab tries to not look dissapointed.
+Kai: The next step should fade
+do! call_cutscene_event("test_fade")
 Ab: ...
 Ab: Sorry :(
 => END

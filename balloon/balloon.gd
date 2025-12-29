@@ -201,3 +201,7 @@ func _get_character_name(for_char : String) -> String:
 func narrate() -> String:
 	print("hello world")
 	return "[i]"
+
+func call_cutscene_event(event):
+	print("Calling cutscene event on ballon with event ",event)
+	GlobalSignal.on_dialogue_event.emit(event)

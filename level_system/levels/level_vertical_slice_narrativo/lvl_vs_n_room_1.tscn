@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://ciiv08u20ct71"]
+[gd_scene load_steps=22 format=4 uid="uid://ciiv08u20ct71"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_1fcx1"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_p6yev"]
@@ -14,7 +14,11 @@
 [ext_resource type="Resource" uid="uid://c3r8if0b8ieae" path="res://tests/test.dialogue" id="11_8k6h8"]
 [ext_resource type="Script" uid="uid://csscmsvofh7ig" path="res://dialogue_system/cutscene_system/actions/cuta_teleport_player.gd" id="11_wscox"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="12_2fn67"]
-[ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="12_nscgy"]
+[ext_resource type="Script" uid="uid://dar41wrpauywe" path="res://dialogue_system/cutscene_system/actions/cuta_spawn_particles.gd" id="12_nscgy"]
+[ext_resource type="Script" uid="uid://bafld8lghvfhm" path="res://dialogue_system/cutscene_system/actions/cuta_focus_on_target.gd" id="13_cvmg0"]
+[ext_resource type="PackedScene" uid="uid://bjebv0cxk4eb0" path="res://level_system/levels/level_vertical_slice_narrativo/utils/sickness_particles.tscn" id="14_ec8ec"]
+[ext_resource type="Script" uid="uid://dhx31i78g5cp3" path="res://dialogue_system/cutscene_system/actions/cuta_play_sfx.gd" id="14_g4jem"]
+[ext_resource type="AudioStream" uid="uid://b8tj6yxx3cpan" path="res://assets/SOUNDS/terrible_cough.ogg" id="15_ec8ec"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2fn67"]
 
@@ -75,11 +79,36 @@ dialogue = ExtResource("11_8k6h8")
 script = ExtResource("11_wscox")
 to_position = NodePath("../../PlayerPos")
 
-[node name="FadeIn" type="Node" parent="Narrative Stuff/CutsceneManager"]
-script = ExtResource("12_nscgy")
+[node name="FocusOnPlayer" type="Node" parent="Narrative Stuff/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("13_cvmg0")
+target = NodePath("Marker2D")
 execute = 1
-event_name = "test_fade"
-wait_time = 1.0
+event_name = "sickness_event"
+wait_time = 2.0
+
+[node name="Marker2D" type="Marker2D" parent="Narrative Stuff/CutsceneManager/FocusOnPlayer"]
+position = Vector2(112, 136)
+
+[node name="SpawnSickness" type="Node" parent="Narrative Stuff/CutsceneManager" node_paths=PackedStringArray("spawn_position")]
+script = ExtResource("12_nscgy")
+particles = ExtResource("14_ec8ec")
+spawn_position = NodePath("../../PlayerPos")
+execute = 1
+event_name = "sickness_event"
+
+[node name="PlayCoughSound" type="Node" parent="Narrative Stuff/CutsceneManager"]
+script = ExtResource("14_g4jem")
+sfx = ExtResource("15_ec8ec")
+execute = 1
+event_name = "sickness_event"
+wait_time = 2.0
+
+[node name="FocusOnParty" type="Node" parent="Narrative Stuff/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("13_cvmg0")
+target = NodePath("../../Marker2D")
+execute = 1
+event_name = "sickness_event"
+wait_time = 2.0
 
 [node name="WC_Ab" parent="Narrative Stuff" node_paths=PackedStringArray("override_target") instance=ExtResource("9_klfmd")]
 material = SubResource("ShaderMaterial_2fn67")
@@ -98,7 +127,7 @@ override_target = NodePath("../Marker2D")
 position = Vector2(139, 276)
 
 [node name="PlayerPos" type="Marker2D" parent="Narrative Stuff"]
-position = Vector2(132, 217)
+position = Vector2(132, 170)
 
 [node name="LevelTransitionArea" parent="." instance=ExtResource("12_2fn67")]
 position = Vector2(0, 120)

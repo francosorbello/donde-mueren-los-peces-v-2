@@ -6,7 +6,6 @@ const SCREEN_CENTER = Vector2(290,270)/2
 var _target : Node2D
 var _dialogue : DialogueResource
 
-var _fake_center_target : Node2D
 
 var _moving_tween : Tween
 var _zooming_tween : Tween
@@ -14,12 +13,9 @@ var _zooming_tween : Tween
 func _init(target : Node2D, dialogue) -> void:
 	_target = target
 	_dialogue = dialogue
+	add_to_group("DialogueCamera")
 
 func _ready():
-	_fake_center_target = Node2D.new()
-	_fake_center_target.top_level = true
-	_fake_center_target.global_position = SCREEN_CENTER
-
 	global_position = SCREEN_CENTER
 	_tween_to_pos(_target.global_position)
 
@@ -54,3 +50,8 @@ func _tween_zoom_to(value : Vector2) -> Tween:
 	_zooming_tween.tween_property(self,"zoom",value,0.5)
 	return _zooming_tween
 	
+func set_target(new_target):
+	assert(new_target != null)
+
+	_target = new_target
+	_tween_to_pos(_target.global_position)

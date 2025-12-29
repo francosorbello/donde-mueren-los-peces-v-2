@@ -36,12 +36,10 @@ func _ready():
 		abilities = saved_game.unlocked_abilities
 
 	DialogueManager.dialogue_started.connect(func(_dialogue): 
-		$Sprite2D.modulate.a = 0.6
 		$StateMachine.transition_to("EmptyState")
 	)
 
 	DialogueManager.dialogue_ended.connect(func(_dialogue):
-		$Sprite2D.modulate.a = 1
 		$StateMachine.transition_to("IdleState")
 	)
 

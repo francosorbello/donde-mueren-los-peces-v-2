@@ -1,10 +1,14 @@
 ~ start
-Kai: Hello, im kai.
-Kai: Cmon dad, dont embarrass me.
-Kai: im trying to look cool here.
-Ab : [#narrated] Ab tries to not look dissapointed.
-Kai: The next step should fade
-do! call_cutscene_event("test_fade")
+Ab: Ahora, como hacemos para abrir esta puerta?
+Kai: !.
+Kai: Pa, parece que tenemos visitas.
+Ab : Visitas? Pero si estamos en medio de la...
+Ab: !
+Ab: Ah! 
+#do! call_cutscene_event("test_fade")
+Ab: Disculpe que lo moleste, pero puedo preguntar que hace en un lugar tan lejano como este?
+do call_cutscene_event("sickness_event")
+do wait(6)
 Ab: ...
-Ab: Sorry :(
+Ab: Ya veo.
 => END

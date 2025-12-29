@@ -12,6 +12,8 @@ extends Sprite2D
 @export_category("Profiles")
 @export var character_profiles : CharacterContainerResource
 
+var title : String = "start"
+
 func _ready():
     setup()
 
@@ -26,4 +28,4 @@ func _on_better_interactable_component_on_interact() -> void:
     var _target = self
     if override_target:
         _target = override_target
-    GlobalData.start_dialogue(dialogue,"start",_target)
+    GlobalData.start_dialogue(dialogue,title,_target)

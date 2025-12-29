@@ -11,8 +11,8 @@ func setup_for_characters(characters : Array[String]):
     
 func toggle_portrait(for_character : String):
     if for_character.is_empty():
-        $KaiPortrait.hide_portrait()
-        $AbPortrait.hide_portrait()
+        $KaiPortrait.blur_portrait()
+        $AbPortrait.blur_portrait()
         _last_character = ""
         return
     

@@ -4,4 +4,7 @@ extends CutsceneAction
 @export var to_pos : Node2D
 
 func do_action():
-    pass
+    assert(target != null)
+    assert(to_pos != null)
+
+    target.global_position = to_pos.global_position

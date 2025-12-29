@@ -6,16 +6,12 @@ enum PortraitStatus {
     FOCUSED
 }
 
-@export var show_position : Vector2
-@export var hide_pos : Vector2
 @export var anim_time : float = 0.5
 
 var _current_tween : Tween
 
 func _ready():
     visible = false
-    position = hide_pos
-    # show_portrait()
 
 func show_portrait():
     show()
@@ -30,12 +26,10 @@ func focus_portrait():
         $StateMachine.transition_to("FocusedState")
 
 func hide_portrait():
-    var tween = move_to_anim(hide_pos)
+    var tween = move_to_anim($StateMachine.get_node("HiddenState").hidden_position)
     tween.finished.connect(func():
         hide()    
     )
-
-
 
 func move_to_anim(pos : Vector2, override_time : float = -1) -> Tween:
     if _current_tween and _current_tween.is_running():

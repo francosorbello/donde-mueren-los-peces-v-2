@@ -137,6 +137,15 @@ offset_bottom = 217.0
 grow_vertical = 2
 texture = ExtResource("9_q871c")
 
+[node name="HiddenState" parent="Balloon/PortraitManager/KaiPortrait/StateMachine" index="0"]
+hidden_position = Vector2(-584, 245)
+
+[node name="FocusedState" parent="Balloon/PortraitManager/KaiPortrait/StateMachine" index="1"]
+focused_position = Vector2(150, 245)
+
+[node name="BlurredState" parent="Balloon/PortraitManager/KaiPortrait/StateMachine" index="2"]
+blurred_position = Vector2(44, 245)
+
 [node name="ColorRect" type="ColorRect" parent="Balloon/PortraitManager/KaiPortrait"]
 show_behind_parent = true
 custom_minimum_size = Vector2(400, 400)
@@ -148,15 +157,6 @@ offset_bottom = 534.0
 rotation = 0.7853982
 pivot_offset = Vector2(200, 200)
 color = Color(0.91, 0.47016665, 0, 0.5058824)
-
-[node name="HiddenState" parent="Balloon/PortraitManager/KaiPortrait/StateMachine" index="0"]
-hidden_position = Vector2(-584, 245)
-
-[node name="FocusedState" parent="Balloon/PortraitManager/KaiPortrait/StateMachine" index="1"]
-focused_position = Vector2(150, 245)
-
-[node name="BlurredState" parent="Balloon/PortraitManager/KaiPortrait/StateMachine" index="2"]
-blurred_position = Vector2(44, 245)
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon"]
 layout_mode = 1

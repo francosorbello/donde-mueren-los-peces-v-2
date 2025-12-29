@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://chudi8sl82kp6" path="res://assets/GRAPHICS/doors/door_3_10x10.png" id="8_klfmd"]
 [ext_resource type="PackedScene" uid="uid://bbaay5giilatk" path="res://dialogue_system/cutscene_system/cutscene_manager.tscn" id="9_bemuk"]
 [ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="9_klfmd"]
+[ext_resource type="Resource" uid="uid://oqaqfue278wn" path="res://level_system/levels/level_vertical_slice_narrativo/dialogues/lvl_vs_n_room_1_dialogue.dialogue" id="10_a65om"]
 [ext_resource type="Texture2D" uid="uid://pd3n7mkqhuek" path="res://assets/GRAPHICS/characters/kid1_16x16.png" id="11_2fn67"]
-[ext_resource type="Resource" uid="uid://c3r8if0b8ieae" path="res://tests/test.dialogue" id="11_8k6h8"]
 [ext_resource type="Script" uid="uid://csscmsvofh7ig" path="res://dialogue_system/cutscene_system/actions/cuta_teleport_player.gd" id="11_wscox"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="12_2fn67"]
 [ext_resource type="Script" uid="uid://dar41wrpauywe" path="res://dialogue_system/cutscene_system/actions/cuta_spawn_particles.gd" id="12_nscgy"]
@@ -20,8 +20,8 @@
 [ext_resource type="Script" uid="uid://dhx31i78g5cp3" path="res://dialogue_system/cutscene_system/actions/cuta_play_sfx.gd" id="14_g4jem"]
 [ext_resource type="AudioStream" uid="uid://b8tj6yxx3cpan" path="res://assets/SOUNDS/terrible_cough.ogg" id="15_ec8ec"]
 [ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="17_etgd0"]
-[ext_resource type="Script" uid="uid://yrjbixfee7ca" path="res://dialogue_system/cutscene_system/actions/cuta_teleport.gd" id="18_tq8xt"]
-[ext_resource type="Script" uid="uid://cassnbcrd5rdw" path="res://dialogue_system/cutscene_system/actions/cuta_change_dialogue_start_title.gd" id="19_xbvh3"]
+[ext_resource type="Script" uid="uid://borr7wlp2udux" path="res://dialogue_system/cutscene_system/actions/cuta_toggle_node.gd" id="18_xbvh3"]
+[ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="20_tq8xt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2fn67"]
 
@@ -75,102 +75,94 @@ texture = ExtResource("8_klfmd")
 [node name="Narrative Stuff" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="CutsceneManager" parent="Narrative Stuff" instance=ExtResource("9_bemuk")]
-dialogue = ExtResource("11_8k6h8")
+[node name="FirstCutscene" type="Node2D" parent="Narrative Stuff"]
 
-[node name="TeleportPlayer" type="Node" parent="Narrative Stuff/CutsceneManager" node_paths=PackedStringArray("to_position")]
+[node name="CutsceneManager" parent="Narrative Stuff/FirstCutscene" instance=ExtResource("9_bemuk")]
+dialogue = ExtResource("10_a65om")
+
+[node name="TeleportPlayer" type="Node" parent="Narrative Stuff/FirstCutscene/CutsceneManager" node_paths=PackedStringArray("to_position")]
 script = ExtResource("11_wscox")
 to_position = NodePath("../../PlayerPos")
 
-[node name="FocusOnPlayer" type="Node" parent="Narrative Stuff/CutsceneManager" node_paths=PackedStringArray("target")]
+[node name="FocusOnPlayer" type="Node" parent="Narrative Stuff/FirstCutscene/CutsceneManager" node_paths=PackedStringArray("target")]
 script = ExtResource("13_cvmg0")
 target = NodePath("Marker2D")
 execute = 1
 event_name = "sickness_event"
 wait_time = 1.0
 
-[node name="Marker2D" type="Marker2D" parent="Narrative Stuff/CutsceneManager/FocusOnPlayer"]
+[node name="Marker2D" type="Marker2D" parent="Narrative Stuff/FirstCutscene/CutsceneManager/FocusOnPlayer"]
 position = Vector2(112, 136)
 
-[node name="SpawnSickness" type="Node" parent="Narrative Stuff/CutsceneManager" node_paths=PackedStringArray("spawn_position")]
+[node name="SpawnSickness" type="Node" parent="Narrative Stuff/FirstCutscene/CutsceneManager" node_paths=PackedStringArray("spawn_position")]
 script = ExtResource("12_nscgy")
 particles = ExtResource("14_ec8ec")
 spawn_position = NodePath("../../PlayerPos")
 execute = 1
 event_name = "sickness_event"
 
-[node name="PlayCoughSound" type="Node" parent="Narrative Stuff/CutsceneManager"]
+[node name="PlayCoughSound" type="Node" parent="Narrative Stuff/FirstCutscene/CutsceneManager"]
 script = ExtResource("14_g4jem")
 sfx = ExtResource("15_ec8ec")
 execute = 1
 event_name = "sickness_event"
 wait_time = 2.0
 
-[node name="FocusOnParty" type="Node" parent="Narrative Stuff/CutsceneManager" node_paths=PackedStringArray("target")]
+[node name="FocusOnParty" type="Node" parent="Narrative Stuff/FirstCutscene/CutsceneManager" node_paths=PackedStringArray("target")]
 script = ExtResource("13_cvmg0")
 target = NodePath("../../Marker2D")
 execute = 1
 event_name = "sickness_event"
 wait_time = 2.0
 
-[node name="FadeIn" type="Node" parent="Narrative Stuff/CutsceneManager"]
+[node name="FadeIn" type="Node" parent="Narrative Stuff/FirstCutscene/CutsceneManager"]
 script = ExtResource("17_etgd0")
 execute = 2
-wait_time = 1.0
+wait_time = 0.5
 
-[node name="TeleportKai" type="Node" parent="Narrative Stuff/CutsceneManager" node_paths=PackedStringArray("target", "to_pos")]
-script = ExtResource("18_tq8xt")
-target = NodePath("../../WC_Kai")
-to_pos = NodePath("Marker2D")
+[node name="ToggleSecondCutscene" type="Node" parent="Narrative Stuff/FirstCutscene/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("18_xbvh3")
+target = NodePath("../../../SecondCutscene")
+enabled = false
 execute = 2
 
-[node name="Marker2D" type="Marker2D" parent="Narrative Stuff/CutsceneManager/TeleportKai"]
-position = Vector2(20, 90)
-
-[node name="TeleportAb" type="Node" parent="Narrative Stuff/CutsceneManager" node_paths=PackedStringArray("target", "to_pos")]
-script = ExtResource("18_tq8xt")
-target = NodePath("../../WC_Ab")
-to_pos = NodePath("Marker2D")
-execute = 2
-
-[node name="Marker2D" type="Marker2D" parent="Narrative Stuff/CutsceneManager/TeleportAb"]
-position = Vector2(20, 150)
-
-[node name="ChangeDialogueKai" type="Node" parent="Narrative Stuff/CutsceneManager" node_paths=PackedStringArray("character")]
-script = ExtResource("19_xbvh3")
-new_title = "talked_kai"
-character = NodePath("../../WC_Kai")
-execute = 2
-
-[node name="ChangeDialogueAb" type="Node" parent="Narrative Stuff/CutsceneManager" node_paths=PackedStringArray("character")]
-script = ExtResource("19_xbvh3")
-new_title = "talked_ab"
-character = NodePath("../../WC_Ab")
-execute = 2
-
-[node name="FadeOut" type="Node" parent="Narrative Stuff/CutsceneManager"]
+[node name="FadeOut" type="Node" parent="Narrative Stuff/FirstCutscene/CutsceneManager"]
 script = ExtResource("17_etgd0")
 fade_type = 1
 execute = 2
 
-[node name="WC_Ab" parent="Narrative Stuff" node_paths=PackedStringArray("override_target") instance=ExtResource("9_klfmd")]
+[node name="WC_Ab" parent="Narrative Stuff/FirstCutscene" node_paths=PackedStringArray("override_target") instance=ExtResource("9_klfmd")]
 material = SubResource("ShaderMaterial_2fn67")
 position = Vector2(149, 241)
-dialogue = ExtResource("11_8k6h8")
+texture = ExtResource("20_tq8xt")
+character_name = "Ab"
+dialogue = ExtResource("10_a65om")
 override_target = NodePath("../Marker2D")
+dialogue_ended_event = "door_dialogue_ended"
 
-[node name="WC_Kai" parent="Narrative Stuff" node_paths=PackedStringArray("override_target") instance=ExtResource("9_klfmd")]
+[node name="WC_Kai" parent="Narrative Stuff/FirstCutscene" node_paths=PackedStringArray("override_target") instance=ExtResource("9_klfmd")]
 position = Vector2(153, 189)
-texture = ExtResource("11_2fn67")
-character_name = "Kai"
-dialogue = ExtResource("11_8k6h8")
+dialogue = ExtResource("10_a65om")
 override_target = NodePath("../Marker2D")
+dialogue_ended_event = "door_dialogue_ended"
 
-[node name="Marker2D" type="Marker2D" parent="Narrative Stuff"]
+[node name="Marker2D" type="Marker2D" parent="Narrative Stuff/FirstCutscene"]
 position = Vector2(139, 276)
 
-[node name="PlayerPos" type="Marker2D" parent="Narrative Stuff"]
+[node name="PlayerPos" type="Marker2D" parent="Narrative Stuff/FirstCutscene"]
 position = Vector2(132, 170)
+
+[node name="SecondCutscene" type="Node2D" parent="Narrative Stuff"]
+process_mode = 4
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Narrative Stuff/SecondCutscene"]
+position = Vector2(20, 90)
+texture = ExtResource("11_2fn67")
+
+[node name="Sprite2D" type="Sprite2D" parent="Narrative Stuff/SecondCutscene"]
+position = Vector2(20, 160)
+texture = ExtResource("20_tq8xt")
 
 [node name="LevelTransitionArea" parent="." instance=ExtResource("12_2fn67")]
 position = Vector2(0, 120)

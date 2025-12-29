@@ -13,6 +13,9 @@ func _ready():
 
 	for child in get_children():
 		if child is CutsceneAction:
+			if not child.enabled:
+				continue
+
 			match child.execute:
 				CutsceneAction.Execute.ON_START:
 					execute_on_start.append(child)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://byx52ytian08e"]
+[gd_scene load_steps=33 format=4 uid="uid://byx52ytian08e"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_vf6jb"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_5t6om"]
@@ -24,7 +24,9 @@
 [ext_resource type="Script" uid="uid://dhx31i78g5cp3" path="res://dialogue_system/cutscene_system/actions/cuta_play_sfx.gd" id="21_104nm"]
 [ext_resource type="AudioStream" uid="uid://cstka5furwbd5" path="res://assets/SOUNDS/door/door_2.ogg" id="22_104nm"]
 [ext_resource type="Script" uid="uid://bevp7ppbjnc85" path="res://persistancy_system/actions/delete_action.gd" id="24_f4e36"]
+[ext_resource type="Resource" uid="uid://dex0o8rybbm5a" path="res://level_system/levels/level_vertical_slice_narrativo/dialogues/lvl_vs_n_room_2_flavor_text.dialogue" id="24_wi5vu"]
 [ext_resource type="Script" uid="uid://cjjl8nhep0i6o" path="res://persistancy_system/conditionals/level_visited_event_conditional.gd" id="25_h0da3"]
+[ext_resource type="Script" uid="uid://cassnbcrd5rdw" path="res://dialogue_system/cutscene_system/actions/cuta_change_dialogue_start_title.gd" id="25_r1vtl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lcok"]
 
@@ -217,15 +219,30 @@ visible = false
 
 [node name="WC_Kai" parent="Narrative Stuff/Cutscene2" instance=ExtResource("16_0xcgm")]
 position = Vector2(40, 100)
+dialogue = ExtResource("24_wi5vu")
 
 [node name="WC_Ab" parent="Narrative Stuff/Cutscene2" instance=ExtResource("16_0xcgm")]
 position = Vector2(40, 140)
 texture = ExtResource("17_jw2jd")
 character_name = "Ab"
+dialogue = ExtResource("24_wi5vu")
 
 [node name="PlayerPos" type="Marker2D" parent="Narrative Stuff/Cutscene2"]
 
 [node name="CutsceneManager" parent="Narrative Stuff/Cutscene2" instance=ExtResource("18_4bxlw")]
+dialogue = ExtResource("24_wi5vu")
+
+[node name="ChangeDialogue" type="Node" parent="Narrative Stuff/Cutscene2/CutsceneManager" node_paths=PackedStringArray("character")]
+script = ExtResource("25_r1vtl")
+new_title = "tired"
+character = NodePath("../../WC_Kai")
+execute = 2
+
+[node name="ChangeDialogue2" type="Node" parent="Narrative Stuff/Cutscene2/CutsceneManager" node_paths=PackedStringArray("character")]
+script = ExtResource("25_r1vtl")
+new_title = "tired"
+character = NodePath("../../WC_Ab")
+execute = 2
 
 [node name="ToggleCutscene2" type="Node" parent="Narrative Stuff" node_paths=PackedStringArray("target")]
 script = ExtResource("13_h0v6t")

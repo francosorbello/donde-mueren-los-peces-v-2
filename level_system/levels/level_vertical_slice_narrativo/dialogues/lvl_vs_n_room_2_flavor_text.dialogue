@@ -1,0 +1,11 @@
+~ start
+Ab: Necesito unos 5 minutos para sentarme.
+Ab: La espalda ya no me da para esto.
+Kai: Si querés seguí avanzando. Nosotros te alcanzamos en un rato.
+=> END
+
+~ tired
+Kai: Cómo estas, viejo?
+Ab: ...
+Ab: Tal vez necesite mas de 5 minutos.
+=> END

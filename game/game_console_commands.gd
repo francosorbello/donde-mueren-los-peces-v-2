@@ -11,8 +11,13 @@ func _ready() -> void:
     Console.add_command("restart_level",restart_level)
     Console.add_command("dump_blackboard",dump_blackboard)
     Console.add_command("fly",fly)
+    Console.add_command("set_event_true",set_event_true,["event_name"],1)
     
     Console.font_size = 30
+
+func set_event_true(event_name):
+    Console.print_info("Setting event %s with value %f.1"%[event_name,1.0])
+    PersistencySystem.set_event(event_name,1.0)
 
 func fly():
     var player = get_tree().get_first_node_in_group("player") as APlayer

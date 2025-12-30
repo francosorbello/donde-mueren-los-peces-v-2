@@ -1,8 +1,22 @@
 extends Node
 class_name ToggleAction
 
+enum ToggleType {
+    AUTOMATIC, # target is toggled between enabled and disabled depending on which state they are
+    MANUAL, # target switches to state set on `toggle_to` variable
+}
+
+enum ToggleValue {
+    DISABLE,
+    ENABLE,
+}
+
 @export var evaluator : PersistentEventEvaluator
 @export var target : Node
+
+@export_category("Toggle type")
+@export var toggle_type : ToggleType = ToggleType.AUTOMATIC
+@export var toggle_to : ToggleValue = ToggleValue.DISABLE
 
 func _ready():
     if not evaluator:
@@ -16,6 +30,10 @@ func _ready():
         evaluator.evaluate()
 
 func _on_evaluator_succeded():
+    if toggle_type == ToggleType.MANUAL:
+        do_manual_toggle()
+        return
+        
     toggle_target()
 
 func toggle_target():
@@ -47,3 +65,10 @@ func enable_target():
         if target.has_method("show"):
             target.show()
         target.process_mode = Node.PROCESS_MODE_INHERIT
+
+func do_manual_toggle():
+    match toggle_to:
+        ToggleValue.ENABLE:
+            enable_target()
+        ToggleValue.DISABLE:
+            disable_target()

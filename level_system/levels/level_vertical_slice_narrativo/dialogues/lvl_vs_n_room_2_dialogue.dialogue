@@ -1,0 +1,5 @@
+~ start
+Kai: Vení, ayudanos a mover estos escombros.
+do call_cutscene_event("move_obstacles")
+do wait(0.5)
+=> END

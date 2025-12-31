@@ -1,0 +1,31 @@
+~ start
+Kai: Ahora, como hacemos para abrir esta puerta?
+Ab: !
+Ab: Hijo, parece que tenemos visitas.
+Kai : Visitas? Pero si estamos en medio de la nada...
+Kai: !
+Kai: Ah, que sorpresa! 
+Kai: La verdad no esperabamos encontrarnos con otras personas por acá.
+Kai: Decime, que haces en un lugar tan lejano como este?
+do call_cutscene_event("sickness_event")
+do wait(5)
+Kai: ...
+Kai: Ya veo. Estas acá por la 「FUENTE PARAISO」 cierto?
+Kai: Un artefacto mágico, capaz de cumplir cualquier deseo.
+Kai: Imagino que buscas curar tu enfermedad, no?
+Kai: Creo que todavía no me presento. Yo soy Kai, y este es mi padre, Ab.
+Ab: ...hola.
+Kai: Nosotros también queremos encontrar la 「FUENTE PARAISO」.
+Kai: Mi hermano, Cecil, está enfermo como vos.
+Kai: Tenemos la esperanza de conseguir una cura.
+Kai: Decime, qué te parece si seguimos el camino juntos?
+Kai: Te esperamos acá.
+Kai: Por lo pronto, tenemos que encontrar una forma de abrir esta puerta.
+=> END
+
+~ idea
+Kai: Que tal si te tiras contra la puerta?
+Ab: no tengo ni la fuerza ni las ganas de hacerlo.
+Kai: ...que tal si los 2 nos tiramos contra la puerta?
+Ab: ... mejor le preguntamos a nuestro acompañante que opina.
+=> END

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://4ybnmc4j2y3v"]
+[gd_scene load_steps=51 format=3 uid="uid://4ybnmc4j2y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c1igxf8ox4vds" path="res://assets/GRAPHICS/spaceman.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://caxec55tunhge" path="res://player/player.gd" id="1_rkbax"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://0o1ixt7o0b8e" path="res://player/states/on_railway_state.gd" id="17_2uvqg"]
 [ext_resource type="Script" uid="uid://cqprkqpkvmaxw" path="res://player/states/on_air_current_state.gd" id="17_7pqkx"]
 [ext_resource type="Script" uid="uid://dinmes2qht02b" path="res://player/empty_state.gd" id="18_rptt4"]
+[ext_resource type="Script" uid="uid://cfwcm12stxwcy" path="res://player/states/moving_to_target_state.gd" id="19_jd2rm"]
 [ext_resource type="PackedScene" uid="uid://bk7iuu4nm3sej" path="res://player/dead_anim_player.tscn" id="22_bjvpn"]
 [ext_resource type="Script" uid="uid://js1b4vcldlwv" path="res://abilities/explosion_ability.gd" id="22_s7qer"]
 [ext_resource type="PackedScene" uid="uid://c1kriosoqfogr" path="res://bubble/explosion_area_visual.tscn" id="24_g4c7l"]
@@ -286,6 +287,10 @@ script = ExtResource("18_rptt4")
 [node name="OnRailwayState" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_detection_component")]
 script = ExtResource("17_2uvqg")
 fall_detection_component = NodePath("../../FloorDetectionComponent")
+metadata/_custom_type_script = "uid://75lytsymjqc2"
+
+[node name="MovingToTargetState" type="Node" parent="StateMachine"]
+script = ExtResource("19_jd2rm")
 metadata/_custom_type_script = "uid://75lytsymjqc2"
 
 [node name="BubbleIndicator" parent="." instance=ExtResource("8_rgyib")]

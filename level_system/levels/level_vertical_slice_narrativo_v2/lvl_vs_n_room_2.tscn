@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://r62wfja2iy0l"]
+[gd_scene load_steps=40 format=4 uid="uid://r62wfja2iy0l"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_ff8b5"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_bx12f"]
@@ -13,14 +13,28 @@
 [ext_resource type="PackedScene" uid="uid://v7vcp08dge6v" path="res://doors/key_door.tscn" id="11_8gpsq"]
 [ext_resource type="Script" uid="uid://bxamrpt2gcrrt" path="res://level_system/levels/level_vertical_slice/utils/jump_tutorial.gd" id="12_vhwy4"]
 [ext_resource type="Resource" uid="uid://yrw6d0l3cbqa" path="res://level_system/levels/level_vertical_slice/dialogues/dash_ability_tutorial.dialogue" id="13_r5t5a"]
-[ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="14_3yig7"]
 [ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="14_8ox5b"]
+[ext_resource type="Texture2D" uid="uid://pd3n7mkqhuek" path="res://assets/GRAPHICS/characters/kid1_16x16.png" id="14_10c0i"]
 [ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="15_7wwht"]
 [ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="15_gcyg4"]
+[ext_resource type="PackedScene" uid="uid://dvfbw7sofbkka" path="res://dialogue_system/dialogue_area.tscn" id="16_2pjpx"]
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="16_54hl6"]
 [ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="16_gcyg4"]
+[ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="17_g28hy"]
 [ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="17_uki24"]
+[ext_resource type="Resource" uid="uid://bcxconuiqxfvs" path="res://level_system/levels/level_vertical_slice_narrativo/dialogues/lvl_vs_n_room_2_characters_presentation.dialogue" id="17_whwh8"]
+[ext_resource type="PackedScene" uid="uid://bbaay5giilatk" path="res://dialogue_system/cutscene_system/cutscene_manager.tscn" id="18_aa87x"]
+[ext_resource type="Script" uid="uid://d2bgxd5k3rxdy" path="res://dialogue_system/cutscene_system/actions/cuta_move_player.gd" id="19_dmicl"]
+[ext_resource type="Script" uid="uid://bafld8lghvfhm" path="res://dialogue_system/cutscene_system/actions/cuta_focus_on_target.gd" id="20_j2ruw"]
 [ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="21_10c0i"]
+[ext_resource type="Script" uid="uid://dar41wrpauywe" path="res://dialogue_system/cutscene_system/actions/cuta_spawn_particles.gd" id="21_77yas"]
+[ext_resource type="PackedScene" uid="uid://bjebv0cxk4eb0" path="res://level_system/levels/level_vertical_slice_narrativo/utils/sickness_particles.tscn" id="22_otq13"]
+[ext_resource type="Script" uid="uid://dhx31i78g5cp3" path="res://dialogue_system/cutscene_system/actions/cuta_play_sfx.gd" id="23_hfoyg"]
+[ext_resource type="AudioStream" uid="uid://b8tj6yxx3cpan" path="res://assets/SOUNDS/terrible_cough.ogg" id="24_eh2n3"]
+[ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="25_pyaa4"]
+[ext_resource type="Script" uid="uid://bevp7ppbjnc85" path="res://persistancy_system/actions/delete_action.gd" id="26_j2ruw"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="27_otq13"]
+[ext_resource type="Script" uid="uid://cjjl8nhep0i6o" path="res://persistancy_system/conditionals/level_visited_event_conditional.gd" id="28_hfoyg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1g5y"]
 
@@ -33,11 +47,6 @@ bake_interval = 50.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 140, 60, 0, 0, 0, 0, 140, 160)
 }
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_ttqoy"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
 point_count = 2
 
 [node name="lvl_vs_n_room_2" type="Node2D"]
@@ -71,7 +80,7 @@ position = Vector2(266, 160)
 position = Vector2(140, 20)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_8tptk")]
-position = Vector2(20, 212)
+position = Vector2(150, 240)
 
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_s1mhf")]
 level_info = NodePath("../LevelInfo Stuff/LevelInfo")
@@ -135,50 +144,124 @@ pickable_item = NodePath("../DashAbility")
 
 [node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
 
-[node name="WC_Kai" parent="NarrativeStuff/Cutscene1" instance=ExtResource("14_3yig7")]
-position = Vector2(190, 170)
+[node name="DialogueArea" parent="NarrativeStuff/Cutscene1" node_paths=PackedStringArray("target") instance=ExtResource("16_2pjpx")]
+position = Vector2(182, 220)
+dialogue = ExtResource("17_whwh8")
+remove_on_event = "ab_and_kai_presented"
+target = NodePath("../PartyPos")
 
-[node name="WC_Ab" parent="NarrativeStuff/Cutscene1" instance=ExtResource("14_3yig7")]
-position = Vector2(210, 170)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
+polygon = PackedVector2Array(-92, 40, -92, -30, 8, -30, 8, 40, -12, 40, -12, 10, -72, 10, -72, 40)
+
+[node name="Kai" type="Sprite2D" parent="NarrativeStuff/Cutscene1"]
+position = Vector2(220, 160)
+texture = ExtResource("14_10c0i")
+
+[node name="Ab" type="Sprite2D" parent="NarrativeStuff/Cutscene1"]
+position = Vector2(208, 173)
 texture = ExtResource("15_gcyg4")
-character_name = "Ab"
 
-[node name="RoomLever" parent="." instance=ExtResource("16_gcyg4")]
+[node name="PartyPos" type="Marker2D" parent="NarrativeStuff/Cutscene1"]
+position = Vector2(220, 204)
+
+[node name="CutsceneManager" parent="NarrativeStuff/Cutscene1" instance=ExtResource("18_aa87x")]
+dialogue = ExtResource("17_whwh8")
+
+[node name="TeleportPlayer" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("19_dmicl")
+target = NodePath("../../PlayerPosition")
+
+[node name="FocusOnPlayer" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("20_j2ruw")
+target = NodePath("Marker2D")
+execute = 1
+event_name = "sickness_event"
+wait_time = 1.0
+
+[node name="Marker2D" type="Marker2D" parent="NarrativeStuff/Cutscene1/CutsceneManager/FocusOnPlayer"]
+position = Vector2(220, 250)
+
+[node name="SpawnSickness" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("spawn_position")]
+script = ExtResource("21_77yas")
+particles = ExtResource("22_otq13")
+spawn_position = NodePath("../../PlayerPosition")
+execute = 1
+event_name = "sickness_event"
+
+[node name="PlayCoughSound" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("23_hfoyg")
+sfx = ExtResource("24_eh2n3")
+execute = 1
+event_name = "sickness_event"
+wait_time = 2.0
+
+[node name="FocusOnParty" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("20_j2ruw")
+target = NodePath("../../PartyPos")
+execute = 1
+event_name = "sickness_event"
+wait_time = 2.0
+
+[node name="FadeIn" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("25_pyaa4")
+execute = 2
+wait_time = 0.5
+
+[node name="FadeOut" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("25_pyaa4")
+fade_type = 1
+execute = 2
+
+[node name="PlayerPosition" type="Marker2D" parent="NarrativeStuff/Cutscene1"]
+position = Vector2(220, 204)
+
+[node name="DeleteCutscen1" type="Node" parent="NarrativeStuff" node_paths=PackedStringArray("target")]
+script = ExtResource("26_j2ruw")
+target = NodePath("../Cutscene1")
+metadata/_custom_type_script = "uid://bevp7ppbjnc85"
+
+[node name="PersistentEventEvaluator" type="Node" parent="NarrativeStuff/DeleteCutscen1"]
+script = ExtResource("27_otq13")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="LevelVisitedEventConditional" type="Node" parent="NarrativeStuff/DeleteCutscen1/PersistentEventEvaluator"]
+script = ExtResource("28_hfoyg")
+level_visited = "lvl_vs_n_room_10"
+metadata/_custom_type_script = "uid://cjjl8nhep0i6o"
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="RoomLever" parent="Obstacle1" instance=ExtResource("16_gcyg4")]
 position = Vector2(250, 36)
 
-[node name="BetterDeathZone" parent="." instance=ExtResource("14_8ox5b")]
+[node name="RoomActionCallMethod" type="Node" parent="Obstacle1/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("17_g28hy")
+targets = {
+NodePath("../../SimpleDoor"): &"do_toggle"
+}
+metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="BetterDeathZone" parent="Obstacle1" instance=ExtResource("14_8ox5b")]
 curve = SubResource("Curve2D_uki24")
 width = 40.0
 end_sample_point = 0.99
 
-[node name="@Area2D@274642" type="Area2D" parent="BetterDeathZone"]
+[node name="@Area2D@274642" type="Area2D" parent="Obstacle1/BetterDeathZone"]
 collision_layer = 32
 
-[node name="@CollisionPolygon2D@274641" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@274642"]
+[node name="@CollisionPolygon2D@274641" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone/@Area2D@274642"]
 polygon = PackedVector2Array(160, 60, 160, 110, 160.00002, 159.98044, 120.000015, 159.95996, 120, 110, 120, 60)
 
-[node name="@Polygon2D@274643" type="Polygon2D" parent="BetterDeathZone"]
+[node name="@Polygon2D@274643" type="Polygon2D" parent="Obstacle1/BetterDeathZone"]
 material = ExtResource("15_7wwht")
 texture = ExtResource("16_54hl6")
 polygon = PackedVector2Array(160, 60, 160, 110, 160.00002, 159.98044, 120.000015, 159.95996, 120, 110, 120, 60)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles483" type="CPUParticles2D" parent="BetterDeathZone" instance=ExtResource("17_uki24")]
+[node name="DeathZoneParticles483" parent="Obstacle1/BetterDeathZone" instance=ExtResource("17_uki24")]
 position = Vector2(140, 109.99022)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(30.000008, 59.99022)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
-scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
-[node name="SimpleDoor" parent="." instance=ExtResource("21_10c0i")]
+[node name="SimpleDoor" parent="Obstacle1" instance=ExtResource("21_10c0i")]
 position = Vector2(235, 160)
 door_type = 1

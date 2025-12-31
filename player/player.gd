@@ -42,6 +42,9 @@ func _ready():
 	DialogueManager.dialogue_ended.connect(func(_dialogue):
 		$StateMachine.transition_to("IdleState")
 	)
+	Console.add_command("print_player_state", func():
+		Console.print_info($StateMachine.current_state.name)
+	)
 
 # func _physics_process(_delta):
 # 	if last_direction.x != 0:
@@ -170,3 +173,7 @@ func is_dashing() -> bool:
 
 func fly():
 	$SmallCollisionShape.disabled = not $SmallCollisionShape.disabled
+
+func move_to(target : Node2D):
+	$StateMachine.send_message_to("MovingToTargetState",{"target": target, "next_state": "EmptyState"})
+	$StateMachine.transition_to("MovingToTargetState")

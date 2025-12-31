@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvfbw7sofbkka"]
+
+[ext_resource type="Script" uid="uid://bsm23ri7un8bx" path="res://dialogue_system/dialogue_area.gd" id="1_qvqbc"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="2_wrw7q"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="3_shpbs"]
+
+[node name="DialogueArea" type="Area2D"]
+script = ExtResource("1_qvqbc")
+
+[node name="PersistentEventEvaluator" type="Node" parent="."]
+script = ExtResource("2_wrw7q")
+autostart = false
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="PersistentEventEvaluator"]
+script = ExtResource("3_shpbs")
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="evaluator_succeded" from="PersistentEventEvaluator" to="." method="_on_persistent_event_evaluator_evaluator_succeded"]

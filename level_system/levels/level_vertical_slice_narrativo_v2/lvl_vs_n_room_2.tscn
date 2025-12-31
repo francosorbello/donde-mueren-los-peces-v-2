@@ -61,7 +61,7 @@ level_name = "lvl_vs_n_room_2"
 
 [node name="TransitionDownards" parent="." instance=ExtResource("7_npgig")]
 position = Vector2(140, 270)
-next_level_id = "lvl_vs_room_1"
+next_level_id = "lvl_vs_n_room_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownards"]
 shape = SubResource("RectangleShape2D_e1g5y")
@@ -91,7 +91,7 @@ door_opened_event = "lvl_vs_room_10_door_opened"
 
 [node name="TransitionUpwards" parent="." instance=ExtResource("7_npgig")]
 position = Vector2(140, 0)
-next_level_id = "lvl_vs_room_10"
+next_level_id = "lvl_vs_n_room_10"
 direction = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionUpwards"]
@@ -99,7 +99,7 @@ shape = SubResource("RectangleShape2D_iyr6a")
 
 [node name="TransitionRight" parent="." instance=ExtResource("7_npgig")]
 position = Vector2(288, 120)
-next_level_id = "lvl_vs_room_11"
+next_level_id = "lvl_vs_n_room_11"
 direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]

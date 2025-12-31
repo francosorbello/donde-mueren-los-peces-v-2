@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=31 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://djic11w1vg7yn" path="res://inventory_system/inventory_manager.tscn" id="6_dakft"]
 [ext_resource type="Texture2D" uid="uid://dh4uxf5a5uode" path="res://assets/GRAPHICS/text_bg/Circles.png" id="6_ln7ps"]
 [ext_resource type="PackedScene" uid="uid://ttyngsx7731n" path="res://inventory_system/ui/inventory_ui.tscn" id="6_u5opy"]
+[ext_resource type="PackedScene" uid="uid://0yfb5rxawy5e" path="res://tests/debug_room.tscn" id="8_leid8"]
 [ext_resource type="PackedScene" uid="uid://2tvde1g7baq6" path="res://tests/debug_timer.tscn" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://ce5m7b223yfg6" path="res://level_system/automap/automap.tscn" id="8_y36n6"]
 [ext_resource type="Shader" uid="uid://dk2ecib4gfdal" path="res://utils/transition_shader/spotlight_transition.gdshader" id="9_hb504"]
@@ -149,6 +150,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="DebugRoom" parent="UI" instance=ExtResource("8_leid8")]
+layout_mode = 1
 
 [node name="Controls" type="Control" parent="UI"]
 layout_mode = 1

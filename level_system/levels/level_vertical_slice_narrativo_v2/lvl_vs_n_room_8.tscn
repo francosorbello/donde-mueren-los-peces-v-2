@@ -54,14 +54,14 @@ door_opened_event = "lvl_vs_room_8_door_opened"
 
 [node name="TransitionDownwards" parent="." instance=ExtResource("8_yebu2")]
 position = Vector2(140, 270)
-next_level_id = "lvl_vs_room_6"
+next_level_id = "lvl_vs_n_room_6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownwards"]
 shape = SubResource("RectangleShape2D_pbljs")
 
 [node name="TransitionRight" parent="." instance=ExtResource("8_yebu2")]
 position = Vector2(288, 120)
-next_level_id = "lvl_vs_room_9"
+next_level_id = "lvl_vs_n_room_9"
 direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]

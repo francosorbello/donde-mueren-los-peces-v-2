@@ -147,7 +147,7 @@ sprite = NodePath("../..")
 
 [node name="TransitionUpwards" parent="." instance=ExtResource("24_6ddea")]
 position = Vector2(110, 0)
-next_level_id = "lvl_vs_room_16"
+next_level_id = "lvl_vs_n_room_16"
 direction = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionUpwards"]

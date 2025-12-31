@@ -54,7 +54,7 @@ level_name = "lvl_vs_n_room_1"
 
 [node name="UpTransition" parent="." instance=ExtResource("7_3p2ry")]
 position = Vector2(140, 0)
-next_level_id = "lvl_vs_room_2"
+next_level_id = "lvl_vs_n_room_2"
 direction = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpTransition"]
@@ -64,7 +64,7 @@ shape = SubResource("RectangleShape2D_nmw1m")
 position = Vector2(0, 110)
 monitoring = false
 monitorable = false
-next_level_id = "lvl_vs_room_3"
+next_level_id = "lvl_vs_n_room_3"
 direction = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftTransition"]

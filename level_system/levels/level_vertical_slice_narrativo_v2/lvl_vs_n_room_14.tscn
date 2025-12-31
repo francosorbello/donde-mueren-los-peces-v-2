@@ -248,7 +248,7 @@ metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
 
 [node name="TransitionRight" parent="." instance=ExtResource("17_p54a6")]
 position = Vector2(290, 229)
-next_level_id = "lvl_vs_room_13"
+next_level_id = "lvl_vs_n_room_13"
 direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
@@ -256,7 +256,7 @@ shape = SubResource("RectangleShape2D_mmf1e")
 
 [node name="TransitionDownwards" parent="." instance=ExtResource("17_p54a6")]
 position = Vector2(60, 270)
-next_level_id = "lvl_vs_room_15"
+next_level_id = "lvl_vs_n_room_15"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownwards"]
 shape = SubResource("RectangleShape2D_vxnkp")

@@ -218,7 +218,7 @@ scale_amount_curve = SubResource("Curve_5677q")
 
 [node name="TransitionLeft" parent="." instance=ExtResource("23_cqnmt")]
 position = Vector2(0, 140)
-next_level_id = "lvl_vs_room_9"
+next_level_id = "lvl_vs_n_room_9"
 direction = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft"]
@@ -229,7 +229,7 @@ visible = false
 position = Vector2(140, 270)
 monitoring = false
 monitorable = false
-next_level_id = "lvl_vs_room_2"
+next_level_id = "lvl_vs_n_room_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownwards"]
 shape = SubResource("RectangleShape2D_0c20u")

@@ -1,0 +1,107 @@
+[gd_scene load_steps=14 format=4 uid="uid://c4idyptfx3pe2"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_ms8k5"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_cb08d"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_e6tmg"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_t4bes"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_3t7wp"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_118qq"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="7_3p2ry"]
+[ext_resource type="Script" uid="uid://cj5j4ybo5t3eq" path="res://persistancy_system/actions/toggle_action.gd" id="8_fxh8e"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="9_48fh2"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="10_2a5gy"]
+[ext_resource type="PackedScene" uid="uid://v7vcp08dge6v" path="res://doors/key_door.tscn" id="11_k32hi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmw1m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xf26"]
+
+[node name="lvl_vs_n_room_1" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_ms8k5")]
+
+[node name="Layout" parent="." instance=ExtResource("2_cb08d")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAcAAwAFAAUAAAAcAAYAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAcAAIAAwAFAAUAAAAcAAEAAwAFAAUAAAAcAAAAAwAFAAUAAAABAAAAAwAFAAUAAAACAAAAAwAFAAUAAAADAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAAFAAAAAwAFAAUAAAAGAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAIAAAAAwAFAAUAAAAJAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAAaAAAAAwAFAAUAAAAbAAAAAwAFAAUAAAAZAAAAAwAFAAUAAAAYAAAAAwAFAAUAAAAXAAAAAwAFAAUAAAAWAAAAAwAFAAUAAAAVAAAAAwAFAAUAAAAUAAAAAwAFAAUAAAATAAAAAwAFAAUAAAASAAAAAwAFAAUAAAARAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAALAAAAAwAFAAUAAAABABEAAwAFAAUAAAAFABEAAwAFAAUAAAALABEAAwAFAAUAAAATABEAAwAFAAUAAAAXABEAAwAFAAUAAAACABEAAwAFAAUAAAADABEAAwAFAAUAAAAEABEAAwAFAAUAAAAGABEAAwAFAAUAAAAHABEAAwAFAAUAAAAIABEAAwAFAAUAAAAJABEAAwAFAAUAAAAKABEAAwAFAAUAAAAMABEAAwAFAAUAAAANABEAAwAFAAUAAAAOABEAAwAFAAUAAAAPABEAAwAFAAUAAAAQABEAAwAFAAUAAAARABEAAwAFAAUAAAASABEAAwAFAAUAAAAUABEAAwAFAAUAAAAVABEAAwAFAAUAAAAWABEAAwAFAAUAAAAYABEAAwAFAAUAAAAZABEAAwAFAAUAAAAaABEAAwAFAAUAAAAbABEAAwAFAAUAAAA=")
+
+[node name="Visuals" parent="." instance=ExtResource("2_cb08d")]
+tile_map_data = PackedByteArray("AAANAAIAAwAZAAoAAAANAAMAAwAZAAoAAAANAAQAAwAZAAkAAAANAAUAAwAZAAkAAAANAAYAAwAZAAkAAAANAAcAAwAZAAoAAAANAAgAAwAZAAoAAAANAAkAAwAZAAoAAAANAAoAAwAZAAoAAAANAAsAAwAZAAoAAAAOAAIAAwAZAAkAAAAOAAMAAwAZAAkAAAAOAAQAAwAZAAoAAAAOAAUAAwAZAAoAAAAOAAYAAwAZAAoAAAAOAAcAAwAZAAkAAAAOAAgAAwAZAAoAAAAOAAkAAwAZAAoAAAAOAAoAAwAZAAkAAAABAAoAAwAZAAoAAAABAAsAAwAZAAoAAAACAAoAAwAZAAkAAAACAAsAAwAZAAoAAAADAAoAAwAZAAkAAAADAAsAAwAZAAoAAAAEAAoAAwAZAAkAAAAEAAsAAwAZAAoAAAAFAAoAAwAZAAoAAAAFAAsAAwAZAAkAAAAGAAoAAwAZAAkAAAAGAAsAAwAZAAkAAAAHAAoAAwAZAAkAAAAHAAsAAwAZAAoAAAAIAAoAAwAZAAkAAAAIAAsAAwAZAAoAAAAJAAoAAwAZAAoAAAAJAAsAAwAZAAkAAAAKAAoAAwAZAAkAAAAKAAsAAwAZAAkAAAALAAoAAwAZAAkAAAALAAsAAwAZAAoAAAAMAAoAAwAZAAoAAAAMAAsAAwAZAAkAAAAFAAQAAwAcAAYAAAAHAAMAAwAbAAYAAAAJAAYAAwAbAAYAAAAKAAMAAwAaAAYAAAAKAAYAAwAdAAYAAAALAAMAAwAdAAQAAAAMAAMAAwAZAAYAAAABAAcAAwAZAAYAAAACAAYAAwAcAAYAAAACAAcAAwAdAAQAAAADAAgAAwAZAAYAAAAEAAYAAwAZAAYAAAAEAAcAAwAaAAYAAAAJAAcAAwAcAAYAAAAOAAsAAwAZAAoAAAAVAAgAAwAZAAkAAAAVAAkAAwAZAAkAAAAVAAoAAwAZAAkAAAAVAAsAAwAZAAkAAAAVAAwAAwAZAAkAAAAWAAwAAwAZAAkAAAAXAAwAAwAZAAkAAAAYAAwAAwAZAAkAAAAZAAwAAwAZAAkAAAAZAAsAAwAZAAkAAAAZAAoAAwAZAAkAAAAZAAkAAwAZAAoAAAAZAAgAAwAZAAkAAAAYAAgAAwAZAAkAAAAXAAgAAwAZAAkAAAAWAAgAAwAZAAoAAAAaAAgAAwAZAAkAAAAaAAkAAwAZAAoAAAAaAAoAAwAZAAkAAAAaAAsAAwAZAAkAAAAYAAkAAwAZAAkAAAAWAAkAAwAZAAoAAAAWAAoAAwAZAAkAAAAWAAsAAwAZAAoAAAAaAAwAAwAZAAoAAAAXAAkAAwAZAAkAAAAVAA0AAwAZAAoAAAAWAA0AAwAZAAkAAAAXAA0AAwAZAAoAAAAYAA0AAwAZAAoAAAAZAA0AAwAZAAkAAAAaAA0AAwAZAAkAAAAPAAoAAwAZAAoAAAAQAAoAAwAZAAkAAAARAAoAAwAZAAoAAAASAAoAAwAZAAoAAAATAAoAAwAZAAkAAAAUAAoAAwAZAAkAAAAPAAsAAwAZAAoAAAAQAAsAAwAZAAoAAAARAAsAAwAZAAkAAAASAAsAAwAZAAoAAAATAAsAAwAZAAkAAAAUAAsAAwAZAAoAAAAWAAcAAwAQAAEAAAAXAAcAAwARAAEAAAAYAAcAAwARAAEAAAAZAAcAAwAQAAEAAAAaAAcAAwASAAEAAAAVAAcAAwAQAAEAAAANAAEAAwAZAAkAAAAOAAEAAwAZAAoAAAARAAEAAwAaAAQAAAASAAQAAwAdAAQAAAATAAEAAwAZAAQAAAAaAAMAAwAZAAQAAAAQAAcAAwAeAAQAAAATAAQAAwAcAAQAAAATAAcAAwAbAAQAAAAUAAcAAwAbAAQAAAAYAAUAAwAaAAQAAAAZAAMAAwAeAAQAAAAaAAIAAwAZAAQAAAAYAAMAAwAbAAQAAAABAAUAAwAdAAQAAAABAAgAAwAbAAQAAAACAAUAAwAZAAQAAAACAAgAAwAdAAQAAAAFAAMAAwAcAAQAAAAHAAEAAwAaAAQAAAAKAAcAAwAZAAQAAAAMAAgAAwAZAAQAAAAHAAYAAwAeAAQAAAAHAAgAAwAaAAQAAAADAA0AAwAeAAQAAAAJAA4AAwAZAAQAAAALAA0AAwAdAAQAAAARAAwAAwAaAAQAAAATAA0AAwAaAAQAAAAWAA4AAwAbAAQAAAAaAA4AAwAcAAQAAAAFAA4AAwAdAAQAAAAKAA4AAwAcAAQAAAANAA0AAwAbAAQAAAAUAA4AAwAeAAQAAAANAAAAAwAZAAkAAAAOAAAAAwAZAAkAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down", "coming_from_right") groups=["level_info"]]
+script = ExtResource("3_e6tmg")
+level_name = "lvl_vs_n_room_1"
+id = "8d96a2d1-29dd-4a9b-ad52-11c4e1d17c89"
+coming_from_down = NodePath("../ComingDownards")
+coming_from_right = NodePath("../ComingFromRight")
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingDownards" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(140, 20)
+
+[node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(30, 110)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_t4bes")]
+position = Vector2(240, 106)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_3t7wp")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_118qq")]
+level_name = "lvl_vs_n_room_1"
+
+[node name="UpTransition" parent="." instance=ExtResource("7_3p2ry")]
+position = Vector2(140, 0)
+next_level_id = "lvl_vs_room_2"
+direction = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpTransition"]
+shape = SubResource("RectangleShape2D_nmw1m")
+
+[node name="LeftTransition" parent="." instance=ExtResource("7_3p2ry")]
+position = Vector2(0, 110)
+monitoring = false
+monitorable = false
+next_level_id = "lvl_vs_room_3"
+direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftTransition"]
+shape = SubResource("RectangleShape2D_8xf26")
+
+[node name="ToggleAction" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("8_fxh8e")
+target = NodePath("../LeftTransition")
+metadata/_custom_type_script = "uid://cj5j4ybo5t3eq"
+
+[node name="PersistentEventEvaluator" type="Node" parent="ToggleAction"]
+script = ExtResource("9_48fh2")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="ToggleAction/PersistentEventEvaluator"]
+script = ExtResource("10_2a5gy")
+event_name = "vs_room_1_door_opened"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[node name="KeyDoor" parent="." instance=ExtResource("11_k32hi")]
+position = Vector2(5, 110)
+door_opened_event = "vs_room_1_door_opened"
+door_type = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_top = 20.0
+offset_right = 142.0
+offset_bottom = 75.0
+bbcode_enabled = true
+text = "[center][img]res://assets/GRAPHICS/inputs/arrows.png[/img] o [img]res://assets/GRAPHICS/inputs/left_joystick.png[/img] para [MOVERSE][/center]"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 10.0
+offset_top = 120.0
+offset_right = 152.0
+offset_bottom = 175.0
+bbcode_enabled = true
+text = "[center]M o [img]res://assets/GRAPHICS/inputs/lb.png[/img] para [ABRIR MAPA][/center]"
+fit_content = true

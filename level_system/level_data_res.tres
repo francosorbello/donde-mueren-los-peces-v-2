@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelDataResource" load_steps=34 format=3 uid="uid://cvkc2kpwsnr3s"]
+[gd_resource type="Resource" script_class="LevelDataResource" load_steps=43 format=3 uid="uid://cvkc2kpwsnr3s"]
 
 [ext_resource type="PackedScene" uid="uid://dqq8dy0xuh3ec" path="res://level_system/levels/level_1/lvl_1_zone_1_room_1.tscn" id="1_f8nwo"]
 [ext_resource type="Script" uid="uid://drppps17c0dgp" path="res://level_system/level_data.gd" id="1_sihxi"]
@@ -8,14 +8,22 @@
 [ext_resource type="PackedScene" uid="uid://clgpysfbfin04" path="res://level_system/levels/level_1/lvl_1_zone_1_room_4.tscn" id="5_md5r6"]
 [ext_resource type="PackedScene" uid="uid://cwi2kij2wbrj0" path="res://level_system/levels/level_1/lvl_1_zone_1_room_6.tscn" id="6_qn08u"]
 [ext_resource type="PackedScene" uid="uid://cop4vrbsg2u8k" path="res://level_system/levels/level_1/lvl_1_zone_1_room_7.tscn" id="7_74gfs"]
+[ext_resource type="PackedScene" uid="uid://c4idyptfx3pe2" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_1.tscn" id="8_pg5wb"]
 [ext_resource type="PackedScene" uid="uid://cop710boksnmw" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_2.tscn" id="8_qi6iu"]
 [ext_resource type="PackedScene" uid="uid://cypegym2hqkjy" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_1.tscn" id="9_0n4s4"]
+[ext_resource type="PackedScene" uid="uid://r62wfja2iy0l" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_2.tscn" id="9_pg5wb"]
 [ext_resource type="PackedScene" uid="uid://ckj3box3dksk6" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_3.tscn" id="10_khvr3"]
+[ext_resource type="PackedScene" uid="uid://bs40dvb7fro61" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_3.tscn" id="10_pg5wb"]
 [ext_resource type="PackedScene" uid="uid://bsyv45bg70re1" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_4.tscn" id="11_j2n3o"]
+[ext_resource type="PackedScene" uid="uid://dkw63krgusrjx" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_4.tscn" id="11_pg5wb"]
 [ext_resource type="PackedScene" uid="uid://gxq3vnkofntq" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_5.tscn" id="12_2y4st"]
+[ext_resource type="PackedScene" uid="uid://bryf04muh41fv" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_5.tscn" id="12_pg5wb"]
 [ext_resource type="PackedScene" uid="uid://bkruqb0x0bl6e" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_6.tscn" id="13_8un0i"]
+[ext_resource type="PackedScene" uid="uid://bvqu3es88hcjh" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_6.tscn" id="13_pg5wb"]
 [ext_resource type="PackedScene" uid="uid://d2lpvjok12204" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_7.tscn" id="14_djy8m"]
+[ext_resource type="PackedScene" uid="uid://cb5onuhl3376i" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_7.tscn" id="14_pg5wb"]
 [ext_resource type="PackedScene" uid="uid://dehfmhrjub2up" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_8.tscn" id="15_1p4bs"]
+[ext_resource type="PackedScene" uid="uid://b4d6nccvcr580" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_8.tscn" id="15_pg5wb"]
 [ext_resource type="PackedScene" uid="uid://bhj7iquekl53l" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_9.tscn" id="16_c0hps"]
 [ext_resource type="PackedScene" uid="uid://pp4b0ggutwll" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_10.tscn" id="17_xx2c1"]
 [ext_resource type="PackedScene" uid="uid://btpjqmmnnybas" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_11.tscn" id="18_5jbbv"]
@@ -25,14 +33,15 @@
 [ext_resource type="PackedScene" uid="uid://uw5jyfvd3h65" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_15.tscn" id="22_7asqq"]
 [ext_resource type="PackedScene" uid="uid://cekx7o1n1t8gd" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_16.tscn" id="23_0e1cj"]
 [ext_resource type="PackedScene" uid="uid://bi818k3kq6gdx" path="res://level_system/levels/level_vertical_slice/lvl_vs_room_17.tscn" id="24_n34he"]
-[ext_resource type="PackedScene" uid="uid://ciiv08u20ct71" path="res://level_system/levels/level_vertical_slice_narrativo/lvl_vs_n_room_1.tscn" id="25_b77hm"]
-[ext_resource type="PackedScene" uid="uid://byx52ytian08e" path="res://level_system/levels/level_vertical_slice_narrativo/lvl_vs_n_room_2.tscn" id="26_oiiyd"]
-[ext_resource type="PackedScene" uid="uid://c8jma1g5p8vjn" path="res://level_system/levels/level_vertical_slice_narrativo/lvl_vs_n_room_3.tscn" id="27_olu4x"]
-[ext_resource type="PackedScene" uid="uid://dcfplmonm6n68" path="res://level_system/levels/level_vertical_slice_narrativo/lvl_vs_n_room_4.tscn" id="28_1ojmw"]
-[ext_resource type="PackedScene" uid="uid://e5mfd7g5y0rq" path="res://level_system/levels/level_vertical_slice_narrativo/lvl_vs_n_room_5.tscn" id="29_33hq3"]
-[ext_resource type="PackedScene" uid="uid://bt663csa1yi0a" path="res://level_system/levels/level_vertical_slice_narrativo/lvl_vs_n_room_6.tscn" id="30_fcod1"]
-[ext_resource type="PackedScene" uid="uid://bb1lcdcsbttuj" path="res://level_system/levels/level_vertical_slice_narrativo/lvl_vs_n_room_7.tscn" id="31_j0t57"]
-[ext_resource type="PackedScene" uid="uid://cvbauwbq6dgpc" path="res://level_system/levels/level_vertical_slice_narrativo/lvl_vs_n_room_8.tscn" id="32_pg5wb"]
+[ext_resource type="PackedScene" uid="uid://bkhggbuxw6ofu" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_9.tscn" id="33_0j4wq"]
+[ext_resource type="PackedScene" uid="uid://hpyfitvdgun3" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_10.tscn" id="34_a12xs"]
+[ext_resource type="PackedScene" uid="uid://rul74er7jxve" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_11.tscn" id="35_x5ohe"]
+[ext_resource type="PackedScene" uid="uid://dytno2evojtgw" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_12.tscn" id="36_qk1y7"]
+[ext_resource type="PackedScene" uid="uid://g6p7vrhrwgcu" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_13.tscn" id="37_qd88i"]
+[ext_resource type="PackedScene" uid="uid://2bpof07q2it8" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_14.tscn" id="38_vbbx7"]
+[ext_resource type="PackedScene" uid="uid://1h3hp6u6pp4i" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_15.tscn" id="39_ma3qr"]
+[ext_resource type="PackedScene" uid="uid://btd037ahk7sn5" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_16.tscn" id="40_xkxj0"]
+[ext_resource type="PackedScene" uid="uid://cnpbxa7uc3r40" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_17.tscn" id="41_rawu1"]
 
 [resource]
 script = ExtResource("1_sihxi")
@@ -44,14 +53,23 @@ levels = Dictionary[String, PackedScene]({
 "lvl_1_zone_1_room_5": ExtResource("4_6n800"),
 "lvl_1_zone_1_room_6": ExtResource("6_qn08u"),
 "lvl_1_zone_1_room_7": ExtResource("7_74gfs"),
-"lvl_vs_n_room_1": ExtResource("25_b77hm"),
-"lvl_vs_n_room_2": ExtResource("26_oiiyd"),
-"lvl_vs_n_room_3": ExtResource("27_olu4x"),
-"lvl_vs_n_room_4": ExtResource("28_1ojmw"),
-"lvl_vs_n_room_5": ExtResource("29_33hq3"),
-"lvl_vs_n_room_6": ExtResource("30_fcod1"),
-"lvl_vs_n_room_7": ExtResource("31_j0t57"),
-"lvl_vs_n_room_8": ExtResource("32_pg5wb"),
+"lvl_vs_n_room_1": ExtResource("8_pg5wb"),
+"lvl_vs_n_room_10": ExtResource("34_a12xs"),
+"lvl_vs_n_room_11": ExtResource("35_x5ohe"),
+"lvl_vs_n_room_12": ExtResource("36_qk1y7"),
+"lvl_vs_n_room_13": ExtResource("37_qd88i"),
+"lvl_vs_n_room_14": ExtResource("38_vbbx7"),
+"lvl_vs_n_room_15": ExtResource("39_ma3qr"),
+"lvl_vs_n_room_16": ExtResource("40_xkxj0"),
+"lvl_vs_n_room_17": ExtResource("41_rawu1"),
+"lvl_vs_n_room_2": ExtResource("9_pg5wb"),
+"lvl_vs_n_room_3": ExtResource("10_pg5wb"),
+"lvl_vs_n_room_4": ExtResource("11_pg5wb"),
+"lvl_vs_n_room_5": ExtResource("12_pg5wb"),
+"lvl_vs_n_room_6": ExtResource("13_pg5wb"),
+"lvl_vs_n_room_7": ExtResource("14_pg5wb"),
+"lvl_vs_n_room_8": ExtResource("15_pg5wb"),
+"lvl_vs_n_room_9": ExtResource("33_0j4wq"),
 "lvl_vs_room_1": ExtResource("9_0n4s4"),
 "lvl_vs_room_10": ExtResource("17_xx2c1"),
 "lvl_vs_room_11": ExtResource("18_5jbbv"),

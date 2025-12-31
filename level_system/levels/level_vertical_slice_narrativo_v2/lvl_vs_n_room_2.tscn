@@ -1,0 +1,111 @@
+[gd_scene load_steps=17 format=4 uid="uid://r62wfja2iy0l"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_ff8b5"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_bx12f"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_kuxrw"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_8tptk"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_s1mhf"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_h7dd1"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="7_npgig"]
+[ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="8_jklsu"]
+[ext_resource type="Resource" uid="uid://dgum4egqh2437" path="res://level_system/levels/level_vertical_slice/items/key_lvl_vs_room_1.tres" id="9_f2s50"]
+[ext_resource type="Resource" uid="uid://dy2krd2i18ha7" path="res://abilities/ability_items/abi_dash.tres" id="10_bsw56"]
+[ext_resource type="PackedScene" uid="uid://v7vcp08dge6v" path="res://doors/key_door.tscn" id="11_8gpsq"]
+[ext_resource type="Script" uid="uid://bxamrpt2gcrrt" path="res://level_system/levels/level_vertical_slice/utils/jump_tutorial.gd" id="12_vhwy4"]
+[ext_resource type="Resource" uid="uid://yrw6d0l3cbqa" path="res://level_system/levels/level_vertical_slice/dialogues/dash_ability_tutorial.dialogue" id="13_r5t5a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1g5y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyr6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cw34x"]
+
+[node name="lvl_vs_n_room_2" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_ff8b5")]
+
+[node name="Layout" parent="." instance=ExtResource("2_bx12f")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABMAAwAFAAUAAAAAABQAAwAFAAUAAAAAABUAAwAFAAUAAGAAABYAAwAFAAUAAAAAABcAAwAFAAUAAAAAABgAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAcAAwAFAAUAAAAcAAYAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAcAAIAAwAFAAUAAAAcAAEAAwAFAAUAAAAcAAAAAwAFAAUAAAAbAAAAAwAFAAUAAAAaAAAAAwAFAAUAAAAZAAAAAwAFAAUAAAAYAAAAAwAFAAUAAAAXAAAAAwAFAAUAAAAWAAAAAwAFAAUAAAAVAAAAAwAFAAUAAAAUAAAAAwAFAAUAAAATAAAAAwAFAAUAAAASAAAAAwAFAAUAAAARAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAAJAAAAAwAFAAUAAAAIAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAGAAAAAwAFAAUAAAAFAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAADAAAAAwAFAAUAAAACAAAAAwAFAAUAAAABAAAAAwAFAAUAAAABABIAAwAQAAEAAAACABIAAwARAAEAAAADABIAAwARAAEAAAAEABIAAwARAAEAAAAFABIAAwARAAEAAAAGABIAAwARAAEAAAAHABIAAwARAAEAAAAIABIAAwARAAEAAAAJABIAAwARAAEAAAAKABIAAwARAAEAAAALABIAAwARAAEAAAAMABIAAwARAAEAAAANABIAAwARAAEAAAAOABIAAwARAAEAAAAPABIAAwARAAEAAAAQABIAAwARAAEAAAARABIAAwARAAEAAAASABIAAwARAAEAAAATABIAAwARAAEAAAAUABIAAwARAAEAAAAVABIAAwARAAEAAAAWABIAAwARAAEAAAAXABIAAwARAAEAAAAYABIAAwARAAEAAAAZABIAAwARAAEAAAAaABIAAwARAAEAAAAbABIAAwASAAEAAAAPABoAAwAFAAUAAAAMAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAA=")
+
+[node name="Visuals" parent="." instance=ExtResource("2_bx12f")]
+tile_map_data = PackedByteArray("AAANABUAAwAZAAoAAAANABYAAwAZAAoAAAANABcAAwAZAAkAAAANABgAAwAZAAkAAAANABkAAwAZAAkAAAAOABUAAwAZAAoAAAAOABYAAwAZAAoAAAAOABcAAwAZAAkAAAAOABgAAwAZAAoAAAAOABkAAwAZAAoAAAAPABUAAwAZAAkAAAAPABYAAwAZAAoAAAAQABUAAwAZAAkAAAAQABYAAwAZAAkAAAARABUAAwAZAAoAAAARABYAAwAZAAkAAAASABUAAwAZAAkAAAASABYAAwAZAAoAAAATABUAAwAZAAkAAAATABYAAwAZAAkAAAAUABUAAwAZAAkAAAAUABYAAwAZAAoAAAAVABUAAwAZAAkAAAAVABYAAwAZAAkAAAAWABUAAwAZAAkAAAAWABYAAwAZAAoAAAAXABUAAwAZAAoAAAAXABYAAwAZAAoAAAAaABUAAwAZAAoAAAAaABYAAwAZAAoAAAAYABQAAwAZAAoAAAAYABcAAwAZAAkAAAAZABQAAwAZAAoAAAAZABcAAwAZAAoAAAAaABQAAwAZAAoAAAAaABcAAwAZAAkAAAAXABcAAwAZAAoAAAAXABQAAwAZAAkAAAACABcAAwAcAAQAAAACABkAAwAaAAMAAAADABcAAwAaAAMAAAAEABQAAwAZAAMAAAALABgAAwAbAAMAAAAIABYAAwAZAAQAAAASABQAAwAZAAMAAAASABkAAwAaAAMAAAAWABkAAwAaAAMAAAAGABYAAwAZAAQAAAAGABkAAwAdAAQAAAALABQAAwAdAAMAAAANABoAAwAZAAkAAAAOABoAAwAZAAkAAAAPAAsAAwAZAAkAAAAPAAwAAwAZAAkAAAAQAAsAAwAZAAkAAAAQAAwAAwAZAAkAAAARAAsAAwAZAAoAAAARAAwAAwAZAAoAAAASAAsAAwAZAAkAAAASAAwAAwAZAAkAAAATAAsAAwAZAAoAAAATAAwAAwAZAAoAAAAUAAsAAwAZAAoAAAAUAAwAAwAZAAoAAAAVAAsAAwAZAAkAAAAVAAwAAwAZAAkAAAAWAAsAAwAZAAkAAAAWAAwAAwAZAAoAAAAXAAsAAwAZAAoAAAAXAAwAAwAZAAkAAAAYAAsAAwAZAAkAAAAYAAwAAwAZAAkAAAAZAAsAAwAZAAoAAAAZAAwAAwAZAAkAAAAaAAsAAwAZAAkAAAAaAAwAAwAZAAoAAAAbAAsAAwAZAAkAAAAbAAwAAwAZAAkAAAAcAAsAAwAZAAoAAAAcAAwAAwAZAAkAAAAMAAkAAwAZAAoAAAAMAAoAAwAZAAoAAAANAAkAAwAZAAoAAAANAAoAAwAZAAoAAAAOAAkAAwAZAAoAAAAOAAoAAwAZAAoAAAAPAAkAAwAZAAoAAAAPAAoAAwAZAAkAAAALAA0AAwAZAAkAAAALAA4AAwAZAAoAAAAMAA0AAwAZAAoAAAAMAA4AAwAZAAkAAAANAA0AAwAZAAkAAAANAA4AAwAZAAkAAAAOAA0AAwAZAAoAAAAOAA4AAwAZAAoAAAAPAA0AAwAZAAkAAAAPAA4AAwAZAAkAAAALAAkAAwAZAAkAAAALAAoAAwAZAAkAAAALAAsAAwAZAAkAAAALAAwAAwAZAAoAAAAMAAsAAwAZAAkAAAAMAAwAAwAZAAoAAAAQAAkAAwAZAAoAAAAQAAoAAwAZAAkAAAAQAA0AAwAZAAkAAAAQAA4AAwAZAAoAAAALAAgAAwAbAAEAAAAMAAgAAwAcAAEAAAANAAgAAwAZAAoAAAAOAAgAAwAZAAoAAAAPAAgAAwAbAAEAAAAQAAgAAwAbAAEAAAABAAEAAwAbAAEAAAABAAIAAwAeAAEAAAACAAEAAwAeAAEAAAACAAIAAwAcAAEAAAADAAEAAwAdAAEAAAADAAIAAwAdAAEAAAAZAAUAAwAcAAEAAAAZAAYAAwAdAAEAAAAaAAUAAwAdAAEAAAAaAAYAAwAbAAEAAAAbAAUAAwAbAAEAAAAbAAYAAwAcAAEAAAABAA4AAwAeAAEAAAACAA4AAwAdAAEAAAADAA4AAwAbAAEAAAABAA8AAwAcAAEAAAABABAAAwAcAAEAAAACAA8AAwAdAAEAAAACABAAAwAbAAEAAAADAA8AAwAcAAEAAAADABAAAwAeAAEAAAACAAgAAwAcAAQAAAADAAUAAwAcAAQAAAADAAYAAwAbAAMAAAADAAgAAwAaAAMAAAADAA0AAwAaAAQAAAAFAAUAAwAZAAQAAAAGAAkAAwAeAAQAAAAHAAsAAwAbAAMAAAAHAAwAAwAZAAQAAAAIAAsAAwAeAAMAAAAGAAUAAwAbAAMAAAAJAAMAAwAeAAMAAAAMAAIAAwAaAAQAAAAUAAEAAwAcAAQAAAAWAAEAAwAbAAMAAAAWAAMAAwAeAAMAAAAWAAYAAwAaAAQAAAAXAAEAAwAdAAQAAAARAA4AAwAbAAMAAAARAA8AAwAdAAQAAAATABEAAwAeAAQAAAAVAA8AAwAdAAMAAAAXAA0AAwAbAAMAAAAXABAAAwAcAAMAAAAZAA4AAwAeAAQAAAAHAA4AAwAeAAQAAAAJABEAAwAdAAMAAAAaAAMAAwAcAAMAAAAaAAgAAwAbAAMAAAAQAAQAAwAZAAQAAAAQAAUAAwAbAAQAAAARAAYAAwAdAAQAAAATAAcAAwAZAAQAAAANAAEAAwAZAAkAAAANAAIAAwAZAAkAAAANAAMAAwAZAAoAAAANAAQAAwAZAAkAAAANAAUAAwAZAAoAAAANAAYAAwAZAAoAAAANAAcAAwAZAAkAAAAOAAEAAwAZAAoAAAAOAAIAAwAZAAoAAAAOAAMAAwAZAAkAAAAOAAQAAwAZAAkAAAAOAAUAAwAZAAkAAAAOAAYAAwAZAAoAAAAOAAcAAwAZAAkAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up", "coming_from_down", "coming_from_left") groups=["level_info"]]
+script = ExtResource("3_kuxrw")
+level_name = "lvl_vs_n_room_2"
+coming_from_up = NodePath("../ComingFromUp")
+coming_from_down = NodePath("../ComingDOwnards")
+coming_from_left = NodePath("../ComingFromLeft")
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(140, 240)
+
+[node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(266, 120)
+
+[node name="ComingDOwnards" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(140, 20)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_8tptk")]
+position = Vector2(120, 220)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_s1mhf")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_h7dd1")]
+level_name = "lvl_vs_n_room_2"
+
+[node name="TransitionDownards" parent="." instance=ExtResource("7_npgig")]
+position = Vector2(140, 270)
+next_level_id = "lvl_vs_room_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownards"]
+shape = SubResource("RectangleShape2D_e1g5y")
+
+[node name="PickableKey" parent="." instance=ExtResource("8_jklsu")]
+position = Vector2(250, 220)
+item = ExtResource("9_f2s50")
+event_name = "item_vs_room_1_key_picked_up"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 10.0
+offset_top = 200.0
+offset_right = 132.0
+offset_bottom = 246.0
+bbcode_enabled = true
+text = "[center] E or [img]res://assets/GRAPHICS/inputs/tile_0378.png[/img] para [INTERACTUAR][/center]"
+fit_content = true
+
+[node name="DashAbility" parent="." instance=ExtResource("8_jklsu")]
+position = Vector2(140, 120)
+item = ExtResource("10_bsw56")
+event_name = "ability_dash_picked_up"
+
+[node name="KeyDoor" parent="." instance=ExtResource("11_8gpsq")]
+position = Vector2(140, 5)
+door_opened_event = "lvl_vs_room_10_door_opened"
+
+[node name="TransitionUpwards" parent="." instance=ExtResource("7_npgig")]
+position = Vector2(140, 0)
+next_level_id = "lvl_vs_room_10"
+direction = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionUpwards"]
+shape = SubResource("RectangleShape2D_iyr6a")
+
+[node name="TransitionRight" parent="." instance=ExtResource("7_npgig")]
+position = Vector2(288, 120)
+next_level_id = "lvl_vs_room_11"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
+shape = SubResource("RectangleShape2D_cw34x")
+
+[node name="DashTutorial" type="Node" parent="." node_paths=PackedStringArray("pickable_item")]
+script = ExtResource("12_vhwy4")
+dialogue = ExtResource("13_r5t5a")
+pickable_item = NodePath("../DashAbility")

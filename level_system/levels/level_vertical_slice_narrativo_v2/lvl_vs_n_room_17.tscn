@@ -1,0 +1,156 @@
+[gd_scene load_steps=28 format=4 uid="uid://cnpbxa7uc3r40"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_xa7bv"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_0df5d"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_mwpcn"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_nkkr2"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_lyn3q"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_w3qud"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="7_x6xgf"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="8_36y03"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_60bqq"]
+[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_tauha"]
+[ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="11_ci0mv"]
+[ext_resource type="PackedScene" uid="uid://bvyk8wnkh1xb0" path="res://laser/dash_laser.tscn" id="12_oslpl"]
+[ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="13_8fk3t"]
+[ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="14_24gpn"]
+[ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="15_73lqv"]
+[ext_resource type="Resource" uid="uid://fp6xe10jkyt2" path="res://level_system/levels/level_vertical_slice/items/key_lvl_vs_room_17.tres" id="16_pe4o5"]
+[ext_resource type="PackedScene" uid="uid://da01bxc51tnxl" path="res://bubble_recharger/bubble_recharger.tscn" id="17_mp1qb"]
+[ext_resource type="PackedScene" uid="uid://v7vcp08dge6v" path="res://doors/key_door.tscn" id="18_7hv2x"]
+[ext_resource type="Shader" uid="uid://d10m6757u4c6r" path="res://interactables/outline_component/outline.gdshader" id="19_df3ap"]
+[ext_resource type="Texture2D" uid="uid://pd3n7mkqhuek" path="res://assets/GRAPHICS/characters/kid1_16x16.png" id="20_b60nm"]
+[ext_resource type="Script" uid="uid://cl4t5dejms5og" path="res://level_system/levels/level_vertical_slice/utils/end_demo_kid.gd" id="21_iplpb"]
+[ext_resource type="PackedScene" uid="uid://dgks666k0klxv" path="res://interactables/interactable_component/better_interactable_component.tscn" id="22_q57v8"]
+[ext_resource type="PackedScene" uid="uid://b4jjcolqqt2xe" path="res://interactables/outline_component/outline_component.tscn" id="23_j38dr"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="24_6ddea"]
+
+[sub_resource type="Curve2D" id="Curve2D_cv1rx"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 130, 60, 0, 0, 0, 0, 150, 60, 0, 0, 0, 0, 150, 100, 0, 0, 0, 0, 210, 100, 0, 0, 0, 0, 210, 140, 0, 0, 0, 0, 160, 140, 0, 0, 0, 0, 160, 180, 0, 0, 0, 0, 120, 180, 0, 0, 0, 0, 120, 140, 0, 0, 0, 0, 70, 140, 0, 0, 0, 0, 70, 100, 0, 0, 0, 0, 130, 100, 0, 0, 0, 0, 130, 60)
+}
+point_count = 13
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glft2"]
+shader = ExtResource("19_df3ap")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxjru"]
+
+[node name="lvl_vs_n_room_17" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_xa7bv")]
+metadata/_edit_lock_ = true
+
+[node name="Layout" parent="." instance=ExtResource("2_0df5d")]
+tile_map_data = PackedByteArray("AAAAAAkAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAMABoAAwAFAAUAAAANABoAAwAFAAUAAAAOABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAPAAAAAwAFAAUAAAAOAAAAAwAFAAUAAAANAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAAJAAAAAwAFAAUAAAAAAAoAAwAFAAUAAAAXABkAAwAFAAUAAAAXABQAAwAFAAUAAAAYABQAAwAFAAUAAAAZABQAAwAFAAUAAAAaABQAAwAFAAUAAAAbABQAAwAFAAUAAAAXABUAAwAFAAUAAAAMAAUAAwAFAAUAAAAMAAYAAwAFAAUAAAAMAAcAAwAFAAUAAAAMAAgAAwAFAAUAAAAMAAkAAwAFAAUAAAAPAAUAAwAFAAUAAAAPAAYAAwAFAAUAAAAPAAcAAwAFAAUAAAAPAAgAAwAFAAUAAAAPAAkAAwAFAAUAAAAFAA4AAwAFAAUAAAAGAA4AAwAFAAUAAAAHAA4AAwAFAAUAAAAIAA4AAwAFAAUAAAAJAA4AAwAFAAUAAAAKAA4AAwAFAAUAAAARAA4AAwAFAAUAAAASAA4AAwAFAAUAAAATAA4AAwAFAAUAAAAUAA4AAwAFAAUAAAAVAA4AAwAFAAUAAAAWAA4AAwAFAAUAAAAFAAkAAwAFAAUAAAAGAAkAAwAFAAUAAAAHAAkAAwAFAAUAAAAIAAkAAwAFAAUAAAAJAAkAAwAFAAUAAAAKAAkAAwAFAAUAAAALAAkAAwAFAAUAAAAQAAkAAwAFAAUAAAARAAkAAwAFAAUAAAASAAkAAwAFAAUAAAATAAkAAwAFAAUAAAAUAAkAAwAFAAUAAAAVAAkAAwAFAAUAAAAWAAkAAwAFAAUAAAAPABUAAwAFAAUAAAAMABUAAwAFAAUAAAAPAAMAAwAFAAUAAAAPAAQAAwAFAAUAAAAPAAEAAwAFAAUAAAAPAAIAAwAFAAUAAAABAAkAAwAFAAUAAAACAAkAAwAFAAUAAAADAAkAAwAFAAUAAAAEAAkAAwAFAAUAAAABAA4AAwAFAAUAAAACAA4AAwAFAAUAAAADAA4AAwAFAAUAAAAEAA4AAwAFAAUAAAAXAA4AAwAFAAUAAAAYAA4AAwAFAAUAAAAZAA4AAwAFAAUAAAAaAA4AAwAFAAUAAAAbAA4AAwAFAAUAAAAXAAkAAwAFAAUAAAAYAAkAAwAFAAUAAAAZAAkAAwAFAAUAAAAaAAkAAwAFAAUAAAAbAAkAAwAFAAUAAAAQABUAAwAVAAQAAAARABUAAwAVAAQAAAASABUAAwAVAAQAAAATABUAAwAVAAQAAAAUABUAAwAVAAQAAAAVABUAAwAVAAQAAAAWABUAAwAVAAQAAAAJAAEAAwAFAAUAAAAJAAIAAwAFAAUAAAAJAAMAAwAFAAUAAAAJAAQAAwAFAAUAAAAJAAUAAwAFAAUAAAAKAAUAAwAFAAUAAAALAAUAAwAFAAUAAAASAA8AAwAcAAYAAAATABEAAwAdAAYAAAAUABIAAwAcAAYAAAAVABEAAwAZAAYAAAAWABIAAwAaAAYAAAAXABIAAwAZAAYAAAAaABEAAwAaAAYAAAATABMAAwAbAAYAAAAXABAAAwAcAAYAAAAXABEAAwAbAAYAAAAZABAAAwAcAAYAAAAZABEAAwAcAAYAAAAaABAAAwAbAAYAAAAXABYAAwAFAAUAAAALABMAAwAFAAUAAAAQABMAAwAFAAUAAAALAA4AAwAFAAUAAAALAA8AAwAFAAUAAAALABAAAwAFAAUAAAALABEAAwAFAAUAAAALABIAAwAFAAUAAAAQAA8AAwAFAAUAAAAQABAAAwAFAAUAAAAQABEAAwAFAAUAAAAQABIAAwAFAAUAAAAQAA4AAwAFAAUAAAAQABQAAwAFAAUAAAALABQAAwAFAAUAAAALABYAAwAFAAUAAAALABcAAwAFAAUAAAALABgAAwAFAAUAAAALABkAAwAFAAUAAAALABoAAwAFAAUAAAA=")
+
+[node name="Visuals" parent="." instance=ExtResource("2_0df5d")]
+tile_map_data = PackedByteArray("AAALAAAAAwAZAAsAAAALAAIAAwAZAAsAAAAKAAAAAwAZAAkAAAAKAAEAAwAZAAkAAAAKAAIAAwAZAAoAAAAKAAMAAwAZAAsAAAALAAEAAwAZAAkAAAALAAMAAwAZAAsAAAAMAAIAAwAZAAoAAAAMAAMAAwAZAAoAAAANAAIAAwAZAAsAAAANAAMAAwAZAAsAAAAOAAIAAwAZAAsAAAAOAAMAAwAZAAoAAAANAAQAAwAZAAoAAAANAAUAAwAZAAsAAAAOAAQAAwAZAAsAAAAOAAUAAwAZAAsAAAAEAAsAAwAZAAoAAAAEAAwAAwAZAAsAAAAFAAsAAwAZAAoAAAAFAAwAAwAZAAoAAAAGAAsAAwAZAAsAAAAGAAwAAwAZAAsAAAAVAAsAAwAZAAoAAAAVAAwAAwAZAAoAAAAWAAsAAwAZAAkAAAAWAAwAAwAZAAoAAAAXAAsAAwAZAAoAAAAXAAwAAwAZAAoAAAAYAAsAAwAZAAsAAAAYAAwAAwAZAAoAAAANABIAAwAZAAkAAAANABMAAwAZAAoAAAANABQAAwAZAAoAAAAOABIAAwAZAAkAAAAOABMAAwAZAAoAAAAOABQAAwAZAAsAAAANABYAAwAZAAkAAAANABcAAwAZAAsAAAANABgAAwAZAAsAAAAOABYAAwAZAAoAAAAOABcAAwAZAAkAAAAOABgAAwAZAAkAAAAPABcAAwAZAAsAAAAPABgAAwAZAAkAAAAQABcAAwAZAAkAAAAQABgAAwAZAAoAAAARABcAAwAZAAoAAAARABgAAwAZAAkAAAASABcAAwAZAAoAAAASABgAAwAZAAoAAAATABcAAwAZAAoAAAATABgAAwAZAAkAAAAUABcAAwAZAAkAAAAUABgAAwAZAAsAAAAVABcAAwAZAAoAAAAVABgAAwAZAAoAAAAWABcAAwAZAAkAAAAWABgAAwAZAAoAAAAbAA0AAwAdAAYAAAAZAAoAAwAZAAYAAAAaAAoAAwAdAAYAAAADAA0AAwAZAAYAAAACAA0AAwAcAAYAAAABAAoAAwAdAAYAAAAVABkAAwAZAAYAAAAZABkAAwAZAAYAAAAbABcAAwAdAAYAAAAbABgAAwAcAAYAAAAaABkAAwAaAAYAAAAYABUAAwAaAAYAAAANABkAAwAaAAYAAAALABUAAwAFAAUAAAAQABUAAwAFAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down") groups=["level_info"]]
+script = ExtResource("3_mwpcn")
+level_name = "lvl_vs_n_room_17"
+area_type = 1
+coming_from_down = NodePath("../ComingDownwards")
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingDownwards" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(110, 20)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_nkkr2")]
+position = Vector2(140, 20)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_lyn3q")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_w3qud")]
+level_name = "lvl_vs_n_room_17"
+
+[node name="BetterDeathZone" parent="." instance=ExtResource("7_x6xgf")]
+curve = SubResource("Curve2D_cv1rx")
+creation_strategy = 1
+
+[node name="@Area2D@398115" type="Area2D" parent="BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@398114" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@398115"]
+polygon = PackedVector2Array(130, 60, 150, 60, 150, 100, 180, 100, 210, 100, 210, 140, 160, 140, 160, 180, 120, 180, 120, 140, 70, 140, 70, 100, 100, 100, 130, 100, 130, 60)
+
+[node name="@Polygon2D@398116" type="Polygon2D" parent="BetterDeathZone"]
+material = ExtResource("8_36y03")
+texture = ExtResource("9_60bqq")
+polygon = PackedVector2Array(130, 60, 150, 60, 150, 100, 180, 100, 210, 100, 210, 140, 160, 140, 160, 180, 120, 180, 120, 140, 70, 140, 70, 100, 100, 100, 130, 100, 130, 60)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles240" parent="BetterDeathZone" instance=ExtResource("10_tauha")]
+position = Vector2(145, 120)
+emission_rect_extents = Vector2(25, 70)
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="SimpleDoor" parent="Obstacle1" instance=ExtResource("11_ci0mv")]
+position = Vector2(140, 215)
+
+[node name="DashLaser" parent="Obstacle1" instance=ExtResource("12_oslpl")]
+position = Vector2(190, 100)
+direction = 1
+
+[node name="RoomLever" parent="Obstacle1" instance=ExtResource("13_8fk3t")]
+position = Vector2(260, 120)
+
+[node name="RoomActionCallMethod" type="Node" parent="Obstacle1/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("14_24gpn")
+targets = {
+NodePath("../../SimpleDoor"): &"do_toggle"
+}
+metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="Obstacle2" type="Node2D" parent="."]
+
+[node name="Obstacle3" type="Node2D" parent="."]
+
+[node name="Obstacle4" type="Node2D" parent="."]
+
+[node name="Key" parent="." instance=ExtResource("15_73lqv")]
+position = Vector2(30, 120)
+item = ExtResource("16_pe4o5")
+event_name = "item_room_17_key_picked_up"
+
+[node name="BubbleRecharger" parent="." instance=ExtResource("17_mp1qb")]
+position = Vector2(140, 120)
+
+[node name="KeyDoor" parent="." instance=ExtResource("18_7hv2x")]
+position = Vector2(235, 240)
+door_opened_event = "lvl_vs_room_17_door_opened"
+door_type = 1
+
+[node name="EndDemoKid" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_glft2")
+position = Vector2(260, 230)
+texture = ExtResource("20_b60nm")
+script = ExtResource("21_iplpb")
+
+[node name="BetterInteractableComponent" parent="EndDemoKid" instance=ExtResource("22_q57v8")]
+
+[node name="OutlineComponent" parent="EndDemoKid/BetterInteractableComponent" node_paths=PackedStringArray("sprite") instance=ExtResource("23_j38dr")]
+sprite = NodePath("../..")
+
+[node name="TransitionUpwards" parent="." instance=ExtResource("24_6ddea")]
+position = Vector2(110, 0)
+next_level_id = "lvl_vs_room_16"
+direction = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionUpwards"]
+shape = SubResource("RectangleShape2D_qxjru")
+
+[connection signal="on_interact" from="EndDemoKid/BetterInteractableComponent" to="EndDemoKid" method="_on_better_interactable_component_on_interact"]

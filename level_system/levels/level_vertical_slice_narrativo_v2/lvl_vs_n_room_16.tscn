@@ -1,0 +1,172 @@
+[gd_scene load_steps=20 format=4 uid="uid://btd037ahk7sn5"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_ce24n"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_61l6q"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_ja38s"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_txlqo"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_r47yw"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_t4s6b"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="7_8fvjt"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="8_ijmjy"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_4ahci"]
+[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_pmws0"]
+[ext_resource type="PackedScene" uid="uid://da01bxc51tnxl" path="res://bubble_recharger/bubble_recharger.tscn" id="11_xogq5"]
+[ext_resource type="PackedScene" uid="uid://bvyk8wnkh1xb0" path="res://laser/dash_laser.tscn" id="12_2qenw"]
+[ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="13_n1vvt"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="14_rh5q4"]
+
+[sub_resource type="Curve2D" id="Curve2D_obbm1"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 70, 240, 0, 0, 0, 0, 220, 240)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xpylp"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 30, 210, 0, 0, 0, 0, 30, 110, 0, 0, 0, 0, 30, 10)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_eyesb"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 60, 210, 0, 0, 0, 0, 60, 70, 0, 0, 0, 0, 230, 70, 0, 0, 0, 0, 230, 210, 0, 0, 0, 0, 60, 210)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26bbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obbm1"]
+
+[node name="lvl_vs_n_room_16" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_ce24n")]
+metadata/_edit_lock_ = true
+
+[node name="Layout" parent="." instance=ExtResource("2_61l6q")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABMAAwAFAAUAAAAAABQAAwAFAAUAAAAAABYAAwAFAAUAAAAAABcAAwAFAAUAAAAAABgAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAMABoAAwAFAAUAAAANABoAAwAFAAUAAAAOABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAcAAwAFAAUAAAAcAAYAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAcAAIAAwAFAAUAAAAcAAEAAwAFAAUAAAAcAAAAAwAFAAUAAAAbAAAAAwAFAAUAAAAaAAAAAwAFAAUAAAAZAAAAAwAFAAUAAAAYAAAAAwAFAAUAAAAXAAAAAwAFAAUAAAAWAAAAAwAFAAUAAAAFAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAADAAAAAwAFAAUAAAACAAAAAwAFAAUAAAABAAAAAwAFAAUAAAAXABUAAwAFAAUAAAAAABUAAwAFAAUAAAAFABQAAwAFAAUAAAAFABMAAwAFAAUAAAAFABIAAwAFAAUAAAAFABEAAwAFAAUAAAAFABAAAwAFAAUAAAAFAA8AAwAFAAUAAAAFAA4AAwAFAAUAAAAFAA0AAwAFAAUAAAAFAAwAAwAFAAUAAAAFAAsAAwAFAAUAAAAFAAoAAwAFAAUAAAAFAAkAAwAFAAUAAAAFAAgAAwAFAAUAAAAbABcAAwAWAAQAAAAaABcAAwAWAAQAAAAZABcAAwAWAAQAAAAYABcAAwAWAAQAAAAXABcAAwAFAAUAAAAXABYAAwAFAAUAAAAXABQAAwAFAAUAAAAXABMAAwAFAAUAAAAXABIAAwAFAAUAAAAXAA8AAwAFAAUAAAAXAA4AAwAFAAUAAAAXAA0AAwAFAAUAAAAXABEAAwAFAAUAAAAXABAAAwAFAAUAAAAXAAwAAwAFAAUAAAAXAAsAAwAFAAUAAAAXAAoAAwAFAAUAAAAXAAkAAwAFAAUAAAAXAAgAAwAFAAUAAAAXAAcAAwAFAAUAAAAXAAYAAwAFAAUAAAAWAAYAAwAFAAUAAAAVAAYAAwAFAAUAAAAUAAYAAwAFAAUAAAATAAYAAwAFAAUAAAASAAYAAwAFAAUAAAARAAYAAwAFAAUAAAAQAAYAAwAFAAUAAAAPAAYAAwAFAAUAAAAOAAYAAwAFAAUAAAANAAYAAwAFAAUAAAAMAAYAAwAFAAUAAAALAAYAAwAFAAUAAAAKAAYAAwAFAAUAAAAJAAYAAwAFAAUAAAAIAAYAAwAFAAUAAAAHAAYAAwAFAAUAAAAGAAYAAwAFAAUAAAAFAAYAAwAFAAUAAAAFAAcAAwAFAAUAAAALAAEAAwAFAAUAAAAMAAEAAwAFAAUAAAANAAEAAwAFAAUAAAAOAAEAAwAFAAUAAAAPAAEAAwAFAAUAAAAQAAEAAwAFAAUAAAARAAEAAwAFAAUAAAASAAEAAwAFAAUAAAATAAEAAwAFAAUAAAAUAAEAAwAFAAUAAAAVAAEAAwAFAAUAAAAWAAEAAwAFAAUAAAAJAAEAAwAFAAUAAAAIAAEAAwAFAAUAAAAHAAEAAwAFAAUAAAAGAAEAAwAFAAUAAAAKAAEAAwAFAAUAAAAGAAAAAwAFAAUAAAAFABUAAwAFAAUAAAAGABUAAwAVAAQAAAAHABUAAwAVAAQAAAAIABUAAwAVAAQAAAAJABUAAwAVAAQAAAAKABUAAwAVAAQAAAALABUAAwAVAAQAAAAMABUAAwAVAAQAAAANABUAAwAVAAQAAAAOABUAAwAVAAQAAAAPABUAAwAVAAQAAAAQABUAAwAVAAQAAAARABUAAwAVAAQAAAASABUAAwAVAAQAAAATABUAAwAVAAQAAAAUABUAAwAVAAQAAAAVABUAAwAVAAQAAAAWABUAAwAVAAQAAAAMABkAAwAFAAUAAAAMABgAAwAFAAUAAAAMABcAAwAFAAUAAAAMABYAAwAFAAUAAAAXABgAAwAFAAUAAAAXABkAAwAFAAUAAAAYABgAAwAaABAAAAAZABgAAwAaABAAAAAZABkAAwAaABAAAAAaABkAAwAZABAAAAAbABkAAwAaABAAAAAbABgAAwAZABAAAAAaABgAAwAaABAAAAAYABkAAwAZABAAAAAHAAAAAwAZABAAAAAIAAAAAwAaABAAAAAJAAAAAwAZABAAAAAKAAAAAwAaABAAAAALAAAAAwAZABAAAAAMAAAAAwAZABAAAAANAAAAAwAaABAAAAAOAAAAAwAZABAAAAAPAAAAAwAZABAAAAAQAAAAAwAaABAAAAARAAAAAwAZABAAAAASAAAAAwAaABAAAAATAAAAAwAaABAAAAAUAAAAAwAaABAAAAAVAAAAAwAaABAAAAAOABcAAwAZAAQAAAAUABkAAwAaAAsAAAARABcAAwAcAAQAAAAOABYAAwAcAAQAAAAOABgAAwAeAAQAAAAPABYAAwAeAAQAAAAPABcAAwAbAAQAAAAPABgAAwAdAAQAAAAQABYAAwAbAAQAAAAQABcAAwAZAAQAAAAQABgAAwAeAAQAAAARABYAAwAdAAQAAAARABgAAwAZAAQAAAASABYAAwAcAAQAAAASABcAAwAdAAQAAAASABgAAwAZAAQAAAATABYAAwAaAAQAAAATABcAAwAdAAQAAAATABgAAwAZAAQAAAAUABYAAwAaAAQAAAAUABcAAwAeAAQAAAAUABgAAwAcAAQAAAAZAAMAAwAZAAkAAAAZAAQAAwAZAAkAAAAZAAUAAwAZAAkAAAAZAAYAAwAZAAkAAAAZAAcAAwAZAAoAAAAZAAgAAwAZAAkAAAAZAAkAAwAZAAoAAAAZAAoAAwAZAAoAAAAZAAsAAwAZAAkAAAAZAAwAAwAZAAoAAAAZAA0AAwAZAAkAAAAZAA4AAwAZAAoAAAAZAA8AAwAZAAkAAAAZABAAAwAZAAoAAAAZABEAAwAZAAkAAAAZABIAAwAZAAkAAAAZABMAAwAZAAkAAAAZABQAAwAZAAoAAAAZABUAAwAZAAkAAAAZABYAAwAZAAkAAAAaAAMAAwAZAAoAAAAaAAQAAwAZAAoAAAAaAAUAAwAZAAoAAAAaAAYAAwAZAAoAAAAaAAcAAwAZAAoAAAAaAAgAAwAZAAkAAAAaAAkAAwAZAAoAAAAaAAoAAwAZAAoAAAAaAAsAAwAZAAkAAAAaAAwAAwAZAAkAAAAaAA0AAwAZAAkAAAAaAA4AAwAZAAoAAAAaAA8AAwAZAAkAAAAaABAAAwAZAAoAAAAaABEAAwAZAAoAAAAaABIAAwAZAAkAAAAaABMAAwAZAAoAAAAaABQAAwAZAAoAAAAaABUAAwAZAAkAAAAaABYAAwAZAAoAAAAWAAMAAwAZAAkAAAAWAAQAAwAZAAkAAAAXAAMAAwAZAAoAAAAXAAQAAwAZAAkAAAAYAAMAAwAZAAoAAAAYAAQAAwAZAAkAAAACAAMAAwAZAAkAAAACAAQAAwAZAAkAAAADAAMAAwAZAAkAAAADAAQAAwAZAAkAAAAEAAMAAwAZAAoAAAAEAAQAAwAZAAkAAAAFAAMAAwAZAAkAAAAFAAQAAwAZAAoAAAAGAAMAAwAZAAkAAAAGAAQAAwAZAAoAAAACAAUAAwAZAAkAAAADAAUAAwAZAAkAAAAFABcAAwAZAAoAAAAFABgAAwAZAAoAAAAGABcAAwAZAAoAAAAGABgAAwAZAAkAAAAHABcAAwAZAAkAAAAHABgAAwAZAAkAAAAIABcAAwAZAAkAAAAIABgAAwAZAAkAAAAJABcAAwAZAAkAAAAJABgAAwAZAAkAAAAKABcAAwAZAAkAAAAKABgAAwAZAAoAAAALABcAAwAZAAkAAAALABgAAwAZAAoAAAAKABkAAwAZAAoAAAAKABoAAwAZAAkAAAALABkAAwAZAAoAAAALABoAAwAZAAoAAAAbABUAAwAZAAoAAAAbABYAAwAZAAoAAAAcABUAAwAZAAkAAAAcABYAAwAZAAkAAAAZAAIAAwAZAAYAAAAbAAEAAwAcAAYAAAAaAAEAAwAdAAYAAAAYABUAAwAZAAYAAAAbAAoAAwAbAAYAAAAHABYAAwAZAAYAAAAJABkAAwAaAAYAAAABAAIAAwAcAAYAAAACAAEAAwAbAAYAAAAFAAIAAwAdAAYAAAA=")
+
+[node name="Visuals" parent="." instance=ExtResource("2_61l6q")]
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up", "coming_from_left") groups=["level_info"]]
+script = ExtResource("3_ja38s")
+level_name = "lvl_vs_n_room_16"
+area_type = 1
+coming_from_up = NodePath("../CominUpwards")
+coming_from_left = NodePath("../ComingFromLeft")
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(265, 220)
+
+[node name="CominUpwards" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(110, 240)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_txlqo")]
+position = Vector2(260, 200)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_r47yw")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_t4s6b")]
+level_name = "lvl_vs_n_room_16"
+
+[node name="Obstacle1" type="Node2D" parent="."]
+position = Vector2(0, -200)
+
+[node name="BetterDeathZone" parent="Obstacle1" instance=ExtResource("7_8fvjt")]
+curve = SubResource("Curve2D_obbm1")
+width = 40.0
+end_sample_point = 0.99
+
+[node name="@Area2D@38918" type="Area2D" parent="Obstacle1/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@38917" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone/@Area2D@38918"]
+polygon = PackedVector2Array(70, 220, 93.4375, 220, 117.46094, 220, 145, 220, 172.53906, 220, 196.5625, 220, 219.94849, 220.00002, 219.96213, 260, 196.5625, 260, 172.53906, 260, 145, 260, 117.46094, 260, 93.4375, 260, 70, 260)
+
+[node name="@Polygon2D@38919" type="Polygon2D" parent="Obstacle1/BetterDeathZone"]
+material = ExtResource("8_ijmjy")
+texture = ExtResource("9_4ahci")
+polygon = PackedVector2Array(70, 220, 93.4375, 220, 117.46094, 220, 145, 220, 172.53906, 220, 196.5625, 220, 219.94849, 220.00002, 219.96213, 260, 196.5625, 260, 172.53906, 260, 145, 260, 117.46094, 260, 93.4375, 260, 70, 260)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles600" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_pmws0")]
+position = Vector2(144.98106, 240)
+emission_rect_extents = Vector2(84.981064, 30)
+
+[node name="BubbleRecharger" parent="Obstacle1" instance=ExtResource("11_xogq5")]
+position = Vector2(145, 240)
+
+[node name="Obstacle2" type="Node2D" parent="."]
+
+[node name="BetterDeathZone" parent="Obstacle2" instance=ExtResource("7_8fvjt")]
+position = Vector2(0, 50)
+curve = SubResource("Curve2D_xpylp")
+width = 40.0
+end_sample_point = 0.99
+
+[node name="@Area2D@47908" type="Area2D" parent="Obstacle2/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@47907" type="CollisionPolygon2D" parent="Obstacle2/BetterDeathZone/@Area2D@47908"]
+polygon = PackedVector2Array(10, 210, 10, 160, 10, 110, 10, 60, 10.000002, 10.031081, 50, 10.02852, 50, 60, 50, 110, 50, 160, 50, 210)
+
+[node name="@Polygon2D@47909" type="Polygon2D" parent="Obstacle2/BetterDeathZone"]
+material = ExtResource("8_ijmjy")
+texture = ExtResource("9_4ahci")
+polygon = PackedVector2Array(10, 210, 10, 160, 10, 110, 10, 60, 10.000002, 10.031081, 50, 10.02852, 50, 60, 50, 110, 50, 160, 50, 210)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles755" parent="Obstacle2/BetterDeathZone" instance=ExtResource("10_pmws0")]
+position = Vector2(50, 110.01426)
+emission_rect_extents = Vector2(10, 109.98574)
+
+[node name="BubbleRecharger" parent="Obstacle2" instance=ExtResource("11_xogq5")]
+position = Vector2(30, 170)
+
+[node name="DashLaser" parent="Obstacle2" instance=ExtResource("12_2qenw")]
+position = Vector2(10, 140)
+
+[node name="PlatformSmall" parent="Obstacle2" instance=ExtResource("13_n1vvt")]
+position = Vector2(30, 237)
+
+[node name="BetterDeathZone" parent="." instance=ExtResource("7_8fvjt")]
+curve = SubResource("Curve2D_eyesb")
+creation_strategy = 1
+
+[node name="@Area2D@56763" type="Area2D" parent="BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@56762" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@56763"]
+polygon = PackedVector2Array(60, 210, 60, 188.125, 60, 140, 60, 91.875, 60, 70, 86.5625, 70, 113.78906, 70, 145, 70, 176.21094, 70, 203.4375, 70, 230, 70, 230, 91.875, 230, 140, 230, 188.125, 230, 210, 203.4375, 210, 176.21094, 210, 145, 210, 113.78906, 210, 86.5625, 210, 60, 210)
+
+[node name="@Polygon2D@56764" type="Polygon2D" parent="BetterDeathZone"]
+material = ExtResource("8_ijmjy")
+texture = ExtResource("9_4ahci")
+polygon = PackedVector2Array(60, 210, 60, 188.125, 60, 140, 60, 91.875, 60, 70, 86.5625, 70, 113.78906, 70, 145, 70, 176.21094, 70, 203.4375, 70, 230, 70, 230, 91.875, 230, 140, 230, 188.125, 230, 210, 203.4375, 210, 176.21094, 210, 145, 210, 113.78906, 210, 86.5625, 210, 60, 210)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles625" parent="BetterDeathZone" instance=ExtResource("10_pmws0")]
+position = Vector2(145, 140)
+emission_rect_extents = Vector2(95, 80)
+
+[node name="TransitionRight" parent="." instance=ExtResource("14_rh5q4")]
+position = Vector2(290, 220)
+next_level_id = "lvl_vs_room_15"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
+shape = SubResource("RectangleShape2D_26bbs")
+
+[node name="TransitionDownwards" parent="." instance=ExtResource("14_rh5q4")]
+position = Vector2(110, 270)
+next_level_id = "lvl_vs_room_17"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDownwards"]
+shape = SubResource("RectangleShape2D_obbm1")

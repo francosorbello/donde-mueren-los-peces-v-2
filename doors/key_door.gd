@@ -6,6 +6,8 @@ extends SimpleDoor
 @export var requires_special_key : bool = false
 @export var related_key : AnItem
 
+var is_open : bool = false
+
 func _ready():
 	super._ready()
 	if Engine.is_editor_hint():
@@ -22,10 +24,16 @@ func _ready():
 	
 
 func _on_persistent_event_evaluator_evaluator_succeded() -> void:
-	do_toggle.call_deferred()
+	_do_open.call_deferred()
+
+func _do_open():
+	disabled = not disabled
+	is_open = true
+	$StaticBody2D/CollisionShape2D.disabled = disabled
+	do_dissolve_anim()
 
 func _on_detect_player_area_body_entered(body: Node2D) -> void:
-	if body is APlayer:
+	if body is APlayer and not is_open:
 		_try_open_door()
 
 func _try_open_door():

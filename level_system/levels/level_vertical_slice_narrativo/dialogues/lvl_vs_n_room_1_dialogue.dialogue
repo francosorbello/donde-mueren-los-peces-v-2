@@ -1,30 +1,30 @@
 ~ start
-Kai: Ahora, como hacemos para abrir esta puerta?
-Ab: !
-Ab: Hijo, parece que tenemos visitas.
-Kai : Visitas? Pero si estamos en medio de la...
-Kai: !
-Kai: Ah! 
-Kai: La verdad no esperabamos encontrarnos con otras personas por acá.
-Kai: Decime, que haces en un lugar tan lejano como este?
+Kai: Ahora, como hacemos para abrir esta puerta? [ID:AHORA_COMO_HACEMOS_PARA_ABRIR_08964C]
+Ab: ! [ID:_530F9E]
+Ab: Hijo, parece que tenemos visitas. [ID:HIJO_PARECE_QUE_TENEMOS_VISITA_0DD939]
+Kai : Visitas? Pero si estamos en medio de la... [ID:VISITAS_PERO_SI_ESTAMOS_EN_MED_438D30]
+Kai: ! [ID:_530F9E]
+Kai: Ah! [ID:AH_D2B957] 
+Kai: La verdad no esperabamos encontrarnos con otras personas por acá. [ID:LA_VERDAD_NO_ESPERABAMOS_ENCON_D12350]
+Kai: Decime, que haces en un lugar tan lejano como este? [ID:DECIME_QUE_HACES_EN_UN_LUGAR_T_A5F588]
 do call_cutscene_event("sickness_event")
 do wait(5)
-Kai: ...
-Kai: Ya veo. Estas acá por la 「FUENTE PARAISO」 cierto?
-Kai: Un artefacto mágico, capaz de cumplir cualquier deseo.
-Kai: Imagino que deseas curar tu enfermedad, no?
-Kai: La buena noticia es que estás en el lugar correcto. La 「FUENTE PARAISO」está detrás de esta puerta.
-Ab: La mala noticia es que no sabemos como abrirla.
-Kai: Tranquilo Pá, ya vamos a encontrar una solución.
-Kai: Creo que todavía no me presento. Yo soy Kai, y este es mi padre, Ab.
-Ab: ...hola.
-Kai: Nosotros también queremos encontrar la 「FUENTE PARAISO」.
-Kai: Mi hermano, Cecil, está enfermo como vos.
-Kai: Tenemos la esperanza de conseguir una cura.
-Ab: La esperanza es tuya. Todo esto es una pérdida de tiempo.
-Kai: ... no empecemos con eso de nuevo por favor.
-Ab: ...
-Kai: Decime, qué te parece si seguimos el camino juntos? Tres cabezas piensan mejor que dos.
-Kai: Por lo pronto, tenemos que encontrar una forma de abrir esta puerta. 
-Kai: Me pareció ver un camino en la izquierda. Tal vez descubrimos algo de utilidad.
+Kai: ... [ID:_A039E7]
+Kai: Ya veo. Estas acá por la 「FUENTE PARAISO」 cierto? [ID:YA_VEO_ESTAS_AC_POR_LA_「FUENTE_F3BA06]
+Kai: Un artefacto mágico, capaz de cumplir cualquier deseo. [ID:UN_ARTEFACTO_M_GICO_CAPAZ_DE_C_17360E]
+Kai: Imagino que deseas curar tu enfermedad, no? [ID:IMAGINO_QUE_DESEAS_CURAR_TU_EN_4C07A2]
+Kai: La buena noticia es que estás en el lugar correcto. La 「FUENTE PARAISO」está detrás de esta puerta. [ID:LA_BUENA_NOTICIA_ES_QUE_EST_S_3E5168]
+Ab: La mala noticia es que no sabemos como abrirla. [ID:LA_MALA_NOTICIA_ES_QUE_NO_SABE_7201E9]
+Kai: Tranquilo Pá, ya vamos a encontrar una solución. [ID:TRANQUILO_P_YA_VAMOS_A_ENCONTR_D44637]
+Kai: Creo que todavía no me presento. Yo soy Kai, y este es mi padre, Ab. [ID:CREO_QUE_TODAV_A_NO_ME_PRESENT_B503D9]
+Ab: ...hola. [ID:HOLA_F4F8D9]
+Kai: Nosotros también queremos encontrar la 「FUENTE PARAISO」. [ID:NOSOTROS_TAMBI_N_QUEREMOS_ENCO_1F5CC6]
+Kai: Mi hermano, Cecil, está enfermo como vos. [ID:MI_HERMANO_CECIL_EST_ENFERMO_C_DC3239]
+Kai: Tenemos la esperanza de conseguir una cura. [ID:TENEMOS_LA_ESPERANZA_DE_CONSEG_A3753C]
+Ab: La esperanza es tuya. Todo esto es una pérdida de tiempo. [ID:LA_ESPERANZA_ES_TUYA_TODO_ESTO_B37028]
+Kai: ... no empecemos con eso de nuevo por favor. [ID:NO_EMPECEMOS_CON_ESO_DE_NUEVO_B1A689]
+Ab: ... [ID:_A039E7]
+Kai: Decime, qué te parece si seguimos el camino juntos? Tres cabezas piensan mejor que dos. [ID:DECIME_QU_TE_PARECE_SI_SEGUIMO_29BBF6]
+Kai: Por lo pronto, tenemos que encontrar una forma de abrir esta puerta. [ID:POR_LO_PRONTO_TENEMOS_QUE_ENCO_C99AA5] 
+Kai: Me pareció ver un camino en la izquierda. Tal vez descubrimos algo de utilidad. [ID:ME_PARECI_VER_UN_CAMINO_EN_LA_B0BD46]
 => END

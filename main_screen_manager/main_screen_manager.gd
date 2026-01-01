@@ -14,6 +14,12 @@ func _ready():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	else:
 		start_main_menu()
+	
+	Console.add_command("set_lang",set_lang,["lang_name"],1)
+	set_lang("es")
+
+func set_lang(lang_name : String):
+	TranslationServer.set_locale(lang_name)
 
 func transition_to(screen : String):
 	assert(screens.has(screen),"No screen named %s"%screen)

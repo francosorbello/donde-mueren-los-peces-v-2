@@ -107,7 +107,7 @@ alignment = 1
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "COMENZAR"
+text = "START_BUTTON"
 
 [node name="ResetSaveButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -117,7 +117,7 @@ text = "RESET"
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "SALIR"
+text = "EXIT_BUTTON"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResetSaveButton" to="." method="_on_reset_save_button_pressed"]

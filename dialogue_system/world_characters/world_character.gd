@@ -34,8 +34,13 @@ func setup():
 
 func _on_dialogue_ended(_dialogue):
     if _dialogue == dialogue:
-        PersistencySystem.set_event(dialogue_ended_event,1.0)
-        pass
+        if not dialogue_ended_event:
+            return
+        var fade_in : Tween = GlobalData.main_screen_manager.get_fade_rect().fade_in()
+        fade_in.tween_callback(func():
+            GlobalData.main_screen_manager.get_fade_rect().fade_out()
+            PersistencySystem.set_event(dialogue_ended_event,1.0)
+        )
 
 func _on_better_interactable_component_on_interact() -> void:
     var _target = self

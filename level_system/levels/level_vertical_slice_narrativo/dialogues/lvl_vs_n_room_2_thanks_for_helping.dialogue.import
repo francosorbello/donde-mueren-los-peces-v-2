@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b5e8ob3gvr8r4"
+path="res://.godot/imported/lvl_vs_n_room_2_thanks_for_helping.dialogue-1b329c873e541fb3e5b8617624fe0428.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_vertical_slice_narrativo/dialogues/lvl_vs_n_room_2_thanks_for_helping.dialogue"
+dest_files=["res://.godot/imported/lvl_vs_n_room_2_thanks_for_helping.dialogue-1b329c873e541fb3e5b8617624fe0428.tres"]
+
+[params]
+
+defaults=true

@@ -28,3 +28,11 @@ func toggle_portrait(for_character : String):
                 push_error("No character named %s"%for_character)
     
     _last_character = for_character
+
+func hide_portrait_for(character_name):
+    prints("Hiding portrait for",character_name)
+    match character_name:
+        "Kai":
+            $KaiPortrait.hide_portrait()
+        "Ab":
+            $AbPortrait.hide_portrait()

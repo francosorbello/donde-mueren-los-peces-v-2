@@ -1,3 +1,19 @@
 ~ start
-Kai: gracias por la ayuda.
+Kai: Wow, you sure are resourceful.
+Kai: You could learn a trick of two from them, old man.
+Ab: very funny. Surely you can do better.
+Kai: oh, but i can! Didnt we get all the way here after all?
+Ab: i suppose thats true.
+Kai: Of course it is! 
+Kai: And we must move foward. Im sure Cecil is missing us.
+Kai: Lets go!
+do call_cutscene_event("focus_on_ab")
+do wait(2)
+do hide_portrait_for("Kai")
+Ab: ...
+Ab: Cecil...
+=> END
+
+~ door_locked
+Kai: Mhmm, if only we knew how to open this door...
 => END

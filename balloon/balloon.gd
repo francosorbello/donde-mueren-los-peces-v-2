@@ -101,7 +101,7 @@ func apply_dialogue_line() -> void:
 	balloon.grab_focus()
 
 	if dialogue_line.tags.has("narrated"):
-		dialogue_line.text = "[i]%s[/i]"%dialogue_line.text
+		dialogue_line.text = "[i] > %s[/i]"%dialogue_line.text
 
 	if not dialogue_line.character.is_empty():
 		character_label.visible = true
@@ -126,9 +126,13 @@ func apply_dialogue_line() -> void:
 
 	$Balloon/PortraitManager.toggle_portrait(dialogue_line.character)
 	dialogue_label.show()
+
 	if not dialogue_line.text.is_empty():
-		dialogue_label.type_out()
-		await dialogue_label.finished_typing
+		if dialogue_line.tags.has("narrated"):
+			dialogue_label.skip_typing()
+		else:
+			dialogue_label.type_out()
+			await dialogue_label.finished_typing
 
 	# Wait for input
 	if dialogue_line.responses.size() > 0:
@@ -205,3 +209,6 @@ func narrate() -> String:
 func call_cutscene_event(event):
 	print("Calling cutscene event on ballon with event ",event)
 	GlobalSignal.on_dialogue_event.emit(event)
+
+func hide_portrait_for(char_name):
+	$Balloon/PortraitManager.hide_portrait_for(char_name)

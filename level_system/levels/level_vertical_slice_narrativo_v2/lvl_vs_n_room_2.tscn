@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://r62wfja2iy0l"]
+[gd_scene load_steps=46 format=4 uid="uid://r62wfja2iy0l"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_ff8b5"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_bx12f"]
@@ -38,6 +38,9 @@
 [ext_resource type="Script" uid="uid://cjjl8nhep0i6o" path="res://persistancy_system/conditionals/level_visited_event_conditional.gd" id="28_hfoyg"]
 [ext_resource type="Script" uid="uid://cj5j4ybo5t3eq" path="res://persistancy_system/actions/toggle_action.gd" id="30_eh2n3"]
 [ext_resource type="Resource" uid="uid://b5e8ob3gvr8r4" path="res://level_system/levels/level_vertical_slice_narrativo/dialogues/lvl_vs_n_room_2_thanks_for_helping.dialogue" id="30_pyaa4"]
+[ext_resource type="AudioStream" uid="uid://biunslpq075xe" path="res://assets/SOUNDS/cutscenes/kai_steps.ogg" id="31_i1jhl"]
+[ext_resource type="Script" uid="uid://borr7wlp2udux" path="res://dialogue_system/cutscene_system/actions/cuta_toggle_node.gd" id="31_i5vji"]
+[ext_resource type="Script" uid="uid://dqn12fy6gj1th" path="res://persistancy_system/room_connections/room_actions/room_action_toggle_dialogue_title.gd" id="36_aklvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1g5y"]
 
@@ -233,22 +236,63 @@ level_visited = "lvl_vs_n_room_10"
 metadata/_custom_type_script = "uid://cjjl8nhep0i6o"
 
 [node name="Cutscene2" type="Node2D" parent="NarrativeStuff"]
+process_mode = 4
 visible = false
 
-[node name="WC_Kai" parent="NarrativeStuff/Cutscene2" instance=ExtResource("14_3yig7")]
+[node name="WC_Kai" parent="NarrativeStuff/Cutscene2" node_paths=PackedStringArray("override_target") instance=ExtResource("14_3yig7")]
 position = Vector2(220, 160)
 dialogue = ExtResource("30_pyaa4")
+override_target = NodePath("../PartyPos")
 dialogue_ended_event = "thanks_for_helping_dialogue_ended"
+title = "door_locked"
+repeatable = true
 
-[node name="WC_Ab" parent="NarrativeStuff/Cutscene2" instance=ExtResource("14_3yig7")]
+[node name="WC_Ab" parent="NarrativeStuff/Cutscene2" node_paths=PackedStringArray("override_target") instance=ExtResource("14_3yig7")]
 position = Vector2(208, 173)
 texture = ExtResource("15_gcyg4")
 character_name = "Ab"
 dialogue = ExtResource("30_pyaa4")
+override_target = NodePath("../PartyPos")
 dialogue_ended_event = "thanks_for_helping_dialogue_ended"
+title = "door_locked"
+repeatable = true
 
 [node name="CutsceneManager" parent="NarrativeStuff/Cutscene2" instance=ExtResource("18_aa87x")]
 dialogue = ExtResource("30_pyaa4")
+
+[node name="KaiMovingSFX" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager"]
+script = ExtResource("23_hfoyg")
+sfx = ExtResource("31_i1jhl")
+execute = 1
+event_name = "focus_on_ab"
+
+[node name="FadeIn" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager"]
+script = ExtResource("25_pyaa4")
+execute = 1
+event_name = "focus_on_ab"
+wait_time = 0.5
+
+[node name="HideKai" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("31_i5vji")
+target = NodePath("../../WC_Kai")
+execute = 1
+event_name = "focus_on_ab"
+wait_time = 0.5
+
+[node name="FadeOut" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager"]
+script = ExtResource("25_pyaa4")
+fade_type = 1
+execute = 1
+event_name = "focus_on_ab"
+
+[node name="FocusOnAb" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("20_j2ruw")
+target = NodePath("../../WC_Ab")
+execute = 1
+event_name = "focus_on_ab"
+
+[node name="PartyPos" type="Marker2D" parent="NarrativeStuff/Cutscene2"]
+position = Vector2(258, 160)
 
 [node name="ToggleCutscene2" type="Node" parent="NarrativeStuff" node_paths=PackedStringArray("target")]
 script = ExtResource("30_eh2n3")
@@ -274,9 +318,23 @@ position = Vector2(250, 36)
 [node name="RoomActionCallMethod" type="Node" parent="Obstacle1/RoomLever" node_paths=PackedStringArray("targets")]
 script = ExtResource("17_g28hy")
 targets = {
-NodePath("../../SimpleDoor"): &"do_toggle"
+NodePath("../../SimpleDoor"): &"do_toggle",
+NodePath("../../../NarrativeStuff/Cutscene2/WC_Kai"): &"toggle_repeatable",
+NodePath("../../../NarrativeStuff/Cutscene2/WC_Ab"): &"toggle_repeatable"
 }
 metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="RoomActionToggleDialogueTitle" type="Node" parent="Obstacle1/RoomLever" node_paths=PackedStringArray("target")]
+script = ExtResource("36_aklvs")
+target = NodePath("../../../NarrativeStuff/Cutscene2/WC_Kai")
+new_title = "start"
+metadata/_custom_type_script = "uid://dqn12fy6gj1th"
+
+[node name="RoomActionToggleDialogueTitle2" type="Node" parent="Obstacle1/RoomLever" node_paths=PackedStringArray("target")]
+script = ExtResource("36_aklvs")
+target = NodePath("../../../NarrativeStuff/Cutscene2/WC_Ab")
+new_title = "start"
+metadata/_custom_type_script = "uid://dqn12fy6gj1th"
 
 [node name="BetterDeathZone" parent="Obstacle1" instance=ExtResource("14_8ox5b")]
 curve = SubResource("Curve2D_uki24")

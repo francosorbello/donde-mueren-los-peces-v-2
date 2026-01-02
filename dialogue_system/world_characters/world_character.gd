@@ -11,6 +11,7 @@ extends Sprite2D
 @export var override_target : Node2D
 @export var dialogue_ended_event : String = ""
 @export var title : String = "start"
+@export var repeatable : bool = false
 
 @export_category("Profiles")
 @export var character_profiles : CharacterContainerResource
@@ -34,7 +35,7 @@ func setup():
 
 func _on_dialogue_ended(_dialogue):
     if _dialogue == dialogue:
-        if not dialogue_ended_event:
+        if not dialogue_ended_event or repeatable:
             return
         var fade_in : Tween = GlobalData.main_screen_manager.get_fade_rect().fade_in()
         fade_in.tween_callback(func():
@@ -53,3 +54,6 @@ func _on_persistent_event_evaluator_evaluator_succeded() -> void:
     print("Evaluator succeded cwith event %s"%dialogue_ended_event)
     queue_free()
     pass # Replace with function body.
+
+func toggle_repeatable():
+    repeatable = not repeatable

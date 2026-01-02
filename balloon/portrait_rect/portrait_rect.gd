@@ -26,10 +26,11 @@ func focus_portrait():
         $StateMachine.transition_to("FocusedState")
 
 func hide_portrait():
-    var tween = move_to_anim($StateMachine.get_node("HiddenState").hidden_position)
-    tween.finished.connect(func():
-        hide()    
-    )
+    $StateMachine.transition_to("HiddenState")
+    # var tween = move_to_anim($StateMachine.get_node("HiddenState").hidden_position)
+    # tween.finished.connect(func():
+    #     %StateMachine.transition_to
+    # )
 
 func move_to_anim(pos : Vector2, override_time : float = -1) -> Tween:
     if _current_tween and _current_tween.is_running():

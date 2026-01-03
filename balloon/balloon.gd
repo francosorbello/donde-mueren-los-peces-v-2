@@ -211,4 +211,5 @@ func call_cutscene_event(event):
 	GlobalSignal.on_dialogue_event.emit(event)
 
 func hide_portrait_for(char_name):
+	# await get_tree().create_timer(1).timeout
 	$Balloon/PortraitManager.hide_portrait_for(char_name)

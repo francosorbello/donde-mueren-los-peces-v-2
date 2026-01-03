@@ -1,7 +1,33 @@
 ~ start_kai
-Kai: I should say something interesting.
+do hide_portrait_for("Ab")
+Kai: This one time Cecil and I were playing together with some paper swords.
+Kai: Which of course we were not supposed to do.
+Kai: we were playing on the living room,  jumping from couch to couch.
+Kai: Which of course we were also not supposed to do.
+Kai: anyways, we were in the heat of battle right?
+Kai: And Cecil had the upper hand.
+Kai: So i pulled my ultimate move: the Sword Helicopter 3000.
+Kai: A devastating atack, it helped me turn the battle.
+Kai: But such a powerful move comes with consecuences.
+Kai: the consecuences being: a very expensive lamp and 2 glasses.
+Kai: Since i was the winner, my prize was Cecil not saying anything about it.
+Kai: ...
+Kai: Please dont tell this to my dad.
+do call_cutscene_event("ab_knows")
 => END
 
-~ start_ab
-Ab: I should say something interesting.
+~ ab_start
+do hide_portrait_for("Kai")
+Ab: Kai is a good kid.
+Ab: But Cecil...
+Ab: there is nothing we can do.
+Ab: You know what i mean? 
+=> END
+
+~ ab_knows
+do hide_portrait_for("Kai")
+Ab: Yes, i totally heard that conversation.
+Ab: Yes, i already knew about it.
+Ab: And yes, Cecil ratted him out.
+do call_cutscene_event("reset_ab")
 => END

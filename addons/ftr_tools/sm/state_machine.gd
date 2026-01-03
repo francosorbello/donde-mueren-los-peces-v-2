@@ -10,10 +10,12 @@ class_name StateMachine extends Node
 
 
 @export var initial_state : State ## State the machine starts on.
+@export var debug : bool = false
 
 var current_state : State
 
 signal switched_states(from : String, to : String)
+
 
 func _ready():
 	await owner.ready
@@ -23,6 +25,8 @@ func _ready():
 
 	current_state = initial_state
 	current_state.enter()
+	if debug:
+		print("Starting State Machine on %s with initial state %s"%[owner.name,initial_state.name])
 
 ## Transition to a new state.
 ## [br]
@@ -40,6 +44,8 @@ func transition_to(target_state_name: String):
 	current_state.exit()
 	current_state = get_node(target_state_name)
 	current_state.enter()
+	if debug:
+		print("(%s SM) Transitioning from %s to %s"%[owner.name,prev_state_name,target_state_name])
 	
 	switched_states.emit(prev_state_name, target_state_name)
 

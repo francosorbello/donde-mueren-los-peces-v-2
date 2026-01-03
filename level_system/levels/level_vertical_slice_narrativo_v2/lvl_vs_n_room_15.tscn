@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://1h3hp6u6pp4i"]
+[gd_scene load_steps=16 format=4 uid="uid://1h3hp6u6pp4i"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_b5f80"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_4c1wl"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="9_3pb8u"]
 [ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="10_i4t06"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="11_f8x6r"]
+[ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="12_0bij7"]
+[ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="13_8geqb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmkkj"]
 
@@ -138,3 +140,15 @@ direction = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea2"]
 shape = SubResource("RectangleShape2D_3orhr")
+
+[node name="NarrativeStuff" type="Node2D" parent="."]
+
+[node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
+
+[node name="WC_Kai" parent="NarrativeStuff/Cutscene1" instance=ExtResource("12_0bij7")]
+position = Vector2(40, 70)
+
+[node name="WC_Ab" parent="NarrativeStuff/Cutscene1" instance=ExtResource("12_0bij7")]
+position = Vector2(20, 70)
+texture = ExtResource("13_8geqb")
+character_name = "Ab"

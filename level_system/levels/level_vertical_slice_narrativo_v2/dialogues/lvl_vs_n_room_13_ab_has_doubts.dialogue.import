@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dhwb7rbxnyrxn"
+path="res://.godot/imported/lvl_vs_n_room_13_ab_has_doubts.dialogue-087fc277a74355d06d6efed6a83a3ec2.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_vertical_slice_narrativo_v2/dialogues/lvl_vs_n_room_13_ab_has_doubts.dialogue"
+dest_files=["res://.godot/imported/lvl_vs_n_room_13_ab_has_doubts.dialogue-087fc277a74355d06d6efed6a83a3ec2.tres"]
+
+[params]
+
+defaults=true

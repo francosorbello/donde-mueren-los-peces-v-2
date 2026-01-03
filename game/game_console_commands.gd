@@ -13,12 +13,19 @@ func _ready() -> void:
     Console.add_command("fly",fly)
     Console.add_command("set_event_true",set_event_true,["event_name"],1)
     Console.add_command("set_level_as_visited",set_level_as_visited,["visited_level"],1)
+    Console.add_command("remove_event",remove_event,["event_name"],1)
     
     Console.font_size = 30
 
 func set_event_true(event_name):
     Console.print_info("Setting event %s with value %f.1"%[event_name,1.0])
     PersistencySystem.set_event(event_name,1.0)
+
+func remove_event(event_name):
+    var save = SaveUtils.get_save()
+    if save:
+        if save.persistent_events.has(event_name):
+            save.persistent_events.erase(event_name)
 
 func set_level_as_visited(level_name : String):
     var save = SaveUtils.get_save()

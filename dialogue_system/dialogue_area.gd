@@ -20,3 +20,7 @@ func start_dialogue():
 func _on_persistent_event_evaluator_evaluator_succeded() -> void:
     if not repeatable:
         queue_free()
+
+func do_toggle():
+    monitorable = not monitorable
+    monitoring = not monitoring

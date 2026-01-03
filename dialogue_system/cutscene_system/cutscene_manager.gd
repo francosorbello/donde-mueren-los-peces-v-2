@@ -1,6 +1,7 @@
 extends Node
 
 @export var dialogue : DialogueResource
+@export var debug : bool = false
 
 var execute_on_start : Array[CutsceneAction]
 var execute_on_end : Array[CutsceneAction]
@@ -53,6 +54,11 @@ func execute_end_actions():
 
 func _execute_actions(actions : Array):
 	for action in actions:
+		if debug:
+			var ev_name = action.event_name
+			if ev_name.is_empty():
+				ev_name = "No event"
+			print("Executing action %s on %s (event: %s) (%ss)"%[action,CutsceneAction.Execute.find_key(action.execute),ev_name,action.wait_time])
 		action.do_action()
 		if action.wait_time > 0:
 			await get_tree().create_timer(action.wait_time).timeout

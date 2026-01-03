@@ -1,0 +1,13 @@
+~ start
+do wait(1)
+Kai: Cmon dad, just a bit more.
+Ab: I dont know Kai, maybe this was a mistake.
+Ab: we should return home...
+do call_cutscene_event("kai_sees_player")
+Kai: !
+Kai: Oh, sorry, didnt see u there.
+Kai: We were just waiting for u.
+Kai: u take your time sometimes yknow?
+Kai: anyways. We should continue, dont we dad?
+Ab: ...yeah, lets continue.
+=> END

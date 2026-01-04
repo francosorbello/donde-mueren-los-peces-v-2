@@ -1,0 +1,13 @@
+~ start
+Kai: When we were younger we would play this crazy card game with Cecil and Dad.
+Kai: Each card would have a crazy amount of numbers and symbols.
+Kai: And i think the idea was to fight eachother?
+Kai: ...
+Kai: Cecil and I never understood the rules.
+Kai: We hated that game.
+Kai: But Dad loved it so we played anyways.
+=> END
+
+~ kai_wants_to_play
+Kai: When Cecil gets better, ill tell Dad to play again.
+=> END

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://3s6377ifml4f"
+path="res://.godot/imported/lvl_vs_n_room_18_kai_leaves_frustrated.dialogue-9994a395abbfd5f308596628c40105a1.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_vertical_slice_narrativo_v2/dialogues/lvl_vs_n_room_18_kai_leaves_frustrated.dialogue"
+dest_files=["res://.godot/imported/lvl_vs_n_room_18_kai_leaves_frustrated.dialogue-9994a395abbfd5f308596628c40105a1.tres"]
+
+[params]
+
+defaults=true

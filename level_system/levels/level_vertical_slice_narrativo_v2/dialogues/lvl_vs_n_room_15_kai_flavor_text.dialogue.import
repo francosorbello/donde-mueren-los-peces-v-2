@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://d1bn7ia70l5x8"
+path="res://.godot/imported/lvl_vs_n_room_15_kai_flavor_text.dialogue-8e8d6fcb72fc71130bd89ffc14d76beb.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_vertical_slice_narrativo_v2/dialogues/lvl_vs_n_room_15_kai_flavor_text.dialogue"
+dest_files=["res://.godot/imported/lvl_vs_n_room_15_kai_flavor_text.dialogue-8e8d6fcb72fc71130bd89ffc14d76beb.tres"]
+
+[params]
+
+defaults=true

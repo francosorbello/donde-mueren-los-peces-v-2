@@ -56,7 +56,7 @@ point_count = 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36nbd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vuay"]
-size = Vector2(40, 20)
+size = Vector2(20, 50)
 
 [node name="lvl_vs_n_room_13" type="Node2D"]
 
@@ -199,12 +199,12 @@ shape = SubResource("RectangleShape2D_36nbd")
 [node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
 
 [node name="WC_Kai" parent="NarrativeStuff/Cutscene1" instance=ExtResource("13_7nssg")]
-position = Vector2(30, 90)
+position = Vector2(108, 251)
 dialogue = ExtResource("14_5jxsv")
 title = "start_kai"
 
 [node name="WC_Ab" parent="NarrativeStuff/Cutscene1" instance=ExtResource("13_7nssg")]
-position = Vector2(50, 90)
+position = Vector2(128, 251)
 texture = ExtResource("14_3h4ap")
 character_name = "Ab"
 dialogue = ExtResource("14_5jxsv")
@@ -233,13 +233,13 @@ event_name = "kai_sees_player"
 position = Vector2(190, 30)
 
 [node name="DialogueArea" parent="NarrativeStuff/Cutscene1" node_paths=PackedStringArray("target") instance=ExtResource("16_758jm")]
-position = Vector2(50, 60)
+position = Vector2(178, 240)
 dialogue = ExtResource("14_758jm")
 remove_on_event = "lvl_vs_n_room_13_ab_has_doubts_ended"
 target = NodePath("../WC_Kai")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
-position = Vector2(-20, 0)
+position = Vector2(-20, -5)
 shape = SubResource("RectangleShape2D_8vuay")
 
 [node name="CutsceneManager2" parent="NarrativeStuff/Cutscene1" instance=ExtResource("18_435ul")]

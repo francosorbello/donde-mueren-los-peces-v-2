@@ -1,0 +1,183 @@
+[gd_scene load_steps=29 format=4 uid="uid://bhxe7vvyao6ey"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_bdwnm"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_6kop3"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_1oijx"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_y86et"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_s1hox"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_f1sbn"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="7_ueqcm"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="8_c80uo"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_y2squ"]
+[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_cicye"]
+[ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="11_c80uo"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="12_y2squ"]
+[ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="13_cnkx2"]
+[ext_resource type="Texture2D" uid="uid://pd3n7mkqhuek" path="res://assets/GRAPHICS/characters/kid1_16x16.png" id="14_o7dnp"]
+[ext_resource type="PackedScene" uid="uid://dvfbw7sofbkka" path="res://dialogue_system/dialogue_area.tscn" id="15_abak1"]
+[ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="15_o7dnp"]
+[ext_resource type="Resource" uid="uid://c40t2x1ktgw0a" path="res://level_system/levels/level_vertical_slice_narrativo_v2/dialogues/lvl_vs_n_room_18_ab_flavor_text.dialogue" id="16_abak1"]
+[ext_resource type="Resource" uid="uid://3s6377ifml4f" path="res://level_system/levels/level_vertical_slice_narrativo_v2/dialogues/lvl_vs_n_room_18_kai_leaves_frustrated.dialogue" id="16_bh27c"]
+[ext_resource type="PackedScene" uid="uid://bbaay5giilatk" path="res://dialogue_system/cutscene_system/cutscene_manager.tscn" id="17_aue61"]
+[ext_resource type="Script" uid="uid://00jdtmmcpsab" path="res://dialogue_system/cutscene_system/actions/cuta_change_music.gd" id="18_kj2bg"]
+[ext_resource type="Script" uid="uid://dhx31i78g5cp3" path="res://dialogue_system/cutscene_system/actions/cuta_play_sfx.gd" id="19_araxe"]
+[ext_resource type="AudioStream" uid="uid://cerynraaonry6" path="res://assets/SOUNDS/voices/kai_angry.ogg" id="20_lw1a4"]
+[ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="21_g6wyc"]
+[ext_resource type="Script" uid="uid://borr7wlp2udux" path="res://dialogue_system/cutscene_system/actions/cuta_toggle_node.gd" id="22_cnkx2"]
+[ext_resource type="AudioStream" uid="uid://biunslpq075xe" path="res://assets/SOUNDS/cutscenes/kai_steps.ogg" id="23_7t2al"]
+
+[sub_resource type="Curve2D" id="Curve2D_p4jan"]
+bake_interval = 40.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10, 170, 0, 0, 0, 0, 110, 170)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2squ"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnkx2"]
+size = Vector2(10, 39)
+
+[node name="lvl_vs_n_room_18" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_bdwnm")]
+metadata/_edit_lock_ = true
+
+[node name="Layout" parent="." instance=ExtResource("2_6kop3")]
+tile_map_data = PackedByteArray("AAAAABYAAwAFAAUAAAAAABkAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwARAAEAAAABABkAAwAFAAUAAAACABkAAwAFAAUAAAADABkAAwAFAAUAAAAEABkAAwAFAAUAAAAFABkAAwAFAAUAAAAGABkAAwAFAAUAAAAHABkAAwAFAAUAAAAIABkAAwAFAAUAAAAJABkAAwAFAAUAAAAKABkAAwAFAAUAAAALABkAAwAFAAUAAAAHAAoAAwARAAEAAAAAABQAAwAFAAUAAAAAABUAAwAFAAUAAAAIAAoAAwARAAEAAAAJAAoAAwARAAEAAAAKAAoAAwARAAEAAAALAAoAAwARAAEAAAAMAAoAAwARAAEAAAANAAoAAwARAAEAAAAOAAoAAwARAAEAAAAPAAoAAwARAAEAAAAQAAoAAwARAAEAAAARAAoAAwARAAEAAAASAAoAAwARAAEAAAATAAoAAwARAAEAAAAUAAoAAwARAAEAAAAVAAoAAwARAAEAAAAWAAoAAwARAAEAAAAXAAoAAwARAAEAAAAYAAoAAwARAAEAAAAZAAoAAwARAAEAAAAaAAoAAwARAAEAAAAbAAoAAwARAAEAAAAMAA8AAwAFAAUAAAANAA8AAwAFAAUAAAAOAA8AAwAFAAUAAAAPAA8AAwAFAAUAAAAQAA8AAwAFAAUAAAARAA8AAwAFAAUAAAASAA8AAwAFAAUAAAATAA8AAwAFAAUAAAAUAA8AAwAFAAUAAAAVAA8AAwAFAAUAAAAWAA8AAwAFAAUAAAAXAA8AAwAFAAUAAAAYAA8AAwAFAAUAAAAZAA8AAwAFAAUAAAAaAA8AAwAFAAUAAAAbAA8AAwAFAAUAAAAAAAoAAwARAAEAAAABAAoAAwARAAEAAAACAAoAAwARAAEAAAADAAoAAwARAAEAAAAEAAoAAwARAAEAAAAFAAoAAwARAAEAAAAGAAoAAwARAAEAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABMAAwAFAAUAAAALAA8AAwAFAAUAAAALABAAAwAFAAUAAAALABEAAwAFAAUAAAALABIAAwAFAAUAAAALABMAAwAFAAUAAAALABQAAwAFAAUAAAALABUAAwAFAAUAAAALABYAAwAFAAUAAAALABcAAwAFAAUAAAALABgAAwAFAAUAAAA=")
+
+[node name="Visuals" parent="." instance=ExtResource("2_6kop3")]
+tile_map_data = PackedByteArray("AAAAABcAAwAZAAsAAAAAABgAAwAZAAoAAAABABcAAwAZAAsAAAABABgAAwAZAAoAAAACABcAAwAZAAsAAAACABgAAwAZAAsAAAADABcAAwAZAAkAAAADABgAAwAZAAsAAAAEABcAAwAZAAkAAAAEABgAAwAZAAkAAAAFABcAAwAZAAsAAAAFABgAAwAZAAsAAAAGABcAAwAZAAkAAAAGABgAAwAZAAsAAAAHABgAAwAZAAsAAAAJAAwAAwAZAAsAAAAJAA0AAwAZAAkAAAAKAAwAAwAZAAkAAAAKAA0AAwAZAAoAAAALAAwAAwAZAAkAAAALAA0AAwAZAAsAAAAMAAwAAwAZAAsAAAAMAA0AAwAZAAkAAAANAA0AAwAZAAsAAAAOAAwAAwAZAAsAAAAOAA0AAwAZAAkAAAAPAAwAAwAZAAsAAAAPAA0AAwAZAAsAAAAQAAwAAwAZAAsAAAAQAA0AAwAZAAsAAAARAAwAAwAZAAoAAAARAA0AAwAZAAoAAAASAAwAAwAZAAsAAAASAA0AAwAZAAkAAAATAAwAAwAZAAsAAAATAA0AAwAZAAkAAAAUAAwAAwAZAAkAAAAUAA0AAwAZAAkAAAAVAAwAAwAZAAkAAAAVAA0AAwAZAAoAAAAWAAwAAwAZAAkAAAAWAA0AAwAZAAsAAAAXAAwAAwAZAAoAAAAXAA0AAwAZAAkAAAAYAAwAAwAZAAsAAAAYAA0AAwAZAAoAAAAZAAwAAwAZAAkAAAAZAA0AAwAZAAkAAAAaAAwAAwAZAAsAAAAaAA0AAwAZAAsAAAAbAAwAAwAZAAoAAAAbAA0AAwAZAAkAAAAcAAwAAwAZAAkAAAAcAA0AAwAZAAsAAAAFABMAAwAZAAkAAAAFABQAAwAZAAoAAAAFABUAAwAZAAoAAAAFABYAAwAZAAsAAAAFAAwAAwAZAAsAAAAFAA0AAwAZAAsAAAAGAAwAAwAZAAsAAAAGAA0AAwAZAAsAAAAHAAwAAwAZAAsAAAAHAA0AAwAZAAkAAAAIAAwAAwAZAAoAAAAIAA0AAwAZAAkAAAAFAA4AAwAZAAoAAAAGAA4AAwAZAAoAAAAGAA8AAwAZAAkAAAAGABMAAwAZAAsAAAAGABQAAwAZAAkAAAAGABUAAwAZAAoAAAAGABYAAwAZAAkAAAAAAAUAAwAZABAAAAABAAUAAwAZABAAAAACAAUAAwAaABAAAAADAAUAAwAaABAAAAAEAAUAAwAaABAAAAAFAAUAAwAaABAAAAAGAAUAAwAaABAAAAAHAAUAAwAZABAAAAAIAAUAAwAaABAAAAAJAAUAAwAZABAAAAAKAAUAAwAaABAAAAALAAUAAwAZABAAAAAMAAUAAwAZABAAAAANAAUAAwAaABAAAAAOAAUAAwAZABAAAAAPAAUAAwAZABAAAAAQAAUAAwAZABAAAAARAAUAAwAZABAAAAASAAUAAwAaABAAAAATAAUAAwAZABAAAAAUAAUAAwAZABAAAAAVAAUAAwAZABAAAAAWAAUAAwAZABAAAAAXAAUAAwAZABAAAAAYAAUAAwAZABAAAAAZAAUAAwAaABAAAAAaAAUAAwAaABAAAAAbAAUAAwAZABAAAAAcAAUAAwAZABAAAAAAAAkAAwAaAAYAAAADAAYAAwAZAAYAAAAFAAgAAwAZAAYAAAAGAAkAAwAbAAYAAAAHAAgAAwAcAAYAAAAIAAcAAwAcAAYAAAAKAAYAAwAZAAYAAAAPAAYAAwAZAAYAAAARAAYAAwAZAAYAAAARAAcAAwAZAAYAAAAUAAYAAwAcAAYAAAAZAAcAAwAdAAYAAAAZAAgAAwAdAAYAAAAaAAgAAwAbAAYAAAABAAgAAwAdAAYAAAACAAgAAwAZAAYAAAAHAAYAAwAZAAYAAAAKAAkAAwAdAAYAAAAOAAcAAwAZAAYAAAAPAAkAAwAcAAYAAAATAAYAAwAcAAYAAAAUAAgAAwAaAAYAAAAXAAcAAwAaAAYAAAAZAAYAAwAZAAYAAAADAA8AAwAZAAYAAAAEAAsAAwAZAAYAAAAJABUAAwAaAAYAAAAFABIAAwAZAAkAAAAGABIAAwAZAAoAAAAFAA8AAwAZAAsAAAADAA4AAwAdAAYAAAACAA0AAwAdAAYAAAABAAwAAwAaAAYAAAAIABMAAwAbAAYAAAACABMAAwAdAAYAAAADABIAAwAbAAYAAAAHABcAAwAZAAsAAAAJABcAAwAdAAYAAAAKABgAAwAbAAYAAAACABUAAwAbAAYAAAAXAAsAAwAZAAYAAAAaAA4AAwAdAAYAAAAPAAsAAwAaAAYAAAATAA4AAwAbAAYAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_right") groups=["level_info"]]
+script = ExtResource("3_1oijx")
+level_name = "lvl_vs_n_room_18"
+area_type = 1
+coming_from_right = NodePath("../ComingFromRight")
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(25, 240)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_y86et")]
+position = Vector2(30, 220)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_s1hox")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_f1sbn")]
+level_name = "lvl_vs_n_room_18"
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="BetterDeathZone" parent="." instance=ExtResource("7_ueqcm")]
+curve = SubResource("Curve2D_p4jan")
+width = 25.0
+curve_bake_interval = 40
+end_sample_point = 0.99
+
+[node name="@Area2D@279545" type="Area2D" parent="BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@279544" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@279545"]
+polygon = PackedVector2Array(10, 157.5, 25.625, 157.5, 60, 157.5, 94.375, 157.5, 109.9702, 157.5, 109.9702, 182.5, 94.375, 182.5, 60, 182.5, 25.625, 182.5, 10, 182.5)
+
+[node name="@Polygon2D@279546" type="Polygon2D" parent="BetterDeathZone"]
+material = ExtResource("8_c80uo")
+texture = ExtResource("9_y2squ")
+polygon = PackedVector2Array(10, 157.5, 25.625, 157.5, 60, 157.5, 94.375, 157.5, 109.9702, 157.5, 109.9702, 182.5, 94.375, 182.5, 60, 182.5, 25.625, 182.5, 10, 182.5)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles20" parent="BetterDeathZone" instance=ExtResource("10_cicye")]
+position = Vector2(59.9851, 170)
+emission_rect_extents = Vector2(59.9851, 22.5)
+
+[node name="PlatformSmall" parent="." instance=ExtResource("11_c80uo")]
+position = Vector2(60, 170)
+
+[node name="LevelTransitionArea" parent="." instance=ExtResource("12_y2squ")]
+position = Vector2(0, 240)
+next_level_id = "lvl_vs_n_room_17"
+direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
+shape = SubResource("RectangleShape2D_y2squ")
+
+[node name="NarrativeStuff" type="Node2D" parent="."]
+
+[node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
+
+[node name="KaiSprite" type="Sprite2D" parent="NarrativeStuff/Cutscene1"]
+position = Vector2(175, 137)
+texture = ExtResource("14_o7dnp")
+
+[node name="WC_Ab" parent="NarrativeStuff/Cutscene1" instance=ExtResource("15_o7dnp")]
+position = Vector2(175, 121)
+texture = ExtResource("13_cnkx2")
+character_name = "Ab"
+dialogue = ExtResource("16_abak1")
+
+[node name="DialogueArea" parent="NarrativeStuff/Cutscene1" node_paths=PackedStringArray("target") instance=ExtResource("15_abak1")]
+position = Vector2(150, 130)
+dialogue = ExtResource("16_bh27c")
+remove_on_event = "lvl_vs_n_room_18_kai_leaves_frustrated_ended"
+target = NodePath("../KaiSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
+shape = SubResource("RectangleShape2D_cnkx2")
+
+[node name="CutsceneManager" parent="NarrativeStuff/Cutscene1" instance=ExtResource("17_aue61")]
+dialogue = ExtResource("16_bh27c")
+
+[node name="StopMusic" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("18_kj2bg")
+change_type = 1
+execute = 1
+event_name = "kai_surprised"
+
+[node name="PlaySurprisedVFX" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("19_araxe")
+sfx = ExtResource("20_lw1a4")
+execute = 1
+event_name = "kai_surprised"
+
+[node name="ChangeToCreepyBass" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("18_kj2bg")
+music_name = "creepy_bass"
+change_type = 2
+execute = 1
+event_name = "kai_angry"
+
+[node name="PlayLeaveSFX" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("19_araxe")
+sfx = ExtResource("23_7t2al")
+execute = 1
+event_name = "kai_leaves"
+wait_time = 0.5
+
+[node name="FadeIn" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("21_g6wyc")
+execute = 1
+event_name = "kai_leaves"
+wait_time = 0.5
+
+[node name="HideKai" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("22_cnkx2")
+target = NodePath("../../KaiSprite")
+execute = 1
+event_name = "kai_leaves"
+
+[node name="ChangeToNormalMusic" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("18_kj2bg")
+music_name = "zone_1_music"
+execute = 1
+event_name = "kai_leaves"
+
+[node name="FadeOut" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("21_g6wyc")
+fade_type = 1
+execute = 1
+event_name = "kai_leaves"

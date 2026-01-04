@@ -1,0 +1,12 @@
+[gd_resource type="AudioStreamPlaylist" load_steps=4 format=3 uid="uid://dimbpln7vkglx"]
+
+[ext_resource type="AudioStream" uid="uid://ceskirg5tq6wp" path="res://assets/SOUNDS/music/WAV_Don’t_Look_Back.mp3" id="1_7ioj4"]
+[ext_resource type="AudioStream" uid="uid://dt73qjnoy4jew" path="res://assets/SOUNDS/music/WAV_This_Could_Be_Anywhere_in_the_World.mp3" id="2_pmjq3"]
+[ext_resource type="AudioStream" uid="uid://delhiq2cjt60q" path="res://assets/SOUNDS/music/WAV_Who_Are_You.mp3" id="3_q0w3g"]
+
+[resource]
+shuffle = true
+stream_count = 3
+stream_0 = ExtResource("1_7ioj4")
+stream_1 = ExtResource("2_pmjq3")
+stream_2 = ExtResource("3_q0w3g")

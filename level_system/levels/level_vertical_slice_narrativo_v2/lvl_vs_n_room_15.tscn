@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://1h3hp6u6pp4i"]
+[gd_scene load_steps=26 format=4 uid="uid://1h3hp6u6pp4i"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_b5f80"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_4c1wl"]
@@ -18,8 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://bbaay5giilatk" path="res://dialogue_system/cutscene_system/cutscene_manager.tscn" id="16_th3or"]
 [ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="17_7ehcc"]
 [ext_resource type="Script" uid="uid://yrjbixfee7ca" path="res://dialogue_system/cutscene_system/actions/cuta_teleport.gd" id="18_s2esm"]
+[ext_resource type="AudioStream" uid="uid://cerynraaonry6" path="res://assets/SOUNDS/voices/kai_angry.ogg" id="19_226pj"]
 [ext_resource type="Script" uid="uid://dhx31i78g5cp3" path="res://dialogue_system/cutscene_system/actions/cuta_play_sfx.gd" id="19_s2esm"]
 [ext_resource type="AudioStream" uid="uid://biunslpq075xe" path="res://assets/SOUNDS/cutscenes/kai_steps.ogg" id="20_n270l"]
+[ext_resource type="Script" uid="uid://00jdtmmcpsab" path="res://dialogue_system/cutscene_system/actions/cuta_change_music.gd" id="21_n270l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmkkj"]
 
@@ -176,6 +178,25 @@ shape = SubResource("RectangleShape2D_kf8tg")
 [node name="CutsceneManager" parent="NarrativeStuff/Cutscene1" instance=ExtResource("16_th3or")]
 dialogue = ExtResource("15_kf8tg")
 
+[node name="StopMusic" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("21_n270l")
+change_type = 1
+execute = 1
+event_name = "kai_surprised"
+
+[node name="PlaySurprisedVFX" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("19_s2esm")
+sfx = ExtResource("19_226pj")
+execute = 1
+event_name = "kai_surprised"
+
+[node name="ChangeToCreepyBass" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("21_n270l")
+music_name = "creepy_bass"
+change_type = 2
+execute = 1
+event_name = "kai_angry"
+
 [node name="FadeIn" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
 script = ExtResource("17_7ehcc")
 execute = 1
@@ -199,6 +220,12 @@ sfx = ExtResource("20_n270l")
 execute = 1
 event_name = "kai_leaves"
 wait_time = 0.5
+
+[node name="ChangeToNormalMusic" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("21_n270l")
+music_name = "zone_1_music"
+execute = 1
+event_name = "kai_leaves"
 
 [node name="FadeOut" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
 script = ExtResource("17_7ehcc")

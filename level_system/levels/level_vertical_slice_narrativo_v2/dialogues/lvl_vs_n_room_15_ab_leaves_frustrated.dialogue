@@ -6,6 +6,9 @@ Kai: Or maybe even a food.
 Kai: Thats it! A beautiful building made of cookies.
 Ab: Ynow Kai, maybe its time we lower the expectations.
 Ab: 「FUENTE PARAISO」 might not exist after all...
+do call_cutscene_event("kai_surprised")
+Kai: !
+do call_cutscene_event("kai_angry")
 Kai: [shake rate=20.0 level=5 connected=1]Stop.[/shake]
 Kai: Dad, you've been like this the whole trip.
 Kai: And i dont understand it. We are here for Cecil, remember?

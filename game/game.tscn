@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=30 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -12,10 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://2tvde1g7baq6" path="res://tests/debug_timer.tscn" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://ce5m7b223yfg6" path="res://level_system/automap/automap.tscn" id="8_y36n6"]
 [ext_resource type="Shader" uid="uid://dk2ecib4gfdal" path="res://utils/transition_shader/spotlight_transition.gdshader" id="9_hb504"]
-[ext_resource type="AudioStream" uid="uid://ceskirg5tq6wp" path="res://assets/SOUNDS/music/WAV_Don’t_Look_Back.mp3" id="9_qf6n1"]
 [ext_resource type="PackedScene" uid="uid://r105flniks1s" path="res://game/game_menu.tscn" id="10_hb504"]
-[ext_resource type="AudioStream" uid="uid://dt73qjnoy4jew" path="res://assets/SOUNDS/music/WAV_This_Could_Be_Anywhere_in_the_World.mp3" id="10_vsp63"]
-[ext_resource type="AudioStream" uid="uid://delhiq2cjt60q" path="res://assets/SOUNDS/music/WAV_Who_Are_You.mp3" id="11_b686c"]
 [ext_resource type="PackedScene" uid="uid://bq36b0nga2k5y" path="res://game/game_console_commands.tscn" id="12_qf6n1"]
 [ext_resource type="Texture2D" uid="uid://dhucwh0hu3p7n" path="res://assets/GRAPHICS/inputs/xbox_button_a.png" id="13_ln7ps"]
 [ext_resource type="Script" uid="uid://c8h0kq00glgpg" path="res://game/game_blackboard.gd" id="14_b686c"]
@@ -24,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://bchbfx4lq3rwi" path="res://assets/GRAPHICS/inputs/rb.png" id="16_mhvfb"]
 [ext_resource type="Texture2D" uid="uid://c621y4snlc4rn" path="res://assets/GRAPHICS/inputs/xbox_button_b.png" id="17_5e03w"]
 [ext_resource type="Texture2D" uid="uid://dkg8qjfksp8iy" path="res://assets/GRAPHICS/inputs/xbox_button_y.png" id="18_leid8"]
+[ext_resource type="AudioStream" uid="uid://dimbpln7vkglx" path="res://game/zone_1_music.tres" id="20_5e03w"]
+[ext_resource type="Script" uid="uid://bk00biprncsqw" path="res://game/music.gd" id="21_leid8"]
+[ext_resource type="AudioStream" uid="uid://cepgk4i3tauqe" path="res://assets/SOUNDS/music/Retro Ambience 02.mp3" id="22_leid8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pxxsx"]
 shader = ExtResource("5_ln7ps")
@@ -54,13 +54,6 @@ shader_parameter/feather = 0.05
 shader_parameter/circle_position = Vector2(0.5, 0.5)
 shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
-
-[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_hb504"]
-shuffle = true
-stream_count = 3
-stream_0 = ExtResource("9_qf6n1")
-stream_1 = ExtResource("10_vsp63")
-stream_2 = ExtResource("11_b686c")
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -295,10 +288,15 @@ visible = false
 layout_mode = 1
 music = NodePath("../../Music")
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamPlaylist_hb504")
+[node name="Music" type="AudioStreamPlayer" parent="." groups=["music"]]
+stream = ExtResource("20_5e03w")
 volume_db = -5.0
-autoplay = true
+script = ExtResource("21_leid8")
+initial_stream_name = "zone_1_music"
+streams = Dictionary[String, AudioStream]({
+"creepy_bass": ExtResource("22_leid8"),
+"zone_1_music": ExtResource("20_5e03w")
+})
 
 [node name="GameConsoleCommands" parent="." instance=ExtResource("12_qf6n1")]
 

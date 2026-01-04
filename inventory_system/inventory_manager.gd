@@ -10,6 +10,8 @@ func _ready() -> void:
 		persistent_inventory.items = persistent_items
 		temporary_inventory.items = temp_items
 	load_persistent_inventory()
+	persistent_inventory.item_removed.connect(_on_remove_from_persistent_inv)
+
 
 @onready var persistent_inventory : AnInventory = $PersistentInventory
 
@@ -34,3 +36,9 @@ func add_item(item : AnItem):
 	else:
 		print("adding %s to temp inventory"%item.item_name)
 		temporary_inventory.add_to_inventory(item)
+
+func _on_remove_from_persistent_inv(_item : AnItem):
+	var save = SaveUtils.get_save()
+	if save:
+		save.persistent_inventory = persistent_inventory.items
+		save.write_savegame()

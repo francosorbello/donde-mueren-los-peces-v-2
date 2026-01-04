@@ -14,6 +14,7 @@ func _ready() -> void:
     Console.add_command("set_event_true",set_event_true,["event_name"],1)
     Console.add_command("set_level_as_visited",set_level_as_visited,["visited_level"],1)
     Console.add_command("remove_event",remove_event,["event_name"],1)
+    Console.add_command("clear_visited_levels",clear_visited_levels)
     
     Console.font_size = 30
 
@@ -26,6 +27,12 @@ func remove_event(event_name):
     if save:
         if save.persistent_events.has(event_name):
             save.persistent_events.erase(event_name)
+
+func clear_visited_levels():
+    var save = SaveUtils.get_save()
+    if save:
+        save.visited_levels.clear()
+        save.write_savegame()
 
 func set_level_as_visited(level_name : String):
     var save = SaveUtils.get_save()

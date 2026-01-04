@@ -8,6 +8,8 @@ do wait(1)
 Kai: Cmon dad, just a bit more.
 Ab: I dont know Kai, maybe this was a mistake.
 Ab: we should return home...
+Kai: Dad. We are doing this for Cecil. We must have hope.
+Ab: Kai, Cecil is...
 do call_cutscene_event("kai_sees_player")
 Kai: !
 Kai: Oh, sorry, didnt see u there.

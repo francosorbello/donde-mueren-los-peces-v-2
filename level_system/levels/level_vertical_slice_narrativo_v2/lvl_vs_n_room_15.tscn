@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://1h3hp6u6pp4i"]
+[gd_scene load_steps=24 format=4 uid="uid://1h3hp6u6pp4i"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_b5f80"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_4c1wl"]
@@ -11,10 +11,15 @@
 [ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="9_3pb8u"]
 [ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="10_i4t06"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="11_f8x6r"]
-[ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="12_0bij7"]
 [ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="13_8geqb"]
+[ext_resource type="Texture2D" uid="uid://pd3n7mkqhuek" path="res://assets/GRAPHICS/characters/kid1_16x16.png" id="13_sg6kq"]
 [ext_resource type="PackedScene" uid="uid://dvfbw7sofbkka" path="res://dialogue_system/dialogue_area.tscn" id="14_8geqb"]
 [ext_resource type="Resource" uid="uid://3s6377ifml4f" path="res://level_system/levels/level_vertical_slice_narrativo_v2/dialogues/lvl_vs_n_room_15_ab_leaves_frustrated.dialogue" id="15_kf8tg"]
+[ext_resource type="PackedScene" uid="uid://bbaay5giilatk" path="res://dialogue_system/cutscene_system/cutscene_manager.tscn" id="16_th3or"]
+[ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="17_7ehcc"]
+[ext_resource type="Script" uid="uid://yrjbixfee7ca" path="res://dialogue_system/cutscene_system/actions/cuta_teleport.gd" id="18_s2esm"]
+[ext_resource type="Script" uid="uid://dhx31i78g5cp3" path="res://dialogue_system/cutscene_system/actions/cuta_play_sfx.gd" id="19_s2esm"]
+[ext_resource type="AudioStream" uid="uid://biunslpq075xe" path="res://assets/SOUNDS/cutscenes/kai_steps.ogg" id="20_n270l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmkkj"]
 
@@ -150,18 +155,54 @@ shape = SubResource("RectangleShape2D_3orhr")
 
 [node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
 
-[node name="WC_Kai" parent="NarrativeStuff/Cutscene1" instance=ExtResource("12_0bij7")]
-position = Vector2(40, 70)
-
-[node name="Sprite2D" type="Sprite2D" parent="NarrativeStuff/Cutscene1"]
+[node name="AbSprite" type="Sprite2D" parent="NarrativeStuff/Cutscene1"]
 position = Vector2(20, 70)
 texture = ExtResource("13_8geqb")
 
-[node name="DialogueArea" parent="NarrativeStuff/Cutscene1" instance=ExtResource("14_8geqb")]
+[node name="KaiSprite" type="Sprite2D" parent="NarrativeStuff/Cutscene1"]
+position = Vector2(38, 70)
+texture = ExtResource("13_sg6kq")
+
+[node name="DialogueArea" parent="NarrativeStuff/Cutscene1" node_paths=PackedStringArray("target") instance=ExtResource("14_8geqb")]
 position = Vector2(60, 20)
 dialogue = ExtResource("15_kf8tg")
 remove_on_event = "lvl_vs_n_room_15_ab_leaves_frustrated_ended"
+target = NodePath("../KaiSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
 position = Vector2(-5, 5)
 shape = SubResource("RectangleShape2D_kf8tg")
+
+[node name="CutsceneManager" parent="NarrativeStuff/Cutscene1" instance=ExtResource("16_th3or")]
+dialogue = ExtResource("15_kf8tg")
+
+[node name="FadeIn" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("17_7ehcc")
+execute = 1
+event_name = "kai_leaves"
+wait_time = 0.5
+
+[node name="MoveKai" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target", "to_pos")]
+script = ExtResource("18_s2esm")
+target = NodePath("../../KaiSprite")
+to_pos = NodePath("Marker2D")
+execute = 1
+event_name = "kai_leaves"
+wait_time = 0.5
+
+[node name="Marker2D" type="Marker2D" parent="NarrativeStuff/Cutscene1/CutsceneManager/MoveKai"]
+position = Vector2(75, 226)
+
+[node name="PlayLeaveSFX" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("19_s2esm")
+sfx = ExtResource("20_n270l")
+execute = 1
+event_name = "kai_leaves"
+wait_time = 0.5
+
+[node name="FadeOut" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("17_7ehcc")
+fade_type = 1
+execute = 1
+event_name = "kai_leaves"
+wait_time = 0.5

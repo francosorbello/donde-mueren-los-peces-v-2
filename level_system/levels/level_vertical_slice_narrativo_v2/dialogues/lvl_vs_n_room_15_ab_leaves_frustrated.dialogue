@@ -1,3 +1,25 @@
 ~ start
-Kai: 
+Kai: Say, Stranger. What do u think the 「FUENTE PARAISO」 looks like?
+Kai: it sure is a beautiful piece of art.
+Kai: Or a building.
+Kai: Or maybe even a food.
+Kai: Thats it! A beautiful building made of cookies.
+Ab: Ynow Kai, maybe its time we lower the expectations.
+Ab: 「FUENTE PARAISO」 might not exist after all...
+Kai: [shake rate=20.0 level=5 connected=1]Stop.[/shake]
+Kai: Dad, you've been like this the whole trip.
+Kai: And i dont understand it. We are here for Cecil, remember?
+Kai: so why do u sound so defeated all the time?
+Kai: I...just...[shake rate=20.0 level=5 connected=1]just...[/shake]
+do call_cutscene_event("kai_leaves")
+do wait(2)
+do hide_portrait_for("Kai")
+Ab: ...
+Ab: Im sorry you had to see that.
+Ab: Kai and Cecil are inseparable, you see.
+Ab: And when Cecil got sick, it hit him pretty hard.
+Ab: But nothing can be done for Cecil.
+Ab: Right?
+Ab: ...
+Ab: [shake rate=20.0 level=5 connected=1]Right?[/shake]
 => END

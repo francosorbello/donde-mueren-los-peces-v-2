@@ -61,6 +61,7 @@ size = Vector2(40, 20)
 [node name="lvl_vs_n_room_13" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_gknm1")]
+visible = false
 metadata/_edit_lock_ = true
 
 [node name="Layout" parent="." instance=ExtResource("2_u7ryc")]
@@ -249,6 +250,13 @@ debug = true
 script = ExtResource("21_1lwcl")
 new_title = "ab_knows"
 character = NodePath("../../WC_Ab")
+execute = 1
+event_name = "ab_knows"
+
+[node name="AbKnows2" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager2" node_paths=PackedStringArray("character")]
+script = ExtResource("21_1lwcl")
+new_title = "ab_knows"
+character = NodePath("../../WC_Kai")
 execute = 1
 event_name = "ab_knows"
 

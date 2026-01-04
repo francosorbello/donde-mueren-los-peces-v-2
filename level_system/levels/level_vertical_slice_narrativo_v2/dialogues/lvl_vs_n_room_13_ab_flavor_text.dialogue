@@ -16,9 +16,13 @@ Kai: Please dont tell this to my dad.
 do call_cutscene_event("ab_knows")
 => END
 
+~ kai_swords
+Kai: Do u think Cecil will want to play again when he gets better?
+=> END
+
 ~ ab_start
 do hide_portrait_for("Kai")
-Ab: Kai is a good kid.
+Ab: Kai is a good kid. His intentions come from a good place.
 Ab: But Cecil...
 Ab: there is nothing we can do.
 Ab: You know what i mean? 

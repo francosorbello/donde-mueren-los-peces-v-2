@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=3 uid="uid://dlrxt21b6d3p6"]
+
+[ext_resource type="Texture2D" uid="uid://bib3kjjin2u60" path="res://assets/GRAPHICS/platform_small_spritesheet.png" id="1_ieh4h"]
+[ext_resource type="Script" uid="uid://di57ndmfi88w5" path="res://platform/sprite_shaker.gd" id="2_g4kmb"]
+[ext_resource type="Script" uid="uid://b218etah1jbxw" path="res://dialogue_system/cutscene_system/fake_breakable_platform/fake_breakable_platform.gd" id="2_x7s62"]
+[ext_resource type="AudioStream" uid="uid://cq17y3u7y2lne" path="res://assets/SOUNDS/rustles/rustle_loop_2.ogg" id="4_rvii2"]
+[ext_resource type="AudioStream" uid="uid://cvpr3bplyb82a" path="res://assets/SOUNDS/rustles/rustle_end_2.ogg" id="5_wl2cf"]
+
+[sub_resource type="Curve" id="Curve_x7s62"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_wl2cf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_rvii2"]
+resource_name = "break"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.99),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteShaker")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [5.0, 3.0],
+"method": &"start_shake"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wl2cf"]
+_data = {
+&"RESET": SubResource("Animation_wl2cf"),
+&"break": SubResource("Animation_rvii2")
+}
+
+[node name="FakeBreakablePlatform" type="Sprite2D"]
+modulate = Color(0.5689727, 0.56897277, 0.5689727, 1)
+texture = ExtResource("1_ieh4h")
+hframes = 3
+region_enabled = true
+region_rect = Rect2(0, 0, 90, 30)
+script = ExtResource("2_x7s62")
+
+[node name="SpriteShaker" type="Node2D" parent="."]
+script = ExtResource("2_g4kmb")
+shake_offset = Vector2(0.5, 0)
+shake_curve = SubResource("Curve_x7s62")
+
+[node name="RustleSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rvii2")
+bus = &"SFX"
+
+[node name="RustleEnd" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_wl2cf")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wl2cf")
+}

@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dgadymra1s2ay" path="res://assets/SOUNDS/player/pretty_footsetp.mp3" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://buue6n5g78pmd" path="res://player/player_sprite.gd" id="4_1s1yo"]
 [ext_resource type="Script" uid="uid://8dv7dce6ncjv" path="res://addons/ftr_tools/sm/state_machine.gd" id="4_yw30f"]
+[ext_resource type="Animation" uid="uid://dyjhsh3tyj8cy" path="res://tests/move.res" id="5_q28gw"]
 [ext_resource type="Script" uid="uid://bijnqy4wt580s" path="res://player/states/idle_state.gd" id="5_qjkh3"]
 [ext_resource type="Script" uid="uid://c55rmvk4p4wdj" path="res://player/states/moving_state.gd" id="6_g6k8r"]
 [ext_resource type="Script" uid="uid://cjq2op1qwxb62" path="res://player/states/shooting_bubble_state.gd" id="7_boad6"]
@@ -103,49 +104,11 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_rkbax"]
-resource_name = "move"
-length = 0.45
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.08726646259971647, 0.0, 0.08726646259971647]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("StepSounds")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjkh3"]
 _data = {
 &"RESET": SubResource("Animation_g1dw6"),
 &"idle": SubResource("Animation_yw30f"),
-&"move": SubResource("Animation_rkbax")
+&"move": ExtResource("5_q28gw")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yw30f"]

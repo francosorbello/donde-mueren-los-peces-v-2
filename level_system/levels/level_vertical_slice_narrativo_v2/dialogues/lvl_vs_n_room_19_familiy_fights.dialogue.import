@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://m4rricntefyt"
+path="res://.godot/imported/lvl_vs_n_room_19_familiy_fights.dialogue-36eed599f3b638b716fa873573b7a7d0.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_vertical_slice_narrativo_v2/dialogues/lvl_vs_n_room_19_familiy_fights.dialogue"
+dest_files=["res://.godot/imported/lvl_vs_n_room_19_familiy_fights.dialogue-36eed599f3b638b716fa873573b7a7d0.tres"]
+
+[params]
+
+defaults=true

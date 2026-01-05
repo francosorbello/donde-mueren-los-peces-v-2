@@ -26,6 +26,8 @@ func _ready():
     original_position = target.position
 
 func _physics_process(delta):
+    if Engine.is_editor_hint():
+        return
     if shake_duration > 0:
         time_elapsed += delta
         shake_duration -= delta

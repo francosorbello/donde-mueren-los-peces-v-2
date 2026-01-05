@@ -57,3 +57,11 @@ func _on_persistent_event_evaluator_evaluator_succeded() -> void:
 
 func toggle_repeatable():
     repeatable = not repeatable
+
+func move_to(pos : Vector2):
+    match character_name:
+        "Kai":
+            $StepSounds.pitch_scale = 2
+        "Ab":
+            $StepSounds.pitch_scale = 0.5
+    $WCMoveComponent.move_to(pos)

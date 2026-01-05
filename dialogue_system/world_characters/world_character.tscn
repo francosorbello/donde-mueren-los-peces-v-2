@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpodts60uf67s"]
+[gd_scene load_steps=15 format=3 uid="uid://bpodts60uf67s"]
 
 [ext_resource type="PackedScene" uid="uid://dgks666k0klxv" path="res://interactables/interactable_component/better_interactable_component.tscn" id="1_54etn"]
 [ext_resource type="Texture2D" uid="uid://pd3n7mkqhuek" path="res://assets/GRAPHICS/characters/kid1_16x16.png" id="1_mbb20"]
@@ -7,6 +7,87 @@
 [ext_resource type="Resource" uid="uid://b8d8lt6a1mfum" path="res://dialogue_system/res/character_container.tres" id="3_w8xc2"]
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="6_mbb20"]
 [ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="7_a1817"]
+[ext_resource type="AudioStream" uid="uid://dgadymra1s2ay" path="res://assets/SOUNDS/player/pretty_footsetp.mp3" id="8_a1817"]
+[ext_resource type="Script" uid="uid://cfkxaj3a6v8uj" path="res://dialogue_system/world_characters/wc_move_component.gd" id="9_5bfoo"]
+
+[sub_resource type="Animation" id="Animation_5bfoo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_r67it"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_a1817"]
+resource_name = "move"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.08726646259971647, 0.0, 0.08726646259971647]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StepSounds")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a1817"]
+_data = {
+&"RESET": SubResource("Animation_5bfoo"),
+&"idle": SubResource("Animation_r67it"),
+&"move": SubResource("Animation_a1817")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5bfoo"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("8_a1817")
 
 [node name="WC_Kai" type="Sprite2D"]
 texture = ExtResource("1_mbb20")
@@ -26,6 +107,20 @@ metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 [node name="BoolPersistentEventConditional" type="Node" parent="PersistentEventEvaluator"]
 script = ExtResource("7_a1817")
 metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a1817")
+}
+
+[node name="StepSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_5bfoo")
+bus = &"SFX"
+
+[node name="WCMoveComponent" type="Node" parent="." node_paths=PackedStringArray("animation_player")]
+script = ExtResource("9_5bfoo")
+speed = 60.0
+animation_player = NodePath("../AnimationPlayer")
 
 [connection signal="on_interact" from="BetterInteractableComponent" to="." method="_on_better_interactable_component_on_interact"]
 [connection signal="evaluator_succeded" from="PersistentEventEvaluator" to="." method="_on_persistent_event_evaluator_evaluator_succeded"]

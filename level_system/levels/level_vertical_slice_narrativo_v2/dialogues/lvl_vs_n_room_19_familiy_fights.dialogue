@@ -1,0 +1,35 @@
+~ start
+do wait(1)
+Kai: Dad! Dad!
+Kai: Its real! The [FUENTE PARAISO] is real!
+Kai: Look! I found this map, it says the location of the well.
+Kai: Cmon Dad, lets go!
+do call_cutscene_event("kai_moves")
+do wait(3)
+Kai: ...
+Kai: ...Dad?
+do call_cutscene_event("ab_on_bridge")
+do wait(2)
+Ab: Kai, maybe its time we accept the situation we are in.
+Ab: What are the chances of a magical item existing? None to zero.
+Ab: Cecil is dying, Kai.
+Ab: And there is nothing we can do about it.
+Ab: Im sorry.
+Kai: ...
+Kai: ...
+Kai: No.
+Kai: [shake rate=20.0 level=5 connected=1]No.[/shake]
+Ab: What?
+Kai: I refuse to give up. I dont know whats gotten into you,
+Kai: but im not just letting go.
+Kai: Not until we try everything possible.
+Kai: Dont u understand, Dad? Cecil is dying, and something something something
+Ab: Son...I...
+do call_cutscene_event("bridge_falls")
+Ab: [next=1]! 
+do wait(5)
+Kai: ...
+Kai: Im sorry, Dad.
+do call_cutscene_event("kai_leaves")
+do wait(1)
+=> END

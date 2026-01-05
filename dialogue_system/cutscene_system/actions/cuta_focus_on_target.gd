@@ -4,10 +4,12 @@ extends CutsceneAction
 @export var target : Node2D
 
 func do_action():
-    if focus_on_player:
-        target = get_tree().get_first_node_in_group("player")
+	if focus_on_player:
+		target = get_tree().get_first_node_in_group("player")
 
-    assert(target != null, "(%s) No target to focus on"%name)
+	assert(target != null, "(%s) No target to focus on"%name)
 
-    var camera = get_tree().get_first_node_in_group("DialogueCamera")
-    camera.set_target(target)
+	var camera = get_tree().get_first_node_in_group("DialogueCamera")
+	assert(camera != null, "No camera availalbe for some reason")
+	
+	camera.set_target(target)

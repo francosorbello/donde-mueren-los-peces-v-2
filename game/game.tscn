@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=35 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://b1tg4rb617au1" path="res://assets/GRAPHICS/inputs/lb.png" id="15_dxwpq"]
 [ext_resource type="Texture2D" uid="uid://bchbfx4lq3rwi" path="res://assets/GRAPHICS/inputs/rb.png" id="16_mhvfb"]
 [ext_resource type="Texture2D" uid="uid://c621y4snlc4rn" path="res://assets/GRAPHICS/inputs/xbox_button_b.png" id="17_5e03w"]
+[ext_resource type="Script" uid="uid://ul277vuo1a7a" path="res://game/ui/triggers_layout_element.gd" id="17_jdpby"]
+[ext_resource type="Resource" uid="uid://dy2krd2i18ha7" path="res://abilities/ability_items/abi_dash.tres" id="18_58yx1"]
 [ext_resource type="Texture2D" uid="uid://dkg8qjfksp8iy" path="res://assets/GRAPHICS/inputs/xbox_button_y.png" id="18_leid8"]
 [ext_resource type="AudioStream" uid="uid://dimbpln7vkglx" path="res://game/zone_1_music.tres" id="20_5e03w"]
 [ext_resource type="Script" uid="uid://bk00biprncsqw" path="res://game/music.gd" id="21_leid8"]
@@ -236,6 +238,9 @@ offset_top = 50.0
 offset_right = 1884.0
 offset_bottom = 114.0
 alignment = 1
+script = ExtResource("17_jdpby")
+disabled_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+dash_ability = ExtResource("18_58yx1")
 
 [node name="Mapa" type="Label" parent="UI/Controls/Triggers"]
 custom_minimum_size = Vector2(82, 0)
@@ -257,10 +262,10 @@ layout_mode = 2
 texture = ExtResource("16_mhvfb")
 
 [node name="Dash" type="Label" parent="UI/Controls/Triggers"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(82, 0)
 layout_mode = 2
 label_settings = SubResource("LabelSettings_pxxsx")
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Automap" parent="UI" instance=ExtResource("8_y36n6")]

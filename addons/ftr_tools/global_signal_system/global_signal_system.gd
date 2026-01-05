@@ -17,6 +17,7 @@ signal on_dialogue_event(event_name : String)
 ## Player
 signal jump_started()
 signal jump_finished()
+signal dash_started()
 
 ## Interactables
 signal interactable_found()

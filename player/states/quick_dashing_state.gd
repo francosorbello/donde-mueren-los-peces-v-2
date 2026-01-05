@@ -27,6 +27,7 @@ func enter():
 	player.set_collision_mask_value(9,false)
 	_initial_collision_pos = collision_shape.position
 	collision_shape.position = Vector2.ZERO
+	GlobalSignal.dash_started.emit()
 
 func exit():
 	player.set_collision_mask_value(9,true)

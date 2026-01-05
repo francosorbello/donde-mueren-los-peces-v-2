@@ -79,6 +79,9 @@ func use_interactable():
 
 	if current_interactable:
 		current_interactable.interact()
+		current_interactable.tree_exited.connect(func():
+			GlobalSignal.interactable_lost.emit()
+		)
 
 func _draw() -> void:
 	# if Engine.is_editor_hint() and debug_draw:

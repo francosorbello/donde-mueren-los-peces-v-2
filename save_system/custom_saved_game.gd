@@ -6,6 +6,8 @@ class_name ASavedGame
 @export var visited_levels : Array[String]
 @export var unlocked_abilities : Array[AnItem]
 
+signal ability_added(ability : AnItem)
+
 func persistent_event_exists(ev_name : String) -> bool:
 	return persistent_events.has(ev_name)
 
@@ -44,6 +46,7 @@ func add_ability(ability_item : AnItem):
 
 	if not unlocked_abilities.has(ability_item):
 		unlocked_abilities.append(ability_item)
+		ability_added.emit(ability_item)
 
 	write_savegame()
 

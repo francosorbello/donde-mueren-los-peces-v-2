@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=33 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -7,13 +7,16 @@
 [ext_resource type="Shader" uid="uid://cbj7u0vb760o7" path="res://game/bg_scroll_boring.gdshader" id="5_ln7ps"]
 [ext_resource type="PackedScene" uid="uid://djic11w1vg7yn" path="res://inventory_system/inventory_manager.tscn" id="6_dakft"]
 [ext_resource type="Texture2D" uid="uid://dh4uxf5a5uode" path="res://assets/GRAPHICS/text_bg/Circles.png" id="6_ln7ps"]
-[ext_resource type="PackedScene" uid="uid://ttyngsx7731n" path="res://inventory_system/ui/inventory_ui.tscn" id="6_u5opy"]
 [ext_resource type="PackedScene" uid="uid://0yfb5rxawy5e" path="res://tests/debug_room.tscn" id="8_leid8"]
 [ext_resource type="PackedScene" uid="uid://2tvde1g7baq6" path="res://tests/debug_timer.tscn" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://ce5m7b223yfg6" path="res://level_system/automap/automap.tscn" id="8_y36n6"]
+[ext_resource type="Script" uid="uid://dade1n83xanhk" path="res://game/controls.gd" id="9_8bboj"]
 [ext_resource type="Shader" uid="uid://dk2ecib4gfdal" path="res://utils/transition_shader/spotlight_transition.gdshader" id="9_hb504"]
 [ext_resource type="PackedScene" uid="uid://r105flniks1s" path="res://game/game_menu.tscn" id="10_hb504"]
+[ext_resource type="Script" uid="uid://b7xsj6vavmkaf" path="res://game/ui/jump_layout_element.gd" id="10_q52ks"]
+[ext_resource type="Resource" uid="uid://wdxb4vdl6vwa" path="res://abilities/ability_items/abi_jump.tres" id="11_jucfl"]
 [ext_resource type="PackedScene" uid="uid://bq36b0nga2k5y" path="res://game/game_console_commands.tscn" id="12_qf6n1"]
+[ext_resource type="Script" uid="uid://bkhip1qirjghn" path="res://game/ui/interact_layout_element.gd" id="13_jdpby"]
 [ext_resource type="Texture2D" uid="uid://dhucwh0hu3p7n" path="res://assets/GRAPHICS/inputs/xbox_button_a.png" id="13_ln7ps"]
 [ext_resource type="Script" uid="uid://c8h0kq00glgpg" path="res://game/game_blackboard.gd" id="14_b686c"]
 [ext_resource type="Texture2D" uid="uid://d1mi2lfq3kjqo" path="res://assets/GRAPHICS/inputs/xbox_button_x.png" id="14_pxxsx"]
@@ -154,42 +157,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("9_8bboj")
+disabled_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
 
 [node name="Flotar" type="HBoxContainer" parent="UI/Controls"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 0
-offset_left = 1610.0
+offset_left = 1570.0
 offset_top = 220.0
 offset_right = 1763.0
 offset_bottom = 284.0
+script = ExtResource("10_q52ks")
+jump_ability = ExtResource("11_jucfl")
 
 [node name="Label" type="Label" parent="UI/Controls/Flotar"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
-text = "Flotar"
 label_settings = SubResource("LabelSettings_pxxsx")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/Controls/Flotar"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("13_ln7ps")
 
 [node name="Interactuar" type="HBoxContainer" parent="UI/Controls"]
 layout_mode = 0
-offset_left = 1570.0
+offset_left = 1550.0
 offset_top = 160.0
-offset_right = 1705.0
+offset_right = 1703.0
 offset_bottom = 224.0
+script = ExtResource("13_jdpby")
+disabled_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
 
 [node name="Label" type="Label" parent="UI/Controls/Interactuar"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
-text = "Usar"
+text = "UI_USE"
 label_settings = SubResource("LabelSettings_pxxsx")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/Controls/Interactuar"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("14_pxxsx")
@@ -218,40 +232,36 @@ texture = ExtResource("18_leid8")
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 0
 offset_left = 1580.0
-offset_top = 40.0
-offset_right = 1874.0
-offset_bottom = 104.0
+offset_top = 50.0
+offset_right = 1884.0
+offset_bottom = 114.0
+alignment = 1
 
-[node name="Label" type="Label" parent="UI/Controls/Triggers"]
+[node name="Mapa" type="Label" parent="UI/Controls/Triggers"]
+custom_minimum_size = Vector2(82, 0)
 layout_mode = 2
-text = "Mapa"
 label_settings = SubResource("LabelSettings_pxxsx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI/Controls/Triggers"]
+[node name="LB" type="TextureRect" parent="UI/Controls/Triggers"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("15_dxwpq")
 
-[node name="TextureRect2" type="TextureRect" parent="UI/Controls/Triggers"]
+[node name="RB" type="TextureRect" parent="UI/Controls/Triggers"]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("16_mhvfb")
 
-[node name="Label2" type="Label" parent="UI/Controls/Triggers"]
-visible = false
+[node name="Dash" type="Label" parent="UI/Controls/Triggers"]
+custom_minimum_size = Vector2(82, 0)
 layout_mode = 2
-text = "Dash"
 label_settings = SubResource("LabelSettings_pxxsx")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="InventoryUI" parent="UI" node_paths=PackedStringArray("inventory_manager") instance=ExtResource("6_u5opy")]
-visible = false
-layout_mode = 1
-inventory_manager = NodePath("../../InventoryManager")
 
 [node name="Automap" parent="UI" instance=ExtResource("8_y36n6")]
 visible = false

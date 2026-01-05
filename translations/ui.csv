@@ -1,3 +1,8 @@
 keys,en,es
 START_BUTTON,START,COMENZAR
 EXIT_BUTTON,EXIT,SALIR
+UI_JUMP,Float,Flotar
+UI_USE,Use,Usar
+UI_DASH,Dash,Dash
+UI_MAP,Map,Mapa
+UI_CANCEL_JUMP,Cancel,Cancel.

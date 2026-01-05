@@ -22,7 +22,8 @@ func _ready() -> void:
 
 func _unhandled_input(event):
 	if event.is_action_pressed("open_map"):
-		toggle_visible()
+		# toggle_visible()
+		pass
 
 
 func _process(delta):

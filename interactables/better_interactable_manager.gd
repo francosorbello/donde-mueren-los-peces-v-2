@@ -66,8 +66,12 @@ func refresh_interactable():
 func switch_to(interactable : BetterInteractableComponent):
 	if current_interactable:
 		current_interactable.leave_interactable()
+		
+	GlobalSignal.interactable_lost.emit()
 	current_interactable = interactable
 	current_interactable.hover_interactable()
+	GlobalSignal.interactable_found.emit()
+
 
 func use_interactable():
 	if not enabled:
@@ -84,6 +88,7 @@ func _draw() -> void:
 func _on_refresh_timer_timeout() -> void:
 	if current_interactable and current_interactable.global_position.distance_to(global_position) > radius:
 		current_interactable.leave_interactable()
+		GlobalSignal.interactable_lost.emit()
 		current_interactable = null
 	refresh_interactable()
 	pass # Replace with function body.
@@ -96,5 +101,6 @@ func disable():
 	enabled = false
 	if current_interactable:
 		current_interactable.leave_interactable()
+		GlobalSignal.interactable_lost.emit()
 		current_interactable = null
 	pass

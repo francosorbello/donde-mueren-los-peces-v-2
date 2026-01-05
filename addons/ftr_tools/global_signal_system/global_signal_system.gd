@@ -13,3 +13,11 @@ signal game_ui_closed()
 signal temp_event_set(ev : PersistentEvent)
 signal temp_event_removed(event_name : String)
 signal on_dialogue_event(event_name : String)
+
+## Player
+signal jump_started()
+signal jump_finished()
+
+## Interactables
+signal interactable_found()
+signal interactable_lost()

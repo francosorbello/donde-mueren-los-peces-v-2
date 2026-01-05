@@ -35,6 +35,7 @@ func enter():
     progress_bar.show()
     progress_bar.start($JumpDurationTimer.wait_time)
     player.toggle_interaction_system(false)
+    GlobalSignal.jump_started.emit()
 
 
 
@@ -49,6 +50,7 @@ func exit():
 
     progress_bar.hide()
     player.toggle_interaction_system(true)
+    GlobalSignal.jump_finished.emit()
 
 
 func play_bubble_anim(to_value : float) -> Tween:

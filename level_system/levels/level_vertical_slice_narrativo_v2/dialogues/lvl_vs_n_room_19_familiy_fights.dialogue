@@ -1,35 +1,35 @@
 ~ start
 do wait(1)
-Kai: Dad! Dad!
-Kai: Its real! The [FUENTE PARAISO] is real!
-Kai: Look! I found this map, it says the location of the well.
-Kai: Cmon Dad, lets go!
+Kai: Dad! Dad! [ID:DAD_DAD_0CFF71]
+Kai: Its real! The [FUENTE PARAISO] is real! [ID:ITS_REAL_THE_FUENTE_PARAISO_IS_18E33B]
+Kai: Look! I found this map, it says the location of the well. [ID:LOOK_I_FOUND_THIS_MAP_IT_SAYS_1760B3]
+Kai: Cmon Dad, lets go! [ID:CMON_DAD_LETS_GO_26B01A]
 do call_cutscene_event("kai_moves")
 do wait(3)
-Kai: ...
-Kai: ...Dad?
+Kai: ... [ID:_3AD5C3]
+Kai: ...Dad? [ID:DAD_9F060F]
 do call_cutscene_event("ab_on_bridge")
 do wait(2)
-Ab: Kai, maybe its time we accept the situation we are in.
-Ab: What are the chances of a magical item existing? None to zero.
-Ab: Cecil is dying, Kai.
-Ab: And there is nothing we can do about it.
-Ab: Im sorry.
-Kai: ...
-Kai: ...
-Kai: No.
-Kai: [shake rate=20.0 level=5 connected=1]No.[/shake]
-Ab: What?
-Kai: I refuse to give up. I dont know whats gotten into you,
-Kai: but im not just letting go.
-Kai: Not until we try everything possible.
-Kai: Dont u understand, Dad? Cecil is dying, and something something something
-Ab: Son...I...
+Ab: Kai, maybe its time we accept the situation we are in. [ID:KAI_MAYBE_ITS_TIME_WE_ACCEPT_T_6E6C11]
+Ab: What are the chances of a magical item existing? None to zero. [ID:WHAT_ARE_THE_CHANCES_OF_A_MAGI_D98CF9]
+Ab: Cecil is dying, Kai. [ID:CECIL_IS_DYING_KAI_2899C3]
+Ab: And there is nothing we can do about it. [ID:AND_THERE_IS_NOTHING_WE_CAN_DO_6C3C57]
+Ab: Im sorry. [ID:IM_SORRY_1E59E2]
+Kai: ... [ID:_3AD5C3]
+Kai: ... [ID:_3AD5C3]
+Kai: No. [ID:NO_3381E7]
+Kai: [shake rate=20.0 level=5 connected=1]No.[/shake] [ID:SHAKE_RATE_20_0_LEVEL_5_CONNE_AB5A3F]
+Ab: What? [ID:WHAT_132083]
+Kai: I refuse to give up. I dont know whats gotten into you, [ID:I_REFUSE_TO_GIVE_UP_I_DONT_KNO_BA83CE]
+Kai: but im not just letting go. [ID:BUT_IM_NOT_JUST_LETTING_GO_E34B91]
+Kai: Not until we try everything possible. [ID:NOT_UNTIL_WE_TRY_EVERYTHING_PO_808AF9]
+Kai: Dont u understand, Dad? Cecil is dying, he is [i]dying[/i]. There is no turning back from that. [ID:DONT_U_UNDERSTAND_DAD_CECIL_IS_0542DB]
+Ab: Son...I... [ID:SON_I_EFEB6F]
 do call_cutscene_event("bridge_falls")
-Ab: [next=1]! 
+Ab: [next=1]! [ID:NEXT_1_5F8582] 
 do wait(5)
-Kai: ...
-Kai: Im sorry, Dad.
+Kai: ... [ID:_3AD5C3]
+Kai: Im sorry, Dad. [ID:IM_SORRY_DAD_536692]
 do call_cutscene_event("kai_leaves")
 do wait(1)
 => END

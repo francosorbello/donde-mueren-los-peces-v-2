@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://db0cni0sakuxr"
+
+[deps]
+
+files=["res://translations/dialogues/lvl_vs_n_room_18_kai_leaves_frustrated.en.translation", "res://translations/dialogues/lvl_vs_n_room_18_kai_leaves_frustrated.es.translation"]
+
+source_file="res://translations/dialogues/lvl_vs_n_room_18_kai_leaves_frustrated.csv"
+dest_files=["res://translations/dialogues/lvl_vs_n_room_18_kai_leaves_frustrated.en.translation", "res://translations/dialogues/lvl_vs_n_room_18_kai_leaves_frustrated.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

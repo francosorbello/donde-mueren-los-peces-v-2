@@ -1,38 +1,38 @@
 ~ start_kai
 do hide_portrait_for("Ab")
-Kai: This one time Cecil and I were playing together with some paper swords.
-Kai: Which of course we were not supposed to do.
-Kai: we were playing on the living room,  jumping from couch to couch.
-Kai: Which of course we were also not supposed to do.
-Kai: anyways, we were in the heat of battle right?
-Kai: And Cecil had the upper hand.
-Kai: So i pulled my ultimate move: the Sword Helicopter 3000.
-Kai: A devastating atack, it helped me turn the battle.
-Kai: But such a powerful move comes with consecuences.
-Kai: the consecuences being: a very expensive lamp and 2 glasses.
-Kai: Since i was the winner, my prize was Cecil not saying anything about it.
-Kai: ...
-Kai: Please dont tell this to my dad.
+Kai: This one time Cecil and I were playing together with some paper swords. [ID:THIS_ONE_TIME_CECIL_AND_I_WERE_46E9FB]
+Kai: Which of course we were not supposed to do. [ID:WHICH_OF_COURSE_WE_WERE_NOT_SU_669237]
+Kai: we were playing on the living room,  jumping from couch to couch. [ID:WE_WERE_PLAYING_ON_THE_LIVING_9DB1EA]
+Kai: Which of course we were also not supposed to do. [ID:WHICH_OF_COURSE_WE_WERE_ALSO_N_742CA6]
+Kai: anyways, we were in the heat of battle right? [ID:ANYWAYS_WE_WERE_IN_THE_HEAT_OF_3F48D5]
+Kai: And Cecil had the upper hand. [ID:AND_CECIL_HAD_THE_UPPER_HAND_458F55]
+Kai: So i pulled my ultimate move: the Sword Helicopter 3000. [ID:SO_I_PULLED_MY_ULTIMATE_MOVE_T_3E33E8]
+Kai: A devastating atack, it helped me turn the battle. [ID:A_DEVASTATING_ATACK_IT_HELPED_852A45]
+Kai: But such a powerful move comes with consecuences. [ID:BUT_SUCH_A_POWERFUL_MOVE_COMES_C81B94]
+Kai: the consecuences being: a very expensive lamp and 2 glasses. [ID:THE_CONSECUENCES_BEING_A_VERY_1976DB]
+Kai: Since i was the winner, my prize was Cecil not saying anything about it. [ID:SINCE_I_WAS_THE_WINNER_MY_PRIZ_D701CD]
+Kai: ... [ID:_BBDEE8]
+Kai: Please dont tell this to my dad. [ID:PLEASE_DONT_TELL_THIS_TO_MY_DA_8CBE91]
 do call_cutscene_event("ab_knows")
 => END
 
 ~ kai_swords
 do hide_portrait_for("Ab")
-Kai: Do u think Cecil will want to play again when he gets better?
+Kai: Do u think Cecil will want to play again when he gets better? [ID:DO_U_THINK_CECIL_WILL_WANT_TO_10E6CA]
 => END
 
 ~ ab_start
 do hide_portrait_for("Kai")
-Ab: Kai is a good kid. His intentions come from a good place.
-Ab: But Cecil...
-Ab: there is nothing we can do.
-Ab: You know what i mean? 
+Ab: Kai is a good kid. His intentions come from a good place. [ID:KAI_IS_A_GOOD_KID_HIS_INTENTIO_082724]
+Ab: But Cecil... [ID:BUT_CECIL_429698]
+Ab: there is nothing we can do. [ID:THERE_IS_NOTHING_WE_CAN_DO_A2C1DE]
+Ab: You know what i mean? [ID:YOU_KNOW_WHAT_I_MEAN_75C997] 
 => END
 
 ~ ab_knows
 do hide_portrait_for("Kai")
-Ab: Yes, i totally heard that conversation.
-Ab: Yes, i already knew about it.
-Ab: And yes, Cecil ratted him out.
+Ab: Yes, i totally heard that conversation. [ID:YES_I_TOTALLY_HEARD_THAT_CONVE_C4D2E7]
+Ab: Yes, i already knew about it. [ID:YES_I_ALREADY_KNEW_ABOUT_IT_825F1B]
+Ab: And yes, Cecil ratted him out. [ID:AND_YES_CECIL_RATTED_HIM_OUT_FFCA54]
 do call_cutscene_event("reset_ab")
 => END

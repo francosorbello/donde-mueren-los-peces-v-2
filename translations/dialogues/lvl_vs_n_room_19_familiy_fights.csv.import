@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cp6exbwhew31t"
+
+[deps]
+
+files=["res://translations/dialogues/lvl_vs_n_room_19_familiy_fights.en.translation", "res://translations/dialogues/lvl_vs_n_room_19_familiy_fights.es.translation"]
+
+source_file="res://translations/dialogues/lvl_vs_n_room_19_familiy_fights.csv"
+dest_files=["res://translations/dialogues/lvl_vs_n_room_19_familiy_fights.en.translation", "res://translations/dialogues/lvl_vs_n_room_19_familiy_fights.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

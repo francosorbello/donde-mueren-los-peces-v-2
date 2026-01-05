@@ -1,28 +1,25 @@
 ~ start
-Kai: Say, Stranger. What do u think the 「FUENTE PARAISO」 looks like?
-Kai: it sure is a beautiful piece of art.
-Kai: Or a building.
-Kai: Or maybe even a food.
-Kai: Thats it! A beautiful building made of cookies.
-Ab: Ynow Kai, maybe its time we lower the expectations.
-Ab: 「FUENTE PARAISO」 might not exist after all...
+Kai: Say, Stranger. What do u think the [FUENTE PARAISO] looks like? [ID:SAY_STRANGER_WHAT_DO_U_THINK_T_1A7982]
+Kai: it must be a beautiful thing, being able to grant wishes like that. [ID:IT_MUST_BE_A_BEAUTIFUL_THING_B_45DE64]
+Ab: Ynow Kai, maybe its time we lower the expectations. [ID:YNOW_KAI_MAYBE_ITS_TIME_WE_LOW_556CEC]
+Ab: [FUENTE PARAISO] might not exist after all... [ID:FUENTE_PARAISO_MIGHT_NOT_EXIS_D81625]
 do call_cutscene_event("kai_surprised")
-Kai: !
+Kai: ! [ID:_8C105E]
 do call_cutscene_event("kai_angry")
-Kai: [shake rate=20.0 level=5 connected=1]Stop.[/shake]
-Kai: Dad, you've been like this the whole trip.
-Kai: And i dont understand it. We are here for Cecil, remember?
-Kai: so why do u sound so defeated all the time?
-Kai: I...just...[shake rate=20.0 level=5 connected=1]just...[/shake]
+Kai: [shake rate=20.0 level=5 connected=1]Stop.[/shake] [ID:SHAKE_RATE_20_0_LEVEL_5_CONNE_EB3B0C]
+Kai: Dad, you've been like this the whole trip. [ID:DAD_YOU_VE_BEEN_LIKE_THIS_THE_460741]
+Kai: And i dont understand it. We are here for Cecil, remember? [ID:AND_I_DONT_UNDERSTAND_IT_WE_AR_5D71A1]
+Kai: so why do u sound so defeated all the time? [ID:SO_WHY_DO_U_SOUND_SO_DEFEATED_F6D697]
+Kai: I...just...[shake rate=20.0 level=5 connected=1]just...[/shake] [ID:I_JUST_SHAKE_RATE_20_0_LEVEL_5_A55ED3]
 do call_cutscene_event("kai_leaves")
 do wait(2)
 do hide_portrait_for("Kai")
-Ab: ...
-Ab: Im sorry you had to see that.
-Ab: Kai and Cecil are inseparable, you see.
-Ab: And when Cecil got sick, it hit him pretty hard.
-Ab: But nothing can be done for Cecil.
-Ab: Right?
-Ab: ...
-Ab: [shake rate=20.0 level=5 connected=1]Right?[/shake]
+Ab: ... [ID:_7255AA]
+Ab: Im sorry you had to see that. [ID:IM_SORRY_YOU_HAD_TO_SEE_THAT_294B4F]
+Ab: Kai and Cecil are inseparable, you see. [ID:KAI_AND_CECIL_ARE_INSEPARABLE_93A4FC]
+Ab: And when Cecil got sick, it hit him pretty hard. [ID:AND_WHEN_CECIL_GOT_SICK_IT_HIT_7ECCAC]
+Ab: But nothing can be done for Cecil. [ID:BUT_NOTHING_CAN_BE_DONE_FOR_CE_D3BDEA]
+Ab: Right? [ID:RIGHT_D96DAF]
+Ab: ... [ID:_7255AA]
+Ab: [shake rate=20.0 level=5 connected=1]Right?[/shake] [ID:SHAKE_RATE_20_0_LEVEL_5_CONNE_F2C5FD]
 => END

@@ -1,15 +1,16 @@
 ~ start
-Ab: We used to play this great game with Cecil and Kai.
-Ab: You would face in a deadly duel,
-Ab: the objective being to reduce your oponent health from 124500 to 0.
-Ab: And each card would have their Attack, Defense, Health, Hunger, Star Level,
-Ab: Power Rating, Power Scaling, Number of Uses, Year of Creation,
-Ab: Thirsts Gauge, Combination Status, Global Variable,
-Ab: Constant Fire...you are not paying attention, are you?
-Ab: Anyways. It was a great game.
-Ab: Cecil and Kai loved it.
+Ab: We used to play this great game with Cecil and Kai. [ID:WE_USED_TO_PLAY_THIS_GREAT_GAM_3FE7FA]
+Ab: You would face in a deadly duel, [ID:YOU_WOULD_FACE_IN_A_DEADLY_DUE_11F198]
+Ab: the objective being to reduce your oponent health from 124500 to 0. [ID:THE_OBJECTIVE_BEING_TO_REDUCE_535B30]
+Ab: And each card would have very important stats. [ID:AND_EACH_CARD_WOULD_HAVE_VERY_B4C10C]
+Ab: You had to be aware of their Attack, Defense, Health, Hunger, Star Level, [ID:YOU_HAD_TO_BE_AWARE_OF_THEIR_A_674168]
+Ab: Power Rating, Power Scaling, Number of Uses, Year of Creation, [ID:POWER_RATING_POWER_SCALING_NUM_CD532B]
+Ab: Thirsts Gauge, Combination Status, Global Variable, [ID:THIRSTS_GAUGE_COMBINATION_STAT_C821FF]
+Ab: Constant Fire...you are not paying attention, are you? [ID:CONSTANT_FIRE_YOU_ARE_NOT_PAYI_4967FF]
+Ab: Anyways. It was a great game. [ID:ANYWAYS_IT_WAS_A_GREAT_GAME_A779A0]
+Ab: Cecil and Kai loved it. [ID:CECIL_AND_KAI_LOVED_IT_D88BA1]
 => END
 
 ~ ab_wants_to_play
-Ab: When we get back, ill play a match with Kai.
+Ab: When we get back, ill play a match with Kai. [ID:WHEN_WE_GET_BACK_ILL_PLAY_A_MA_B35115]
 => END

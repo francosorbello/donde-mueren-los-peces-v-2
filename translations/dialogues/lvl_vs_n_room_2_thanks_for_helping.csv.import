@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dcy32gv5wj2wd"
+
+[deps]
+
+files=["res://translations/dialogues/lvl_vs_n_room_2_thanks_for_helping.en.translation", "res://translations/dialogues/lvl_vs_n_room_2_thanks_for_helping.es.translation"]
+
+source_file="res://translations/dialogues/lvl_vs_n_room_2_thanks_for_helping.csv"
+dest_files=["res://translations/dialogues/lvl_vs_n_room_2_thanks_for_helping.en.translation", "res://translations/dialogues/lvl_vs_n_room_2_thanks_for_helping.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

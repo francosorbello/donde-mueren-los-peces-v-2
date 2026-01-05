@@ -266,6 +266,12 @@ position = Vector2(290, 130)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_n2ebt")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(0, 130)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_n2ebt")
+
 [node name="EndDemo" type="Node" parent="." node_paths=PackedStringArray("pickable_item")]
 script = ExtResource("31_sr3ag")
 pickable_item = NodePath("../PickableItem")

@@ -1,20 +1,20 @@
 ~ start_old
-Kai: Actually, we should establish ourselves a litte bit more
-Ab: yeah. Who am i anyways.
+Kai: Actually, we should establish ourselves a litte bit more [ID:ACTUALLY_WE_SHOULD_ESTABLISH_O_7AE625]
+Ab: yeah. Who am i anyways. [ID:YEAH_WHO_AM_I_ANYWAYS_82574E]
 => END
 
 ~ start
 do wait(1)
-Kai: Cmon dad, just a bit more.
-Ab: I dont know Kai, maybe this was a mistake.
-Ab: we should return home...
-Kai: Dad. We are doing this for Cecil. We must have hope.
-Ab: Kai, Cecil is...
+Kai: Cmon dad, just a bit more. [ID:CMON_DAD_JUST_A_BIT_MORE_B258B1]
+Ab: I dont know Kai, maybe this was a mistake. [ID:I_DONT_KNOW_KAI_MAYBE_THIS_WAS_827FBC]
+Ab: we should return home... [ID:WE_SHOULD_RETURN_HOME_B1BA34]
+Kai: Dad. We are doing this for Cecil. We must have hope. [ID:DAD_WE_ARE_DOING_THIS_FOR_CECI_2DE902]
+Ab: Kai, Cecil is... [ID:KAI_CECIL_IS_59E25A]
 do call_cutscene_event("kai_sees_player")
-Kai: !
-Kai: Oh, sorry, didnt see u there.
-Kai: We were just waiting for u.
-Kai: u take your time sometimes yknow?
-Kai: anyways. We should continue, dont we dad?
-Ab: ...yeah, lets continue.
+Kai: ! [ID:_1B8757]
+Kai: Oh, sorry, didnt see u there. [ID:OH_SORRY_DIDNT_SEE_U_THERE_9429C5]
+Kai: We were just waiting for u. [ID:WE_WERE_JUST_WAITING_FOR_U_8CA7B4]
+Kai: u take your time sometimes yknow? [ID:U_TAKE_YOUR_TIME_SOMETIMES_YKN_98A730]
+Kai: anyways. We should continue, dont we dad? [ID:ANYWAYS_WE_SHOULD_CONTINUE_DON_149080]
+Ab: ...yeah, lets continue. [ID:YEAH_LETS_CONTINUE_CCBE31]
 => END

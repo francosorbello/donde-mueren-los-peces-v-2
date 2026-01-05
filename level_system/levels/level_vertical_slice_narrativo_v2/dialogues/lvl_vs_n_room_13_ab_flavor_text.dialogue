@@ -17,6 +17,7 @@ do call_cutscene_event("ab_knows")
 => END
 
 ~ kai_swords
+do hide_portrait_for("Ab")
 Kai: Do u think Cecil will want to play again when he gets better?
 => END
 

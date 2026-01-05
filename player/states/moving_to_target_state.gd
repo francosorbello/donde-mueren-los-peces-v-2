@@ -23,7 +23,6 @@ func physics_update(delta: float):
     if not target:
         return
     var direction = (target.global_position - player.global_position).normalized()
-    print(direction)
     # player.velocity = lerp(player.velocity,direction * player.speed, delta * player.accel)
     player.velocity = FreyaMath.lerp_exp_decay(player.velocity,direction * player.speed, 10, delta * player.accel)
     player.move_and_slide()

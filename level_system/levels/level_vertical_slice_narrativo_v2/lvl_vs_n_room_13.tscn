@@ -255,7 +255,7 @@ event_name = "ab_knows"
 
 [node name="AbKnows2" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager2" node_paths=PackedStringArray("character")]
 script = ExtResource("21_1lwcl")
-new_title = "ab_knows"
+new_title = "kai_swords"
 character = NodePath("../../WC_Kai")
 execute = 1
 event_name = "ab_knows"

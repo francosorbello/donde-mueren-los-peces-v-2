@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://g6p7vrhrwgcu"]
+[gd_scene load_steps=29 format=4 uid="uid://g6p7vrhrwgcu"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_gknm1"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_u7ryc"]
@@ -17,12 +17,9 @@
 [ext_resource type="Resource" uid="uid://c1qmgnngxqhfa" path="res://level_system/levels/level_vertical_slice_narrativo_v2/dialogues/lvl_vs_n_room_13_ab_flavor_text.dialogue" id="14_5jxsv"]
 [ext_resource type="Resource" uid="uid://dhwb7rbxnyrxn" path="res://level_system/levels/level_vertical_slice_narrativo_v2/dialogues/lvl_vs_n_room_13_ab_has_doubts.dialogue" id="14_758jm"]
 [ext_resource type="PackedScene" uid="uid://dvfbw7sofbkka" path="res://dialogue_system/dialogue_area.tscn" id="16_758jm"]
-[ext_resource type="Script" uid="uid://bevp7ppbjnc85" path="res://persistancy_system/actions/delete_action.gd" id="18_0vmh6"]
 [ext_resource type="PackedScene" uid="uid://bbaay5giilatk" path="res://dialogue_system/cutscene_system/cutscene_manager.tscn" id="18_435ul"]
-[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="19_8vuay"]
 [ext_resource type="Script" uid="uid://d2bgxd5k3rxdy" path="res://dialogue_system/cutscene_system/actions/cuta_move_player.gd" id="19_k4fgc"]
 [ext_resource type="Script" uid="uid://bafld8lghvfhm" path="res://dialogue_system/cutscene_system/actions/cuta_focus_on_target.gd" id="19_tnogn"]
-[ext_resource type="Script" uid="uid://cjjl8nhep0i6o" path="res://persistancy_system/conditionals/level_visited_event_conditional.gd" id="20_435ul"]
 [ext_resource type="Script" uid="uid://cassnbcrd5rdw" path="res://dialogue_system/cutscene_system/actions/cuta_change_dialogue_start_title.gd" id="21_1lwcl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp2uh"]
@@ -266,17 +263,3 @@ new_title = "ab_start"
 character = NodePath("../../WC_Ab")
 execute = 1
 event_name = "reset_ab"
-
-[node name="DeleteAction" type="Node" parent="NarrativeStuff" node_paths=PackedStringArray("target")]
-script = ExtResource("18_0vmh6")
-target = NodePath("../Cutscene1")
-metadata/_custom_type_script = "uid://bevp7ppbjnc85"
-
-[node name="PersistentEventEvaluator" type="Node" parent="NarrativeStuff/DeleteAction"]
-script = ExtResource("19_8vuay")
-metadata/_custom_type_script = "uid://d11ymn4s33jgm"
-
-[node name="LevelVisitedEventConditional" type="Node" parent="NarrativeStuff/DeleteAction/PersistentEventEvaluator"]
-script = ExtResource("20_435ul")
-level_visited = "lvl_vs_n_room_14"
-metadata/_custom_type_script = "uid://cjjl8nhep0i6o"

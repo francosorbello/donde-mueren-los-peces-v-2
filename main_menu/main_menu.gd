@@ -62,7 +62,7 @@ func do_kiosk_mode():
 		IndieBlueprintSaveManager.make_current(save_game)
 	else:
 		create_test_game()
-	initial_level.value = "lvl_vs_room_1"
+	initial_level.value = "lvl_vs_n_room_1"
 	# prints(initial_level,initial_level.resource_path)
 	# ResourceSaver.save(initial_level,initial_level.resource_path)
 

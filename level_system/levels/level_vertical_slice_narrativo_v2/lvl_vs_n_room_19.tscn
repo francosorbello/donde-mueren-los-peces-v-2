@@ -246,6 +246,7 @@ position = Vector2(330, 130)
 dialogue = ExtResource("20_kctop")
 remove_on_event = "lvl_vs_n_room_19_family_fought"
 target = NodePath("../WC_Kai")
+delay_time = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
 position = Vector2(25, 130)

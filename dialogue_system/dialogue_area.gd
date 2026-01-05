@@ -4,6 +4,7 @@ extends Area2D
 @export var repeatable : bool = false
 @export var remove_on_event : String
 @export var target : Node2D
+@export var delay_time : float = 0
 
 func _ready():
     $PersistentEventEvaluator/BoolPersistentEventConditional.event_name = remove_on_event
@@ -14,6 +15,8 @@ func _on_body_entered(body: Node2D) -> void:
         start_dialogue.call_deferred()
 
 func start_dialogue():
+    if delay_time > 0:
+        await get_tree().create_timer(delay_time).timeout
     GlobalData.start_dialogue(dialogue,"start",target)
     PersistencySystem.set_event(remove_on_event,true)
 

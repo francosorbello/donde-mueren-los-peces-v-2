@@ -13,6 +13,7 @@ func _ready():
 			show_dash()
 	
 	GlobalSignal.jump_started.connect(enable_dash)
+	GlobalSignal.jump_finished.connect(disable_dash)
 	GlobalSignal.dash_started.connect(disable_dash)
 
 func _on_ability_added(ability : AnItem):

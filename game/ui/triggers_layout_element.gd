@@ -28,6 +28,7 @@ func enable_dash():
 func show_dash():
 	$Dash.text = tr("UI_DASH")
 	has_dash = true
+	disable_dash()
 
 
 func disable_dash():

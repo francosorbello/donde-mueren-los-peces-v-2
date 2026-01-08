@@ -24,13 +24,12 @@ func toggle_portrait(for_character : String):
             "Ab":					
                 $KaiPortrait.blur_portrait()
                 $AbPortrait.focus_portrait()
-            _:
-                push_error("No character named %s"%for_character)
+            # _:
+            #     push_error("No character named %s"%for_character)
     
     _last_character = for_character
 
 func hide_portrait_for(character_name):
-    prints("Hiding portrait for",character_name)
     match character_name:
         "Kai":
             $KaiPortrait.hide_portrait()

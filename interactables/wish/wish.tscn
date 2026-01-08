@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://tcub0p8uhnko"]
+[gd_scene load_steps=8 format=3 uid="uid://tcub0p8uhnko"]
 
 [ext_resource type="Texture2D" uid="uid://xmdxnnihc02q" path="res://assets/GRAPHICS/interactables/ghost.png" id="1_t61q4"]
 [ext_resource type="Script" uid="uid://bwsqhqp6ekhi7" path="res://interactables/wish/wish.gd" id="1_urcrc"]
 [ext_resource type="PackedScene" uid="uid://dgks666k0klxv" path="res://interactables/interactable_component/better_interactable_component.tscn" id="2_t61q4"]
 [ext_resource type="PackedScene" uid="uid://b4jjcolqqt2xe" path="res://interactables/outline_component/outline_component.tscn" id="3_m5gap"]
+[ext_resource type="Script" uid="uid://8dv7dce6ncjv" path="res://addons/ftr_tools/sm/state_machine.gd" id="5_m5gap"]
+[ext_resource type="Script" uid="uid://bf6wflgg8r037" path="res://interactables/wish/states/wish_moving_state.gd" id="6_aerkg"]
 
 [sub_resource type="Curve" id="Curve_m5gap"]
 _limits = [0.0, 2.0, 0.0, 1.0]
@@ -11,11 +13,14 @@ _data = [Vector2(0, 2), 0.0, -1.4391813e-07, 0, 1, Vector2(0.82831323, 1.9999999
 point_count = 3
 
 [node name="Wish" type="Sprite2D"]
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_t61q4")
 script = ExtResource("1_urcrc")
+moving_range = Vector2(20, 20)
+char_name = null
+char_dialogue = null
 
 [node name="BetterInteractableComponent" parent="." instance=ExtResource("2_t61q4")]
-outline_color = Color(1, 1, 1, 1)
 
 [node name="OutlineComponent" parent="BetterInteractableComponent" node_paths=PackedStringArray("sprite") instance=ExtResource("3_m5gap")]
 sprite = NodePath("../..")
@@ -36,3 +41,15 @@ angular_velocity_max = 10.0
 scale_amount_min = 0.3
 scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_m5gap")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_m5gap")
+initial_state = NodePath("MovingState")
+metadata/_custom_type_script = "uid://8dv7dce6ncjv"
+
+[node name="MovingState" type="Node" parent="StateMachine"]
+script = ExtResource("6_aerkg")
+moving_speed = 5.0
+metadata/_custom_type_script = "uid://75lytsymjqc2"
+
+[connection signal="on_interact" from="BetterInteractableComponent" to="." method="_on_better_interactable_component_on_interact"]

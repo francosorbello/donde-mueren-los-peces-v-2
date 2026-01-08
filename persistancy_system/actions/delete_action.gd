@@ -17,5 +17,5 @@ func _ready():
 
 
 func _on_evaluator_succeded():
-	target.queue_free()
-	pass
+	if target:
+		target.queue_free()

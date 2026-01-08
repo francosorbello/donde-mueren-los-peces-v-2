@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cenoau8cjief0"]
+
+[ext_resource type="Texture2D" uid="uid://bf247qy6npl8c" path="res://assets/GRAPHICS/interactables/sign.png" id="1_74ufe"]
+[ext_resource type="PackedScene" uid="uid://dgks666k0klxv" path="res://interactables/interactable_component/better_interactable_component.tscn" id="2_66v6b"]
+[ext_resource type="Script" uid="uid://c836odcr5en7m" path="res://level_system/levels/level_zone_3/utils/sign.gd" id="2_c44al"]
+[ext_resource type="PackedScene" uid="uid://b4jjcolqqt2xe" path="res://interactables/outline_component/outline_component.tscn" id="3_c44al"]
+
+[node name="Sign" type="Sprite2D"]
+texture = ExtResource("1_74ufe")
+script = ExtResource("2_c44al")
+
+[node name="BetterInteractableComponent" parent="." instance=ExtResource("2_66v6b")]
+
+[node name="OutlineComponent" parent="BetterInteractableComponent" node_paths=PackedStringArray("sprite") instance=ExtResource("3_c44al")]
+sprite = NodePath("../..")
+
+[connection signal="on_interact" from="BetterInteractableComponent" to="." method="_on_better_interactable_component_on_interact"]

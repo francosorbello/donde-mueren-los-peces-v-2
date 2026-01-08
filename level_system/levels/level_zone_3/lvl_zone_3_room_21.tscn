@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=4 uid="uid://dsk6eptujf1qk"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_fukve"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_3qxju"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_r45ji"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_21avj"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_wmrg3"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_vyr03"]
+[ext_resource type="Texture2D" uid="uid://c76roq0fbmbii" path="res://assets/GRAPHICS/circle.png" id="10_nbqaf"]
+[ext_resource type="PackedScene" uid="uid://tcub0p8uhnko" path="res://interactables/wish/wish.tscn" id="11_hlaj7"]
+[ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="12_icsrd"]
+[ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="13_5dhfw"]
+
+[sub_resource type="Curve" id="Curve_hlaj7"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.11746988, 2), 0.0, -2.2662117, 0, 1, Vector2(0.99999994, 0), -2.2662117, 0.0, 1, 0]
+point_count = 3
+
+[node name="lvl_zone_3_room_21" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_fukve")]
+metadata/_edit_lock_ = true
+
+[node name="Layout" parent="." instance=ExtResource("2_3qxju")]
+tile_map_data = PackedByteArray("AAAAAAwAAwAFAAUAAAAAAA8AAwAFAAUAAAAAAAsAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAwAAwAFAAUAAAAcAA8AAwAFAAUAAAAcABAAAwAFAAUAAAAAABAAAwAFAAUAAAAAAAkAAwAFAAQAAAAAAAoAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAQAAAABAAYAAwAFAAUAAAACAAYAAwAFAAUAAAADAAYAAwAFAAUAAAAEAAYAAwAFAAUAAAAFAAYAAwAFAAUAAAAGAAYAAwAFAAUAAAAHAAYAAwAFAAQAAAAIAAYAAwAFAAUAAAAJAAYAAwAFAAUAAAAKAAYAAwAFAAUAAAALAAYAAwAFAAQAAAAMAAYAAwAFAAUAAAANAAYAAwAFAAUAAAAOAAYAAwAFAAUAAAAPAAYAAwAFAAUAAAAQAAYAAwAFAAQAAAARAAYAAwAFAAQAAAASAAYAAwAFAAUAAAATAAYAAwAFAAUAAAAUAAYAAwAFAAUAAAAVAAYAAwAFAAUAAAAWAAYAAwAFAAUAAAAXAAYAAwAFAAUAAAAYAAYAAwAFAAUAAAAZAAYAAwAFAAQAAAAaAAYAAwAFAAUAAAAbAAYAAwAFAAUAAAAcAAYAAwAFAAUAAAAcAAcAAwAFAAUAAAAcAAgAAwAFAAQAAAAcAAkAAwAFAAQAAAAcAAoAAwAFAAQAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABMAAwAFAAUAAAAAABQAAwAFAAUAAAAAABUAAwAFAAUAAAABABUAAwAFAAUAAAACABUAAwAFAAUAAAADABUAAwAFAAUAAAAEABUAAwAFAAQAAAAFABUAAwAFAAUAAAAGABUAAwAFAAUAAAAHABUAAwAFAAUAAAAIABUAAwAFAAUAAAAJABUAAwAFAAUAAAAKABUAAwAFAAUAAAALABUAAwAFAAQAAAAMABUAAwAFAAUAAAANABUAAwAFAAUAAAAOABUAAwAFAAUAAAAPABUAAwAFAAUAAAAQABUAAwAFAAUAAAARABUAAwAFAAUAAAASABUAAwAFAAUAAAATABUAAwAFAAUAAAAUABUAAwAFAAUAAAAVABUAAwAFAAQAAAAWABUAAwAFAAQAAAAXABUAAwAFAAUAAAAYABUAAwAFAAUAAAAZABUAAwAFAAUAAAAaABUAAwAFAAUAAAAbABUAAwAFAAUAAAAcABUAAwAFAAUAAAAcABEAAwAFAAUAAAAcABIAAwAFAAQAAAAcABMAAwAFAAQAAAAcABQAAwAFAAUAAAABABAAAwARAAEAAAACABAAAwARAAEAAAADABAAAwARAAEAAAAEABAAAwARAAEAAAABAAsAAwARAAEAAAACAAsAAwARAAEAAAADAAsAAwARAAEAAAAEAAsAAwARAAEAAAAYAAsAAwARAAEAAAAZAAsAAwARAAEAAAAaAAsAAwARAAEAAAAbAAsAAwARAAEAAAAYABAAAwARAAEAAAAZABAAAwARAAEAAAAaABAAAwARAAEAAAAbABAAAwARAAEAAAA=")
+
+[node name="Visuals" parent="." instance=ExtResource("2_3qxju")]
+tile_map_data = PackedByteArray("AAAAAA0AAwAZAAsAAAAAAA4AAwAZAA0AAAABAA0AAwAZAA0AAAABAA4AAwAZAAwAAAACAA0AAwAZAA0AAAACAA4AAwAZAAwAAAADAA0AAwAZAAsAAAADAA4AAwAZAAwAAAAEAA0AAwAZAAsAAAAEAA4AAwAZAAwAAAAFAA0AAwAZAA0AAAAFAA4AAwAZAAsAAAAGAA0AAwAZAAwAAAAGAA4AAwAZAAwAAAAHAA0AAwAZAAsAAAAHAA4AAwAZAAsAAAAIAA0AAwAZAA0AAAAIAA4AAwAZAAsAAAAJAA0AAwAZAA0AAAAJAA4AAwAZAAsAAAAKAA0AAwAZAAwAAAAKAA4AAwAZAA0AAAALAA0AAwAZAAsAAAALAA4AAwAZAAsAAAAMAA0AAwAZAA0AAAAMAA4AAwAZAA0AAAANAA0AAwAZAAwAAAANAA4AAwAZAA0AAAAOAA0AAwAZAA0AAAAOAA4AAwAZAAwAAAAPAA0AAwAZAAsAAAAPAA4AAwAZAA0AAAAQAA0AAwAZAAwAAAAQAA4AAwAZAAsAAAARAA0AAwAZAA0AAAARAA4AAwAZAA0AAAASAA0AAwAZAA0AAAASAA4AAwAZAAsAAAATAA0AAwAZAAwAAAATAA4AAwAZAAwAAAAUAA0AAwAZAAwAAAAUAA4AAwAZAAwAAAAVAA0AAwAZAAsAAAAVAA4AAwAZAAsAAAAWAA0AAwAZAAsAAAAWAA4AAwAZAA0AAAAXAA0AAwAZAAsAAAAXAA4AAwAZAAwAAAAYAA0AAwAZAAsAAAAYAA4AAwAZAAsAAAAZAA0AAwAZAAsAAAAZAA4AAwAZAAwAAAAaAA0AAwAZAA0AAAAaAA4AAwAZAAwAAAAbAA0AAwAZAA0AAAAbAA4AAwAZAAsAAAAcAA0AAwAZAA0AAAAcAA4AAwAZAAsAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_r45ji")
+level_name = "lvl_zone_3_room_21"
+area_type = 2
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_21avj")]
+position = Vector2(30, 140)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_wmrg3")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_vyr03")]
+level_name = "lvl_zone_3_room_21"
+
+[node name="NarrativeStuff" type="Node2D" parent="."]
+
+[node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
+
+[node name="WC_Ab" parent="NarrativeStuff/Cutscene1" instance=ExtResource("12_icsrd")]
+position = Vector2(260, 130)
+texture = ExtResource("13_5dhfw")
+character_name = "Ab"
+
+[node name="DeathZoneParticles" type="CPUParticles2D" parent="."]
+position = Vector2(143, 136)
+amount = 20
+texture = ExtResource("10_nbqaf")
+lifetime = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(144, 135)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_hlaj7")
+color = Color(3.4643464, 3.6229699, 0.4505028, 1)
+
+[node name="Wish" parent="." instance=ExtResource("11_hlaj7")]
+position = Vector2(83, 104)

@@ -5,6 +5,7 @@ class_name LevelInfo
 enum GameAreaType {
     AREA_INTRO,
     AREA_FOREST,
+    AREA_RUINS,
 }
 
 @export var level_name : String

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://u7f76jitttec"]
+[gd_scene load_steps=46 format=4 uid="uid://u7f76jitttec"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_2kusu"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_osj8g"]
@@ -29,8 +29,17 @@
 [ext_resource type="Script" uid="uid://yrjbixfee7ca" path="res://dialogue_system/cutscene_system/actions/cuta_teleport.gd" id="24_86wg5"]
 [ext_resource type="Script" uid="uid://borr7wlp2udux" path="res://dialogue_system/cutscene_system/actions/cuta_toggle_node.gd" id="25_fpi3b"]
 [ext_resource type="AudioStream" uid="uid://b1gfh3nqsa2d4" path="res://assets/SOUNDS/cutscenes/heavy_falling.ogg" id="25_k2fg5"]
+[ext_resource type="Script" uid="uid://txfr2h6xrn3y" path="res://dialogue_system/cutscene_system/actions/cuta_wait.gd" id="28_ragq1"]
 [ext_resource type="Script" uid="uid://b2t6sgcardley" path="res://dialogue_system/cutscene_system/actions/cuta_end_demo.gd" id="29_mn0tu"]
+[ext_resource type="Script" uid="uid://1ue32pbqy0nd" path="res://dialogue_system/cutscene_system/actions/cuta_set_persistent_event.gd" id="29_wft5j"]
+[ext_resource type="Script" uid="uid://cj5j4ybo5t3eq" path="res://persistancy_system/actions/toggle_action.gd" id="31_cguo2"]
 [ext_resource type="Script" uid="uid://bsyg06ko2gtev" path="res://level_system/levels/level_vertical_slice_narrativo_v2/utils/end_demo.gd" id="31_sr3ag"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="32_c2j85"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="32_p6equ"]
+[ext_resource type="PackedScene" uid="uid://cenoau8cjief0" path="res://level_system/levels/level_zone_3/utils/sign.tscn" id="33_ehqqy"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="33_vfs4w"]
+[ext_resource type="Texture2D" uid="uid://iifreb5vsd4r" path="res://assets/GRAPHICS/interactables/sign_2.png" id="34_c2j85"]
+[ext_resource type="Resource" uid="uid://uxupixd0x51r" path="res://level_system/levels/level_zone_3/dialogues/sign_dialogue.dialogue" id="35_vfs4w"]
 
 [sub_resource type="Curve2D" id="Curve2D_n6l0c"]
 bake_interval = 50.0
@@ -39,10 +48,14 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2ebt"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kctop"]
 size = Vector2(30, 100)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2ebt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6equ"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfs4w"]
 
 [node name="lvl_vs_n_room_19" type="Node2D"]
 
@@ -57,16 +70,22 @@ tile_map_data = PackedByteArray("AAAAAAwAAwAZAAkAAAAAAA0AAwAZAAoAAAABAAwAAwAZAAk
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_left", "coming_from_right") groups=["level_info"]]
 script = ExtResource("3_musgq")
 level_name = "lvl_vs_n_room_19"
 area_type = 1
+coming_from_left = NodePath("../ComingFromLeft")
+coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
-[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+[node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(25, 130)
+
+[node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(266, 130)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_8fbqv")]
-position = Vector2(30, 130)
+position = Vector2(25, 130)
 
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_6ykp5")]
 level_info = NodePath("../LevelInfo Stuff/LevelInfo")
@@ -117,6 +136,8 @@ frame = 2
 region_rect = Rect2(1, 1, 28, 28)
 
 [node name="PickableItem" parent="." instance=ExtResource("7_nchmg")]
+process_mode = 4
+visible = false
 position = Vector2(140, 130)
 item = ExtResource("8_cl0x7")
 event_name = "item_map_picked_up"
@@ -132,8 +153,6 @@ position = Vector2(160, 120)
 position = Vector2(60, 130)
 texture = ExtResource("15_8208l")
 character_name = "Ab"
-dialogue = ExtResource("16_n2ebt")
-repeatable = true
 
 [node name="CutsceneManager" parent="NarrativeStuff/Cutscene1" instance=ExtResource("17_a0hnq")]
 dialogue = ExtResource("20_kctop")
@@ -242,17 +261,42 @@ event_name = "kai_leaves"
 [node name="Node2D" type="Node2D" parent="NarrativeStuff/Cutscene1/CutsceneManager/MoveKai2"]
 position = Vector2(330, 130)
 
+[node name="Wait" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("28_ragq1")
+execute = 2
+wait_time = 0.5
+
+[node name="SetEvent" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("29_wft5j")
+event_to_set = "lvl_vs_n_room_19_cutscene_ended"
+execute = 2
+
 [node name="DialogueArea" parent="NarrativeStuff/Cutscene1" node_paths=PackedStringArray("target") instance=ExtResource("19_0avli")]
 dialogue = ExtResource("20_kctop")
 remove_on_event = "lvl_vs_n_room_19_family_fought"
 target = NodePath("../WC_Kai")
 delay_time = 0.2
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
+position = Vector2(0, 130)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_n2ebt")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
 position = Vector2(25, 130)
 shape = SubResource("RectangleShape2D_kctop")
 
 [node name="Cutscene2" type="Node2D" parent="NarrativeStuff"]
+process_mode = 4
+visible = false
+
+[node name="WC_Ab" parent="NarrativeStuff/Cutscene2" instance=ExtResource("15_ulks6")]
+position = Vector2(160, 130)
+texture = ExtResource("15_8208l")
+character_name = "Ab"
+dialogue = ExtResource("16_n2ebt")
+repeatable = true
 
 [node name="CutsceneManager" parent="NarrativeStuff/Cutscene2" instance=ExtResource("17_a0hnq")]
 dialogue = ExtResource("16_n2ebt")
@@ -261,18 +305,73 @@ dialogue = ExtResource("16_n2ebt")
 script = ExtResource("29_mn0tu")
 execute = 2
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(290, 130)
+[node name="DisableCutscene1" type="Node" parent="NarrativeStuff" node_paths=PackedStringArray("target")]
+script = ExtResource("31_cguo2")
+target = NodePath("../Cutscene1")
+toggle_type = 1
+metadata/_custom_type_script = "uid://cj5j4ybo5t3eq"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_n2ebt")
+[node name="PersistentEventEvaluator" type="Node" parent="NarrativeStuff/DisableCutscene1"]
+script = ExtResource("32_c2j85")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(0, 130)
+[node name="BoolPersistentEventConditional" type="Node" parent="NarrativeStuff/DisableCutscene1/PersistentEventEvaluator"]
+script = ExtResource("33_vfs4w")
+event_name = "lvl_vs_n_room_19_cutscene_ended"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-shape = SubResource("RectangleShape2D_n2ebt")
+[node name="DisablePlatforms" type="Node" parent="NarrativeStuff" node_paths=PackedStringArray("target")]
+script = ExtResource("31_cguo2")
+target = NodePath("../../Obstacle1/Platforms")
+toggle_type = 1
+metadata/_custom_type_script = "uid://cj5j4ybo5t3eq"
+
+[node name="PersistentEventEvaluator" type="Node" parent="NarrativeStuff/DisablePlatforms"]
+script = ExtResource("32_c2j85")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="NarrativeStuff/DisablePlatforms/PersistentEventEvaluator"]
+script = ExtResource("33_vfs4w")
+event_name = "lvl_vs_n_room_19_cutscene_ended"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[node name="EnableCutscene2" type="Node" parent="NarrativeStuff" node_paths=PackedStringArray("target")]
+script = ExtResource("31_cguo2")
+target = NodePath("../Cutscene2")
+toggle_type = 1
+toggle_to = 1
+metadata/_custom_type_script = "uid://cj5j4ybo5t3eq"
+
+[node name="PersistentEventEvaluator" type="Node" parent="NarrativeStuff/EnableCutscene2"]
+script = ExtResource("32_c2j85")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="NarrativeStuff/EnableCutscene2/PersistentEventEvaluator"]
+script = ExtResource("33_vfs4w")
+event_name = "lvl_vs_n_room_19_cutscene_ended"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
 
 [node name="EndDemo" type="Node" parent="." node_paths=PackedStringArray("pickable_item")]
 script = ExtResource("31_sr3ag")
 pickable_item = NodePath("../PickableItem")
+
+[node name="TransitionLeft" parent="." instance=ExtResource("32_p6equ")]
+position = Vector2(-5, 130)
+next_level_id = "lvl_vs_n_room_18"
+direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionLeft"]
+shape = SubResource("RectangleShape2D_p6equ")
+
+[node name="Sign" parent="." instance=ExtResource("33_ehqqy")]
+position = Vector2(140, 128)
+texture = ExtResource("34_c2j85")
+dialogue = ExtResource("35_vfs4w")
+
+[node name="TransitionRight" parent="." instance=ExtResource("32_p6equ")]
+position = Vector2(290, 130)
+next_level_id = "lvl_zone_3_room_20"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
+shape = SubResource("RectangleShape2D_vfs4w")

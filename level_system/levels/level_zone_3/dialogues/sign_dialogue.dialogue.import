@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://uxupixd0x51r"
+path="res://.godot/imported/sign_dialogue.dialogue-1713632e92b032c7b6ca4bef56dc723c.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_zone_3/dialogues/sign_dialogue.dialogue"
+dest_files=["res://.godot/imported/sign_dialogue.dialogue-1713632e92b032c7b6ca4bef56dc723c.tres"]
+
+[params]
+
+defaults=true

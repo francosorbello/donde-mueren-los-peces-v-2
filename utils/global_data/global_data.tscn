@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwo4lrgmnj0ef"]
+[gd_scene load_steps=7 format=3 uid="uid://bwo4lrgmnj0ef"]
 
 [ext_resource type="Script" uid="uid://b2v644wmtrv17" path="res://utils/global_data/global_data.gd" id="1_ww46t"]
 [ext_resource type="Resource" uid="uid://cvkc2kpwsnr3s" path="res://level_system/level_data_res.tres" id="2_33g7t"]
 [ext_resource type="Texture2D" uid="uid://cky6wlecllca6" path="res://assets/GRAPHICS/PALETTES/krea-8-1x.png" id="4_v2bjp"]
 [ext_resource type="Texture2D" uid="uid://d08whbrijm5ct" path="res://assets/GRAPHICS/PALETTES/paradise-8-1x.png" id="4_vy31p"]
+[ext_resource type="Texture2D" uid="uid://k7ooc1h8osvp" path="res://assets/GRAPHICS/PALETTES/glassware-1x.png" id="5_rttmf"]
 [ext_resource type="PackedScene" uid="uid://deyb3ncj8pcxn" path="res://balloon/balloon.tscn" id="5_vy31p"]
 
 [node name="GlobalData" type="Node"]
@@ -11,10 +12,12 @@ script = ExtResource("1_ww46t")
 level_data = ExtResource("2_33g7t")
 area_bg_colors = Dictionary[int, Color]({
 0: Color(0.18431373, 0.14117648, 0.25882354, 1),
-1: Color(0.26666668, 0.22352941, 0.39607844, 1)
+1: Color(0.26666668, 0.22352941, 0.39607844, 1),
+2: Color(0.09411765, 0.11764706, 0.1882353, 1)
 })
 area_palettes = Dictionary[int, Texture2D]({
 0: ExtResource("4_v2bjp"),
-1: ExtResource("4_vy31p")
+1: ExtResource("4_vy31p"),
+2: ExtResource("5_rttmf")
 })
 dialogue_balloon = ExtResource("5_vy31p")

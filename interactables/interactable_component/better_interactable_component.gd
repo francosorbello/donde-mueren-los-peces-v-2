@@ -3,6 +3,7 @@ class_name BetterInteractableComponent
 
 @export var is_interactable : bool = true
 @export var debug_name : String
+@export var outline_color : Color = Color.BLUE
 
 signal on_interact
 signal on_hover
@@ -22,7 +23,7 @@ func interact():
 func hover_interactable():
     on_hover.emit()
     if outline_component:
-        var color = Color.BLUE if is_interactable else Color.RED
+        var color = outline_color if is_interactable else Color.RED
         outline_component.enable_outline(color)
 
 func leave_interactable():

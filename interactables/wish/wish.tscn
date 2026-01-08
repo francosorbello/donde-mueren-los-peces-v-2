@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://tcub0p8uhnko"]
+
+[ext_resource type="Texture2D" uid="uid://xmdxnnihc02q" path="res://assets/GRAPHICS/interactables/ghost.png" id="1_t61q4"]
+[ext_resource type="Script" uid="uid://bwsqhqp6ekhi7" path="res://interactables/wish/wish.gd" id="1_urcrc"]
+[ext_resource type="PackedScene" uid="uid://dgks666k0klxv" path="res://interactables/interactable_component/better_interactable_component.tscn" id="2_t61q4"]
+[ext_resource type="PackedScene" uid="uid://b4jjcolqqt2xe" path="res://interactables/outline_component/outline_component.tscn" id="3_m5gap"]
+
+[sub_resource type="Curve" id="Curve_m5gap"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, -1.4391813e-07, 0, 1, Vector2(0.82831323, 1.9999999), 0.0, 0.0, 0, 0, Vector2(1, 0), -11.64912, 0.0, 1, 0]
+point_count = 3
+
+[node name="Wish" type="Sprite2D"]
+texture = ExtResource("1_t61q4")
+script = ExtResource("1_urcrc")
+
+[node name="BetterInteractableComponent" parent="." instance=ExtResource("2_t61q4")]
+outline_color = Color(1, 1, 1, 1)
+
+[node name="OutlineComponent" parent="BetterInteractableComponent" node_paths=PackedStringArray("sprite") instance=ExtResource("3_m5gap")]
+sprite = NodePath("../..")
+
+[node name="DeathZoneParticles" type="CPUParticles2D" parent="."]
+visible = false
+show_behind_parent = true
+lifetime = 5.0
+emission_shape = 1
+emission_sphere_radius = 7.1
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_m5gap")

@@ -34,3 +34,7 @@ default_spawn_pos = NodePath("../PlayerSpawnPoint")
 level_name = "base_scene"
 
 [node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="NarrativeStuff" type="Node2D" parent="."]
+
+[node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]

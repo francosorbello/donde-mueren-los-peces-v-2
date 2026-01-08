@@ -15,8 +15,12 @@ func _ready() -> void:
     Console.add_command("set_level_as_visited",set_level_as_visited,["visited_level"],1)
     Console.add_command("remove_event",remove_event,["event_name"],1)
     Console.add_command("clear_visited_levels",clear_visited_levels)
+    Console.add_command("go_to_level",go_to_level,["level_name"],1)
     
     Console.font_size = 30
+
+func go_to_level(level_name : String):
+    GlobalSignal.level_change_requested.emit(level_name,{"direction": Vector2.ZERO})
 
 func set_event_true(event_name):
     Console.print_info("Setting event %s with value %f.1"%[event_name,1.0])

@@ -32,6 +32,6 @@ func _draw() -> void:
 
 
 func _on_better_interactable_component_on_interact() -> void:
-	DialogueManager.show_dialogue_balloon(dialogue)
-	# GlobalData.start_dialogue(dialogue)
+	# DialogueManager.show_dialogue_balloon(dialogue)
+	GlobalData.start_dialogue(dialogue)
 	pass # Replace with function body.

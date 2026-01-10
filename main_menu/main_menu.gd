@@ -10,6 +10,13 @@ func _ready():
 	Console.add_command("force_kiosk_mode",func():
 		kiosk_mode = true
 	)
+
+	Console.add_command("fresh_start",func():
+		_on_reset_save_button_pressed()
+		initial_level.value = "lvl_vs_n_room_1"
+		_on_start_button_pressed()
+	)
+
 	if OS.is_debug_build() and not OS.has_feature("editor"):
 		$DebugBuildLabel.show()
 		kiosk_mode = true

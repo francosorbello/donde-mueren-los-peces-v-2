@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dftlci7wodv07"]
+[gd_scene load_steps=15 format=4 uid="uid://dftlci7wodv07"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_i0usu"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_tx2x6"]
@@ -6,26 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_8070c"]
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_6s0qw"]
 [ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_jvitp"]
-[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="7_djpug"]
-[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="8_oiwrq"]
-[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_5po52"]
-[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_mqdgu"]
-[ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="11_gpalw"]
+[ext_resource type="Resource" uid="uid://duk6s0dtjdi6s" path="res://level_system/levels/level_zone_3/dialogues/lvl_zone_3_room_20.dialogue" id="10_oiwrq"]
 [ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="12_5po52"]
 [ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="13_mqdgu"]
 [ext_resource type="PackedScene" uid="uid://dvfbw7sofbkka" path="res://dialogue_system/dialogue_area.tscn" id="14_mqdgu"]
+[ext_resource type="Script" uid="uid://ckv8g3i0vdein" path="res://level_system/levels/level_zone_3/utils/change_music.gd" id="15_gpalw"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="16_iox6o"]
 
-[sub_resource type="Curve2D" id="Curve2D_iox6o"]
-bake_interval = 50.0
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 80, 130, 0, 0, 0, 0, 200, 130)
-}
-point_count = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iox6o"]
+size = Vector2(20, 60)
 
-[sub_resource type="Curve" id="Curve_ttqoy"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
-point_count = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpalw"]
 
 [node name="lvl_zone_3_room_20" type="Node2D"]
 
@@ -36,16 +27,19 @@ metadata/_edit_lock_ = true
 tile_map_data = PackedByteArray("AAAAAAkAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAQAAAABAAkAAwAFAAUAAAACAAkAAwAFAAUAAAADAAkAAwAFAAUAAAAEAAkAAwAFAAUAAAAFAAkAAwAFAAUAAAAGAAkAAwAFAAQAAAAHAAkAAwAFAAQAAAAIAAkAAwAFAAUAAAAJAAkAAwAFAAUAAAAKAAkAAwAFAAUAAAALAAkAAwAFAAUAAAAMAAkAAwAFAAUAAAAOAAkAAwAFAAUAAAAPAAkAAwAFAAUAAAAQAAkAAwAFAAQAAAARAAkAAwAFAAUAAAASAAkAAwAFAAUAAAATAAkAAwAFAAQAAAAUAAkAAwAFAAQAAAAVAAkAAwAFAAUAAAAWAAkAAwAFAAUAAAAXAAkAAwAFAAUAAAAYAAkAAwAFAAUAAAAZAAkAAwAFAAUAAAAaAAkAAwAFAAQAAAAbAAkAAwAFAAUAAAAbABAAAwAFAAUAAAAaABAAAwAFAAUAAAAZABAAAwAFAAUAAAAYABAAAwAFAAQAAAAXABAAAwAFAAQAAAAWABAAAwAFAAUAAAAVABAAAwAFAAUAAAAUABAAAwAFAAUAAAATABAAAwAFAAUAAAASABAAAwAFAAUAAAARABAAAwAFAAQAAAAQABAAAwAFAAUAAAAPABAAAwAFAAUAAAAOABAAAwAFAAUAAAANABAAAwAFAAUAAAAMABAAAwAFAAUAAAALABAAAwAFAAQAAAAKABAAAwAFAAQAAAAJABAAAwAFAAUAAAAIABAAAwAFAAUAAAAHABAAAwAFAAUAAAAGABAAAwAFAAUAAAAFABAAAwAFAAUAAAAEABAAAwAFAAUAAAADABAAAwAFAAUAAAACABAAAwAFAAUAAAABABAAAwAFAAUAAAAAAAwAAwAZAA0AAAABAA0AAwAZAAwAAAACAA0AAwAZAAsAAAADAA0AAwAZAAwAAAAEAA0AAwAZAAwAAAAFAA0AAwAZAA0AAAAAAA0AAwAZAAsAAAABAAwAAwAZAA0AAAACAAwAAwAZAAsAAAADAAwAAwAZAA0AAAAEAAwAAwAZAAwAAAAFAAwAAwAZAAsAAAAWAAwAAwAZAAwAAAAWAA0AAwAZAAwAAAAXAAwAAwAZAAwAAAAXAA0AAwAZAAwAAAAYAAwAAwAZAA0AAAAYAA0AAwAZAA0AAAAZAAwAAwAZAAsAAAAZAA0AAwAZAAsAAAAaAAwAAwAZAAwAAAAaAA0AAwAZAAsAAAAbAAwAAwAZAA0AAAAbAA0AAwAZAA0AAAAcAAwAAwAZAAsAAAAcAA0AAwAZAA0AAAACAA8AAwAaAAUAAAADAA4AAwAaAAUAAAAEAA8AAwAaAAMAAAADAA8AAwAZAAUAAAAZAA8AAwAaAAMAAAAaAA8AAwAaAAUAAAAZAAoAAwAZAAUAAAAaAAoAAwAaAAMAAAAbAAsAAwAZAAUAAAAbAAoAAwAZAAUAAAAbAA4AAwAaAAUAAAAXAAoAAwAZAAUAAAAEAAoAAwAaAAMAAAACAAsAAwAZAAMAAAABAAoAAwAaAAUAAAANAAkAAwAFAAQAAAA=")
 
 [node name="Visuals" parent="." instance=ExtResource("2_tx2x6")]
+tile_map_data = PackedByteArray("AAAGAAwAAwAZAAwAAAAGAA0AAwAZAAsAAAAHAAwAAwAZAAsAAAAHAA0AAwAZAAwAAAAIAAwAAwAZAAwAAAAIAA0AAwAZAAsAAAAJAAwAAwAZAAsAAAAJAA0AAwAZAA0AAAAKAAwAAwAZAAwAAAAKAA0AAwAZAA0AAAALAAwAAwAZAAsAAAALAA0AAwAZAA0AAAAMAAwAAwAZAAwAAAAMAA0AAwAZAAsAAAANAAwAAwAZAAwAAAANAA0AAwAZAAwAAAAOAAwAAwAZAAwAAAAOAA0AAwAZAAsAAAAPAAwAAwAZAA0AAAAPAA0AAwAZAA0AAAAQAAwAAwAZAAwAAAAQAA0AAwAZAAsAAAARAAwAAwAZAAwAAAARAA0AAwAZAA0AAAASAAwAAwAZAAsAAAASAA0AAwAZAAwAAAATAAwAAwAZAAwAAAATAA0AAwAZAAsAAAAUAAwAAwAZAAwAAAAUAA0AAwAZAAsAAAAVAAwAAwAZAAwAAAAVAA0AAwAZAAsAAAA=")
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_left") groups=["level_info"]]
 script = ExtResource("3_nnhlc")
 level_name = "lvl_zone_3_room_20"
 area_type = 2
+coming_from_left = NodePath("../ComingFromLeft")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
-[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+[node name="ComingFromLeft" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(20, 130)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_8070c")]
 position = Vector2(30, 130)
@@ -59,71 +53,31 @@ level_name = "lvl_zone_3_room_20"
 
 [node name="Obstacle1" type="Node2D" parent="."]
 
-[node name="BetterDeathZone" parent="Obstacle1" instance=ExtResource("7_djpug")]
-curve = SubResource("Curve2D_iox6o")
-width = 60.0
-end_sample_point = 0.99
-
-[node name="@Area2D@27680" type="Area2D" parent="Obstacle1/BetterDeathZone"]
-collision_layer = 32
-
-[node name="@CollisionPolygon2D@27679" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone/@Area2D@27680"]
-polygon = PackedVector2Array(80, 100, 98.75, 100, 140, 100, 181.25, 100, 199.96425, 100, 199.96425, 160, 181.25, 160, 140, 160, 98.75, 160, 80, 160)
-
-[node name="@Polygon2D@27681" type="Polygon2D" parent="Obstacle1/BetterDeathZone"]
-material = ExtResource("8_oiwrq")
-texture = ExtResource("9_5po52")
-polygon = PackedVector2Array(80, 100, 98.75, 100, 140, 100, 181.25, 100, 199.96425, 100, 199.96425, 160, 181.25, 160, 140, 160, 98.75, 160, 80, 160)
-uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
-
-[node name="DeathZoneParticles259" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_mqdgu")]
-position = Vector2(139.98212, 130)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
-emission_rect_extents = Vector2(69.982124, 40)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
-scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
-
-[node name="PlatformSmall" parent="Obstacle1" instance=ExtResource("11_gpalw")]
-position = Vector2(140, 130)
-breakable = true
-time_between_broken_states = 0.5
-
-[node name="PlatformSmall2" parent="Obstacle1" instance=ExtResource("11_gpalw")]
-position = Vector2(110, 130)
-breakable = true
-time_between_broken_states = 0.5
-
-[node name="PlatformSmall3" parent="Obstacle1" instance=ExtResource("11_gpalw")]
-position = Vector2(80, 130)
-breakable = true
-time_between_broken_states = 0.5
-
-[node name="PlatformSmall4" parent="Obstacle1" instance=ExtResource("11_gpalw")]
-position = Vector2(200, 130)
-breakable = true
-time_between_broken_states = 0.5
-
-[node name="PlatformSmall5" parent="Obstacle1" instance=ExtResource("11_gpalw")]
-position = Vector2(170, 130)
-breakable = true
-time_between_broken_states = 0.5
-
 [node name="NarrativeStuff" type="Node2D" parent="."]
 
 [node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
 
 [node name="WC_Ab" parent="NarrativeStuff/Cutscene1" instance=ExtResource("12_5po52")]
-position = Vector2(260, 110)
+position = Vector2(150, 108)
 texture = ExtResource("13_mqdgu")
 character_name = "Ab"
 
-[node name="DialogueArea" parent="NarrativeStuff/Cutscene1" instance=ExtResource("14_mqdgu")]
+[node name="DialogueArea" parent="NarrativeStuff/Cutscene1" node_paths=PackedStringArray("target") instance=ExtResource("14_mqdgu")]
+position = Vector2(130, 128)
+dialogue = ExtResource("10_oiwrq")
+target = NodePath("../WC_Ab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
+shape = SubResource("RectangleShape2D_iox6o")
+
+[node name="TransitionRight" parent="." instance=ExtResource("16_iox6o")]
+position = Vector2(290, 130)
+next_level_id = "lvl_zone_3_room_21"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
+shape = SubResource("RectangleShape2D_gpalw")
+
+[node name="StopMusic" type="Node" parent="."]
+script = ExtResource("15_gpalw")
+change_type = 1

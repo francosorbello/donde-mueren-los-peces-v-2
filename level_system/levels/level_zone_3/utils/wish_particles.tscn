@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://xyibhka021rc"]
+
+[ext_resource type="Texture2D" uid="uid://c76roq0fbmbii" path="res://assets/GRAPHICS/circle.png" id="1_l02os"]
+
+[sub_resource type="Curve" id="Curve_hlaj7"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.11746988, 2), 0.0, -2.2662117, 0, 1, Vector2(0.99999994, 0), -2.2662117, 0.0, 1, 0]
+point_count = 3
+
+[node name="WishParticles" type="CPUParticles2D"]
+amount = 20
+texture = ExtResource("1_l02os")
+lifetime = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(144, 33.75)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_hlaj7")
+color = Color(3.4643464, 3.6229699, 0.4505028, 1)

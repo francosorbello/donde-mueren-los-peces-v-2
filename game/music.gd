@@ -7,13 +7,16 @@ var _current_tween : Tween
 
 var _initial_volume : float
 
+var _current_stream_name : String
+
 func _ready():
     _initial_volume = volume_linear
-    play()
+    start_music(initial_stream_name)
 
 func start_music(stream_name : String):
     assert(streams.has(stream_name),"No stream named "+stream_name)
 
+    _current_stream_name = stream_name
     stream = streams[stream_name]
     play()
     if volume_linear < _initial_volume:
@@ -23,8 +26,12 @@ func stop_music():
     _tween_volume(0).tween_callback(func(): stop())
 
 func transition_to(stream_name : String):
+    if _current_stream_name == stream_name:
+        return
+
     assert(streams.has(stream_name),"No stream named "+stream_name)
 
+    _current_stream_name = stream_name
     var stop_tween = _tween_volume(0)
     stop_tween.tween_callback(
         func(): 

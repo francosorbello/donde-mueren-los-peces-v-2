@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=36 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://dimbpln7vkglx" path="res://game/zone_1_music.tres" id="20_5e03w"]
 [ext_resource type="Script" uid="uid://bk00biprncsqw" path="res://game/music.gd" id="21_leid8"]
 [ext_resource type="AudioStream" uid="uid://cepgk4i3tauqe" path="res://assets/SOUNDS/music/Retro Ambience 02.mp3" id="22_leid8"]
+[ext_resource type="AudioStream" uid="uid://c5xxcaepm55x0" path="res://assets/SOUNDS/music/WAV_Jonquil_(Piano).mp3" id="28_hbvmx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pxxsx"]
 shader = ExtResource("5_ln7ps")
@@ -310,7 +311,8 @@ script = ExtResource("21_leid8")
 initial_stream_name = "zone_1_music"
 streams = Dictionary[String, AudioStream]({
 "creepy_bass": ExtResource("22_leid8"),
-"zone_1_music": ExtResource("20_5e03w")
+"zone_1_music": ExtResource("20_5e03w"),
+"zone_3_music": ExtResource("28_hbvmx")
 })
 
 [node name="GameConsoleCommands" parent="." instance=ExtResource("12_qf6n1")]

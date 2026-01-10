@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://duk6s0dtjdi6s"
+path="res://.godot/imported/lvl_zone_3_room_20.dialogue-14886ddb7750fc995c9c2de90d802456.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_zone_3/dialogues/lvl_zone_3_room_20.dialogue"
+dest_files=["res://.godot/imported/lvl_zone_3_room_20.dialogue-14886ddb7750fc995c9c2de90d802456.tres"]
+
+[params]
+
+defaults=true

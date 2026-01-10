@@ -6,6 +6,7 @@ extends State
 var _initial_pos : Vector2
 var _moving_tween : Tween
 
+
 func enter():
     if move_from_initial_pos and _initial_pos == Vector2.ZERO:
         _initial_pos = state_owner.global_position
@@ -13,7 +14,7 @@ func enter():
 
 
 func do_move():
-    await get_tree().create_timer(2).timeout
+    await get_tree().create_timer(randf_range(1,2)).timeout
     move_to(get_random_position()).tween_callback(do_move)
     
 

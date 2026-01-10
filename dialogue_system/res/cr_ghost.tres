@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://c4g4jao6se77h"]
+
+[ext_resource type="Script" uid="uid://ch8gg4op7ugc0" path="res://dialogue_system/character_res.gd" id="1_mqath"]
+[ext_resource type="AudioStream" uid="uid://ceo47fyqdh8gh" path="res://assets/SOUNDS/voices/ab.ogg" id="2_oar05"]
+
+[resource]
+script = ExtResource("1_mqath")
+character_name = "*****"
+character_color = Color(0.646029, 0.646029, 0.646029, 1)
+speak_sound = ExtResource("2_oar05")
+metadata/_custom_type_script = "uid://ch8gg4op7ugc0"

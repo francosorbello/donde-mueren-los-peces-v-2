@@ -44,8 +44,8 @@
 [ext_resource type="PackedScene" uid="uid://cnpbxa7uc3r40" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_17.tscn" id="41_rawu1"]
 [ext_resource type="PackedScene" uid="uid://bhxe7vvyao6ey" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_18.tscn" id="42_nsm7d"]
 [ext_resource type="PackedScene" uid="uid://u7f76jitttec" path="res://level_system/levels/level_vertical_slice_narrativo_v2/lvl_vs_n_room_19.tscn" id="43_7rmd0"]
-[ext_resource type="PackedScene" uid="uid://dftlci7wodv07" path="res://level_system/levels/level_zone_3/lvl_zone_3_room_20.tscn" id="44_7ajfc"]
-[ext_resource type="PackedScene" uid="uid://dsk6eptujf1qk" path="res://level_system/levels/level_zone_3/lvl_zone_3_room_21.tscn" id="45_y551j"]
+[ext_resource type="PackedScene" uid="uid://dsk6eptujf1qk" path="res://level_system/levels/level_zone_3/lvl_zone_3_room_23.tscn" id="45_aa4gj"]
+[ext_resource type="PackedScene" uid="uid://dftlci7wodv07" path="res://level_system/levels/level_zone_3/lvl_zone_3_room_21.tscn" id="45_y551j"]
 [ext_resource type="PackedScene" uid="uid://gwifkj8jtsgw" path="res://level_system/levels/level_zone_3/lvl_zone_3_room_22.tscn" id="46_35qgj"]
 [ext_resource type="PackedScene" uid="uid://v0k4dyojxryx" path="res://level_system/levels/level_zone_3/lvl_zone_3_room_20_long.tscn" id="47_aa4gj"]
 
@@ -95,9 +95,10 @@ levels = Dictionary[String, PackedScene]({
 "lvl_vs_room_7": ExtResource("14_djy8m"),
 "lvl_vs_room_8": ExtResource("15_1p4bs"),
 "lvl_vs_room_9": ExtResource("16_c0hps"),
-"lvl_zone_3_room_20": ExtResource("44_7ajfc"),
+"lvl_zone_3_room_20": ExtResource("45_y551j"),
 "lvl_zone_3_room_20_long": ExtResource("47_aa4gj"),
 "lvl_zone_3_room_21": ExtResource("45_y551j"),
-"lvl_zone_3_room_22": ExtResource("46_35qgj")
+"lvl_zone_3_room_22": ExtResource("46_35qgj"),
+"lvl_zone_3_room_23": ExtResource("45_aa4gj")
 })
 metadata/_custom_type_script = "uid://drppps17c0dgp"

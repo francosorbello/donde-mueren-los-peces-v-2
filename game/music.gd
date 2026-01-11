@@ -44,6 +44,17 @@ func transition_to(stream_name : String):
             _tween_volume(_initial_volume)
     )
         
+func transition_to_inmediate(stream_name):
+    print("Hello?")
+    if _current_stream_name == stream_name:
+        return
+
+    assert(streams.has(stream_name),"No stream named "+stream_name)
+    _current_stream_name = stream_name
+    stop()
+    volume_linear = _initial_volume
+    stream = streams[stream_name]
+    play()
 
 func _tween_volume(to_value : float, time : float = transition_time) -> Tween:
     if _current_tween and _current_tween.is_running():

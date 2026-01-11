@@ -52,13 +52,14 @@ tile_map_data = PackedByteArray("AAAAAA0AAwAZAA0AAAAAAA4AAwAZAAsAAAABAA0AAwAZAAw
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_right") groups=["level_info"]]
 script = ExtResource("3_goojv")
 level_name = "lvl_zone_3_room_20_long"
 area_type = 2
+coming_from_right = NodePath("../ComingFromRight")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
-[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+[node name="ComingFromRight" type="Marker2D" parent="LevelInfo Stuff"]
 position = Vector2(40, 140)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_lgsos")]

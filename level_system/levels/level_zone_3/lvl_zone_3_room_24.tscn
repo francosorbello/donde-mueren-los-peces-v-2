@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c04utu6elh0t4"]
+[gd_scene load_steps=16 format=4 uid="uid://c04utu6elh0t4"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_6q84f"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_0h1jp"]
@@ -12,11 +12,14 @@
 [ext_resource type="Resource" uid="uid://xlm7l3lcxhjs" path="res://level_system/levels/level_zone_3/dialogues/ab_random_lines.dialogue" id="9_jq2wg"]
 [ext_resource type="PackedScene" uid="uid://dlie83pqcv54" path="res://level_system/levels/level_zone_3/utils/narrative_blocker.tscn" id="10_rv363"]
 [ext_resource type="Texture2D" uid="uid://c76roq0fbmbii" path="res://assets/GRAPHICS/circle.png" id="12_4mixm"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="13_pan4c"]
 
 [sub_resource type="Curve" id="Curve_pan4c"]
 _limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.11746988, 2), 0.0, -2.2662117, 0, 1, Vector2(0.99999994, 0), -2.2662117, 0.0, 1, 0]
 point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pan4c"]
 
 [node name="lvl_zone_3_room_24" type="Node2D"]
 
@@ -120,3 +123,10 @@ scale_amount_min = 0.3
 scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_pan4c")
 color = Color(3.4643464, 3.6229699, 0.4505028, 1)
+
+[node name="LevelTransitionArea" parent="." instance=ExtResource("13_pan4c")]
+position = Vector2(140, 270)
+next_level_id = "lvl_zone_3_fuente_paraiso"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
+shape = SubResource("RectangleShape2D_pan4c")

@@ -1,0 +1,215 @@
+[gd_scene load_steps=23 format=4 uid="uid://clo6w8s8256lk"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lxbe3"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_et6pn"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_lyu1j"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_rvb60"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_p6080"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_fxa1m"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="7_ibjsb"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="8_urug5"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_iy801"]
+[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_ndtf5"]
+[ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="11_ndtf5"]
+[ext_resource type="Resource" uid="uid://51hmtqrx34px" path="res://inventory_system/items/vial.tres" id="12_7adku"]
+[ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="13_7adku"]
+
+[sub_resource type="Curve2D" id="Curve2D_urug5"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -100, 200, 0, 0, 0, 0, 390, 200, 0, 0, 0, 0, 390, 340, 0, 0, 0, 0, -100, 340, 0, 0, 0, 0, -100, 200)
+}
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_ttqoy"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, -2.0000002, 0, 1, Vector2(0.99999994, 0), -2.0000002, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_iy801"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 150, 170, 0, 0, 0, 0, 170, 170, 0, 0, 0, 0, 170, 190, 0, 0, 0, 0, 180, 190, 0, 0, 0, 0, 180, 200, 0, 0, 0, 0, 100, 200, 0, 0, 0, 0, 100, 190, 0, 0, 0, 0, 110, 190, 0, 0, 0, 0, 110, 170, 0, 0, 0, 0, 130, 170, 0, 0, 0, 0, 150, 170)
+}
+point_count = 11
+
+[sub_resource type="Curve2D" id="Curve2D_7adku"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 140, 140, 0, 0, 0, 0, 140, 110)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urug5"]
+size = Vector2(20, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ve85x"]
+size = Vector2(20, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iy801"]
+size = Vector2(120, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndtf5"]
+size = Vector2(530, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7adku"]
+size = Vector2(120, 20)
+
+[node name="lvl_zone_3_fuente_paraiso" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_lxbe3")]
+metadata/_edit_lock_ = true
+
+[node name="Layout" parent="." instance=ExtResource("2_et6pn")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAQAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAQAAAAAAAkAAwAFAAQAAAAAAAoAAwAFAAQAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAQAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAQAAAAAABIAAwAFAAQAAAAAABMAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAQAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAcAAwAFAAUAAAAcAAYAAwAFAAUAAAAcAAUAAwAFAAQAAAAcAAQAAwAFAAQAAAAcAAMAAwAFAAQAAAAcAAIAAwAFAAUAAAAcAAEAAwAFAAUAAAAcAAAAAwAFAAUAAAAbAAAAAwAFAAUAAAAaAAAAAwAFAAUAAAAZAAAAAwAFAAUAAAAYAAAAAwAFAAUAAAAXAAAAAwAFAAUAAAAWAAAAAwAFAAUAAAAVAAAAAwAFAAQAAAAUAAAAAwAFAAQAAAATAAAAAwAFAAUAAAASAAAAAwAFAAUAAAARAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAKAAAAAwAFAAQAAAAJAAAAAwAFAAUAAAAIAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAGAAAAAwAFAAQAAAAFAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAADAAAAAwAFAAUAAAACAAAAAwAFAAUAAAABAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAALABAAAwAVAAQAAAAMABAAAwAbABgAAAAPABAAAwAbABgAAAAQABAAAwAVAAQAAAABABMAAwAVAAQAAAACABMAAwAVAAQAAAADABMAAwAVAAQAAAAEABMAAwAVAAQAAAAFABMAAwAVAAQAAAAGABMAAwAVAAQAAAAHABMAAwAVAAQAAAAIABMAAwAVAAQAAAAJABMAAwAVAAQAAAAKABIAAwAVAAQAAAAKABEAAwAVAAQAAAARABEAAwAVAAQAAAARABIAAwAVAAQAAAASABMAAwAVAAQAAAATABMAAwAVAAQAAAAUABMAAwAVAAQAAAAVABMAAwAVAAQAAAAWABMAAwAVAAQAAAAXABMAAwAVAAQAAAAYABMAAwAVAAQAAAAZABMAAwAVAAQAAAAaABMAAwAVAAQAAAAbABMAAwAVAAQAAAAMAA8AAwAbABgAAAAPAA8AAwAbABgAAAANAA8AAwAbABgAAAANABAAAwAbABgAAAAOAA8AAwAbABgAAAAOABAAAwAbABgAAAAMAA4AAwAbABgAAAANAA4AAwAbABgAAAAOAA4AAwAbABgAAAAPAA4AAwAbABgAAAAcAAwAAwAFAAUAAAA=")
+
+[node name="Visuals" parent="." instance=ExtResource("2_et6pn")]
+tile_map_data = PackedByteArray("AAANAAAAAwAZAAwAAAANAAEAAwAZAA0AAAANAAIAAwAZAAsAAAANAAMAAwAZAAsAAAANAAQAAwAZAAwAAAANAAUAAwAZAAsAAAANAAYAAwAZAAwAAAANAAcAAwAZAA0AAAANAAgAAwAZAAwAAAANAAkAAwAZAAsAAAANAAoAAwAZAAsAAAANAAsAAwAZAAwAAAANAAwAAwAZAAwAAAANAA0AAwAZAAwAAAAOAAAAAwAZAAwAAAAOAAEAAwAZAA0AAAAOAAIAAwAZAA0AAAAOAAMAAwAZAAwAAAAOAAQAAwAZAA0AAAAOAAUAAwAZAA0AAAAOAAYAAwAZAA0AAAAOAAcAAwAZAAsAAAAOAAgAAwAZAA0AAAAOAAkAAwAZAAwAAAAOAAoAAwAZAAwAAAAOAAsAAwAZAA0AAAAOAAwAAwAZAAsAAAAOAA0AAwAZAAwAAAALAA0AAwAZAAsAAAALAA4AAwAZAAwAAAALAA8AAwAZAAsAAAAMAA0AAwAZAAwAAAAPAA0AAwAZAA0AAAAQAA0AAwAZAA0AAAAQAA4AAwAZAAwAAAAQAA8AAwAZAAwAAAARAA0AAwAZAAwAAAARAA4AAwAZAAsAAAARAA8AAwAZAAwAAAARABAAAwAZAA0AAAAKAA0AAwAZAAsAAAAKAA4AAwAZAAsAAAAKAA8AAwAZAAsAAAAKABAAAwAZAAwAAAASAA4AAwAZAA0AAAATAA4AAwAZAA0AAAAUAA4AAwAZAAwAAAAVAA4AAwAZAAsAAAAWAA4AAwAZAA0AAAAXAA4AAwAZAA0AAAAYAA4AAwAZAA0AAAAZAA4AAwAZAAwAAAAZAA8AAwAZAAsAAAAaAA8AAwAZAAwAAAAbAA8AAwAZAAwAAAAaAA4AAwAZAAsAAAAbAA4AAwAZAAwAAAATAA8AAwAZAAsAAAAUAA8AAwAZAAwAAAAVAA8AAwAZAA0AAAAWAA8AAwAZAAwAAAAXAA8AAwAZAAsAAAAYAA8AAwAZAAwAAAASAA8AAwAZAAsAAAAaAAoAAwAZAA0AAAAaAAsAAwAZAAwAAAAaAAwAAwAZAAsAAAAaAA0AAwAZAA0AAAAbAA0AAwAZAAwAAAAbAAoAAwAZAAsAAAAbAAsAAwAZAAwAAAAbAAwAAwAZAAwAAAAJAAkAAwAaAAMAAAABAAsAAwAaAAUAAAABABAAAwAaAAUAAAADAAUAAwAZAAMAAAADAA8AAwAaAAUAAAAFAAgAAwAaAAUAAAAFAA0AAwAaAAUAAAAGAAMAAwAZAAMAAAAGAAoAAwAaAAMAAAAGABAAAwAZAAUAAAAHAAYAAwAZAAUAAAAIAAIAAwAaAAMAAAAIAAQAAwAaAAMAAAALAAIAAwAZAAUAAAALAAgAAwAZAAMAAAALAAsAAwAaAAMAAAAPAAMAAwAZAAMAAAAPAAUAAwAaAAMAAAAPAAgAAwAaAAUAAAAPAAkAAwAaAAMAAAATAAcAAwAZAAUAAAATAAkAAwAaAAUAAAAUAAIAAwAZAAMAAAAWAAkAAwAZAAMAAAAXAAIAAwAaAAMAAAAXAAQAAwAZAAUAAAAXAAgAAwAaAAUAAAAYAAYAAwAZAAUAAAAZAAQAAwAaAAMAAAAQAAsAAwAZAAMAAAAXAAsAAwAaAAUAAAAZABEAAwAZAAMAAAAYABIAAwAZAAUAAAAHABIAAwAZAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up") groups=["level_info"]]
+script = ExtResource("3_lyu1j")
+level_name = "lvl_zone_3_fuente_paraiso"
+area_type = 2
+coming_from_up = NodePath("../ComingFromUp")
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(140, 20)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_rvb60")]
+position = Vector2(140, 40)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_p6080")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_fxa1m")]
+level_name = "lvl_zone_3_fuente_paraiso"
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="BetterDeathZone" parent="Obstacle1" instance=ExtResource("7_ibjsb")]
+curve = SubResource("Curve2D_urug5")
+creation_strategy = 1
+
+[node name="@Area2D@528772" type="Area2D" parent="Obstacle1/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@528771" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone/@Area2D@528772"]
+polygon = PackedVector2Array(-100, 200, -78.94531, 200, -54.780273, 200, -23.4375, 200, 13.647461, 200, 55.039063, 200, 99.30176, 200, 145, 200, 190.69824, 200, 234.96094, 200, 276.35254, 200, 313.4375, 200, 344.78027, 200, 368.9453, 200, 390, 200, 390, 221.875, 390, 270, 390, 318.125, 390, 340, 368.9453, 340, 344.78027, 340, 313.4375, 340, 276.35254, 340, 234.96094, 340, 190.69824, 340, 145, 340, 99.30176, 340, 55.039063, 340, 13.647461, 340, -23.4375, 340, -54.780273, 340, -78.94531, 340, -100, 340, -100, 318.125, -100, 270, -100, 221.875, -100, 200)
+
+[node name="@Polygon2D@528773" type="Polygon2D" parent="Obstacle1/BetterDeathZone"]
+material = ExtResource("8_urug5")
+texture = ExtResource("9_iy801")
+polygon = PackedVector2Array(-100, 200, -78.94531, 200, -54.780273, 200, -23.4375, 200, 13.647461, 200, 55.039063, 200, 99.30176, 200, 145, 200, 190.69824, 200, 234.96094, 200, 276.35254, 200, 313.4375, 200, 344.78027, 200, 368.9453, 200, 390, 200, 390, 221.875, 390, 270, 390, 318.125, 390, 340, 368.9453, 340, 344.78027, 340, 313.4375, 340, 276.35254, 340, 234.96094, 340, 190.69824, 340, 145, 340, 99.30176, 340, 55.039063, 340, 13.647461, 340, -23.4375, 340, -54.780273, 340, -78.94531, 340, -100, 340, -100, 318.125, -100, 270, -100, 221.875, -100, 200)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles524" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_ndtf5")]
+position = Vector2(145, 270)
+amount = 40
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(255, 80)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_ttqoy")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
+
+[node name="BetterDeathZone2" parent="Obstacle1" instance=ExtResource("7_ibjsb")]
+curve = SubResource("Curve2D_iy801")
+creation_strategy = 1
+
+[node name="@Area2D@549778" type="Area2D" parent="Obstacle1/BetterDeathZone2"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@549777" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone2/@Area2D@549778"]
+polygon = PackedVector2Array(150, 170, 170, 170, 170, 190, 180, 190, 180, 200, 140, 200, 100, 200, 100, 190, 110, 190, 110, 170, 130, 170, 150, 170)
+
+[node name="@Polygon2D@549779" type="Polygon2D" parent="Obstacle1/BetterDeathZone2"]
+material = ExtResource("8_urug5")
+texture = ExtResource("9_iy801")
+polygon = PackedVector2Array(150, 170, 170, 170, 170, 190, 180, 190, 180, 200, 140, 200, 100, 200, 100, 190, 110, 190, 110, 170, 130, 170, 150, 170)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles470" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_ndtf5")]
+position = Vector2(145, 185)
+amount = 20
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(45, 25)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_ttqoy")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
+
+[node name="BetterDeathZone3" parent="Obstacle1" instance=ExtResource("7_ibjsb")]
+position = Vector2(0, 30)
+curve = SubResource("Curve2D_7adku")
+width = 40.0
+end_sample_point = 0.6839999999999999
+
+[node name="@Area2D@560743" type="Area2D" parent="Obstacle1/BetterDeathZone3"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@560742" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone3/@Area2D@560743"]
+polygon = PackedVector2Array(120, 140, 120, 117.09378, 160, 117.09378, 160, 140)
+
+[node name="NarrativeStuff" type="Node2D" parent="."]
+
+[node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D"]
+position = Vector2(-110, 270)
+shape = SubResource("RectangleShape2D_urug5")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Bounds"]
+position = Vector2(400, 270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D5"]
+shape = SubResource("RectangleShape2D_ve85x")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Bounds"]
+position = Vector2(-60, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D2"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_iy801")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Bounds"]
+position = Vector2(150, 350)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D3"]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_ndtf5")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Bounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D4"]
+position = Vector2(350, 190)
+shape = SubResource("RectangleShape2D_7adku")
+
+[node name="PickableItem" parent="." instance=ExtResource("11_ndtf5")]
+z_index = 10
+position = Vector2(140, 147)
+item = ExtResource("12_7adku")
+event_name = "item_fuente_paraiso_vial_picked_up"
+
+[node name="SimpleDoor" parent="." instance=ExtResource("13_7adku")]
+position = Vector2(285, 110)
+door_type = 1

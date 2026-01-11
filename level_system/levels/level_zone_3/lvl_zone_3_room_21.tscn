@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dsk6eptujf1qk"]
+[gd_scene load_steps=17 format=4 uid="uid://dsk6eptujf1qk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_fukve"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_3qxju"]
@@ -6,13 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_21avj"]
 [ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_wmrg3"]
 [ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_vyr03"]
-[ext_resource type="PackedScene" uid="uid://xyibhka021rc" path="res://level_system/levels/level_zone_3/utils/wish_particles.tscn" id="9_hlaj7"]
+[ext_resource type="Resource" uid="uid://xlm7l3lcxhjs" path="res://level_system/levels/level_zone_3/dialogues/ab_random_lines.dialogue" id="9_icsrd"]
 [ext_resource type="Texture2D" uid="uid://c76roq0fbmbii" path="res://assets/GRAPHICS/circle.png" id="10_nbqaf"]
+[ext_resource type="PackedScene" uid="uid://tcub0p8uhnko" path="res://interactables/wish/wish.tscn" id="11_hlaj7"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="12_5dhfw"]
 [ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="12_icsrd"]
 [ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="13_5dhfw"]
 
 [sub_resource type="Curve" id="Curve_hlaj7"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.11746988, 2), 0.0, -2.2662117, 0, 1, Vector2(0.99999994, 0), -2.2662117, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_icsrd"]
 _limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.11746988, 2), 0.0, -2.2662117, 0, 1, Vector2(0.99999994, 0), -2.2662117, 0.0, 1, 0]
 point_count = 3
@@ -66,14 +72,10 @@ level_name = "lvl_zone_3_room_21"
 position = Vector2(260, 130)
 texture = ExtResource("13_5dhfw")
 character_name = "Ab"
+dialogue = ExtResource("9_icsrd")
 
-[node name="DeathZoneParticles" parent="." instance=ExtResource("9_hlaj7")]
-visible = false
+[node name="DeathZoneParticles" type="CPUParticles2D" parent="."]
 position = Vector2(144, 51)
-
-[node name="DeathZoneParticles2" type="CPUParticles2D" parent="."]
-visible = false
-position = Vector2(141, 238)
 amount = 20
 texture = ExtResource("10_nbqaf")
 lifetime = 10.0
@@ -91,6 +93,25 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_hlaj7")
 color = Color(3.4643464, 3.6229699, 0.4505028, 1)
 
+[node name="DeathZoneParticles2" type="CPUParticles2D" parent="."]
+position = Vector2(141, 238)
+amount = 20
+texture = ExtResource("10_nbqaf")
+lifetime = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(144, 33.75)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_icsrd")
+color = Color(3.4643464, 3.6229699, 0.4505028, 1)
+
 [node name="TransitionLeft" parent="." instance=ExtResource("12_5dhfw")]
 position = Vector2(0, 140)
 next_level_id = "lvl_zone_3_room_20"
@@ -106,3 +127,30 @@ direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
 shape = SubResource("RectangleShape2D_hlaj7")
+
+[node name="Wishes" type="Node2D" parent="."]
+
+[node name="Wish" parent="Wishes" instance=ExtResource("11_hlaj7")]
+position = Vector2(39.999996, 89.99999)
+char_name = ""
+char_dialogue = "WISH_1"
+
+[node name="Wish2" parent="Wishes" instance=ExtResource("11_hlaj7")]
+position = Vector2(130, 110)
+char_name = ""
+char_dialogue = "WISH_2"
+
+[node name="Wish3" parent="Wishes" instance=ExtResource("11_hlaj7")]
+position = Vector2(210, 90)
+char_name = ""
+char_dialogue = "WISH_3"
+
+[node name="Wish4" parent="Wishes" instance=ExtResource("11_hlaj7")]
+position = Vector2(90.00001, 190)
+char_name = ""
+char_dialogue = "WISH_4"
+
+[node name="Wish5" parent="Wishes" instance=ExtResource("11_hlaj7")]
+position = Vector2(200, 180)
+char_name = ""
+char_dialogue = "WISH_5"

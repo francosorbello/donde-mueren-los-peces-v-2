@@ -319,6 +319,9 @@ state_machine = NodePath("../StateMachine")
 [node name="FollowTarget" type="Marker2D" parent="."]
 position = Vector2(17, -11)
 
+[node name="AbFollowTarget" type="Marker2D" parent="."]
+position = Vector2(-22, 0)
+
 [node name="ItemFollowerManager" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("27_rptt4")]
 follow_target = NodePath("../FollowTarget")
 

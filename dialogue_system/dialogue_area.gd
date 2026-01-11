@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var dialogue : DialogueResource
+@export var start_title : String = "start"
 @export var repeatable : bool = false
 @export var remove_on_event : String
 @export var target : Node2D
@@ -17,7 +18,7 @@ func _on_body_entered(body: Node2D) -> void:
 func start_dialogue():
     if delay_time > 0:
         await get_tree().create_timer(delay_time).timeout
-    GlobalData.start_dialogue(dialogue,"start",target)
+    GlobalData.start_dialogue(dialogue,start_title,target)
     PersistencySystem.set_event(remove_on_event,true)
 
 func _on_persistent_event_evaluator_evaluator_succeded() -> void:

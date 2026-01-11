@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://xlm7l3lcxhjs"
+path="res://.godot/imported/ab_random_lines.dialogue-e3d982aa4dc7a6df39758730bb922f86.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_zone_3/dialogues/ab_random_lines.dialogue"
+dest_files=["res://.godot/imported/ab_random_lines.dialogue-e3d982aa4dc7a6df39758730bb922f86.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,120 @@
+[gd_scene load_steps=13 format=3 uid="uid://gaw1wptoq5ry"]
+
+[ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="1_csp05"]
+[ext_resource type="Script" uid="uid://bvfsw3ifd0krx" path="res://level_system/levels/level_zone_3/utils/ab_follower/ab_follower.gd" id="2_8kdrk"]
+[ext_resource type="PackedScene" uid="uid://der5qoc3c1u8r" path="res://inventory_system/carryable_item/target_follow_component.tscn" id="2_dkubx"]
+[ext_resource type="AudioStream" uid="uid://dgadymra1s2ay" path="res://assets/SOUNDS/player/pretty_footsetp.mp3" id="3_0ruu5"]
+[ext_resource type="Script" uid="uid://8dv7dce6ncjv" path="res://addons/ftr_tools/sm/state_machine.gd" id="5_s4lad"]
+[ext_resource type="Script" uid="uid://t0f3sfax3uyl" path="res://level_system/levels/level_zone_3/utils/ab_follower/states/ab_follower_idle_state.gd" id="6_ot53x"]
+[ext_resource type="Script" uid="uid://cn7e8thianrjf" path="res://level_system/levels/level_zone_3/utils/ab_follower/ab_follower_moving_state.gd" id="7_smr0p"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8kdrk"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("3_0ruu5")
+
+[sub_resource type="Animation" id="Animation_xlvsb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1cfpk"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_8kdrk"]
+resource_name = "move"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.08726646259971647, 0.0, 0.08726646259971647]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StepSounds")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1cfpk"]
+_data = {
+&"RESET": SubResource("Animation_xlvsb"),
+&"idle": SubResource("Animation_1cfpk"),
+&"move": SubResource("Animation_8kdrk")
+}
+
+[node name="AbFollower" type="Sprite2D"]
+texture = ExtResource("1_csp05")
+script = ExtResource("2_8kdrk")
+stop_treshold = 2.0
+
+[node name="TargetFollowComponent" parent="." instance=ExtResource("2_dkubx")]
+use_random_offset = false
+
+[node name="StepSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_8kdrk")
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1cfpk")
+}
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_s4lad")
+initial_state = NodePath("IdleState")
+metadata/_custom_type_script = "uid://8dv7dce6ncjv"
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("6_ot53x")
+metadata/_custom_type_script = "uid://75lytsymjqc2"
+
+[node name="MovingState" type="Node" parent="StateMachine"]
+script = ExtResource("7_smr0p")
+metadata/_custom_type_script = "uid://75lytsymjqc2"

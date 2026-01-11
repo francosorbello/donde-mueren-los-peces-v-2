@@ -177,3 +177,9 @@ func fly():
 func move_to(target : Node2D):
 	$StateMachine.send_message_to("MovingToTargetState",{"target": target, "next_state": "EmptyState"})
 	$StateMachine.transition_to("MovingToTargetState")
+
+func enable_controls():
+	$StateMachine.transition_to("IdleState")
+
+func disable_controls():
+	$StateMachine.transition_to("EmptyState")

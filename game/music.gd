@@ -45,7 +45,6 @@ func transition_to(stream_name : String):
 	)
 		
 func transition_to_inmediate(stream_name):
-	print("Hello?")
 	if _current_stream_name == stream_name:
 		return
 

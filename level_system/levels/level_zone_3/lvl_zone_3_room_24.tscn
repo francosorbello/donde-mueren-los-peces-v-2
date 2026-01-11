@@ -1,0 +1,162 @@
+[gd_scene load_steps=14 format=4 uid="uid://c04utu6elh0t4"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_6q84f"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_0h1jp"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_gtbxq"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_3t5on"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_ixgfw"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_r1jfa"]
+[ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="7_0kn3n"]
+[ext_resource type="PackedScene" uid="uid://tcub0p8uhnko" path="res://interactables/wish/wish.tscn" id="7_jq2wg"]
+[ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="8_rv363"]
+[ext_resource type="Resource" uid="uid://xlm7l3lcxhjs" path="res://level_system/levels/level_zone_3/dialogues/ab_random_lines.dialogue" id="9_jq2wg"]
+[ext_resource type="PackedScene" uid="uid://dlie83pqcv54" path="res://level_system/levels/level_zone_3/utils/narrative_blocker.tscn" id="10_rv363"]
+[ext_resource type="Texture2D" uid="uid://c76roq0fbmbii" path="res://assets/GRAPHICS/circle.png" id="12_4mixm"]
+
+[sub_resource type="Curve" id="Curve_pan4c"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.11746988, 2), 0.0, -2.2662117, 0, 1, Vector2(0.99999994, 0), -2.2662117, 0.0, 1, 0]
+point_count = 3
+
+[node name="lvl_zone_3_room_24" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_6q84f")]
+metadata/_edit_lock_ = true
+
+[node name="Layout" parent="." instance=ExtResource("2_0h1jp")]
+tile_map_data = PackedByteArray("AAAAAAoAAwAFAAUAAAAAAAsAAwAFAAQAAAAAAAwAAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAQAAAAAABMAAwAFAAQAAAAAABQAAwAFAAUAAAAAABUAAwAFAAUAAAAAABYAAwAFAAQAAAAAABcAAwAFAAQAAAAAABgAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAQAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAAQABoAAwAFAAQAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAAPABoAAwAFAAUAAAALAAoAAwAVAAQAAAAMAAoAAwAVAAQAAAANAAoAAwAVAAQAAAAOAAoAAwAVAAQAAAAPAAoAAwAVAAQAAAAQAAoAAwAVAAQAAAARAAoAAwAVAAQAAAATABoAAwAFAAUAAAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAQAAAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAQAAAAAAAYAAwAFAAQAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAABAAAAAwAFAAUAAAACAAAAAwAFAAUAAAADAAAAAwAFAAUAAAAEAAAAAwAFAAQAAAAFAAAAAwAFAAUAAAAGAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAIAAAAAwAFAAQAAAAJAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAMAAAAAwAFAAQAAAANAAAAAwAFAAQAAAAOAAAAAwAFAAQAAAAPAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAARAAAAAwAFAAUAAAASAAAAAwAFAAUAAAABAAoAAwAVAAQAAAACAAoAAwAVAAQAAAADAAoAAwAVAAQAAAAEAAoAAwAVAAQAAAAFAAoAAwAVAAQAAAAGAAoAAwAVAAQAAAAHAAoAAwAVAAQAAAAIAAoAAwAVAAQAAAATAAAAAwAFAAUAAAATAAEAAwAFAAUAAAATAAIAAwAFAAUAAAATAAMAAwAFAAUAAAATAAQAAwAFAAUAAAATAAUAAwAFAAUAAAATAAYAAwAFAAQAAAATAAcAAwAFAAUAAAATAAgAAwAFAAUAAAATAAkAAwAFAAUAAAATAAoAAwAFAAUAAAATAAsAAwAFAAUAAAATAAwAAwAFAAUAAAATAA0AAwAFAAUAAAATAA4AAwAFAAUAAAATAA8AAwAFAAQAAAATABAAAwAFAAQAAAATABEAAwAFAAQAAAATABIAAwAFAAUAAAATABMAAwAFAAUAAAATABQAAwAFAAUAAAATABUAAwAFAAUAAAATABYAAwAFAAUAAAATABcAAwAFAAUAAAATABgAAwAFAAQAAAATABkAAwAFAAUAAAASAAoAAwAVAAQAAAA=")
+
+[node name="Visuals" parent="." instance=ExtResource("2_0h1jp")]
+tile_map_data = PackedByteArray("AAAAAA0AAwAZAAwAAAAAAA4AAwAZAA0AAAABAA0AAwAZAA0AAAABAA4AAwAZAA0AAAACAA0AAwAZAAsAAAACAA4AAwAZAAsAAAADAA0AAwAZAAwAAAADAA4AAwAZAAwAAAAEAA0AAwAZAA0AAAAEAA4AAwAZAAwAAAAFAA0AAwAZAA0AAAAFAA4AAwAZAAwAAAAGAA0AAwAZAAsAAAAGAA4AAwAZAAsAAAAHAA0AAwAZAA0AAAAHAA4AAwAZAAwAAAAIAA0AAwAZAAsAAAAIAA4AAwAZAAwAAAAJAA0AAwAZAA0AAAAJAA4AAwAZAAwAAAAKAA0AAwAZAAwAAAAKAA4AAwAZAAwAAAALAA0AAwAZAA0AAAALAA4AAwAZAA0AAAAMAA0AAwAZAAwAAAAMAA4AAwAZAAsAAAANAA0AAwAZAA0AAAANAA4AAwAZAAsAAAAOAA0AAwAZAAsAAAAOAA4AAwAZAAsAAAANAA8AAwAZAAsAAAANABAAAwAZAA0AAAANABEAAwAZAAwAAAANABIAAwAZAA0AAAANABMAAwAZAAsAAAANABQAAwAZAAsAAAANABUAAwAZAA0AAAANABYAAwAZAAwAAAANABcAAwAZAAsAAAANABgAAwAZAA0AAAANABkAAwAZAA0AAAANABoAAwAZAAwAAAAOAA8AAwAZAAwAAAAOABAAAwAZAAsAAAAOABEAAwAZAA0AAAAOABIAAwAZAA0AAAAOABMAAwAZAA0AAAAOABQAAwAZAAsAAAAOABUAAwAZAA0AAAAOABYAAwAZAAsAAAAOABcAAwAZAAsAAAAOABgAAwAZAAsAAAAOABkAAwAZAA0AAAAOABoAAwAZAAsAAAAJAAYAAwAZAAwAAAAJAAcAAwAZAAsAAAAJAAgAAwAZAAsAAAAJAAkAAwAZAAwAAAAJAAoAAwAZAAsAAAAJAAsAAwAZAAsAAAAJAAwAAwAZAAsAAAAKAAYAAwAZAAsAAAAKAAcAAwAZAAwAAAAKAAgAAwAZAAwAAAAKAAkAAwAZAAsAAAAKAAoAAwAZAAwAAAAKAAsAAwAZAAsAAAAKAAwAAwAZAAwAAAAHAAMAAwAZAAwAAAAHAAQAAwAZAAwAAAAHAAUAAwAZAAsAAAAHAAYAAwAZAAsAAAAIAAMAAwAZAAwAAAAIAAQAAwAZAA0AAAAIAAUAAwAZAAwAAAAIAAYAAwAZAAwAAAAJAAMAAwAZAAwAAAAJAAQAAwAZAAsAAAAJAAUAAwAZAAwAAAAKAAMAAwAZAAwAAAAKAAQAAwAZAAwAAAAKAAUAAwAZAA0AAAALAAMAAwAZAA0AAAALAAQAAwAZAA0AAAALAAUAAwAZAAsAAAALAAYAAwAZAA0AAAAMAAMAAwAZAAwAAAAMAAQAAwAZAA0AAAAMAAUAAwAZAAwAAAAMAAYAAwAZAA0AAAABAAIAAwAZAAUAAAACAAUAAwAZAAIAAAACAAgAAwAaAAIAAAAEAAYAAwAaAAUAAAAEAAcAAwAaAAIAAAAFAAQAAwAaAAIAAAAGAAMAAwAaAAUAAAANAAMAAwAZAAIAAAAOAAkAAwAaAAUAAAAPAAQAAwAaAAUAAAAQAAIAAwAaAAIAAAAQAAQAAwAaAAIAAAARAAUAAwAZAAIAAAAIAAEAAwAZAAIAAAACABAAAwAZAAIAAAACABIAAwAZAAIAAAACABMAAwAaAAUAAAAFAA8AAwAZAAIAAAAHABcAAwAZAAIAAAAIABAAAwAaAAUAAAAIABMAAwAZAAIAAAAKABQAAwAZAAIAAAALABUAAwAaAAUAAAAMAA8AAwAaAAIAAAAQABgAAwAZAAUAAAARAAwAAwAZAAIAAAASAA4AAwAZAAIAAAADAAwAAwAaAAIAAAAPABQAAwAaAAUAAAAQABYAAwAaAAIAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_right") groups=["level_info"]]
+script = ExtResource("3_gtbxq")
+level_name = "lvl_zone_3_room_24"
+area_type = 2
+coming_from_right = NodePath("../ComingFromRIght")
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromRIght" type="Marker2D" parent="LevelInfo Stuff"]
+position = Vector2(30, 140)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_3t5on")]
+position = Vector2(30, 140)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_ixgfw")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_r1jfa")]
+level_name = "lvl_zone_3_room_24"
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="NarrativeStuff" type="Node2D" parent="."]
+
+[node name="Wishes" type="Node2D" parent="NarrativeStuff"]
+
+[node name="Wish" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
+position = Vector2(39.999996, 29.999998)
+char_name = ""
+char_dialogue = ""
+
+[node name="Wish2" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
+position = Vector2(60, 69.99999)
+char_name = ""
+char_dialogue = ""
+
+[node name="Wish3" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
+position = Vector2(140, 30.000011)
+char_name = ""
+char_dialogue = ""
+
+[node name="Wish4" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
+position = Vector2(170, 80)
+char_name = ""
+char_dialogue = ""
+
+[node name="Wish5" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
+position = Vector2(40.000015, 180)
+char_name = ""
+char_dialogue = ""
+
+[node name="Wish6" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
+position = Vector2(60, 230)
+char_name = ""
+char_dialogue = ""
+
+[node name="Wish7" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
+position = Vector2(170, 140)
+char_name = ""
+char_dialogue = ""
+
+[node name="WC_Ab" parent="NarrativeStuff" instance=ExtResource("7_0kn3n")]
+position = Vector2(110, 250)
+texture = ExtResource("8_rv363")
+character_name = "Ab"
+dialogue = ExtResource("9_jq2wg")
+
+[node name="NarrativeBlocker" parent="." instance=ExtResource("10_rv363")]
+position = Vector2(0, 140)
+
+[node name="DeathZoneParticles" type="CPUParticles2D" parent="."]
+position = Vector2(240, 140)
+amount = 20
+texture = ExtResource("12_4mixm")
+lifetime = 10.0
+preprocess = 1.95
+emission_shape = 3
+emission_rect_extents = Vector2(48, 135)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_pan4c")
+color = Color(3.4643464, 3.6229699, 0.4505028, 1)
+
+[node name="DeathZoneParticles2" type="CPUParticles2D" parent="."]
+position = Vector2(70, 200)
+amount = 20
+texture = ExtResource("12_4mixm")
+lifetime = 10.0
+preprocess = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(47.956, 33.75)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_pan4c")
+color = Color(3.4643464, 3.6229699, 0.4505028, 1)
+
+[node name="DeathZoneParticles3" type="CPUParticles2D" parent="."]
+position = Vector2(100, 50)
+amount = 20
+texture = ExtResource("12_4mixm")
+lifetime = 10.0
+preprocess = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(47.956, 33.75)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_pan4c")
+color = Color(3.4643464, 3.6229699, 0.4505028, 1)

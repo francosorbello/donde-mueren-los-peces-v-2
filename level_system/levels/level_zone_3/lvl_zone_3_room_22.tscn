@@ -164,7 +164,7 @@ char_name = ""
 char_dialogue = ""
 
 [node name="DeathZoneParticles" type="CPUParticles2D" parent="."]
-position = Vector2(144, 51)
+position = Vector2(145, 51)
 amount = 20
 texture = ExtResource("17_of7yh")
 lifetime = 10.0
@@ -184,7 +184,7 @@ scale_amount_curve = SubResource("Curve_u5l4c")
 color = Color(3.4643464, 3.6229699, 0.4505028, 1)
 
 [node name="DeathZoneParticles2" type="CPUParticles2D" parent="."]
-position = Vector2(141, 238)
+position = Vector2(142, 238)
 amount = 20
 texture = ExtResource("17_of7yh")
 lifetime = 10.0

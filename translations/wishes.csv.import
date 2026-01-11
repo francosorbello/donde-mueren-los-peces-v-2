@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://boxv02oka5ftm"
+
+[deps]
+
+files=["res://translations/wishes.en.translation", "res://translations/wishes.es.translation"]
+
+source_file="res://translations/wishes.csv"
+dest_files=["res://translations/wishes.en.translation", "res://translations/wishes.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

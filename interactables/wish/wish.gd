@@ -22,7 +22,7 @@ func _ready():
 	if char_name.is_empty():
 		character = "*****"
 
-	var text = "~ start \n %s: %s \n => END"%[character,char_dialogue]
+	var text = "~ start \n %s: %s \n => END"%[character,tr(char_dialogue)]
 	dialogue = DialogueManager.create_resource_from_text(text)
 
 func _draw() -> void:

@@ -116,7 +116,7 @@ color = Color(3.4643464, 3.6229699, 0.4505028, 1)
 
 [node name="TransitionRight" parent="." instance=ExtResource("12_5dhfw")]
 position = Vector2(290, 140)
-next_level_id = "lvl_zone_3_room_22"
+next_level_id = "lvl_zone_3_room_24"
 direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]

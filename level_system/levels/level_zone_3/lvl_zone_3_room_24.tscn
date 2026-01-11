@@ -60,37 +60,37 @@ level_name = "lvl_zone_3_room_24"
 [node name="Wish" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
 position = Vector2(39.999996, 29.999998)
 char_name = ""
-char_dialogue = ""
+char_dialogue = "WISH_6"
 
 [node name="Wish2" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
 position = Vector2(60, 69.99999)
 char_name = ""
-char_dialogue = ""
+char_dialogue = "WISH_7"
 
 [node name="Wish3" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
 position = Vector2(140, 30.000011)
 char_name = ""
-char_dialogue = ""
+char_dialogue = "WISH_8"
 
 [node name="Wish4" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
 position = Vector2(170, 80)
 char_name = ""
-char_dialogue = ""
+char_dialogue = "WISH_9"
 
 [node name="Wish5" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
 position = Vector2(40.000015, 180)
 char_name = ""
-char_dialogue = ""
+char_dialogue = "WISH_10"
 
 [node name="Wish6" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
 position = Vector2(60, 230)
 char_name = ""
-char_dialogue = ""
+char_dialogue = "WISH_11"
 
 [node name="Wish7" parent="NarrativeStuff/Wishes" instance=ExtResource("7_jq2wg")]
 position = Vector2(170, 140)
 char_name = ""
-char_dialogue = ""
+char_dialogue = "WISH_12"
 
 [node name="WC_Ab" parent="NarrativeStuff" instance=ExtResource("7_0kn3n")]
 position = Vector2(110, 250)
@@ -109,46 +109,6 @@ lifetime = 10.0
 preprocess = 1.95
 emission_shape = 3
 emission_rect_extents = Vector2(48, 135)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
-scale_amount_min = 0.3
-scale_amount_max = 0.3
-scale_amount_curve = SubResource("Curve_pan4c")
-color = Color(3.4643464, 3.6229699, 0.4505028, 1)
-
-[node name="DeathZoneParticles2" type="CPUParticles2D" parent="."]
-position = Vector2(70, 200)
-amount = 20
-texture = ExtResource("12_4mixm")
-lifetime = 10.0
-preprocess = 2.0
-emission_shape = 3
-emission_rect_extents = Vector2(47.956, 33.75)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
-scale_amount_min = 0.3
-scale_amount_max = 0.3
-scale_amount_curve = SubResource("Curve_pan4c")
-color = Color(3.4643464, 3.6229699, 0.4505028, 1)
-
-[node name="DeathZoneParticles3" type="CPUParticles2D" parent="."]
-position = Vector2(100, 50)
-amount = 20
-texture = ExtResource("12_4mixm")
-lifetime = 10.0
-preprocess = 2.0
-emission_shape = 3
-emission_rect_extents = Vector2(47.956, 33.75)
 direction = Vector2(-1, 0)
 spread = 180.0
 gravity = Vector2(0, 0)

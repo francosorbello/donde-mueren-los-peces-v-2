@@ -64,5 +64,5 @@ func _tween_volume(to_value : float, time : float = transition_time) -> Tween:
 	return _current_tween
 
 func transition_interactive(clip_name : String):
-	# var interactive_stream : AudioStreamInteractive = streams["zone_3_music_interactive"]
-	self["parameters/switch_to_clip"] = clip_name
+	if stream is AudioStreamInteractive:
+		self["parameters/switch_to_clip"] = clip_name

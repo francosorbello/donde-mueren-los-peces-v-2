@@ -206,5 +206,5 @@ position = Vector2(0, 140)
 
 [node name="ChangeMusic" type="Node" parent="."]
 script = ExtResource("19_u8q3d")
-change_type = 2
-music_name = "zone_3_music"
+change_type = 3
+music_name = "full_music"

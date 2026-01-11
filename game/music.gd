@@ -10,56 +10,60 @@ var _initial_volume : float
 var _current_stream_name : String
 
 func _ready():
-    _initial_volume = volume_linear
-    start_music(initial_stream_name)
+	_initial_volume = volume_linear
+	start_music(initial_stream_name)
 
 func start_music(stream_name : String):
-    assert(streams.has(stream_name),"No stream named "+stream_name)
+	assert(streams.has(stream_name),"No stream named "+stream_name)
 
-    _current_stream_name = stream_name
-    stream = streams[stream_name]
-    play()
-    if volume_linear < _initial_volume:
-        _tween_volume(_initial_volume)
+	_current_stream_name = stream_name
+	stream = streams[stream_name]
+	play()
+	if volume_linear < _initial_volume:
+		_tween_volume(_initial_volume)
 
 func stop_music():
-    _tween_volume(0).tween_callback(func(): stop())
+	_tween_volume(0).tween_callback(func(): stop())
 
 func transition_to(stream_name : String):
-    if _current_stream_name == stream_name:
-        return
+	if _current_stream_name == stream_name:
+		return
 
-    assert(streams.has(stream_name),"No stream named "+stream_name)
+	assert(streams.has(stream_name),"No stream named "+stream_name)
 
-    _current_stream_name = stream_name
-    var stop_tween = _tween_volume(0)
-    stop_tween.tween_callback(
-        func(): 
-            stop()
-            stream = streams[stream_name]
-    )
-    stop_tween.tween_callback(
-        func(): 
-            play()
-            _tween_volume(_initial_volume)
-    )
-        
+	_current_stream_name = stream_name
+	var stop_tween = _tween_volume(0)
+	stop_tween.tween_callback(
+		func(): 
+			stop()
+			stream = streams[stream_name]
+	)
+	stop_tween.tween_callback(
+		func(): 
+			play()
+			_tween_volume(_initial_volume)
+	)
+		
 func transition_to_inmediate(stream_name):
-    print("Hello?")
-    if _current_stream_name == stream_name:
-        return
+	print("Hello?")
+	if _current_stream_name == stream_name:
+		return
 
-    assert(streams.has(stream_name),"No stream named "+stream_name)
-    _current_stream_name = stream_name
-    stop()
-    volume_linear = _initial_volume
-    stream = streams[stream_name]
-    play()
+	assert(streams.has(stream_name),"No stream named "+stream_name)
+	_current_stream_name = stream_name
+	stop()
+	volume_linear = _initial_volume
+	stream = streams[stream_name]
+	play()
 
 func _tween_volume(to_value : float, time : float = transition_time) -> Tween:
-    if _current_tween and _current_tween.is_running():
-        _current_tween.kill()
-    _current_tween = create_tween()
+	if _current_tween and _current_tween.is_running():
+		_current_tween.kill()
+	_current_tween = create_tween()
 
-    _current_tween.tween_property(self,"volume_linear",to_value,time)
-    return _current_tween
+	_current_tween.tween_property(self,"volume_linear",to_value,time)
+	return _current_tween
+
+func transition_interactive(clip_name : String):
+	# var interactive_stream : AudioStreamInteractive = streams["zone_3_music_interactive"]
+	self["parameters/switch_to_clip"] = clip_name

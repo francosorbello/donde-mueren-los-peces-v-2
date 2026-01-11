@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=39 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://cepgk4i3tauqe" path="res://assets/SOUNDS/music/Retro Ambience 02.mp3" id="22_leid8"]
 [ext_resource type="AudioStream" uid="uid://c5xxcaepm55x0" path="res://assets/SOUNDS/music/WAV_Jonquil_(Piano).mp3" id="28_hbvmx"]
 [ext_resource type="AudioStream" uid="uid://cuymt328438um" path="res://assets/SOUNDS/music/piano_note.ogg" id="29_fegy3"]
+[ext_resource type="AudioStream" uid="uid://ck2x64w85452i" path="res://assets/SOUNDS/music/piano_note_2.ogg" id="30_pvdu1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pxxsx"]
 shader = ExtResource("5_ln7ps")
@@ -61,6 +62,23 @@ shader_parameter/feather = 0.05
 shader_parameter/circle_position = Vector2(0.5, 0.5)
 shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_fegy3"]
+clip_count = 2
+clip_0/name = &"piano_note"
+clip_0/stream = ExtResource("30_pvdu1")
+clip_0/auto_advance = 0
+clip_1/name = &"full_music"
+clip_1/stream = ExtResource("28_hbvmx")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+}
+}
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -314,7 +332,8 @@ streams = Dictionary[String, AudioStream]({
 "creepy_bass": ExtResource("22_leid8"),
 "piano_note": ExtResource("29_fegy3"),
 "zone_1_music": ExtResource("20_5e03w"),
-"zone_3_music": ExtResource("28_hbvmx")
+"zone_3_music": ExtResource("28_hbvmx"),
+"zone_3_music_interactive": SubResource("AudioStreamInteractive_fegy3")
 })
 
 [node name="GameConsoleCommands" parent="." instance=ExtResource("12_qf6n1")]

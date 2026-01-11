@@ -185,7 +185,7 @@ shape = SubResource("RectangleShape2D_gpalw")
 [node name="ChangeMusic" type="Node" parent="."]
 script = ExtResource("11_icsrd")
 change_type = 2
-music_name = "piano_note"
+music_name = "zone_3_music_interactive"
 
 [node name="NarrativeBlocker" parent="." instance=ExtResource("17_wkrgb")]
 position = Vector2(0, 130)

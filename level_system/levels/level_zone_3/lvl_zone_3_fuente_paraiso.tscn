@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://clo6w8s8256lk"]
+[gd_scene load_steps=53 format=4 uid="uid://clo6w8s8256lk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lxbe3"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_et6pn"]
@@ -32,10 +32,14 @@
 [ext_resource type="Script" uid="uid://1ue32pbqy0nd" path="res://dialogue_system/cutscene_system/actions/cuta_set_persistent_event.gd" id="22_8kbv2"]
 [ext_resource type="Script" uid="uid://00jdtmmcpsab" path="res://dialogue_system/cutscene_system/actions/cuta_change_music.gd" id="22_mwngu"]
 [ext_resource type="Script" uid="uid://d2pf7dvmruywe" path="res://dialogue_system/cutscene_system/actions/cuta_set_camera_shake.gd" id="27_n37d2"]
+[ext_resource type="Script" uid="uid://5pfuvxl1oiof" path="res://dialogue_system/cutscene_system/actions/cuta_call_method.gd" id="28_hihka"]
 [ext_resource type="Script" uid="uid://bevp7ppbjnc85" path="res://persistancy_system/actions/delete_action.gd" id="29_q2n74"]
 [ext_resource type="Script" uid="uid://bw5nxmfdaatyi" path="res://persistancy_system/actions/call_method_action.gd" id="31_xyvb1"]
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="32_6pkve"]
+[ext_resource type="AudioStream" uid="uid://cc4kbbdi86a7d" path="res://assets/SOUNDS/rustles/217657__reitanna__earth-rumble.ogg" id="32_hihka"]
 [ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="33_8kbv2"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="39_1vxfe"]
+[ext_resource type="Script" uid="uid://cj5j4ybo5t3eq" path="res://persistancy_system/actions/toggle_action.gd" id="40_iym0h"]
 
 [sub_resource type="Curve2D" id="Curve2D_urug5"]
 bake_interval = 50.0
@@ -80,6 +84,8 @@ size = Vector2(120, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_du6w5"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vxfe"]
+
 [node name="lvl_zone_3_fuente_paraiso" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_lxbe3")]
@@ -104,7 +110,7 @@ metadata/_custom_type_script = "uid://crtby7posuy18"
 position = Vector2(140, 26)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_rvb60")]
-position = Vector2(90, 80)
+position = Vector2(140, 26)
 
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_p6080")]
 level_info = NodePath("../LevelInfo Stuff/LevelInfo")
@@ -272,6 +278,11 @@ wait_time = 2.0
 script = ExtResource("27_n37d2")
 keep_after_dialogue = true
 
+[node name="StartRustleSound" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("28_hihka")
+target = NodePath("../../../RustleSound")
+method_name = &"play"
+
 [node name="FocusOnDoor" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager" node_paths=PackedStringArray("target")]
 script = ExtResource("19_w3qxx")
 target = NodePath("Node2D")
@@ -318,6 +329,11 @@ metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 script = ExtResource("33_8kbv2")
 event_name = "fuente_paraiso_dialogue_finished"
 metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[node name="RustleSound" type="AudioStreamPlayer" parent="NarrativeStuff"]
+stream = ExtResource("32_hihka")
+volume_db = -8.0
+bus = &"SFX"
 
 [node name="Bounds" type="Node2D" parent="."]
 
@@ -401,17 +417,43 @@ position = Vector2(0, 26)
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_du6w5")
 
-[node name="ToggleAction" type="Node" parent="." node_paths=PackedStringArray("target")]
+[node name="ToggleDoor" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("31_xyvb1")
 target = NodePath("../SimpleDoor")
 method_name = &"do_toggle"
 metadata/_custom_type_script = "uid://cj5j4ybo5t3eq"
 
-[node name="PersistentEventEvaluator" type="Node" parent="ToggleAction"]
+[node name="PersistentEventEvaluator" type="Node" parent="ToggleDoor"]
 script = ExtResource("32_6pkve")
 metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 
-[node name="BoolPersistentEventConditional" type="Node" parent="ToggleAction/PersistentEventEvaluator"]
+[node name="BoolPersistentEventConditional" type="Node" parent="ToggleDoor/PersistentEventEvaluator"]
+script = ExtResource("33_8kbv2")
+event_name = "fuente_paraiso_door_opened"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[node name="LevelTransitionArea" parent="." instance=ExtResource("39_1vxfe")]
+process_mode = 4
+visible = false
+position = Vector2(290, 110)
+next_level_id = "lvl_zone_4_room_25"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
+shape = SubResource("RectangleShape2D_1vxfe")
+
+[node name="ToggleTransition" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("40_iym0h")
+target = NodePath("../LevelTransitionArea")
+toggle_type = 1
+toggle_to = 1
+metadata/_custom_type_script = "uid://cj5j4ybo5t3eq"
+
+[node name="PersistentEventEvaluator" type="Node" parent="ToggleTransition"]
+script = ExtResource("32_6pkve")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="ToggleTransition/PersistentEventEvaluator"]
 script = ExtResource("33_8kbv2")
 event_name = "fuente_paraiso_door_opened"
 metadata/_custom_type_script = "uid://davfd8xpi1i3t"

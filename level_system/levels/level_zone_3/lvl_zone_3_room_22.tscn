@@ -96,21 +96,10 @@ texture = ExtResource("9_b5jq6")
 polygon = PackedVector2Array(60, 100, 85, 100, 110.625, 100, 140, 100, 169.375, 100, 195, 100, 219.93953, 100.000015, 219.96513, 180.00002, 195, 180, 169.375, 180, 140, 180, 110.625, 180, 85, 180, 60, 180)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles655" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_h5cbb")]
+[node name="DeathZoneParticles655" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_h5cbb")]
 position = Vector2(139.98257, 140)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(89.98257, 50.000008)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="PlatformSmall" parent="Obstacle1" instance=ExtResource("11_iys0h")]
 position = Vector2(140, 140)

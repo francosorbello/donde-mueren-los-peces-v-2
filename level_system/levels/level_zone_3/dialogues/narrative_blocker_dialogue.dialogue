@@ -1,3 +1,8 @@
 ~ start
 Ab: Where are you going? We must find Kai.
 => END
+
+~ start_2
+Ab: Where are you going? We must escape!
+Ab: There is an exit to the right!
+=> END

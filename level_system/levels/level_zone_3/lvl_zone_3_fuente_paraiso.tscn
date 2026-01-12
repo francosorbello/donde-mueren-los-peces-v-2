@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://clo6w8s8256lk"]
+[gd_scene load_steps=38 format=4 uid="uid://clo6w8s8256lk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lxbe3"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_et6pn"]
@@ -11,8 +11,20 @@
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_iy801"]
 [ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_ndtf5"]
 [ext_resource type="PackedScene" uid="uid://dfx0iek5tccxc" path="res://inventory_system/pickable_item/pickable_item.tscn" id="11_ndtf5"]
+[ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="11_oaqdk"]
 [ext_resource type="Resource" uid="uid://51hmtqrx34px" path="res://inventory_system/items/vial.tres" id="12_7adku"]
+[ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="12_fjcd0"]
 [ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="13_7adku"]
+[ext_resource type="Resource" uid="uid://dd1jhjlasrqw8" path="res://level_system/levels/level_zone_3/dialogues/lvl_zone_3_fuente_paraiso.dialogue" id="14_5kyi3"]
+[ext_resource type="PackedScene" uid="uid://dvfbw7sofbkka" path="res://dialogue_system/dialogue_area.tscn" id="14_acgnb"]
+[ext_resource type="Resource" uid="uid://y2hejtgbod1s" path="res://level_system/levels/level_zone_3/dialogues/narrative_blocker_dialogue.dialogue" id="15_oaqdk"]
+[ext_resource type="Script" uid="uid://txfr2h6xrn3y" path="res://dialogue_system/cutscene_system/actions/cuta_wait.gd" id="16_1c3lp"]
+[ext_resource type="Script" uid="uid://d2bgxd5k3rxdy" path="res://dialogue_system/cutscene_system/actions/cuta_move_player.gd" id="16_7g7nh"]
+[ext_resource type="PackedScene" uid="uid://bbaay5giilatk" path="res://dialogue_system/cutscene_system/cutscene_manager.tscn" id="16_fjcd0"]
+[ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="17_5kyi3"]
+[ext_resource type="Script" uid="uid://mg41htp632th" path="res://dialogue_system/cutscene_system/actions/cuta_move_wc.gd" id="17_lfkfw"]
+[ext_resource type="Script" uid="uid://csscmsvofh7ig" path="res://dialogue_system/cutscene_system/actions/cuta_teleport_player.gd" id="18_7g7nh"]
+[ext_resource type="Script" uid="uid://bafld8lghvfhm" path="res://dialogue_system/cutscene_system/actions/cuta_focus_on_target.gd" id="19_w3qxx"]
 
 [sub_resource type="Curve2D" id="Curve2D_urug5"]
 bake_interval = 50.0
@@ -40,6 +52,9 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjcd0"]
+size = Vector2(90, 40)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urug5"]
 size = Vector2(20, 140)
 
@@ -55,6 +70,10 @@ size = Vector2(530, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7adku"]
 size = Vector2(120, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m1sw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_du6w5"]
+
 [node name="lvl_zone_3_fuente_paraiso" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_lxbe3")]
@@ -68,15 +87,15 @@ tile_map_data = PackedByteArray("AAANAAAAAwAZAAwAAAANAAEAAwAZAA0AAAANAAIAAwAZAAs
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
-[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_up") groups=["level_info"]]
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" node_paths=PackedStringArray("coming_from_down") groups=["level_info"]]
 script = ExtResource("3_lyu1j")
 level_name = "lvl_zone_3_fuente_paraiso"
 area_type = 2
-coming_from_up = NodePath("../ComingFromUp")
+coming_from_down = NodePath("../ComingFromUp")
 metadata/_custom_type_script = "uid://crtby7posuy18"
 
 [node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
-position = Vector2(140, 20)
+position = Vector2(140, 26)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_rvb60")]
 position = Vector2(140, 40)
@@ -170,6 +189,59 @@ polygon = PackedVector2Array(120, 140, 120, 117.09378, 160, 117.09378, 160, 140)
 
 [node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
 
+[node name="WC_Kai" parent="NarrativeStuff/Cutscene1" instance=ExtResource("11_oaqdk")]
+position = Vector2(140, 126)
+
+[node name="WC_Ab" parent="NarrativeStuff/Cutscene1" instance=ExtResource("11_oaqdk")]
+position = Vector2(172, 40)
+texture = ExtResource("12_fjcd0")
+character_name = "Ab"
+
+[node name="DialogueArea" parent="NarrativeStuff/Cutscene1" node_paths=PackedStringArray("target") instance=ExtResource("14_acgnb")]
+position = Vector2(140, 26)
+dialogue = ExtResource("14_5kyi3")
+target = NodePath("../WC_Kai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
+position = Vector2(5, 4)
+shape = SubResource("RectangleShape2D_fjcd0")
+
+[node name="CutsceneManager" parent="NarrativeStuff/Cutscene1" instance=ExtResource("16_fjcd0")]
+dialogue = ExtResource("14_5kyi3")
+
+[node name="MoveCamera" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("19_w3qxx")
+target = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="NarrativeStuff/Cutscene1/CutsceneManager/MoveCamera"]
+position = Vector2(140, 170)
+
+[node name="Wait" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("16_1c3lp")
+wait_time = 1.0
+
+[node name="MovePlayer" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("16_7g7nh")
+target = NodePath("Node2D")
+
+[node name="Node2D" type="Node2D" parent="NarrativeStuff/Cutscene1/CutsceneManager/MovePlayer"]
+position = Vector2(100, 80)
+
+[node name="MoveAb" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target", "character")]
+script = ExtResource("17_lfkfw")
+target = NodePath("Marker2D")
+character = NodePath("../../WC_Ab")
+
+[node name="Marker2D" type="Marker2D" parent="NarrativeStuff/Cutscene1/CutsceneManager/MoveAb"]
+position = Vector2(160, 105)
+
+[node name="MoveCamera2" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("19_w3qxx")
+target = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="NarrativeStuff/Cutscene1/CutsceneManager/MoveCamera2"]
+position = Vector2(140, 126)
+
 [node name="Bounds" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Bounds"]
@@ -213,3 +285,41 @@ event_name = "item_fuente_paraiso_vial_picked_up"
 [node name="SimpleDoor" parent="." instance=ExtResource("13_7adku")]
 position = Vector2(285, 110)
 door_type = 1
+
+[node name="NarrativeBlocker" type="Node2D" parent="."]
+position = Vector2(140, 0)
+
+[node name="DialogueArea" parent="NarrativeBlocker" instance=ExtResource("14_acgnb")]
+dialogue = ExtResource("15_oaqdk")
+start_title = "start_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeBlocker/DialogueArea"]
+shape = SubResource("RectangleShape2D_6m1sw")
+
+[node name="CutsceneManager" parent="NarrativeBlocker" instance=ExtResource("16_fjcd0")]
+dialogue = ExtResource("15_oaqdk")
+
+[node name="FadeIn" type="Node" parent="NarrativeBlocker/CutsceneManager"]
+script = ExtResource("17_5kyi3")
+execute = 2
+wait_time = 0.5
+
+[node name="TeleportPlayer" type="Node" parent="NarrativeBlocker/CutsceneManager" node_paths=PackedStringArray("to_position")]
+script = ExtResource("18_7g7nh")
+to_position = NodePath("../../Marker2D")
+execute = 2
+
+[node name="FadeOut" type="Node" parent="NarrativeBlocker/CutsceneManager"]
+script = ExtResource("17_5kyi3")
+fade_type = 1
+execute = 2
+wait_time = 0.5
+
+[node name="Marker2D" type="Marker2D" parent="NarrativeBlocker"]
+position = Vector2(0, 26)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NarrativeBlocker"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeBlocker/StaticBody2D"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_du6w5")

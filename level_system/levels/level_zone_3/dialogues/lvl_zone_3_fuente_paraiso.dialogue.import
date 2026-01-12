@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dd1jhjlasrqw8"
+path="res://.godot/imported/lvl_zone_3_fuente_paraiso.dialogue-cdc34baf8b719db0990f0bc28e62d16d.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_zone_3/dialogues/lvl_zone_3_fuente_paraiso.dialogue"
+dest_files=["res://.godot/imported/lvl_zone_3_fuente_paraiso.dialogue-cdc34baf8b719db0990f0bc28e62d16d.tres"]
+
+[params]
+
+defaults=true

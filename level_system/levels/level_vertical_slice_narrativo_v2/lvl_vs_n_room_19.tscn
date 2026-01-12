@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://u7f76jitttec"]
+[gd_scene load_steps=45 format=4 uid="uid://u7f76jitttec"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_2kusu"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_osj8g"]
@@ -30,7 +30,6 @@
 [ext_resource type="Script" uid="uid://borr7wlp2udux" path="res://dialogue_system/cutscene_system/actions/cuta_toggle_node.gd" id="25_fpi3b"]
 [ext_resource type="AudioStream" uid="uid://b1gfh3nqsa2d4" path="res://assets/SOUNDS/cutscenes/heavy_falling.ogg" id="25_k2fg5"]
 [ext_resource type="Script" uid="uid://txfr2h6xrn3y" path="res://dialogue_system/cutscene_system/actions/cuta_wait.gd" id="28_ragq1"]
-[ext_resource type="Script" uid="uid://b2t6sgcardley" path="res://dialogue_system/cutscene_system/actions/cuta_end_demo.gd" id="29_mn0tu"]
 [ext_resource type="Script" uid="uid://1ue32pbqy0nd" path="res://dialogue_system/cutscene_system/actions/cuta_set_persistent_event.gd" id="29_wft5j"]
 [ext_resource type="Script" uid="uid://cj5j4ybo5t3eq" path="res://persistancy_system/actions/toggle_action.gd" id="31_cguo2"]
 [ext_resource type="Script" uid="uid://bsyg06ko2gtev" path="res://level_system/levels/level_vertical_slice_narrativo_v2/utils/end_demo.gd" id="31_sr3ag"]
@@ -297,13 +296,6 @@ texture = ExtResource("15_8208l")
 character_name = "Ab"
 dialogue = ExtResource("16_n2ebt")
 repeatable = true
-
-[node name="CutsceneManager" parent="NarrativeStuff/Cutscene2" instance=ExtResource("17_a0hnq")]
-dialogue = ExtResource("16_n2ebt")
-
-[node name="EndDemo" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager"]
-script = ExtResource("29_mn0tu")
-execute = 2
 
 [node name="DisableCutscene1" type="Node" parent="NarrativeStuff" node_paths=PackedStringArray("target")]
 script = ExtResource("31_cguo2")

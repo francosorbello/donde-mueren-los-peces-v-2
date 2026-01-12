@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cnl6l4rjeugtj"
+path="res://.godot/imported/lvl_zone_3_room_fuente_paraiso_falling.dialogue-29faf36313d5f5b22a328eb6e30beef9.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_zone_3/dialogues/lvl_zone_3_room_fuente_paraiso_falling.dialogue"
+dest_files=["res://.godot/imported/lvl_zone_3_room_fuente_paraiso_falling.dialogue-29faf36313d5f5b22a328eb6e30beef9.tres"]
+
+[params]
+
+defaults=true

@@ -108,7 +108,7 @@ emission_rect_extents = Vector2(25, 70)
 position = Vector2(140, 215)
 
 [node name="DashLaser" parent="Obstacle1" instance=ExtResource("12_oslpl")]
-position = Vector2(190, 100)
+position = Vector2(80, 100)
 direction = 1
 
 [node name="RoomLever" parent="Obstacle1" instance=ExtResource("13_8fk3t")]

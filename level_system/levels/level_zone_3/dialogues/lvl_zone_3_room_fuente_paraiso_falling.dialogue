@@ -1,0 +1,9 @@
+~ start
+do wait(3)
+Ab: What is going on?
+Kai: The place is crashing down! 
+Kai: We have to get out of here!
+do call_cutscene_event("focus_on_door")
+do wait(2)
+Kai: Lets go!
+=> END

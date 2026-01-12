@@ -3,12 +3,17 @@ class_name DialogueCamera
 
 const SCREEN_CENTER = Vector2(290,270)/2
 
+var random_strenght : float = 1
+var shake_strenght : float = 0
+var shaking : bool = false
+
 var _target : Node2D
 var _dialogue : DialogueResource
 
-
 var _moving_tween : Tween
 var _zooming_tween : Tween
+
+var keep_after_dialogue : bool = false
 
 func _init(target : Node2D, dialogue) -> void:
 	_target = target
@@ -25,6 +30,9 @@ func _ready():
 	)
 
 func _handle_destroy():
+	if keep_after_dialogue:
+		return
+
 	var tween = _tween_to_pos(SCREEN_CENTER)
 	tween.tween_callback(func():
 		queue_free()
@@ -55,3 +63,26 @@ func set_target(new_target):
 
 	_target = new_target
 	_tween_to_pos(_target.global_position)
+
+func _process(_delta: float) -> void:
+	if not shaking:
+		return
+	offset = random_offset()
+	
+func random_offset():
+	return Vector2(
+		randf_range(-shake_strenght,shake_strenght),
+		0,
+		)
+
+func start_shake():
+	shake_strenght = random_strenght
+	shaking = true
+
+func stop_shake():
+	var tween := create_tween()
+	tween.tween_property(self,"shake_strenght",0,1)
+	tween.tween_callback(func():
+		shaking = false
+	)
+

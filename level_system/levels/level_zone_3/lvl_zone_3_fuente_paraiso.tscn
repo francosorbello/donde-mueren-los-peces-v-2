@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://clo6w8s8256lk"]
+[gd_scene load_steps=48 format=4 uid="uid://clo6w8s8256lk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lxbe3"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_et6pn"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://51hmtqrx34px" path="res://inventory_system/items/vial.tres" id="12_7adku"]
 [ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="12_fjcd0"]
 [ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="13_7adku"]
+[ext_resource type="Texture2D" uid="uid://pd3n7mkqhuek" path="res://assets/GRAPHICS/characters/kid1_16x16.png" id="13_n37d2"]
 [ext_resource type="Resource" uid="uid://dd1jhjlasrqw8" path="res://level_system/levels/level_zone_3/dialogues/lvl_zone_3_fuente_paraiso.dialogue" id="14_5kyi3"]
 [ext_resource type="PackedScene" uid="uid://dvfbw7sofbkka" path="res://dialogue_system/dialogue_area.tscn" id="14_acgnb"]
 [ext_resource type="Resource" uid="uid://y2hejtgbod1s" path="res://level_system/levels/level_zone_3/dialogues/narrative_blocker_dialogue.dialogue" id="15_oaqdk"]
@@ -25,6 +26,16 @@
 [ext_resource type="Script" uid="uid://mg41htp632th" path="res://dialogue_system/cutscene_system/actions/cuta_move_wc.gd" id="17_lfkfw"]
 [ext_resource type="Script" uid="uid://csscmsvofh7ig" path="res://dialogue_system/cutscene_system/actions/cuta_teleport_player.gd" id="18_7g7nh"]
 [ext_resource type="Script" uid="uid://bafld8lghvfhm" path="res://dialogue_system/cutscene_system/actions/cuta_focus_on_target.gd" id="19_w3qxx"]
+[ext_resource type="Script" uid="uid://dpmdkrbuqefy2" path="res://level_system/levels/level_zone_3/utils/pickable_item_dialogue.gd" id="20_p5oft"]
+[ext_resource type="Script" uid="uid://borr7wlp2udux" path="res://dialogue_system/cutscene_system/actions/cuta_toggle_node.gd" id="21_6pkve"]
+[ext_resource type="Resource" uid="uid://cnl6l4rjeugtj" path="res://level_system/levels/level_zone_3/dialogues/lvl_zone_3_room_fuente_paraiso_falling.dialogue" id="21_crn44"]
+[ext_resource type="Script" uid="uid://1ue32pbqy0nd" path="res://dialogue_system/cutscene_system/actions/cuta_set_persistent_event.gd" id="22_8kbv2"]
+[ext_resource type="Script" uid="uid://00jdtmmcpsab" path="res://dialogue_system/cutscene_system/actions/cuta_change_music.gd" id="22_mwngu"]
+[ext_resource type="Script" uid="uid://d2pf7dvmruywe" path="res://dialogue_system/cutscene_system/actions/cuta_set_camera_shake.gd" id="27_n37d2"]
+[ext_resource type="Script" uid="uid://bevp7ppbjnc85" path="res://persistancy_system/actions/delete_action.gd" id="29_q2n74"]
+[ext_resource type="Script" uid="uid://bw5nxmfdaatyi" path="res://persistancy_system/actions/call_method_action.gd" id="31_xyvb1"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="32_6pkve"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="33_8kbv2"]
 
 [sub_resource type="Curve2D" id="Curve2D_urug5"]
 bake_interval = 50.0
@@ -32,11 +43,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -100, 200, 0, 0, 0, 0, 390, 200, 0, 0, 0, 0, 390, 340, 0, 0, 0, 0, -100, 340, 0, 0, 0, 0, -100, 200)
 }
 point_count = 5
-
-[sub_resource type="Curve" id="Curve_ttqoy"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0, 2), 0.0, -2.0000002, 0, 1, Vector2(0.99999994, 0), -2.0000002, 0.0, 1, 0]
-point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_iy801"]
 bake_interval = 50.0
@@ -98,7 +104,7 @@ metadata/_custom_type_script = "uid://crtby7posuy18"
 position = Vector2(140, 26)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_rvb60")]
-position = Vector2(140, 40)
+position = Vector2(90, 80)
 
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_p6080")]
 level_info = NodePath("../LevelInfo Stuff/LevelInfo")
@@ -125,21 +131,10 @@ texture = ExtResource("9_iy801")
 polygon = PackedVector2Array(-100, 200, -78.94531, 200, -54.780273, 200, -23.4375, 200, 13.647461, 200, 55.039063, 200, 99.30176, 200, 145, 200, 190.69824, 200, 234.96094, 200, 276.35254, 200, 313.4375, 200, 344.78027, 200, 368.9453, 200, 390, 200, 390, 221.875, 390, 270, 390, 318.125, 390, 340, 368.9453, 340, 344.78027, 340, 313.4375, 340, 276.35254, 340, 234.96094, 340, 190.69824, 340, 145, 340, 99.30176, 340, 55.039063, 340, 13.647461, 340, -23.4375, 340, -54.780273, 340, -78.94531, 340, -100, 340, -100, 318.125, -100, 270, -100, 221.875, -100, 200)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles524" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_ndtf5")]
+[node name="DeathZoneParticles524" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_ndtf5")]
 position = Vector2(145, 270)
 amount = 40
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(255, 80)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
-scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="BetterDeathZone2" parent="Obstacle1" instance=ExtResource("7_ibjsb")]
 curve = SubResource("Curve2D_iy801")
@@ -157,21 +152,9 @@ texture = ExtResource("9_iy801")
 polygon = PackedVector2Array(150, 170, 170, 170, 170, 190, 180, 190, 180, 200, 140, 200, 100, 200, 100, 190, 110, 190, 110, 170, 130, 170, 150, 170)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles470" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_ndtf5")]
+[node name="DeathZoneParticles470" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_ndtf5")]
 position = Vector2(145, 185)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(45, 25)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
-scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="BetterDeathZone3" parent="Obstacle1" instance=ExtResource("7_ibjsb")]
 position = Vector2(0, 30)
@@ -189,18 +172,19 @@ polygon = PackedVector2Array(120, 140, 120, 117.09378, 160, 117.09378, 160, 140)
 
 [node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
 
-[node name="WC_Kai" parent="NarrativeStuff/Cutscene1" instance=ExtResource("11_oaqdk")]
-position = Vector2(140, 126)
-
 [node name="WC_Ab" parent="NarrativeStuff/Cutscene1" instance=ExtResource("11_oaqdk")]
 position = Vector2(172, 40)
 texture = ExtResource("12_fjcd0")
 character_name = "Ab"
 
+[node name="KaiSPrite" type="Sprite2D" parent="NarrativeStuff/Cutscene1"]
+position = Vector2(140, 126)
+texture = ExtResource("13_n37d2")
+
 [node name="DialogueArea" parent="NarrativeStuff/Cutscene1" node_paths=PackedStringArray("target") instance=ExtResource("14_acgnb")]
 position = Vector2(140, 26)
 dialogue = ExtResource("14_5kyi3")
-target = NodePath("../WC_Kai")
+target = NodePath("../CutsceneManager/MoveCamera/Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
 position = Vector2(5, 4)
@@ -241,6 +225,99 @@ target = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="NarrativeStuff/Cutscene1/CutsceneManager/MoveCamera2"]
 position = Vector2(140, 126)
+
+[node name="FadeIn" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("17_5kyi3")
+execute = 2
+wait_time = 0.5
+
+[node name="ToggleCutscene3" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("21_6pkve")
+target = NodePath("../../../Cutscene3")
+execute = 2
+
+[node name="FadeOut" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("17_5kyi3")
+fade_type = 1
+execute = 2
+
+[node name="SetEvent" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("22_8kbv2")
+event_to_set = "fuente_paraiso_dialogue_finished"
+execute = 2
+
+[node name="Cutscene2" type="Node2D" parent="NarrativeStuff"]
+
+[node name="PickableItemDialogue" type="Node" parent="NarrativeStuff/Cutscene2" node_paths=PackedStringArray("pickable_item", "target")]
+script = ExtResource("20_p5oft")
+dialogue = ExtResource("21_crn44")
+pickable_item = NodePath("../../../PickableItem")
+target = NodePath("DoorPosition")
+
+[node name="DoorPosition" type="Node2D" parent="NarrativeStuff/Cutscene2/PickableItemDialogue"]
+position = Vector2(144, 135)
+
+[node name="CutsceneManager" parent="NarrativeStuff/Cutscene2" instance=ExtResource("16_fjcd0")]
+dialogue = ExtResource("21_crn44")
+
+[node name="StopMusic" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager"]
+script = ExtResource("22_mwngu")
+change_type = 1
+
+[node name="Wait" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager"]
+script = ExtResource("16_1c3lp")
+wait_time = 2.0
+
+[node name="AddShakingCamera" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager"]
+script = ExtResource("27_n37d2")
+keep_after_dialogue = true
+
+[node name="FocusOnDoor" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("19_w3qxx")
+target = NodePath("Node2D")
+execute = 1
+event_name = "focus_on_door"
+wait_time = 0.5
+
+[node name="Node2D" type="Node2D" parent="NarrativeStuff/Cutscene2/CutsceneManager/FocusOnDoor"]
+position = Vector2(285, 110)
+
+[node name="OpenDoor" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager"]
+script = ExtResource("22_8kbv2")
+event_to_set = "fuente_paraiso_door_opened"
+execute = 1
+event_name = "focus_on_door"
+
+[node name="FocusOnCenter" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("19_w3qxx")
+target = NodePath("../../PickableItemDialogue/DoorPosition")
+execute = 2
+
+[node name="Cutscene3" type="Node2D" parent="NarrativeStuff"]
+process_mode = 4
+visible = false
+
+[node name="WC_Kai" parent="NarrativeStuff/Cutscene3" instance=ExtResource("11_oaqdk")]
+position = Vector2(172, 126)
+
+[node name="WC_Ab" parent="NarrativeStuff/Cutscene3" instance=ExtResource("11_oaqdk")]
+position = Vector2(110, 126)
+texture = ExtResource("12_fjcd0")
+character_name = "Ab"
+
+[node name="DeleteCutscene1" type="Node" parent="NarrativeStuff" node_paths=PackedStringArray("target")]
+script = ExtResource("29_q2n74")
+target = NodePath("../Cutscene1")
+metadata/_custom_type_script = "uid://bevp7ppbjnc85"
+
+[node name="PersistentEventEvaluator" type="Node" parent="NarrativeStuff/DeleteCutscene1"]
+script = ExtResource("32_6pkve")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="NarrativeStuff/DeleteCutscene1/PersistentEventEvaluator"]
+script = ExtResource("33_8kbv2")
+event_name = "fuente_paraiso_dialogue_finished"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
 
 [node name="Bounds" type="Node2D" parent="."]
 
@@ -323,3 +400,18 @@ position = Vector2(0, 26)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeBlocker/StaticBody2D"]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_du6w5")
+
+[node name="ToggleAction" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("31_xyvb1")
+target = NodePath("../SimpleDoor")
+method_name = &"do_toggle"
+metadata/_custom_type_script = "uid://cj5j4ybo5t3eq"
+
+[node name="PersistentEventEvaluator" type="Node" parent="ToggleAction"]
+script = ExtResource("32_6pkve")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="ToggleAction/PersistentEventEvaluator"]
+script = ExtResource("33_8kbv2")
+event_name = "fuente_paraiso_door_opened"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"

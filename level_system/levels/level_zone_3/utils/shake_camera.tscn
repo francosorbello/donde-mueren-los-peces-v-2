@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkdisy01m421g"]
+
+[ext_resource type="Script" uid="uid://bm6vt4ktevbxt" path="res://level_system/levels/level_zone_3/utils/shake_camera.gd" id="1_o0pn7"]
+
+[node name="ShakeCamera" type="Camera2D" groups=["DialogueCamera"]]
+limit_left = -10
+limit_top = -10
+limit_right = 298
+limit_bottom = 280
+script = ExtResource("1_o0pn7")
+random_strenght = 1.0

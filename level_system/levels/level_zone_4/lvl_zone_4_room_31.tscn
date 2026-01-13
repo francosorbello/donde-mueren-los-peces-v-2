@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://kgmf57uqaeot"]
+[gd_scene load_steps=20 format=4 uid="uid://kgmf57uqaeot"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_fuyv0"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_iokbt"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bvyk8wnkh1xb0" path="res://laser/dash_laser.tscn" id="12_8jmpj"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="12_kcd5c"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="14_pjm8x"]
+[ext_resource type="PackedScene" uid="uid://bh1flwoqyofjh" path="res://level_system/levels/level_zone_3/utils/narrative_blocker_zone_4.tscn" id="15_2uee6"]
 
 [sub_resource type="Curve2D" id="Curve2D_pjm8x"]
 bake_interval = 50.0
@@ -182,3 +183,6 @@ direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
 shape = SubResource("RectangleShape2D_pjm8x")
+
+[node name="NarrativeBlockerZone4" parent="." instance=ExtResource("15_2uee6")]
+position = Vector2(0, 30)

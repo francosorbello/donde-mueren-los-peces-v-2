@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cs8oqpmlu387m"]
+[gd_scene load_steps=18 format=4 uid="uid://cs8oqpmlu387m"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_evub1"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_12l3x"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_8eqmo"]
 [ext_resource type="PackedScene" uid="uid://da01bxc51tnxl" path="res://bubble_recharger/bubble_recharger.tscn" id="11_uf6c4"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="13_wp6ti"]
+[ext_resource type="PackedScene" uid="uid://bh1flwoqyofjh" path="res://level_system/levels/level_zone_3/utils/narrative_blocker_zone_4.tscn" id="14_8eqmo"]
 
 [sub_resource type="Curve2D" id="Curve2D_xih1u"]
 bake_interval = 50.0
@@ -35,6 +36,9 @@ metadata/_edit_lock_ = true
 
 [node name="Layout" parent="." instance=ExtResource("2_12l3x")]
 tile_map_data = PackedByteArray("AAAAAAkAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAABAAkAAwAFAAUAAAACAAkAAwAFAAUAAAADAAkAAwAFAAUAAAAEAAkAAwAFAAUAAAAFAAkAAwAFAAUAAAAGAAkAAwAFAAUAAAAHAAkAAwAFAAUAAAAIAAkAAwAFAAUAAAAJAAkAAwAFAAUAAAAKAAkAAwAFAAUAAAALAAkAAwAFAAUAAAAMAAkAAwAFAAUAAAANAAkAAwAFAAUAAAAOAAkAAwAFAAUAAAAPAAkAAwAFAAUAAAAQAAkAAwAFAAUAAAARAAkAAwAFAAUAAAASAAkAAwAFAAUAAAATAAkAAwAFAAUAAAAUAAkAAwAFAAUAAAAVAAkAAwAFAAUAAAAWAAkAAwAFAAUAAAAXAAkAAwAFAAUAAAAYAAkAAwAFAAUAAAAZAAkAAwAFAAUAAAAaAAkAAwAFAAUAAAAbAAkAAwAFAAUAAAABAA4AAwAFAAUAAAACAA4AAwAFAAUAAAADAA4AAwAFAAUAAAAEAA4AAwAFAAUAAAAFAA4AAwAFAAUAAAAGAA4AAwAFAAUAAAAHAA4AAwAFAAUAAAAIAA4AAwAFAAUAAAAJAA4AAwAFAAUAAAAKAA4AAwAFAAUAAAALAA4AAwAFAAUAAAAMAA4AAwAFAAUAAAANAA4AAwAFAAUAAAAOAA4AAwAFAAUAAAAPAA4AAwAFAAUAAAAQAA4AAwAFAAUAAAARAA4AAwAFAAUAAAASAA4AAwAFAAUAAAATAA4AAwAFAAUAAAAUAA4AAwAFAAUAAAAVAA4AAwAFAAUAAAAWAA4AAwAFAAUAAAAXAA4AAwAFAAUAAAAYAA4AAwAFAAUAAAAZAA4AAwAFAAUAAAAaAA4AAwAFAAUAAAAbAA4AAwAFAAUAAAA=")
+
+[node name="Visuals" parent="." instance=ExtResource("2_12l3x")]
+tile_map_data = PackedByteArray("AAAAAAsAAwAZAAwAAAAAAAwAAwAZAAsAAAABAAsAAwAZAAwAAAABAAwAAwAZAA0AAAACAAsAAwAZAA0AAAACAAwAAwAZAAwAAAADAAsAAwAZAA0AAAADAAwAAwAZAA0AAAAEAAsAAwAZAAwAAAAEAAwAAwAZAA0AAAAFAAsAAwAZAAwAAAAFAAwAAwAZAAwAAAAXAAsAAwAZAAsAAAAXAAwAAwAZAAsAAAAYAAsAAwAZAAwAAAAYAAwAAwAZAAwAAAAZAAsAAwAZAAsAAAAZAAwAAwAZAAwAAAAaAAsAAwAZAA0AAAAaAAwAAwAZAAsAAAAbAAsAAwAZAAwAAAAbAAwAAwAZAAsAAAAcAAsAAwAZAA0AAAAcAAwAAwAZAAsAAAA=")
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
@@ -74,21 +78,10 @@ texture = ExtResource("9_wp6ti")
 polygon = PackedVector2Array(60, 100, 86.5625, 100, 113.78906, 100, 145, 100, 176.21094, 100, 203.4375, 100, 229.94633, 100.00001, 229.95235, 140, 203.4375, 140, 176.21094, 140, 145, 140, 113.78906, 140, 86.5625, 140, 60, 140)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles24" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_8eqmo")]
+[node name="DeathZoneParticles24" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_8eqmo")]
 position = Vector2(144.97617, 120)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(94.97617, 30)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="BubbleRecharger" parent="Obstacle1" instance=ExtResource("11_uf6c4")]
 position = Vector2(145, 120)
@@ -109,3 +102,6 @@ direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
 shape = SubResource("RectangleShape2D_wp6ti")
+
+[node name="NarrativeBlocker" parent="." instance=ExtResource("14_8eqmo")]
+position = Vector2(0, 120)

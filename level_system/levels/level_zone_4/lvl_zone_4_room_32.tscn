@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dcbdlicdy6npk"]
+[gd_scene load_steps=15 format=4 uid="uid://dcbdlicdy6npk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lqwbi"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_tvx5y"]
@@ -11,13 +11,19 @@
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_r0jj7"]
 [ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_88u1o"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="11_rugin"]
+[ext_resource type="PackedScene" uid="uid://bh1flwoqyofjh" path="res://level_system/levels/level_zone_3/utils/narrative_blocker_zone_4.tscn" id="12_r0jj7"]
 
 [sub_resource type="Curve2D" id="Curve2D_jowu0"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 40, 110, 0, 0, 0, 0, 170, 110, 0, 0, 0, 0, 170, 270, 0, 0, 0, 0, 130, 270, 0, 0, 0, 0, 130, 150, 0, 0, 0, 0, 40, 150, 0, 0, 0, 0, 40, 110)
+"points": PackedVector2Array(0, 0, 0, 0, 50, 110, 0, 0, 0, 0, 170, 110, 0, 0, 0, 0, 170, 270, 0, 0, 0, 0, 130, 270, 0, 0, 0, 0, 130, 150, 0, 0, 0, 0, 50, 150, 0, 0, 0, 0, 50, 110)
 }
 point_count = 7
+
+[sub_resource type="Curve" id="Curve_ttqoy"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, -2.0000002, 0, 1, Vector2(0.99999994, 0), -2.0000002, 0.0, 1, 0]
+point_count = 2
 
 [node name="lvl_zone_4_room_32" type="Node2D"]
 
@@ -52,26 +58,33 @@ level_name = "lvl_zone_4_room_32"
 curve = SubResource("Curve2D_jowu0")
 creation_strategy = 1
 
-[node name="@Area2D@823351" type="Area2D" parent="Obstacle1/BetterDeathZone2"]
+[node name="@Area2D@879162" type="Area2D" parent="Obstacle1/BetterDeathZone2"]
 collision_layer = 32
 
-[node name="@CollisionPolygon2D@823350" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone2/@Area2D@823351"]
-polygon = PackedVector2Array(40, 110, 60.3125, 110, 105, 110, 149.6875, 110, 170, 110, 170, 135, 170, 160.625, 170, 190, 170, 219.375, 170, 245, 170, 270, 130, 270, 130, 251.25, 130, 210, 130, 168.75, 130, 150, 85, 150, 40, 150, 40, 110)
+[node name="@CollisionPolygon2D@879161" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone2/@Area2D@879162"]
+polygon = PackedVector2Array(50, 110, 68.75, 110, 110, 110, 151.25, 110, 170, 110, 170, 135, 170, 160.625, 170, 190, 170, 219.375, 170, 245, 170, 270, 130, 270, 130, 251.25, 130, 210, 130, 168.75, 130, 150, 90, 150, 50, 150, 50, 110)
 
-[node name="@Polygon2D@823352" type="Polygon2D" parent="Obstacle1/BetterDeathZone2"]
+[node name="@Polygon2D@879163" type="Polygon2D" parent="Obstacle1/BetterDeathZone2"]
 material = ExtResource("8_rugin")
 texture = ExtResource("9_r0jj7")
-polygon = PackedVector2Array(40, 110, 60.3125, 110, 105, 110, 149.6875, 110, 170, 110, 170, 135, 170, 160.625, 170, 190, 170, 219.375, 170, 245, 170, 270, 130, 270, 130, 251.25, 130, 210, 130, 168.75, 130, 150, 85, 150, 40, 150, 40, 110)
+polygon = PackedVector2Array(50, 110, 68.75, 110, 110, 110, 151.25, 110, 170, 110, 170, 135, 170, 160.625, 170, 190, 170, 219.375, 170, 245, 170, 270, 130, 270, 130, 251.25, 130, 210, 130, 168.75, 130, 150, 90, 150, 50, 150, 50, 110)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles791" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_88u1o")]
-position = Vector2(150, 190)
-emission_rect_extents = Vector2(25, 90)
-
-[node name="DeathZoneParticles792" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_88u1o")]
-position = Vector2(105, 130)
-rotation = 1.5707964
-emission_rect_extents = Vector2(25, 68.465)
+[node name="DeathZoneParticles267" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_88u1o")]
+position = Vector2(110, 190)
+amount = 20
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(70, 90)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_ttqoy")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="PlatformSmall" parent="Obstacle1" instance=ExtResource("11_rugin")]
 position = Vector2(60, 130)
@@ -111,3 +124,6 @@ time_between_broken_states = 0.5
 [node name="NarrativeStuff" type="Node2D" parent="."]
 
 [node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
+
+[node name="NarrativeBlockerZone4" parent="." instance=ExtResource("12_r0jj7")]
+position = Vector2(0, 130)

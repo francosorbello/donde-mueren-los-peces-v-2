@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://8namn44bwwys"]
+[gd_scene load_steps=26 format=4 uid="uid://8namn44bwwys"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_g8ts5"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_283ps"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://cj5j4ybo5t3eq" path="res://persistancy_system/actions/toggle_action.gd" id="17_s01ag"]
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="18_xcqcj"]
 [ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="19_hg430"]
+[ext_resource type="PackedScene" uid="uid://bh1flwoqyofjh" path="res://level_system/levels/level_zone_3/utils/narrative_blocker_zone_4.tscn" id="20_wxhex"]
 
 [sub_resource type="Curve2D" id="Curve2D_lpdks"]
 bake_interval = 50.0
@@ -194,3 +195,14 @@ metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 script = ExtResource("19_hg430")
 event_name = "room_28_door_opened"
 metadata/_custom_type_script = "uid://davfd8xpi1i3t"
+
+[node name="NarrativeBlockerZone4" parent="." instance=ExtResource("20_wxhex")]
+position = Vector2(30, 0)
+
+[node name="Marker2D" parent="NarrativeBlockerZone4" index="2"]
+position = Vector2(0, 30)
+
+[node name="StaticBody2D" parent="NarrativeBlockerZone4" index="3"]
+position = Vector2(10, -10)
+
+[editable path="NarrativeBlockerZone4"]

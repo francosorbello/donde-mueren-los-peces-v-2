@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dvuriq4l0qf1v"
+path="res://.godot/imported/narrative_blocker_zone_4.dialogue-30d1d25ba02a35c4acc0a1b77f27eaac.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_zone_4/dialogues/narrative_blocker_zone_4.dialogue"
+dest_files=["res://.godot/imported/narrative_blocker_zone_4.dialogue-30d1d25ba02a35c4acc0a1b77f27eaac.tres"]
+
+[params]
+
+defaults=true

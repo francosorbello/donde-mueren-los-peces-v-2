@@ -6,6 +6,7 @@ enum DetectionStatus {
     ON_PLATFORM,
     FALLING,
     ON_UNSAFE_FLOOR,
+    ON_CHECKPOINT
 }
 
 signal floor_status_changed(new_status : DetectionStatus)
@@ -34,5 +35,8 @@ func update_status():
             break
         elif area.get_parent() and (area.get_parent() is DeathZone or area.get_parent() is BetterDeathZone):
             new_status = DetectionStatus.FALLING
+        elif area is CheckpointArea:
+            new_status = DetectionStatus.ON_CHECKPOINT
+            break
 
     current_status = new_status

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://doj4apoo7b2va"]
+
+[ext_resource type="Script" uid="uid://by4mbqma00ed6" path="res://player/floor_detection/checkpoint_area.gd" id="1_von7v"]
+
+[node name="CheckpointArea" type="Area2D"]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_von7v")

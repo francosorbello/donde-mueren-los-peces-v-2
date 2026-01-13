@@ -107,7 +107,7 @@ func state_unhandled_input(event : InputEvent):
 func physics_update(delta: float):
     _accoumulated_sample_time += delta
     
-    var direction = Input.get_vector("move_left","move_right","move_up","move_down")
+    var direction = player.get_movement_direction()
     
     if player.extra_velocity:
         player.velocity = player.extra_velocity

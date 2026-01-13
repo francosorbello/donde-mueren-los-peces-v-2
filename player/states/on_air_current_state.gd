@@ -35,7 +35,7 @@ func physics_update(delta: float):
 	if not path_to_follow: 
 		return
 	
-	var direction = Input.get_vector("move_left","move_right","move_down","move_up",1)
+	var direction = player.get_movement_direction() 
 	path_to_follow.offset_by(direction.normalized())
 	# var dir_x = Input.get_axis("move_left","move_right")
 

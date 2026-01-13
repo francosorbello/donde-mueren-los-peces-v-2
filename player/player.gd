@@ -23,6 +23,8 @@ var _start_pos
 
 var extra_velocity : Vector2
 
+var can_move : bool = true
+
 @onready var follow_target : Node2D = $FollowTarget
 
 func _ready():
@@ -44,6 +46,10 @@ func _ready():
 	)
 	Console.add_command("print_player_state", func():
 		Console.print_info($StateMachine.current_state.name)
+	)
+
+	GlobalSignal.game_pause_toggled.connect(func(is_paused):
+		can_move = not is_paused
 	)
 
 # func _physics_process(_delta):
@@ -183,3 +189,8 @@ func enable_controls():
 
 func disable_controls():
 	$StateMachine.transition_to("EmptyState")
+
+func get_movement_direction() ->Vector2:
+	if not can_move:
+		return Vector2.ZERO
+	return Input.get_vector("move_left","move_right","move_up","move_down")

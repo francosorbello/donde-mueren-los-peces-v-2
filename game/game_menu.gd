@@ -9,11 +9,15 @@ func _ready():
         _original_volume = music.volume_db
 
 func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed("ui_cancel"):
+    if event.is_action_pressed("pause"):
         toggle_ui()
+
+    if visible:
+        get_viewport().set_input_as_handled()
 
 func toggle_ui():
     visible = not visible
+    GlobalSignal.game_pause_toggled.emit(visible)
     if music:
         var new_volume = _original_volume
         if visible:

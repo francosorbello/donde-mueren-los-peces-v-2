@@ -14,6 +14,8 @@ signal temp_event_set(ev : PersistentEvent)
 signal temp_event_removed(event_name : String)
 signal on_dialogue_event(event_name : String)
 
+signal game_pause_toggled(is_paused : bool)
+
 ## Player
 signal jump_started()
 signal jump_finished()

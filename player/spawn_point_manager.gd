@@ -28,7 +28,7 @@ func _on_switched_states(_from : String, to : String):
 func _on_refresh_position_timer_timeout():
 	if floor_detector.current_status == FloorDetector.DetectionStatus.ON_FLOOR:# or floor_detector.current_status == FloorDetector.DetectionStatus.ON_CHECKPOINT:
 		last_safe_position = player.global_position
-		print("Last safe position: ",last_safe_position)
+		# print("Last safe position: ",last_safe_position)
 
 func _on_floor_status_change(status : FloorDetector.DetectionStatus):
 	if status == FloorDetector.DetectionStatus.FALLING:

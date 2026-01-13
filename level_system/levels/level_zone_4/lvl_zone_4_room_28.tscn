@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://8namn44bwwys"]
+[gd_scene load_steps=25 format=4 uid="uid://8namn44bwwys"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_g8ts5"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_283ps"]
@@ -15,6 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="12_n3c20"]
 [ext_resource type="Resource" uid="uid://cbhguc8hehppk" path="res://level_system/levels/level_zone_4/items/lvl_zone_4_room_28_key.tres" id="13_1uuqd"]
 [ext_resource type="PackedScene" uid="uid://v7vcp08dge6v" path="res://doors/key_door.tscn" id="14_lpdks"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="16_qhut7"]
+[ext_resource type="Script" uid="uid://cj5j4ybo5t3eq" path="res://persistancy_system/actions/toggle_action.gd" id="17_s01ag"]
+[ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="18_xcqcj"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="19_hg430"]
 
 [sub_resource type="Curve2D" id="Curve2D_lpdks"]
 bake_interval = 50.0
@@ -41,6 +45,8 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 260, 50, 0, 0, 0, 0, 260, 190)
 }
 point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhut7"]
 
 [node name="lvl_zone_4_room_28" type="Node2D"]
 
@@ -88,21 +94,10 @@ texture = ExtResource("9_4w4e6")
 polygon = PackedVector2Array(50, 60, 50, 86.5625, 50, 113.78906, 50, 145, 50, 176.21094, 50, 203.4375, 50, 229.95009, 10.000002, 229.9486, 10, 203.4375, 10, 176.21094, 10, 145, 10, 113.78906, 10, 86.5625, 10, 60)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles153" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_1uuqd")]
+[node name="DeathZoneParticles153" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_1uuqd")]
 position = Vector2(30, 144.97504)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(30, 94.975044)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="BetterDeathZone2" parent="Obstacle1" instance=ExtResource("7_qkgu1")]
 curve = SubResource("Curve2D_4w4e6")
@@ -121,21 +116,10 @@ texture = ExtResource("9_4w4e6")
 polygon = PackedVector2Array(50, 190, 78.125, 190, 106.953125, 190, 140, 190, 173.04688, 190, 201.875, 190, 229.94637, 190, 229.94637, 230, 201.875, 230, 173.04688, 230, 140, 230, 106.953125, 230, 78.125, 230, 50, 230)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles620" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_1uuqd")]
+[node name="DeathZoneParticles620" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_1uuqd")]
 position = Vector2(139.97318, 210)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(99.97318, 30)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="BubbleRecharger" parent="Obstacle1" instance=ExtResource("11_st354")]
 position = Vector2(30, 120)
@@ -170,21 +154,10 @@ texture = ExtResource("9_4w4e6")
 polygon = PackedVector2Array(280, 50, 280, 71.875, 280, 120, 280, 168.125, 280, 189.9583, 240, 189.9583, 240, 168.125, 240, 120, 240, 71.875, 240, 50)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles54" type="CPUParticles2D" parent="Obstacle2/BetterDeathZone" instance=ExtResource("10_1uuqd")]
+[node name="DeathZoneParticles54" parent="Obstacle2/BetterDeathZone" instance=ExtResource("10_1uuqd")]
 position = Vector2(260, 119.97915)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(30, 79.97915)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="PlatformSmall" parent="Obstacle2" instance=ExtResource("12_n3c20")]
 position = Vector2(250, 70)
@@ -198,3 +171,26 @@ event_name = "item_level_28_key_picked_up"
 [node name="KeyDoor" parent="Obstacle2" instance=ExtResource("14_lpdks")]
 position = Vector2(250, 265)
 door_opened_event = "room_28_door_opened"
+
+[node name="LevelTransitionArea" parent="." instance=ExtResource("16_qhut7")]
+position = Vector2(250, 270)
+monitoring = false
+monitorable = false
+next_level_id = "lvl_zone_4_room_29"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
+shape = SubResource("RectangleShape2D_qhut7")
+
+[node name="ToggleAction" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("17_s01ag")
+target = NodePath("../LevelTransitionArea")
+metadata/_custom_type_script = "uid://cj5j4ybo5t3eq"
+
+[node name="PersistentEventEvaluator" type="Node" parent="ToggleAction"]
+script = ExtResource("18_xcqcj")
+metadata/_custom_type_script = "uid://d11ymn4s33jgm"
+
+[node name="BoolPersistentEventConditional" type="Node" parent="ToggleAction/PersistentEventEvaluator"]
+script = ExtResource("19_hg430")
+event_name = "room_28_door_opened"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"

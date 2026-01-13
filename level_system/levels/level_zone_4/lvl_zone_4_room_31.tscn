@@ -1,0 +1,184 @@
+[gd_scene load_steps=19 format=4 uid="uid://kgmf57uqaeot"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_fuyv0"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_iokbt"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_os421"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_2mqbv"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_lavnv"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_784wc"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="7_2ph1y"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="8_esvq6"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_8jmpj"]
+[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_kcd5c"]
+[ext_resource type="PackedScene" uid="uid://da01bxc51tnxl" path="res://bubble_recharger/bubble_recharger.tscn" id="11_esvq6"]
+[ext_resource type="PackedScene" uid="uid://bvyk8wnkh1xb0" path="res://laser/dash_laser.tscn" id="12_8jmpj"]
+[ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="12_kcd5c"]
+[ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="14_pjm8x"]
+
+[sub_resource type="Curve2D" id="Curve2D_pjm8x"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 60, 30, 0, 0, 0, 0, 230, 30)
+}
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ttqoy"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, -2.0000002, 0, 1, Vector2(0.99999994, 0), -2.0000002, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_8jmpj"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 60, 30, 0, 0, 0, 0, 230, 30)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjm8x"]
+
+[node name="lvl_zone_4_room_31" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_fuyv0")]
+metadata/_edit_lock_ = true
+
+[node name="Layout" parent="." instance=ExtResource("2_iokbt")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAcAAwAFAAUAAAAcAAYAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAcAAIAAwAFAAUAAAAcAAEAAwAFAAUAAAAcAAAAAwAFAAUAAAAbAAAAAwAFAAUAAAAaAAAAAwAFAAUAAAAZAAAAAwAFAAUAAAAYAAAAAwAFAAUAAAAXAAAAAwAFAAUAAAAWAAAAAwAFAAUAAAAVAAAAAwAFAAUAAAAUAAAAAwAFAAUAAAATAAAAAwAFAAUAAAASAAAAAwAFAAUAAAARAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAOAAAAAwAFAAUAAAANAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAAJAAAAAwAFAAUAAAAIAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAGAAAAAwAFAAUAAAAFAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAADAAAAAwAFAAUAAAACAAAAAwAFAAUAAAABAAAAAwAFAAUAAAABAAUAAwAFAAUAAAACAAUAAwAFAAUAAAADAAUAAwAFAAUAAAAEAAUAAwAFAAUAAAAFAAUAAwAFAAUAAAAGAAUAAwAFAAUAAAAHAAUAAwAFAAUAAAAIAAUAAwAFAAUAAAAJAAUAAwAFAAUAAAAKAAUAAwAFAAUAAAALAAUAAwAFAAUAAAAMAAUAAwAFAAUAAAANAAUAAwAFAAUAAAAOAAUAAwAFAAUAAAAPAAUAAwAFAAUAAAAQAAUAAwAFAAUAAAARAAUAAwAFAAUAAAASAAUAAwAFAAUAAAATAAUAAwAFAAUAAAAUAAUAAwAFAAUAAAAVAAUAAwAFAAUAAAAWAAUAAwAFAAUAAAAXAAUAAwAFAAUAAAAGAAoAAwAFAAUAAAAHAAoAAwAFAAUAAAAIAAoAAwAFAAUAAAAJAAoAAwAFAAUAAAAKAAoAAwAFAAUAAAALAAoAAwAFAAUAAAAMAAoAAwAFAAUAAAANAAoAAwAFAAUAAAAOAAoAAwAFAAUAAAAPAAoAAwAFAAUAAAAQAAoAAwAFAAUAAAARAAoAAwAFAAUAAAASAAoAAwAFAAUAAAATAAoAAwAFAAUAAAAUAAoAAwAFAAUAAAAVAAoAAwAFAAUAAAAWAAoAAwAFAAUAAAAXAAoAAwAFAAUAAAAYAAoAAwAFAAUAAAAZAAoAAwAFAAUAAAAaAAoAAwAFAAUAAAAbAAoAAwAFAAUAAAABAA8AAwAFAAUAAAACAA8AAwAFAAUAAAADAA8AAwAFAAUAAAAEAA8AAwAFAAUAAAAFAA8AAwAFAAUAAAAGAA8AAwAFAAUAAAAHAA8AAwAFAAUAAAAIAA8AAwAFAAUAAAAJAA8AAwAFAAUAAAAKAA8AAwAFAAUAAAALAA8AAwAFAAUAAAAMAA8AAwAFAAUAAAANAA8AAwAFAAUAAAAOAA8AAwAFAAUAAAAPAA8AAwAFAAUAAAAQAA8AAwAFAAUAAAARAA8AAwAFAAUAAAASAA8AAwAFAAUAAAATAA8AAwAFAAUAAAAUAA8AAwAFAAUAAAAVAA8AAwAFAAUAAAAWAA8AAwAFAAUAAAAXAA8AAwAFAAUAAAAYAA8AAwAFAAUAAAAZAA8AAwAFAAUAAAAaAA8AAwAFAAUAAAAbAA8AAwAFAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_os421")
+level_name = "lvl_zone_4_room_31"
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_2mqbv")]
+position = Vector2(30, 30)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_lavnv")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_784wc")]
+level_name = "lvl_zone_4_room_31"
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="BetterDeathZone" parent="Obstacle1" instance=ExtResource("7_2ph1y")]
+curve = SubResource("Curve2D_pjm8x")
+width = 40.0
+end_sample_point = 0.99
+
+[node name="@Area2D@806649" type="Area2D" parent="Obstacle1/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@806648" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone/@Area2D@806649"]
+polygon = PackedVector2Array(60, 10, 86.5625, 10, 113.78906, 10, 145, 10, 176.21094, 10, 203.4375, 10, 229.9486, 10.000002, 229.95009, 50, 203.4375, 50, 176.21094, 50, 145, 50, 113.78906, 50, 86.5625, 50, 60, 50)
+
+[node name="@Polygon2D@806650" type="Polygon2D" parent="Obstacle1/BetterDeathZone"]
+material = ExtResource("8_esvq6")
+texture = ExtResource("9_8jmpj")
+polygon = PackedVector2Array(60, 10, 86.5625, 10, 113.78906, 10, 145, 10, 176.21094, 10, 203.4375, 10, 229.9486, 10.000002, 229.95009, 50, 203.4375, 50, 176.21094, 50, 145, 50, 113.78906, 50, 86.5625, 50, 60, 50)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles875" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_kcd5c")]
+position = Vector2(144.97504, 30)
+emission_rect_extents = Vector2(94.975044, 30)
+scale_amount_curve = SubResource("Curve_ttqoy")
+
+[node name="DashLaser" parent="Obstacle1" instance=ExtResource("12_8jmpj")]
+position = Vector2(100, 10)
+direction = 1
+
+[node name="DashLaser2" parent="Obstacle1" instance=ExtResource("12_8jmpj")]
+position = Vector2(180, 10)
+direction = 1
+
+[node name="PlatformSmall" parent="Obstacle1" instance=ExtResource("12_kcd5c")]
+position = Vector2(145, 30)
+
+[node name="Obstacle2" type="Node2D" parent="."]
+
+[node name="BetterDeathZone2" parent="Obstacle2" instance=ExtResource("7_2ph1y")]
+position = Vector2(0, 50)
+curve = SubResource("Curve2D_8jmpj")
+width = 40.0
+end_sample_point = 0.99
+
+[node name="_Area2D_806649" type="Area2D" parent="Obstacle2/BetterDeathZone2"]
+collision_layer = 32
+
+[node name="_CollisionPolygon2D_806648" type="CollisionPolygon2D" parent="Obstacle2/BetterDeathZone2/_Area2D_806649"]
+polygon = PackedVector2Array(60, 10, 86.5625, 10, 113.78906, 10, 145, 10, 176.21094, 10, 203.4375, 10, 229.9486, 10.000002, 229.95009, 50, 203.4375, 50, 176.21094, 50, 145, 50, 113.78906, 50, 86.5625, 50, 60, 50)
+
+[node name="_Polygon2D_806650" type="Polygon2D" parent="Obstacle2/BetterDeathZone2"]
+material = ExtResource("8_esvq6")
+texture = ExtResource("9_8jmpj")
+polygon = PackedVector2Array(60, 10, 86.5625, 10, 113.78906, 10, 145, 10, 176.21094, 10, 203.4375, 10, 229.9486, 10.000002, 229.95009, 50, 203.4375, 50, 176.21094, 50, 145, 50, 113.78906, 50, 86.5625, 50, 60, 50)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles875" parent="Obstacle2/BetterDeathZone2" instance=ExtResource("10_kcd5c")]
+position = Vector2(144.97504, 30)
+emission_rect_extents = Vector2(94.975044, 30)
+
+[node name="DashLaser3" parent="Obstacle2" instance=ExtResource("12_8jmpj")]
+position = Vector2(100, 62)
+direction = 1
+
+[node name="DashLaser4" parent="Obstacle2" instance=ExtResource("12_8jmpj")]
+position = Vector2(180, 62)
+direction = 1
+
+[node name="PlatformSmall" parent="Obstacle2" instance=ExtResource("12_kcd5c")]
+position = Vector2(145, 80)
+breakable = true
+time_between_broken_states = 0.5
+
+[node name="Obstacle4" type="Node2D" parent="."]
+position = Vector2(0, 50)
+
+[node name="BetterDeathZone2" parent="Obstacle4" instance=ExtResource("7_2ph1y")]
+position = Vector2(0, 50)
+curve = SubResource("Curve2D_8jmpj")
+width = 40.0
+end_sample_point = 0.99
+
+[node name="_Area2D_806649" type="Area2D" parent="Obstacle4/BetterDeathZone2"]
+collision_layer = 32
+
+[node name="_CollisionPolygon2D_806648" type="CollisionPolygon2D" parent="Obstacle4/BetterDeathZone2/_Area2D_806649"]
+polygon = PackedVector2Array(60, 10, 86.5625, 10, 113.78906, 10, 145, 10, 176.21094, 10, 203.4375, 10, 229.9486, 10.000002, 229.95009, 50, 203.4375, 50, 176.21094, 50, 145, 50, 113.78906, 50, 86.5625, 50, 60, 50)
+
+[node name="_Polygon2D_806650" type="Polygon2D" parent="Obstacle4/BetterDeathZone2"]
+material = ExtResource("8_esvq6")
+texture = ExtResource("9_8jmpj")
+polygon = PackedVector2Array(60, 10, 86.5625, 10, 113.78906, 10, 145, 10, 176.21094, 10, 203.4375, 10, 229.9486, 10.000002, 229.95009, 50, 203.4375, 50, 176.21094, 50, 145, 50, 113.78906, 50, 86.5625, 50, 60, 50)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles875" parent="Obstacle4/BetterDeathZone2" instance=ExtResource("10_kcd5c")]
+position = Vector2(144.97504, 30)
+emission_rect_extents = Vector2(94.975044, 30)
+
+[node name="BubbleRecharger" parent="Obstacle4" instance=ExtResource("11_esvq6")]
+position = Vector2(145, 80)
+
+[node name="DashLaser3" parent="Obstacle4" instance=ExtResource("12_8jmpj")]
+position = Vector2(100, 62)
+direction = 1
+
+[node name="DashLaser4" parent="Obstacle4" instance=ExtResource("12_8jmpj")]
+position = Vector2(180, 62)
+direction = 1
+
+[node name="NarrativeStuff" type="Node2D" parent="."]
+
+[node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
+
+[node name="LevelTransitionArea" parent="." instance=ExtResource("14_pjm8x")]
+position = Vector2(290, 130)
+next_level_id = "lvl_zone_4_room_32"
+direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
+shape = SubResource("RectangleShape2D_pjm8x")

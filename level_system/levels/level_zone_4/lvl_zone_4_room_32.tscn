@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=4 uid="uid://dcbdlicdy6npk"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lqwbi"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_tvx5y"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_144vf"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_5l0dn"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_h2y6x"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_4yvvl"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="7_jowu0"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="8_rugin"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_r0jj7"]
+[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_88u1o"]
+[ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="11_rugin"]
+
+[sub_resource type="Curve2D" id="Curve2D_jowu0"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 40, 110, 0, 0, 0, 0, 170, 110, 0, 0, 0, 0, 170, 270, 0, 0, 0, 0, 130, 270, 0, 0, 0, 0, 130, 150, 0, 0, 0, 0, 40, 150, 0, 0, 0, 0, 40, 110)
+}
+point_count = 7
+
+[node name="lvl_zone_4_room_32" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_lqwbi")]
+metadata/_edit_lock_ = true
+
+[node name="Layout" parent="." instance=ExtResource("2_tvx5y")]
+tile_map_data = PackedByteArray("AAAAAAsAAwAFAAUAAAAAAA4AAwAFAAUAAAARABoAAwAFAAUAAAAAAAoAAwAFAAUAAAAMABoAAwAFAAUAAAAMABAAAwAFAAUAAAAMABEAAwAFAAUAAAAMABIAAwAFAAUAAAAMABMAAwAFAAUAAAAMABQAAwAFAAUAAAAMABUAAwAFAAUAAAAMABYAAwAFAAUAAAAMABcAAwAFAAUAAAAMABgAAwAFAAUAAAAMABkAAwAFAAUAAAARAAsAAwAFAAUAAAARAAwAAwAFAAUAAAARAA0AAwAFAAUAAAARAA4AAwAFAAUAAAARAA8AAwAFAAUAAAARABAAAwAFAAUAAAARABEAAwAFAAUAAAARABIAAwAFAAUAAAARABMAAwAFAAUAAAARABQAAwAFAAUAAAARABUAAwAFAAUAAAARABYAAwAFAAUAAAARABcAAwAFAAUAAAARABgAAwAFAAUAAAARABkAAwAFAAUAAAARAAoAAwAFAAUAAAABAAoAAwAFAAUAAAACAAoAAwAFAAUAAAADAAoAAwAFAAUAAAAEAAoAAwAFAAUAAAAFAAoAAwAFAAUAAAAGAAoAAwAFAAUAAAAHAAoAAwAFAAUAAAAIAAoAAwAFAAUAAAAJAAoAAwAFAAUAAAAKAAoAAwAFAAUAAAALAAoAAwAFAAUAAAAMAAoAAwAFAAUAAAANAAoAAwAFAAUAAAAOAAoAAwAFAAUAAAAPAAoAAwAFAAUAAAAQAAoAAwAFAAUAAAACAA8AAwAFAAUAAAADAA8AAwAFAAUAAAAEAA8AAwAFAAUAAAAFAA8AAwAFAAUAAAAGAA8AAwAFAAUAAAAHAA8AAwAFAAUAAAAIAA8AAwAFAAUAAAAJAA8AAwAFAAUAAAAKAA8AAwAFAAUAAAALAA8AAwAFAAUAAAAMAA8AAwAFAAUAAAAAAA8AAwAFAAUAAAABAA8AAwAFAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_144vf")
+level_name = "lvl_zone_4_room_32"
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_5l0dn")]
+position = Vector2(22, 130)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_h2y6x")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_4yvvl")]
+level_name = "lvl_zone_4_room_32"
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="BetterDeathZone2" parent="Obstacle1" instance=ExtResource("7_jowu0")]
+curve = SubResource("Curve2D_jowu0")
+creation_strategy = 1
+
+[node name="@Area2D@823351" type="Area2D" parent="Obstacle1/BetterDeathZone2"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@823350" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone2/@Area2D@823351"]
+polygon = PackedVector2Array(40, 110, 60.3125, 110, 105, 110, 149.6875, 110, 170, 110, 170, 135, 170, 160.625, 170, 190, 170, 219.375, 170, 245, 170, 270, 130, 270, 130, 251.25, 130, 210, 130, 168.75, 130, 150, 85, 150, 40, 150, 40, 110)
+
+[node name="@Polygon2D@823352" type="Polygon2D" parent="Obstacle1/BetterDeathZone2"]
+material = ExtResource("8_rugin")
+texture = ExtResource("9_r0jj7")
+polygon = PackedVector2Array(40, 110, 60.3125, 110, 105, 110, 149.6875, 110, 170, 110, 170, 135, 170, 160.625, 170, 190, 170, 219.375, 170, 245, 170, 270, 130, 270, 130, 251.25, 130, 210, 130, 168.75, 130, 150, 85, 150, 40, 150, 40, 110)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles791" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_88u1o")]
+position = Vector2(150, 190)
+emission_rect_extents = Vector2(25, 90)
+
+[node name="DeathZoneParticles792" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_88u1o")]
+position = Vector2(105, 130)
+rotation = 1.5707964
+emission_rect_extents = Vector2(25, 68.465)
+
+[node name="PlatformSmall" parent="Obstacle1" instance=ExtResource("11_rugin")]
+position = Vector2(60, 130)
+breakable = true
+time_between_broken_states = 0.5
+
+[node name="PlatformSmall2" parent="Obstacle1" instance=ExtResource("11_rugin")]
+position = Vector2(90, 130)
+breakable = true
+time_between_broken_states = 0.5
+
+[node name="PlatformSmall3" parent="Obstacle1" instance=ExtResource("11_rugin")]
+position = Vector2(120, 130)
+breakable = true
+time_between_broken_states = 0.5
+
+[node name="PlatformSmall4" parent="Obstacle1" instance=ExtResource("11_rugin")]
+position = Vector2(150, 130)
+breakable = true
+time_between_broken_states = 0.5
+
+[node name="PlatformSmall5" parent="Obstacle1" instance=ExtResource("11_rugin")]
+position = Vector2(150, 160)
+breakable = true
+time_between_broken_states = 0.5
+
+[node name="PlatformSmall6" parent="Obstacle1" instance=ExtResource("11_rugin")]
+position = Vector2(150, 190)
+breakable = true
+time_between_broken_states = 0.5
+
+[node name="PlatformSmall7" parent="Obstacle1" instance=ExtResource("11_rugin")]
+position = Vector2(150, 220)
+breakable = true
+time_between_broken_states = 0.5
+
+[node name="NarrativeStuff" type="Node2D" parent="."]
+
+[node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]

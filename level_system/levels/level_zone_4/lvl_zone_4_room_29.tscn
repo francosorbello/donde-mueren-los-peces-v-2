@@ -1,0 +1,267 @@
+[gd_scene load_steps=23 format=4 uid="uid://dl8ktd5jyghy7"]
+
+[ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_s2mjx"]
+[ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_dtrjw"]
+[ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="3_y6ngh"]
+[ext_resource type="PackedScene" uid="uid://18wtqp4mlws" path="res://utils/player_spawn_point.tscn" id="4_3jmqv"]
+[ext_resource type="PackedScene" uid="uid://gy7aky5ltmee" path="res://level_system/player_spawner.tscn" id="5_s6de7"]
+[ext_resource type="PackedScene" uid="uid://cre371do6d6jx" path="res://utils/level_related/level_name_setter/level_name_setter.tscn" id="6_jdic5"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="7_schcu"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="8_wuwbs"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_nrhrs"]
+[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_xcku5"]
+[ext_resource type="PackedScene" uid="uid://b8ewhs5wfgj6w" path="res://interactables/levers/room_lever.tscn" id="11_a4rce"]
+[ext_resource type="PackedScene" uid="uid://dgf48te2xbnua" path="res://doors/simple_door.tscn" id="12_u7jyq"]
+[ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="12_wuwbs"]
+[ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="15_xcku5"]
+[ext_resource type="PackedScene" uid="uid://bt0njsx6l0eym" path="res://utils/level_related/path_follower.tscn" id="16_u7jyq"]
+[ext_resource type="PackedScene" uid="uid://qh12h70kbjei" path="res://spikes/spike.tscn" id="17_2tdy5"]
+
+[sub_resource type="Curve2D" id="Curve2D_2tdy5"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 230, 30, 0, 0, 0, 0, 50, 30)
+}
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ttqoy"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, -2.0000002, 0, 1, Vector2(0.99999994, 0), -2.0000002, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_nrhrs"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 30, 50, 0, 0, 0, 0, 30, 190)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_fdcys"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10, 80, 0, 0, 0, 0, 50, 80)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_u7jyq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10, 80, 0, 0, 0, 0, 50, 80)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xcku5"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 30, 50, 0, 0, 0, 0, 30, 190)
+}
+point_count = 2
+
+[node name="lvl_zone_4_room_29" type="Node2D"]
+
+[node name="ScreenSizeReference" parent="." instance=ExtResource("1_s2mjx")]
+metadata/_edit_lock_ = true
+
+[node name="Layout" parent="." instance=ExtResource("2_dtrjw")]
+tile_map_data = PackedByteArray("AAAAAAAAAwAFAAUAAAAAAAEAAwAFAAUAAAAAAAIAAwAFAAUAAAAAAAMAAwAFAAUAAAAAAAQAAwAFAAUAAAAAAAUAAwAFAAUAAAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAgAAwAFAAUAAAAAAAkAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABMAAwAFAAUAAAAAABQAAwAFAAUAAAAAABUAAwAFAAUAAAAAABYAAwAFAAUAAAAbAAAAAwAFAAUAAAAaAAAAAwAFAAUAAAAXAAAAAwAFAAUAAAAWAAAAAwAFAAUAAAAVAAAAAwAFAAUAAAAUAAAAAwAFAAUAAAATAAAAAwAFAAUAAAASAAAAAwAFAAUAAAARAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAOAAAAAwAFAAUAAAANAAAAAwAFAAUAAAAMAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAAJAAAAAwAFAAUAAAAIAAAAAwAFAAUAAAAHAAAAAwAFAAUAAAAGAAAAAwAFAAUAAAAFAAAAAwAFAAUAAAAEAAAAAwAFAAUAAAADAAAAAwAFAAUAAAACAAAAAwAFAAUAAAABAAAAAwAFAAUAAAAbAAEAAwAFAAUAAAAbAAIAAwAFAAUAAAAbAAMAAwAFAAUAAAAbAAQAAwAFAAUAAAAbAAUAAwAFAAUAAAAbAAYAAwAFAAUAAAAbAAcAAwAFAAUAAAAbAAgAAwAFAAUAAAAbAAkAAwAFAAUAAAAbAAoAAwAFAAUAAAAbAAsAAwAFAAUAAAAbAAwAAwAFAAUAAAAbAA0AAwAFAAUAAAAbAA4AAwAFAAUAAAAbAA8AAwAFAAUAAAAbABAAAwAFAAUAAAAbABEAAwAFAAUAAAAbABIAAwAFAAUAAAAbABMAAwAFAAUAAAAbABQAAwAFAAUAAAAbABUAAwAFAAUAAAAbABYAAwAFAAUAAAALAAgAAwAFAAUAAAALAAkAAwAFAAUAAAALAAoAAwAFAAUAAAALAAsAAwAFAAUAAAALAAwAAwAFAAUAAAALAA0AAwAFAAUAAAALAA4AAwAFAAUAAAALAA8AAwAFAAUAAAALABAAAwAFAAUAAAAQAAgAAwAFAAUAAAAQAAkAAwAFAAUAAAAQAAoAAwAFAAUAAAAQAAsAAwAFAAUAAAAQAAwAAwAFAAUAAAAQAA0AAwAFAAUAAAAQAA4AAwAFAAUAAAAQAA8AAwAFAAUAAAAQABAAAwAFAAUAAAAMAAgAAwAFAAUAAAAPAAgAAwAFAAUAAAAPAAsAAwAFAAUAAAAMAAsAAwAFAAUAAAAMAA4AAwAFAAUAAAAPAA4AAwAFAAUAAAAQAAUAAwAFAAUAAAAQAAYAAwAFAAUAAAAQAAcAAwAFAAUAAAALAAUAAwAFAAUAAAALAAYAAwAFAAUAAAALAAcAAwAFAAUAAAAFAAUAAwAFAAUAAAAGAAUAAwAFAAUAAAAHAAUAAwAFAAUAAAAIAAUAAwAFAAUAAAAJAAUAAwAFAAUAAAAKAAUAAwAFAAUAAAAFAAYAAwAFAAUAAAAFAAcAAwAFAAUAAAAFAAgAAwAFAAUAAAAFAAkAAwAFAAUAAAAFAAoAAwAFAAUAAAAFAAsAAwAFAAUAAAAFAAwAAwAFAAUAAAAFAA0AAwAFAAUAAAAFAA4AAwAFAAUAAAAFAA8AAwAFAAUAAAAFABAAAwAFAAUAAAAFABEAAwAFAAUAAAAFABIAAwAFAAUAAAAFABMAAwAFAAUAAAAFABQAAwAFAAUAAAAFABUAAwAFAAUAAAAFABYAAwAFAAUAAAABABYAAwAFAAUAAAACABYAAwAFAAUAAAADABYAAwAFAAUAAAAEABYAAwAFAAUAAAAWABYAAwAFAAUAAAAXABYAAwAFAAUAAAAYABYAAwAFAAUAAAAZABYAAwAFAAUAAAAaABYAAwAFAAUAAAAWAAUAAwAFAAUAAAAWAAYAAwAFAAUAAAAWAAcAAwAFAAUAAAAWAAgAAwAFAAUAAAAWAAkAAwAFAAUAAAAWAAoAAwAFAAUAAAAWAAsAAwAFAAUAAAAWAAwAAwAFAAUAAAAWAA0AAwAFAAUAAAAWAA4AAwAFAAUAAAAWAA8AAwAFAAUAAAAWABAAAwAFAAUAAAAWABEAAwAFAAUAAAAWABIAAwAFAAUAAAAWABMAAwAFAAUAAAAWABQAAwAFAAUAAAAWABUAAwAFAAUAAAARAAUAAwAFAAUAAAASAAUAAwAFAAUAAAATAAUAAwAFAAUAAAAUAAUAAwAFAAUAAAAVAAUAAwAFAAUAAAAQABEAAwAFAAUAAAAQABIAAwAFAAUAAAAQABMAAwAFAAUAAAAQABQAAwAFAAUAAAAQABUAAwAFAAUAAAAQABYAAwAFAAUAAAALABIAAwAFAAUAAAALABMAAwAFAAUAAAALABQAAwAFAAUAAAALABUAAwAFAAUAAAALABEAAwAFAAUAAAAGABYAAwAFAAUAAAAHABYAAwAFAAUAAAAIABYAAwAFAAUAAAAJABYAAwAFAAUAAAAKABYAAwAFAAUAAAALABYAAwAFAAUAAAARABYAAwAFAAUAAAASABYAAwAFAAUAAAATABYAAwAFAAUAAAAUABYAAwAFAAUAAAAVABYAAwAFAAUAAAAPABYAAwAFAAUAAAAMABYAAwAFAAUAAAA=")
+
+[node name="LevelInfo Stuff" type="Node2D" parent="."]
+
+[node name="LevelInfo" type="Node" parent="LevelInfo Stuff" groups=["level_info"]]
+script = ExtResource("3_y6ngh")
+level_name = "lvl_zone_4_room_29"
+metadata/_custom_type_script = "uid://crtby7posuy18"
+
+[node name="ComingFromUp" type="Marker2D" parent="LevelInfo Stuff"]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("4_3jmqv")]
+position = Vector2(250, 25)
+
+[node name="PlayerSpawner" parent="." node_paths=PackedStringArray("level_info", "default_spawn_pos") instance=ExtResource("5_s6de7")]
+level_info = NodePath("../LevelInfo Stuff/LevelInfo")
+default_spawn_pos = NodePath("../PlayerSpawnPoint")
+
+[node name="LevelNameSetter" parent="." instance=ExtResource("6_jdic5")]
+level_name = "lvl_zone_4_room_29"
+
+[node name="Obstacle1" type="Node2D" parent="."]
+
+[node name="BetterDeathZone" parent="Obstacle1" instance=ExtResource("7_schcu")]
+curve = SubResource("Curve2D_2tdy5")
+width = 40.0
+end_sample_point = 0.99
+
+[node name="@Area2D@764478" type="Area2D" parent="Obstacle1/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@764477" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone/@Area2D@764478"]
+polygon = PackedVector2Array(230, 50, 201.875, 50, 173.04688, 50, 140, 50, 106.953125, 50, 78.125, 50, 50.05293, 50, 50.054356, 10.000002, 78.125, 10, 106.953125, 10, 140, 10, 173.04688, 10, 201.875, 10, 230, 10)
+
+[node name="@Polygon2D@764479" type="Polygon2D" parent="Obstacle1/BetterDeathZone"]
+material = ExtResource("8_wuwbs")
+texture = ExtResource("9_nrhrs")
+polygon = PackedVector2Array(230, 50, 201.875, 50, 173.04688, 50, 140, 50, 106.953125, 50, 78.125, 50, 50.05293, 50, 50.054356, 10.000002, 78.125, 10, 106.953125, 10, 140, 10, 173.04688, 10, 201.875, 10, 230, 10)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles562" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone" instance=ExtResource("10_xcku5")]
+position = Vector2(154.0625, 30)
+amount = 20
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(85.9375, 30)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_ttqoy")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
+
+[node name="RoomLever" parent="Obstacle1" instance=ExtResource("11_a4rce")]
+position = Vector2(30, 30)
+
+[node name="RoomActionCallMethod" type="Node" parent="Obstacle1/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("12_wuwbs")
+targets = {
+NodePath("../../SimpleDoor"): &"do_toggle"
+}
+metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="SimpleDoor" parent="Obstacle1" instance=ExtResource("12_u7jyq")]
+position = Vector2(140, 85)
+
+[node name="PlatformSmall" parent="Obstacle1" instance=ExtResource("15_xcku5")]
+position = Vector2(140, 30)
+breakable = true
+
+[node name="Obstacle2" type="Node2D" parent="."]
+
+[node name="BetterDeathZone" parent="Obstacle2" instance=ExtResource("7_schcu")]
+curve = SubResource("Curve2D_nrhrs")
+width = 40.0
+end_sample_point = 0.99
+
+[node name="@Area2D@782228" type="Area2D" parent="Obstacle2/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@782227" type="CollisionPolygon2D" parent="Obstacle2/BetterDeathZone/@Area2D@782228"]
+polygon = PackedVector2Array(50, 50, 50, 71.875, 50, 120, 50, 168.125, 50, 189.95921, 10.000002, 189.95738, 10, 168.125, 10, 120, 10, 71.875, 10, 50)
+
+[node name="@Polygon2D@782229" type="Polygon2D" parent="Obstacle2/BetterDeathZone"]
+material = ExtResource("8_wuwbs")
+texture = ExtResource("9_nrhrs")
+polygon = PackedVector2Array(50, 50, 50, 71.875, 50, 120, 50, 168.125, 50, 189.95921, 10.000002, 189.95738, 10, 168.125, 10, 120, 10, 71.875, 10, 50)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles992" type="CPUParticles2D" parent="Obstacle2/BetterDeathZone" instance=ExtResource("10_xcku5")]
+position = Vector2(30, 119.97961)
+amount = 20
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(30, 79.97961)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_ttqoy")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
+
+[node name="RoomLever" parent="Obstacle2" instance=ExtResource("11_a4rce")]
+position = Vector2(30, 206)
+
+[node name="RoomActionCallMethod" type="Node" parent="Obstacle2/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("12_wuwbs")
+targets = {
+NodePath("../../SimpleDoor"): &"do_toggle"
+}
+metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="SimpleDoor" parent="Obstacle2" instance=ExtResource("12_u7jyq")]
+position = Vector2(140, 115)
+
+[node name="PlatformSmall" parent="Obstacle2" instance=ExtResource("15_xcku5")]
+position = Vector2(30, 120)
+breakable = true
+
+[node name="Path2D" type="Path2D" parent="Obstacle2"]
+position = Vector2(0, 6)
+curve = SubResource("Curve2D_fdcys")
+
+[node name="PathFollower" parent="Obstacle2/Path2D" instance=ExtResource("16_u7jyq")]
+position = Vector2(10, 80)
+speed = 25.0
+bounce_on_end = true
+
+[node name="Spike" parent="Obstacle2/Path2D/PathFollower" instance=ExtResource("17_2tdy5")]
+
+[node name="Path2D2" type="Path2D" parent="Obstacle2"]
+position = Vector2(0, 70)
+curve = SubResource("Curve2D_u7jyq")
+
+[node name="PathFollower" parent="Obstacle2/Path2D2" instance=ExtResource("16_u7jyq")]
+position = Vector2(46.07992, 80)
+progress = 36.0
+speed = 25.0
+bounce_on_end = true
+
+[node name="Spike" parent="Obstacle2/Path2D2/PathFollower" instance=ExtResource("17_2tdy5")]
+
+[node name="Obstacle3" type="Node2D" parent="."]
+position = Vector2(220, 0)
+
+[node name="BetterDeathZone" parent="Obstacle3" instance=ExtResource("7_schcu")]
+curve = SubResource("Curve2D_xcku5")
+width = 40.0
+end_sample_point = 0.99
+
+[node name="@Area2D@780687" type="Area2D" parent="Obstacle3/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@780686" type="CollisionPolygon2D" parent="Obstacle3/BetterDeathZone/@Area2D@780687"]
+polygon = PackedVector2Array(50, 50, 50, 71.875, 50, 120, 50, 168.125, 50, 189.95921, 10.000002, 189.95738, 10, 168.125, 10, 120, 10, 71.875, 10, 50)
+
+[node name="@Polygon2D@780688" type="Polygon2D" parent="Obstacle3/BetterDeathZone"]
+material = ExtResource("8_wuwbs")
+texture = ExtResource("9_nrhrs")
+polygon = PackedVector2Array(50, 50, 50, 71.875, 50, 120, 50, 168.125, 50, 189.95921, 10.000002, 189.95738, 10, 168.125, 10, 120, 10, 71.875, 10, 50)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles431" type="CPUParticles2D" parent="Obstacle3/BetterDeathZone" instance=ExtResource("10_xcku5")]
+position = Vector2(30, 119.97961)
+amount = 20
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(30, 79.97961)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_ttqoy")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
+
+[node name="RoomLever" parent="Obstacle3" instance=ExtResource("11_a4rce")]
+position = Vector2(30, 206)
+
+[node name="RoomActionCallMethod" type="Node" parent="Obstacle3/RoomLever" node_paths=PackedStringArray("targets")]
+script = ExtResource("12_wuwbs")
+targets = {
+NodePath("../../SimpleDoor"): &"do_toggle"
+}
+metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="SimpleDoor" parent="Obstacle3" instance=ExtResource("12_u7jyq")]
+position = Vector2(-80, 145)
+
+[node name="PlatformSmall" parent="Obstacle3" instance=ExtResource("15_xcku5")]
+position = Vector2(30, 120)
+breakable = true
+
+[node name="NarrativeStuff" type="Node2D" parent="."]
+
+[node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]

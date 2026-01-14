@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvyk8wnkh1xb0"]
+[gd_scene load_steps=9 format=3 uid="uid://bvyk8wnkh1xb0"]
 
 [ext_resource type="Script" uid="uid://dllp6w3587dov" path="res://laser/dash_laser.gd" id="1_856ou"]
 [ext_resource type="Texture2D" uid="uid://kr1gusdnrofl" path="res://assets/GRAPHICS/other_patterns/dotted_line_2.png" id="2_b3k17"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dem7nplrep8ee" path="res://hurt_and_hit_boxes/hurtbox.tscn" id="2_uuowf"]
 [ext_resource type="AudioStream" uid="uid://di26e5ux2k74x" path="res://assets/SOUNDS/laser/laser_available.ogg" id="3_g3wvp"]
 [ext_resource type="PackedScene" uid="uid://ckaagxg0nqd5a" path="res://utils/progress_bar_2d/progress_bar_2d.tscn" id="4_7ddah"]
+[ext_resource type="PackedScene" uid="uid://ckww7pvs661o4" path="res://player/floor_detection/unsafe_floor_area.tscn" id="7_m30nt"]
 
 [sub_resource type="Curve" id="Curve_uuowf"]
 _limits = [0.0, 2.0, 0.0, 1.0]
@@ -60,12 +61,16 @@ scale_amount_curve = SubResource("Curve_uuowf")
 one_shot = true
 
 [node name="ProgressBar2D" parent="." instance=ExtResource("4_7ddah")]
-use_sound = true
 radius = 5.0
 width = 3.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
+
+[node name="UnsafeFloorArea" parent="." instance=ExtResource("7_m30nt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnsafeFloorArea"]
+debug_color = Color(0.94761795, 2.887845e-06, 0.584567, 0.41960785)
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]

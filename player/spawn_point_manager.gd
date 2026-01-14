@@ -23,6 +23,7 @@ func _on_switched_states(_from : String, to : String):
 	if to == "IdleState" or to == "MovingState":
 		_start_timer()
 	else:
+		_on_refresh_position_timer_timeout()
 		$RefreshPositionTimer.stop()
 
 func _on_refresh_position_timer_timeout():
@@ -38,5 +39,5 @@ func _on_floor_status_change(status : FloorDetector.DetectionStatus):
 
 func _start_timer(force_restart : bool = false):
 	if $RefreshPositionTimer.is_stopped() or force_restart:
-		_on_refresh_position_timer_timeout()
+		# _on_refresh_position_timer_timeout()
 		$RefreshPositionTimer.start()

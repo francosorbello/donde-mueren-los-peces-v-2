@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dcbdlicdy6npk"]
+[gd_scene load_steps=14 format=4 uid="uid://dcbdlicdy6npk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lqwbi"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_tvx5y"]
@@ -20,11 +20,6 @@ _data = {
 }
 point_count = 7
 
-[sub_resource type="Curve" id="Curve_ttqoy"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0, 2), 0.0, -2.0000002, 0, 1, Vector2(0.99999994, 0), -2.0000002, 0.0, 1, 0]
-point_count = 2
-
 [node name="lvl_zone_4_room_32" type="Node2D"]
 
 [node name="ScreenSizeReference" parent="." instance=ExtResource("1_lqwbi")]
@@ -32,6 +27,9 @@ metadata/_edit_lock_ = true
 
 [node name="Layout" parent="." instance=ExtResource("2_tvx5y")]
 tile_map_data = PackedByteArray("AAAAAAsAAwAFAAUAAAAAAA4AAwAFAAUAAAARABoAAwAFAAUAAAAAAAoAAwAFAAUAAAAMABoAAwAFAAUAAAAMABAAAwAFAAUAAAAMABEAAwAFAAUAAAAMABIAAwAFAAUAAAAMABMAAwAFAAUAAAAMABQAAwAFAAUAAAAMABUAAwAFAAUAAAAMABYAAwAFAAUAAAAMABcAAwAFAAUAAAAMABgAAwAFAAUAAAAMABkAAwAFAAUAAAARAAsAAwAFAAUAAAARAAwAAwAFAAUAAAARAA0AAwAFAAUAAAARAA4AAwAFAAUAAAARAA8AAwAFAAUAAAARABAAAwAFAAUAAAARABEAAwAFAAUAAAARABIAAwAFAAUAAAARABMAAwAFAAUAAAARABQAAwAFAAUAAAARABUAAwAFAAUAAAARABYAAwAFAAUAAAARABcAAwAFAAUAAAARABgAAwAFAAUAAAARABkAAwAFAAUAAAARAAoAAwAFAAUAAAABAAoAAwAFAAUAAAACAAoAAwAFAAUAAAADAAoAAwAFAAUAAAAEAAoAAwAFAAUAAAAFAAoAAwAFAAUAAAAGAAoAAwAFAAUAAAAHAAoAAwAFAAUAAAAIAAoAAwAFAAUAAAAJAAoAAwAFAAUAAAAKAAoAAwAFAAUAAAALAAoAAwAFAAUAAAAMAAoAAwAFAAUAAAANAAoAAwAFAAUAAAAOAAoAAwAFAAUAAAAPAAoAAwAFAAUAAAAQAAoAAwAFAAUAAAACAA8AAwAFAAUAAAADAA8AAwAFAAUAAAAEAA8AAwAFAAUAAAAFAA8AAwAFAAUAAAAGAA8AAwAFAAUAAAAHAA8AAwAFAAUAAAAIAA8AAwAFAAUAAAAJAA8AAwAFAAUAAAAKAA8AAwAFAAUAAAALAA8AAwAFAAUAAAAMAA8AAwAFAAUAAAAAAA8AAwAFAAUAAAABAA8AAwAFAAUAAAA=")
+
+[node name="Visuals" parent="." instance=ExtResource("2_tvx5y")]
+tile_map_data = PackedByteArray("AAAAAAwAAwAZAAsAAAAAAA0AAwAZAAsAAAABAAwAAwAZAA0AAAABAA0AAwAZAAsAAAACAAwAAwAZAA0AAAACAA0AAwAZAA0AAAADAAwAAwAZAAwAAAADAA0AAwAZAAsAAAAEAAwAAwAZAAsAAAAEAA0AAwAZAAwAAAA=")
 
 [node name="LevelInfo Stuff" type="Node2D" parent="."]
 
@@ -70,21 +68,9 @@ texture = ExtResource("9_r0jj7")
 polygon = PackedVector2Array(50, 110, 68.75, 110, 110, 110, 151.25, 110, 170, 110, 170, 135, 170, 160.625, 170, 190, 170, 219.375, 170, 245, 170, 270, 130, 270, 130, 251.25, 130, 210, 130, 168.75, 130, 150, 90, 150, 50, 150, 50, 110)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles267" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_88u1o")]
+[node name="DeathZoneParticles267" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_88u1o")]
 position = Vector2(110, 190)
-amount = 20
-lifetime = 5.0
-emission_shape = 3
 emission_rect_extents = Vector2(70, 90)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
-scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="PlatformSmall" parent="Obstacle1" instance=ExtResource("11_rugin")]
 position = Vector2(60, 130)

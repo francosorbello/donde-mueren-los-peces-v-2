@@ -66,6 +66,8 @@ func setup():
 
 	var hurtbox_shape = RectangleShape2D.new()
 	var detection_shape = RectangleShape2D.new()
+	var unsafe_shape = RectangleShape2D.new()
+
 	var size : Vector2
 	if direction == LaserDirection.HORIZONTAL:
 		size = Vector2(abs(end_point),width)
@@ -84,6 +86,14 @@ func setup():
 	$PlayerDetectionArea/CollisionShape2D.shape = detection_shape
 	$PlayerDetectionArea/CollisionShape2D.position = _get_end_point() / 2 + (_get_start_point() / 2)
 	$PlayerDetectionArea/CollisionShape2D.one_way_collision = one_way_collision
+
+	unsafe_shape.size = size
+	if direction == LaserDirection.HORIZONTAL:
+		detection_shape.size.y += 5
+	else:
+		detection_shape.size.x += 5
+	$UnsafeFloorArea/CollisionShape2D.shape = unsafe_shape
+	$UnsafeFloorArea/CollisionShape2D.position = _get_end_point() / 2 + (_get_start_point() / 2)
 
 
 	$BoxParticles.position = _get_end_point() / 2 + (_get_start_point() / 2)

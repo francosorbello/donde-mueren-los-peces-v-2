@@ -1,7 +1,5 @@
 extends Node2D
 
-func _ready():
-	$HoleHelper.visible = false
 
 func play_crush_sound():
 	CommonSfxPlayer.play_sound("rock")

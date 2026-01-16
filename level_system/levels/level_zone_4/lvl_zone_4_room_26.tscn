@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://yqrq8yie7vfj"]
+[gd_scene load_steps=25 format=4 uid="uid://yqrq8yie7vfj"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_y4hcv"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_x4fwb"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://da01bxc51tnxl" path="res://bubble_recharger/bubble_recharger.tscn" id="11_shvei"]
 [ext_resource type="PackedScene" uid="uid://nnpgkaoylgj" path="res://platform/platform_small.tscn" id="12_2shhq"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="13_7wl0e"]
-[ext_resource type="PackedScene" uid="uid://c1e6hdgct32ei" path="res://level_system/levels/level_zone_4/utils/rock_anim.tscn" id="13_lo42t"]
 [ext_resource type="PackedScene" uid="uid://bh1flwoqyofjh" path="res://level_system/levels/level_zone_3/utils/narrative_blocker_zone_4.tscn" id="14_1rpgu"]
 [ext_resource type="PackedScene" uid="uid://mff12c3401rg" path="res://persistancy_system/room_connections/room_action_area.tscn" id="15_14eys"]
 [ext_resource type="Script" uid="uid://dana3uker3o68" path="res://persistancy_system/room_connections/room_actions/ra_shake_camera.gd" id="16_dc3mn"]
@@ -104,22 +103,21 @@ curve = SubResource("Curve2D_14eys")
 width = 40.0
 end_sample_point = 0.99
 
-[node name="@Area2D@712553" type="Area2D" parent="Obstacle1/BetterDeathZone2"]
+[node name="@Area2D@281881" type="Area2D" parent="Obstacle1/BetterDeathZone2"]
 collision_layer = 32
 
-[node name="@CollisionPolygon2D@712552" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone2/@Area2D@712553"]
+[node name="@CollisionPolygon2D@281880" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone2/@Area2D@281881"]
 polygon = PackedVector2Array(280, 90, 280, 110.3125, 280, 155, 280, 199.6875, 280, 219.96126, 240, 219.96126, 240, 199.6875, 240, 155, 240, 110.3125, 240, 90)
 
-[node name="@Polygon2D@712554" type="Polygon2D" parent="Obstacle1/BetterDeathZone2"]
+[node name="@Polygon2D@281882" type="Polygon2D" parent="Obstacle1/BetterDeathZone2"]
 material = ExtResource("8_shvei")
 texture = ExtResource("9_2shhq")
 polygon = PackedVector2Array(280, 90, 280, 110.3125, 280, 155, 280, 199.6875, 280, 219.96126, 240, 219.96126, 240, 199.6875, 240, 155, 240, 110.3125, 240, 90)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles260" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_7wl0e")]
+[node name="DeathZoneParticles599" parent="Obstacle1/BetterDeathZone2" instance=ExtResource("10_7wl0e")]
 position = Vector2(260, 154.98062)
 emission_rect_extents = Vector2(30, 74.98063)
-scale_amount_curve = SubResource("Curve_ttqoy")
 
 [node name="BubbleRecharger" parent="Obstacle1" instance=ExtResource("11_shvei")]
 position = Vector2(170, 110)
@@ -131,18 +129,6 @@ breakable = true
 [node name="NarrativeStuff" type="Node2D" parent="."]
 
 [node name="Cutscene1" type="Node2D" parent="NarrativeStuff"]
-
-[node name="RockAnim" parent="NarrativeStuff/Cutscene1" instance=ExtResource("13_lo42t")]
-position = Vector2(195, 50)
-
-[node name="RockAnim2" parent="NarrativeStuff/Cutscene1" instance=ExtResource("13_lo42t")]
-position = Vector2(32, 170)
-
-[node name="RockAnim3" parent="NarrativeStuff/Cutscene1" instance=ExtResource("13_lo42t")]
-position = Vector2(92, 170)
-
-[node name="RockAnim4" parent="NarrativeStuff/Cutscene1" instance=ExtResource("13_lo42t")]
-position = Vector2(255, 50)
 
 [node name="LevelTransitionArea" parent="." instance=ExtResource("13_7wl0e")]
 position = Vector2(260, 270)
@@ -165,10 +151,6 @@ metadata/_custom_type_script = "uid://dana3uker3o68"
 [node name="RoomActionCallMethod" type="Node" parent="RoomActionArea" node_paths=PackedStringArray("targets")]
 script = ExtResource("18_g8wkp")
 targets = {
-NodePath("../../NarrativeStuff/Cutscene1/RockAnim"): &"start_anim",
-NodePath("../../NarrativeStuff/Cutscene1/RockAnim2"): &"start_anim",
-NodePath("../../NarrativeStuff/Cutscene1/RockAnim3"): &"start_anim",
-NodePath("../../NarrativeStuff/Cutscene1/RockAnim4"): &"start_anim",
 NodePath("AudioStreamPlayer"): &"play"
 }
 metadata/_custom_type_script = "uid://cs7jodjvn2jd0"

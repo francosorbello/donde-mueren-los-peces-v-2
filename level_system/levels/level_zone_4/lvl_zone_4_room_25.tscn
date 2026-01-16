@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cs8oqpmlu387m"]
+[gd_scene load_steps=24 format=4 uid="uid://cs8oqpmlu387m"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_evub1"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_12l3x"]
@@ -18,7 +18,6 @@
 [ext_resource type="Script" uid="uid://dana3uker3o68" path="res://persistancy_system/room_connections/room_actions/ra_shake_camera.gd" id="16_4oqn3"]
 [ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="17_4w8vo"]
 [ext_resource type="AudioStream" uid="uid://uvvjvav212st" path="res://assets/SOUNDS/rustles/rumble_short.ogg" id="18_tjw6i"]
-[ext_resource type="PackedScene" uid="uid://c1e6hdgct32ei" path="res://level_system/levels/level_zone_4/utils/rock_anim.tscn" id="19_4oqn3"]
 [ext_resource type="PackedScene" uid="uid://bwbn1cb01u1c2" path="res://level_system/levels/level_zone_4/utils/kai_and_ab_running.tscn" id="20_4w8vo"]
 
 [sub_resource type="Curve2D" id="Curve2D_xih1u"]
@@ -130,11 +129,7 @@ metadata/_custom_type_script = "uid://dana3uker3o68"
 [node name="RoomActionCallMethod" type="Node" parent="RoomActionArea" node_paths=PackedStringArray("targets")]
 script = ExtResource("17_4w8vo")
 targets = {
-NodePath("AudioStreamPlayer"): &"play",
-NodePath("../Rocks/RockAnim"): &"start_anim",
-NodePath("../Rocks/RockAnim2"): &"start_anim",
-NodePath("../Rocks/RockAnim3"): &"start_anim",
-NodePath("../Rocks/RockAnim4"): &"start_anim"
+NodePath("AudioStreamPlayer"): &"play"
 }
 metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
 
@@ -142,20 +137,6 @@ metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
 stream = ExtResource("18_tjw6i")
 volume_db = -5.0
 bus = &"SFX"
-
-[node name="Rocks" type="Node2D" parent="RoomActionArea"]
-
-[node name="RockAnim" parent="RoomActionArea/Rocks" instance=ExtResource("19_4oqn3")]
-position = Vector2(90, -50)
-
-[node name="RockAnim2" parent="RoomActionArea/Rocks" instance=ExtResource("19_4oqn3")]
-position = Vector2(-30, 70)
-
-[node name="RockAnim3" parent="RoomActionArea/Rocks" instance=ExtResource("19_4oqn3")]
-position = Vector2(150, -50)
-
-[node name="RockAnim4" parent="RoomActionArea/Rocks" instance=ExtResource("19_4oqn3")]
-position = Vector2(30, 70)
 
 [node name="KaiAndAbRunning" parent="." instance=ExtResource("20_4w8vo")]
 position = Vector2(250, 115)

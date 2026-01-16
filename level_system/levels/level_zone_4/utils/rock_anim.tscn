@@ -204,10 +204,10 @@ script = ExtResource("1_lo1t5")
 curve = SubResource("Curve2D_nl8cj")
 creation_strategy = 1
 
-[node name="@Area2D@100711" type="Area2D" parent="BetterDeathZone"]
+[node name="_Area2D_100711" type="Area2D" parent="BetterDeathZone"]
 collision_layer = 32
 
-[node name="@CollisionPolygon2D@100710" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@100711"]
+[node name="@CollisionPolygon2D@100710" type="CollisionPolygon2D" parent="BetterDeathZone/_Area2D_100711"]
 polygon = PackedVector2Array(-30, 30, -30, 0, -30, -30, 0, -30, 30, -30, 30, 0, 30, 30, 0, 30, -30, 30)
 
 [node name="@Polygon2D@100712" type="Polygon2D" parent="BetterDeathZone"]
@@ -216,21 +216,9 @@ texture = ExtResource("4_ev12g")
 polygon = PackedVector2Array(-30, 30, -30, 0, -30, -30, 0, -30, 30, -30, 30, 0, 30, 30, 0, 30, -30, 30)
 uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
 
-[node name="DeathZoneParticles8" type="CPUParticles2D" parent="BetterDeathZone" instance=ExtResource("5_xj4n5")]
+[node name="DeathZoneParticles8" parent="BetterDeathZone" instance=ExtResource("5_xj4n5")]
 emitting = false
-amount = 20
-lifetime = 5.0
-emission_shape = 3
-emission_rect_extents = Vector2(40, 40)
-direction = Vector2(-1, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
 scale_amount_curve = SubResource("Curve_ttqoy")
-color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="Hole" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

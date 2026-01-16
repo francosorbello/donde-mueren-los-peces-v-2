@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://clo6w8s8256lk"]
+[gd_scene load_steps=54 format=4 uid="uid://clo6w8s8256lk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lxbe3"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_et6pn"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://d2pf7dvmruywe" path="res://dialogue_system/cutscene_system/actions/cuta_set_camera_shake.gd" id="27_n37d2"]
 [ext_resource type="Script" uid="uid://5pfuvxl1oiof" path="res://dialogue_system/cutscene_system/actions/cuta_call_method.gd" id="28_hihka"]
 [ext_resource type="Script" uid="uid://bevp7ppbjnc85" path="res://persistancy_system/actions/delete_action.gd" id="29_q2n74"]
+[ext_resource type="Script" uid="uid://cassnbcrd5rdw" path="res://dialogue_system/cutscene_system/actions/cuta_change_dialogue_start_title.gd" id="29_yw0pc"]
 [ext_resource type="Script" uid="uid://bw5nxmfdaatyi" path="res://persistancy_system/actions/call_method_action.gd" id="31_xyvb1"]
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="32_6pkve"]
 [ext_resource type="AudioStream" uid="uid://cc4kbbdi86a7d" path="res://assets/SOUNDS/rustles/217657__reitanna__earth-rumble.ogg" id="32_hihka"]
@@ -304,6 +305,11 @@ script = ExtResource("19_w3qxx")
 target = NodePath("../../PickableItemDialogue/DoorPosition")
 execute = 2
 
+[node name="ChangeNarrativeBlockerTitle" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager" node_paths=PackedStringArray("character")]
+script = ExtResource("29_yw0pc")
+new_title = "start_2"
+character = NodePath("../../../../NarrativeBlocker/DialogueArea")
+
 [node name="Cutscene3" type="Node2D" parent="NarrativeStuff"]
 process_mode = 4
 visible = false
@@ -384,7 +390,7 @@ position = Vector2(140, 0)
 
 [node name="DialogueArea" parent="NarrativeBlocker" instance=ExtResource("14_acgnb")]
 dialogue = ExtResource("15_oaqdk")
-start_title = "start_2"
+title = "start_before_fall"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeBlocker/DialogueArea"]
 shape = SubResource("RectangleShape2D_6m1sw")

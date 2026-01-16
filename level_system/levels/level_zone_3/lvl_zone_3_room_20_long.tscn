@@ -139,10 +139,6 @@ shape = SubResource("RectangleShape2D_y6vb0")
 [node name="AbFollower" parent="FollowerStuff" instance=ExtResource("7_itm62")]
 position = Vector2(-270, 140)
 
-[node name="StopMusic" type="Node" parent="."]
-script = ExtResource("10_5ol4x")
-change_type = 1
-
 [node name="LevelTransitionArea" parent="." instance=ExtResource("11_h58fj")]
 position = Vector2(870, 140)
 next_level_id = "lvl_zone_3_room_21"
@@ -153,3 +149,7 @@ shape = SubResource("RectangleShape2D_0aupn")
 
 [node name="NarrativeBlocker" parent="." instance=ExtResource("12_y6vb0")]
 position = Vector2(-290, 140)
+
+[node name="ChangeMusic" type="Node" parent="."]
+script = ExtResource("10_5ol4x")
+change_type = 1

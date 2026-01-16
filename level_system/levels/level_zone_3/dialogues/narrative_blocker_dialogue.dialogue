@@ -5,3 +5,7 @@ Ab: We should find Kai.
 ~ start_2
 Ab: We have to escape! Lets go!
 => END
+
+~ start_before_fall
+Ab: Where are you going? [FUENTE PARAISO IS RIGHT HERE].
+=> END

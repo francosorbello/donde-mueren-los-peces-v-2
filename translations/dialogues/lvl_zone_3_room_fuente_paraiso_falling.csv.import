@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://hwmx05xyfnk7"
+
+[deps]
+
+files=["res://translations/dialogues/lvl_zone_3_room_fuente_paraiso_falling.en.translation", "res://translations/dialogues/lvl_zone_3_room_fuente_paraiso_falling.es.translation"]
+
+source_file="res://translations/dialogues/lvl_zone_3_room_fuente_paraiso_falling.csv"
+dest_files=["res://translations/dialogues/lvl_zone_3_room_fuente_paraiso_falling.en.translation", "res://translations/dialogues/lvl_zone_3_room_fuente_paraiso_falling.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

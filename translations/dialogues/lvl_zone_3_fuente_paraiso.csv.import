@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dqsxpisuhhkt6"
+
+[deps]
+
+files=["res://translations/dialogues/lvl_zone_3_fuente_paraiso.en.translation", "res://translations/dialogues/lvl_zone_3_fuente_paraiso.es.translation"]
+
+source_file="res://translations/dialogues/lvl_zone_3_fuente_paraiso.csv"
+dest_files=["res://translations/dialogues/lvl_zone_3_fuente_paraiso.en.translation", "res://translations/dialogues/lvl_zone_3_fuente_paraiso.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

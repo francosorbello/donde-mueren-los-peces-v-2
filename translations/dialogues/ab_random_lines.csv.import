@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c25i2xj3llvb"
+
+[deps]
+
+files=["res://translations/dialogues/ab_random_lines.en.translation", "res://translations/dialogues/ab_random_lines.es.translation"]
+
+source_file="res://translations/dialogues/ab_random_lines.csv"
+dest_files=["res://translations/dialogues/ab_random_lines.en.translation", "res://translations/dialogues/ab_random_lines.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

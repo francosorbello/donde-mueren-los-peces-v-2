@@ -1,9 +1,9 @@
 ~ start
 do wait(3)
-Ab: What is going on?
-Kai: The place is crashing down! 
-Kai: We have to get out of here!
+Ab: What is going on? [ID:WHAT_IS_GOING_ON_6925A9]
+Kai: The place is crashing down! [ID:THE_PLACE_IS_CRASHING_DOWN_621A40] 
+Kai: We have to get out of here! [ID:WE_HAVE_TO_GET_OUT_OF_HERE_C6EF32]
 do call_cutscene_event("focus_on_door")
 do wait(2)
-Kai: Lets go!
+Kai: Lets go! [ID:LETS_GO_9748C7]
 => END

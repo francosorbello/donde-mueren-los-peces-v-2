@@ -219,10 +219,9 @@ enabled = false
 [node name="Marker2D" type="Marker2D" parent="NarrativeStuff/Cutscene1/CutsceneManager/MovePlayerToPos"]
 position = Vector2(190, 30)
 
-[node name="TargetPlayer" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
+[node name="TargetPlayer" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
 script = ExtResource("19_tnogn")
-target = NodePath("Marker2D")
-enabled = false
+focus_on_player = true
 execute = 1
 event_name = "kai_sees_player"
 

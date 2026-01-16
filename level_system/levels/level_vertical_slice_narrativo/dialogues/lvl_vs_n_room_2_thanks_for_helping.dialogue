@@ -4,7 +4,6 @@ Kai: You could learn a trick of two from them, old man. [ID:YOU_COULD_LEARN_A_TR
 Ab: very funny. Surely you can do better. [ID:VERY_FUNNY_SURELY_YOU_CAN_DO_B_F427F0]
 Kai: oh, but i can! Didnt we get all the way here after all? [ID:OH_BUT_I_CAN_DIDNT_WE_GET_ALL_2C7DE7]
 Ab: i suppose thats true. [ID:I_SUPPOSE_THATS_TRUE_055013]
-Kai: Of course it is! [ID:OF_COURSE_IT_IS_3D6EBE] 
 Kai: And we must move foward. Im sure Cecil is missing us. [ID:AND_WE_MUST_MOVE_FOWARD_IM_SUR_AC5303]
 Kai: Lets go! [ID:LETS_GO_D78EF6]
 do call_cutscene_event("focus_on_ab")

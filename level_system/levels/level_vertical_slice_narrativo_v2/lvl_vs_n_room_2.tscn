@@ -331,6 +331,16 @@ target = NodePath("../../WC_Ab")
 execute = 1
 event_name = "focus_on_ab"
 
+[node name="Wait" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager"]
+script = ExtResource("27_wp5yo")
+execute = 2
+wait_time = 0.5
+
+[node name="AbMovingSFX" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager"]
+script = ExtResource("23_hfoyg")
+sfx = ExtResource("31_i1jhl")
+execute = 2
+
 [node name="PartyPos" type="Marker2D" parent="NarrativeStuff/Cutscene2"]
 position = Vector2(258, 160)
 

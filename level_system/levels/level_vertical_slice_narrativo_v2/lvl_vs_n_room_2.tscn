@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://r62wfja2iy0l"]
+[gd_scene load_steps=50 format=4 uid="uid://r62wfja2iy0l"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_ff8b5"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_bx12f"]
@@ -34,12 +34,14 @@
 [ext_resource type="AudioStream" uid="uid://b8tj6yxx3cpan" path="res://assets/SOUNDS/terrible_cough.ogg" id="24_eh2n3"]
 [ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="25_pyaa4"]
 [ext_resource type="Script" uid="uid://bevp7ppbjnc85" path="res://persistancy_system/actions/delete_action.gd" id="26_j2ruw"]
+[ext_resource type="Script" uid="uid://1ue32pbqy0nd" path="res://dialogue_system/cutscene_system/actions/cuta_set_persistent_event.gd" id="27_16fbx"]
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="27_otq13"]
-[ext_resource type="Script" uid="uid://cjjl8nhep0i6o" path="res://persistancy_system/conditionals/level_visited_event_conditional.gd" id="28_hfoyg"]
+[ext_resource type="Script" uid="uid://txfr2h6xrn3y" path="res://dialogue_system/cutscene_system/actions/cuta_wait.gd" id="27_wp5yo"]
 [ext_resource type="Script" uid="uid://cj5j4ybo5t3eq" path="res://persistancy_system/actions/toggle_action.gd" id="30_eh2n3"]
 [ext_resource type="Resource" uid="uid://b5e8ob3gvr8r4" path="res://level_system/levels/level_vertical_slice_narrativo/dialogues/lvl_vs_n_room_2_thanks_for_helping.dialogue" id="30_pyaa4"]
 [ext_resource type="AudioStream" uid="uid://biunslpq075xe" path="res://assets/SOUNDS/cutscenes/kai_steps.ogg" id="31_i1jhl"]
 [ext_resource type="Script" uid="uid://borr7wlp2udux" path="res://dialogue_system/cutscene_system/actions/cuta_toggle_node.gd" id="31_i5vji"]
+[ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="34_opcv7"]
 [ext_resource type="Script" uid="uid://dqn12fy6gj1th" path="res://persistancy_system/room_connections/room_actions/room_action_toggle_dialogue_title.gd" id="36_aklvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1g5y"]
@@ -47,6 +49,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyr6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cw34x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opcv7"]
+size = Vector2(92, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aklvs"]
 size = Vector2(45, 47)
@@ -159,8 +164,9 @@ dialogue = ExtResource("17_whwh8")
 remove_on_event = "ab_and_kai_presented"
 target = NodePath("../PartyPos")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
-polygon = PackedVector2Array(-92, 40, -92, -30, 8, -30, 8, 40, -12, 40, -12, 10, -72, 10, -72, 40)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
+position = Vector2(-36, 15)
+shape = SubResource("RectangleShape2D_opcv7")
 
 [node name="Kai" type="Sprite2D" parent="NarrativeStuff/Cutscene1"]
 position = Vector2(220, 160)
@@ -180,7 +186,7 @@ dialogue = ExtResource("17_whwh8")
 script = ExtResource("31_i5vji")
 target = NodePath("../../../../RichTextLabel")
 
-[node name="TeleportPlayer" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
+[node name="MovePlayer" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
 script = ExtResource("19_dmicl")
 target = NodePath("../../PlayerPosition")
 
@@ -221,15 +227,25 @@ enabled = false
 execute = 2
 wait_time = 0.5
 
+[node name="ShowTutorialText" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
+script = ExtResource("31_i5vji")
+target = NodePath("../../../../RichTextLabel")
+execute = 2
+
 [node name="FadeOut" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
 script = ExtResource("25_pyaa4")
 fade_type = 1
 enabled = false
 execute = 2
 
-[node name="ShowTutorialText" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
-script = ExtResource("31_i5vji")
-target = NodePath("../../../../RichTextLabel")
+[node name="Wait" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("27_wp5yo")
+execute = 2
+wait_time = 1.0
+
+[node name="SetEvent" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("27_16fbx")
+event_to_set = "lvl_vs_n_room_2_first_dialogue_finished"
 execute = 2
 
 [node name="PlayerPosition" type="Marker2D" parent="NarrativeStuff/Cutscene1"]
@@ -244,10 +260,10 @@ metadata/_custom_type_script = "uid://bevp7ppbjnc85"
 script = ExtResource("27_otq13")
 metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 
-[node name="LevelVisitedEventConditional" type="Node" parent="NarrativeStuff/DeleteCutscen1/PersistentEventEvaluator"]
-script = ExtResource("28_hfoyg")
-level_visited = "lvl_vs_n_room_10"
-metadata/_custom_type_script = "uid://cjjl8nhep0i6o"
+[node name="BoolPersistentEventConditional" type="Node" parent="NarrativeStuff/DeleteCutscen1/PersistentEventEvaluator"]
+script = ExtResource("34_opcv7")
+event_name = "lvl_vs_n_room_2_first_dialogue_finished"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
 
 [node name="Cutscene2" type="Node2D" parent="NarrativeStuff"]
 process_mode = 4
@@ -329,10 +345,10 @@ metadata/_custom_type_script = "uid://bevp7ppbjnc85"
 script = ExtResource("27_otq13")
 metadata/_custom_type_script = "uid://d11ymn4s33jgm"
 
-[node name="LevelVisitedEventConditional" type="Node" parent="NarrativeStuff/ToggleCutscene2/PersistentEventEvaluator"]
-script = ExtResource("28_hfoyg")
-level_visited = "lvl_vs_n_room_10"
-metadata/_custom_type_script = "uid://cjjl8nhep0i6o"
+[node name="BoolPersistentEventConditional" type="Node" parent="NarrativeStuff/ToggleCutscene2/PersistentEventEvaluator"]
+script = ExtResource("34_opcv7")
+event_name = "lvl_vs_n_room_2_first_dialogue_finished"
+metadata/_custom_type_script = "uid://davfd8xpi1i3t"
 
 [node name="Obstacle1" type="Node2D" parent="."]
 

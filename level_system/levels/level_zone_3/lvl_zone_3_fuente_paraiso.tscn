@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://clo6w8s8256lk"]
+[gd_scene load_steps=56 format=4 uid="uid://clo6w8s8256lk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lxbe3"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_et6pn"]
@@ -35,6 +35,8 @@
 [ext_resource type="Script" uid="uid://5pfuvxl1oiof" path="res://dialogue_system/cutscene_system/actions/cuta_call_method.gd" id="28_hihka"]
 [ext_resource type="Script" uid="uid://bevp7ppbjnc85" path="res://persistancy_system/actions/delete_action.gd" id="29_q2n74"]
 [ext_resource type="Script" uid="uid://cassnbcrd5rdw" path="res://dialogue_system/cutscene_system/actions/cuta_change_dialogue_start_title.gd" id="29_yw0pc"]
+[ext_resource type="Resource" uid="uid://bc5phlg2gxxku" path="res://level_system/levels/level_zone_3/dialogues/lvl_zone_3_fuente_paraiso_kai.dialogue" id="30_kackx"]
+[ext_resource type="Resource" uid="uid://dvlq6fpvlmstm" path="res://level_system/levels/level_zone_3/dialogues/lvl_zone_3_fuente_paraiso_ab.dialogue" id="31_4gtl1"]
 [ext_resource type="Script" uid="uid://bw5nxmfdaatyi" path="res://persistancy_system/actions/call_method_action.gd" id="31_xyvb1"]
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="32_6pkve"]
 [ext_resource type="AudioStream" uid="uid://cc4kbbdi86a7d" path="res://assets/SOUNDS/rustles/217657__reitanna__earth-rumble.ogg" id="32_hihka"]
@@ -316,11 +318,15 @@ visible = false
 
 [node name="WC_Kai" parent="NarrativeStuff/Cutscene3" instance=ExtResource("11_oaqdk")]
 position = Vector2(172, 126)
+dialogue = ExtResource("30_kackx")
+repeatable = true
 
 [node name="WC_Ab" parent="NarrativeStuff/Cutscene3" instance=ExtResource("11_oaqdk")]
 position = Vector2(110, 126)
 texture = ExtResource("12_fjcd0")
 character_name = "Ab"
+dialogue = ExtResource("31_4gtl1")
+repeatable = true
 
 [node name="DeleteCutscene1" type="Node" parent="NarrativeStuff" node_paths=PackedStringArray("target")]
 script = ExtResource("29_q2n74")

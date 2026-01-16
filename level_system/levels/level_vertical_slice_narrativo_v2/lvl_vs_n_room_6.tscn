@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bvqu3es88hcjh"]
+[gd_scene load_steps=25 format=4 uid="uid://bvqu3es88hcjh"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lphb1"]
 [ext_resource type="Script" uid="uid://crtby7posuy18" path="res://level_system/level_info.gd" id="2_qjtlk"]
@@ -17,17 +17,31 @@
 [ext_resource type="PackedScene" uid="uid://b0pwgw66kd6fx" path="res://persistancy_system/room_connections/room_actions/ra_call_method_connection_drawer.tscn" id="15_q71lx"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="16_ofuv6"]
 
-[sub_resource type="Curve2D" id="Curve2D_s4j4l"]
+[sub_resource type="Curve2D" id="Curve2D_lsfdq"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 10, 140, 0, 0, 0, 0, 280, 140)
+"points": PackedVector2Array(0, 0, 0, 0, 190, 110, 0, 0, 0, 0, 280, 110, 0, 0, 0, 0, 280, 210, 0, 0, 0, 0, 190, 210, 0, 0, 0, 0, 190, 110)
 }
-point_count = 2
+point_count = 5
 
-[sub_resource type="Curve" id="Curve_ttqoy"]
+[sub_resource type="Curve" id="Curve_tpp3n"]
 _limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
 point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_tpp3n"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 100, 110, 0, 0, 0, 0, 180, 110, 0, 0, 0, 0, 180, 210, 0, 0, 0, 0, 100, 210, 0, 0, 0, 0, 100, 110)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_fu6jx"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10, 110, 0, 0, 0, 0, 90, 110, 0, 0, 0, 0, 90, 210, 0, 0, 0, 0, 10, 210, 0, 0, 0, 0, 10, 110)
+}
+point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mj0l5"]
 
@@ -73,29 +87,6 @@ default_spawn_pos = NodePath("../PlayerSpawnPoint")
 [node name="LevelNameSetter" parent="." instance=ExtResource("5_tu17n")]
 level_name = "lvl_vs_n_room_6"
 
-[node name="BetterDeathZone" parent="." instance=ExtResource("6_58fcb")]
-position = Vector2(0, 20)
-curve = SubResource("Curve2D_s4j4l")
-width = 100.0
-end_sample_point = 0.99
-
-[node name="@Area2D@293380" type="Area2D" parent="BetterDeathZone"]
-collision_layer = 32
-
-[node name="@CollisionPolygon2D@293379" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@293380"]
-polygon = PackedVector2Array(10, 90, 52.1875, 90, 95.42969, 90, 145, 90, 194.57031, 90, 237.8125, 90, 279.91006, 90.000015, 279.92905, 190.00002, 237.8125, 190, 194.57031, 190, 145, 190, 95.42969, 190, 52.1875, 190, 10, 190)
-
-[node name="@Polygon2D@293381" type="Polygon2D" parent="BetterDeathZone"]
-material = ExtResource("7_1x2b5")
-texture = ExtResource("8_47rr2")
-polygon = PackedVector2Array(10, 90, 52.1875, 90, 95.42969, 90, 145, 90, 194.57031, 90, 237.8125, 90, 279.91006, 90.000015, 279.92905, 190.00002, 237.8125, 190, 194.57031, 190, 145, 190, 95.42969, 190, 52.1875, 190, 10, 190)
-uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
-
-[node name="DeathZoneParticles659" parent="BetterDeathZone" instance=ExtResource("9_nnh1c")]
-position = Vector2(144.96452, 140)
-emission_rect_extents = Vector2(144.96452, 60.000008)
-scale_amount_curve = SubResource("Curve_ttqoy")
-
 [node name="Layout" parent="." instance=ExtResource("10_1rg8b")]
 tile_map_data = PackedByteArray("AAAAAAYAAwAFAAUAAAAAAAcAAwAFAAUAAAAAAAoAAwAFAAUAAAAAAAsAAwAFAAUAAAAAAAwAAwAFAAUAAAAAAA0AAwAFAAUAAAAAAA4AAwAFAAUAAAAAAA8AAwAFAAUAAAAAABAAAwAFAAUAAAAAABEAAwAFAAUAAAAAABIAAwAFAAUAAAAAABUAAwAFAAUAAAAAABkAAwAFAAUAAAAAABoAAwAFAAUAAAABABoAAwAFAAUAAAACABoAAwAFAAUAAAADABoAAwAFAAUAAAAEABoAAwAFAAUAAAAFABoAAwAFAAUAAAAGABoAAwAFAAUAAAAHABoAAwAFAAUAAAAIABoAAwAFAAUAAAAJABoAAwAFAAUAAAAKABoAAwAFAAUAAAALABoAAwAFAAUAAAAMABoAAwAFAAUAAAANABoAAwAFAAUAAAAOABoAAwAFAAUAAAAPABoAAwAFAAUAAAAQABoAAwAFAAUAAAARABoAAwAFAAUAAAASABoAAwAFAAUAAAATABoAAwAFAAUAAAAUABoAAwAFAAUAAAAVABoAAwAFAAUAAAAWABoAAwAFAAUAAAAXABoAAwAFAAUAAAAYABoAAwAFAAUAAAAZABoAAwAFAAUAAAAaABoAAwAFAAUAAAAbABoAAwAFAAUAAAAcABoAAwAFAAUAAAAcABkAAwAFAAUAAAAcABgAAwAFAAUAAAAcABcAAwAFAAUAAAAcABYAAwAFAAUAAAAcABUAAwAFAAUAAAAcABQAAwAFAAUAAAAcABMAAwAFAAUAAAAcABIAAwAFAAUAAAAcABEAAwAFAAUAAAAcABAAAwAFAAUAAAAcAA8AAwAFAAUAAAAcAA4AAwAFAAUAAAAcAA0AAwAFAAUAAAAcAAwAAwAFAAUAAAAcAAsAAwAFAAUAAAAcAAoAAwAFAAUAAAAcAAkAAwAFAAUAAAAcAAgAAwAFAAUAAAAcAAUAAwAFAAUAAAAcAAQAAwAFAAUAAAAcAAMAAwAFAAUAAAAMAAAAAwAFAAUAAAAPAAAAAwAFAAUAAAAbAAMAAwAFAAUAAAAaAAMAAwAFAAUAAAAZAAMAAwAFAAUAAAAYAAMAAwAFAAUAAAAXAAMAAwAFAAUAAAAWAAMAAwAFAAUAAAAVAAMAAwAFAAUAAAAUAAMAAwAFAAUAAAATAAMAAwAFAAUAAAASAAMAAwAFAAUAAAAJABQAAwAFAAUAAAAJABMAAwAFAAUAAAAJABIAAwAFAAUAAAAJABEAAwAFAAUAAAAJABAAAwAFAAUAAAAJAA8AAwAFAAUAAAAJAA4AAwAFAAUAAAAJAA0AAwAFAAUAAAAJAAwAAwAFAAUAAAAJAAsAAwAFAAUAAAASAAsAAwAFAAUAAAASAAwAAwAFAAUAAAASAA0AAwAFAAUAAAASAA4AAwAFAAUAAAASAA8AAwAFAAUAAAASABAAAwAFAAUAAAASABEAAwAFAAUAAAASABIAAwAFAAUAAAASABMAAwAFAAUAAAASABQAAwAFAAUAAAASAAoAAwAFAAUAAAAJAAoAAwAFAAUAAAAJABUAAwAFAAUAAAAJABYAAwAFAAUAAAAJABkAAwAFAAUAAAAAABMAAwAFAAUAAAAAABQAAwAFAAUAAAAMAAoAAwAFAAUAAAALAAoAAwAFAAUAAAAKAAoAAwAFAAUAAAAQAAoAAwAFAAUAAAARAAoAAwAFAAUAAAAPAAoAAwAFAAUAAAASAAQAAwAFAAUAAAASAAUAAwAFAAUAAAASAAgAAwAFAAUAAAASAAkAAwAFAAUAAAASAAYAAwAFAAUAAAASAAcAAwAFAAUAAAAJAAAAAwAFAAUAAAAKAAAAAwAFAAUAAAALAAAAAwAFAAUAAAAQAAAAAwAFAAUAAAARAAAAAwAFAAUAAAASAAAAAwAFAAUAAAASAAEAAwAFAAUAAAASAAIAAwAFAAUAAAAAABYAAwAFAAUAAAAJAAEAAwAFAAUAAAAJAAIAAwAFAAUAAAAJAAMAAwAFAAUAAAAJAAQAAwAFAAUAAAAJAAUAAwAFAAUAAAAJAAYAAwAFAAUAAAAJABcAAwAFAAUAAAAJABgAAwAFAAUAAAAGABUAAwAFAAUAAAAHABUAAwAFAAUAAAAIABUAAwAFAAUAAAABABUAAwAFAAUAAAACABUAAwAFAAUAAAADABUAAwAFAAUAAAABAAYAAwAFAAUAAAACAAYAAwAFAAUAAAADAAYAAwAFAAUAAAAEAAYAAwAFAAUAAAAFAAYAAwAFAAUAAAAGAAYAAwAFAAUAAAAHAAYAAwAFAAUAAAAIAAYAAwAFAAUAAAA=")
 
@@ -104,9 +95,41 @@ tile_map_data = PackedByteArray("AAAWAAYAAwAZAAkAAAAWAAcAAwAZAAoAAAAXAAYAAwAZAAk
 
 [node name="Obstacle1" type="Node2D" parent="."]
 
+[node name="BetterDeathZone" parent="Obstacle1" instance=ExtResource("6_58fcb")]
+curve = SubResource("Curve2D_lsfdq")
+creation_strategy = 1
+
+[node name="@Area2D@155402" type="Area2D" parent="Obstacle1/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@155401" type="CollisionPolygon2D" parent="Obstacle1/BetterDeathZone/@Area2D@155402"]
+polygon = PackedVector2Array(190, 110, 235, 110, 280, 110, 280, 160, 280, 210, 235, 210, 190, 210, 190, 160, 190, 110)
+
+[node name="@Polygon2D@155403" type="Polygon2D" parent="Obstacle1/BetterDeathZone"]
+material = ExtResource("7_1x2b5")
+texture = ExtResource("8_47rr2")
+polygon = PackedVector2Array(190, 110, 235, 110, 280, 110, 280, 160, 280, 210, 235, 210, 190, 210, 190, 160, 190, 110)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles561" type="CPUParticles2D" parent="Obstacle1/BetterDeathZone" instance=ExtResource("9_nnh1c")]
+position = Vector2(235, 160)
+amount = 20
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(55, 60)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_tpp3n")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
+
 [node name="PlatformSmall" parent="Obstacle1" instance=ExtResource("11_dovgm")]
 visible = false
-position = Vector2(240, 160)
+position = Vector2(233, 159)
 
 [node name="RoomLever" parent="Obstacle1" instance=ExtResource("12_wwq5q")]
 position = Vector2(212, 98)
@@ -119,6 +142,38 @@ NodePath("../../PlatformSmall"): &"do_toggle"
 }
 
 [node name="Obstacle2" type="Node2D" parent="."]
+
+[node name="BetterDeathZone" parent="Obstacle2" instance=ExtResource("6_58fcb")]
+curve = SubResource("Curve2D_tpp3n")
+creation_strategy = 1
+
+[node name="@Area2D@156700" type="Area2D" parent="Obstacle2/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@156699" type="CollisionPolygon2D" parent="Obstacle2/BetterDeathZone/@Area2D@156700"]
+polygon = PackedVector2Array(100, 110, 140, 110, 180, 110, 180, 160, 180, 210, 140, 210, 100, 210, 100, 160, 100, 110)
+
+[node name="@Polygon2D@156701" type="Polygon2D" parent="Obstacle2/BetterDeathZone"]
+material = ExtResource("7_1x2b5")
+texture = ExtResource("8_47rr2")
+polygon = PackedVector2Array(100, 110, 140, 110, 180, 110, 180, 160, 180, 210, 140, 210, 100, 210, 100, 160, 100, 110)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles880" type="CPUParticles2D" parent="Obstacle2/BetterDeathZone" instance=ExtResource("9_nnh1c")]
+position = Vector2(140, 160)
+amount = 20
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(50, 60)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_tpp3n")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="RoomLever" parent="Obstacle2" instance=ExtResource("12_wwq5q")]
 position = Vector2(185, 219)
@@ -140,6 +195,38 @@ visible = false
 position = Vector2(140, 160)
 
 [node name="Obstacle3" type="Node2D" parent="."]
+
+[node name="BetterDeathZone" parent="Obstacle3" instance=ExtResource("6_58fcb")]
+curve = SubResource("Curve2D_fu6jx")
+creation_strategy = 1
+
+[node name="@Area2D@157752" type="Area2D" parent="Obstacle3/BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@157751" type="CollisionPolygon2D" parent="Obstacle3/BetterDeathZone/@Area2D@157752"]
+polygon = PackedVector2Array(10, 110, 50, 110, 90, 110, 90, 160, 90, 210, 50, 210, 10, 210, 10, 160, 10, 110)
+
+[node name="@Polygon2D@157753" type="Polygon2D" parent="Obstacle3/BetterDeathZone"]
+material = ExtResource("7_1x2b5")
+texture = ExtResource("8_47rr2")
+polygon = PackedVector2Array(10, 110, 50, 110, 90, 110, 90, 160, 90, 210, 50, 210, 10, 210, 10, 160, 10, 110)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles371" type="CPUParticles2D" parent="Obstacle3/BetterDeathZone" instance=ExtResource("9_nnh1c")]
+position = Vector2(50, 160)
+amount = 20
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(50, 60)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_tpp3n")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
 
 [node name="SimpleDoor2" parent="Obstacle3" instance=ExtResource("14_6301v")]
 position = Vector2(50, 215)

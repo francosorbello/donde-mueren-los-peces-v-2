@@ -1,0 +1,276 @@
+[gd_scene load_steps=16 format=3 uid="uid://c1e6hdgct32ei"]
+
+[ext_resource type="Script" uid="uid://b3f3dxfusa52n" path="res://level_system/levels/level_zone_4/utils/rock_anim.gd" id="1_lo1t5"]
+[ext_resource type="Texture2D" uid="uid://h3qxwg3xdkyy" path="res://assets/GRAPHICS/rock.png" id="1_uxy67"]
+[ext_resource type="Texture2D" uid="uid://0ysq5ogigqbg" path="res://assets/GRAPHICS/hole.png" id="2_4sllk"]
+[ext_resource type="Texture2D" uid="uid://cqdqxf2bw80cr" path="res://assets/GRAPHICS/hole_2.png" id="2_rl06w"]
+[ext_resource type="Material" uid="uid://sf72adfyfpca" path="res://death_zone/water_2_material.tres" id="3_k1ama"]
+[ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="4_ev12g"]
+[ext_resource type="AudioStream" uid="uid://cvpr3bplyb82a" path="res://assets/SOUNDS/rustles/rustle_end_2.ogg" id="4_h3cou"]
+[ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="5_xj4n5"]
+[ext_resource type="PackedScene" uid="uid://btcibk8x0evky" path="res://death_zone/better_death_zone/better_death_zone.tscn" id="6_tx450"]
+
+[sub_resource type="Curve2D" id="Curve2D_nl8cj"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -30, 30, 0, 0, 0, 0, -30, -30, 0, 0, 0, 0, 30, -30, 0, 0, 0, 0, 30, 30, 0, 0, 0, 0, -30, 30)
+}
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_ttqoy"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0), -2.0309598, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_lo1t5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rock:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rock:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hole:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rock:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BetterDeathZone/DeathZoneParticles8:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4sllk"]
+resource_name = "falling_rock"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rock:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -400), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rock:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 2.0333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586, 12.566370614359172]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hole:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.1333334, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rock:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.1),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.0666666),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RockSound")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.0666666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BetterDeathZone/DeathZoneParticles8:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.0666666),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lo1t5"]
+_data = {
+&"RESET": SubResource("Animation_lo1t5"),
+&"falling_rock": SubResource("Animation_4sllk")
+}
+
+[sub_resource type="Curve" id="Curve_4sllk"]
+_data = [Vector2(0, 1), 0.0, -2.3832817, 0, 0, Vector2(1, 0), -0.28523073, 0.0, 0, 0]
+point_count = 2
+
+[node name="RockAnim" type="Node2D"]
+script = ExtResource("1_lo1t5")
+
+[node name="BetterDeathZone" parent="." instance=ExtResource("6_tx450")]
+curve = SubResource("Curve2D_nl8cj")
+creation_strategy = 1
+
+[node name="@Area2D@100711" type="Area2D" parent="BetterDeathZone"]
+collision_layer = 32
+
+[node name="@CollisionPolygon2D@100710" type="CollisionPolygon2D" parent="BetterDeathZone/@Area2D@100711"]
+polygon = PackedVector2Array(-30, 30, -30, 0, -30, -30, 0, -30, 30, -30, 30, 0, 30, 30, 0, 30, -30, 30)
+
+[node name="@Polygon2D@100712" type="Polygon2D" parent="BetterDeathZone"]
+material = ExtResource("3_k1ama")
+texture = ExtResource("4_ev12g")
+polygon = PackedVector2Array(-30, 30, -30, 0, -30, -30, 0, -30, 30, -30, 30, 0, 30, 30, 0, 30, -30, 30)
+uv = PackedVector2Array(0, 421, 417, 421, 421, 0, 0, 0)
+
+[node name="DeathZoneParticles8" type="CPUParticles2D" parent="BetterDeathZone" instance=ExtResource("5_xj4n5")]
+emitting = false
+amount = 20
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(40, 40)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_ttqoy")
+color = Color(4.415934, 0.7098908, 0.54370046, 1)
+
+[node name="Hole" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_rl06w")
+
+[node name="Rock" type="Sprite2D" parent="."]
+position = Vector2(0, -400)
+texture = ExtResource("1_uxy67")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lo1t5")
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 25
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(15, 15)
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angular_velocity_min = 119.47
+angular_velocity_max = 119.47
+linear_accel_min = 1.0
+linear_accel_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_4sllk")
+color = Color(0.48, 0.48, 0.48, 1)
+
+[node name="RockSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_h3cou")
+bus = &"SFX"
+
+[node name="HoleHelper" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("2_4sllk")

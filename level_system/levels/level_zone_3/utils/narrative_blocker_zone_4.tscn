@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bh1flwoqyofjh"]
 
 [ext_resource type="PackedScene" uid="uid://dvfbw7sofbkka" path="res://dialogue_system/dialogue_area.tscn" id="1_10voy"]
-[ext_resource type="Resource" uid="uid://y2hejtgbod1s" path="res://level_system/levels/level_zone_3/dialogues/narrative_blocker_dialogue.dialogue" id="2_syvy7"]
+[ext_resource type="Resource" uid="uid://dvuriq4l0qf1v" path="res://level_system/levels/level_zone_4/dialogues/narrative_blocker_zone_4.dialogue" id="2_sn1cb"]
 [ext_resource type="PackedScene" uid="uid://bbaay5giilatk" path="res://dialogue_system/cutscene_system/cutscene_manager.tscn" id="3_sn1cb"]
 [ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="4_atx6r"]
 [ext_resource type="Script" uid="uid://csscmsvofh7ig" path="res://dialogue_system/cutscene_system/actions/cuta_teleport_player.gd" id="5_sd8sh"]
@@ -13,13 +13,13 @@
 [node name="NarrativeBlockerZone4" type="Node2D"]
 
 [node name="DialogueArea" parent="." instance=ExtResource("1_10voy")]
-dialogue = ExtResource("2_syvy7")
+dialogue = ExtResource("2_sn1cb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea"]
 shape = SubResource("RectangleShape2D_6m1sw")
 
 [node name="CutsceneManager" parent="." instance=ExtResource("3_sn1cb")]
-dialogue = ExtResource("2_syvy7")
+dialogue = ExtResource("2_sn1cb")
 
 [node name="FadeIn" type="Node" parent="CutsceneManager"]
 script = ExtResource("4_atx6r")

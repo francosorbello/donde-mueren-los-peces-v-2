@@ -95,7 +95,6 @@ level_name = "lvl_zone_3_room_20_long"
 [node name="DialogueArea" parent="NarrativeStuff/Cutscene1" instance=ExtResource("7_pusbf")]
 position = Vector2(210, 140)
 dialogue = ExtResource("8_4qygd")
-start_title = "start_1"
 remove_on_event = "lvl_zone3_room_20_start_1_finished"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]
@@ -106,7 +105,6 @@ shape = SubResource("RectangleShape2D_4qygd")
 [node name="DialogueArea" parent="NarrativeStuff/Cutscene2" instance=ExtResource("7_pusbf")]
 position = Vector2(430, 140)
 dialogue = ExtResource("8_4qygd")
-start_title = "start_2"
 remove_on_event = "lvl_zone3_room_20_start_2_finished"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene2/DialogueArea"]
@@ -117,7 +115,6 @@ shape = SubResource("RectangleShape2D_5ol4x")
 [node name="DialogueArea" parent="NarrativeStuff/Cutscene3" instance=ExtResource("7_pusbf")]
 position = Vector2(620, 140)
 dialogue = ExtResource("8_4qygd")
-start_title = "start_3"
 remove_on_event = "lvl_zone3_room_20_start_3_finished"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene3/DialogueArea"]
@@ -128,7 +125,6 @@ shape = SubResource("RectangleShape2D_h58fj")
 [node name="DialogueArea" parent="NarrativeStuff/Cutscene4" instance=ExtResource("7_pusbf")]
 position = Vector2(780, 140)
 dialogue = ExtResource("8_4qygd")
-start_title = "start_4"
 remove_on_event = "lvl_zone3_room_20_start_4_finished"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene4/DialogueArea"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://by3pbanqjft0q"]
+[gd_scene load_steps=21 format=4 uid="uid://by3pbanqjft0q"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_yd3pq"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_j3sl4"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bvyk8wnkh1xb0" path="res://laser/dash_laser.tscn" id="13_rcx4j"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="14_r8e5k"]
 [ext_resource type="PackedScene" uid="uid://bh1flwoqyofjh" path="res://level_system/levels/level_zone_3/utils/narrative_blocker_zone_4.tscn" id="15_iunp5"]
+[ext_resource type="PackedScene" uid="uid://bwbn1cb01u1c2" path="res://level_system/levels/level_zone_4/utils/kai_and_ab_running.tscn" id="16_2801c"]
 
 [sub_resource type="Curve2D" id="Curve2D_r8e5k"]
 bake_interval = 50.0
@@ -190,4 +191,11 @@ position = Vector2(0, 20)
 [node name="StaticBody2D" parent="NarrativeBlockerZone4" index="3"]
 position = Vector2(10, -10)
 
+[node name="KaiAndAbRunning" parent="." instance=ExtResource("16_2801c")]
+position = Vector2(24, 210)
+
+[node name="TargetPos" parent="KaiAndAbRunning" index="2"]
+position = Vector2(6, 90)
+
 [editable path="NarrativeBlockerZone4"]
+[editable path="KaiAndAbRunning"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwbn1cb01u1c2"]
+
+[ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="1_1xlyr"]
+[ext_resource type="Script" uid="uid://ce1loym8lkmsh" path="res://level_system/levels/level_zone_4/utils/kai_and_ab_running.gd" id="1_xf6oh"]
+[ext_resource type="Texture2D" uid="uid://bo78umvohpwu8" path="res://assets/GRAPHICS/characters/elder1_16x16.png" id="2_xf6oh"]
+
+[node name="KaiAndAbRunning" type="Node2D"]
+script = ExtResource("1_xf6oh")
+
+[node name="WC_Kai" parent="." instance=ExtResource("1_1xlyr")]
+position = Vector2(10, 10)
+
+[node name="WC_Ab" parent="." instance=ExtResource("1_1xlyr")]
+texture = ExtResource("2_xf6oh")
+character_name = "Ab"
+
+[node name="TargetPos" type="Marker2D" parent="."]
+position = Vector2(70, 0)

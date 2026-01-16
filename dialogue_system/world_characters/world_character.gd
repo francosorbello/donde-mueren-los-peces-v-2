@@ -65,3 +65,6 @@ func move_to(pos : Vector2):
         "Ab":
             $StepSounds.pitch_scale = 0.5
     $WCMoveComponent.move_to(pos)
+
+func set_interactable(is_interactable : bool):
+    $BetterInteractableComponent.is_interactable = is_interactable 

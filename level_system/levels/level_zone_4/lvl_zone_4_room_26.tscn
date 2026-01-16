@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://yqrq8yie7vfj"]
+[gd_scene load_steps=26 format=4 uid="uid://yqrq8yie7vfj"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_y4hcv"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_x4fwb"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://dana3uker3o68" path="res://persistancy_system/room_connections/room_actions/ra_shake_camera.gd" id="16_dc3mn"]
 [ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="18_g8wkp"]
 [ext_resource type="AudioStream" uid="uid://uvvjvav212st" path="res://assets/SOUNDS/rustles/rumble_short.ogg" id="19_5hsbt"]
+[ext_resource type="PackedScene" uid="uid://bwbn1cb01u1c2" path="res://level_system/levels/level_zone_4/utils/kai_and_ab_running.tscn" id="20_y581v"]
 
 [sub_resource type="Curve2D" id="Curve2D_1rpgu"]
 bake_interval = 50.0
@@ -179,3 +180,11 @@ bus = &"SFX"
 
 [node name="NarrativeBlockerZone4" parent="." instance=ExtResource("14_1rpgu")]
 position = Vector2(0, 110)
+
+[node name="KaiAndAbRunning" parent="." instance=ExtResource("20_y581v")]
+position = Vector2(255, 240)
+
+[node name="TargetPos" parent="KaiAndAbRunning" index="2"]
+position = Vector2(5, 70)
+
+[editable path="KaiAndAbRunning"]

@@ -225,6 +225,8 @@ position = Vector2(5, 70)
 
 [node name="RoomActionArea" parent="." instance=ExtResource("22_ymiid")]
 position = Vector2(60, 110)
+monitoring = false
+monitorable = false
 single_use = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomActionArea"]

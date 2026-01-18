@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://yr0b8dbbe0vk"]
+[gd_scene load_steps=25 format=4 uid="uid://yr0b8dbbe0vk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_sisx8"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_0edhv"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://mg41htp632th" path="res://dialogue_system/cutscene_system/actions/cuta_move_wc.gd" id="14_aq5g0"]
 [ext_resource type="Script" uid="uid://00jdtmmcpsab" path="res://dialogue_system/cutscene_system/actions/cuta_change_music.gd" id="15_1mmyd"]
 [ext_resource type="Resource" uid="uid://y2hejtgbod1s" path="res://level_system/levels/level_zone_3/dialogues/narrative_blocker_dialogue.dialogue" id="18_72y0w"]
+[ext_resource type="Resource" uid="uid://bwvh44th6c6hy" path="res://level_system/levels/level_zone_4/dialogues/last_room_narrative_blocker.dialogue" id="18_ch1ok"]
 [ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="19_ch1ok"]
 [ext_resource type="Script" uid="uid://csscmsvofh7ig" path="res://dialogue_system/cutscene_system/actions/cuta_teleport_player.gd" id="20_7qf7q"]
 
@@ -170,6 +171,7 @@ change_type = 1
 position = Vector2(150, 0)
 
 [node name="DialogueArea" parent="NarrativeBlocker" instance=ExtResource("9_p6f0j")]
+dialogue = ExtResource("18_ch1ok")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeBlocker/DialogueArea"]
 shape = SubResource("RectangleShape2D_6m1sw")

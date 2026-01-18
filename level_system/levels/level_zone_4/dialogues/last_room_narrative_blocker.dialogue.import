@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bwvh44th6c6hy"
+path="res://.godot/imported/last_room_narrative_blocker.dialogue-4a0ee6b402a5d849adc60c6f48f37cf4.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_zone_4/dialogues/last_room_narrative_blocker.dialogue"
+dest_files=["res://.godot/imported/last_room_narrative_blocker.dialogue-4a0ee6b402a5d849adc60c6f48f37cf4.tres"]
+
+[params]
+
+defaults=true

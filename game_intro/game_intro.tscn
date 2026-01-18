@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbc13ds2527re"]
+
+[ext_resource type="Shader" uid="uid://d1owo2r0dj7ev" path="res://death_zone/water_2.gdshader" id="1_20yy8"]
+[ext_resource type="Script" uid="uid://c351pynyqg05p" path="res://game_intro/game_intro.gd" id="1_kdm0w"]
+[ext_resource type="Resource" uid="uid://vq83qa0354g" path="res://game_intro/game_intro_balloon/game_intro.dialogue" id="2_4w4uv"]
+[ext_resource type="PackedScene" uid="uid://djp5hscmk1qfa" path="res://game_intro/game_intro_balloon/game_intro_balloon.tscn" id="3_pmb6p"]
+[ext_resource type="AudioStream" uid="uid://cepgk4i3tauqe" path="res://assets/SOUNDS/music/Retro Ambience 02.mp3" id="5_pmb6p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdm0w"]
+shader = ExtResource("1_20yy8")
+shader_parameter/WATER_COL = Color(0, 0, 0, 1)
+shader_parameter/WATER2_COL = Color(0.050526805, 0.050526805, 0.050526805, 1)
+shader_parameter/FOAM_COL = Color(0.87, 0.987, 1, 0)
+shader_parameter/distortion_speed = 1.0
+shader_parameter/tile = Vector2(1, 0)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/pixelate = false
+shader_parameter/pixelation_amount = 32.0
+
+[node name="GameIntro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kdm0w")
+dialogue = ExtResource("2_4w4uv")
+balloon_scene = ExtResource("3_pmb6p")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_kdm0w")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pmb6p")
+volume_db = -80.0
+pitch_scale = 0.5
+autoplay = true
+bus = &"Music"

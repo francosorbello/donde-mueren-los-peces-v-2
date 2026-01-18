@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://vq83qa0354g"
+path="res://.godot/imported/game_intro.dialogue-1386d324d02d330b39d088297642e0e4.tres"
+
+[deps]
+
+source_file="res://game_intro/game_intro_balloon/game_intro.dialogue"
+dest_files=["res://.godot/imported/game_intro.dialogue-1386d324d02d330b39d088297642e0e4.tres"]
+
+[params]
+
+defaults=true

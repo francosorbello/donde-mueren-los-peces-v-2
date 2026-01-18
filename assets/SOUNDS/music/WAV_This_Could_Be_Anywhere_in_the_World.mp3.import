@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/WAV_This_Could_Be_Anywhere_in_the_World.mp3-0
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

@@ -27,6 +27,7 @@ func _ready():
 	_start_menu_music()
 
 func _on_start_button_pressed() -> void:
+	CommonSfxPlayer.play_sound("start_game",false)
 	if kiosk_mode:
 		do_kiosk_mode()
 		return
@@ -47,7 +48,7 @@ func _on_start_button_pressed() -> void:
 	else:
 		create_test_game()
 
-	get_parent().start_game()
+	get_parent().start_game_intro()
 	pass # Replace with function body.
 
 func do_forced_save():
@@ -73,7 +74,7 @@ func do_kiosk_mode():
 	# prints(initial_level,initial_level.resource_path)
 	# ResourceSaver.save(initial_level,initial_level.resource_path)
 
-	get_parent().start_game()
+	get_parent().start_game_intro()
 
 func _start_menu_music():
 	var tween := create_tween()

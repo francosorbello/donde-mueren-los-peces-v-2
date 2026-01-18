@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://j8wuljjmpkfr"]
+[gd_scene load_steps=7 format=3 uid="uid://j8wuljjmpkfr"]
 
 [ext_resource type="Script" uid="uid://dg8c82j2rqc36" path="res://utils/common_sfx_player.gd" id="1_wvfw0"]
 [ext_resource type="AudioStream" uid="uid://oijtsak3mbjy" path="res://assets/SOUNDS/hit.mp3" id="2_cbyap"]
 [ext_resource type="AudioStream" uid="uid://cb8rkyh42ljde" path="res://assets/SOUNDS/explosion5.mp3" id="3_iarg5"]
 [ext_resource type="AudioStream" uid="uid://b7a3akbo6sf3e" path="res://assets/SOUNDS/secret_found.ogg" id="4_cbyap"]
 [ext_resource type="AudioStream" uid="uid://kodex1d8krwd" path="res://assets/SOUNDS/cutscenes/noise_transition.ogg" id="5_iarg5"]
+[ext_resource type="AudioStream" uid="uid://c2hhcqplleh14" path="res://assets/SOUNDS/ui/load.ogg" id="6_50g70"]
 
 [node name="CommonSFXPlayer" type="Node"]
 script = ExtResource("1_wvfw0")
@@ -12,7 +13,8 @@ sounds = Dictionary[String, AudioStream]({
 "explosion": ExtResource("3_iarg5"),
 "hit": ExtResource("2_cbyap"),
 "noise_transition": ExtResource("5_iarg5"),
-"pickup": ExtResource("4_cbyap")
+"pickup": ExtResource("4_cbyap"),
+"start_game": ExtResource("6_50g70")
 })
 
 [node name="Template" type="AudioStreamPlayer" parent="."]

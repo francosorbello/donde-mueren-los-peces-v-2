@@ -11,6 +11,7 @@ do wait(2)
 do hide_portrait_for("Kai")
 Ab: ... [ID:_5FE9C3]
 Ab: Cecil... [ID:CECIL_9CC576]
+do call_cutscene_event("ab_leaves")
 => END
 
 ~ door_locked

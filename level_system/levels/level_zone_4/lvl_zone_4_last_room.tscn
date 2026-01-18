@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://yr0b8dbbe0vk"]
+[gd_scene load_steps=26 format=4 uid="uid://yr0b8dbbe0vk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_sisx8"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_0edhv"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bpodts60uf67s" path="res://dialogue_system/world_characters/world_character.tscn" id="8_uiesd"]
 [ext_resource type="PackedScene" uid="uid://dvfbw7sofbkka" path="res://dialogue_system/dialogue_area.tscn" id="9_p6f0j"]
 [ext_resource type="Resource" uid="uid://cw7ur8ib37hys" path="res://level_system/levels/level_zone_4/dialogues/last_room_kai.dialogue" id="9_uiesd"]
+[ext_resource type="Resource" uid="uid://3frgb77x61hu" path="res://level_system/levels/level_zone_4/dialogues/last_room_ab.dialogue" id="10_7qf7q"]
 [ext_resource type="Resource" uid="uid://bb5nm478318vq" path="res://level_system/levels/level_zone_4/dialogues/lvl_zone_4_last_room.dialogue" id="10_nvl6t"]
 [ext_resource type="Script" uid="uid://dpese546wmyrd" path="res://dialogue_system/cutscene_system/actions/cuta_set_wc_move_speed.gd" id="13_aq5g0"]
 [ext_resource type="PackedScene" uid="uid://bbaay5giilatk" path="res://dialogue_system/cutscene_system/cutscene_manager.tscn" id="13_soglg"]
@@ -102,7 +103,7 @@ repeatable = true
 position = Vector2(180, 60)
 texture = ExtResource("8_p6f0j")
 character_name = "Ab"
-dialogue = ExtResource("9_uiesd")
+dialogue = ExtResource("10_7qf7q")
 repeatable = true
 
 [node name="PartyPos" type="Marker2D" parent="NarrativeStuff/Cutscene1"]

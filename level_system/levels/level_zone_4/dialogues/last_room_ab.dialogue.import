@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://3frgb77x61hu"
+path="res://.godot/imported/last_room_ab.dialogue-210601d4e7901f5b7bfe435ecd32cc77.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_zone_4/dialogues/last_room_ab.dialogue"
+dest_files=["res://.godot/imported/last_room_ab.dialogue-210601d4e7901f5b7bfe435ecd32cc77.tres"]
+
+[params]
+
+defaults=true

@@ -339,7 +339,8 @@ wait_time = 0.5
 [node name="AbMovingSFX" type="Node" parent="NarrativeStuff/Cutscene2/CutsceneManager"]
 script = ExtResource("23_hfoyg")
 sfx = ExtResource("31_i1jhl")
-execute = 2
+execute = 1
+event_name = "ab_leaves"
 
 [node name="PartyPos" type="Marker2D" parent="NarrativeStuff/Cutscene2"]
 position = Vector2(258, 160)

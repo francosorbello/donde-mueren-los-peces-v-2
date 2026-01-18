@@ -9,6 +9,9 @@ var current_screen : Node
 
 func _ready():
 	GlobalData.main_screen_manager = self
+	
+	$OutroCanvasLayer/FadeRect.color.a = 0
+	
 	if OS.is_debug_build() and not OS.has_feature("editor"):
 		start_intro_screen()
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
@@ -61,3 +64,6 @@ func start_intro_screen():
 
 func get_fade_rect() -> Node2D:
 	return $CanvasLayer/FadeRect
+
+func get_outro_fade_rect() -> Node2D:
+	return $OutroCanvasLayer/FadeRect

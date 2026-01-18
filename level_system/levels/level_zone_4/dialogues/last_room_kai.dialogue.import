@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cw7ur8ib37hys"
+path="res://.godot/imported/last_room_kai.dialogue-d1664676cbdbe8a88d1a3784d446be78.tres"
+
+[deps]
+
+source_file="res://level_system/levels/level_zone_4/dialogues/last_room_kai.dialogue"
+dest_files=["res://.godot/imported/last_room_kai.dialogue-d1664676cbdbe8a88d1a3784d446be78.tres"]
+
+[params]
+
+defaults=true

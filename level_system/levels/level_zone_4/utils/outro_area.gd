@@ -11,10 +11,13 @@ func _on_body_entered(body: Node2D) -> void:
 func start_outro():
     player.disable_controls()
     
+    var fade_rect = GlobalData.main_screen_manager.get_outro_fade_rect()
+    fade_rect.anim_duration = 1.5
+
     CommonSfxPlayer.play_sound("noise_transition")
-    var tween := create_tween()
-    tween.tween_property($CanvasLayer/ColorRect,"modulate",Color.WHITE,1.5)
+    var tween = fade_rect.fade_in()
+     
     tween.tween_callback(func():
-        GlobalData.main_screen_manager.transition_to("EndDemo")
+        GlobalSignal.level_change_requested.emit("lvl_zone_4_last_room",{"direction" : Vector2.ZERO})
     )
     

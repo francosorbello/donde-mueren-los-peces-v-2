@@ -29,3 +29,16 @@ focus_behavior_recursive = 1
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_xbo5l")
+
+[node name="OutroCanvasLayer" type="CanvasLayer" parent="."]
+layer = 6
+
+[node name="FadeRect" type="ColorRect" parent="OutroCanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_behavior_recursive = 1
+mouse_filter = 2
+script = ExtResource("6_xbo5l")

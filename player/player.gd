@@ -194,3 +194,8 @@ func get_movement_direction() ->Vector2:
 	if not can_move:
 		return Vector2.ZERO
 	return Input.get_vector("move_left","move_right","move_up","move_down")
+
+func play_dash_error_sound():
+	if not has_ability_named("dash"):
+		return
+	$ErrorSound.play()

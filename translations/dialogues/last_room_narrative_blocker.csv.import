@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c3u0p0q5wplw2"
+
+[deps]
+
+files=["res://translations/dialogues/last_room_narrative_blocker.en.translation", "res://translations/dialogues/last_room_narrative_blocker.es.translation"]
+
+source_file="res://translations/dialogues/last_room_narrative_blocker.csv"
+dest_files=["res://translations/dialogues/last_room_narrative_blocker.en.translation", "res://translations/dialogues/last_room_narrative_blocker.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

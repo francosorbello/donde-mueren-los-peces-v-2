@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dg6hpelx8jd35"
+
+[deps]
+
+files=["res://translations/dialogues/narrative_blocker_zone_4.en.translation", "res://translations/dialogues/narrative_blocker_zone_4.es.translation"]
+
+source_file="res://translations/dialogues/narrative_blocker_zone_4.csv"
+dest_files=["res://translations/dialogues/narrative_blocker_zone_4.en.translation", "res://translations/dialogues/narrative_blocker_zone_4.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://lk3tkvcu4pt"
+
+[deps]
+
+files=["res://translations/dialogues/game_intro.en.translation", "res://translations/dialogues/game_intro.es.translation"]
+
+source_file="res://translations/dialogues/game_intro.csv"
+dest_files=["res://translations/dialogues/game_intro.en.translation", "res://translations/dialogues/game_intro.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -3,7 +3,8 @@ extends CutsceneAction
 enum ChangeType {
     TRANSITION_TO,
     STOP,
-    START
+    START,
+    TRANSITION_TO_INMEDIATE
 }
 
 @export var music_name : String
@@ -20,3 +21,5 @@ func do_action():
             music.start_music(music_name)
         ChangeType.STOP:
             music.stop_music()    
+        ChangeType.TRANSITION_TO_INMEDIATE:
+            music.transition_to_inmediate(music_name)

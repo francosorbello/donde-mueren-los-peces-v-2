@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://fhj3mhr34hh5"]
+
+[ext_resource type="Script" uid="uid://bwt8mdp840u3w" path="res://settings_menu/settings_menu.gd" id="1_vlimw"]
+[ext_resource type="Script" uid="uid://xt3ncbal33pj" path="res://settings_menu/game_settings.gd" id="2_vin47"]
+[ext_resource type="PackedScene" uid="uid://b24ej02y0dc86" path="res://settings_menu/volume_slider.tscn" id="3_hykgq"]
+[ext_resource type="PackedScene" uid="uid://cjvf8n366vkhj" path="res://settings_menu/window_options.tscn" id="3_s821r"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vlimw")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+tab_alignment = 1
+current_tab = 0
+
+[node name="Game" type="MarginContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+script = ExtResource("2_vin47")
+metadata/_tab_index = 0
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Game"]
+layout_mode = 2
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Display" type="RichTextLabel" parent="TabContainer/Game/GridContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 50
+text = "DISPLAY_MODE"
+fit_content = true
+
+[node name="WindowOptions" parent="TabContainer/Game/GridContainer" instance=ExtResource("3_s821r")]
+layout_mode = 2
+
+[node name="MusicVolume" type="RichTextLabel" parent="TabContainer/Game/GridContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 50
+text = "MUSIC_VOLUME
+"
+fit_content = true
+
+[node name="MusicVolumeSlider" parent="TabContainer/Game/GridContainer" instance=ExtResource("3_hykgq")]
+layout_mode = 2
+size_flags_horizontal = 10
+bus_name = "Music"
+
+[node name="SFXVolume" type="RichTextLabel" parent="TabContainer/Game/GridContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 50
+text = "SFX_VOLUME
+"
+fit_content = true
+
+[node name="SFXVolumeSlider" parent="TabContainer/Game/GridContainer" instance=ExtResource("3_hykgq")]
+layout_mode = 2
+size_flags_horizontal = 10
+bus_name = "SFX"
+
+[node name="Controls" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1

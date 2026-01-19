@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjvf8n366vkhj"]
+
+[ext_resource type="Script" uid="uid://cqr03j4hs2vos" path="res://settings_menu/window_options.gd" id="1_yrsu5"]
+
+[sub_resource type="Theme" id="Theme_vlimw"]
+PopupMenu/font_sizes/font_size = 30
+
+[node name="WindowOptions" type="OptionButton"]
+custom_minimum_size = Vector2(0, 80)
+size_flags_horizontal = 10
+theme = SubResource("Theme_vlimw")
+theme_override_constants/align_to_largest_stylebox = 1
+theme_override_font_sizes/font_size = 50
+selected = 0
+item_count = 2
+popup/item_0/text = "FULLSCREEN"
+popup/item_0/id = 0
+popup/item_1/text = "WINDOWED"
+popup/item_1/id = 1
+script = ExtResource("1_yrsu5")
+
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]

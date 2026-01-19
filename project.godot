@@ -36,6 +36,7 @@ GlobalSignal="*res://addons/ftr_tools/global_signal_system/global_signal_system.
 IndieBlueprintSaveManager="*res://addons/ninetailsrabbit.indie_blueprint_save/src/save_manager.gd"
 Console="*res://addons/console/console.gd"
 GlobalData="*res://utils/global_data/global_data.tscn"
+InputHelper="*res://addons/input_helper/input_helper.gd"
 
 [dialogue_manager]
 
@@ -53,7 +54,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/InstanceDock/plugin.cfg", "res://addons/console/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/ftr_tools/plugin.cfg", "res://addons/licenses/plugin.cfg", "res://addons/ninetailsrabbit.indie_blueprint_save/plugin.cfg")
+enabled=PackedStringArray("res://addons/InstanceDock/plugin.cfg", "res://addons/console/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/ftr_tools/plugin.cfg", "res://addons/input_helper/plugin.cfg", "res://addons/licenses/plugin.cfg", "res://addons/ninetailsrabbit.indie_blueprint_save/plugin.cfg")
 
 [input]
 

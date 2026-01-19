@@ -171,6 +171,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="DebugRoom" parent="UI" instance=ExtResource("8_leid8")]
+visible = false
 layout_mode = 1
 
 [node name="Controls" type="Control" parent="UI"]

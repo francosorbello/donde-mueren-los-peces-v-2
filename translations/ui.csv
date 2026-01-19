@@ -6,3 +6,10 @@ UI_USE,Use,Usar
 UI_DASH,Dash,Dash
 UI_MAP,Map,Mapa
 UI_CANCEL_JUMP,Cancel,Cancel.
+OPTIONS_MENU,OPTIONS,OPCIONES
+DISPLAY_MODE,Window Type,Ventana
+MASTER_VOLUME,Master Volume,Volumen Máster
+MUSIC_VOLUME,Music Volume,Volumen Música
+SFX_VOLUME,SFX Volume,Volumen SFX
+TAB_GAME,Game,Juego
+TAB_CONTROLS,Controls,Controles

@@ -35,7 +35,7 @@ theme_override_font_sizes/font_size = 60
 tab_alignment = 1
 current_tab = 0
 
-[node name="Game" type="MarginContainer" parent="TabContainer"]
+[node name="TAB_GAME" type="MarginContainer" parent="TabContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 100
@@ -44,12 +44,12 @@ theme_override_constants/margin_bottom = 100
 script = ExtResource("2_vin47")
 metadata/_tab_index = 0
 
-[node name="GridContainer" type="GridContainer" parent="TabContainer/Game"]
+[node name="GridContainer" type="GridContainer" parent="TabContainer/TAB_GAME"]
 layout_mode = 2
 theme_override_constants/v_separation = 20
 columns = 2
 
-[node name="Display" type="RichTextLabel" parent="TabContainer/Game/GridContainer"]
+[node name="Display" type="RichTextLabel" parent="TabContainer/TAB_GAME/GridContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -57,10 +57,24 @@ theme_override_font_sizes/normal_font_size = 50
 text = "DISPLAY_MODE"
 fit_content = true
 
-[node name="WindowOptions" parent="TabContainer/Game/GridContainer" instance=ExtResource("3_s821r")]
+[node name="WindowOptions" parent="TabContainer/TAB_GAME/GridContainer" instance=ExtResource("3_s821r")]
 layout_mode = 2
 
-[node name="MusicVolume" type="RichTextLabel" parent="TabContainer/Game/GridContainer"]
+[node name="MasterVolume" type="RichTextLabel" parent="TabContainer/TAB_GAME/GridContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 50
+text = "MASTER_VOLUME
+"
+fit_content = true
+
+[node name="MastrrVolumeSLider" parent="TabContainer/TAB_GAME/GridContainer" instance=ExtResource("3_hykgq")]
+layout_mode = 2
+size_flags_horizontal = 10
+bus_name = "Master"
+
+[node name="MusicVolume" type="RichTextLabel" parent="TabContainer/TAB_GAME/GridContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -69,12 +83,12 @@ text = "MUSIC_VOLUME
 "
 fit_content = true
 
-[node name="MusicVolumeSlider" parent="TabContainer/Game/GridContainer" instance=ExtResource("3_hykgq")]
+[node name="MusicVolumeSlider" parent="TabContainer/TAB_GAME/GridContainer" instance=ExtResource("3_hykgq")]
 layout_mode = 2
 size_flags_horizontal = 10
 bus_name = "Music"
 
-[node name="SFXVolume" type="RichTextLabel" parent="TabContainer/Game/GridContainer"]
+[node name="SFXVolume" type="RichTextLabel" parent="TabContainer/TAB_GAME/GridContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -83,12 +97,12 @@ text = "SFX_VOLUME
 "
 fit_content = true
 
-[node name="SFXVolumeSlider" parent="TabContainer/Game/GridContainer" instance=ExtResource("3_hykgq")]
+[node name="SFXVolumeSlider" parent="TabContainer/TAB_GAME/GridContainer" instance=ExtResource("3_hykgq")]
 layout_mode = 2
 size_flags_horizontal = 10
 bus_name = "SFX"
 
-[node name="Controls" type="MarginContainer" parent="TabContainer"]
+[node name="TAB_CONTROLS" type="MarginContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1

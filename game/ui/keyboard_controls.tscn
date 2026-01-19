@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dsubyxv275qb2" path="res://game/ui/keyboard_controls.gd" id="1_26qqe"]
 [ext_resource type="Script" uid="uid://b7xsj6vavmkaf" path="res://game/ui/jump_layout_element.gd" id="2_45g5u"]
-[ext_resource type="Texture2D" uid="uid://bvshsc1exh1jj" path="res://assets/GRAPHICS/inputs/keyboard/dash.png" id="2_iryct"]
 [ext_resource type="Script" uid="uid://bkhip1qirjghn" path="res://game/ui/interact_layout_element.gd" id="2_y5t3r"]
 [ext_resource type="Resource" uid="uid://wdxb4vdl6vwa" path="res://abilities/ability_items/abi_jump.tres" id="3_k2g17"]
 [ext_resource type="Resource" uid="uid://dy2krd2i18ha7" path="res://abilities/ability_items/abi_dash.tres" id="3_kvc8b"]
-[ext_resource type="Texture2D" uid="uid://d1njvfaoosk8h" path="res://assets/GRAPHICS/inputs/keyboard/interact.png" id="3_y5t3r"]
 [ext_resource type="Texture2D" uid="uid://b4ir0cvfnfe8h" path="res://assets/GRAPHICS/inputs/keyboard/space_3.png" id="5_fypvo"]
 [ext_resource type="Script" uid="uid://co4je8k57xeup" path="res://game/ui/dash_layout_element.gd" id="6_fypvo"]
+[ext_resource type="Texture2D" uid="uid://c0yk6cog5gine" path="res://assets/GRAPHICS/inputs/keyboard/dash_2.png" id="7_fypvo"]
+[ext_resource type="Texture2D" uid="uid://04jpn6ep5gxv" path="res://assets/GRAPHICS/inputs/keyboard/interact_2.png" id="9_fypvo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iryct"]
 font_size = 30
@@ -65,7 +65,7 @@ dash_ability = ExtResource("3_kvc8b")
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
-texture = ExtResource("2_iryct")
+texture = ExtResource("7_fypvo")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="VBoxContainer/DashContainer"]
@@ -88,7 +88,7 @@ disabled_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
-texture = ExtResource("3_y5t3r")
+texture = ExtResource("9_fypvo")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="VBoxContainer/InteractContainer"]

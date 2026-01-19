@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=36 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -18,15 +18,10 @@
 [ext_resource type="Resource" uid="uid://wdxb4vdl6vwa" path="res://abilities/ability_items/abi_jump.tres" id="11_jucfl"]
 [ext_resource type="PackedScene" uid="uid://bq36b0nga2k5y" path="res://game/game_console_commands.tscn" id="12_qf6n1"]
 [ext_resource type="Script" uid="uid://bkhip1qirjghn" path="res://game/ui/interact_layout_element.gd" id="13_jdpby"]
-[ext_resource type="Texture2D" uid="uid://dhucwh0hu3p7n" path="res://assets/GRAPHICS/inputs/xbox_button_a.png" id="13_ln7ps"]
 [ext_resource type="Script" uid="uid://c8h0kq00glgpg" path="res://game/game_blackboard.gd" id="14_b686c"]
-[ext_resource type="Texture2D" uid="uid://b1tg4rb617au1" path="res://assets/GRAPHICS/inputs/lb.png" id="15_dxwpq"]
 [ext_resource type="PackedScene" uid="uid://qn61jric6owc" path="res://game/ui/input_texture_rect/input_texture_rect.tscn" id="15_posua"]
-[ext_resource type="Texture2D" uid="uid://bchbfx4lq3rwi" path="res://assets/GRAPHICS/inputs/rb.png" id="16_mhvfb"]
-[ext_resource type="Texture2D" uid="uid://c621y4snlc4rn" path="res://assets/GRAPHICS/inputs/xbox_button_b.png" id="17_5e03w"]
 [ext_resource type="Script" uid="uid://ul277vuo1a7a" path="res://game/ui/triggers_layout_element.gd" id="17_jdpby"]
 [ext_resource type="Resource" uid="uid://dy2krd2i18ha7" path="res://abilities/ability_items/abi_dash.tres" id="18_58yx1"]
-[ext_resource type="Texture2D" uid="uid://dkg8qjfksp8iy" path="res://assets/GRAPHICS/inputs/xbox_button_y.png" id="18_leid8"]
 [ext_resource type="AudioStream" uid="uid://dimbpln7vkglx" path="res://game/zone_1_music.tres" id="20_5e03w"]
 [ext_resource type="Script" uid="uid://bk00biprncsqw" path="res://game/music.gd" id="21_leid8"]
 [ext_resource type="AudioStream" uid="uid://cepgk4i3tauqe" path="res://assets/SOUNDS/music/Retro Ambience 02.mp3" id="22_leid8"]
@@ -176,6 +171,7 @@ visible = false
 layout_mode = 1
 
 [node name="KeyboardControls" parent="UI" instance=ExtResource("9_posua")]
+visible = false
 layout_mode = 1
 offset_left = 1570.0
 offset_top = 50.0
@@ -183,7 +179,6 @@ offset_right = -110.0
 offset_bottom = -530.0
 
 [node name="Controls" type="Control" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -211,11 +206,11 @@ label_settings = SubResource("LabelSettings_pxxsx")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI/Controls/Flotar"]
+[node name="TextureRect" parent="UI/Controls/Flotar" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("13_ln7ps")
+action_name = "jump"
 
 [node name="Interactuar" type="HBoxContainer" parent="UI/Controls"]
 layout_mode = 0
@@ -241,7 +236,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 action_name = "interact"
 
-[node name="B" type="TextureRect" parent="UI/Controls"]
+[node name="B" parent="UI/Controls" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
@@ -249,9 +244,9 @@ offset_left = 1760.0
 offset_top = 160.0
 offset_right = 1824.0
 offset_bottom = 224.0
-texture = ExtResource("17_5e03w")
+action_name = "east"
 
-[node name="Y" type="TextureRect" parent="UI/Controls"]
+[node name="Y" parent="UI/Controls" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
@@ -259,7 +254,7 @@ offset_left = 1700.0
 offset_top = 110.0
 offset_right = 1764.0
 offset_bottom = 174.0
-texture = ExtResource("18_leid8")
+action_name = "north"
 
 [node name="Triggers" type="HBoxContainer" parent="UI/Controls"]
 custom_minimum_size = Vector2(64, 0)
@@ -280,17 +275,17 @@ label_settings = SubResource("LabelSettings_pxxsx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LB" type="TextureRect" parent="UI/Controls/Triggers"]
+[node name="LB" parent="UI/Controls/Triggers" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("15_dxwpq")
+action_name = "lb"
 
-[node name="RB" type="TextureRect" parent="UI/Controls/Triggers"]
+[node name="RB" parent="UI/Controls/Triggers" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("16_mhvfb")
+action_name = "dash"
 
 [node name="Dash" type="Label" parent="UI/Controls/Triggers"]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)

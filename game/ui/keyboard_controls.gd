@@ -4,7 +4,6 @@ extends Control
 @export var dash_ability : AnItem
 
 func _ready() -> void:
-    print("Hello keyboard controls")
     InputHelper.device_changed.connect(_on_input_device_changed)
     _on_input_device_changed(InputHelper.guess_device_name(),0)
     var save = SaveUtils.get_save()
@@ -23,7 +22,6 @@ func handle_new_ability(_ab : AnItem):
 
 
 func _on_input_device_changed(device : String, _index : int):
-    print(device)
     if device == InputHelper.DEVICE_KEYBOARD:
         show()
     else:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1dsrfakusipy"
-path="res://.godot/imported/b.png-5c222f239aeeeecb8b25c6e1900e7985.ctex"
+uid="uid://4725eqmj7the"
+path="res://.godot/imported/north.png-b8ac3b355b5668155fe85ddf7a38fb40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GRAPHICS/inputs/xbox/b.png"
-dest_files=["res://.godot/imported/b.png-5c222f239aeeeecb8b25c6e1900e7985.ctex"]
+source_file="res://assets/GRAPHICS/inputs/ps/north.png"
+dest_files=["res://.godot/imported/north.png-b8ac3b355b5668155fe85ddf7a38fb40.ctex"]
 
 [params]
 

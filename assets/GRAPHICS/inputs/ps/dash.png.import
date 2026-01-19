@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc4x8xkngbc8p"
-path="res://.godot/imported/y.png-bcb40bf284b03eee7d884b91eb712aab.ctex"
+uid="uid://vjkpeoqil4n5"
+path="res://.godot/imported/dash.png-a006cd6d9ace94b13283ce66115d1f2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GRAPHICS/inputs/xbox/y.png"
-dest_files=["res://.godot/imported/y.png-bcb40bf284b03eee7d884b91eb712aab.ctex"]
+source_file="res://assets/GRAPHICS/inputs/ps/dash.png"
+dest_files=["res://.godot/imported/dash.png-a006cd6d9ace94b13283ce66115d1f2c.ctex"]
 
 [params]
 

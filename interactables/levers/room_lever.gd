@@ -60,6 +60,7 @@ func toggle_activated():
     activated = not activated
 
     $Sprite2D.flip_h = activated
+    $BetterInteractableComponent.hover_interactable()
     # if timed:
     #     $BetterInteractableComponent.set_deferred("is_interactable",not activated)
     $LeverSound.play()

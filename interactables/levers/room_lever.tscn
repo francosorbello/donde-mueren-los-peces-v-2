@@ -17,6 +17,7 @@ texture = ExtResource("1_wh27n")
 
 [node name="OutlineComponent" parent="BetterInteractableComponent" node_paths=PackedStringArray("sprite") instance=ExtResource("3_175qx")]
 sprite = NodePath("../../Sprite2D")
+add_margins = false
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

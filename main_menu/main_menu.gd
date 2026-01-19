@@ -22,13 +22,14 @@ func _ready():
 		kiosk_mode = true
 
 	$VBoxContainer/StartButton.grab_focus()
-	if kiosk_mode:
+	if kiosk_mode or OS.has_feature("release"):
 		$VBoxContainer/ResetSaveButton.visible = false
 	_start_menu_music()
 
 func _on_start_button_pressed() -> void:
 	CommonSfxPlayer.play_sound("start_game",false)
-	if kiosk_mode:
+
+	if kiosk_mode or OS.has_feature("release"):
 		do_kiosk_mode()
 		return
 
@@ -36,11 +37,11 @@ func _on_start_button_pressed() -> void:
 		do_forced_save()
 		return
 
-	if IndieBlueprintSaveManager.save_filename_exists("test"):
-		var saved_game = IndieBlueprintSaveManager.load_savegame("test")
+	if IndieBlueprintSaveManager.save_filename_exists("main_save"):
+		var saved_game = IndieBlueprintSaveManager.load_savegame("main_save")
 		if saved_game is not ASavedGame:
 			print("Test is not a ASavedGame instance. Delete it and create it again")
-			IndieBlueprintSaveManager.remove("test")
+			IndieBlueprintSaveManager.remove("main_svae")
 			create_test_game()
 		else:
 			IndieBlueprintSaveManager.make_current(saved_game)
@@ -59,14 +60,14 @@ func do_forced_save():
 
 func create_test_game():
 	var new_game = ASavedGame.new()
-	new_game.write_savegame("test")
+	new_game.write_savegame("main_save")
 	IndieBlueprintSaveManager.make_current(new_game)
 	print("Created test savegame")
 
 func do_kiosk_mode():
-	if IndieBlueprintSaveManager.save_filename_exists("test"):
+	if IndieBlueprintSaveManager.save_filename_exists("main_save"):
 		_on_reset_save_button_pressed()
-		var save_game = IndieBlueprintSaveManager.load_savegame("test") as ASavedGame
+		var save_game = IndieBlueprintSaveManager.load_savegame("main_save") as ASavedGame
 		IndieBlueprintSaveManager.make_current(save_game)
 	else:
 		create_test_game()
@@ -81,7 +82,7 @@ func _start_menu_music():
 	tween.tween_property($MenuMusic,"volume_db",0,0.2)
 
 func _on_reset_save_button_pressed() -> void:
-	var save_game = IndieBlueprintSaveManager.load_savegame("test") as ASavedGame
+	var save_game = IndieBlueprintSaveManager.load_savegame("main_save") as ASavedGame
 	if save_game:
 		save_game.clear_save()
 		print("Reset save done")

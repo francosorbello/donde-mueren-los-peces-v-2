@@ -17,8 +17,10 @@ func _ready():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	else:
 		start_main_menu()
-	
+
 	Console.add_command("set_lang",set_lang,["lang_name"],1)
+	if OS.has_feature("release"):
+		Console.disable()
 	set_lang("es")
 
 func set_lang(lang_name : String):

@@ -58,7 +58,7 @@ func _execute_actions(actions : Array):
 			var ev_name = action.event_name
 			if ev_name.is_empty():
 				ev_name = "No event"
-			print("Executing action %s on %s (event: %s) (%ss)"%[action,CutsceneAction.Execute.find_key(action.execute),ev_name,action.wait_time])
+			# print("Executing action %s on %s (event: %s) (%ss)"%[action,CutsceneAction.Execute.find_key(action.execute),ev_name,action.wait_time])
 		action.do_action()
 		if action.wait_time > 0:
 			await get_tree().create_timer(action.wait_time).timeout

@@ -17,7 +17,7 @@ func receive_message(message : Dictionary):
     if message.has("next_state"):
         next_state = message["next_state"]
 
-    print("moving player to target %s, then exiting to state %s"%[target,next_state])
+    # print("moving player to target %s, then exiting to state %s"%[target,next_state])
 
 func physics_update(delta: float):
     if not target:

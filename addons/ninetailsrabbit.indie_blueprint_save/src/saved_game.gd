@@ -32,7 +32,6 @@ func write_savegame(new_filename: String = filename) -> Error:
 	
 	var result = ResourceSaver.save(self, get_save_path(filename))
 	if result == OK:
-		print("Calling update save game",self)
 		IndieBlueprintSaveManager.updated_savegame.emit(self)
 	return result
 

@@ -203,11 +203,9 @@ func _get_character_name(for_char : String) -> String:
 	return "[color=%s]%s[/color]"%[character_profile.character_color.to_html(),for_char]
 
 func narrate() -> String:
-	print("hello world")
 	return "[i]"
 
 func call_cutscene_event(event):
-	print("Calling cutscene event on ballon with event ",event)
 	GlobalSignal.on_dialogue_event.emit(event)
 
 func hide_portrait_for(char_name):

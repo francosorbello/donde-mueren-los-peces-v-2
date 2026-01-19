@@ -51,7 +51,6 @@ func _on_better_interactable_component_on_interact() -> void:
 
 
 func _on_persistent_event_evaluator_evaluator_succeded() -> void:
-    print("Evaluator succeded cwith event %s"%dialogue_ended_event)
     queue_free()
     pass # Replace with function body.
 

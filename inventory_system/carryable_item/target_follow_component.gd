@@ -16,7 +16,6 @@ func _ready():
 
     _offset.x = randf_range(-max_offset.x,max_offset.x)
     _offset.y = randf_range(-max_offset.y,max_offset.y)
-    print(_offset)
 
 func _physics_process(delta):
     if target:

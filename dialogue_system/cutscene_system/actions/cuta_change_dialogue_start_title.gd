@@ -8,5 +8,5 @@ func do_action():
     assert(not new_title.is_empty())
     assert("title" in character)
 
-    print("Changed title on %s, from %s to %s"%[character,character.title,new_title])
+    # print("Changed title on %s, from %s to %s"%[character,character.title,new_title])
     character.title = new_title

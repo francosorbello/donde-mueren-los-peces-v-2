@@ -28,7 +28,7 @@ func _ready():
 
 func _on_request_level_change(lvl_name: String, extra_data : Dictionary):
 	if level_data.levels.has(lvl_name):
-		print("Loading level %s with direction %s" % [lvl_name, extra_data.direction])
+		# print("Loading level %s with direction %s" % [lvl_name, extra_data.direction])
 		last_transition_direction = extra_data.direction
 		load_level_scene(level_data.levels[lvl_name], extra_data)
 	else:

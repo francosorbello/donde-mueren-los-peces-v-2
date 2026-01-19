@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dcbdlicdy6npk"]
+[gd_scene load_steps=23 format=4 uid="uid://dcbdlicdy6npk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_lqwbi"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_tvx5y"]
@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://bh1flwoqyofjh" path="res://level_system/levels/level_zone_3/utils/narrative_blocker_zone_4.tscn" id="12_r0jj7"]
 [ext_resource type="PackedScene" uid="uid://bwbn1cb01u1c2" path="res://level_system/levels/level_zone_4/utils/kai_and_ab_running.tscn" id="13_88u1o"]
 [ext_resource type="Script" uid="uid://d3ovf47hh35mn" path="res://level_system/levels/level_zone_4/utils/outro_area.gd" id="14_suqah"]
+[ext_resource type="PackedScene" uid="uid://mff12c3401rg" path="res://persistancy_system/room_connections/room_action_area.tscn" id="15_dwwnt"]
+[ext_resource type="Script" uid="uid://dana3uker3o68" path="res://persistancy_system/room_connections/room_actions/ra_shake_camera.gd" id="16_t3jxc"]
+[ext_resource type="Script" uid="uid://cs7jodjvn2jd0" path="res://persistancy_system/room_connections/room_actions/room_action_call_method.gd" id="17_txy2h"]
+[ext_resource type="AudioStream" uid="uid://uvvjvav212st" path="res://assets/SOUNDS/rustles/rumble_short.ogg" id="18_sdqkp"]
 
 [sub_resource type="Curve2D" id="Curve2D_jowu0"]
 bake_interval = 50.0
@@ -28,6 +32,9 @@ _data = [Vector2(0.015243895, 2), 0.0, -2.0309598, 0, 1, Vector2(0.99999994, 0),
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88u1o"]
+size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gd5d"]
 size = Vector2(40, 20)
 
 [node name="lvl_zone_4_room_32" type="Node2D"]
@@ -148,6 +155,30 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_behavior_recursive = 1
 mouse_filter = 2
+
+[node name="RoomActionArea" parent="." instance=ExtResource("15_dwwnt")]
+position = Vector2(160, 230)
+single_use = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomActionArea"]
+position = Vector2(-10, 10)
+shape = SubResource("RectangleShape2D_2gd5d")
+
+[node name="RoomActionShakeCamera" type="Node" parent="RoomActionArea"]
+script = ExtResource("16_t3jxc")
+metadata/_custom_type_script = "uid://dana3uker3o68"
+
+[node name="RoomActionCallMethod" type="Node" parent="RoomActionArea" node_paths=PackedStringArray("targets")]
+script = ExtResource("17_txy2h")
+targets = {
+NodePath("AudioStreamPlayer"): &"play"
+}
+metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RoomActionArea/RoomActionCallMethod"]
+stream = ExtResource("18_sdqkp")
+volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="OutroStuff/OutroArea" to="OutroStuff/OutroArea" method="_on_body_entered"]
 

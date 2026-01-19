@@ -14,7 +14,7 @@ func start_outro():
     var fade_rect = GlobalData.main_screen_manager.get_outro_fade_rect()
     fade_rect.anim_duration = 1.5
 
-    CommonSfxPlayer.play_sound("noise_transition")
+    # CommonSfxPlayer.play_sound("noise_transition")
     var tween = fade_rect.fade_in()
      
     tween.tween_callback(func():

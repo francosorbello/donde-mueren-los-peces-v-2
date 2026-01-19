@@ -36,6 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="JumpContainer" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("2_45g5u")
 jump_ability = ExtResource("3_k2g17")

@@ -1,9 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://fhj3mhr34hh5"]
+[gd_scene load_steps=6 format=3 uid="uid://fhj3mhr34hh5"]
 
 [ext_resource type="Script" uid="uid://bwt8mdp840u3w" path="res://settings_menu/settings_menu.gd" id="1_vlimw"]
 [ext_resource type="Script" uid="uid://xt3ncbal33pj" path="res://settings_menu/game_settings.gd" id="2_vin47"]
 [ext_resource type="PackedScene" uid="uid://b24ej02y0dc86" path="res://settings_menu/volume_slider.tscn" id="3_hykgq"]
 [ext_resource type="PackedScene" uid="uid://cjvf8n366vkhj" path="res://settings_menu/window_options.tscn" id="3_s821r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s821r"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.19076231, 0.19076234, 0.19076231, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 0.29803923)
+shadow_offset = Vector2(10, 10)
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -15,6 +29,7 @@ grow_vertical = 2
 script = ExtResource("1_vlimw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,6 +47,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
+theme_override_styles/panel = SubResource("StyleBoxFlat_s821r")
 tab_alignment = 1
 current_tab = 0
 
@@ -65,8 +81,7 @@ custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 50
-text = "MASTER_VOLUME
-"
+text = "MASTER_VOLUME"
 fit_content = true
 
 [node name="MastrrVolumeSLider" parent="TabContainer/TAB_GAME/GridContainer" instance=ExtResource("3_hykgq")]
@@ -79,8 +94,7 @@ custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 50
-text = "MUSIC_VOLUME
-"
+text = "MUSIC_VOLUME"
 fit_content = true
 
 [node name="MusicVolumeSlider" parent="TabContainer/TAB_GAME/GridContainer" instance=ExtResource("3_hykgq")]
@@ -93,19 +107,13 @@ custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 50
-text = "SFX_VOLUME
-"
+text = "SFX_VOLUME"
 fit_content = true
 
 [node name="SFXVolumeSlider" parent="TabContainer/TAB_GAME/GridContainer" instance=ExtResource("3_hykgq")]
 layout_mode = 2
 size_flags_horizontal = 10
 bus_name = "SFX"
-
-[node name="TAB_CONTROLS" type="MarginContainer" parent="TabContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="tab_changed" from="TabContainer" to="." method="_on_tab_container_tab_changed"]

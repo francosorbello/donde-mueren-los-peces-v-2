@@ -8,70 +8,78 @@ class_name MainScreenManager
 var current_screen : Node
 
 func _ready():
-	GlobalData.main_screen_manager = self
-	
-	$OutroCanvasLayer/FadeRect.color.a = 0
-	
-	if OS.is_debug_build() and not OS.has_feature("editor"):
-		start_intro_screen()
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-	else:
-		start_main_menu()
+    GlobalData.main_screen_manager = self
+    
+    $OutroCanvasLayer/FadeRect.color.a = 0
 
-	Console.add_command("set_lang",set_lang,["lang_name"],1)
-	if OS.has_feature("release"):
-		Console.disable()
-	set_lang("es")
+    load_user_settings()
+    
+    if OS.is_debug_build() and not OS.has_feature("editor"):
+        start_intro_screen()
+        DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+    else:
+        start_main_menu()
+
+    Console.add_command("set_lang",set_lang,["lang_name"],1)
+    if OS.has_feature("release"):
+        Console.disable()
+    set_lang("es")
 
 func set_lang(lang_name : String):
-	TranslationServer.set_locale(lang_name)
+    TranslationServer.set_locale(lang_name)
+
+func load_user_settings():
+    if not GlobalData.is_node_ready():
+        await GlobalData.ready
+
+    GlobalData.user_settings.apply_settings()
 
 func transition_to(screen : String):
-	assert(screens.has(screen),"No screen named %s"%screen)
+    assert(screens.has(screen),"No screen named %s"%screen)
 
-	# fade in
-	var fade_in : Tween = $CanvasLayer/FadeRect.fade_in()
-	await fade_in.finished
-	
-	# clear and instance new screen
-	_clear()
-	var scene_instance = screens[screen].instantiate()
-	add_child(scene_instance)
-	current_screen = scene_instance
+    # fade in
+    var fade_in : Tween = $CanvasLayer/FadeRect.fade_in()
+    await fade_in.finished
+    
+    # clear and instance new screen
+    _clear()
+    var scene_instance = screens[screen].instantiate()
+    add_child(scene_instance)
+    current_screen = scene_instance
 
-	$CanvasLayer/FadeRect.fade_out()
+    $CanvasLayer/FadeRect.fade_out()
 
 func _clear():
-	if current_screen:
-		remove_child(current_screen)
-		current_screen.queue_free()
+    if current_screen:
+        remove_child(current_screen)
+        current_screen.queue_free()
 
 func _clear_children():
-	var prev_children = []
-	for child in get_children():
-		remove_child(child)
-		prev_children.append(child)
+    var prev_children = []
+    for child in get_children():
+        remove_child(child)
+        prev_children.append(child)
 
-	for child in prev_children:
-		child.queue_free()
+    for child in prev_children:
+        child.queue_free()
 
 func start_game():
-	transition_to("Game")
+    transition_to("Game")
 
 func start_game_intro():
-	if OS.has_feature("release"):
-		transition_to("GameIntro")
-	else:
-		start_game()
+    if OS.has_feature("release"):
+        transition_to("GameIntro")
+    else:
+        start_game()
 
 func start_main_menu():
-	transition_to("MainMenu")
+    transition_to("MainMenu")
 
 func start_intro_screen():
-	transition_to("IntroScreen")
+    transition_to("IntroScreen")
 
 func get_fade_rect() -> Node2D:
-	return $CanvasLayer/FadeRect
+    return $CanvasLayer/FadeRect
 
 func get_outro_fade_rect() -> Node2D:
-	return $OutroCanvasLayer/FadeRect
+    return $OutroCanvasLayer/FadeRect

@@ -37,11 +37,11 @@ func _on_start_button_pressed() -> void:
 		do_forced_save()
 		return
 
-	if IndieBlueprintSaveManager.save_filename_exists("main_save"):
-		var saved_game = IndieBlueprintSaveManager.load_savegame("main_save")
+	if IndieBlueprintSaveManager.save_filename_exists("mainsave"):
+		var saved_game = IndieBlueprintSaveManager.load_savegame("mainsave")
 		if saved_game is not ASavedGame:
 			print("Test is not a ASavedGame instance. Delete it and create it again")
-			IndieBlueprintSaveManager.remove("main_svae")
+			IndieBlueprintSaveManager.remove("mainsave")
 			create_test_game()
 		else:
 			IndieBlueprintSaveManager.make_current(saved_game)
@@ -60,14 +60,14 @@ func do_forced_save():
 
 func create_test_game():
 	var new_game = ASavedGame.new()
-	new_game.write_savegame("main_save")
+	new_game.write_savegame("mainsave")
 	IndieBlueprintSaveManager.make_current(new_game)
 	print("Created test savegame")
 
 func do_kiosk_mode():
-	if IndieBlueprintSaveManager.save_filename_exists("main_save"):
+	if IndieBlueprintSaveManager.save_filename_exists("mainsave"):
 		_on_reset_save_button_pressed()
-		var save_game = IndieBlueprintSaveManager.load_savegame("main_save") as ASavedGame
+		var save_game = IndieBlueprintSaveManager.load_savegame("mainsave") as ASavedGame
 		IndieBlueprintSaveManager.make_current(save_game)
 	else:
 		create_test_game()
@@ -82,7 +82,7 @@ func _start_menu_music():
 	tween.tween_property($MenuMusic,"volume_db",0,0.2)
 
 func _on_reset_save_button_pressed() -> void:
-	var save_game = IndieBlueprintSaveManager.load_savegame("main_save") as ASavedGame
+	var save_game = IndieBlueprintSaveManager.load_savegame("mainsave") as ASavedGame
 	if save_game:
 		save_game.clear_save()
 		print("Reset save done")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=41 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ce5m7b223yfg6" path="res://level_system/automap/automap.tscn" id="8_y36n6"]
 [ext_resource type="Script" uid="uid://dade1n83xanhk" path="res://game/controls.gd" id="9_8bboj"]
 [ext_resource type="Shader" uid="uid://dk2ecib4gfdal" path="res://utils/transition_shader/spotlight_transition.gdshader" id="9_hb504"]
+[ext_resource type="PackedScene" uid="uid://dbms3x4hsclu8" path="res://game/ui/keyboard_controls.tscn" id="9_posua"]
 [ext_resource type="PackedScene" uid="uid://r105flniks1s" path="res://game/game_menu.tscn" id="10_hb504"]
 [ext_resource type="Script" uid="uid://b7xsj6vavmkaf" path="res://game/ui/jump_layout_element.gd" id="10_q52ks"]
 [ext_resource type="Resource" uid="uid://wdxb4vdl6vwa" path="res://abilities/ability_items/abi_jump.tres" id="11_jucfl"]
@@ -19,8 +20,8 @@
 [ext_resource type="Script" uid="uid://bkhip1qirjghn" path="res://game/ui/interact_layout_element.gd" id="13_jdpby"]
 [ext_resource type="Texture2D" uid="uid://dhucwh0hu3p7n" path="res://assets/GRAPHICS/inputs/xbox_button_a.png" id="13_ln7ps"]
 [ext_resource type="Script" uid="uid://c8h0kq00glgpg" path="res://game/game_blackboard.gd" id="14_b686c"]
-[ext_resource type="Texture2D" uid="uid://d1mi2lfq3kjqo" path="res://assets/GRAPHICS/inputs/xbox_button_x.png" id="14_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://b1tg4rb617au1" path="res://assets/GRAPHICS/inputs/lb.png" id="15_dxwpq"]
+[ext_resource type="PackedScene" uid="uid://qn61jric6owc" path="res://game/ui/input_texture_rect/input_texture_rect.tscn" id="15_posua"]
 [ext_resource type="Texture2D" uid="uid://bchbfx4lq3rwi" path="res://assets/GRAPHICS/inputs/rb.png" id="16_mhvfb"]
 [ext_resource type="Texture2D" uid="uid://c621y4snlc4rn" path="res://assets/GRAPHICS/inputs/xbox_button_b.png" id="17_5e03w"]
 [ext_resource type="Script" uid="uid://ul277vuo1a7a" path="res://game/ui/triggers_layout_element.gd" id="17_jdpby"]
@@ -174,6 +175,14 @@ mouse_filter = 2
 visible = false
 layout_mode = 1
 
+[node name="KeyboardControls" parent="UI" instance=ExtResource("9_posua")]
+visible = false
+layout_mode = 1
+offset_left = 1570.0
+offset_top = 50.0
+offset_right = -110.0
+offset_bottom = -530.0
+
 [node name="Controls" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
@@ -226,11 +235,11 @@ label_settings = SubResource("LabelSettings_pxxsx")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI/Controls/Interactuar"]
+[node name="TextureRect" parent="UI/Controls/Interactuar" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("14_pxxsx")
+action_name = "interact"
 
 [node name="B" type="TextureRect" parent="UI/Controls"]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)

@@ -12,6 +12,10 @@ func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("tab_right"):
         tab_to_right()
         input_handled = true
+
+    if event.is_action_pressed("ui_cancel"):
+        hide()
+        input_handled = true
     
     if input_handled:
         get_viewport().set_input_as_handled()
@@ -41,3 +45,8 @@ func _on_tab_container_tab_changed(tab: int) -> void:
         0:
             print("should grab focus, no?")
             $TabContainer/Game/GridContainer/WindowOptions.grab_focus()
+
+
+func _on_visibility_changed() -> void:
+    if visible:
+        $TabContainer.current_tab = 0

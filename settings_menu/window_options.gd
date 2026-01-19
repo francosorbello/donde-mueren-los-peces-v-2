@@ -18,6 +18,7 @@ func _on_item_selected(index: int) -> void:
     var window_mode = _item_to_window_mode(index)
     assert(index != -1)
     DisplayServer.window_set_mode(window_mode)
+    GlobalData.user_settings.set_window_mode(window_mode)
 
 func _window_mode_to_item(window_mode : int) -> int:
     var _value = -1

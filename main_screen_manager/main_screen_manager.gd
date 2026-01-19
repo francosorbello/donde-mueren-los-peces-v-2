@@ -29,10 +29,8 @@ func set_lang(lang_name : String):
     TranslationServer.set_locale(lang_name)
 
 func load_user_settings():
-    if not GlobalData.is_node_ready():
-        await GlobalData.ready
-
     GlobalData.user_settings.apply_settings()
+    Console.add_command("dump_settings",GlobalData.user_settings.dump_save)
 
 func transition_to(screen : String):
     assert(screens.has(screen),"No screen named %s"%screen)

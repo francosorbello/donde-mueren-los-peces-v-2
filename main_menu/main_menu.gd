@@ -91,3 +91,8 @@ func _on_reset_save_button_pressed() -> void:
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 	pass # Replace with function body.
+
+
+func _on_options_pressed() -> void:
+	$SettingsMenu.show()
+	pass # Replace with function body.

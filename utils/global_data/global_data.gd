@@ -7,14 +7,11 @@ extends Node
 
 var main_screen_manager : MainScreenManager
 
-var user_settings : UserSettings
-	# get():
-	# 	if not user_settings:
-	# 		user_settings = UserSettings.load_or_create()
-	# 	return user_settings
-
-func _ready():
-	user_settings = UserSettings.load_or_create()
+var user_settings : UserSettings:
+	get():
+		if not user_settings:
+			user_settings = UserSettings.load_or_create()
+		return user_settings
 
 func start_dialogue(dialogue : DialogueResource, start_node : String = "start", _target : Node2D = null):
 	DialogueManager.show_dialogue_balloon_scene(dialogue_balloon,dialogue,start_node)

@@ -83,3 +83,5 @@ bus_name = "SFX"
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[connection signal="tab_changed" from="TabContainer" to="." method="_on_tab_container_tab_changed"]

@@ -1,11 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbms3x4hsclu8"]
+[gd_scene load_steps=11 format=3 uid="uid://dbms3x4hsclu8"]
 
 [ext_resource type="Script" uid="uid://dsubyxv275qb2" path="res://game/ui/keyboard_controls.gd" id="1_26qqe"]
-[ext_resource type="Texture2D" uid="uid://deinufalps7yr" path="res://assets/GRAPHICS/inputs/keyboard/jump.png" id="1_iryct"]
+[ext_resource type="Script" uid="uid://b7xsj6vavmkaf" path="res://game/ui/jump_layout_element.gd" id="2_45g5u"]
 [ext_resource type="Texture2D" uid="uid://bvshsc1exh1jj" path="res://assets/GRAPHICS/inputs/keyboard/dash.png" id="2_iryct"]
+[ext_resource type="Script" uid="uid://bkhip1qirjghn" path="res://game/ui/interact_layout_element.gd" id="2_y5t3r"]
+[ext_resource type="Resource" uid="uid://wdxb4vdl6vwa" path="res://abilities/ability_items/abi_jump.tres" id="3_k2g17"]
+[ext_resource type="Resource" uid="uid://dy2krd2i18ha7" path="res://abilities/ability_items/abi_dash.tres" id="3_kvc8b"]
 [ext_resource type="Texture2D" uid="uid://d1njvfaoosk8h" path="res://assets/GRAPHICS/inputs/keyboard/interact.png" id="3_y5t3r"]
+[ext_resource type="Texture2D" uid="uid://b4ir0cvfnfe8h" path="res://assets/GRAPHICS/inputs/keyboard/space_3.png" id="5_fypvo"]
+[ext_resource type="Script" uid="uid://co4je8k57xeup" path="res://game/ui/dash_layout_element.gd" id="6_fypvo"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_apoe7"]
+[sub_resource type="LabelSettings" id="LabelSettings_iryct"]
 font_size = 30
 
 [node name="KeyboardControls" type="Control"]
@@ -13,55 +18,81 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1680.0
+offset_right = -1720.0
 offset_bottom = -580.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_26qqe")
+jump_ability = ExtResource("3_k2g17")
+dash_ability = ExtResource("3_kvc8b")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -20.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 2
 
-[node name="InteractTEx" type="TextureRect" parent="GridContainer"]
-custom_minimum_size = Vector2(64, 64)
+[node name="JumpContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("3_y5t3r")
+script = ExtResource("2_45g5u")
+jump_ability = ExtResource("3_k2g17")
 
-[node name="InteractLabel" type="Label" parent="GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/JumpContainer"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
-text = "UI_USE"
-label_settings = SubResource("LabelSettings_apoe7")
+texture = ExtResource("5_fypvo")
 
-[node name="HSeparator" type="HSeparator" parent="GridContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/JumpContainer"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 layout_mode = 2
+size_flags_horizontal = 3
+text = "UI_CANCEL_JUMP"
+label_settings = SubResource("LabelSettings_iryct")
 
-[node name="HSeparator2" type="HSeparator" parent="GridContainer"]
+[node name="DashContainer" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
+script = ExtResource("6_fypvo")
+disabled_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+dash_ability = ExtResource("3_kvc8b")
 
-[node name="JumpTex" type="TextureRect" parent="GridContainer"]
-custom_minimum_size = Vector2(128, 64)
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/DashContainer"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
-texture = ExtResource("1_iryct")
-
-[node name="JumpLabel" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "UI_JUMP"
-label_settings = SubResource("LabelSettings_apoe7")
-
-[node name="DashTex" type="TextureRect" parent="GridContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_horizontal = 4
 texture = ExtResource("2_iryct")
+stretch_mode = 5
 
-[node name="DashLabel" type="Label" parent="GridContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/DashContainer"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "UI_DASH"
-label_settings = SubResource("LabelSettings_apoe7")
+label_settings = SubResource("LabelSettings_iryct")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="InteractContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_y5t3r")
+disabled_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/InteractContainer"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+texture = ExtResource("3_y5t3r")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/InteractContainer"]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "UI_USE"
+label_settings = SubResource("LabelSettings_iryct")

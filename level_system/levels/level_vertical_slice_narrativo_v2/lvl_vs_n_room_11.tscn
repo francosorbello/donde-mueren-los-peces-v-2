@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://rul74er7jxve"]
+[gd_scene load_steps=17 format=4 uid="uid://rul74er7jxve"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_oibhf"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_r6g1u"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://by16vd6sv123v" path="res://death_zone/white.png" id="9_3gg0h"]
 [ext_resource type="PackedScene" uid="uid://b15oskpehfj5d" path="res://death_zone/death_zone_particles.tscn" id="10_tfknn"]
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="11_g6umg"]
+[ext_resource type="PackedScene" uid="uid://br7hi24qbdfpc" path="res://utils/level_related/tutorial_text.tscn" id="12_cm5lv"]
 
 [sub_resource type="Curve2D" id="Curve2D_gjkr4"]
 bake_interval = 50.0
@@ -101,12 +102,12 @@ direction = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionRight"]
 shape = SubResource("RectangleShape2D_ogdsj")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 30.0
-offset_top = 30.0
-offset_right = 250.0
-offset_bottom = 99.0
-bbcode_enabled = true
-text = "[center] Mientras [FLOTAS], 
-[SHIFT] o [img]res://assets/GRAPHICS/inputs/rb.png[/img] para realizar [DASH][/center]"
-fit_content = true
+[node name="TutorialText" parent="." instance=ExtResource("12_cm5lv")]
+offset_left = 40.0
+offset_top = 20.0
+offset_right = 240.0
+offset_bottom = 89.0
+text = "Mientras [FLOTAS], 
+{input} para realizar [DASH]"
+action_gamepad = "dash"
+keyboard_path = "res://assets/GRAPHICS/inputs/keyboard/dash_2.png"

@@ -22,7 +22,6 @@ func handle_new_ability(_ab : AnItem):
 
 
 func _on_input_device_changed(device : String, _index : int):
-    print(device)
     if device == InputHelper.DEVICE_KEYBOARD:
         show()
     else:

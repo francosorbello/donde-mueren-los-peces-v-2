@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://r62wfja2iy0l"]
+[gd_scene load_steps=51 format=4 uid="uid://r62wfja2iy0l"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_ff8b5"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_bx12f"]
@@ -43,6 +43,7 @@
 [ext_resource type="Script" uid="uid://borr7wlp2udux" path="res://dialogue_system/cutscene_system/actions/cuta_toggle_node.gd" id="31_i5vji"]
 [ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="34_opcv7"]
 [ext_resource type="Script" uid="uid://dqn12fy6gj1th" path="res://persistancy_system/room_connections/room_actions/room_action_toggle_dialogue_title.gd" id="36_aklvs"]
+[ext_resource type="PackedScene" uid="uid://br7hi24qbdfpc" path="res://utils/level_related/tutorial_text.tscn" id="44_wp5yo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1g5y"]
 
@@ -115,15 +116,6 @@ position = Vector2(250, 220)
 item = ExtResource("9_f2s50")
 event_name = "item_vs_room_1_key_picked_up"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 10.0
-offset_top = 200.0
-offset_right = 132.0
-offset_bottom = 246.0
-bbcode_enabled = true
-text = "[center] C or [img]res://assets/GRAPHICS/inputs/tile_0378.png[/img] para [INTERACTUAR][/center]"
-fit_content = true
-
 [node name="DashAbility" parent="." instance=ExtResource("8_jklsu")]
 position = Vector2(40, 40)
 item = ExtResource("10_bsw56")
@@ -184,7 +176,7 @@ dialogue = ExtResource("17_whwh8")
 
 [node name="HideTutorialText" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
 script = ExtResource("31_i5vji")
-target = NodePath("../../../../RichTextLabel")
+target = NodePath("../../../../TutorialText")
 
 [node name="MovePlayer" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
 script = ExtResource("19_dmicl")
@@ -229,7 +221,7 @@ wait_time = 0.5
 
 [node name="ShowTutorialText" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target")]
 script = ExtResource("31_i5vji")
-target = NodePath("../../../../RichTextLabel")
+target = NodePath("../../../../TutorialText")
 execute = 2
 
 [node name="FadeOut" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
@@ -412,3 +404,13 @@ emission_rect_extents = Vector2(30.000008, 59.99022)
 [node name="SimpleDoor" parent="Obstacle1" instance=ExtResource("21_10c0i")]
 position = Vector2(235, 160)
 door_type = 1
+
+[node name="TutorialText" parent="." instance=ExtResource("44_wp5yo")]
+offset_left = 10.0
+offset_top = 200.0
+offset_right = 132.0
+offset_bottom = 246.0
+text = "{input} para
+[INTERACTUAR]"
+action_gamepad = "interact"
+keyboard_path = "res://assets/GRAPHICS/inputs/keyboard/interact_2.png"

@@ -1,14 +1,21 @@
 ~ start
-Ab: ...
-Kai: ...
-Ab: Well, that sure was somehting.
-Kai: Hopefully we wont need to find any other magical artifacts on the near future.
-Ab: Hopefully never again.
-Kai: Cmon, Dad. Dont be such a killjoy.
-Ab: You are right, sorry. 
-Ab: Im just glad it is over.
-Ab: ...
-Ab: Say, would you want to come with us?
-Ab: The road is long and we would love your company.
-Kai: Lets go! Cecil is waiting for us!
+Ab: ... [ID:_4721DC]
+Kai: ... [ID:_4721DC]
+Ab: Well, that sure was somehting. [ID:WELL_THAT_SURE_WAS_SOMEHTING_BD7883]
+#Kai: Hopefully we wont need to find any other magical artifacts on the near future. [ID:HOPEFULLY_WE_WONT_NEED_TO_FIND_D0FAB0]
+Ab: Hopefully never again. [ID:HOPEFULLY_NEVER_AGAIN_AAC548]
+Kai: Cmon, Dad. Dont be such a killjoy. [ID:CMON_DAD_DONT_BE_SUCH_A_KILLJO_5F4EC0]
+Ab: You are right, sorry. [ID:YOU_ARE_RIGHT_SORRY_B4EF72] 
+Ab: Im just glad it is over. [ID:IM_JUST_GLAD_IT_IS_OVER_13063D]
+Kai: ... [ID:_4721DC]
+Ab: ... [ID:_4721DC]
+do call_cutscene_event("start_sad_piano")
+Ab: Say, would you want to come with us? [ID:SAY_WOULD_YOU_WANT_TO_COME_WIT_5D72F9]
+Ab: The road is long and we would love your company. [ID:THE_ROAD_IS_LONG_AND_WE_WOULD_436F31]
+Kai: Yeah! It will be fun! [ID:YEAH_IT_WILL_BE_FUN_019D06]
+Kai: Dad brought some games for the journey. [ID:DAD_BROUGHT_SOME_GAMES_FOR_THE_9A139A]
+#Kai: And I could use a new opponent. [ID:AND_I_COULD_USE_A_NEW_OPPONENT_96060D]
+Kai: Im tired of winning every time. [ID:IM_TIRED_OF_WINNING_EVERY_TIME_FB0A4F]
+Ab: Thats not even true. Ive wont most- [ID:THATS_NOT_EVEN_TRUE_IVE_WONT_M_8D4E8D]
+Kai: Lets go! Cecil is waiting for us! [ID:LETS_GO_CECIL_IS_WAITING_FOR_U_C1ECD9]
 => END

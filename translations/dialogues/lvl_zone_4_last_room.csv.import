@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d3ko4kk8j14p2"
+
+[deps]
+
+files=["res://translations/dialogues/lvl_zone_4_last_room.en.translation", "res://translations/dialogues/lvl_zone_4_last_room.es.translation"]
+
+source_file="res://translations/dialogues/lvl_zone_4_last_room.csv"
+dest_files=["res://translations/dialogues/lvl_zone_4_last_room.en.translation", "res://translations/dialogues/lvl_zone_4_last_room.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

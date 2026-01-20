@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://2d2lc8oqhw1l"]
+[gd_scene load_steps=9 format=3 uid="uid://2d2lc8oqhw1l"]
 
 [ext_resource type="Script" uid="uid://d13vigjrxn0w8" path="res://main_screen_manager/main_screen_manager.gd" id="1_0plp8"]
 [ext_resource type="PackedScene" uid="uid://bonpimefflpqa" path="res://game/game.tscn" id="2_ctqhg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cgn8tcu4vdqnf" path="res://intro_screen/intro_screen.tscn" id="5_3deng"]
 [ext_resource type="PackedScene" uid="uid://cbc13ds2527re" path="res://game_intro/game_intro.tscn" id="6_b4xdh"]
 [ext_resource type="Script" uid="uid://dxgjn66agj4mg" path="res://main_screen_manager/fade_rect.gd" id="6_xbo5l"]
+[ext_resource type="PackedScene" uid="uid://cj2xl5w5dla2o" path="res://game_outro/game_outro.tscn" id="7_6ot5y"]
 
 [node name="MainscreenManager" type="Node"]
 script = ExtResource("1_0plp8")
@@ -14,6 +15,7 @@ screens = Dictionary[String, PackedScene]({
 "EndDemo": ExtResource("4_n3omj"),
 "Game": ExtResource("2_ctqhg"),
 "GameIntro": ExtResource("6_b4xdh"),
+"GameOutro": ExtResource("7_6ot5y"),
 "IntroScreen": ExtResource("5_3deng"),
 "MainMenu": ExtResource("2_n3omj")
 })

@@ -4,7 +4,8 @@ enum ChangeType {
     TRANSITION_TO,
     STOP,
     START,
-    TRANSITION_TO_INMEDIATE
+    TRANSITION_TO_INMEDIATE,
+    TRANSITION_INTERACTIVE
 }
 
 @export var music_name : String
@@ -23,3 +24,5 @@ func do_action():
             music.stop_music()    
         ChangeType.TRANSITION_TO_INMEDIATE:
             music.transition_to_inmediate(music_name)
+        ChangeType.TRANSITION_INTERACTIVE:
+            music.transition_interactive(music_name)

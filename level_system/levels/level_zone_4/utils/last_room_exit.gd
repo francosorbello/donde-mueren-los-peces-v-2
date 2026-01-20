@@ -6,4 +6,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
         exit_to_menu.call_deferred()
 
 func exit_to_menu():
-    GlobalData.main_screen_manager.start_main_menu()
+    GlobalData.main_screen_manager.transition_to("GameOutro")

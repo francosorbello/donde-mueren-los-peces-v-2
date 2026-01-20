@@ -34,7 +34,7 @@ size = Vector2(40, 20)
 size = Vector2(40, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qf7q"]
-size = Vector2(30, 40)
+size = Vector2(20, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6v3ph"]
 size = Vector2(20, 40)
@@ -142,6 +142,13 @@ wc_target = NodePath("../../WC_Ab")
 move_speed = 20.0
 step_volume = -15.0
 
+[node name="SetMusic2" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
+script = ExtResource("15_1mmyd")
+music_name = "zone_3_music_interactive"
+change_type = 3
+execute = 1
+event_name = "start_sad_piano"
+
 [node name="MoveKai" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("target", "character")]
 script = ExtResource("14_aq5g0")
 target = NodePath("Marker2D")
@@ -163,8 +170,8 @@ position = Vector2(180, 1050)
 
 [node name="SetMusic" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
 script = ExtResource("15_1mmyd")
-music_name = "zone_3_music"
-change_type = 3
+music_name = "full_music"
+change_type = 4
 execute = 2
 
 [node name="LastRoomOutro" type="Node" parent="."]
@@ -285,7 +292,6 @@ script = ExtResource("23_6v3ph")
 position = Vector2(290, 1050)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/Area2D"]
-position = Vector2(-5, 0)
 shape = SubResource("RectangleShape2D_7qf7q")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Exit"]

@@ -99,10 +99,6 @@ func state_unhandled_input(event : InputEvent):
         get_viewport().set_input_as_handled()
         return
     
-    if event.is_action_pressed("use_ability") and player.has_ability_named("explosion"):
-        player.use_explosion_ability()
-        state_machine.transition_to("MovingState")
-        return
 
 func physics_update(delta: float):
     _accoumulated_sample_time += delta

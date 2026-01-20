@@ -48,6 +48,10 @@ func _ready():
 		Console.print_info($StateMachine.current_state.name)
 	)
 
+	Console.add_command("enable_controls", func():
+		enable_controls()
+	)
+
 	GlobalSignal.game_pause_toggled.connect(func(is_paused):
 		can_move = not is_paused
 	)
@@ -64,24 +68,7 @@ func _unhandled_input(event):
 
 	if event.is_action_pressed("interact"):
 		$BetterInteractableManager.use_interactable()
-	
-	# if event.is_action_pressed("attack"):
-	# 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
-	# 	direction = (get_global_mouse_position()-global_position).normalized()
-	# 	if direction == Vector2.ZERO:
-	# 		direction = last_direction
-	# 	$SlashAttack.do_attack(direction)
-	# 	return
 
-	# if event.is_action_pressed("use_ability") and $StateMachine.current_state.name != "ShootingBubbleState":
-	# 	current_ability.execute(self)
-	# 	return
-
-	# if (event.is_action_pressed("jump") and 
-	# 	has_ability_named("jump") and 
-	# 	$StateMachine.current_state.name != "JumpingState"
-	# 	):
-	# 	$StateMachine.transition_to("JumpingState")
 
 func play_anim(anim_name : String):
 	if $AnimationPlayer.current_animation != anim_name:

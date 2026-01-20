@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://yr0b8dbbe0vk"]
+[gd_scene load_steps=30 format=4 uid="uid://yr0b8dbbe0vk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_sisx8"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_0edhv"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="19_ch1ok"]
 [ext_resource type="Script" uid="uid://csscmsvofh7ig" path="res://dialogue_system/cutscene_system/actions/cuta_teleport_player.gd" id="20_7qf7q"]
 [ext_resource type="Script" uid="uid://dtj6suo5ul0e5" path="res://level_system/levels/level_zone_4/utils/last_room_exit.gd" id="23_6v3ph"]
+[ext_resource type="PackedScene" uid="uid://cj2xl5w5dla2o" path="res://game_outro/game_outro.tscn" id="24_6oexi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvl6t"]
 size = Vector2(40, 30)
@@ -133,13 +134,13 @@ dialogue = ExtResource("10_nvl6t")
 [node name="SetKaiSpeed" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("wc_target")]
 script = ExtResource("13_aq5g0")
 wc_target = NodePath("../../WC_Kai")
-move_speed = 20.0
+move_speed = 40.0
 step_volume = -15.0
 
 [node name="SetAbSpeed" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager" node_paths=PackedStringArray("wc_target")]
 script = ExtResource("13_aq5g0")
 wc_target = NodePath("../../WC_Ab")
-move_speed = 20.0
+move_speed = 40.0
 step_volume = -15.0
 
 [node name="SetMusic2" type="Node" parent="NarrativeStuff/Cutscene1/CutsceneManager"]
@@ -287,6 +288,7 @@ horizontal_alignment = 2
 
 [node name="Exit" type="Node2D" parent="."]
 script = ExtResource("23_6v3ph")
+game_outro_scene = ExtResource("24_6oexi")
 
 [node name="Area2D" type="Area2D" parent="Exit"]
 position = Vector2(290, 1050)

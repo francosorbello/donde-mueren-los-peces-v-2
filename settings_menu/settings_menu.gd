@@ -4,6 +4,8 @@ func _ready():
 	$TabContainer/TAB_GAME/GridContainer/WindowOptions.grab_focus()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not visible:
+		return
 	var input_handled : bool = false
 	if event.is_action_pressed("tab_left"):
 		tab_to_left()

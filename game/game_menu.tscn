@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://r105flniks1s"]
+[gd_scene load_steps=3 format=3 uid="uid://r105flniks1s"]
 
 [ext_resource type="Script" uid="uid://ergmwyb8687w" path="res://game/game_menu.gd" id="1_rg0uj"]
+[ext_resource type="PackedScene" uid="uid://fhj3mhr34hh5" path="res://settings_menu/settings_menu.tscn" id="2_l175o"]
 
 [node name="GameMenu" type="Control"]
 layout_mode = 3
@@ -55,10 +56,21 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "CONTINUAR"
 
+[node name="OptionsMenu" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "OPCIONES
+"
+
 [node name="ExitButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "SALIR"
 
+[node name="SettingsMenu" parent="." instance=ExtResource("2_l175o")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/OptionsMenu" to="." method="_on_options_menu_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://yr0b8dbbe0vk"]
+[gd_scene load_steps=29 format=4 uid="uid://yr0b8dbbe0vk"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_sisx8"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_0edhv"]
@@ -22,6 +22,7 @@
 [ext_resource type="Resource" uid="uid://bwvh44th6c6hy" path="res://level_system/levels/level_zone_4/dialogues/last_room_narrative_blocker.dialogue" id="18_ch1ok"]
 [ext_resource type="Script" uid="uid://js37ci7gtnp5" path="res://dialogue_system/cutscene_system/actions/cuta_fade_action.gd" id="19_ch1ok"]
 [ext_resource type="Script" uid="uid://csscmsvofh7ig" path="res://dialogue_system/cutscene_system/actions/cuta_teleport_player.gd" id="20_7qf7q"]
+[ext_resource type="Script" uid="uid://dtj6suo5ul0e5" path="res://level_system/levels/level_zone_4/utils/last_room_exit.gd" id="23_6v3ph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvl6t"]
 size = Vector2(40, 30)
@@ -31,6 +32,12 @@ size = Vector2(40, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_du6w5"]
 size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qf7q"]
+size = Vector2(30, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v3ph"]
+size = Vector2(20, 40)
 
 [node name="lvl_zone_4_last_room" type="Node2D"]
 
@@ -112,7 +119,6 @@ position = Vector2(150, 90)
 [node name="DialogueArea" parent="NarrativeStuff/Cutscene1" node_paths=PackedStringArray("target") instance=ExtResource("9_p6f0j")]
 position = Vector2(150, 30)
 dialogue = ExtResource("10_nvl6t")
-repeatable = true
 remove_on_event = "last_dialogue_started"
 target = NodePath("../PartyPos")
 delay_time = 3.0
@@ -271,3 +277,22 @@ bbcode_enabled = true
 text = "SFX por Franco Sorbello, Atomic-Potato, Reitanna, Glaneur de sons, cdonahueucsd y ayitzmatt."
 fit_content = true
 horizontal_alignment = 2
+
+[node name="Exit" type="Node2D" parent="."]
+script = ExtResource("23_6v3ph")
+
+[node name="Area2D" type="Area2D" parent="Exit"]
+position = Vector2(290, 1050)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/Area2D"]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_7qf7q")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Exit"]
+position = Vector2(290, 1050)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/StaticBody2D"]
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_6v3ph")
+
+[connection signal="body_entered" from="Exit/Area2D" to="Exit" method="_on_area_2d_body_entered"]

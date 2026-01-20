@@ -69,6 +69,7 @@ func start_game_intro():
         transition_to("GameIntro")
     else:
         start_game()
+        # transition_to("GameIntro")
 
 func start_main_menu():
     transition_to("MainMenu")

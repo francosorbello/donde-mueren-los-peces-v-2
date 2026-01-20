@@ -6,7 +6,11 @@ var _original_volume : float
 
 func _ready():
     if music:
-        _original_volume = music.volume_db
+        _original_volume = music.volume_linear
+    visibility_changed.connect(func():
+        if visible:
+            $PanelContainer/VBoxContainer/ContinueBtn.grab_focus()
+    )
 
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("pause"):
@@ -21,7 +25,7 @@ func toggle_ui():
     if music:
         var new_volume = _original_volume
         if visible:
-            new_volume -= 10
+            new_volume -= 0.3
         anim_music_volume(new_volume)
 
 func _on_continue_btn_pressed() -> void:
@@ -33,4 +37,8 @@ func _on_exit_button_pressed() -> void:
 
 func anim_music_volume(to_value : float):
     var tween := create_tween()
-    tween.tween_property(music,"volume_db",to_value,0.5)
+    tween.tween_property(music,"volume_db",linear_to_db(to_value),0.5).from(linear_to_db(_original_volume))
+
+func _on_options_menu_pressed() -> void:
+    $SettingsMenu.show()
+    pass # Replace with function body.

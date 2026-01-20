@@ -193,6 +193,7 @@ texture = ExtResource("13_n37d2")
 [node name="DialogueArea" parent="NarrativeStuff/Cutscene1" node_paths=PackedStringArray("target") instance=ExtResource("14_acgnb")]
 position = Vector2(140, 26)
 dialogue = ExtResource("14_5kyi3")
+remove_on_event = "lvl_zone_3_fuente_paraiso_started"
 target = NodePath("../CutsceneManager/MoveCamera/Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NarrativeStuff/Cutscene1/DialogueArea"]

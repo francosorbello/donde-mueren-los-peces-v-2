@@ -30,10 +30,8 @@ func _ready():
     )
 
 func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed("pause") and not on_dialogue:
-        toggle_ui()
-    
-    if visible and event.is_action_pressed("ui_cancel"):
+
+    if (event.is_action_pressed("pause") and not on_dialogue) or (visible and event.is_action_pressed("ui_cancel")):
         toggle_ui()
 
     if visible:

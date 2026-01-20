@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c4idyptfx3pe2"]
+[gd_scene load_steps=15 format=4 uid="uid://c4idyptfx3pe2"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_ms8k5"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_cb08d"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://d11ymn4s33jgm" path="res://persistancy_system/event_evaluator.gd" id="9_48fh2"]
 [ext_resource type="Script" uid="uid://davfd8xpi1i3t" path="res://persistancy_system/conditionals/bool_event_conditional.gd" id="10_2a5gy"]
 [ext_resource type="PackedScene" uid="uid://v7vcp08dge6v" path="res://doors/key_door.tscn" id="11_k32hi"]
+[ext_resource type="PackedScene" uid="uid://br7hi24qbdfpc" path="res://utils/level_related/tutorial_text.tscn" id="12_qg013"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmw1m"]
 
@@ -90,6 +91,7 @@ door_opened_event = "vs_room_1_door_opened"
 door_type = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 offset_top = 20.0
 offset_right = 142.0
 offset_bottom = 75.0
@@ -106,3 +108,12 @@ offset_bottom = 175.0
 bbcode_enabled = true
 text = "[center]M o [img]res://assets/GRAPHICS/inputs/lb.png[/img] para [ABRIR MAPA][/center]"
 fit_content = true
+
+[node name="TutorialText" parent="." instance=ExtResource("12_qg013")]
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 132.0
+offset_bottom = 66.0
+text = "{input} para [MOVERSE]"
+action_gamepad = "move"
+keyboard_path = "res://assets/GRAPHICS/inputs/wasd.png"

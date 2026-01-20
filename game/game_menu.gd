@@ -3,17 +3,37 @@ extends Control
 @export var music : AudioStreamPlayer
 
 var _original_volume : float
+var on_dialogue : bool = false
 
 func _ready():
     if music:
         _original_volume = music.volume_linear
+    
+    DialogueManager.dialogue_started.connect(func(_d):
+        if visible:
+            toggle_ui()
+            on_dialogue = true
+    )    
+
+    DialogueManager.dialogue_ended.connect(func(_d):
+        on_dialogue = false
+    )
+
     visibility_changed.connect(func():
         if visible:
             $PanelContainer/VBoxContainer/ContinueBtn.grab_focus()
     )
 
+    $SettingsMenu.visibility_changed.connect(func():
+        if not $SettingsMenu.visible:
+            $PanelContainer/VBoxContainer/OptionsMenu.grab_focus()
+    )
+
 func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed("pause"):
+    if event.is_action_pressed("pause") and not on_dialogue:
+        toggle_ui()
+    
+    if visible and event.is_action_pressed("ui_cancel"):
         toggle_ui()
 
     if visible:

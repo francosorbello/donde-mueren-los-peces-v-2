@@ -1,3 +1,5 @@
 ~ start
-Mientras [FLOTAS], C o [img]res://assets/GRAPHICS/inputs/xbox_rb.png[/img] para realizar [DASH]
+do set_gamepad_action("dash")
+do set_keyboard_action("keyboard_shift")
+Mientras [FLOTAS], [img=128x128]{{get_action_path()}}[/img] para realizar [DASH]
 => END

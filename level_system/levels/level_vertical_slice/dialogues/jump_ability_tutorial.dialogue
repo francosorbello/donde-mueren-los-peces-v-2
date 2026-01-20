@@ -1,4 +1,6 @@
 ~ start
-ESPACIO or [img=50x50]res://assets/GRAPHICS/inputs/tile_0380.png[/img] para [FLOTAR]
-ESPACIO or [img=50x50]res://assets/GRAPHICS/inputs/tile_0380.png[/img] mientras flotas [CANCELAR HABILIDAD]
+do set_gamepad_action("jump")
+do set_keyboard_action("keyboard_space_outline")
+[img=128x128]{{get_action_path()}}[/img] para [FLOTAR]
+[img=128x128]{{get_action_path()}}[/img] mientras flotas [CANCELAR HABILIDAD]
 => END

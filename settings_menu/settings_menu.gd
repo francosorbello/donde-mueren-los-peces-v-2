@@ -45,10 +45,11 @@ func _on_tab_container_tab_changed(tab: int) -> void:
 	await get_tree().process_frame
 	match tab:
 		0:
-			print("should grab focus, no?")
-			$TabContainer/Game/GridContainer/WindowOptions.grab_focus()
+			$TabContainer/TAB_GAME/GridContainer/WindowOptions.grab_focus()
 
 
 func _on_visibility_changed() -> void:
 	if visible:
 		$TabContainer.current_tab = 0
+		$TabContainer/TAB_GAME/GridContainer/WindowOptions.grab_focus()
+		

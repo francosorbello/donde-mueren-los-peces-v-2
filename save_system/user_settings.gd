@@ -1,7 +1,7 @@
 extends Resource
 class_name UserSettings
 
-@export var window_mode : int = 0
+@export var window_mode : int = DisplayServer.WINDOW_MODE_FULLSCREEN
 @export var volumes : Dictionary[String,float] = {
 	"Master": 1,
 	"Music": 1,

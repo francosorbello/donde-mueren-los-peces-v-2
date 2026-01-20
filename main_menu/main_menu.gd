@@ -26,6 +26,11 @@ func _ready():
 		$VBoxContainer/ResetSaveButton.visible = false
 	_start_menu_music()
 
+	$SettingsMenu.visibility_changed.connect(func():
+		if not $SettingsMenu.visible:
+			$VBoxContainer/Options.grab_focus()	
+	)
+
 func _on_start_button_pressed() -> void:
 	CommonSfxPlayer.play_sound("start_game",false)
 

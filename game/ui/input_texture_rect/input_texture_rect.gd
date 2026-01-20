@@ -25,4 +25,4 @@ func update_texture(device : String):
 
 
 func get_path_to_texture(device : String) -> String:
-	return "res://assets/GRAPHICS/inputs/%s/%s.png"%[device,action_name]
+	return "res://assets/GRAPHICS/inputs/hi_res/%s/%s.png"%[device,action_name]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bonpimefflpqa"]
+[gd_scene load_steps=37 format=3 uid="uid://bonpimefflpqa"]
 
 [ext_resource type="Script" uid="uid://du0h6bbque5tf" path="res://game/game.gd" id="1_u5opy"]
 [ext_resource type="Resource" uid="uid://ccgv346u87xr0" path="res://utils/level_related/initial_level_res.tres" id="2_qf6n1"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bq36b0nga2k5y" path="res://game/game_console_commands.tscn" id="12_qf6n1"]
 [ext_resource type="Script" uid="uid://bkhip1qirjghn" path="res://game/ui/interact_layout_element.gd" id="13_jdpby"]
 [ext_resource type="Script" uid="uid://c8h0kq00glgpg" path="res://game/game_blackboard.gd" id="14_b686c"]
+[ext_resource type="Texture2D" uid="uid://ent4c5fylmrc" path="res://assets/GRAPHICS/inputs/hi_res/ps/east.png" id="15_hbvmx"]
 [ext_resource type="PackedScene" uid="uid://qn61jric6owc" path="res://game/ui/input_texture_rect/input_texture_rect.tscn" id="15_posua"]
 [ext_resource type="Script" uid="uid://ul277vuo1a7a" path="res://game/ui/triggers_layout_element.gd" id="17_jdpby"]
 [ext_resource type="Resource" uid="uid://dy2krd2i18ha7" path="res://abilities/ability_items/abi_dash.tres" id="18_58yx1"]
@@ -208,6 +209,7 @@ vertical_alignment = 1
 
 [node name="TextureRect" parent="UI/Controls/Flotar" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+texture_filter = 2
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 action_name = "jump"
@@ -228,16 +230,17 @@ layout_mode = 2
 text = "UI_USE"
 label_settings = SubResource("LabelSettings_pxxsx")
 horizontal_alignment = 2
-vertical_alignment = 1
 
 [node name="TextureRect" parent="UI/Controls/Interactuar" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+texture_filter = 2
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 action_name = "interact"
 
 [node name="B" parent="UI/Controls" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+texture_filter = 2
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_left = 1760.0
@@ -248,12 +251,13 @@ action_name = "east"
 
 [node name="Y" parent="UI/Controls" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
-custom_minimum_size = Vector2(64, 64)
+texture_filter = 2
 layout_mode = 0
 offset_left = 1700.0
 offset_top = 110.0
 offset_right = 1764.0
 offset_bottom = 174.0
+texture = ExtResource("15_hbvmx")
 action_name = "north"
 
 [node name="Triggers" type="HBoxContainer" parent="UI/Controls"]
@@ -277,12 +281,14 @@ vertical_alignment = 1
 
 [node name="LB" parent="UI/Controls/Triggers" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+texture_filter = 2
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 action_name = "lb"
 
 [node name="RB" parent="UI/Controls/Triggers" instance=ExtResource("15_posua")]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+texture_filter = 2
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 action_name = "dash"

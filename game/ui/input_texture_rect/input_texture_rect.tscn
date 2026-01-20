@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://qn61jric6owc"]
 
-[ext_resource type="Texture2D" uid="uid://c1dsrfakusipy" path="res://assets/GRAPHICS/inputs/xbox/east.png" id="1_bw3lm"]
+[ext_resource type="Texture2D" uid="uid://ent4c5fylmrc" path="res://assets/GRAPHICS/inputs/hi_res/ps/east.png" id="1_bw3lm"]
 [ext_resource type="Script" uid="uid://besiktkm8uoy3" path="res://game/ui/input_texture_rect/input_texture_rect.gd" id="1_n7t6o"]
 
 [node name="InputTextureRect" type="TextureRect"]
+texture_filter = 2
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_bw3lm")

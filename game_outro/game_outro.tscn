@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj2xl5w5dla2o"]
+[gd_scene load_steps=4 format=3 uid="uid://cj2xl5w5dla2o"]
 
 [ext_resource type="Script" uid="uid://v7qh2m04i2up" path="res://game_outro/game_outro.gd" id="1_n7i3i"]
+[ext_resource type="Shader" uid="uid://d1owo2r0dj7ev" path="res://death_zone/water_2.gdshader" id="2_dxf3h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jd2ca"]
+shader = ExtResource("2_dxf3h")
+shader_parameter/WATER_COL = Color(0, 0, 0, 1)
+shader_parameter/WATER2_COL = Color(0.050526805, 0.050526805, 0.050526805, 1)
+shader_parameter/FOAM_COL = Color(0.87, 0.987, 1, 0)
+shader_parameter/distortion_speed = 1.0
+shader_parameter/tile = Vector2(1, 0)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/pixelate = false
+shader_parameter/pixelation_amount = 32.0
 
 [node name="GameOutro" type="Control"]
 layout_mode = 3
@@ -11,14 +23,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n7i3i")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jd2ca")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1

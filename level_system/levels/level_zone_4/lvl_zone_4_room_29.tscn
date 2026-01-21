@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dl8ktd5jyghy7"]
+[gd_scene load_steps=26 format=4 uid="uid://dl8ktd5jyghy7"]
 
 [ext_resource type="PackedScene" uid="uid://h3poltp7l0r" path="res://utils/screen_size_reference.tscn" id="1_s2mjx"]
 [ext_resource type="PackedScene" uid="uid://b57h7d56a30uw" path="res://level_system/base_tilemap.tscn" id="2_dtrjw"]
@@ -19,9 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://b4er0ro4vssmy" path="res://level_system/level_transition_area.tscn" id="17_u7jyq"]
 [ext_resource type="PackedScene" uid="uid://bh1flwoqyofjh" path="res://level_system/levels/level_zone_3/utils/narrative_blocker_zone_4.tscn" id="18_2tdy5"]
 [ext_resource type="PackedScene" uid="uid://bwbn1cb01u1c2" path="res://level_system/levels/level_zone_4/utils/kai_and_ab_running.tscn" id="19_fdcys"]
-[ext_resource type="PackedScene" uid="uid://mff12c3401rg" path="res://persistancy_system/room_connections/room_action_area.tscn" id="20_i5g38"]
-[ext_resource type="Script" uid="uid://dana3uker3o68" path="res://persistancy_system/room_connections/room_actions/ra_shake_camera.gd" id="21_n0pb7"]
-[ext_resource type="AudioStream" uid="uid://uvvjvav212st" path="res://assets/SOUNDS/rustles/rumble_short.ogg" id="22_ce8w4"]
 
 [sub_resource type="Curve2D" id="Curve2D_2tdy5"]
 bake_interval = 50.0
@@ -57,9 +54,6 @@ _data = {
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7jyq"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mliih"]
-size = Vector2(40, 10)
 
 [node name="lvl_zone_4_room_29" type="Node2D"]
 
@@ -255,29 +249,5 @@ position = Vector2(135, 195)
 
 [node name="TargetPos" parent="KaiAndAbRunning" index="2"]
 position = Vector2(5, 95)
-
-[node name="RoomActionArea" parent="." instance=ExtResource("20_i5g38")]
-position = Vector2(60, 110)
-single_use = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomActionArea"]
-position = Vector2(80, -48)
-shape = SubResource("RectangleShape2D_mliih")
-
-[node name="RoomActionShakeCamera" type="Node" parent="RoomActionArea"]
-script = ExtResource("21_n0pb7")
-metadata/_custom_type_script = "uid://dana3uker3o68"
-
-[node name="RoomActionCallMethod" type="Node" parent="RoomActionArea" node_paths=PackedStringArray("targets")]
-script = ExtResource("12_wuwbs")
-targets = {
-NodePath("AudioStreamPlayer"): &"play"
-}
-metadata/_custom_type_script = "uid://cs7jodjvn2jd0"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RoomActionArea/RoomActionCallMethod"]
-stream = ExtResource("22_ce8w4")
-volume_db = -5.0
-bus = &"SFX"
 
 [editable path="KaiAndAbRunning"]

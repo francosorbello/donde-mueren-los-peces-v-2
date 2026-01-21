@@ -53,6 +53,8 @@ func transition_to_inmediate(stream_name):
 	stop()
 	volume_linear = _initial_volume
 	stream = streams[stream_name]
+	if stream is AudioStreamInteractive:
+		self["parameters/switch_to_clip"] = "piano_note"
 	play()
 
 func _tween_volume(to_value : float, time : float = transition_time) -> Tween:

@@ -23,5 +23,6 @@ func _set_name():
 
 func _set_and_add_to_db():
     _set_name_from_file()
-    var add_to_db = AddLevelToDatabase.new()
-    add_to_db._run()
+    # if Engine.is_editor_hint():
+    #     var add_to_db = AddLevelToDatabase.new()
+    #     add_to_db._run()

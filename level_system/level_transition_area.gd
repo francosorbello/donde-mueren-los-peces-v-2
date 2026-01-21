@@ -15,6 +15,9 @@ enum TransitionDirection{
 @export var override_position : Vector2 = Vector2.ZERO
 
 func do_transition():
+    set_deferred("monitorable",false)
+    set_deferred("monitoring",false)
+    
     if next_level_id.is_empty():
         push_error("NO NEXT LEVEL ID")
         return

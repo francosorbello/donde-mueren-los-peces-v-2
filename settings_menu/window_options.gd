@@ -28,7 +28,7 @@ func _window_mode_to_item(window_mode : int) -> int:
 		DisplayServer.WINDOW_MODE_WINDOWED:
 			_value = 1
 		_:
-			push_error("Missing implementation for window mode %i"%window_mode)
+			push_error("Missing implementation for window mode %d"%window_mode)
 	
 	return _value
 
@@ -40,6 +40,6 @@ func _item_to_window_mode(item : int) -> int:
 		1:
 			_value = DisplayServer.WINDOW_MODE_WINDOWED
 		_:
-			push_error("Missing implementation for window mode %i"%item)
+			push_error("Missing implementation for window mode %d"%item)
 	
 	return _value
